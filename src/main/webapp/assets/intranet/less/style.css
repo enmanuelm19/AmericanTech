@@ -1,0 +1,26 @@
+.z-auxheader-content {
+  font-family: Arial,Sans-serif;
+  font-size: 12px;
+  font-weight: lighter;
+  font-style: normal;
+  color: #2679C5;
+  padding: 4px 5px 3px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #2B7DBC;
+    padding: 20px; 
+    
+}
+
+
+.rcorners6 {
+    border-radius: 15px 50px;
+	 border: 2px solid #2B7DBC;
+    background: rgba(190, 216, 212, 0.22);
+    padding: 20px; 
+  
+}

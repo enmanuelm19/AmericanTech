@@ -1,0 +1,41 @@
+<panel border="none" collapsible="true" sclass="transparent">
+  <caption iconSclass="z-icon-bullhorn orange" label="Cartelera informativa"/>
+  <panelchildren>
+    <grid sclass="domain">
+      <columns>
+        <column width="80%"  label="Anuncio" iconSclass="z-icon-caret-right blue"/>
+        <column label="Fecha de Publicacion" iconSclass="z-icon-caret-right blue"/>
+        
+      </columns>
+      <rows>
+        <row>
+          <label value="Todos nuestos socios estan invitados a el evento de día de las madres el día 3/05/15 "/>
+          <label value="20/04/2015" sclass="label label-primary arrowed"/>
+        </row>
+        <row>
+          <label value="Se les recuerda cancelar la cuota del mes de Abril"/>
+           <label value="20/04/2015" sclass="label label-primary  arrowed"/>
+        </row>
+        <row>
+          <label value="Se les recuerda que deben realizar el pago de la couta del mes de Abril"/>
+          <label value="10/04/2015" sclass="label label-primary  arrowed"/>
+        </row>
+        <row>
+          <label value="Se les recuerda que deben realizar el pago de la couta del mes de Abril lo antes posible"/>
+          <label value="09/04/2015" sclass="label label-primary  arrowed"/>
+        </row>
+        <row>
+          <label value="Se les recuerda que deben realizar el pago de la couta del mes de Abril"/>
+          <label value="08/04/2015" sclass="label label-primary  arrowed"/>
+        </row>
+        
+        
+        
+        <row>
+          <label value="Se les recuerda que deben cancelar la cuota del mes de Enero"/>
+           <label value="28/01/2015" sclass="label label-primary  arrowed"/>
+        </row>
+      </rows>
+    </grid>
+  </panelchildren>
+</panel>

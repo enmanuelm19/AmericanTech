@@ -1,0 +1,55 @@
+<vlayout sclass="infobox-container" xmlns:n="native">
+  <hlayout spacing="0" style="padding-top:1px">
+  
+  <div sclass="infobox infobox-blue">
+    <span sclass="infobox-icon">
+      <span zclass="z-icon-comments"/>
+    </span>
+    <div sclass="infobox-data">
+      <label value="3" sclass="infobox-data-number"/>
+      <div sclass="infobox-content">Nuevas sugerencias</div>
+    </div>
+  
+  </div>
+  
+
+  
+  <div sclass="infobox infobox-pink">
+    <span sclass="infobox-icon">
+      <span zclass="z-icon-money"/>
+    </span>
+    <div sclass="infobox-data">
+      <label value="5" sclass="infobox-data-number"/>
+      <div sclass="infobox-content">Nuevos Pagos</div>
+    </div>
+    
+  </div>
+
+  <div class="infobox infobox-red">
+    <span sclass="infobox-icon">
+      <span zclass="z-icon-envelope"/>
+    </span>
+    <div class="infobox-data">
+      <label value="2" sclass="infobox-data-number"/>
+      <div class="infobox-content">Nuevas Solicitudes</div>
+    </div>
+  </div>
+
+  
+
+ <!-- <div class="infobox infobox-orange">
+  
+      <span sclass="infobox-icon">
+      <span zclass="z-icon-user"/>
+    </span>
+    <div class="infobox-data">
+      <label value="1" sclass="infobox-data-number"/>
+      <div class="infobox-content">Nueva Postulacion</div>
+    </div>
+  </div>-->
+
+ 
+
+
+  </hlayout>
+</vlayout>

@@ -1,0 +1,73 @@
+<div id="sidebar" sclass="sidebar" apply="application.SidebarComposer">
+	<!-- Shortcuts Button-->
+	<div class="shortcuts">
+		<!-- Display when expanded -->
+		<!-- <div class="shortcuts-expanded">
+			<button type="button" class="btn-success" iconSclass="z-icon-signal"/>
+			<button type="button" class="btn-info" iconSclass="z-icon-pencil"/>
+			<button type="button" class="btn-warning" iconSclass="z-icon-group"/>
+			<button type="button" class="btn-danger" iconSclass="z-icon-cogs"/>
+		</div> -->
+		<!-- Display when collapsed -->
+		<!--<div class="shortcuts-collapsed">
+			<button type="button" class="btn-success"/>
+			<button type="button" class="btn-info"/>
+			<button type="button" class="btn-warning"/>
+			<button type="button" class="btn-danger"/>
+		</div>-->
+	</div>
+	<!-- Navigation List -->
+	<navbar id="navbar" sclass="nav-list" orient="vertical">
+		<navitem label="Inicio" iconSclass="z-icon-home" selected="true" href="/america/vistas/index.zul"/>
+		<!--  <navitem label="Typography" iconSclass="z-icon-text-width"/>-->
+		<nav label="Socios" iconSclass="z-icon-user">
+			<navitem label="Postulación" iconSclass="z-icon-angle-double-right" />
+			<navitem label="Acción" iconSclass="z-icon-angle-double-right" />
+			<navitem label="Ficha del Socio" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Mostrar socios" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/mostrarLista.zul"/>
+			<navitem label="Afiliados" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Transacción acción" iconSclass="z-icon-angle-double-right"  />
+			<navitem label="Sanción" iconSclass="z-icon-angle-double-right"/>
+			
+		</nav>
+		<nav label="instalaciones" iconSclass="z-icon-home">
+			<navitem label="Solicitudes" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Pagos" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Reservaciones" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Invitados" iconSclass="z-icon-angle-double-right"  href="/america/vistas/instalacion/registrarInvitado.zul"/>
+		    <navitem label="Proveedores" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Visitas" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Eventualidades" iconSclass="z-icon-angle-double-right"/>
+		    
+			
+		</nav>
+		<nav label="Eventos"  iconSclass="z-icon-calendar">
+			<navitem label="Solicitudes" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Crear evento" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Planificar evento" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Ejecutar tareas del evento" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Cierre del evento" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Graficos" iconSclass="z-icon-angle-double-right"  href="/america/vistas/instalacion/grafico.zul"/>
+		</nav>
+		<nav label="Informacion" iconSclass="z-icon-bullhorn">
+			<navitem label="Publicar información" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
+		</nav>
+			<nav label="Escucha al cliente" iconSclass="z-icon-group">
+			<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right"/>
+			
+		</nav>
+		
+		<navitem id="calitem" label="Calendar" iconSclass="z-icon-calendar" visible="false"/>
+	
+	</navbar>
+	<!-- Toggler -->
+	<div sclass="sidebar-collapse">
+		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
+	</div>
+	<!-- Tooptip for Calender Navitem -->
+	<popup id="calpp" zclass="tooltip" sclass="right tooltip-error cal">
+		<span zclass="tooltip-arrow"/>
+		<label zclass="tooltip-inner" value="2 Important Event"/>
+	</popup>
+</div>

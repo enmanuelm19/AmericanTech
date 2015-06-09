@@ -1,0 +1,176 @@
+
+<window title=""  width="100%">
+
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
+<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
+<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
+<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
+<include src="header.html" />
+
+
+  <image id="image" src="../assets/portal/img/bannerPostulacion.png" width="100%" /> 
+  
+  <zk xmlns:n="native" class='contenedor'>
+  <div class='contenedor'>
+				
+	 <div sclass="page-header"  align="center">
+	    <label value="Registrar Postulación"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+    <div class="col-md-6 col-centered "  form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        <grid  width="auto">
+          
+            <rows class="col-md-10">
+            
+            	  <row class="col-md-10">
+                   <label style="font-weight: bold">Datos personales</label>
+               </row>
+                  <row class="col-md-10">
+              		  <div>
+              		   Nombre
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                        Cedula
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+                     <row class="col-md-10">
+              		  <div>
+              		   Dirección
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                        Email
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+                      <row class="col-md-10">
+              		  <div>
+              		   Telefono fijo
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                        Telefono Movil
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+               
+                 
+				
+				  <row class="col-md-10">
+              		  <div  >
+              		    ¿Por qué quieres pertenecer al club?
+                    	<textbox rows="5" cols="80"/> 
+                       </div>
+                       
+                 </row> 
+	               <row class="col-md-10 margen-subtitulo-postulacion">
+	                   <label style="font-weight: bold;">Datos del miembro del club que te apadrina</label>
+	               </row>
+	               
+	               <row class="col-md-10">
+                    
+              		  <div>
+              		  Nombre de tu padrino 1
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                        Cedula de tu padrino 1
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+                   
+                    <row class="col-md-10">
+                    
+              		  <div>
+              		  Telefono de tu padrino 1 en el club
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                         Antiguedad de tu padrino 1 en el club
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+                     <row class="col-md-10 margen-subtitulo-postulacion">
+	                   <label style="font-weight: bold">Datos del segundo miembro del club que te apadrina</label>
+	               </row>
+                    
+	               <row class="col-md-10">
+                    
+              		  <div>
+              		  Nombre de tu padrino 2
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                        Cedula de tu padrino 2
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+                   
+                    <row class="col-md-10">
+                    
+              		  <div>
+              		  Telefono de tu padrino 2 en el club
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                        <div class="" >
+                         Antiguedad de tu padrino 2 en el club
+                    	<textbox type="text" value=""
+                        width="250px" tabindex="2" />
+                       </div>
+                 </row>
+                   
+                   
+      
+                 
+                    <row class="col-md-10">
+             			 <div  >
+                    	<button  iconSclass="z-icon-floppy-o" class='btn-info boton-guardar' label="Enviar postulación"/>
+                       </div>
+                 </row>
+                 
+                   
+                 
+                  
+				
+             
+              
+         
+            </rows>
+        </grid>
+    </div>
+
+	</div>		
+	
+  </div>	
+   
+   
+</zk>
+
+<include src="footer.html" />
+    
+</window>
