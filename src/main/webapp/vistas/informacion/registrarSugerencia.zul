@@ -1,71 +1,133 @@
-<vbox>
-		<div class='contenedor'>
-				
-	 <div sclass="page-header">
-	    <label value="Registrar Sugerencia Socio"/>
-	  
-	  </div>
-		   <div class='contenido '   align="center"  >
-   				 <div class="col-md-8 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+<?page title="Dashboard - ZK Admin"?>
+<!-- Load Bootstrap  -->
+<?link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Escucha al Cliente" href="#" />
+					<label value="--> Sugerencias" />
+				</div>
+			</div>
+
+
+
+			<!--  <vbox> -->
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="Registrar Sugerencia Socio" />
+
+				</div>
+				<div class='contenido ' align="center">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='rcorners6' width="600px" height="400px">
-        		
-        			<grid width="580px" >
-          
-			            	<rows class="col-md-12">
-			            
-			                  <row class="col-md-11">
-			                   <div>
-			              		   	Seleccione Tipo Sugerencia <combobox width="200px">
-			              		   	<comboitem label="Eventos" />
-			              		   	<comboitem label="Alqluiler Instalaciones" />
-			              		   	<comboitem label="Pagos" />
-			              		   	<comboitem label="Vigilancia" />
-			              		   	<comboitem label="Otros" />
-			              		   	</combobox>
-			              		  </div>
-			                      <div>
-			                      	<button  id="btnbuscar" iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
-			                      </div>		                  
-			                                    
-			                  </row>
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   Descripcion <textbox type="text" value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema" width="500px" height="200px" />
-			                      </div>			              		 
-			                      
-			                  </row>
-			                  <row class="col-md-11">			                  	  
-			                  	  <div>
-			                        Fecha Incidente <datebox format="MM/dd/yyyy"/>
-			                      </div>  			              		
-			                  </row>		                  	                   
+						<div class='rcorners6' width="600px">
 
-			                  <row class="col-md-11 col-centered">
-			                  	<hlayout width="">
-			                  	
-			                  	<separator spacing="150px"></separator>	                  	
-			                  		                  		
-			                  		<div>
-			                    		<button  iconSclass="z-icon-edit"  class='btn-primary boton-guardar' label="Enviar"/>
-			                     	</div><separator spacing="80px"></separator>
-			                     	
-			                     	<div>
-			                    		<button  iconSclass="z-icon-edit"  class='btn-primary boton-guardar' label="Cancelar "/>
-			                     	</div><separator spacing="80px"></separator>
-			                     	
-			                  	</hlayout>
-			             		
-			                 </row>
-			 
-			            </rows>
-			        </grid>
-			        </div>
-   				 </div>
+							<grid width="580px">
 
-	</div>		
-			
-		</div>		
-</vbox>
+								<rows class="col-md-12">
+
+									<row class="col-md-11">
+
+
+										<div width="80%">
+											<vbox>
+												Tipo Sugerencia
+												<combobox width="200px"
+													value="Seleccione..">
+													<comboitem
+														label="Eventos" />
+													<comboitem
+														label="Alqluiler Instalaciones" />
+													<comboitem
+														label="Pagos" />
+													<comboitem
+														label="Vigilancia" />
+													<comboitem
+														label="Otros" />
+												</combobox>
+											</vbox>
+
+										</div>
+
+									</row>
+									<row class="col-md-11">
+										<div>
+											Descripcion
+											<textbox cols="8" rows="10"
+												type="text"
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
+												width="80%" />
+										</div>
+
+									</row>
+									<row class="col-md-11">
+										<div>
+											Fecha Incidente
+											<datebox
+												format="MM/dd/yyyy" />
+										</div>
+									</row>
+
+									<row
+										class="col-md-11 col-centered">
+										<hlayout width="">
+
+											<separator
+												spacing="150px">
+											</separator>
+
+											<div>
+												<button
+													iconSclass="z-icon-edit" class='btn-primary boton-guardar'
+													label="Enviar" />
+											</div>
+											<separator spacing="80px"></separator>
+
+											<div>
+												<button
+													iconSclass="z-icon-edit" class='btn-primary boton-guardar'
+													label="Cancelar " />
+											</div>
+											<separator spacing="80px"></separator>
+
+										</hlayout>
+
+									</row>
+
+								</rows>
+							</grid>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- </vbox>  -->
+
+
+		</vlayout>
+	</hlayout>
+
+
+</zk>
