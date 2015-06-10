@@ -14,9 +14,9 @@
 
 
 <zk xmlns:n="native" class='contenedor'>
-	<include src="navbar.zul"/>             
+	<include src="../layouts/navbar.zul"/>             
 	<hlayout id="main" spacing="0">
-		<include src="sidebar.zul"/>    
+		<include src="../layouts/sidebar.zul"/>    
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
