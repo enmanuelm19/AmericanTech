@@ -1,0 +1,71 @@
+<vbox>
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Registrar Sugerencia Socio"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='rcorners6' width="600px" height="400px">
+        		
+        			<grid width="580px" >
+          
+			            	<rows class="col-md-12">
+			            
+			                  <row class="col-md-11">
+			                   <div>
+			              		   	Seleccione Tipo Sugerencia <combobox width="200px">
+			              		   	<comboitem label="Eventos" />
+			              		   	<comboitem label="Alqluiler Instalaciones" />
+			              		   	<comboitem label="Pagos" />
+			              		   	<comboitem label="Vigilancia" />
+			              		   	<comboitem label="Otros" />
+			              		   	</combobox>
+			              		  </div>
+			                      <div>
+			                      	<button  id="btnbuscar" iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+			                      </div>		                  
+			                                    
+			                  </row>
+			                  <row class="col-md-11">
+			              		  <div>
+			              		   Descripcion <textbox type="text" value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema" width="500px" height="200px" />
+			                      </div>			              		 
+			                      
+			                  </row>
+			                  <row class="col-md-11">			                  	  
+			                  	  <div>
+			                        Fecha Incidente <datebox format="MM/dd/yyyy"/>
+			                      </div>  			              		
+			                  </row>		                  	                   
+
+			                  <row class="col-md-11 col-centered">
+			                  	<hlayout width="">
+			                  	
+			                  	<separator spacing="150px"></separator>	                  	
+			                  		                  		
+			                  		<div>
+			                    		<button  iconSclass="z-icon-edit"  class='btn-primary boton-guardar' label="Enviar"/>
+			                     	</div><separator spacing="80px"></separator>
+			                     	
+			                     	<div>
+			                    		<button  iconSclass="z-icon-edit"  class='btn-primary boton-guardar' label="Cancelar "/>
+			                     	</div><separator spacing="80px"></separator>
+			                     	
+			                  	</hlayout>
+			             		
+			                 </row>
+			 
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+</vbox>
