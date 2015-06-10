@@ -1,0 +1,99 @@
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul"/>
+	<hlayout spacing="0">
+		<include src="../layouts/sidebar.zul"/>
+		
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-cogs"/>
+					    <a label="Seguridad" href="#"/>
+							<label value="Mostrar Grupos"/>
+					</div>
+ 
+			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+	    			<label value="Mostrar grupo"/>
+	  			</div>
+	  			
+	  			<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
+					<!-- GRID DE GRUPOS-->
+					<grid mold="paging" pageSize="15"  width="500px" >
+						<auxhead class="z-auxheader-content">
+							<auxheader label="Grupos" align="center" colspan="2" />
+						</auxhead>
+						<auxhead  class="z-auxheader-content">
+							<auxheader label="Buscar" align="left" colspan="2"><textbox/></auxheader>
+						</auxhead>
+						<columns class="z-grid z-column-content ">
+							<column label="Descripcion" align="center"  width="300px"/>
+							<column label="Acciones" align="center" width="200px"/>
+						</columns>
+						<rows>
+							<row>
+								<label value="Junta Directiva"/>
+								<div>
+								<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+								<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+								<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+								<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>
+									
+								
+								</div>
+							</row>
+							<row>
+								<label value="Adiministracion"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+									<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>									
+								
+									
+								</div>
+							</row>
+							<row>
+								<label value="Socios"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+									<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>
+									
+								</div>
+							</row>
+							<row>
+								<label value="Secretaria"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+									<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>
+									
+								</div>
+							</row>	      
+						</rows>
+			        </grid> <!-- FIN GRID DE GRUPOS-->
+			    </div><!--FIN DIV GRID DE GRUPOS-->
+	  		
+	  		</div>
+	  	</vlayout>		
+	</hlayout>
+</zk>
