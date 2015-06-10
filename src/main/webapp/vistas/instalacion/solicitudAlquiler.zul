@@ -1,0 +1,204 @@
+<?page title="Solicitud de Alquiler"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Instalaciones" href="#"/>
+							<label value="Solicitud de Alquiler"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Solicitud de Alquiler"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+   				
+   				   
+        			<div class='rcorners6 col-md-12'>
+        				<vlayout>
+        				<div class='col-md-12 rcorners2'>
+		        			<div sclass="page-header">
+				    			<label value="Datos del Socio"/>	
+							</div>
+							
+		        			<grid>
+		          
+					            	<rows class="col-md-12">
+					            		
+					            	  <row class="col-md-11">
+					              		  <div>
+					              		   	Número de acción: <textbox type="text" value="" width="80px" />
+					                      </div>
+					                      <div>
+					                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+					                      </div>	
+					                       <div>
+					              		   	Nombre <textbox type="text" value="" width="200px" />
+					                      </div>
+					                       <div>
+					              		   	Apellido <textbox type="text" value="" width="190px" />
+					                      </div>		                      
+					                  </row>
+					             					 
+					            </rows>
+					        </grid>
+					     </div>
+					     
+					     <div class='col-md-12 rcorners2'>
+		        			<div sclass="page-header">
+				    			<label value="Datos de la instalación"/>	
+							</div>
+										
+ 							<grid>
+		          
+					            	<rows class="col-md-12">
+					            		
+					            	  <row class="col-md-11">
+					              		  <div>
+					              		   	Fecha inicio: <datebox lenient="false" compact="false" buttonVisible="true" />
+					                      </div>
+					                       <div>
+					              		   	Fecha fin: <datebox lenient="false" compact="false" buttonVisible="true" />
+					                      </div>		                      
+					                  </row>
+					                  <row class="col-md-11">
+					              		  <div>
+					              		   	Hora inicio:  <timebox id="tb0"/>
+					                      </div>
+					                       <div>
+					              		   	Hora fin: <timebox id="tb1"/>
+					                      </div>		                      
+					                  </row>					 
+					            </rows>
+					        </grid>
+					        		
+					        <div> 
+					        	<separator spacing="10px"></separator>
+					        </div>
+						    <listbox id="box" multiple="false" checkmark="true">
+						        <listhead>
+						            <listheader label="Nombre" />
+						            <listheader label="Capacidad" />
+						           
+						        </listhead>
+						        <listitem>
+						            <listcell label="Caney Chevechita" />
+						            <listcell label="25" />
+						        </listitem>
+						        <listitem>
+						            <listcell label="Caney principal" />
+						            <listcell label="35" />
+						        </listitem>
+						        <listitem>
+						            <listcell label="Cancha Futbolito" />
+						            <listcell label="20" />
+						        </listitem>
+						        <listitem>
+						            <listcell label="Piscina" />
+						            <listcell label="50" />
+						        </listitem>
+						    
+						    </listbox>
+						    
+						    <div>
+		        					<button  iconSclass="z-icon-search"  class='btn-primary btn-primary' label="Verificar disponibilidad"/>
+		        			
+		        			</div>
+		        			
+		        			
+		        			<div sclass="page-header">
+		        					<separator spacing="10px"></separator>
+		        					<label value="Recursos"></label>
+		        			</div>
+						    
+						    <!-- View of customized component DualListbox -->
+							<hlayout height="300px" style="padding:10px">
+							    <listbox id="candidateLb" hflex="1" vflex="true" multiple="true" rows="8">
+							        <listhead>
+							            <listheader label="Descripción" width="80px"></listheader>
+							            <listheader label="Cantidad" width="80px"></listheader>
+							        </listhead>
+							        
+							   <!--     <template name="model"> --> 
+							            <listitem>
+							               <!--  <listcell label="${each.firstName }"/>
+							                <listcell label="${each.lastName }"/> -->
+							                
+							                <listcell label="Sillas"/>
+							                <listcell label="25"/>
+							            </listitem>
+							              <listitem>
+							                <listcell label="Mesones"/>
+							                <listcell label="5"/>
+							            </listitem>
+							              <listitem>
+							                <listcell label="Manteleria"/>
+							                <listcell label="5"/>
+							            </listitem>
+							      <!--   </template>  -->
+							    </listbox>
+							    <vbox spacing="10px" width="24px">
+							       <separator spacing="15px"></separator>
+							        <image style="cursor:pointer" id="chooseBtn" src="/assets/portal/img/adelante.png" />
+							         <image style="cursor:pointer" id="chooseAllBtn" src="/assets/portal/img/pasarTodo.png" />
+							        <image style="cursor:pointer" id="removeBtn" src="/assets/portal/img/devolver.png"  />
+							        <image style="cursor:pointer" id="removeAllBtn" src="/assets/portal/img/devolverTodo.png"  />
+							    </vbox>
+							    <listbox id="chosenLb" hflex="1" vflex="true" multiple="true" rows="8">
+							        <listhead>
+							            <listheader label="Descripción" width="80px"></listheader>
+							            <listheader label="Cantidad" width="80px"></listheader>
+							          </listhead>
+							   <!--     <template name="model"> --> 
+							          
+							      <!--   </template>  -->
+							    </listbox>
+							 
+							</hlayout>
+							
+							  <div>
+		        					<button  iconSclass="z-icon-floppy-o"  class='btn-primary btn-primary' label="Reservar"/>
+		        			
+		        			</div>
+		        			
+					     </div>
+					     
+					        
+					     </vlayout>
+					     
+					
+			        </div>
+   				 </div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
