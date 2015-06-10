@@ -78,13 +78,13 @@
 			
 		</nav>
 		<nav label="Informacion" iconSclass="z-icon-bullhorn">
-		<navitem label="Registrar Información" iconSclass="z-icon-angle-double-right" />
+		    <navitem label="Registrar Información" iconSclass="z-icon-angle-double-right" href="/america/vistas/informacion/registrarInformacion.zul"/>
 			<navitem label="Publicar información" iconSclass="z-icon-angle-double-right"/>
 			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
 		</nav>
 			<nav label="Escucha al cliente" iconSclass="z-icon-group">
-			<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right"/>
-			<navitem label="Opinión sobre postulación" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/informacion/registrarSugerencia.zul"/>
+			<navitem label="Opinión sobre postulación" iconSclass="z-icon-angle-double-right" href="/america/vistas/informacion/registrarOpinion.zul"/>
 			
 			
 			<navitem label="Mostrar Opiniones Postulación" iconSclass="z-icon-angle-double-right" href="/america/vistas/escuchaAlCliente/opinionPostulacion.zul" />
