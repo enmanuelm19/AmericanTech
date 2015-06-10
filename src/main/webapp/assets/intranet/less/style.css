@@ -24,3 +24,24 @@
     padding: 20px; 
   
 }
+.lbls{
+	padding-left: 0px !important;
+}
+.inps{
+	padding: 4px 5px 3px 5px;
+	width: 220px !important;
+}
+.inps_s{
+	padding: 4px 5px 3px 5px;
+}
+.no_pad{
+	padding-left: 0px !important;
+}
+.form_{
+	width: 100%;
+	max-width: 380px;
+	overflow: initial;
+}
+.btn_bus{
+	margin-left: 5px;
+}

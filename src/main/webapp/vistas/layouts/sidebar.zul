@@ -25,12 +25,12 @@
 			
 			<navitem label="Postulación" iconSclass="z-icon-angle-double-right" />
 			<navitem label="Acción" iconSclass="z-icon-angle-double-right" />
-			<navitem label="Ficha del Socio" iconSclass="z-icon-angle-double-right"/>
-			<navitem label="Afiliados" iconSclass="z-icon-angle-double-right"/>
-			<navitem label="Sanción" iconSclass="z-icon-angle-double-right"/>
-			<navitem label="Transacción acción" iconSclass="z-icon-angle-double-right"  />
-			<navitem label="venta de acción" iconSclass="z-icon-angle-double-right"  />
-			<navitem label="Desvincular socio" iconSclass="z-icon-angle-double-right"  />
+			<navitem label="Ficha del Socio" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/fichaSocio.zul"/>
+			<navitem label="Afiliados" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/registrarAfiliado.zul"/>
+			<navitem label="Sanción" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/registrarSancion.zul"/>
+			<navitem label="Transacción acción" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/traspasoAccion.zul"/>
+			<navitem label="venta de acción" iconSclass="z-icon-angle-double-right"  href="/america/vistas/socio/ventaAccion.zul"/>
+			<navitem label="Desvincular socio" iconSclass="z-icon-angle-double-right"  href="/america/vistas/socio/desvincularSocio.zul"/>
 			<navitem label="Porcentaje de postulaciones" iconSclass="z-icon-angle-double-right"  />
 			<navitem label="Porcentaje de Morosida" iconSclass="z-icon-angle-double-right"  />
 			<navitem label="Porcetaje de invitados por socios" iconSclass="z-icon-angle-double-right"  />
