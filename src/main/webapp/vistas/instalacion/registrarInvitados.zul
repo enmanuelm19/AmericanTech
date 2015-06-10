@@ -1,0 +1,123 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Instalaciones" href="#"/>
+							<label value="Registrar invitado"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor col-md-12'>		
+		 	<div sclass="page-header">
+		    	<label value="Registrar invitados"/>	
+			</div>	
+			
+			<div class='contenido'   align="center">
+			<div class='rcorners6 col-md-12'>
+				<vlayout width="100%">
+					<div align="left" class='col-md-5 rcorners2' height="330px">
+						<div sclass="page-header" align="center" >
+				    		<label value="Datos básicos del Invitado"/>	
+						</div>	
+						<grid>
+							<rows class="col-md-12">
+					            
+					                  <row class="col-md-11">
+					              		  <div>
+					              		   	Cédula: <textbox type="text" value="" width="140px" />
+					                      </div>
+					                      <div>
+					                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+					                      </div>			                      
+					                  </row>
+					                  <row class="col-md-11">
+					              		  <div>
+					              		   	Nombre: <textbox type="text" value="" width="265px" />
+					                      </div>
+					                  </row> 
+					                     <row class="col-md-11">
+					              		  <div>
+					              		   Apellido: <textbox type="text" value="" width="265px" tabindex="2" />
+					                      </div>
+					                      
+					                  </row> 
+		
+					                  <row class="col-md-11 col-centered" align="center">
+					                  	<hlayout>
+					                  	
+					                  		<separator spacing="150px"></separator>
+					                  		<div align="center">
+					                    		<button  iconSclass="z-icon-plus"  class='btn-primary boton-guardar' label="Añadir"/>
+					                    	</div><separator spacing="80px"></separator>
+					                  				                    	
+					                  	</hlayout>
+					                 </row>
+					             </rows>
+				        </grid>	
+				</div>
+				<div class="col-md-1"><separator spacing="10px"></separator></div>
+				<div class="col-md-6 rcorners2">
+					   <div sclass="page-header" align="center" >
+				    		<label value="Lista de Invitados"/>	
+						</div>	 
+				        <grid   mold="paging" pageSize="15">
+				            <auxhead  class="z-auxheader-content">
+				                <auxheader align="center" colspan="4" />
+				            </auxhead>
+				            <columns class="z-grid z-column-content ">
+				                <column label="Cédula" align="center"  />
+				                <column label="Nombre" align="center" />
+				                <column label="Apellido" align="center"  />
+				                <column label="Eliminar" align="center"> </column>
+				            </columns>
+				             <rows>
+							        <row>
+							           <label value="123456"/> <label value="David Mathias"/><label value="Rodriguez Bello"/> <button  iconSclass="z-icon-trash-o"  class='btn-primary'/>
+							        </row>
+							          <row>
+							           <label value="985631"/> <label value="Josue Alejandro"/><label value="Molina Ledezma"/> 	<button  iconSclass="z-icon-trash-o"  class='btn-primary'/>					     
+							        </row>
+							          <row>
+							           <label value="2536788"/> <label value="Ernesto José"/><label value="Benitez Aranguren"/> <button  iconSclass="z-icon-trash-o"  class='btn-primary'/>						          
+							        </row> 
+							 </rows>
+				
+				        </grid>
+					</div>
+			</vlayout>
+			
+				<div class='col-md-12'>
+						<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar"/>
+				</div>
+			
+			</div>
+			
+			
+			</div>
+		</div>
+			         	
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
