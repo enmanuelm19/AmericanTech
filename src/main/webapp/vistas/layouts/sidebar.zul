@@ -48,13 +48,13 @@
 			
 			<navitem label="Solicitudes" iconSclass="z-icon-angle-double-right"/>
 			<navitem label="Alquiler" iconSclass="z-icon-angle-double-right"/>
-		    <navitem label="Lista Invitados" iconSclass="z-icon-angle-double-right"  href="/america/vistas/instalacion/registrarInvitado.zul"/>
+		    <navitem label="Lista Invitados" iconSclass="z-icon-angle-double-right"  />
 		    <navitem label="Lista Proveedores" iconSclass="z-icon-angle-double-right"/>
-		    <navitem label="Mostrar Alquileres" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Mostrar Alquileres" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/mostrarAlquileres.zul"/>
 		    <navitem label="Proveedores" iconSclass="z-icon-angle-double-right"/>
 		    <navitem label="Visitas" iconSclass="z-icon-angle-double-right"/>
 		    <navitem label="Registrar Eventualidades" iconSclass="z-icon-angle-double-right"/>
-		    <navitem label="Cancelar Alquiler" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Cancelar Alquiler" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/cancelarAlquiler.zul"/>
 		    
 		    <navitem label="Mostrar instalaciones" iconSclass="z-icon-angle-double-right" />
 		    <navitem label="Eventualidades por instalació" iconSclass="z-icon-angle-double-right" />
@@ -96,8 +96,8 @@
 		
 		<nav label="Administracion" iconSclass="z-icon-bullhorn">
 		
-		<navitem label="Registrar un Grupo" iconSclass="z-icon-angle-double-right" />
-		<navitem label="Asignar función" iconSclass="z-icon-angle-double-right" />
+		<navitem label="Registrar un Grupo" iconSclass="z-icon-angle-double-right"  href="/america/vistas/administracion/registrarGrupo.zul" />
+		<navitem label="Asignar función" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/registrarUsuarioGrupo.zul"  />
 		
 		
 			<navitem label="Información del Club" iconSclass="z-icon-angle-double-right" />
@@ -105,7 +105,7 @@
 			<navitem label="Reglas Invitado" iconSclass="z-icon-angle-double-right" />
 			<navitem label="Deportes" iconSclass="z-icon-angle-double-right" />
 		
-		<navitem label="Mostrar Grupo" iconSclass="z-icon-angle-double-right" />
+		<navitem label="Mostrar Grupo" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/mostrarGrupos.zul" />
 		<navitem label="Mostrar Función" iconSclass="z-icon-angle-double-right" />
 			
 		</nav>
