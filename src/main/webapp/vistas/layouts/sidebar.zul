@@ -48,13 +48,13 @@
 			
 			<navitem label="Solicitudes" iconSclass="z-icon-angle-double-right"/>
 			<navitem label="Alquiler" iconSclass="z-icon-angle-double-right"/>
-		    <navitem label="Lista Invitados" iconSclass="z-icon-angle-double-right"  href="/america/vistas/instalacion/registrarInvitado.zul"/>
+		    <navitem label="Lista Invitados" iconSclass="z-icon-angle-double-right"  />
 		    <navitem label="Lista Proveedores" iconSclass="z-icon-angle-double-right"/>
-		    <navitem label="Mostrar Alquileres" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Mostrar Alquileres" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/mostrarAlquileres.zul"/>
 		    <navitem label="Proveedores" iconSclass="z-icon-angle-double-right"/>
 		    <navitem label="Visitas" iconSclass="z-icon-angle-double-right"/>
 		    <navitem label="Registrar Eventualidades" iconSclass="z-icon-angle-double-right"/>
-		    <navitem label="Cancelar Alquiler" iconSclass="z-icon-angle-double-right"/>
+		    <navitem label="Cancelar Alquiler" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/cancelarAlquiler.zul"/>
 		    
 		    <navitem label="Mostrar instalaciones" iconSclass="z-icon-angle-double-right" />
 		    <navitem label="Eventualidades por instalació" iconSclass="z-icon-angle-double-right" />
