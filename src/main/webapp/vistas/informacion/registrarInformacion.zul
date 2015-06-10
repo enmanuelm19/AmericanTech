@@ -8,79 +8,91 @@
 <?link href="css/fonts.css" rel="stylesheet" type="text/css"?>
 
 <!-- Unmark if we want to use fonts from google server
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 -->
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<include src="/vistas/layouts/navbar.zul"/>             
+	<include src="/vistas/layouts/navbar.zul" />
 	<hlayout id="main" spacing="0">
-		<include src="/vistas/layouts/sidebar.zul"/>    
-		<vlayout spacing="0" hflex="1"  >
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
-					    <a label="Socios" href="#"/>
-							<label value="Informacion"/>
-			 		</div>
-		 	</div>
-	<div id="padre"> 
-	
-	<!-- <vbox apply="controllers.ControladoRegistrarInformacion"> -->
-	<div class='contenedor' apply="com.ucla.america.controllers.ControladoRegistrarInformacion">
-				
-	 <div sclass="page-header">
-	    <label value="Registrar información"/>
-	  
-	  </div>
-		   <div class='contenido '   align="center" ><!-- AQUI comienza el contenedor1-->
-   				 <div class="col-md-8 col-centered " 
-   				  
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Socios" href="#" />
+					<label value="Informacion" />
+				</div>
+			</div>
+
+
+			<div id="padre"><!-- <vbox apply="controllers.ControladoRegistrarInformacion"> -->
+
+
+
+
+				<div class='contenedor'
+					apply="com.ucla.america.controllers.ControladoRegistrarInformacion">
+
+					<div sclass="page-header">
+						<label value="Registrar información" />
+
+					</div>
+					<div class='contenido ' align="center"><!-- AQUI comienza el contenedor1-->
+						<div class="col-md-8 col-centered "
+							form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			
-        			<div class='rcorners6' width="600px" height="100px">    <!-- Aqui comienza combo1 -->    		
-        			<grid width="580px" >          
-			            	<rows class="col-md-12">			            
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   	Seleccione Tipo Noticia <combobox id="cmbnoticia" width="140px">
-			              		   	<comboitem label="Evento" />
-			              		   	<comboitem label="Postulacion" />
-			              		   	<comboitem label="Operacion Accion" />
-			              		   	<comboitem label="Otras" />
-			              		   	</combobox>
-			              		   </div>
-			                      <div>
-			                      	<button  id="btnbuscar" iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
-			                      </div>			                      
-			                  </row>                
-			                  
-			 
-			            </rows>
-			        </grid>
-			       
-   				 </div><!-- aqui termina combo1 -->  				 
-   				
 
-   				 </div>
-   				 
+							<div class='rcorners6' width="600px"
+								height="100px">
+								<!-- Aqui comienza combo1 -->
+								<grid width="580px">
+									<rows class="col-md-12">
+										<row class="col-md-11">
+											<div>
+												Seleccione Tipo Noticia
+												<combobox
+													id="cmbnoticia" value="Seleccione.." width="140px">
+													<comboitem
+														label="Evento" />
+													<comboitem
+														label="Postulacion" />
+													<comboitem
+														label="Operacion Accion" />
+													<comboitem
+														label="Otras" />
+												</combobox>
+											</div>
+											<div>
+												<button id="btnbuscar"
+													iconSclass="z-icon-search" class='btn-primary btn-primary' />
+											</div>
+										</row>
 
-	</div>	<!-- AQUI termina el contenedor1 -->
-	
-	
-	
-					
-		</div>
-<!-- </vbox> -->
-	
-	
-	</div>	 	
-			
+
+									</rows>
+								</grid>
+
+							</div><!-- aqui termina combo1 -->
+
+
+						</div>
+
+
+					</div>
+					<!-- AQUI termina el contenedor1 -->
+
+
+
+
+				</div>
+				<!-- </vbox> -->
+			</div>
+
 		</vlayout>
 	</hlayout>
 
-	
+
 </zk>
