@@ -19,7 +19,7 @@
 					
 					<menuitem label="Perfil" iconSclass="z-icon-user"/>
 					<menuseparator/>
-					<menuitem label="Salir" href="ingreso.zul" iconSclass="z-icon-off"/>
+					<menuitem label="Salir" href="layouts/ingreso.zul" iconSclass="z-icon-off"/>
 				</menupopup>
 			</menu>
 		</menubar>
@@ -30,7 +30,7 @@
 			<a label="Notificaciones" sclass="header" iconSclass="z-icon-exclamation-triangle"/>
 			<vlayout spacing="0">
 				<a iconSclass="btn btn-xs no-hover btn-pink z-icon-money" href="#">
-					<label>3 nuevos Pagos</label>
+					<label>3 nuevas solicitudes</label>
 					
 				</a>
 				<a iconSclass="btn btn-xs no-hover btn-primary z-icon-user" href="#">

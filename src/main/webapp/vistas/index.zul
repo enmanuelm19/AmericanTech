@@ -1,24 +1,23 @@
 <?page title="Dashboard - ZK Admin"?>
-<!-- Load Bootstrap  -->
-<?link href="/assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
-<!-- Google Open Sans font -->
-<!-- Load fonts from local -->
-<?link href="/assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
-<!-- Unmark if we want to use fonts from google server
+
+<?link href="../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
--->
 
-<?link href="/assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<include src="/vistas/layouts/navbar.zul"/>             
+	<include src="layouts/navbar.zul"/>             
 	<hlayout id="main" spacing="0">
 		<include src="layouts/sidebar.zul"/>    
 		<vlayout spacing="0" hflex="1">
-			<include src="/vistas/layouts/breadcrumbs.zul"/>
-			<include src="/vistas/layouts/page.zul"/>
+			<include src="layouts/breadcrumbs.zul"/>
+			<include src="layouts/page.zul"/>
 		</vlayout>
 	</hlayout>
 
