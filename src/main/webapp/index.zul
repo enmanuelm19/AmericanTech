@@ -3,13 +3,15 @@
 
 
 <?script type="text/javascript" src="assets/portal/js/easing.js"?>
+<?script type="text/javascript" src="assets/portal/js/efecto.js"?>
 <?script type="text/javascript" src="assets/portal/js/fliplightbox.min.js"?>
 <?script type="text/javascript" src="assets/portal/js/jquery.easing.min.js"?>
 <?script type="text/javascript" src="assets/portal/js/jquery.magnific-popup.js"?>
 <?script type="text/javascript" src="assets/portal/js/jquery.min.js"?>
 <?script type="text/javascript" src="assets/portal/js/jquery.mixitup.min.js"?>
+<?script type="text/javascript" src="assets/portal/js/jquery.mousewheel.min.js"?>
 <?script type="text/javascript" src="assets/portal/js/jquery.scrollTo.js"?>
 <?script type="text/javascript" src="assets/portal/js/move-top.js"?>
-<?script type="text/javascript" src="assets/portal/js/efecto.js"?>
+
     <include src="portal/index.html" />
 </window>
