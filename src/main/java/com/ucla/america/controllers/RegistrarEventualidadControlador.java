@@ -6,14 +6,15 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zul.Window;
 import org.zkoss.zk.ui.*;
 
-public class EjecucionEventoControlador extends SelectorComposer<Component> {
+public class RegistrarEventualidadControlador extends SelectorComposer<Component> {
     private static final long serialVersionUID = 1L;
      
-    @Listen("onSelect = listbox")
+    @Listen("onClick = #btnRegistrar")
     public void showModal(Event e) {
+    	System.out.print("Mira");
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
-                "/application/intranet/dialog/ejecucionEventoDialogo.zul", null, null);
+                "/vistas/instalacion/dialogo/registrarEventualidadDialog.zul", null, null);
         window.doModal();
     }
 }

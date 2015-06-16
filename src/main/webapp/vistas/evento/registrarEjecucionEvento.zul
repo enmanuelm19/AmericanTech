@@ -53,7 +53,7 @@
 
 									<row class="col-md-12">
 										<div
-											apply="controllers.EjecucionEventoControlador">
+											apply="com.ucla.america.controllers.EjecucionEventoControlador">
 											<listbox id="listbox"
 												multiple="false" sclass="dataTable" checkmark="true">
 												<listhead>
