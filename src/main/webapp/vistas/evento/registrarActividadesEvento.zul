@@ -12,7 +12,7 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-user" />
-					<a label="Eventos" href="#" />
+					<a label="Evento" href="#" />
 					<label value="Registrar Actividades" />
 				</div>
 

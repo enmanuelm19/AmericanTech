@@ -12,8 +12,8 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-user" />
-					<a label="Instalaciones" href="#" />
-					<label value="Registrar Eventualidad" />
+					<a label="Instalación" href="#" />
+					<label value="Registrar Eventualidades" />
 				</div>
 
 			</div>
@@ -21,110 +21,65 @@
 			<div class='contenedor'>
 
 				<div sclass="page-header">
-					<label value="Registrar Eventualidad" />
+					<label value="Registrar Eventualidades" />
 
 				</div>
 				<div class='contenido ' align="center">
 					<div class="col-md-8 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='rcorners6' width="600px"
-							height="300px">
+						apply="com.ucla.america.controllers.RegistrarEventualidadControlador">
+						<div class='rcorners6' width="700px"
+							height="auto">
 
 							<grid width="580px">
 
 								<rows class="col-md-12">
 
-									<row class="col-md-11">
-										<div>
-											<vbox>
-												Nro Socio
-												<hbox>
-													<textbox type="text"
-														value="" width="180px"  />
-													<button
-														sclass="btn-link" iconSclass="z-icon-search blue" />
-												</hbox>
-											</vbox>
-
-										</div>
-
-										<div>
-											<vbox>
-												Sancionado
-												<radiogroup>
-													<radio label="Si" />
-													<space />
-													<radio label="No" />
-												</radiogroup>
-											</vbox>
-
-										</div>
-									</row>
-									<row class="col-md-11">
-
-										<div>
-										<vbox>
-											Instalacion
-											<combobox value="Selecione" width="227px">
-												<comboitem
-													label="0002-01" />
-												<comboitem
-													label="0002-02" />
-											</combobox>
-										</vbox>
-										</div>
-										
-
-										<div>
-										<vbox>
-											Evento
-											<combobox value="Selecione" width="227px">
-												<comboitem label="01" />
-												<comboitem label="02" />
-											</combobox>
-											</vbox>
-										</div>
-									</row>
 
 									<row class="col-md-11">
+
 										<div>
-										<vbox>
-											Descripcion
-											<textbox type="text" cols="4" rows="2"
-												value="" width="300px" />
-										</vbox>
+											<button label="Registrar" id="btnRegistrar"
+												class='btn-primary btn-primary' />
 										</div>
-										
 
 									</row>
-									
-									<row
-										class="col-md-11">
-										<hlayout width="">
-
-											<separator
-												spacing="150px">
-											</separator>
-											<div>
-												<button
-													iconSclass="z-icon-floppy-o"
-													class='btn-primary boton-guardar' label="Registrar" />
-											</div>
-											<separator spacing="80px"></separator>
-											<div>
-												<button
-													iconSclass="z-icon-edit" class='btn-primary boton-guardar'
-													label="Modificar " />
-											</div>
-											<separator spacing="80px"></separator>
-											<div>
-												<button
-													iconSclass="z-icon-trash-o"
-													class='btn-primary boton-guardar' label="Eliminar" />
-											</div>
-										</hlayout>
+									<row class="col-md-12">
+										<grid width="100%">
+											<columns>
+												<column label="Evento"
+													align="center" />
+												<column
+													label="Instalación" align="center" />
+												<column label="Socio"
+													align="center" />
+												<column
+													label="Nro Carnet" align="center" />
+												<column label="Fecha"
+													align="center" />
+												<column label="Motivo"
+													align="center" />
+												<column
+													label="Modificar" align="center" />
+											</columns>
+											<rows>
+												<row>
+													<combobox
+														width="99%" />
+													<textbox value="001"
+														width="95%" />
+													<textbox
+														value="Marco Polo" width="95%" />
+													<textbox
+														value="0002" width="95%" />
+													<datebox
+														width="95%" />
+													<textbox
+														value="Caney" width="95%" />
+													<button id="btnModificar"
+														iconSclass="z-icon-plus" class='btn-primary btn-primary' />
+												</row>
+											</rows>
+										</grid>
 
 									</row>
 
@@ -137,7 +92,11 @@
 
 			</div>
 
+
+
+
 		</vlayout>
 	</hlayout>
-	
+
+
 </zk>
