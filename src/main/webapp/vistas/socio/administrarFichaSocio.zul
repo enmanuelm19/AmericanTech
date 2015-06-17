@@ -1,0 +1,305 @@
+<?page title="Administrar Ficha Socio" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul" />
+	<hlayout spacing="0">
+		<include src="../layouts/sidebar.zul" />
+
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+
+					<a label="Registrar Socio" href="#" />
+					<label value="Perfil Socio" />
+					<label value="Administrar Ficha Socio" />
+				</div>
+
+			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+					<label value="Ficha Socio" />
+				</div>
+
+				<div class='contenido ' align="center" width="100%">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="100%">
+
+
+							<vbox>
+								<groupbox width="100%"><!-- GRUPO DATOS BASICOS -->
+									<caption>Datos Basicos</caption>
+
+									<hbox width="100%">
+										<image
+											src="/vistas/informacion/imagenes/img1.jpg" />
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO BASICOS -->
+
+								<groupbox width="100%"><!-- GRUPO INTERESES -->
+									<caption>Intereses</caption>
+
+									<hbox width="100%">
+
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO INTERESES -->
+
+								<groupbox width="100%"><!-- GRUPO accion -->
+									<caption>
+										Datos de la Accion
+									</caption>
+
+									<hbox width="100%">
+
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO accion -->
+
+
+								<groupbox width="100%"><!-- GRUPO afilaido -->
+									<caption>
+										Datos del Afiliado
+									</caption>
+
+									<hbox width="100%">
+
+										<vbox>
+											<grid mold="paging"
+												pageSize="1" width="100%">
+												
+												<auxhead
+													class="z-auxheader-content">
+													<auxheader
+														label="Nombre" align="center" colspan="2" />
+
+													<auxheader
+														label="Cedula" align="left"
+														colspan="2">														
+													
+													</auxheader>
+												</auxhead>
+												<columns
+													class="z-grid z-column-content ">
+													<column label=""
+														align="center" width="10%" /><!--Nombre -->
+													<column label=""
+														align="center" width="10%" /><!--Cedula-->											
+
+												</columns>
+												<rows>
+													<row><!-- inicio FILA-->
+														<div>
+															<textbox
+																cols="1" rows="1" type="text" value="" width="100%" />
+														</div><!-- columna 1-->
+														<div>
+															<textbox
+																cols="1" rows="1" type="text" value="" width="100%" />
+														</div><!-- columna 2-->
+													</row><!-- fin fila-->
+
+
+
+												</rows>
+											</grid><!-- FIN GRID DE GRUPOS-->
+										</vbox>
+										<vbox>
+											<grid width="20%">
+												<rows>
+													<row>
+														Cedula
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+
+														Nombre
+														<textbox
+															value="" width="100%" />
+													</row>
+													<row>
+														Direccion
+														<textbox
+															value="" width="100%" />
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO afiliados -->
+
+
+
+							</vbox>
+
+
+							<hbox width="" align="center"
+								pack="center">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Publicar" />
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Cancelar " />
+							</hbox>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div><!-- FIN CONTENEDOR -->
+		</vlayout>
+	</hlayout>
+</zk>

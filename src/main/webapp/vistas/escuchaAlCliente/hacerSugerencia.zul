@@ -33,7 +33,7 @@
 			<div class='contenedor'>
 
 				<div sclass="page-header">
-					<label value="Registrar Sugerencia Socio" />
+					<label value="Hacer Sugerencia" />
 
 				</div>
 				<div class='contenido ' align="center" width="80%">
@@ -41,78 +41,58 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-
 						<div class='rcorners6' width="100%">
-
 							<grid width="100%">
-
 								<rows class="col-md-12">
-
-									<row class="col-md-11">
-										<div width="80%">
-											Cedula
-											<textbox type="text"
-												value="18892202" width="50%" tabindex="2" />
-										</div>
-
-									</row>
-									<row class="col-md-11">
-										<div width="80%">
-											Nombre
-											<textbox cols="30" rows="1"
-												type="text" value="Hector Gil" width="50%" tabindex="2" />
-										</div>
-
-									</row>
-
 									<row class="col-md-11">
 										<div>
-											Escriba aqui su sugerencia
+											Ultima Modificacion
+											<datebox
+												format="MM/dd/yyyy" />
+										</div>
+									</row>
+									<row class="col-md-11">
+										<div>
 											<textbox cols="30" rows="6"
 												type="text"
 												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
-
 									</row>
-
-									<row
-										class="col-md-11 col-centered">
-										<hlayout width="">
-
-											<separator
-												spacing="5%">
-											</separator>
-
+									<row class="col-md-11">
+										<vbox>
+											<div>Categoria</div>
 											<div>
-												<button
-													iconSclass="z-icon-edit" class='btn-primary boton-guardar'
-													label="Enviar" />
+												<checkbox id="l1"
+													label="Deporte" onCheck="doChecked()" />
+
+												<checkbox id="l2"
+													label="Instalaciones" onCheck="doChecked()" />
+												<checkbox id="l3"
+													label="Eventos" onCheck="doChecked()" />
+												<checkbox id="l4"
+													label="Socios" onCheck="doChecked()" />
 											</div>
-											
-
-											<div>
-												<button
-													iconSclass="z-icon-edit" class='btn-primary boton-guardar'
-													label="Cancelar " />
-											</div>
-											
-
-										</hlayout>
-
+										</vbox>
 									</row>
-
 								</rows>
 							</grid>
+							<hbox width="100%" align="end" pack="end">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Publicar" />
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Cancelar " />
+							</hbox>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 			<!-- </vbox>  -->
-
-
 		</vlayout>
 	</hlayout>
 
