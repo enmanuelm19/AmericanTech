@@ -35,7 +35,7 @@
 	  			
 	  			<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
 					<!-- GRID DE GRUPOS-->
-					<grid mold="paging" pageSize="15"  width="500px" >
+					<grid mold="paging" pageSize="8"  width="500px" >
 						<auxhead class="z-auxheader-content">
 							<auxheader label="Grupos" align="center" colspan="2" />
 						</auxhead>
