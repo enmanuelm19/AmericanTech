@@ -65,7 +65,7 @@
 
 									</row>
 
-									<row class="col-md-11">
+									<row width="80%">
 										<div>
 											Escriba aqui su sugerencia
 											<textbox cols="30" rows="6"

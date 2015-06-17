@@ -55,12 +55,12 @@
 										label="Fecha Descendente" />
 
 								</combobox>
-								
+
 								<button iconSclass="z-icon-edit"
 									class='btn-primary boton-guardar' label="Hacer Sugerencia" />
-									<separator></separator>	
-						</auxheader>
-							</auxhead>
+								<separator></separator>
+							</auxheader>
+						</auxhead>
 						<columns class="z-grid z-column-content ">
 							<column label="" align="center" width="25%" /><!--Foto -->
 							<column label="" align="center" width="15%" /><!--Datos -->
@@ -70,8 +70,8 @@
 						</columns>
 						<rows>
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -98,8 +98,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -126,8 +126,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -154,8 +154,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -182,8 +182,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -210,8 +210,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -238,8 +238,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -266,8 +266,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -294,8 +294,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -322,8 +322,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -350,8 +350,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -378,8 +378,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -406,8 +406,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -434,8 +434,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -462,8 +462,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -490,8 +490,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -518,8 +518,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario
@@ -546,8 +546,8 @@
 
 							</row><!-- fin fila-->
 							<row><!-- inicio FILA-->
-								<image id=""
-									src="/vistas/informacion/imagenes/img1.jpg" /><!-- columna 1 -->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
 								<vbox>
 									<div>
 										Usuario

@@ -87,10 +87,10 @@
 			<navitem label="Opinión sobre postulación" iconSclass="z-icon-angle-double-right"/>
 			
 			
-			<navitem label="Mostrar Opiniones Postulación" iconSclass="z-icon-angle-double-right" href="/america/vistas/escuchaAlCliente/opinionPostulacion.zul />
-			<navitem label="Mostrar Sugerencias" iconSclass="z-icon-angle-double-right" />
-			<navitem label="Porcentaje de sugerencias" iconSclass="z-icon-angle-double-right" />
-			<navitem label="Sugerencias por socios" iconSclass="z-icon-angle-double-right" href="/america/vistas/escuchaAlCliente/sugerencias.zul/>
+	<navitem label="Mostrar Opiniones Postulación" iconSclass="z-icon-angle-double-right" />
+	<navitem label="Mostrar Sugerencias" iconSclass="z-icon-angle-double-right"/>
+	<navitem label="Porcentaje de sugerencias" iconSclass="z-icon-angle-double-right"/>
+	<navitem label="Sugerencias por socios" iconSclass="z-icon-angle-double-right"/>
 			
 		</nav>
 		

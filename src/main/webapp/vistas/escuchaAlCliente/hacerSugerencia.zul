@@ -43,15 +43,15 @@
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 						<div class='rcorners6' width="100%">
 							<grid width="100%">
-								<rows class="col-md-12">
-									<row class="col-md-11">
+								<rows >
+									<row width="100%" >
 										<div>
 											Ultima Modificacion
 											<datebox
 												format="MM/dd/yyyy" />
 										</div>
 									</row>
-									<row class="col-md-11">
+									<row width="100%">
 										<div>
 											<textbox cols="30" rows="6"
 												type="text"

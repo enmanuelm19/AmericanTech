@@ -47,52 +47,72 @@
 									<caption>Datos Basicos</caption>
 
 									<hbox width="100%">
-										<image
-											src="/vistas/informacion/imagenes/img1.jpg" />
-										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
+										<image width="70%" height="70%"
+											src="/assets/portal/img/img1.jpg" />
 
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
+										<vbox>
+
+											Numero Carnet
+											<textbox value=""
+												width="100%" />
+
+
+											1er Nombre
+											<textbox value=""
+												width="100%" />
+
+											2do Nombre
+											<textbox value=""
+												width="100%" />
+
 										</vbox>
 										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
 
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
+											1er Apellido
+											<textbox value=""
+												width="100%" />
+
+
+											2do Apellido
+											<textbox value=""
+												width="100%" />
+
+											Nacimiento
+											<textbox value=""
+												width="100%" />
+
 										</vbox>
+										<vbox>
+
+											Edad
+											<textbox value=""
+												width="100%" />
+
+
+											Sexo
+											<textbox value=""
+												width="100%" />
+
+											Correo
+											<textbox value=""
+												width="100%" />
+
+										</vbox>
+
+										<vbox>
+
+											Telefono
+											<textbox value=""
+												width="100%" />
+
+
+											Direccion
+											<textbox value=""
+												width="100%" />
+
+										</vbox>
+
+
 									</hbox>
 								</groupbox><!-- AQUI TERMINA GRUPO BASICOS -->
 
@@ -102,49 +122,102 @@
 									<hbox width="100%">
 
 										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
 
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
+
+
+											<checkbox id="l1"
+												label="Futbol" onCheck="doChecked()" />
+
+											<checkbox id="l2"
+												label="Beisbol" onCheck="doChecked()" />
+											<checkbox id="l3"
+												label="Basket" onCheck="doChecked()" />
+											<checkbox id="l4"
+												label="Softball" onCheck="doChecked()" />
+
+
+
 										</vbox>
 										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
+											<checkbox id=""
+												label="Ping Pong" onCheck="doChecked()" />
 
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
+											<checkbox id=""
+												label="Bolas Criollas" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Natacion" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Domino" onCheck="doChecked()" />
 										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="Bailar" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="Tocar Cuatro" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Escuchar musica" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Teatro" onCheck="doChecked()" />
+										</vbox>
+
+										<vbox>
+											<checkbox id=""
+												label="Cantar" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xEventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+
+										<vbox>
+											<checkbox id=""
+												label="xDeporte" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Eventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="xDeporte" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xEventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="xDeporte" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xEventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="xDeporte" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xEventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+
 									</hbox>
 								</groupbox><!-- AQUI TERMINA GRUPO INTERESES -->
 
@@ -155,50 +228,61 @@
 
 									<hbox width="100%">
 
-										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
 
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
-										</vbox>
-										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
+										<panel border="none"
+											collapsible="true" sclass="transparent">
 
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
-										</vbox>
+											<panelchildren>
+												<grid sclass="domain">
+													<columns>
+														<column
+															width="50%" label="Numero Accion"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="35%" label="Valor BS" iconSclass="z-icon-caret-right blue" />
+															<column
+															width="15%" label="" align="center" /><!--Operaciones -->
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="60.000" sclass="label label-primary arrowed" />
+																<div>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</div><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="78916" />
+															<label
+																value="60.000" sclass="label label-primary arrowed" />
+																<div>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</div><!-- columna 2 iconos -->
+														</row>
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
+
+
+
+
 									</hbox>
 								</groupbox><!-- AQUI TERMINA GRUPO accion -->
 
@@ -209,69 +293,81 @@
 									</caption>
 
 									<hbox width="100%">
+										<panel border="none"
+											collapsible="true" sclass="transparent">
 
-										<vbox>
-											<grid mold="paging"
-												pageSize="1" width="100%">
-												
-												<auxhead
-													class="z-auxheader-content">
-													<auxheader
-														label="Nombre" align="center" colspan="2" />
+											<panelchildren>
+												<grid sclass="domain">
+													<columns>
+														<column
+															width="30%" label="cedula"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="30%" label="nombre"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="30%" label="Nexo"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="5%" label="" align="center" /><!--Operaciones -->
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="laura" />
+															<label
+																value="Esposa" />
+															<div>
 
-													<auxheader
-														label="Cedula" align="left"
-														colspan="2">														
-													
-													</auxheader>
-												</auxhead>
-												<columns
-													class="z-grid z-column-content ">
-													<column label=""
-														align="center" width="10%" /><!--Nombre -->
-													<column label=""
-														align="center" width="10%" /><!--Cedula-->											
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</div><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="miguel" />
+															<label
+																value="hijo" />
+															<div>
 
-												</columns>
-												<rows>
-													<row><!-- inicio FILA-->
-														<div>
-															<textbox
-																cols="1" rows="1" type="text" value="" width="100%" />
-														</div><!-- columna 1-->
-														<div>
-															<textbox
-																cols="1" rows="1" type="text" value="" width="100%" />
-														</div><!-- columna 2-->
-													</row><!-- fin fila-->
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</div><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="maria" />
+															<label
+																value="hija" />
+															<div>
 
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</div><!-- columna 2 iconos -->
+														</row>
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
 
-
-												</rows>
-											</grid><!-- FIN GRID DE GRUPOS-->
-										</vbox>
-										<vbox>
-											<grid width="20%">
-												<rows>
-													<row>
-														Cedula
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-
-														Nombre
-														<textbox
-															value="" width="100%" />
-													</row>
-													<row>
-														Direccion
-														<textbox
-															value="" width="100%" />
-													</row>
-												</rows>
-											</grid>
-										</vbox>
 									</hbox>
 								</groupbox><!-- AQUI TERMINA GRUPO afiliados -->
 
@@ -287,7 +383,7 @@
 
 
 								<button iconSclass="z-icon-edit"
-									class='btn-primary boton-guardar' label="Publicar" />
+									class='btn-primary boton-guardar' label="Guardar" />
 
 								<button iconSclass="z-icon-edit"
 									class='btn-primary boton-guardar' label="Cancelar " />
