@@ -1,0 +1,224 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+		<include src="../layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+				<include src="../layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Club" href="#" />
+					<label value="Registrar Junta Directiva" />
+				</div>
+
+			</div>
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="REGISTRAR JUNTA DIRECTIVA" />
+
+				</div>
+				<div class='contenido'>
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="750px"
+							height="800px">
+
+							<div class='rcorners6' width="700px"
+								height="160px">
+								Datos Basicos
+								<separator spacing="30px" />
+								Periodo:
+								<separator spacing="30px" />
+								<div class="col-md-6">
+									<label value="Fecha inicio" />
+									<datebox />
+								</div>
+								<div class="col-md-6">
+									<label value="Fecha Fin" />
+									<datebox />
+								</div>
+							</div>
+							<separator spacing="30px" />
+							<div class='rcorners6' width="700px"
+								height="520px">
+								Miembros
+								<separator spacing="10px" />
+								<div class='rcorners6' width="650px"
+									height="210px">
+									<div class="row" align="center">
+										<div class="col-md-6">
+											<hlayout>
+												<label value="Cédula" />
+												<separator />
+												<separator />
+												<textbox />
+												<button
+													iconSclass="z-icon-search" class='btn-primary btn-primary' />
+											</hlayout>
+											<separator spacing="10px" />
+											<hlayout>
+												<label value="Cargo" />
+												<combobox width="200px"> 
+													<comboitem
+														label="Presidente" />
+													<comboitem
+														label="Vicepresidente" />
+														<comboitem
+														label="Vocero" />
+												</combobox>
+											</hlayout>
+											<separator spacing="10px" />
+											<image
+												src="assets/avatars/avatar2.png" width="90px" height="60px" />
+										</div>
+										<div class="col-md-6">
+											<hlayout>
+												<label value="Nombre" />
+												<textbox />
+											</hlayout>
+											<separator spacing="10px" />
+											<hlayout>
+												<label value="Apellido" />
+												<textbox />
+											</hlayout>
+											<separator spacing="10px" />
+											<hlayout>
+												<label value="Grupo" />
+												<combobox width="160px">
+													<comboitem
+														label="Empleado" />
+													<comboitem
+														label="Socio" />
+												</combobox>
+											</hlayout>
+										</div>
+									</div>
+									<div class="row" align="center">
+										<button
+											class='btn-primary boton-guardar' label="Añadir" />
+									</div>
+								</div>
+								<separator spacing="10px" />
+								<div class='rcorners6' width="650px"
+									height="220px">
+									Listar Miembros
+									<separator spacing="10px" />
+									<div class="col-md-12">
+										<grid
+											style="border:1px solid white ">
+											<columns>
+												<column label="Cédula" />
+												<column label="Nombre" />
+												<column
+													label="Apellido" />
+												<column
+													label="Cargo" />
+												<column label="Grupo" />
+												<column label="Foto" />
+												<column
+													label="Eliminar" />
+											</columns>
+											<rows>
+												<row>
+													<label
+														value="21125730" />
+													<label
+														value="Anthony" />
+													<label
+														value="Rodriguez" />
+														<label
+														value="Presidente" />
+													<label
+														value="Socio" />
+													<image
+														src="assets/avatars/avatar2.png" />
+													<button
+													iconSclass="z-icon-trash-o" class='btn-primary btn-primary' />
+												</row>
+												<row>
+													<label
+														value="12342673" />
+													<label
+														value="Romulo" />
+													<label
+														value="Dominguez" />
+														<label
+														value="Vocero" />
+													<label
+														value="Empleado" />
+													<image
+														src="assets/avatars/avatar2.png" />
+													<button
+													iconSclass="z-icon-trash-o" class='btn-primary btn-primary' />
+												</row>
+												<row>
+													<label
+														value="10987234" />
+													<label value="Juan" />
+													<label
+														value="Perez" />
+														<label
+														value="Presidente" />
+													<label
+														value="Socio" />
+													<image
+														src="assets/avatars/avatar2.png" />
+													<button
+													iconSclass="z-icon-trash-o" class='btn-primary btn-primary' />
+												</row>
+											</rows>
+										</grid>
+									</div>
+								</div>
+							</div>
+							<div class="row" align="center">
+								<hlayout width="">
+									<separator spacing="200px">
+									</separator>
+									<div>
+									<button
+										iconSclass="z-icon-floppy-o"
+													class='btn-primary boton-guardar' label="Guardar" />
+									</div>
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<div>
+										<button
+										iconSclass="z-icon-times-circle"
+													class='btn-primary boton-guardar' label="Cancelar" />
+									</div>
+								</hlayout>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</vlayout>
+
+	</hlayout>
+
+</zk>

@@ -1,0 +1,95 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+		<include src="../layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+			<include src="../layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Club" href="#" />
+					<label value="Registrar Tipo De Sanciones" />
+				</div>
+
+			</div>
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="REGISTRAR TIPO DE SANCIONES" />
+
+				</div>
+				<div class='contenido'>
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="550px"
+							height="260px">
+
+							
+								Datos Basicos
+								<separator spacing="30px" />
+								<div class="col-md-12">
+								<hlayout>
+									<label value="Codigo" />
+									<separator /><separator /><separator />
+									<separator /><separator /><separator />
+									<textbox />
+									</hlayout>
+									<separator spacing="10px" />
+									<hlayout>
+									<label value="Descripción" />
+									<textbox rows="2" cols="50"/>
+									</hlayout>
+								</div>
+								
+							
+							
+							<div class="row" align="center">
+								<hlayout width="">
+									<separator spacing="200px">
+									</separator>
+									<div>
+										<button
+										iconSclass="z-icon-floppy-o"
+													class='btn-primary boton-guardar' label="Guardar" />
+									</div>
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<div>
+										<button
+										iconSclass="z-icon-times-circle"
+													class='btn-primary boton-guardar' label="Cancelar" />
+									</div>
+								</hlayout>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</vlayout>
+
+	</hlayout>
+
+</zk>
