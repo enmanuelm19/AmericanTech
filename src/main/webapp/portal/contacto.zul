@@ -1,6 +1,6 @@
 
 <zk xmlns:n="native">
-<window title=""  width="100%">
+<div>
 
 <?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
@@ -15,9 +15,8 @@
 <?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
 <?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
 <?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
-<include src="header.html" />
 
-<image id="image" src="/assets/portal/img/bannerContacto.png" width="100%" /> 
+
 <div class="contact" id="contact">
 	<div class="wrap">
 		<n:h2>Contáctanos</n:h2>
@@ -44,7 +43,7 @@
 				     	<n:h5>Información</n:h5>
 						<n:ul class="list3">
 							<n:li>
-								<n:img src="../assets/portal/img/location.png" alt=""/>
+								<n:img src="assets/portal/img/location.png" alt=""/>
 								<div class="extra-wrap">
 								  <n:p>Av. Fuerzas Armadas,  </n:p>
 								  <n:p>con Calle 57,</n:p>
@@ -54,21 +53,21 @@
 							</n:li>
 							
 							<n:li>
-								<n:img src="../assets/portal/img/phone.png" alt=""/>
+								<n:img src="assets/portal/img/phone.png" alt=""/>
 								<div class="extra-wrap">
 									<n:p>0251-258 2598</n:p>
 								</div>
 								<div class="clear"> </div>
 							</n:li>
 							<n:li>
-								<n:img src="../assets/portal/img//fax2.png" alt=""/>
+								<n:img src="assets/portal/img//fax2.png" alt=""/>
 								<div class="extra-wrap">
 									<n:p>0416-6343 8690</n:p>
 								</div>
 								<div class="clear"> </div>
 							</n:li>
 							<n:li>
-								<n:img src="../assets/portal/img/mail.png" alt=""/>
+								<n:img src="assets/portal/img/mail.png" alt=""/>
 								<div class="extra-wrap">
 									<n:p> <a href="mailto:info@mycompany.com"> centroAmerica@gmail.com</a></n:p>
 								</div>
@@ -82,7 +81,7 @@
 			  </div>
      	</div>
 
-<include src="footer.html" />
+
     
-</window>
+</div>
 </zk>
