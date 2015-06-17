@@ -11,7 +11,6 @@ public class RegistrarEventualidadControlador extends SelectorComposer<Component
      
     @Listen("onClick = #btnRegistrar")
     public void showModal(Event e) {
-    	System.out.print("Mira");
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
                 "/vistas/instalacion/dialogo/registrarEventualidadDialog.zul", null, null);
