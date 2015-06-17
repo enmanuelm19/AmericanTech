@@ -1,5 +1,5 @@
 
-<window title=""  width="100%">
+<window title=""  width="100%" class="col-md-12">
 
 <?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
@@ -19,9 +19,9 @@
 <image id="image" src="../assets/portal/img/bannerCartelera.png" width="100%" />
 
     
-   <hlayout spacing="24px" >
-    <div class="row">
-    	<div class='col-md-2 col-md-offset-5' align="center" >
+   <hlayout spacing="24px" class="col-md-12" >
+    <div class="row col-md-12 col-md-offset-1">
+    	<div class='col-md-12' width="100%" align="center" >
     <include src="../vistas/content/calendario.zul" hflex="5"/>
     </div>
     </div>

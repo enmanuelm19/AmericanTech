@@ -1,4 +1,5 @@
 
+<zk xmlns:n="native">
 <window title=""  width="100%">
 
 <?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
@@ -16,11 +17,72 @@
 <?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
 <include src="header.html" />
 
-<image id="image" src="/assets/portal/img/bannerContacto.png" width="100%" />
-
-    
-Aqui va un formulario de contacto
+<image id="image" src="/assets/portal/img/bannerContacto.png" width="100%" /> 
+<div class="contact" id="contact">
+	<div class="wrap">
+		<n:h2>Contáctanos</n:h2>
+		<n:h4>¿Tienes alguna duda sugerencia o comentario?</n:h4>
+		<div class="section group">
+			  <div class="col span_2_of_3">
+				  <div class="contact-form">
+				  	  <n:form>
+					    	
+					    		<textbox class="textbox" placeholder="Tu nombre" ></textbox>
+						    	<textbox  class="textbox" placeholder="Tu email" ></textbox>
+						    	<div class="clear"> </div>
+						   
+						    <div>
+						    	<textbox placeholder="Tu mensaje" rows="7" cols="7"/>
+						    </div>
+						  <div class="col-md-offset-9"><span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar"/></span></div>
+						  <div class="clear"></div>
+					    </n:form>
+				  </div>
+  				</div>
+				<div class="col span_1_of_3">
+					<div class="company_address">
+				     	<n:h5>Información</n:h5>
+						<n:ul class="list3">
+							<n:li>
+								<n:img src="../assets/portal/img/location.png" alt=""/>
+								<div class="extra-wrap">
+								  <n:p>Av. Fuerzas Armadas,  </n:p>
+								  <n:p>con Calle 57,</n:p>
+								  <n:p>Concepcion, Barquisimeto.</n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+							
+							<n:li>
+								<n:img src="../assets/portal/img/phone.png" alt=""/>
+								<div class="extra-wrap">
+									<n:p>0251-258 2598</n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+							<n:li>
+								<n:img src="../assets/portal/img//fax2.png" alt=""/>
+								<div class="extra-wrap">
+									<n:p>0416-6343 8690</n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+							<n:li>
+								<n:img src="../assets/portal/img/mail.png" alt=""/>
+								<div class="extra-wrap">
+									<n:p> <a href="mailto:info@mycompany.com"> centroAmerica@gmail.com</a></n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+						</n:ul>
+				   </div>
+				 </div>
+				 <div class="clear"></div>
+			  </div>
+			  </div>
+     	</div>
 
 <include src="footer.html" />
     
 </window>
+</zk>
