@@ -1,0 +1,113 @@
+<?page title="Dashboard - ZK Admin"?>
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1"  >
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Eventos" href="#"/>
+							<label value="Informacion de los Eventos"/>
+			 		</div>
+		 	</div>
+		
+				<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Informacion de los eventos"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+	 <div align="left">		
+	<n:input  class='btn-info btn-imprimir'  iconSclass="z-icon-file-pdf-o"  type="button" 
+				name="imprimir" value="Imprimir" onclick="window.print();" />
+		</div>			
+					
+					<div align="center">
+					
+			        <grid   mold="paging" pageSize="15"  width="100%" >
+			            <auxhead  class="z-auxheader-content">
+			               
+			                <auxheader label="Datos básicos de los eventos a realizar " align="center" colspan="5" />
+			                <auxheader label="Proveedores" align="center" colspan="2" />
+			                <auxheader label="Fecha del evento" align="center" colspan="2" />
+			            </auxhead>
+			            <columns class="z-grid z-column-content ">
+			                
+			                <column label="Codigo" align="center"  />
+			                <column label="Motivo" align="center" />
+			                <column label="Lugar" align="center" sort="auto(engineDisplacement)" />
+			                <column label="Descripcion" align="center" />
+			                <column label="Nro de Participantes" align="center"  /> 
+			                <column label="Patrocinantes" align="center"  /> 
+			                <column label="Servicios" align="center"  /> 
+			                <column label="Comienzo" align="center"  /> 
+			                <column label="Culminación" align="center"  /> 
+			            </columns>
+			             <rows>
+						        <row>
+						           <label value="F-120"/> <label value="Futbol: Final de Champions" /> <label value="Caney Churuguara" /> 
+						             <label value="Proyección del la final Juventus VS Barcelona"/><label value="50 Personas Aprox"/>
+						             <label value="Polar"/> <label value="-Kiosco de Cervesa -Miniteca"/> <label value="06/06/15 2:00PM" /> 
+						             <label value="06/07/15 6:00PM" />
+						        </row>
+						          <row>
+						           <label value="F-121"/> <label value="Futbol: Copa America" /> <label value="Caney Churuguara" /> 
+						             <label value="Proyección de los partidos de copa America"/><label value="50 Personas Aprox"/>
+						             <label value="Polar"/> <label value="-Kiosco de Cervesa -Miniteca"/> <label value="11/06/15 2:00PM"/> 
+						             <label value="11/07/15 7:00PM" sclass="label label-danger  arrowed"/>
+						        </row>
+						          
+						          <row>
+						           <label value="F-125"/> <label value="Celebración del dia del padre" /> <label value="Salon de eventos New York" /> 
+						             <label value="Fiesta del dia de los padres para la familia con premios sorpresas"/><label value="100 Personas Aprox"/>
+						             <label value=""/> <label value="-Miniteca -Payasitas"/> <label value="15/06/15 10:00PM" sclass="label label-primary arrowed"/> 
+						             <label value="15/07/15 6:00PM" sclass="label label-danger  arrowed"/>
+						        </row>
+						        <row>
+						           <label value="F-140"/> <label value="Vacaciones en Familia" /> <label value="Piscina Oasis" /> 
+						             <label value="Actividades recreativas que involucren a toda la familia en el area de la piscina"/><label value="100 Personas Aprox"/>
+						             <label value="AguaFiltr"/> <label value="-Salvavidas"/> <label value="01/07/15 10:00AM" sclass="label label-primary arrowed"/> 
+						             <label value="31/08/15 6:00PM" sclass="label label-danger  arrowed"/>
+						        </row>
+						        
+						        <row>
+						           <label value="N-90"/> <label value="Torneo de Futbol" /> <label value="Cancha Metropolitana" /> 
+						             <label value="Torneo de Futbol para niños y adolecentes"/><label value="10 Equipos"/>
+						             <label value="Tamanako"/> <label value="-Arbitros"/> <label value="15/07/15 10:00AM" sclass="label label-primary arrowed"/> 
+						             <label value="31/07/15 6:00PM" sclass="label label-danger  arrowed"/>
+						        </row>
+						        
+						        
+						   
+						     
+						       
+						        
+						    </rows>
+			
+			        </grid>
+			        </div>
+   				</div>
+
+			</div>
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>

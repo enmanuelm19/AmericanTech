@@ -1,0 +1,100 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+
+					<span sclass="home-icon z-icon-user" />
+
+					<a label="Sugerencias" href="#" />
+				</div>
+
+			</div>
+
+
+			<!--  <vbox> -->
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="Hacer Sugerencia" />
+
+				</div>
+				<div class='contenido ' align="center" width="80%">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="100%">
+							<grid width="100%">
+								<rows >
+									<row width="100%" >
+										<div>
+											Ultima Modificacion
+											<datebox
+												format="MM/dd/yyyy" />
+										</div>
+									</row>
+									<row width="100%">
+										<div>
+											<textbox cols="30" rows="6"
+												type="text"
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
+												width="100%" />
+										</div>
+									</row>
+									<row class="col-md-11">
+										<vbox>
+											<div>Categoria</div>
+											<div>
+												<checkbox id="l1"
+													label="Deporte" onCheck="doChecked()" />
+
+												<checkbox id="l2"
+													label="Instalaciones" onCheck="doChecked()" />
+												<checkbox id="l3"
+													label="Eventos" onCheck="doChecked()" />
+												<checkbox id="l4"
+													label="Socios" onCheck="doChecked()" />
+											</div>
+										</vbox>
+									</row>
+								</rows>
+							</grid>
+							<hbox width="100%" align="end" pack="end">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Publicar" />
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Cancelar " />
+							</hbox>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- </vbox>  -->
+		</vlayout>
+	</hlayout>
+
+
+</zk>

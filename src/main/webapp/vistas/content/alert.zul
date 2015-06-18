@@ -1,0 +1,9 @@
+<!-- Alert -->
+<window closable="true" border="normal" sclass="alert alert-success">
+  <caption iconSclass="z-icon-check">
+ 
+      <label value="" style="font-weight:bold;color:#69AA46" />
+      <label value="" style="font-weight:bold;font-size:10px;color:#69AA46"/>
+ Bienvenido, nombre_usuario
+  </caption>
+</window>

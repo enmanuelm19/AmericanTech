@@ -1,0 +1,21 @@
+<window id="modalDialog" title="Compra de Productos" border="normal"
+	width="460px" position="center,center" closable="true"
+	action="show: slideDown;hide: slideUp">
+	<vlayout>
+		<div>
+			Descripción de la ejecución
+			<textbox type="text" value="" width="265px" tabindex="2" />
+		</div>
+
+		<hlayout width="">
+			<div>
+				<button iconSclass="z-icon-floppy-o"
+					class='btn-primary boton-guardar' label="Registrar" />
+			</div>
+			<div>
+				<button iconSclass="z-icon-edit"
+					class='btn-primary boton-guardar' label="Cancelar " />
+			</div>
+		</hlayout>
+	</vlayout>
+</window>

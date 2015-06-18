@@ -1,0 +1,584 @@
+<?page title="Lista Sugerencias" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul" />
+	<hlayout spacing="0">
+		<include src="../layouts/sidebar.zul" />
+
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+
+					<a label="Atencion al Cliente" href="#" />
+					<label value="Sugerencias" />
+				</div>
+
+			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+					<label value="Vista General Sugerencias" />
+				</div>
+
+				<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
+					<!-- GRID DE GRUPOS-->
+
+					<grid mold="paging" pageSize="15" width="80%">
+						<auxhead class="z-auxheader-content">
+							<auxheader label="Sugerencias"
+								align="center" colspan="4" />
+						</auxhead>
+						<auxhead class="z-auxheader-content">
+
+							<auxheader label="Seleccione Tipo Noticia"
+								align="left" colspan="4">
+
+
+
+								<combobox id="cmbnoticia"
+									value="Ordenar por." width="50">
+									<comboitem label="Fecha Ascendente" />
+									<comboitem
+										label="Fecha Descendente" />
+
+								</combobox>
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Hacer Sugerencia" />
+								<separator></separator>
+							</auxheader>
+						</auxhead>
+						<columns class="z-grid z-column-content ">
+							<column label="" align="center" width="25%" /><!--Foto -->
+							<column label="" align="center" width="15%" /><!--Datos -->
+							<column label="" align="center" width="50%" /><!--Sugerencia -->
+							<column label="" align="center" width="10%" /><!--Operaciones -->
+
+						</columns>
+						<rows>
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+							<row><!-- inicio FILA-->
+								<image id="" width="30%" height="30%"
+									src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
+								<vbox>
+									<div>
+										Usuario
+										<textbox value="" width="50%" />
+									</div>
+
+									<div>
+										Fecha
+										<textbox value="" width="60%" />
+									</div>
+								</vbox><!-- columna 2 -->
+								<div>
+									<textbox cols="5" rows="3"
+										type="text" value="" width="100%" />
+								</div><!-- columna 3 sugerencias -->
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
+								</div><!-- columna 4 iconos -->
+
+
+							</row><!-- fin fila-->
+
+						</rows>
+					</grid><!-- FIN GRID DE GRUPOS-->
+				</div><!--FIN DIV GRID DE GRUPOS-->
+
+			</div>
+		</vlayout>
+	</hlayout>
+</zk>

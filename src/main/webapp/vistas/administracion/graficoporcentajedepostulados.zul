@@ -1,0 +1,57 @@
+<?page title="Preferencias de actividades" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1"  >
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="ome-icon z-icon-bullhorn"/>
+					    <a label="Información" href="#"/>
+							<label value="Estadisticos"/>
+			 		</div>
+		 	</div>
+	<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Información estadísticas sobre los Procentajes"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+		
+					<div>
+					
+					</div>
+					<window border="none" apply="controllers.ColumnDrilldownComposer" width="100%">
+
+						<div width="800px">
+							<charts id="chart" type="column" title="Porcentaje de Postulaciones"/>
+        					<!--  subtitle="Por ahora no se que subtitulo" /> -->
+						</div>
+						
+
+
+					</window>
+				
+   				</div>
+</div>
+		</vlayout>
+	</hlayout>
+
+	
+</zk>

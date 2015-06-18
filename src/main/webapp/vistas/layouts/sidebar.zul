@@ -1,0 +1,106 @@
+<div id="sidebar" sclass="sidebar" apply="application.SidebarComposer">
+	<!-- Shortcuts Button-->
+	<div class="shortcuts">
+		<!-- Display when expanded -->
+		<!-- <div class="shortcuts-expanded">
+			<button type="button" class="btn-success" iconSclass="z-icon-signal"/>
+			<button type="button" class="btn-info" iconSclass="z-icon-pencil"/>
+			<button type="button" class="btn-warning" iconSclass="z-icon-group"/>
+			<button type="button" class="btn-danger" iconSclass="z-icon-cogs"/>
+		</div> -->
+		<!-- Display when collapsed -->
+		<!--<div class="shortcuts-collapsed">
+			<button type="button" class="btn-success"/>
+			<button type="button" class="btn-info"/>
+			<button type="button" class="btn-warning"/>
+			<button type="button" class="btn-danger"/>
+		</div>-->
+	</div>
+	<!-- Navigation List -->
+	<navbar id="navbar" sclass="nav-list" orient="vertical">
+		<navitem label="Inicio" iconSclass="z-icon-home" selected="true" href="/america/vistas/index.zul"/>
+		<!--  <navitem label="Typography" iconSclass="z-icon-text-width"/>-->
+		
+			<nav label="Configuración" iconSclass="z-icon-cogs">
+		    <navitem label="Perfil del club" iconSclass="z-icon-angle-double-right" href=""/>
+			<navitem label="Junta directiva" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Preferencias" iconSclass="z-icon-angle-double-right" href=""/>
+			<navitem label="Instalaciones" iconSclass="z-icon-angle-double-right" href=""/>
+			<nav label="Categorías" iconSclass="z-icon-angle-double-right">
+				<navitem label="Tipo de sugerencia" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Tipo de noticia" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Tipo de evento" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Tipo de preferencia" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Motivo sanción" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+		</nav>
+		<nav label="Socios" iconSclass="z-icon-user">
+			<nav label="Administrar acciones" iconSclass="z-icon-angle-double-right">
+				<navitem label="Agregar acción" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Venta acción" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href=""/>
+			<nav label="Administrar acciones" iconSclass="z-icon-angle-double-right">
+				<navitem label="Agregar acción" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Venta acción" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
+				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Desvinculación acción" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+			<navitem label="Solicitar venta" iconSclass="z-icon-angle-double-right" />
+			<nav label="Danos tu opinión" iconSclass="z-icon-angle-double-right">
+				<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Opinión postulación" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+		</nav>
+		<nav label="Instalaciones" iconSclass="z-icon-home">
+			<navitem label="Visitas" iconSclass="z-icon-angle-double-right" />
+			<navitem label="Reservación" iconSclass="z-icon-angle-double-right" />
+			<nav label="Administrar alquiler" iconSclass="z-icon-angle-double-right">
+				<navitem label="Registrar alquiler" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Cancelar alquiler" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" />		
+		</nav>
+		<nav label="Eventos"  iconSclass="z-icon-calendar">
+			<navitem label="Solicitudes evento" iconSclass="z-icon-angle-double-right" />
+			<nav label="Administrar evento" iconSclass="z-icon-angle-double-right">
+				<navitem label="Registrar evento" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Planificar evento" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Ejecutar evento" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Cancelar evento" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+			<navitem label="Proveedores" iconSclass="z-icon-angle-double-right" />	
+			<navitem label="Patrocinantes" iconSclass="z-icon-angle-double-right" />
+			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" />		
+		</nav>
+		<nav label="Adm. del sistema" iconSclass="z-icon-puzzle-piece">
+			<nav label="Seguridad" iconSclass="z-icon-angle-double-right">
+				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Grupo" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Funciones" iconSclass="z-icon-angle-double-right" href=""/>
+			</nav>
+			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
+			<navitem label="Backup BD" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
+		</nav>
+	
+		
+		
+		
+		<navitem id="calitem" label="Calendar" iconSclass="z-icon-calendar" visible="false"/>
+	
+	</navbar>
+	<!-- Toggler -->
+	<div sclass="sidebar-collapse">
+		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
+	</div>
+	<!-- Tooptip for Calender Navitem -->
+	<popup id="calpp" zclass="tooltip" sclass="right tooltip-error cal">
+		<span zclass="tooltip-arrow"/>
+		<label zclass="tooltip-inner" value="2 Important Event"/>
+	</popup>
+</div>

@@ -1,0 +1,128 @@
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+<include src="../layouts/navbar.zul"/>
+	<hlayout id="izq" spacing="0">
+		<include src="../layouts/sidebar.zul"/>
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-cogs"/>
+					    <a label="Seguridad" href="#"/>
+							<label value="Registrar usuario a grupo"/>
+					</div>
+ 
+			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+	    			<label value="Registrar usuario a grupo"/>
+	  			</div>
+	  			
+	  			<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
+					<!-- GRID DE GRUPOS-->
+						<grid mold="paging" pageSize="15"  width="500px" >
+							<auxhead  class="z-auxheader-content">
+								<auxheader label="Grupos" align="center" colspan="2" />
+							</auxhead>
+							<auxhead  class="z-auxheader-content">
+								<auxheader label="Buscar" align="left" colspan="2"><textbox/></auxheader>
+							</auxhead>
+							<columns class="z-grid z-column-content ">
+							   <column label="Descripcion" align="center"  width="350px"/>
+							   <column label="Agregar Usuarios" align="center" width="150px"/>
+							</columns>
+							<rows>
+								<row>
+									<label value="Junta Directiva"/>
+									<a><n:i class="z-icon-plus blue"></n:i></a>
+								</row>
+								<row>
+									<label value="Adiministracion"/>
+									<a><n:i class="z-icon-plus blue"></n:i></a>
+								</row>
+								<row>
+									<label value="Socios"/>
+									<a><n:i class="z-icon-plus blue"></n:i></a>
+								</row>
+								<row>
+									<label value="Secretaria"/>
+									<a><n:i class="z-icon-plus blue"></n:i></a>
+								</row>	      
+							</rows>
+			        	</grid> <!-- FIN GRID DE GRUPOS-->
+			        </div><!--FIN DIV GRID DE GRUPOS-->
+			        <separator spacing="50px"/>
+			        <div align="center"><!-- INICIO DIV GRID DE USUARIO-->
+					<!-- GRID DE USUARIOS-->
+						<grid mold="paging" pageSize="15"  width="590px" >
+							<auxhead  class="z-auxheader-content">
+								<auxheader label="Usuarios" align="center" colspan="5" />
+							</auxhead>
+							<columns class="z-grid z-column-content ">
+							   <column label="Username" align="center" width="190px" />
+							   <column label="Cedula" align="center"  />
+							   <column label="Nombre" align="center"  />
+							   <column label="Apellido" align="center"  />
+							   <column label="Activar" align="center" width="60px"/>
+							</columns>
+							<rows>
+								<row>
+									<label value="fidel.alejos@gmail.com"/>
+									<label value="22186230"/>
+									<label value="Fidel"/>
+									<label value="Aliaga"/>
+									<checkbox />
+								</row>
+								<row>
+									<label value="carloscolmenarez@gmail.com"/>
+									<label value="12345678"/>
+									<label value="Carlos"/>
+									<label value="Colmenarez"/>
+									<checkbox />
+								</row>
+								<row>
+									<label value="tony.suarez@gmail.com"/>
+									<label value="01234567"/>
+									<label value="Tony"/>
+									<label value="Suarez"/>
+									<checkbox />
+								</row>
+								<row>
+									<label value="gipsy.martinez@gmail.com"/>
+									<label value="23456789"/>
+									<label value="Gipsy"/>
+									<label value="Martinez"/>
+									<checkbox />
+								</row>
+								<row>
+									<label value="mariangel.arrieche@gmail.com"/>
+									<label value="34567890"/>
+									<label value="Mariangel"/>
+									<label value="Arrieche"/>
+									<checkbox />
+								</row>	      
+							</rows>
+			        	</grid> <!-- FIN GRID DE USUARIO-->
+			        </div><!--FIN DIV GRID DE USUARIO-->
+			        <div align="center">
+						<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar"/>
+			        </div><separator spacing="80px"></separator>
+			        
+	  		</div>
+	  	</vlayout>
+	  </hlayout>
+</zk>

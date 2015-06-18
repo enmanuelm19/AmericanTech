@@ -1,0 +1,108 @@
+<?page title="Dashboard - ZK Admin"?>
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>  
+<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+							 <a label="Socios" href="#"/>
+							<label value="Sanciones"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Registrar Sanciones"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered" 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='rcorners6' >
+        		
+        			<grid >
+          
+			            	  <rows class="col-md-11">
+			            		<row class="col-md-11 rw">
+				                  	<div class="col-md-12 no_pad">
+					              		 <div class="col-md-12 lbls">Socio</div>
+					                     <textbox type="text" class="col-md-8 inps_s" value=""/>
+					                     <button  iconSclass="z-icon-search" class='btn-primary btn-primary col-md-3 btn_bus'/>
+				                    </div>
+				              </row>
+				              <row class="col-md-11 rw">
+			                  	<div class="col-md-12 no_pad">
+				              		 <div class="col-md-12 lbls">Fecha de Inicio</div>
+				                     <datebox id="db0" cols="12" format="short " onCreate="self.value = new Date()" />	
+			                    </div>
+			                  </row>
+			                  <row class="col-md-11 rw">
+			                  	<div class="col-md-12 no_pad">
+				              		 <div class="col-md-12 lbls">Fecha de Culminacion</div>
+				                     <datebox id="db1" cols="12" format="short " onCreate="self.value = new Date()" />	
+			                    </div>
+			                  </row>
+			                  <row class="col-md-11 rw">
+			                  	<div class="col-md-12 no_pad">
+				              		 <div class="col-md-12 lbls">Descripcion</div>
+				                     <textbox rows="5" cols="83" value=""
+                            width="350px;" tabindex="11" height="90px"/>
+			                    </div>
+			                  </row>
+			                 <row class="col-md-11 col-centered" id="botonera">
+			                  	<hlayout width="">
+			                  	
+			                  		
+			                  		<div>
+			                    		<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar"/>
+			                    	</div>
+			                  		<div>
+			                    		<button  iconSclass="z-icon-edit"  class='btn-primary boton-guardar' label="Modificar "/>
+			                     	</div>
+			                     	<div>
+			                    		<button  iconSclass="z-icon-trash-o" class='btn-primary boton-guardar' label="Eliminar"/>
+			                     	</div>
+			                     	<div>
+			                    		<button  iconSclass="z-icon-desktop-o" class='btn-primary boton-guardar' label="Mostrar Sancionados" href="mostrarLista.zul"/>
+			                     	</div>
+			                  	</hlayout>
+			             		
+			                 </row>
+			 
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
