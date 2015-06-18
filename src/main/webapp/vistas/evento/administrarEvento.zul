@@ -25,23 +25,25 @@
 
 				</div>
 				<div class='contenido ' align="center">
-					<div class="col-md-8 col-centered "
+					<div class="col-md-12 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='rcorners6' width="700px"
+						<div class='rcorners6' width="900px"
 							height="auto">
-							<grid width="580px">
+							<grid width="800px">
 
 								<rows class="col-md-12">
 
-									<row class="col-md-11">
+									<row class="col-md-11" width="50%">
 										<div>
 											Buscar Evento
-											<datebox style="  margin-left: 37px;"
-											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
-											<datebox style="  margin-left: 126px;  padding-top: 20px;"
-											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
+											<datebox
+												style="  margin-left: 37px;" format="@load(vm.dateFormat)"
+												width="200px" tabindex="7" />
+											<datebox
+												style="  margin-left: 126px;  padding-top: 20px;"
+												format="@load(vm.dateFormat)" width="200px" tabindex="7" />
 										</div>
 										<div>
 											<button
@@ -53,49 +55,80 @@
 									</row>
 
 									<row class="col-md-12">
+
 										
-						<label value="Eventos Disponibles" />
-						</row>
-						<row class="col-md-12">
-														<grid
-															sclass="inner-grid">
-															<columns>
-																<column
-																	label="Codigo" width="50px" />
-																<column
-																	label="Descripción" width="300px" />
-																<column
-																	label="Fecha" width="100px" />
-																<column
-																	label="Hora" width="100px" />
+											<div sclass="col-md-12">
+											<label
+											value="Eventos Disponibles" style="float:left"/>
+											<button
+														iconSclass="z-icon-trash-o" style="margin:8px;float:right"
+														class='btn-primary btn-primary' />
+														<button
+														iconSclass="z-icon-pencil" style="margin:8px;float:right"
+														class='btn-primary btn-primary' />
+														<button
+														iconSclass="z-icon-plus" style="margin:8px;float:right"
+														class='btn-primary btn-primary' />
+											</div>
+									</row>
+									<row class="col-md-12">
+										<grid sclass=" col-md-12" >
+											<columns  sclass=" col-md-12">
+												<column label="Codigo"
+													width="30px" />
+												<column
+													label="Descripción" width="100px" />
+												<column label="Fecha"
+													width="80px" />
+												<column label="Hora"
+													width="50px" />
+												<column
+													label="Condición v" width="100px" />
+												<column
+													label="Cant. Socios" width="100px" />
+												<column
+													label="Patrocinantes" width="100px" />
+												<column
+													label="Actividades" width="100px" />
+												<column
+													label="Proveedores" width="100px" />
 
-															</columns>
-															<rows>
-																<row>
-																	<!-- use custom-attributes to store quarter and months in row, 
-																		so it can be accessed later when detail onOpen -->
+											</columns>
+											<rows>
+												<row>
+													<!-- use custom-attributes to store quarter and months in row, 
+														so it can be accessed later when detail onOpen -->
 
-																	<image
-																		src="../../assets/portal/img/icon1.png" width="30px"
-																		sclass="icon" tooltiptext="Juan Moreno" />
-																	<label
-																		value="Marco Rodriguez" width="60%" />
-																	<label
-																		value="001" width="30%" />
-																	<button
-																		iconSclass="z-icon-search"
-																		class='btn-primary btn-primary' />
-																</row>
-															</rows>
-														</grid>
+													<label value="001"
+														width="8%" />
+													<label
+														value="Marco Rodriguez" width="50%" />
+													<label
+														value="12/12/1920" width="25%" />
+													<label value="12:00"
+														width="20%" />
+													<label
+														value="Iniciada" width="20%" />
+													<label value="1"
+														width="15%" />
+														<label
+														value="Polar" width="20%" />
+													<label
+														value="Proyecto de Partido" width="30%" />
+													<label
+														value="Tridimension" width="30%" />
 												
-									
+												</row>
+											</rows>
+										</grid>
+
+
 									</row>
 
 									<row
 										class="col-md-11 col-centered">
 									</row>
-								
+
 								</rows>
 							</grid>
 						</div>
