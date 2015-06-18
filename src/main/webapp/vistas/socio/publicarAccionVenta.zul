@@ -1,0 +1,94 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Acciones" href="#"/>
+					   
+							<label value="Puclicar Acción en Venta"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+	 <div sclass="page-header">
+	    <label value="Publicar Acción en Venta"/>
+	  
+	  </div>
+	
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='rcorners6' width="450px" height="180px">
+        		
+        			<grid width="580px" >
+          
+	            	<rows class="col-md-12">
+			            	
+	            	<row class="col-md-11">
+	            	 <label value="PUBLICAR ACCION EN VENTA"/>
+	            	</row>
+			    
+			                 <row class="col-md-11">
+			                  
+			              		  <div width="90px">
+			              		   	Acción
+			              		   </div>
+			                       <div>
+			              		   <textbox type="text" value="" width="200px" disabled="true"/>
+			                      </div>
+			                      		                      
+			                  </row>
+			                  <row class="col-md-11">
+			              		  <div width="90px"> Valor </div>
+			              		   
+			              		   	
+			              <div>
+			              <textbox type="text" value="" width="200px" disabled="true"/>
+			                  </div>  		 
+			            
+			              	</row>	  
+			              		   	 
+			                 
+			                
+			                
+			                  <row class="col-md-11 col-centered">
+			                  	<hlayout width="">
+			                  	<cell colspan="3" style="text-align:right">
+			                  				                  		
+			                  		<div>
+			                    		<button   class='btn-primary boton-guardar' label="Publicar" />
+			                     	</div><separator spacing="80px"></separator>
+			                  	</cell>
+			                  	</hlayout>
+			             		
+			                 </row>
+			 			
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
