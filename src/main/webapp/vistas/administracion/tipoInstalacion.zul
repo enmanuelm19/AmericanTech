@@ -41,7 +41,7 @@
 			<div class='contenedor'>
 
 				<div sclass="page-header">
-					<label value="Tipo de Instalacion" />
+					<label value="Registrar Instalacion" />
 
 				</div>
 				<button id="ccc"
