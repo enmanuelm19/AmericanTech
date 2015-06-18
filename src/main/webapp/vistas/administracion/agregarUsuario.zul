@@ -1,106 +1,87 @@
-<?page title="Dashboard - ZK Admin"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<zk xmlns:n="native" class='contenedor'>
-<include src="/vistas/layouts/navbar.zul" />
-	<hlayout id="main" spacing="0">
-		<include src="/vistas/layouts/sidebar.zul" />
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Admin. del Sistema" href="#" />
-					<label value="Usuario" />
-				</div>
 
+<zk>
+	<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		<div sclass="contenedor" width="530px">
+			<div sclass="page-header">
+				<label value="Registrar Usuario" />
 			</div>
-	<div sclass="contenedor" align="center">
-	<div sclass="page-header" align="left">
-					<label value="Registrar Usuario" />
-		</div>
-		
-	<separator spacing="30px"/>
-	<div sclass="contenedor" width="550px" align="left">
-		<separator spacing="20px"/>
-		
 		<div class='rcorners6'>
 			<div>
-			<div>
-				Cedula<separator/>
-				<textbox id="txtRegUsuarioCedula" width="150px"/><button iconSclass="z-icon-search blue" class="btn-link"/>
-			</div>
-			<hlayout>
 				<div>
-					<div>
-						<separator/>
-						Usuario (requerido) <separator/>
-						<textbox id="txtRegUsuarioUsuario" width="200px"/>
-					</div>
-					<div>
-						<separator/>
-						Grupo<separator/>
-						<combobox id="cmbRegUsuarioGrupo" width="160px"><comboitem label="Seleccione Un Grupo"/><comboitem label="Administraion"/></combobox><button iconSclass="z-icon-plus blue" class="btn-link"/>
-					</div>
-					<div>
-						<separator/>
-						Correo Electronico (requerido) <separator/>
-						<textbox id="txtRegUsuarioCorreo" width="200px"/>
-					</div>
-					<div>
-						<separator/>
-						Nombre <separator/>
-						<textbox id="txtRegUsuarioNombre" width="200px"/>
-					</div>
-					<div>
-						<separator/>
-						Apellido <separator/>
-						<textbox id="txtRegUsuarioApellido" width="200px"/>
-					</div>
-					<div>
-						<separator/>
-						Contraseña (requerido) <separator/>
-						<textbox id="txtRegUsuarioContrasena" width="250px"/>
-					</div>
-					<div>
-						<separator/>
-						Confirmar Contraseña (requerido) <separator/>
-						<textbox id="txtRegUsuarioConfContrasena" width="250px"/>
-					</div>
+					Cedula<separator/>
+					<textbox id="txtRegUsuarioCedula" width="150px"/>
+					<button iconSclass="z-icon-search blue" class="btn-link"/>
 				</div>
-				<space/>
-				<div>
-				
-					<vlayout>
-						<image src="loq me toco 3.jpg" width="200px" height="150px"/>
+				<hlayout>
+					<div>
 						<div>
-							<space spacing="100px"/>
-							<fileupload label="Examinar" iconSclass="z-icon-folder" class='btn-primary boton-guardar'/>
+							<separator/>
+							Usuario (requerido) <separator/>
+							<textbox id="txtRegUsuarioUsuario" width="200px"/>
 						</div>
-					</vlayout>
+						<div>
+							<separator/>
+							Grupo<separator/>
+							<combobox id="cmbRegUsuarioGrupo" width="160px"><comboitem label="Seleccione Un Grupo"/><comboitem label="Administraion"/></combobox><button iconSclass="z-icon-plus blue" class="btn-link"/>
+						</div>
+						<div>
+							<separator/>
+							Correo Electronico (requerido) <separator/>
+							<textbox id="txtRegUsuarioCorreo" width="200px"/>
+						</div>
+						<div>
+							<separator/>
+							Nombre <separator/>
+							<textbox id="txtRegUsuarioNombre" width="200px"/>
+						</div>
+						<div>
+							<separator/>
+							Apellido <separator/>
+							<textbox id="txtRegUsuarioApellido" width="200px"/>
+						</div>
+						<div>
+							<separator/>
+							Contraseña (requerido) <separator/>
+							<textbox id="txtRegUsuarioContrasena" width="250px"/>
+						</div>
+						<div>
+							<separator/>
+							Confirmar Contraseña (requerido) <separator/>
+							<textbox id="txtRegUsuarioConfContrasena" width="250px"/>
+						</div>
+					</div>
+					<space/>
+					<div>
 					
-				</div>
-			</hlayout>
-		
-		</div>
-		
-		<separator spacing="30px"/>
-		<div align="center">
-			<hlayout>
-			<div>
-				<button iconSclass="z-icon-floppy-o" class='btn-primary boton-guardar' label="Guardar" />
-			</div>
-			<space spacing="20px"/>
-			<div>
-				<button	iconSclass="z-icon-trash-o" class='btn-primary boton-guardar' label="Eliminar" />
-			</div>
-			</hlayout>
+						<vlayout>
+							<image src="loq me toco 3.jpg" width="200px" height="150px"/>
+							<div>
+								<space spacing="90px"/>
+								<fileupload label="Examinar" iconSclass="z-icon-folder-open" class='btn-primary boton-guardar'/>
+							</div>
+						</vlayout>
+						
+					</div>
+				</hlayout>
 			
-		</div>
+			</div>
+			<separator spacing="30px"/>
+			<div align="center">
+				<hlayout>
+				<div>
+					<button iconSclass="z-icon-floppy-o" class='btn-primary boton-guardar' label="Guardar" />
+				</div>
+				<space spacing="20px"/>
+				<div>
+					<button	iconSclass="z-icon-trash-o" class='btn-primary boton-guardar' label="Eliminar" />
+				</div>
+				</hlayout>
+			</div>
 		</div>
 	</div>
-	</div>
-	</vlayout>
-	</hlayout>
+	</window>
 </zk>

@@ -4,66 +4,58 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" class='contenedor'>
-<include src="/vistas/layouts/navbar.zul" />
-	<hlayout id="main" spacing="0">
-		<include src="/vistas/layouts/sidebar.zul" />
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Configuracion" href="#" />
-					<label value="Tipos de Eventos"/>
-				</div>
-			</div>
-
-	<div sclass="contenedor">
-		<div id="contPantalla" align="center">	
-			<div sclass="page-header" align="left">
-				<label value="REGISTRAR TIPO DE EVENTO"/>
-			</div>
-			<separator spacing="10px"/>
-			<div id="formTipoEvento" width="500px" class='rcorners6'>
-				<space spacing="20px"/>
+	<window border="none" height="400px" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		<div sclass="contenedor">
+			<div id="contPantalla" align="center">
 				<div sclass="page-header" align="left">
-					<label value="Datos Basicos"/>
+					<label value="REGISTRAR TIPO DE EVENTO" />
 				</div>
-				<div align="left">
-					<grid width="450px">
-						<columns>
-							<column align="center"/>
-						</columns>
-						<rows>
-							<row>
-								Codigo:
-								<textbox id="txtRegTipoEventCodigo" width="100px"/>
-							</row>
-							<row>
-								Descripcion:
-								<textbox id="txtRegTipoEventDescripcion" width="200px"/>
-							</row>
-							
-								
-						</rows>
-					</grid>
-					<div align="center">
-					<hbox>
+
+				<div id="formTipoEvento" width="500px"
+					class='rcorners6'>
+					<div sclass="page-header" align="left">
+						<label value="Datos Basicos" />
+					</div>
+					<div align="left">
+						<grid width="450px">
+							<columns>
+								<column align="center" />
+							</columns>
+							<rows>
+								<row>
+									Codigo:
+									<textbox id="txtRegTipoEventCodigo"
+										width="100px" />
+								</row>
+								<row>
+									Descripcion:
+									<textbox
+										id="txtRegTipoEventDescripcion" width="200px" />
+								</row>
+
+
+							</rows>
+						</grid>
+						<div align="center">
+							<hbox>
 								<div>
-									<separator spacing="20px"/>
-									<button iconSclass="z-icon-floppy-o" class='btn-primary boton-guardar' label="Registrar" />
-								</div><space spacing="30px"/>
-								<div>
-									<separator spacing="20px"/>
-									<button iconSclass="z-icon-times" class='btn-primary boton-guardar' label="Cancelar" />
+									<separator spacing="20px" />
+									<button iconSclass="z-icon-floppy-o"
+										class='btn-primary boton-guardar' label="Registrar" />
 								</div>
-						
-				</hbox>
+								<space spacing="30px" />
+								<div apply="controllers.TipoEvento">
+									<separator spacing="20px" />
+									<button id="btnRegTipoEventoCancelar" iconSclass="z-icon-times"
+										class='btn-primary boton-guardar' label="Cancelar" />
+								</div>
+
+							</hbox>
+						</div>
+					</div>
+
 				</div>
-				</div>
-				
-			</div>		
+			</div>
 		</div>
-	</div>
-	</vlayout>
-	</hlayout>
-	
+	</window>
 </zk>

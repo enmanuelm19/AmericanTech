@@ -24,7 +24,9 @@
 				<separator spacing="30px"/>
 				<space/><space/>
 				<div class='rcorners6' width="850px" align="left" height="700px">
-				<button id="btnRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar'/>
+				<div apply="controllers.TipoEvento" xmlns:w='client'>
+					<button id="btnRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar'/>
+				</div>
 				<separator spacing="30px"/>
 				
 				<div class="contenedor" align="center" width="800px">
@@ -38,29 +40,34 @@
 						<columns>
 							<column label="Id Instalacion" align="center"/>
 							<column label="Nombre de Instalacion" align="center"/>
-							<column label="Modificar" align="center" width="70px"/>
-							<column label="Eliminar" align="center" width="70px"/>
+							<column align="center"/>
 						</columns>
 						<rows>
 							<row>
 								<label value="0001"/>
 								<label value="Publicos" />
-								<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-								<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>								
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>								
+								</div>
 							</row>
 							
 							<row>
 								<label value="0002"/>
 								<label value="Privados"/>
-								<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-								<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>								
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>								
+								</div>
 							</row>
 							
 							<row>
 								<label value="0003"/>
 								<label value="Especial" />
-								<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-								<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>								
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>								
+								</div>
 							</row>
 						</rows>
 					</grid>
