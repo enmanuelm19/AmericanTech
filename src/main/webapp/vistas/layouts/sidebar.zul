@@ -42,7 +42,7 @@
 				<navitem label="Venta acción" iconSclass="z-icon-angle-double-right" href=""/>
 			</nav>
 			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/administrarFichaSocio.zul"/>
-			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/administrarSocio.zul">
+			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
 				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/registrarAfiliado.zul"/>
 				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" href=""/>
