@@ -15,9 +15,7 @@
 
     <include src="portal/index.html" />
     
-    <include src="portal/contacto.zul"></include>
-    
-    
+    <include src="portal/contacto.zul"/>
     <include src="portal/footer.html"/>
 </window>
 </zk>
