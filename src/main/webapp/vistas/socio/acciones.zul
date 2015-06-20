@@ -1,0 +1,125 @@
+ <?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+ 
+ <include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="" href="#"/>
+					   
+							<label value="Acciones"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+	
+ 	 <div sclass="page-header">
+	    <label value="Acciones"/>
+	  
+	  </div>
+	  
+	 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+   
+   	<div class='rcorners6' width="600px" height="600px">
+     <div align="left"  >
+      	<hlayout>
+      	<grid height="100px">
+      	 <rows>
+      	 <row>
+      	<div>
+    		<button   iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Agregar Acción" />
+     	</div>
+     	</row>
+     	<row>
+     	
+     <div>
+    		 <listbox  width="150px" height="30px" selectedItem="@bind(vm.dateFormat)"
+			                            mold="select" tabindex="8">
+			                            <listitem label="Ver todas las acciones" value="" />
+			                             <listitem label="Disponible" value="" />
+		     </listbox>     	
+		     
+		     </div>
+		     </row>
+		     
+     	</rows>
+     	</grid>
+		</hlayout>
+	 </div>
+	 <div   align="center" >
+  		<grid height="600px">
+     	<auxhead>			
+            <auxheader colspan="6" label="Acciones" />
+        </auxhead>
+        <columns>
+              <column label="# Acción" width="60px" />
+                <column label="Propietario" width="80px"/>
+                <column label="Valor" width="50px" />
+                <column label="Condición" width="70px" />
+                <column label="Publicar en Venta" width="110px" />
+                <column label="Desvincular" width="90px" />
+        </columns>
+        <rows>
+            <row>
+                <label value="ca-001" />
+                <label value="Pedro Perez" />
+                <label value="500" />
+                <label value="Activa" />
+                <cell colspan="1" style="text-align:center">
+                <div>
+                <button iconSclass="z-icon-usd" class='btn-primary boton-guardar' height="30px" width="40px"/>
+                </div>
+                </cell>
+                <cell colspan="1" style="text-align:center">
+                <div>
+				<button iconSclass="z-icon-times" class='btn-primary boton-guardar' height="30px" width="40px"/>                
+                </div>
+                </cell>
+                
+                 </row>
+            
+            
+            <row>
+                <label value="ca-002" />
+                <label value="" />
+                <label value="500" />
+                <label value="Disponible" />
+                  <cell colspan="1" style="text-align:center">
+                <div>
+                <button iconSclass="z-icon-usd" class='btn-primary boton-guardar' height="30px" width="40px"/>
+                </div>
+                </cell>
+                <cell colspan="1" style="text-align:center">
+                <div>
+				<button iconSclass="z-icon-times" class='btn-primary boton-guardar' height="30px" width="40px"/>                
+                </div>
+                </cell>
+            </row>
+        
+        </rows>
+  </grid>
+       </div>
+       </div>
+	</div>
+	</div>
+	
+			
+			
+		</vlayout>
+	</hlayout>
+			        
+
+
+</zk>

@@ -1,0 +1,106 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Socio" href="#"/>
+					    <a label="Administrar Socio" href="#"/>
+							<label value="Desvincular Acción"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+	 <div sclass="page-header">
+	    <label value="Desvincular Acción"/>
+	  
+	  </div>
+	
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='rcorners6' width="500px" height="280px">
+        		
+        			<grid width="580px" >
+          
+	            	<rows class="col-md-12">
+			            	
+	            	<row class="col-md-11">
+	            	 <label value="DATOS BASICOS"/>
+	            	</row>
+			    
+			                 <row class="col-md-11">
+			                  
+			              		  <div width="90px">
+			              		   	Acción
+			              		   </div>
+			                       <div>
+			              		   <textbox type="text" value="" width="265px"/>
+			                      </div>
+			                      		                      
+			                  </row>
+			                  <row class="col-md-11">
+			              		  <div width="90px"> 	Motivo </div>
+			              		   
+			              		   	
+			              <div>
+			              <textbox type="text" value="" width="265px" height="50px" rows="5" />
+			                  </div>  		 
+			            
+			              		  
+			              		   	 
+			                      
+			                  </row>
+			                     <row class="col-md-11">
+			              		  <div width="90px"> Fecha desvinculación </div>
+			              		   
+			              		   	
+			             <div>
+					 <datebox format="@load(vm.dateFormat)" width="140px"  tabindex="7"/>
+			                      </div> 		 
+			            
+			              		  
+			              		   	 
+			                      
+			                  </row>
+			                  
+			                
+			                
+			                      <row class="col-md-2 col-md-offset-6">
+			                  	<hlayout width="">
+			                    	<div>
+			                    		<button   class='btn-primary boton-guardar' label="Desvincular" />
+			                     	</div><separator spacing="80px"></separator>
+			                 
+			                  	</hlayout>
+			             		
+			                 </row>
+			 			
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
