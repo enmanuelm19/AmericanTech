@@ -37,7 +37,7 @@
 	
 		</div>			
 					
-					<div class='rcorners6' align="center">
+					<div class='form-pricing' align="center">
 			        <grid   mold="paging" pageSize="15"  width="75%" >
 			            <auxhead  class="z-auxheader-content">
 			               

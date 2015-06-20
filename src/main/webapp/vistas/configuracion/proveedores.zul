@@ -18,14 +18,14 @@
 			<div class="contenedor" align="center">
 			
 				<div sclass="page-header" align="left">
-				    <label value="PROVEEDORES"/>
+				    <label value="Proveedores"/>
 		  		</div>
 				
 				<separator spacing="30px"/>
 				<space/><space/>
-				<div class='rcorners6' align="left" width="850px">
+				<div class='form-pricing' align="left" width="850px">
 				<div apply="controllers.ControllerProveedor" xmlns:w='client'>
-					<button id="btnProveedoresRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar'/>
+					<button id="btnProveedoresRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="30px"/>

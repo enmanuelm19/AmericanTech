@@ -19,9 +19,9 @@
 	height="95%" width="40%">
 		<div class='contenedor'>
 			<div sclass="page-header">
-	    		<label value="Registrar grupo"/>
+	    		<label value="Registrar Grupo"/>
 	  		</div>
-			<div align="center" class="rcorners6">
+			<div align="center" class="form-pricing">
 				<grid width="100%" >          
 			     	<rows class="col-md-12">
 			          

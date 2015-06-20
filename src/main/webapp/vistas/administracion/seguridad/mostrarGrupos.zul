@@ -22,7 +22,7 @@
 	    			<label value="Grupo"/>
 	  			</div>
 	  			
-	  			<div align="center" class='form-pricing' width="600px"><!-- INICIO DIV GRID DE GRUPOS-->
+	  			<div align="center" sclass="form-pricing" width="600px"><!-- INICIO DIV GRID DE GRUPOS-->
 					<!-- GRID DE GRUPOS-->
 					<grid mold="paging" pageSize="8"  width="500px" >
 						<auxhead  class="z-auxheader-content">

@@ -23,7 +23,7 @@
 				<div sclass="page-header">
 					<label value="Administrar Socios" />	
 				</div>
-				<div class='rcorners6'>
+				<div class='form-pricing'>
 					<combobox value="Ordenar Por">
 						<comboitem label="Usuario"/>
 						<comboitem label="Nombre"/>
@@ -75,6 +75,7 @@
 							</row>      
 						</rows>
 			        </grid> <!-- FIN GRID DE USUARIOS-->
+			        <separator/>
 					<div align="right" apply="controllers.usuarioGeneralController">
 							<button	id="btnUsuarioGeneralReg" iconSclass="z-icon-floppy-o" class='btn-primary boton-guardar' label="Registrar" />
 					</div>

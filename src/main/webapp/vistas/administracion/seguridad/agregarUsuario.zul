@@ -9,7 +9,7 @@
 			<div sclass="page-header" align="left">
 				<label value="Registrar Usuario" />
 			</div>
-		<div class='rcorners6' align="center" width="100%">
+		<div class='form-pricing' align="center" width="100%">
 			<div align="left" width="100%">
 				<div>
 				<hbox>
@@ -104,7 +104,7 @@
 				</div>
 				<space spacing="20px"/>
 				<div>
-					<button	iconSclass="z-icon-trash-o" class='btn-primary boton-guardar' label="Eliminar" />
+					<button	iconSclass="z-icon-trash-o" class='btn-danger boton-guardar' label="Eliminar" />
 				</div>
 				</hlayout>
 			</div>

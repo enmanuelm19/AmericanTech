@@ -12,9 +12,9 @@
 				</div>
 
 				<div id="formTipoEvento" width="80%"
-					class='rcorners6'>
-					<div align="left">
-						<label value="Datos Basicos" style="color:#2679B5; font-size:150%"/>
+					class='form-pricing'>
+					<div align="left" sclass="page-header linea-two">
+						<label value="Datos Basicos"/>
 					</div>
 					<div align="left">
 						<grid width="100%">
@@ -42,13 +42,13 @@
 								<div>
 									<separator spacing="5%" />
 									<button iconSclass="z-icon-floppy-o"
-										class='btn-primary boton-guardar' label="Registrar" />
+										class='boton-guardar' label="Registrar" />
 								</div>
 								<space spacing="5%" />
 								<div apply="controllers.TipoEvento">
 									<separator spacing="5%" />
 									<button id="btnRegTipoEventoCancelar" iconSclass="z-icon-times"
-										class='btn-primary boton-guardar' label="Cancelar" />
+										class='boton-cancelar' label="Cancelar" />
 								</div>
 
 							</hbox>

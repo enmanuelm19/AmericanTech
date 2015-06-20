@@ -29,7 +29,7 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='rcorners6' width="1050px"
+						<div class='form-pricing' width="1050px"
 							height="auto">
 							<grid width="1000px">
 

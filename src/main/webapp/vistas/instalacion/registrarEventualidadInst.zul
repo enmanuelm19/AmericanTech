@@ -37,17 +37,17 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='rcorners6' width="750px"
+						<div class='form-pricing' width="750px"
 							height="680px">
 
-							<div class='rcorners6' width="700px"
+							<div class='form-pricing' width="700px"
 								height="260px">
 								Datos del Socio
 								<separator spacing="20px" />
 
 								<div class="col-md-4">
 
-									<div class='rcorners6'
+									<div class='form-pricing'
 										align="center" width="140px" height="170px">
 										<image
 											src="assets/avatars/avatar2.png" width="100px" height="80px" />
@@ -83,7 +83,7 @@
 							</div>
 							<separator spacing="30px" />
 
-							<div class='rcorners6' width="700px"
+							<div class='form-pricing' width="700px"
 								height="260px">
 								Datos Basicos
 								<separator spacing="30px" />

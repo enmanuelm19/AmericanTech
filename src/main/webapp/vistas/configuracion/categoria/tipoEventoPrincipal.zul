@@ -23,14 +23,14 @@
 				
 				<separator spacing="1%"/>
 				<space/><space/>
-				<div class='rcorners6' width="60%" align="center">
+				<div class='form-pricing' width="60%" align="center">
 				<div apply="controllers.TipoEvento" align="left">
-					<button id="btnRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar'/>
+					<button id="btnRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 		
 				<div class='contenido' align="center" width="80%">
-					<div align="left">
-				    		<label value="Informacion" style="color:#2679B5; font-size:150%"/>
+					<div align="left" class='page-header linea-two'>
+				    		<label value="Informacion"/>
 					</div>
 					<separator spacing="1%"/>
 					<grid mold="paging" pageSize="15" width="" height="100%">
