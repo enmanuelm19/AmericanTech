@@ -1,0 +1,405 @@
+<?page title="Administrar Ficha Socio" contentType="text/html;charset=UTF-8"?>
+
+
+
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+
+<zk xmlns:n="native">
+	<include src="../../layouts/navbar.zul" />
+	<hlayout spacing="0">
+	<include src="../../layouts/sidebar.zul" />
+	
+
+	<!-- /web/src/main/webapp/vistas/layouts/sidebar.zul  -->
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+
+					<a label="Registrar Socio" href="#" />
+					<label value="Perfil Socio" />
+					<label value="Administrar Ficha Socio" />
+				</div>
+
+			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+					<label value="Ficha Socio" />
+				</div>
+
+				<div class='contenido ' align="center" width="80%">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="100%">
+
+
+							<vbox>
+								<groupbox width="100%"><!-- GRUPO DATOS BASICOS -->
+									<caption>Datos Basicos</caption>
+
+									<hbox width="90%">
+										<image width="60%" height="35%"
+											src="/assets/portal/img/img1.jpg" />
+
+										<vbox height="65%">
+											<hlayout>
+												<label value="Cédula" />
+												<separator />
+												<separator />
+												<textbox />
+												<button
+													iconSclass="z-icon-search" class='btn-primary btn-primary' />
+											</hlayout>
+
+											<hlayout>
+												Numero Carnet
+												<textbox
+													value="123456789" width="50%" />
+											</hlayout>
+
+
+											<hlayout>
+												1er Nombre
+												<textbox value="Jesus"
+													width="100%" />
+											</hlayout>
+											<hlayout>
+												2do Nombre
+												<textbox value="angel"
+													width="100%" />
+											</hlayout>
+
+											<hlayout>
+
+												1er Apellido
+												<textbox value="Bolivar"
+													width="100%" />
+											</hlayout>
+
+
+											<hlayout>
+												2do Apellido
+												<textbox value="Paez"
+													width="100%" />
+
+											</hlayout>
+
+											<hlayout>
+												Nacimiento
+												<textbox
+													value="10/01/70" width="50%" />
+
+											</hlayout>
+
+											<hlayout>
+
+												Edad
+												<textbox value="33"
+													width="25%" />
+											</hlayout>
+
+											<hlayout>
+
+												Sexo
+												<textbox value="M"
+													width="25%" />
+											</hlayout>
+											<hlayout>
+												Correo
+												<textbox
+													value="hdhdhdh@jdhdh.com" width="100%" />
+
+											</hlayout>
+
+											<hlayout>
+
+												Telefono
+												<textbox
+													value="04135689256" width="80%" />
+											</hlayout>
+
+
+											<hlayout>
+												Direccion
+												<textbox cols="100"
+													rows="5" type="text"
+													value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
+													width="100%" />
+
+											</hlayout>
+
+										</vbox>
+
+
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO BASICOS -->
+
+								<groupbox width="100%"><!-- GRUPO INTERESES -->
+									<caption>Intereses</caption>
+
+									<hbox width="100%">
+
+										<vbox>
+
+
+
+											<checkbox id="l1"
+												label="Futbol" onCheck="doChecked()" />
+
+											<checkbox id="l2"
+												label="Beisbol" onCheck="doChecked()" />
+											<checkbox id="l3"
+												label="Basket" onCheck="doChecked()" />
+											<checkbox id="l4"
+												label="Softball" onCheck="doChecked()" />
+
+
+
+										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="Ping Pong" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="Bolas Criollas" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Natacion" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Domino" onCheck="doChecked()" />
+										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="Bailar" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="Tocar Cuatro" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Escuchar musica" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Teatro" onCheck="doChecked()" />
+										</vbox>
+
+										<vbox>
+											<checkbox id=""
+												label="Cantar" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xEventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+
+										<vbox>
+											<checkbox id=""
+												label="xDeporte" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="Eventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+										<vbox>
+											<checkbox id=""
+												label="xDeporte" onCheck="doChecked()" />
+
+											<checkbox id=""
+												label="xInstalaciones" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xEventos" onCheck="doChecked()" />
+											<checkbox id=""
+												label="xSocios" onCheck="doChecked()" />
+										</vbox>
+
+
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO INTERESES -->
+
+								<groupbox width="100%"><!-- GRUPO accion -->
+									<caption>
+										Datos de la Accion
+									</caption>
+
+									<hbox width="100%">
+
+
+										<panel border="none"
+											collapsible="true" sclass="transparent">
+
+											<panelchildren>
+												<grid sclass="domain">
+													<columns>
+														<column
+															width="50%" label="Numero Accion"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="35%" label="Valor BS"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="15%" label="" align="center" /><!--Operaciones -->
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="60.000" sclass="label label-primary arrowed" />
+															<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="78916" />
+															<label
+																value="60.000" sclass="label label-primary arrowed" />
+															<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
+
+
+
+
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO accion -->
+
+
+								<groupbox width="100%"><!-- GRUPO afilaido -->
+									<caption >
+										Datos del Afiliado
+									</caption>
+
+									<hbox width="100%">
+										<panel border="none"
+											collapsible="true" sclass="transparent">
+
+											<panelchildren>
+												<grid sclass="domain">
+													<columns>
+														<column
+															width="30%" label="numero carnet"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="30%" label="nombre"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="25%" label="parentesco"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="15%" label="" align="center" /><!--Operaciones -->
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="laura" />
+															<label
+																value="Esposa" />
+														<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="miguel" />
+															<label
+																value="hijo" />
+															<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="12345" />
+															<label
+																value="maria" />
+															<label
+																value="hija" />
+															<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
+
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO afiliados -->
+
+
+
+							</vbox>
+
+
+							<hbox width="" align="center"
+								pack="center">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Guardar" />
+
+								<button iconSclass="z-icon-edit"
+									class='btn-primary boton-guardar' label="Cancelar " />
+							</hbox>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div><!-- FIN CONTENEDOR -->
+		</vlayout>
+	</hlayout>
+</zk>
