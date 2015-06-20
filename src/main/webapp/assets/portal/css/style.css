@@ -1191,7 +1191,7 @@ padding: 1.2em 0em;
   font-size: 1em;
   outline: none;
   text-transform: uppercase;
-  float: left;
+  margin: 0 auto;
 }
 
 .boton-Formulario :hover{
