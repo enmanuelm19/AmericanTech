@@ -1,0 +1,70 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" >
+
+
+			
+<window title="l,l,l" border="normal" width="495px" closable="true" mode="modal">
+                
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+                           
+						<div class='rcorners6' width="380px"  	>
+						<label  value="Registrar Tipo  Instalacion"/>
+						
+							<div >Datos Basicos</div>
+							<grid width="580px">
+
+								<rows class="col-md-12">
+
+									<row class="col-md-11">
+										
+										<div>Descripcion</div>
+									</row>
+									<row class="col-md-11">
+										<div>
+											<textbox type="text"
+												value="" width="250px" />
+										</div>
+									</row>
+
+									<row
+										class="col-md-6 col-centered">
+										<hlayout width="">
+
+											<separator
+												spacing="100px">
+											</separator>
+											<div>
+												<button
+													iconSclass="z-icon-floppy-o"
+													class='btn-primary boton-guardar' label="Guardar" />
+											</div>
+											<separator spacing="50px"></separator>
+											<div>
+
+												<button
+													iconSclass="z-icon-trash-o"
+													class='btn-primary boton-guardar' label="Cancelar" />
+											</div>
+										</hlayout>
+									</row>
+								</rows>
+							</grid>
+						</div>
+					</div>
+
+			
+
+
+
+</window>
+
+
+</zk>
