@@ -1,0 +1,188 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Club" href="#" />
+					<label value="Perfil del Club" />
+				</div>
+			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+					<label value="PERFIL DEL CLUB" />
+				</div>
+				<div class='contenido'>
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="105%"
+							height="1050px">
+							<div class='rcorners6' width="100%"
+								height="30%">
+								Datos del Club
+								<separator spacing="2%" />
+								<div class="col-md-6">
+									<div class='rcorners6'
+										align="center" width="90%">
+										<image
+											src="assets/avatars/avatar2.png" width="50%" height="50%" />
+										<fileupload
+											iconSclass="z-icon-folder-open"
+											class='btn-primary boton-guardar' label="Examinar" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<vlayout>
+										<hlayout>
+											<label value="Rif:" />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<textbox width="60%" />
+										</hlayout>
+										<separator spacing="1%" />
+										<hlayout>
+											<label value="Nombre:" />
+											<separator />
+											<separator />
+											<separator />
+											<textbox width="105%" />
+										</hlayout>
+										<separator spacing="1%" />
+										<hlayout>
+											<label value="Dirección:" />
+											<separator />
+											<textbox rows="4" />
+										</hlayout>
+										<separator spacing="1%" />
+										<hlayout>
+											<label value="Telefono:" />
+											<separator />
+											<separator />
+											<textbox width="60%" />
+										</hlayout>
+									</vlayout>
+								</div>
+							</div>
+							<separator spacing="3%" />
+							<div class='rcorners6' width="100%"
+								height="26%">
+								Perfil Organizacional
+								<separator spacing="3%" />
+								<div class="col-md-6">
+									<div class='rcorners6' width="100%"
+										height="16%">
+										Misión
+										<separator />
+										<textbox rows="5" cols="30" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class='rcorners6' width="100%"
+										height="16%">
+										Visión
+										<separator />
+										<textbox rows="5" cols="30" />
+									</div>
+								</div>
+							</div>
+							<separator spacing="3%" />
+							<div class='rcorners6' width="100%"
+								height="30%">
+								Politicas
+								<separator spacing="1%" />
+								<div class='rcorners6' width="100%"
+									height="80%">
+									Reglas De Visita
+									<separator spacing="1%" />
+									<div class="col-md-6">
+										Numero De Invitados
+										<separator spacing="5%" />
+										<hbox>
+											<label value="Socio:" />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<spinner />
+										</hbox>
+										<separator spacing="5%" />
+										<hbox>
+											<label value="Afiliado:" />
+											<separator />
+											<spinner />
+										</hbox>
+									</div>
+									<div class="col-md-6">
+										Frecuencia Mensual
+										<separator spacing="5%" />
+										<spinner />
+										<separator spacing="5%" />
+										<spinner />
+									</div>
+								</div>
+								<separator spacing="1%" />
+							</div>
+							<div class="row" align="center">
+								<separator spacing="3%" />
+								<hlayout width="">
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<div>
+										<button
+											iconSclass="z-icon-floppy-o"
+											class='btn-primary boton-guardar' label="Guardar" />
+									</div>
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<div>
+										<button
+											iconSclass="z-icon-times-circle"
+											class='btn-primary boton-guardar' label="Cancelar" />
+									</div>
+								</hlayout>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</vlayout>
+
+	</hlayout>
+
+</zk>
