@@ -1,0 +1,60 @@
+<?page title="Ingreso Centro Atlético América"?>
+<?link href="/assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="/assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/css/style-responsive.css" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/css/style.css" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/css/bootstrap.min.css" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/css/bootstrap-reset.css" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/css/font-awesome.css" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='fondo-ingreso'>
+
+	<div width="100%" height="100%"
+		style="background: url('../../assets/portal/img/bannerAmericaIngreso.png') no-repeat !important;
+  background-size: 100% 100%;"
+		class='lock-screen'>
+		<div class="lock-wrapper"
+			style="  margin: 13% 0% 0% 30% !important; position:fixed">
+			<div class="lock-box text-center">
+				<div class="lock-name" style="padding: 8px 8px;">
+					<textbox placeholder="Usuario" id="exampleInput"
+						style="width: 64%;padding: 7px 5px;  border-color: white;"
+						class="form-control lock-input" />
+				</div>
+				<image id="image"
+					src="../../assets/portal/img/logo3.png" />
+				<div class="lock-pwd"
+					style="  padding: 0px 0 0 75px;">
+					<div class="form-group">
+						<textbox type="password"
+							placeholder="Contraseña" id="exampleInputPassword2"
+							sclass="form-control lock-input"
+							style=" border-color: white;  margin-top: 9px;" />
+						<button sclass="btn btn-lock"
+							href="../index.zul"
+							style="color:#1FB5AD !important;border:0px;padding-top: 7px;margin-top:-1px"
+							iconSclass="fa fa-arrow-right" type="submit">
+						</button>
+					</div>
+				</div>
+
+			</div>
+			
+		</div>
+		<div class="registration" style="bottom:30px;left:30px; color:#FFFFFF; font-size: 16px">
+				¿Aun no te has registrado?
+				<a class="" style="color:#07F7EA;font-size: 16px" href="registration.html">
+					Crear Cuenta
+				</a>
+			</div>
+			<div class="registration" style="bottom:30px;right:30px; color:#FFFFFF; font-size: 16px">
+				¿Olvidaste tu
+				<a class="" style="color:#07F7EA;font-size: 16px" href="registration.html">
+					Contraseña?
+				</a>
+			</div>
+
+
+	</div>
+</zk>
