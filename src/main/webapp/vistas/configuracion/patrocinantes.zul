@@ -1,0 +1,94 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Evento" href="#" />
+					<label value="Patrocinantes"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center">
+			
+				<div sclass="page-header" align="left">
+				    <label value="PATROCINANTES"/>
+		  		</div>
+				
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='rcorners6' align="left" width="850px">
+				<div apply="controllers.ControllerPatrocinante" xmlns:w='client'>
+					<button id="btnPatrocinatesRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar'/>
+				</div>
+			
+				<separator spacing="30px"/>
+				
+				<div class="contenedor">
+					<div align="left">
+						<div sclass="page-header">
+				    		<label value="Lista Patrocinantes"/>
+		  				</div>
+					</div>
+					<separator spacing="20px"/>
+					<grid emptyMessage="No se encuentran proveedores registrados" mold="paging"
+							pageSize="2">
+						<columns>
+							<column label="Evento" align="center" />
+							<column label="Instalacion" align="center" />
+							<column label="Socio" align="center"/>
+							<column label="Nro Carnet" align="center"/>
+							<column label="Fecha" align="center"/>
+							<column align="center" label="Acciones" />
+						</columns>
+						<rows>
+							<row>
+								<label value="0001"/>
+								<label value="Caney" />
+								<label value="Carlos Colmenarez"/>
+								<label value="726263-1"/>
+								<label value="10/12/2015"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="0001"/>
+								<label value="Caney" />
+								<label value="Carlos Colmenarez"/>
+								<label value="726263-1"/>
+								<label value="10/12/2015"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="0001"/>
+								<label value="Caney" />
+								<label value="Carlos Colmenarez"/>
+								<label value="726263-1"/>
+								<label value="10/12/2015"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	
+</zk>
