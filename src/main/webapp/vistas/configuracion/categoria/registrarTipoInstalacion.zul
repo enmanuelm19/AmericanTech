@@ -8,7 +8,7 @@
 
 
 			
-<window title="l,l,l" border="normal" width="495px" closable="true" mode="modal">
+<window title="Registrar Tipo  Instalacion" border="none" width="400px" closable="true" mode="modal">
                 
 					<div class="col-md-8 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
@@ -16,7 +16,7 @@
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
                            
 						<div class='rcorners6' width="380px"  	>
-						<label  value="Registrar Tipo  Instalacion"/>
+						<label  value=""/>
 						
 							<div >Datos Basicos</div>
 							<grid width="580px">
@@ -29,7 +29,7 @@
 									</row>
 									<row class="col-md-11">
 										<div>
-											<textbox type="text"
+											<textbox type="text" rows="4"
 												value="" width="250px" />
 										</div>
 									</row>

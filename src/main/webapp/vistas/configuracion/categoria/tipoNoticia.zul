@@ -1,4 +1,4 @@
-<?page title="Mostrar Noticia" contentType="text/html;charset=UTF-8"?>
+<?page title="Mostrar Noticias" contentType="text/html;charset=UTF-8"?>
 
 <!-- Load Bootstrap  -->
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
@@ -41,20 +41,22 @@
 			<div class='contenedor'>
 
 				<div sclass="page-header">
-					<label value="Tipo de Noticia" />
+					<label value="Registrar Noticia" />
 
 				</div>
-				<button id="eee"
-					apply="controllers.ControladorModalAbrir"
-					class='btn-primary boton-guardar' label="Registrar" />
-             
+				
+            
              
               <separator spacing="20px"/>
               
               
 				<div class='rcorners6' width="75%" height="60%">
 					<div class='contenido ' align="center">
-
+						<div align="left">
+ 							<button id="eee" 
+								apply="controllers.ControladorModalAbrir"
+								class='btn-primary boton-guardar' label="Registrar" />
+						</div>
 
 						<div align="center">
 							<grid mold="paging" pageSize="15"

@@ -8,8 +8,7 @@
 
  
 			
-<window title="l,l,l" border="normal" width="495px" closable="true" mode="modal">
-                 <label  value="Registrar Tipo  Noticia"/>
+<window title="Registrar Tipo  Noticia" border="none" width="460px" closable="true" mode="modal">
 					<div class="col-md-8 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
@@ -27,7 +26,7 @@
 									</row>
 									<row class="col-md-11">
 										<div>
-											<textbox type="text"
+											<textbox type="text" rows="4"
 												value="" width="250px" />
 										</div>
 									</row>

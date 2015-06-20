@@ -45,17 +45,19 @@
 
 				</div>
 				
+            
              
               <separator spacing="20px"/>
               
               
 				<div class='rcorners6' width="75%" height="60%">
 					<div class='contenido ' align="center">
+						<div align="left">
+ 							<button id="ccc" 
+								apply="controllers.ControladorModalAbrir"
+								class='btn-primary boton-guardar' label="Registrar" />
+						</div>
 
-<button id="ccc"
-					apply="controllers.ControladorModalAbrir"
-					class='btn-primary boton-guardar' label="Registrar" />
-             
 						<div align="center">
 							<grid mold="paging" pageSize="15"
 								width="75%">

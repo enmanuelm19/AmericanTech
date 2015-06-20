@@ -1,4 +1,4 @@
-<?page title="Mostrar Actividades" contentType="text/html;charset=UTF-8"?>
+<?page title="Mostrar Actividad" contentType="text/html;charset=UTF-8"?>
 
 <!-- Load Bootstrap  -->
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
@@ -34,27 +34,29 @@
 					<a label="Configuracion" href="#" /> 
 					
 					<a label="Categorias" href="#" />
-					<label value="Mostrar Tipo de Actividad" />
+					<label value="Mostrar Tipo Actividad" />
 				</div>
 			</div>
 
 			<div class='contenedor'>
 
 				<div sclass="page-header">
-					<label value="Tipo de Actividad" />
+					<label value="Registrar Actividad" />
 
 				</div>
-				<button id="ddd"
-					apply="controllers.ControladorModalAbrir"
-					class='btn-primary boton-guardar' label="Registrar" />
-             
+				
+            
              
               <separator spacing="20px"/>
               
               
 				<div class='rcorners6' width="75%" height="60%">
 					<div class='contenido ' align="center">
-
+						<div align="left">
+ 							<button id="ddd" 
+								apply="controllers.ControladorModalAbrir"
+								class='btn-primary boton-guardar' label="Registrar" />
+						</div>
 
 						<div align="center">
 							<grid mold="paging" pageSize="15"

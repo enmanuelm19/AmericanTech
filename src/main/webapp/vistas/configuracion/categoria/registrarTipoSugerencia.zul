@@ -8,8 +8,7 @@
 
  
 			
-<window title="" border="normal" width="690px" >
-                 <label  value="Registrar Tipo  Sugerencia"/>
+<window title="Registrar Tipo  Sugerencias" border="none" width="460px" closable="true" mode="modal">
 					<div class="col-md-8 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
@@ -22,20 +21,11 @@
 								<rows class="col-md-12">
 
 									<row class="col-md-11">
-										<div>Codigo</div>
-									</row>
-									<row class="col-md-11">
-										<div>
-											<textbox type="text"
-												value="" width="250px" />
-										</div>
-									</row>
-									<row class="col-md-11">
 										<div>Descripcion</div>
 									</row>
 									<row class="col-md-11">
 										<div>
-											<textbox type="text"
+											<textbox type="text" rows="4"
 												value="" width="250px" />
 										</div>
 									</row>
