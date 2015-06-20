@@ -1,0 +1,10 @@
+SUPER IMPORTANTE
+
+Se haran modificaciones a la estructura del proyecto.
+1. Copien sus proyectos locales en otras carpetas
+2. Clonen el que subire en un rato
+3. Coloquen sus archivos donde van dentro de la nueva estructura
+4. Prueben que funcionen los links que llaman a los css y otros archivos
+5. Agreguen las modificaciones con git add nombrearchivo.extension (se hace con cada archivo)
+6. Hagan commit y subanlo a su branch
+7. Desde la pagina del gitlab hagan el merge request para realizarlos
