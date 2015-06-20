@@ -415,8 +415,8 @@ a:focus {
   color: #1963aa;
 }
 .nav-list.z-navbar > ul > li > a:hover {
-  background-color: #FFF;
-  color: #1963aa;
+ background-color: #11bcb7;
+  color: #FFFFFF;
 }
 .nav-list.z-navbar > ul > li > a:hover:before {
   display: block;
@@ -854,12 +854,15 @@ a:focus {
 }
 .breadcrumbs {
   position: relative;
-  border-bottom: 1px solid #E5E5E5;
-  background-color: rgba(43,137,116,0.33);
+  border-top: 2px solid #E5E5E5;
+  background-color: rgba(43, 125, 188, 1);
   min-height: 41px;
   line-height: 40px;
   padding: 0 12px 0 0;
+  border-bottom: 2px solid #FFFFFF;
 }
+
+
 .breadcrumb {
   background-color: transparent;
   display: inline-block;
@@ -2809,8 +2812,9 @@ body {
   padding: 0;
   margin: 0 8px;
   font-size: 24px;
-  font-weight: lighter;
-  color: #2679B5;
+  font-weight: normal;
+  color: #2B7DBC;
+  font-variant: small-caps;
 }
 .page-header .subtitle {
   font-size: 14px;
@@ -2840,10 +2844,46 @@ padding: 30px;
 margin-left:15px;
 }
 
-.boton-guardar{
-margin-top:15px;
- height: 30px;
+.boton-guardar {
+  font-family: 'trebuchet ms';
+  font-weight: bold;
+  color: #FFFFF !important;
+  font-size: 12px;
+  box-shadow: 2px 2px 2px #585858;
+  padding: 10px 12px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 2px;
+  background: #2B7DBC;
+  border-color: #2B7DBC;
+  text-transform: uppercase;
+}
 
+.boton-guardar:hover {
+ color: #185869 !important;
+  background: #4BBAD6;
+}
+
+.boton-cancelar{
+  font-family:'trebuchet ms';
+  font-weight: bold;
+  color: #FFFFF !important;
+ font-size: 12px;
+  box-shadow: 2px 2px 2px #585858;
+  padding: 10px 12px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 2px;
+   background: #FF000F;
+  border-color: #F5163C;
+  text-transform: uppercase;
+
+}
+
+.boton-cancelar:hover {
+ color: #185869 !important;
+  background: #F52935;
+  border-color: #E56E82;
 }
 
 .col-centered{
@@ -2964,4 +3004,30 @@ margin-top:80px;
 
 .centercontents {
     text-align: center !important;
+}
+
+ .linea-two {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(1deg, rgb(6, 68, 72), #8BD5D9, rgb(251, 251, 251));
+}
+
+.encabezado {
+  background: rgba(92, 197, 202, 0.7);
+  margin: 0 5px -1px -8px;
+  padding: 6px 11px;
+  color: #585858;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 0px;
+  display: inline-block;
+  font-family: 'trebuchet ms';
+  font-weight: bold;
+}
+
+.form-pricing {
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: rgb(88, 88, 88) 1px 1px 2px 2px;
 }
