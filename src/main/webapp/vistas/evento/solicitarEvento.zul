@@ -1,0 +1,194 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Evento" href="#"/>
+							<label value="Solicitar Evento"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Solicitar Evento"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='form-pricing' width="700px" height="460px">
+  			            		<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Solicitud de evento                             									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>
+							<separator spacing="10px"></separator>    
+        			<grid width="680px" fixedLayout="true" >
+  
+			            	<rows class="col-md-12">
+			            		<row>
+			            			<div align="left">
+		                       			<div  >
+	                       					Datos del Socio                             									                                                				                             				                             					
+	                       				</div>		  			            		
+                       				</div>		            		
+			            		</row>
+			                  <row class="col-md-11" >
+                             	<div>
+			                  		
+									<hlayout>
+										<div style="border:1px">
+				                  			<image sclass="myimg" width="100px" height="100px"
+	                      			    	  src="/widgets/grid/master_detail/img/item1.jpg" />
+	                             		</div>
+	                             		<div >
+	                             			<div>
+	                             				<hlayout>
+		                             				<div>
+		                             					<div>
+		                             						Numero de Carnet
+		                             					</div>
+			                             				<div>
+			                             					Cedula
+		                             					</div>
+			                             				<div>
+			                             					Nombre
+		                             					</div>                             									                                                				
+		                             				</div>
+													<div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+			                             				</div>	                             							                             																		
+													</div>
+	                             				</hlayout>                             				                             					
+	                             			</div>	
+							           </div> 
+									</hlayout>			                  		
+								</div>>
+						    </row>
+						</rows>   
+					</grid>
+        			<grid width="580px" >         
+			            	<rows class="col-md-12">
+				                <row >
+					               	<div >
+		        						Datos del Evento
+		        					</div>
+	        					</row>
+
+	        				<row>
+	        					<vlayout>
+		        					<hlayout>
+
+	        	           				<div>
+	                      					<label value="Codigo" />
+	                      				</div>
+	                      				<div >
+	                      					<textbox type="text" value="" width="140px" />
+	                      				</div>                      				
+		        					</hlayout>
+		        					<hlayout>
+	
+		                      			<div>
+	
+		                      				<div>
+		                      					Fecha de Inicio
+		                      				</div>
+		                      				<div>
+		                      					Hora de Inicio
+		                      				</div>
+		                      			</div>
+		                      			<div>
+		                      				<div>
+		                      					<datebox id="db0" cols="12" format="short " onCreate="self.value = new Date()" />
+		                      				</div>
+		                      				<div>
+		                      					<timebox id="tb0" cols="12" format="short" onCreate="self.value = new Date()" />
+		                      				</div>
+										</div>
+		                      			<div>
+		                      				<div >
+		                      					
+		                      				</div>
+		                      				<div>
+		                      					Fecha de Cierre
+		                      				</div>
+		                      				<div>
+		                      					Hora de Cierre
+		                      				</div>
+		                      			</div>									
+		                      			<div>
+		                      				<div>
+		                      					 
+		                      				</div>
+		                      				<div>
+		                      					<datebox  cols="12" format="short " onCreate="self.value = new Date()" />
+		                      				</div>
+		                      				<div>
+		                      					<timebox  cols="12" format="short" onCreate="self.value = new Date()" />
+		                      				</div>
+										</div>									
+									</hlayout>					                      		
+								</vlayout>
+			                  </row>   
+								<row>
+								   <div>
+			                    	    Descripcion <textbox type="text" value="" width="260px" height="60px" />
+			                      </div>		
+								</row>			          
+			                  <row class="col-md-11 col-centered">        
+			                  	<hlayout width="" >
+			                  	
+			                  		<separator spacing="150px"></separator>
+			                  		<div>
+			                    		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Enviar"/>
+			                    	</div><separator spacing="80px"></separator>
+
+			                     	<div>
+			                    		<button  iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
+			                     	</div>
+			                  	</hlayout>										             		
+			                 </row>
+			 
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
