@@ -1,0 +1,87 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Socios" href="#" />
+					<label value="Administrar Socio" />
+				</div>
+
+			</div>
+
+			<div class='contenedor' style="padding:10px;">
+
+				<div sclass="page-header">
+					<label value="Administrar Socios" />	
+				</div>
+				<div class='form-pricing'>
+					<combobox value="Ordenar Por">
+						<comboitem label="Usuario"/>
+						<comboitem label="Nombre"/>
+						<comboitem label="Funcion"/>
+					</combobox>
+					
+					<grid mold="paging" pageSize="8">
+						<columns class="z-grid z-column-content" menupopup="auto">
+							<column label="Usuario" align="center" sort="auto"/>
+							<column label="Nombre" align="center" sort="auto"/>
+							<column label="Correo Electronico" align="center"/>
+							<column label="Funcion" align="center" sort="auto" width="110px"/>
+							<column label="Foto" align="center" />
+							<column label="Acciones" align="center" width="100px"/>
+						</columns>
+						<rows>
+							<row>
+								<label value="fidel.alejos"/>
+								<label value="Fidel Aliaga"/>
+								<label value="fidel.alejos@gmail.com"/>
+								<label value="Socio"/>
+								<image />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
+								</div>
+							</row>
+							<row>
+								<label value="musiu"/>
+								<label value="Carlos Colmenarez"/>
+								<label value="carlos@gmail.com"/>
+								<label value="Socio"/>
+								<image />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
+								</div>
+							</row>
+							<row>
+								<label value="hilderLee"/>
+								<label value="Hilder Lee"/>
+								<label value="hilder@gmail.com"/>
+								<label value="Vicepresidente"/>
+								<image />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
+								</div>
+							</row>      
+						</rows>
+			        </grid> <!-- FIN GRID DE USUARIOS-->
+			        <separator/>
+					<div align="right" apply="controllers.usuarioGeneralController">
+							<button	id="btnUsuarioGeneralReg" iconSclass="z-icon-floppy-o" class='btn-primary boton-guardar' label="Registrar" />
+					</div>
+										
+				</div>
+			</div>
+		</vlayout>
+	</hlayout>
+</zk>

@@ -1,0 +1,93 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul"/>
+	<hlayout spacing="0">
+		<include src="/vistas/layouts/sidebar.zul"/>
+		
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-puzzle-piece"/>
+					    <a label="Admin. del Sistema" href="#"/>
+							<label value="Grupo"/>
+					</div>
+ 
+			</div>
+			<div class='contenedor' align="center">
+				<div sclass="page-header" align="left">
+	    			<label value="Grupo"/>
+	  			</div>
+	  			
+	  			<div align="center" sclass="form-pricing" width="600px"><!-- INICIO DIV GRID DE GRUPOS-->
+					<!-- GRID DE GRUPOS-->
+					<grid mold="paging" pageSize="8"  width="500px" >
+						<auxhead  class="z-auxheader-content">
+							<auxheader align="left" colspan="2">
+							<textbox width="150px"/>
+							<button iconSclass="z-icon-search blue" sclass="btn-link"/>
+							
+							</auxheader>
+						</auxhead>
+						<columns class="z-grid z-column-content ">
+							<column label="Descripcion" align="center"  width="300px"/>
+							<column label="Acciones" align="center" width="200px"/>
+						</columns>
+						<rows>
+							<row>
+								<label value="Junta Directiva"/>
+								<div>
+								<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+								<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+								<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+								<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>
+									
+								
+								</div>
+							</row>
+							<row>
+								<label value="Adiministracion"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+									<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>									
+								
+									
+								</div>
+							</row>
+							<row>
+								<label value="Socios"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+									<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>
+									
+								</div>
+							</row>
+							<row>
+								<label value="Secretaria"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+									<button sclass="btn-link" iconSclass="z-icon-list blue" tooltiptext="Ver Funciones"/>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>
+									
+								</div>
+							</row>	      
+						</rows>
+			        </grid> <!-- FIN GRID DE GRUPOS-->
+			        <separator spacing="20px"/>
+			        <div apply="controllers.grupoGeneralController" xmlns:w='client' align="right">
+						<button id="btnGrupoRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar'/>
+			        </div>
+			    </div><!--FIN DIV GRID DE GRUPOS-->
+	  		
+	  		</div>
+	  	</vlayout>		
+	</hlayout>
+</zk>
