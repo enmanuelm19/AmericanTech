@@ -1,0 +1,100 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Socios" href="#"/>
+							<label value="Sanciones"/>
+					</div>
+ 
+			</div>
+
+	<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Administrar Sanciones"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"   >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
+        			<div class='form-pricing' width="580px" height="280px">
+  			            		<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Datos del socio                             									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>
+							<separator spacing="10px"></separator>      			
+                 	<div align="left" apply="controllers.ControllerRegSancion" xmlns:w='client'>
+                   		<button id="btnRegistrarsanc" class='btn-primary boton-guardar' label="Registrar Sancion"/>				                   		
+                   	</div><separator spacing="20px"></separator>
+					 <style src="/widgets/grid/master_detail/style.css" />
+
+					    <grid oddRowSclass="myodd" style="overflow:auto;">
+					        <columns>
+					            <column width="35px" />
+					            <column width="70px" label="Id Sancion" />
+					            <column width="120px" label="Sancionado"/>
+					            <column width="120px" label="Motivo"/>					            					            
+					            <column width ="70px" sort="auto" label="Modificar"/>
+					            <column width="70px" sort="auto" label="Eliminar"/>
+					        </columns>
+					        <rows>
+					        
+					            <row>
+					                <detail open="true">
+					                </detail>
+					                <label value="001" />
+					                <label value="Juan Perez"  />
+					                <label value="Discusion publica" />
+			                        <button
+			                            image="/widgets/grid/inline_row_editing/img/tick-small.png"
+			                            onClick="@command('confirm', languageContributionStatus=each)" />
+			                        <button
+			                            image="/widgets/grid/inline_row_editing/img/tick-small.png"
+			                            onClick="@command('confirm', languageContributionStatus=each)" />					                					                
+					            </row>
+					            <row>
+					                <detail fulfill="onOpen">
+					                  
+					                </detail>
+					                <label value="002" />
+					                <label value="Anna Sanchez"  />
+					                <label value="Daños en instalaciones" />
+			                        <button
+			                            image="/widgets/grid/inline_row_editing/img/tick-small.png"
+			                            onClick="@command('confirm', languageContributionStatus=each)" />
+			                        <button
+			                            image="/widgets/grid/inline_row_editing/img/tick-small.png"
+			                            onClick="@command('confirm', languageContributionStatus=each)" />						            </row>
+					        </rows>
+					    </grid>
+			        </div>
+   				 </div>
+
+			</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
