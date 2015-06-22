@@ -1,6 +1,6 @@
 
 <window title=""  width="100%" class="col-md-12">
-
+<zk xmlns:n="native">
 <?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
@@ -18,24 +18,17 @@
 
 <image id="image" src="../assets/portal/img/bannerCartelera.png" width="100%" />
 
-    
-   <hlayout spacing="24px" class="col-md-12" >
-    <div class="row col-md-12 col-md-offset-1">
-    	<div class='col-md-12' width="100%" align="center" >
-    <include src="../vistas/content/calendario.zul" hflex="5"/>
-    </div>
-    </div>
-  
-  </hlayout>
-  <hlayout spacing="24px" >
-    <div class="row cartelera-publica-margen">
-    	<div class='col-md-10 col-md-offset-1' align="center" >
-    <include src="../vistas/content/cartelera.zul" hflex="5"/>
-    </div>
-    </div>
-  
-  </hlayout>
+ <div  align="center" >
+  <include src="../vistas/content/cartelera.zul" />
+  <n:br></n:br> <n:br></n:br> <n:br></n:br>
+  <include src="../vistas/content/calendario.zul" />
+ 
+ </div>
+
+
+
+ 
 
 <include src="footer.html" />
-    
+    </zk>
 </window>
