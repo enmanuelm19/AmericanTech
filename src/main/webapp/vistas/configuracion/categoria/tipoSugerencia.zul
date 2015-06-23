@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?page title="Dashboard - ZK Admin"?>
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
@@ -25,47 +24,44 @@
 	    <label value="Registrar Tipo de Sugerencia"/>
 	  
 	  </div>
-	
-		   <div class='contenido '   align="center"  >
+		   <div class='contenido '   align="center"   >
    				 <div class="col-md-8 col-centered " 
    				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='rcorners6' width="500px" height="200px">
-        		
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
+        			<div class='form-pricing' width="500px" height="180px">
+  			            		<div align ="left">	
+	                       			<div  class="encabezado">
+                       				DATOS BASICOS                           									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                       					                                                				                             				                             					
+                       				</div>
+								<separator spacing="15px"></separator>	            		
+								</div>	
+					
         			<grid width="580px" >
           
 	            	<rows class="col-md-12">
-			            	
-	            	<row class="col-md-11">
-	            	 <label value="DATOS BASICOS"/>
-	            	</row>
-			    
-			                 <row class="col-md-11">
-			                  
-			              		  <div width="80px">
-			              		   	Código
-			              		   </div>
-			                       <div>
-			              		   <textbox type="text" value="" width="140px" />
-			                      </div>
-			                      		                      
-			                  </row>
+			     			    
+			               
 			                  <row class="col-md-11">
 			              		  <div width="80px"> 	Descripción </div>
 			              		   
 			              		   	
 			              <div>
 			              <textbox type="text" value="" width="265px" />
+			              <separator spacing="15px"></separator>	
 			                  </div>  		 
 			            
 			              		  
 			              		   	 
 			                      
 			                  </row>
-			                
+			               	
 			                  <row class="col-md-2 col-md-offset-2">
 			                  	<hlayout>
+			                 
 			                  	  		<div >
 			                    		<button   iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
 			                    	</div>
@@ -91,127 +87,5 @@
 		</vlayout>
 	</hlayout>
 
-	
-=======
-<?page title="Mostrar Sugerencias" contentType="text/html;charset=UTF-8"?>
 
-<!-- Load Bootstrap  -->
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
-
-<!-- Google Open Sans font -->
-<!-- Load fonts from local -->
-<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-
-<!-- Unmark if we want to use fonts from google server
-	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
--->
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
-<zk xmlns:n="native">
-	<include src="../../layouts/navbar.zul" />
-
-
-
-	<hlayout id="main" spacing="0">
-		<include src="../../layouts/sidebar.zul" />
-
-
-
-
-
-
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-home" />
-					<a label="Configuracion" href="#" /> 
-					
-					<a label="Categorias" href="#" />
-					<label value="Mostrar Tipo Sugerencia" />
-				</div>
-			</div>
-
-			<div class='contenedor'>
-
-				<div sclass="page-header">
-					<label value="Registrar Sugerencia" />
-
-				</div>
-				
-            
-             
-              <separator spacing="20px"/>
-              
-              
-				<div class='rcorners6' width="75%" height="60%">
-					<div class='contenido ' align="center">
-						<div align="left">
- 							<button id="fff" 
-								apply="controllers.ControladorModalAbrir"
-								class='btn-primary boton-guardar' label="Registrar" />
-						</div>
-
-						<div align="center">
-							<grid mold="paging" pageSize="15"
-								width="75%">
-								<auxhead sclass="category-center">
-									<auxheader label="Informacion"
-										colspan="6" />
-								</auxhead>
-
-								<columns>
-									<column hflex="3">
-										Id Sugerencia
-									</column>
-									<column hflex="4">
-										Nombre Sugerencia
-									</column>
-									<column hflex="2">Modificar</column>
-									<column hflex="2">Eliminar</column>
-
-								</columns>
-								<rows>
-									<row>
-										<label value="0001" />
-										<label value="Cancha Deportiva" />
-										<button iconSclass="z-icon-edit"
-											class='btn-primary boton-guardar' />
-										<button
-											iconSclass="z-icon-trash-o"
-											class='btn-primary boton-guardar' />
-
-									</row>
-									<row>
-										<label value="0002" />
-										<label value="Caney" />
-										<button iconSclass="z-icon-edit"
-											class='btn-primary boton-guardar' />
-										<button
-											iconSclass="z-icon-trash-o"
-											class='btn-primary boton-guardar' />
-
-
-
-
-									</row>
-
-
-
-
-								</rows>
-
-							</grid>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-		</vlayout>
-	</hlayout>
-
-
->>>>>>> origin/yajaira
 </zk>
