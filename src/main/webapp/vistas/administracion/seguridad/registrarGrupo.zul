@@ -9,74 +9,93 @@
 <?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 
 <!-- Unmark if we want to use fonts from google server
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 -->
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" >
-	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="95%" width="40%">
+<zk xmlns:n="native">
+	<window title=" " closable="true" border="none"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		height="95%" width="40%">
 		<div class='contenedor'>
 			<div sclass="page-header">
-	    		<label value="Registrar Grupo"/>
-	  		</div>
+				<label value="Registrar Grupo" />
+			</div>
 			<div align="center" class="form-pricing">
-				<grid width="100%" >          
-			     	<rows class="col-md-12">
-			          
-			            <row>
-	              			<div class="col-md-12">
-	              				<vbox>
-	              					Codigo <textbox type="text" value="" width="65%" />
-	              					<separator/>
-	              					Descripcion <textbox type="text" value="" width="150%" />
-	              					<separator spacing="10%"/>
-			                	</vbox>
-			                </div>			                      
-			       	    </row>
-			                  
-		            </rows>
-		        </grid>
-			        
-			                
+				<grid width="100%">
+					<rows class="col-md-12">
+
+						<row>
+							<div class="col-md-12">
+								<vbox>
+									Codigo
+									<hbox width="100%">
+										<textbox type="text" value="" />
+										<button class='btn-link'
+											iconSclass="z-icon-search blue" tooltiptext="Buscar">
+										</button>
+									</hbox>
+									<separator />
+									Descripcion
+									<textbox type="text" value=""
+										width="150%" />
+									<separator spacing="10%" />
+								</vbox>
+							</div>
+						</row>
+
+					</rows>
+				</grid>
+
+
 				<div align="center"><!-- INICIO DIV GRID DE FUNCIONES-->
-				<!-- GRID DE FUNCIONES-->
-				<div  align="left">
-				<div class='encabezado'>
-					<label value="Funciones"/>
-				</div>
-				<div class="linea-two"/>
-				</div>
-					<grid mold="paging" pageSize="15"  width="90%" >
+					<!-- GRID DE FUNCIONES-->
+					<div align="left">
+						<div class='encabezado'>
+							<label value="Funciones" />
+						</div>
+						<div class="linea-two" />
+					</div>
+					<grid mold="paging" pageSize="15" width="90%">
 						<columns class="z-grid z-column-content">
-						   <column label="Descripcion" align="center"  />
-						   <column label="Activar" align="center" width="15%"/>
+							<column label="Descripcion" align="center" />
+							<column label="Activar" align="center"
+								width="15%" />
 						</columns>
 						<rows>
 							<row>
-								<label value="Modificar Perfil"/>
-								 <checkbox />
-							</row>
-							<row>
-								<label value="Registrar Solicitud Reservacion"/>
+								<label value="Modificar Perfil" />
 								<checkbox />
 							</row>
 							<row>
-								<label value="Publicar Informacion en Cartelera"/>
+								<label
+									value="Registrar Solicitud Reservacion" />
 								<checkbox />
 							</row>
 							<row>
-								<label value="Revisar Sugerencias"/>
+								<label
+									value="Publicar Informacion en Cartelera" />
 								<checkbox />
-							</row>	      
+							</row>
+							<row>
+								<label value="Revisar Sugerencias" />
+								<checkbox />
+							</row>
 						</rows>
-			        </grid> <!-- FIN GRID DE FUNCIONES-->
-			   	</div><!--FIN DIV GRID DE FUNCIONES-->
-			    <separator spacing="5%"/>
-			    <div>
-					<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar"/>
-			    </div><separator spacing="5%"></separator>
+					</grid><!-- FIN GRID DE FUNCIONES-->
+				</div><!--FIN DIV GRID DE FUNCIONES-->
+				<separator spacing="5%" />
+				<div>
+					<hbox>
+						<button iconSclass="z-icon-floppy-o"
+							class='boton-guardar' label="Registrar" />
+						<space spacing="20%" />
+						<button iconSclass="z-icon-times-circle"
+							class='boton-cancelar' label="Cancelar" />
+					</hbox>
+				</div>
+				<separator spacing="5%"></separator>
 			</div>
 		</div>
 	</window>
