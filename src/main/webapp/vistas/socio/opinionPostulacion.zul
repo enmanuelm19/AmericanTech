@@ -1,0 +1,115 @@
+<?page title="Opinión Postulacion - ZK Admin"?>
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1"  >
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Consultar Postulantes" href="#"/>
+							<label value="Postulantes"/>
+			 		</div>
+		 	</div>
+		
+				<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Información de los Postulantes"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+	 <div align="left">		
+	
+		</div>			
+					
+					<div class='form-pricing' align="center">
+			        <grid   mold="paging" pageSize="15"  width="75%" >
+			            <auxhead  class="z-auxheader-content">
+			               
+			                <auxheader label="Datos de los postulados" align="center" colspan="5" />
+			                
+			            </auxhead>
+			            <columns class="z-grid z-column-content ">
+			                
+			                <column label="IDPostulacion" align="center"  />
+			                <column label="Nombre Postulante" align="center" />
+			                <column label="Foto" align="center"  />
+			                <column label="Acción de socio" align="center"/>
+			                <column label="Tu Opinión"  align="center"/>
+
+			                
+			                
+			            </columns>
+			             <rows>
+						        <row>
+						           <label value="0001"/> <label value="David Cordero"/><image src="assets/portal/check.png"/>
+						           <label value="032"  />
+						           <button iconSclass="z-icon-reorder" class='btn-primary btn-primary' href="../socio/opinion.zul" /> 
+						           
+						             
+						        </row>
+						          <row>
+						           <label value="0002"/> <label value="Adda Mendez"/><image src="assets/portal/check.png"/> 
+						           <label value="098"  /> 
+						           <button iconSclass="z-icon-reorder" class='btn-primary btn-primary' href="../socio/opinion.zul" />
+						             
+						        </row>
+						          <row>
+						           <label value="0003"/> <label value="Ernesto Castillo"/><image src="assets/portal/check.png"/>
+						           <label value="099"  />
+						           <button iconSclass="z-icon-reorder" class='btn-primary btn-primary' href="../socio/opinion.zul" />
+						           
+						             
+						        </row>  
+						        <row>
+						           <label value="0004"/> <label value="Wilfredo Amaro"/><image src="assets/portal/check.png"/>
+						          <label value="065"  />
+						          <button iconSclass="z-icon-reorder" class='btn-primary btn-primary' href="../socio/opinion.zul" />
+						            
+						        </row>
+						         <row>
+						           <label value="0005"/> <label value="Julio Montero"/><image src="assets/portal/check.png"/>
+						           <label value="038"  />
+						           <button iconSclass="z-icon-reorder" class='btn-primary btn-primary' href="../socio/opinion.zul" />
+						             
+						        </row>
+
+
+
+
+ 
+
+
+						   
+						     
+						       
+						        
+						    </rows>
+			
+			        </grid>
+			        </div>
+   				</div>
+
+			</div>
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>
