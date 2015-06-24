@@ -1,0 +1,140 @@
+<?page title="RegistrarSocio" contentType="text/html;charset=UTF-8"?>
+<?page title="Registrar Socio" contentType="text/html;charset=UTF-8"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Socios" href="#" />
+					<label value="Administrar Socio" />
+				</div>
+
+			</div>
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="Registrar Socios" />
+
+				</div>
+				<div class='contenido ' align="center">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="700px"
+							height="auto">
+
+							<grid width="580px">
+
+								<rows class="col-md-12">
+
+									<row class="col-md-11">
+										<div sclass="col-md-12">
+											<label
+												value="Acciones Disponibles" style="float:left" />
+											<combobox id="cmbColor"
+												width="120px" style="margin-left:20px">
+												<comboitem
+													label="Seleccione Accion" />
+												<comboitem label="001" />
+												<comboitem label="002" />
+											</combobox>
+										</div>
+									</row>
+									<row class="col-md-11">
+										<label value="Postulados"
+											style="float:left; margin-left:15px" />
+									</row>
+									<row class="col-md-12">
+
+										<listbox id="box"
+											multiple="false" checkmark="true">
+											<auxhead
+												sclass="category-center">
+												<auxheader
+													colspan="1">
+													<textbox
+														instant="true" width="100%"
+														style="border-radius:0px !important" value=""
+														onChange="@command('changeFilter')" />
+												</auxheader>
+												<auxheader
+													colspan="1">
+
+													<textbox
+														instant="true" width="100%" value=""
+														style="border-radius:0px !important"
+														onChange="@command('changeFilter')" />
+												</auxheader>
+
+												<auxheader
+													colspan="1">
+													<textbox
+														instant="true" width="100%"
+														style="border-radius:0px !important" value=""
+														onChange="@command('changeFilter')" />
+												</auxheader>
+												<auxheader
+													colspan="1">
+													<textbox
+														instant="true" width="100%"
+														style="border-radius:0px !important" value=""
+														onChange="@command('changeFilter')" />
+												</auxheader>
+
+
+											</auxhead>
+											<listhead>
+												<listheader
+													label="Cèdula" />
+												<listheader
+													label="Nombre" />
+												<listheader
+													label="Apellido" />
+												<listheader
+													label="Email" />
+											</listhead>
+											<listitem>
+												<listcell
+													label="20111555" />
+												<listcell label="Marco" />
+												<listcell
+													label="Rodriguez" />
+												<listcell
+													label="marco@cca.com" />											
+											</listitem>
+											</listbox>
+
+							</row>
+
+							<row class="col-md-11 col-centered">
+							<button label="Siguiente" style="margin:8px;float:right"
+												class='boton-guardar' href="/vistas/socio/administrarSocio/administrarFichaSocio.zul"/>
+							</row>
+
+							</rows>
+							</grid>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+
+		</vlayout>
+	</hlayout>
+</zk>
