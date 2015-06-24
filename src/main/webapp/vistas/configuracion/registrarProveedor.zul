@@ -18,8 +18,8 @@
 	<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="540px" closable="true">
 		<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-puzzle-piece"/>
-					    <a label="Admin. del Sistema" href="#"/>
+							<span sclass="home-icon z-icon-cogs" />
+					    	<a label="Configuracion" href="#"/>
 							<label value="Registrar Proveedor"/>
 					</div>
  
@@ -52,7 +52,7 @@
 										<div>
 											Dirección
 											<textbox type="text"
-												value="" width="259px" tabindex="2"/>
+												value="" width="272px" tabindex="2"/>
 										</div>
 										<div>
 											Telfono
@@ -65,7 +65,7 @@
 										<vlayout>
 											Email
 											<textbox type="text"
-												value="" width="259px" tabindex="2"/>
+												value="" width="272px" tabindex="2"/>
 										</vlayout>
 									</row>
 			

@@ -10,8 +10,8 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Evento" href="#" />
+					<span sclass="home-icon z-icon-cogs" />
+					<a label="Configuracion" href="#"/>
 					<label value="Patrocinantes"/>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 				<separator spacing="30px"/>
 				<space/><space/>
 				<div class='form-pricing' align="left" width="850px">
-				<div apply="controllers.ControllerPatrocinante" xmlns:w='client'>
+				<div apply="controllers.ControladorModalAbrir" xmlns:w='client'>
 					<button id="btnPatrocinatesRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 			
