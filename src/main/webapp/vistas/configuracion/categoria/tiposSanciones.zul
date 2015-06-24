@@ -1,0 +1,106 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-cogs" />
+					<a label="Categoria" href="#" />
+					<label value="Tipo de Sanción"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center">
+			
+				<div sclass="page-header" align="left">
+				    <label value="Tipo de Sanciones"/>
+		  		</div>
+				
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="80%" height="auto">
+				<div apply="controllers.ControllerRegSancion" xmlns:w='client'>
+					<button id="btnRegistrarsancion" label="Registrar" iconSclass="z-icon-floppy-o"  class='btn boton-guardar'/>
+				</div>
+			
+				<separator spacing="30px"/>
+				
+				<div class="contenedor">
+					<div align="left">
+						<div sclass="page-header">
+				    		<label value="Lista de Tipos de Saciones"/>
+		  				</div>
+					</div>
+					<separator spacing="20px"/>
+					<grid emptyMessage="No se encuentran Sanciones Registradas" mold="paging"
+							pageSize="3" height="auto">
+						<columns>
+							<column label="Código" align="center" />
+							<column label="Descripción" align="center" />
+							<column label="Acciones" align="center"/>
+						</columns>
+						<rows>
+							
+							<row>
+								<label value="001"/>
+								<label value="Suspensión Definitiva" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="002"/>
+								<label value="Multa" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+								<row>
+								<label value="003"/>
+								<label value="Servicio Comunitario" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+								<label value="004"/>
+								<label value="Suspensión Temporal" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+								<label value="020"/>
+								<label value="Suspensión Definitiva" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+								<label value="004"/>
+								<label value="Donación" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	
+</zk>

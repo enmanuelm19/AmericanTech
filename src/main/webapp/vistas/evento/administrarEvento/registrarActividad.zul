@@ -12,9 +12,9 @@
 		   
 		   	<div sclass="breadcrumbs">
 		   		<div sclass="breadcrumb">
-		   			<span sclass="home-icon z-icon-user" />
+		   			<span sclass="home-icon z-icon-calendar" />
 		   				<a label="Eventos" href="#" />
-		   			 	  <label value="Registrar Actividad"/>
+		   			 	  <label value="Planificar Evento"/>
 		   		</div>
 		   	</div>
 		   	
@@ -31,28 +31,22 @@
    				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='rcorners6' width="680px" height="490px">
-        			
+        			<div class='form-pricing' width="690px" height="680px">
+        			<div align="left">
+        				<div class="encabezado">
+        					Datos Básicos
+        				</div>
+        				<div class="linea-two">
+        				
+        				</div>
+        			</div>
+        			<separator/><separator/>
         			<grid width="620px">
          
 			            	<rows class="col-md-11" >
 			            	
 			           
-			                  <row class="col-md-11">
-			                  <hlayout>
-			                  <div>
-			                  	<label  width="140px" value= "Código" />
-			                  	</div>
-			                  	<separator/>
-			                  	<separator/><separator/>
-			                  	<separator/><separator/>
-			                  	<separator/><separator/>
-			                  	<separator/><separator/>
-			              		  <div>
-			              		   	 <textbox    type="text" value="" width="140px" />
-			                      </div>
-			                     </hlayout> 			                      
-			                  </row>
+			                
 			                    <row class="col-md-11">
 			                    <vlayout>
 						           <separator/><separator/>
@@ -60,25 +54,83 @@
 			              			<div>
 			                  			<label   width="140px" value= "Descripción"/> 
 			                  		</div>
-			                  		<separator/>
-			                  		<separator/>
-			                  		<separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/>
 			              		  	<div>
-			              		   	  <textbox  type="text" rows="2" value="" width="400px" height="80px" tabindex="11" />
+			              		  	
+			              		   	  <textbox  type="text" rows="2" value="" width="440px" height="80px" tabindex="11" id="descripcion"/>
 			                      	</div>
 			                      	</hlayout>
 								</vlayout>
 								</row>
+								
+									<row class="col-md-11">
+								<vlayout>
+								<separator/><separator/>
+			              			<hlayout>	       			
+			              			<div>
+			                  			<label   width="140px" value= "Proveedor"/> 
+			                  		</div>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			                  				<separator/><separator/>
+			              		  	<div>
+			         
+							<combobox width="240px">
+								 <comboitem label="Finaciada por el Club"/>
+						   		 <comboitem label="Polar"/>
+						   		 <comboitem label="Tamanaco"/>
+						   		 <comboitem label="Nike"/>
+						   		 <comboitem label="Hp"/>
+							</combobox>
+							  	</div>	
+							  	
+							  	</hlayout>
+							  	</vlayout>
+							</row>
+								
 							<row class="col-md-11">
 								<vlayout>
 								<separator/><separator/>
 			              			<hlayout>	       			
 			              			<div>
-			                  			<label   width="140px" value= "Tipo"/> 
+			                  			<label   width="140px" value= "Tipo de Instalación"/> 
 			                  		</div>
 			                  				<separator/><separator/>
 			                  				<separator/><separator/>
-			                  				<separator/><separator/>
+			                  				
+			                  			
+			              		  	<div>
+			         
+							<combobox width="240px">
+								<comboitem label="Salon de Fiestas"/>
+						   		 <comboitem label="Caney Churuguara"/>
+						   		 <comboitem label="Piscina"/>
+						   		 <comboitem label="Campo de futbol"/>
+						   		 <comboitem label="Caney Cardenal"/>
+							</combobox>
+							  	</div>	
+							  	
+							  	</hlayout>
+							  	</vlayout>
+							</row>
+							
+							<row class="col-md-11">
+								<vlayout>
+								<separator/><separator/>
+			              			<hlayout>	       			
+			              			<div>
+			                  			<label   width="140px" value= "Tipo de Actividad"/> 
+			                  		</div>
 			                  				<separator/><separator/>
 			                  				<separator/><separator/>
 			                  				<separator/><separator/>
@@ -109,72 +161,82 @@
 						                  		<separator/><separator/>
 						                  		<separator/><separator/>
 						                  		<separator/><separator/>
-						                  		<separator/>
-								                 <listbox id="box1" width="140px" height="150px">
+						                  		<separator/><separator/>
+						                  		<separator/><separator/>
+			                  					<separator/><separator/>
+			                  					<separator/><separator/>
+			                  					<separator/><separator/>
+								                 <listbox id="box1" width="190px" height="200px">
 												       	 <listhead sizable="true">
-												            <listheader label="Tareas" sort="auto"></listheader>
+												            <listheader align="center" label="Tareas" sort="auto"></listheader>
 												        </listhead>
 												       
 												            <listitem>
-												                <listcell label="Futbol"/> 
+												                <listcell label="Mantenimiento"/> 
 												            </listitem>
 												            <listitem>
-												                <listcell label="Softball"/> 
+												                <listcell label="Contratar Sonido"/> 
 												            </listitem>
 												            <listitem>
-												                <listcell label="Natacion"/> 
+												                <listcell label="Contratar Animador"/> 
 												            </listitem>
 												            <listitem>
-												                <listcell label="Tenis"/> 
+												                <listcell label="Instalar Mesa"/> 
 												            </listitem>
 												             <listitem>
-												                <listcell label="Carrera 10Km"/> 
+												                <listcell label="Decorar Ambiente"/> 
 												            </listitem>
 												         	<listitem>
-												                <listcell label="Bolas Criollas"/> 
+												                <listcell label="Decoracion Externa"/> 
 												            </listitem>
 												            
 												  </listbox>
-												  <separator/><separator/><separator/><separator/><separator/><separator/>
+												  <separator/>
 			                      				<vlayout>
-			                      				<separator/><separator/>
+			                      				
+			                      				<div>
+			                      				<button  iconSclass="z-icon-edit"  class='btn-primary btn-primary'/>
+			                      				</div>
+			                      				<div>
+			                      				<separator/><separator/><separator/><separator/><separator/>
+			                      				</div>
 			                      				<div>
 			                      				<button  iconSclass="z-icon-arrow-right"  class='btn-primary btn-primary'/>
 			                      				</div>
-			                      				<separator/>
+			                      				
 			                      				<div>
 			                      				<button  iconSclass="z-icon-arrow-left"  class='btn-primary btn-primary'/>
 			                      				</div>
 			                      				</vlayout>
 			                      				
 			                      				
-			                      				
+			                      					<separator/>
 						                  		
-										<listbox id="box2" width="140px" height="150px">
+										<listbox  id="box2" width="190px" height="200px" >
 										        <listhead sizable="true" >
-										            <listheader label="Tareas por Actividad"  sort="auto"   />
+										            <listheader align="center" label="Tareas por Actividad"  sort="auto"   />
 										        </listhead>
 										        <listitem>
-										            <listcell label="Natacion" />
+										            <listcell label="Decorar Ambiente" />
 										        </listitem>
 										        <listitem>
-										            <listcell label="Futbol" />
+										            <listcell label="Mantenimiento" />
 										        </listitem>
 										         <listitem>
-										            <listcell label="Tenis" />
+										            <listcell label="Contratar Sonido" />
 										        </listitem>
 										
 										   </listbox>
 										   </hlayout>	
 										   </vlayout>			
 									</row>
-
+							
 							    <row align="center">
 							     <vlayout>
-							    <separator/><separator/>
+							    <separator/><separator/><separator/><separator/>
 			                  	<hlayout width="">
 			                  	
-			                  	 <separator/><separator/><separator/><separator/><separator/><separator/>
+			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
 			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
 			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
 			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
@@ -183,12 +245,13 @@
 			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
 			                  	
 			                  		<separator spacing="150px"></separator>
+			                  		
 			                  		<div>
 
-			                    		<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar" width="85px"/>
+			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="85px"/>
 			                    	</div><separator spacing="180px"></separator>
 			                  		<div>
-			                    		<button  iconSclass="z-icon-times"  class='btn-primary boton-guardar' label="Salir" width="85px"/>
+			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="85px"/>
 			                     	</div><separator spacing="180px"></separator>
 			                  	</hlayout>  
 			                  	
