@@ -11,24 +11,24 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Club" href="#" />
-					<label value="Visita" />
+					<span sclass="home-icon z-icon-home" />
+					<a label="Visitas" href="#" />
+					<label value="Información De Las Visitas" />
 				</div>
 			</div>
 <div class='contenedor'>
 <div sclass="page-header">
-					<label value="VISITA" />
+					<label value="Visita" />
 				</div>
 				<div class='contenido'>
 					<div class="col-md-12 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='rcorners6 col-md-12 col-centered'
-							width="100%" height="350px">
+						<div class='form-pricing col-md-12 col-centered'
+							width="100%" height="100%">
 							<div>
-								<button id="btnvisitaregistrar"
+								<button id="btnVisitaRegistrar"
 									iconSclass="z-icon-floppy-o" class='btn-primary boton-guardar'
 									label="Registrar" />
 							</div>
@@ -36,7 +36,9 @@
 							Listar Visitas
 							<separator spacing="10px" />
 							<div class="col-md-12">
-								<grid style="border:1px solid white "
+								<grid emptyMessage="No se encuentran visitas registradas" mold="paging"
+							                 pageSize="2"
+								style="border:1px solid white "
 									width="100%">
 									<columns>
 										<column label="N° Carnet"
