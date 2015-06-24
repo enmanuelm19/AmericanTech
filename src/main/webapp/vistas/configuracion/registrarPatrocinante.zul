@@ -74,8 +74,8 @@
 			       
 			        <separator spacing="40px"/>
 			        <div>
-						<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar"/>
-						<button  iconSclass="z-icon-times"  class='btn-primary boton-guardar' label="Cancelar"/>
+						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
+						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
 			        </div><separator spacing="80px"></separator>
 				</div>
 			</div>
