@@ -4,7 +4,9 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" class='contenedor'>
-	<window border="none" height="70%" width="40%" title=" " closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<window border="none" height="70%" width="40%" title=" "
+		closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<div sclass="contenedor">
 			<div id="contPantalla" align="center">
 				<div sclass="page-header" align="left">
@@ -14,7 +16,7 @@
 				<div id="formTipoEvento" width="80%"
 					class='form-pricing' align="left">
 					<div class="encabezado">
-						<label value="Datos Basicos"/>
+						<label value="Datos Basicos" />
 					</div>
 					<div class='linea-two'></div>
 					<div align="left">
@@ -26,13 +28,20 @@
 								<row>
 									<vbox>
 										Codigo
-										<textbox id="txtRegTipoEventCodigo"	width="70%" />
+										<hbox>
+											<textbox
+												id="txtRegTipoEventCodigo" width="100%" />
+											<button
+												iconSclass="z-icon-search blue" class="btn-link"
+												tooltiptext="Buscar" />
+										</hbox>
 										Descripcion
-										<textbox id="txtRegTipoEventDescripcion" width="150%" />
+										<textbox
+											id="txtRegTipoEventDescripcion" width="150%" />
 									</vbox>
 								</row>
 								<row>
-									
+
 								</row>
 
 
@@ -48,7 +57,8 @@
 								<space spacing="5%" />
 								<div apply="controllers.TipoEvento">
 									<separator spacing="5%" />
-									<button id="btnRegTipoEventoCancelar" iconSclass="z-icon-times"
+									<button
+										id="btnRegTipoEventoCancelar" iconSclass="z-icon-times-circle"
 										class='boton-cancelar' label="Cancelar" />
 								</div>
 
