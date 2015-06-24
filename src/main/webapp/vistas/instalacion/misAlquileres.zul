@@ -1,0 +1,133 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Evento" href="#" />
+					<label value="Alquileres"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center">
+			
+				<div sclass="page-header" align="left">
+				    <label value="Alquileres"/>
+		  		</div>
+				
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="850px">
+				<div apply="controllers.ControllerProveedor" xmlns:w='client'>
+					<button id="btnProveedoresRegistrar" label="Solicitar" iconSclass="z-icon-floppy-o"  href="solicitudAlquiler.zul" class='boton-guardar'/>
+				</div>
+			
+				<separator spacing="30px"/>
+				
+				<div class="contenedor">
+					<div align="left">
+						<div sclass="page-header">
+				    		<label value="Mis Alquileres"/>
+		  				</div>
+					</div>
+					<separator spacing="20px"/>
+					<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+							pageSize="2">
+						<columns>
+							<column width="40px" />
+							<column label="Nro Solicitud" align="center" />
+							<column label="Fecha Inicio" align="center" />
+							<column label="Fecha Fin" align="center"/>
+							<column label="Hora Inicio" align="center"/>
+							<column label="Hora Fin" align="center"/>
+							<column align="center" label="Acciones" />
+						</columns>
+						<rows>
+							<row>
+                    			 <detail open="false" fulfill="onOpen">
+                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+										pageSize="2">
+									<columns>
+										<column label="Codigo Instalacion" align="center" />
+										<column label="Nombre" align="center" />
+										<column align="center" label="Acciones" />
+									</columns>
+									<rows>
+										<row>
+											<label value="0001"/>
+											<label value="Caney" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+										<row>
+											<label value="0002"/>
+											<label value="Cancha" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+									</rows>
+									</grid>
+                   				 </detail>
+                   				 
+								<label value="0001"/>
+								<label value="05-jun-2015" />
+								<label value="05-jun-2015"/>
+								<label value="11:00:00"/>
+								<label value="15:00:00"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+                    			 <detail open="false" fulfill="onOpen">
+                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+										pageSize="2">
+									<columns>
+										<column label="Codigo Instalacion" align="center" />
+										<column label="Nombre" align="center" />
+										<column align="center" label="Acciones" />
+									</columns>
+									<rows>
+										<row>
+											<label value="0001"/>
+											<label value="Caney" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+									</rows>
+									</grid>
+                   				 </detail>
+                   				 
+								<label value="0001"/>
+								<label value="05-jun-2015" />
+								<label value="05-jun-2015"/>
+								<label value="11:00:00"/>
+								<label value="15:00:00"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	
+</zk>
