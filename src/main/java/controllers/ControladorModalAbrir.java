@@ -49,5 +49,30 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	
 	}
 	
+	@Listen("onClick = #btnTipoDesvinculacionRegistrar")
+    public void showModalTipoDesvinculacion(Event e) {
+        //create a window programmatically and use it as a modal dialog.
+        Window window = (Window)Executions.createComponents(
+                "registrarTipoDesvinculacion.zul", null, null);
+        window.doModal();
+    }
+	
+	@Listen("onClick = #btnPatrocinatesRegistrar")
+    public void showModalPatrocinante(Event e) {
+        //create a window programmatically and use it as a modal dialog.
+        Window window = (Window)Executions.createComponents(
+                "registrarPatrocinante.zul", null, null);
+        window.doModal();
+    }
+	
+
+	@Listen("onClick = #btnProveedoresRegistrar")
+    public void showModalProveedor(Event e) {
+        //create a window programmatically and use it as a modal dialog.
+        Window window = (Window)Executions.createComponents(
+                "registrarProveedor.zul", null, null);
+        window.doModal();
+    }
+	
 }
 
