@@ -11,169 +11,151 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Club" href="#" />
-					<label value="Registrar Junta Directiva" />
+					<span sclass="home-icon z-icon-cogs" />
+					<a label="Junta Directiva" href="#" />
+					<label value="Información De La Juta Directiva" />
 				</div>
 			</div>
 			<div class='contenedor'>
 				<div sclass="page-header">
-					<label value="REGISTRAR JUNTA DIRECTIVA" />
+					<label value="Registrar Junta Directiva" />
 				</div>
 				<div class='contenido'>
 					<div class="col-md-8 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='rcorners6' width="105%"
-							height="950px">
-							<div class='rcorners6' width="100%"
-								height="18%">
-								Datos Basicos
-								<separator spacing="3%" />
-								Periodo:
-								<separator spacing="2%" />
-								<div class="col-md-6">
-									<label value="Fecha inicio:" />
-									<datebox />
-								</div>
-								<div class="col-md-6">
-									<label value="Fecha Fin:" />
-									<datebox />
-								</div>
-							</div>
+						<div class='form-pricing' width="105%"
+							height="92%">
+							<div class='encabezado'>Datos Básicos</div>
+							<div class='linea-two'></div>
+
 							<separator spacing="3%" />
-							<div class='rcorners6' width="100%"
-								height="70%">
-								Miembros
-								<separator spacing="1%" />
-								<div class='rcorners6' width="100%"
-									height="46%">
-									<div class="row" align="center">
-										<div class="col-md-6">
-											<separator spacing="1%" />
-											
-											<image
-												src="assets/avatars/avatar2.png" width="40%" height="40%" />
-										</div>
-										<div class="col-md-6"
-											align="left">
-											<separator spacing="1%" />
-											<hlayout>
-												<label value="Cédula:" />
-												<separator />
-												<textbox width="100%"  />
-												<button
-													iconSclass="z-icon-search blue" class='btn-link'
-													width="1%" />
-											</hlayout>
-											<separator spacing="4%" />
-											<hlayout>
-												<label value="Nombre:" />
-												<textbox width="100%" />
-											</hlayout>
-											<separator spacing="4%" />
-											<hlayout>
-												<label
-													value="Apellido:" />
-												<textbox width="100%" />
-											</hlayout>
-											<separator spacing="4%" />
-											<hlayout>
-												<label value="Cargo:" />
-												<separator />
-												<separator />
-												<combobox width="93%">
-													<comboitem
-														label="Presidente" />
-													<comboitem
-														label="Vicepresidente" />
-													<comboitem
-														label="Vocero" />
-												</combobox>
-											</hlayout>
-										</div>
-									</div>
-									<separator spacing="2%" />
-									<div class="row" align="center">
-										<button
-											iconSclass="z-icon-plus-circle"
-											class='btn-primary boton-guardar' label="Añadir" />
-									</div>
-								</div>
-								<separator spacing="1%" />
-								<div class='rcorners6' width="100%"
-									height="42%">
-									Listar Miembros
+							Periodo:
+							<separator spacing="2%" />
+							<div class="col-md-6">
+								<label value="Fecha inicio:" />
+								<datebox />
+								<separator spacing="5%" />
+							</div>
+							<div class="col-md-6">
+								<label value="Fecha Fin:" />
+								<datebox />
+								<separator spacing="5%" />
+							</div>
+							<div class='encabezado'>Miembros</div>
+							<div class='linea-two'></div>
+							<separator spacing="1%" />
+							<div class="row" align="center">
+								<div class="col-md-6">
 									<separator spacing="1%" />
-									<div class="col-md-12">
-										<grid
-											style="border:1px solid white ">
-											<columns>
-												<column label="Cédula"
-													sort="auto" align="center"/>
-												<column label="Nombre"
-													sort="auto" align="center"/>
-												<column label="Apellido"
-													sort="auto" align="center"/>
-												<column label="Cargo"
-													sort="auto" align="center"/>
-												<column label="Foto" align="center"/>
-												<column
-													label="Eliminar" align="center"/>
-											</columns>
-											<rows>
-												<row>
-													<label
-														value="21125730" />
-													<label
-														value="Anthony" />
-													<label
-														value="Rodriguez" />
-													<label
-														value="Presidente" />
-													<image
-														src="assets/avatars/avatar2.png" />
-													<button
-														iconSclass="z-icon-trash-o red" class='btn-link' />
-												</row>
-												<row>
-													<label
-														value="12342673" />
-													<label
-														value="Romulo" />
-													<label
-														value="Dominguez" />
-													<label
-														value="Vocero" />
-													<image
-														src="assets/avatars/avatar2.png" />
-													<button
-														iconSclass="z-icon-trash-o red" class='btn-link' />
-												</row>
-												<row>
-													<label
-														value="10987234" />
-													<label value="Juan" />
-													<label
-														value="Perez" />
-													<label
-														value="Presidente" />
-													<image
-														src="assets/avatars/avatar2.png" />
-													<button
-														iconSclass="z-icon-trash-o red" class='btn-link' />
-												</row>
-											</rows>
-										</grid>
-									</div>
+									<image
+										src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
+										width="50%" height="50%" />
+								</div>
+								<div class="col-md-6" align="left">
+									<separator spacing="1%" />
+									<hlayout>
+										<label value="Cédula:" />
+										<separator />
+										<textbox width="100%" />
+										<button
+											iconSclass="z-icon-search blue" class='btn-link' width="1%" />
+									</hlayout>
+									<separator spacing="4%" />
+									<hlayout>
+										<label value="Nombre:" />
+										<textbox width="100%" />
+									</hlayout>
+									<separator spacing="4%" />
+									<hlayout>
+										<label value="Apellido:" />
+										<textbox width="100%" />
+									</hlayout>
+									<separator spacing="4%" />
+									<hlayout>
+										<label value="Cargo:" />
+										<separator />
+										<separator />
+										<combobox width="93%">
+											<comboitem
+												label="Presidente" />
+											<comboitem
+												label="Vicepresidente" />
+											<comboitem label="Vocero" />
+										</combobox>
+									</hlayout>
 								</div>
 							</div>
-							<separator spacing="2%">
-									</separator>
+							<separator spacing="2%" />
+							<div class="row" align="center">
+								<button iconSclass="z-icon-plus-circle"
+									class='btn-primary boton-guardar' label="Añadir" />
+							</div>
+							<separator spacing="1%" />
+							<div class='encabezado'>
+								Listar Miembros
+							</div>
+							<div class='linea-two'></div>
+							<separator spacing="1%" />
+							<div class="col-md-12">
+								<grid
+									emptyMessage="No se encuentran miembros registrados"
+									mold="paging" pageSize="2" style="border:1px solid white ">
+									<columns>
+										<column label="Cédula"
+											sort="auto" align="center" />
+										<column label="Nombre"
+											sort="auto" align="center" />
+										<column label="Apellido"
+											sort="auto" align="center" />
+										<column label="Cargo"
+											sort="auto" align="center" />
+										<column label="Foto"
+											align="center" />
+										<column label="Eliminar"
+											align="center" />
+									</columns>
+									<rows>
+										<row>
+											<label value="21125730" />
+											<label value="Anthony" />
+											<label value="Rodriguez" />
+											<label value="Presidente" />
+											<image
+												src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
+												width="30%" height="30%" />
+											<button
+												iconSclass="z-icon-trash-o red" class='btn-link' />
+										</row>
+										<row>
+											<label value="12342673" />
+											<label value="Romulo" />
+											<label value="Dominguez" />
+											<label value="Vocero" />
+											<image
+												src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
+												width="30%" height="30%" />
+											<button
+												iconSclass="z-icon-trash-o red" class='btn-link' />
+										</row>
+										<row>
+											<label value="10987234" />
+											<label value="Juan" />
+											<label value="Perez" />
+											<label value="Presidente" />
+											<image
+												src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
+												width="30%" height="30%" />
+											<button
+												iconSclass="z-icon-trash-o red" class='btn-link' />
+										</row>
+									</rows>
+								</grid>
+							</div>
+							<separator spacing="2%"></separator>
 							<div class="row" align="center">
 								<hlayout width="">
-									
 									<div>
 										<button
 											iconSclass="z-icon-floppy-o"
@@ -192,8 +174,8 @@
 									<separator />
 									<div>
 										<button
-											iconSclass="z-icon-times-circle"
-											class='btn-primary boton-guardar' label="Cancelar" />
+											iconSclass="z-icon-times-circle" class='boton-cancelar'
+											label="Cancelar" />
 									</div>
 								</hlayout>
 
