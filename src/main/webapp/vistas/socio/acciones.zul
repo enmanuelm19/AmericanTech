@@ -13,7 +13,7 @@
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 							<span sclass="home-icon z-icon-user"/>
-					    <a label="" href="#"/>
+					    <a label="Socio" href="#"/>
 					   	<label value="Acciones"/>
 					</div>
 			</div>
@@ -35,8 +35,8 @@
       	<grid height="100px">
       	 <rows>
       	 <row>
-      	<div>
-    		<button   iconSclass="z-icon-floppy-o"  class='boton-guardar'  label="Agregar Acción" />
+      	<div apply="controllers.ControllerAcciones" xmlns:w='client'>
+    		<button   id="btnRegAcciones" iconSclass="z-icon-floppy-o"  class='boton-guardar'  label="Agregar"/>
      	</div>
      	</row>
      	<row>
@@ -62,7 +62,7 @@
 		  				</div>
 					</div>
 				
-  		<grid height="330px" emptyMessage="No se encuentran acciones registradass" mold="paging"
+  		<grid height="330px" emptyMessage="No se encuentran acciones registradas" mold="paging"
 							pageSize="2">
        <columns>
         	    <column label="# Acción" width="60px" align="center" />
@@ -83,7 +83,7 @@
 													
 				</div>
 				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular"/>								
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" href="/vistas/socio/desvincularAccion.zul"/>								
 				</div> 
                              
                  </row>
@@ -99,7 +99,7 @@
 													
 				</div>
 				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular"/>								
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" href="/vistas/socio/desvincularAccion.zul"/>								
 				</div> 
             </row>
          <row>
@@ -112,7 +112,7 @@
 													
 				</div>
 				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular"/>								
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" href="/vistas/socio/desvincularAccion.zul"/>								
 				</div> 
             </row>
         </rows>

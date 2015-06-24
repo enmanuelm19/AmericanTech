@@ -1,91 +1,95 @@
-<?page title="Dashboard - ZK Admin"?>
+<?page title="Dashboard - ZK Admin" contentType="text/html;charset=UTF-8"?>
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" class='contenedor'>
-	<include src="../../layouts/navbar.zul"/>             
-	<hlayout id="main" spacing="0">
-		<include src="../../layouts/sidebar.zul"/>    
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
-					    <a label="Configuración" href="#"/>
-					    <a label="Categorias" href="#"/>
-							<label value="Tipo de Sugerencia"/>
-					</div>
- 
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-cogs" />
+					<a label="Categoria" href="#" />
+					<label value="Tipo de Sugerencia" />
+				</div>
+
 			</div>
+			<div class='contenedor' align="center">
+				<div sclass="page-header" align="left">
+					<label value="TIPO DE SUGERENCIA" />
+				</div>
 
-		<div class='contenedor'>
-	 <div sclass="page-header">
-	    <label value="Registrar Tipo de Sugerencia"/>
-	  
-	  </div>
-		   <div class='contenido '   align="center"   >
-   				 <div class="col-md-8 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
-        			<div class='form-pricing' width="500px" height="180px">
-  			            		<div align ="left">	
-	                       			<div  class="encabezado">
-                       				DATOS BASICOS                           									                                                				                             				                             					
-                       				</div>		  			            		
-	                       			<div align="left" class="linea-two">
-                       					                                                				                             				                             					
-                       				</div>
-								<separator spacing="15px"></separator>	            		
-								</div>	
-					
-        			<grid width="580px" >
-          
-	            	<rows class="col-md-12">
-			     			    
-			               
-			                  <row class="col-md-11">
-			              		  <div width="80px"> 	Descripción </div>
-			              		   
-			              		   	
-			              <div>
-			              <textbox type="text" value="" width="265px" />
-			              <separator spacing="15px"></separator>	
-			                  </div>  		 
-			            
-			              		  
-			              		   	 
-			                      
-			                  </row>
-			               	
-			                  <row class="col-md-2 col-md-offset-2">
-			                  	<hlayout>
-			                 
-			                  	  		<div >
-			                    		<button   iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
-			                    	</div>
-			                    	<div >
-			                    		<button    iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
-			                    	</div>
-			                  	</hlayout>
-			             		
-			                 </row>
-			 			
-			            </rows>
-			        </grid>
-			        </div>
-   				 </div>
+				<div align="center" sclass="form-pricing"
+					width="600px"><!-- INICIO DIV GRID DE TIPO SUGERENCIA-->
+					<div apply="controllers.ControllerTipoSugerencia"
+						xmlns:w='client' align="left">
+						<button id="btnRegTipoSugerencia" label="Agregar"
+							iconSclass="z-icon-floppy-o" class='boton-guardar'/>
+					</div>
+					<!-- GRID DE TIPO SUGERENCIA-->
+					<grid mold="paging" pageSize="8" width="450px" style="margin-top:15px">
+						<auxhead  class="z-auxheader-content">
+							<auxheader align="left" colspan="3">
+							
+							<label value="Tipos De Sugerencias" />
+							</auxheader>
+						</auxhead>
+						<columns class="z-grid z-column-content ">
+							<column label="Id Sugerencia"
+								align="center" width="150px" />
+							<column label="Nombre Sugerencia"
+								align="center" width="150px" />
+							<column label="Acciones" align="center"
+								width="150px" />
+						</columns>
+						<rows>
+							<row>
+							    <label value="001" />
+								<label value="Sugerencia1" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							<row>
+							   <label value="002" />
+								<label value="Sugerencia2" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							<row>
+							    <label value="003" />
+								<label value="Sugerencia3" />
+								<div>
 
-	</div>		
-			
-		</div>		
-			
-			
-			
-			
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							<row>
+							    <label value="004" />
+								<label value="Suegerencia4" />
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+						</rows>
+					</grid>
+					<!-- FIN GRID DE TIPO SUGERENCIA-->
+					<separator spacing="20px" />
+									</div><!--FIN DIV GRID DE TIPO SUGERENCIA-->
+		 </div>
 		</vlayout>
 	</hlayout>
-
-
 </zk>
