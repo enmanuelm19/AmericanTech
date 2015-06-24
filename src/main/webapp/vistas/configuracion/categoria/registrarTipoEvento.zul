@@ -12,10 +12,11 @@
 				</div>
 
 				<div id="formTipoEvento" width="80%"
-					class='form-pricing'>
-					<div align="left" sclass="page-header linea-two">
+					class='form-pricing' align="left">
+					<div class="encabezado">
 						<label value="Datos Basicos"/>
 					</div>
+					<div class='linea-two'></div>
 					<div align="left">
 						<grid width="100%">
 							<columns>

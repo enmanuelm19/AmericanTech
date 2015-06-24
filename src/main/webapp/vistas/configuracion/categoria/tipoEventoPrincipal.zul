@@ -28,10 +28,11 @@
 					<button id="btnRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 		
-				<div class='contenido' align="center" width="80%">
-					<div align="left" class='page-header linea-two'>
+				<div class='contenido' align="left" width="80%">
+					<div align="left" class='encabezado'>
 				    		<label value="Informacion"/>
 					</div>
+					<div class="linea-two"></div>
 					<separator spacing="1%"/>
 					<grid mold="paging" pageSize="15" width="" height="100%">
 						<columns class="z-grid z-column-content">
