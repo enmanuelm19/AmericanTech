@@ -1,0 +1,145 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk>
+	<include src="/vistas/layouts/navbar.zul"/>
+	<hlayout spacing="0">
+		<include src="/vistas/layouts/sidebar.zul"/>
+		
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-home"/>
+					    <a label="Instalaciones" href="#"/>
+							<label value="Administrar Alquileres"/>
+					</div>
+ 			</div>
+ 			<div class='contenedor' align="center">
+ 				<div class='page-header' align="left">
+ 					<label value="Administrar Alquileres"/>
+ 				</div>
+ 			
+ 				<div class='form-pricing'  width="60%">
+ 					<div align="left">
+		  						<div class='encabezado'>
+		  							<label value="Reservaciones"/>
+		  						</div>
+		  					</div>
+		  					<div class='linea-two'></div>
+		  					<div>
+ 						<grid mold="paging" pageSize="8">
+ 							<columns menupopup="auto">
+ 								<column label="Numero de Reservacion" align="center" sort="auto" width="30%"/>
+ 								<column label="Socio" align="center"/>
+ 								<column label="Acciones" align="center" width="20%"/>
+ 							</columns>
+ 							<rows>
+ 								<row>
+ 									<label value="0001"/>
+ 									<label value="Fidel Aliaga"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0002"/>
+ 									<label value="Pedro Perez"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0003"/>
+ 									<label value="Juan Perez"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0004"/>
+ 									<label value="Manuel Hernadez"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0005"/>
+ 									<label value="Jose Rivero"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 							</rows>
+ 						</grid>
+ 					</div>
+ 					
+ 					
+ 				</div>
+ 				<separator spacing="5%"/>
+ 				<div class="form-pricing" width="60%">
+ 					<div align="left">
+		  						<div class='encabezado'>
+		  							<label value="Alquileres"/>
+		  						</div>
+		  					</div>
+		  					<div class='linea-two'></div>
+		  					<div>
+ 						<grid mold="paging" pageSize="5">
+ 							<columns menupopup="auto">
+ 								<column label="Numero de Reservacion" align="center" sort="auto" width="30%"/>
+ 								<column label="Socio" align="center"/>
+ 								<column label="Cancelar" align="center" width="20%"/>
+ 							</columns>
+ 							<rows>
+ 								<row>
+ 									<label value="0001"/>
+ 									<label value="Fidel Aliaga"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0002"/>
+ 									<label value="Pedro Perez"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0003"/>
+ 									<label value="Juan Perez"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0004"/>
+ 									<label value="Manuel Hernadez"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0005"/>
+ 									<label value="Jose Rivero"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
+ 									</div>
+ 								</row>
+ 							</rows>
+ 							
+ 						</grid>
+ 					</div>
+ 				</div>
+ 				<separator spacing="2%"/>
+ 			</div>
+		</vlayout>
+	</hlayout>
+</zk>
