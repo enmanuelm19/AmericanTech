@@ -1,4 +1,4 @@
- <?page title="Dashboard - ZK Admin"?>
+<?page title="Dashboard - ZK Admin"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
@@ -14,37 +14,33 @@
 					<div sclass="breadcrumb">
 							<span sclass="home-icon z-icon-user"/>
 					    <a label="" href="#"/>
-					   
-							<label value="Acciones"/>
+					   	<label value="Acciones"/>
 					</div>
- 
 			</div>
-
-		<div class='contenedor'>
-	
- 	 <div sclass="page-header">
+			
+<div class='contenedor'>
+ 	<div sclass="page-header" height="50px" >
 	    <label value="Acciones"/>
-	  
-	  </div>
-	  
-	 <div class="col-md-8 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-   
-   	<div class='rcorners6' width="600px" height="600px">
+	</div>
+	
+	<div class='contenido '   align="center"   >
+   	<div class="col-md-8 col-centered " 
+   	form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   	@validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   	captcha=vm.captcha, captchaInput=vm.captchaInput)" >
+     <div class='form-pricing' width="500px" height="550px">
+  			            	
      <div align="left"  >
       	<hlayout>
       	<grid height="100px">
       	 <rows>
       	 <row>
       	<div>
-    		<button   iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Agregar Acción" />
+    		<button   iconSclass="z-icon-floppy-o"  class='boton-guardar'  label="Agregar Acción" />
      	</div>
      	</row>
      	<row>
-     	
-     <div>
+     	<div>
     		 <listbox  width="150px" height="30px" selectedItem="@bind(vm.dateFormat)"
 			                            mold="select" tabindex="8">
 			                            <listitem label="Ver todas las acciones" value="" />
@@ -59,17 +55,22 @@
 		</hlayout>
 	 </div>
 	 <div   align="center" >
-  		<grid height="600px">
-     	<auxhead>			
-            <auxheader colspan="6" label="Acciones" />
-        </auxhead>
-        <columns>
-              <column label="# Acción" width="60px" />
-                <column label="Propietario" width="80px"/>
-                <column label="Valor" width="50px" />
-                <column label="Condición" width="70px" />
-                <column label="Publicar en Venta" width="110px" />
-                <column label="Desvincular" width="90px" />
+	 
+		<div align="left">
+						<div sclass="page-header">
+				    		<label value="Lista Acciones"/>
+		  				</div>
+					</div>
+				
+  		<grid height="330px" emptyMessage="No se encuentran acciones registradass" mold="paging"
+							pageSize="2">
+       <columns>
+        	    <column label="# Acción" width="60px" align="center" />
+                <column label="Propietario" width="80px" align="center" />
+                <column label="Valor" width="50px" align="center"  />
+                <column label="Condición" width="70px" align="center"  />
+                <column label="Publicar en Venta" width="110px" align="center"  />
+                <column label="Desvincular" width="90px" align="center"  />
         </columns>
         <rows>
             <row>
@@ -77,17 +78,14 @@
                 <label value="Pedro Perez" />
                 <label value="500" />
                 <label value="Activa" />
-                <cell colspan="1" style="text-align:center">
-                <div>
-                <button iconSclass="z-icon-usd" class='btn-primary boton-guardar' height="30px" width="40px"/>
-                </div>
-                </cell>
-                <cell colspan="1" style="text-align:center">
-                <div>
-				<button iconSclass="z-icon-times" class='btn-primary boton-guardar' height="30px" width="40px"/>                
-                </div>
-                </cell>
-                
+               <div>
+					<button sclass="btn-link" iconSclass="z-icon-usd blue" tooltiptext="Publicar"/>
+													
+				</div>
+				 <div>
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular"/>								
+				</div> 
+                             
                  </row>
             
             
@@ -96,26 +94,35 @@
                 <label value="" />
                 <label value="500" />
                 <label value="Disponible" />
-                  <cell colspan="1" style="text-align:center">
                 <div>
-                <button iconSclass="z-icon-usd" class='btn-primary boton-guardar' height="30px" width="40px"/>
-                </div>
-                </cell>
-                <cell colspan="1" style="text-align:center">
-                <div>
-				<button iconSclass="z-icon-times" class='btn-primary boton-guardar' height="30px" width="40px"/>                
-                </div>
-                </cell>
+					<button sclass="btn-link" iconSclass="z-icon-usd blue" tooltiptext="Publicar"/>
+													
+				</div>
+				 <div>
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular"/>								
+				</div> 
             </row>
-        
+         <row>
+                <label value="ca-003" />
+                <label value="" />
+                <label value="500" />
+                <label value="Disponible" />
+                <div>
+					<button sclass="btn-link" iconSclass="z-icon-usd blue" tooltiptext="Publicar"/>
+													
+				</div>
+				 <div>
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular"/>								
+				</div> 
+            </row>
         </rows>
   </grid>
        </div>
-       </div>
+
 	</div>
 	</div>
-	
-			
+			</div>
+			</div>	
 			
 		</vlayout>
 	</hlayout>
