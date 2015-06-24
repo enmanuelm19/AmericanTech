@@ -40,7 +40,7 @@
 										<div>
 											<button
 												iconSclass="z-icon-floppy-o"
-												class='btn-primary boton-guardar' label="Registrar" />
+												class='boton-guardar' label="Registrar" />
 										</div>
 										<div>
 

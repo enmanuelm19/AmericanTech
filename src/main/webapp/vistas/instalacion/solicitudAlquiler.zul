@@ -50,7 +50,7 @@
 									</div>
 									<div style="margin-top: 23px;">
 										<button
-											iconSclass="z-icon-search" class='btn-primary btn-primary' />
+											iconSclass="z-icon-search" class='btn-guardar' />
 									</div>
 								</row>
 								<row class="col-md-10">
@@ -62,7 +62,7 @@
 									<div style="margin-top: 23px;">
 										<button
 											iconSclass="z-icon-search" style="margin-top: 23px;"
-											class='btn-primary btn-primary' />
+											class='btn-guardar' />
 									</div>
 								</row>
 								<row class="col-md-10">
@@ -138,12 +138,12 @@
 								<row class="col-md-10">
 									<div>
 										<button
-											iconSclass="z-icon-floppy-o" class='btn-info boton-guardar'
+											iconSclass="z-icon-floppy-o" class='boton-guardar'
 											label="Guardar" />
 									</div>
 									<div>
 										<button
-											iconSclass="z-icon-floppy-o" class='btn-info boton-guardar'
+											iconSclass="z-icon-floppy-o" class='boton-guardar'
 											label="Cancelar" />
 									</div>
 								</row>
