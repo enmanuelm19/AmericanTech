@@ -10,6 +10,7 @@
 
 
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
 	<include src="layouts/navbar.zul"/>             

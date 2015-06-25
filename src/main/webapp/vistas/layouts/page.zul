@@ -13,7 +13,7 @@
   <separator bar="true"/>
   <hlayout spacing="30px">
    
-    <include src="/vistas/content/cartelera.zul" hflex="6"/>
+    <include src="/vistas/content/pruebacartelera.zul" hflex="6"/>
   </hlayout>
    <hlayout spacing="24px">
    <div class="margen-calendario page-header">
