@@ -1,0 +1,94 @@
+<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
+
+
+<zk xmlns:n="native">
+<panel border="none" class="col-md-12" collapsible="true" sclass="transparent">
+<caption iconSclass="z-icon-bullhorn orange" label="Noticias"/>
+  <panelchildren>
+  <separator></separator>  <separator></separator>
+<n:div class="container" align="center">
+		<n:div class="row">
+			<n:div class="[  col-xs-12 col-sm-offset-1 col-sm-9 ]">
+				<n:ul class="event-list">
+					<n:li>
+						<n:time datetime="2014-07-20">
+							<n:span class="day">4</n:span>
+							<n:span class="month">JUN</n:span>
+							<n:span class="year">2015</n:span>
+							<n:span class="time">ALL DAY</n:span>
+							  
+						</n:time>
+						<n:img alt="venta" src="../assets/portal/img/ventas.jpg" />
+						<n:div class="info">
+					
+							<n:h2 class="title">ACCIONES EN VENTA</n:h2>
+							<n:p class="desc">Se les informa a todos los posibles postulantes que tenemos acciones en venta y en remate!</n:p>
+							
+							 
+				
+ 						</n:div>
+ 				<!-- 
+				<n:div class="social">
+							<n:ul>
+								<n:li class="facebook" style="width:33%;"><n:a href="#facebook"><n:span class="fa fa-facebook"></n:span></n:a></n:li>
+								<n:li class="twitter" style="width:34%;"><n:a href="#twitter"><n:span class="fa fa-twitter"></n:span></n:a></n:li>
+								<n:li class="google-plus" style="width:33%;"><n:a href="#google-plus"><n:span class="fa fa-google-plus"></n:span></n:a></n:li>
+							</n:ul>
+						</n:div>-->
+						
+						
+					</n:li>
+
+					<n:li>
+						<n:time datetime="2014-07-20 0000">
+							<n:span class="day">8</n:span>
+							<n:span class="month">Abr</n:span>
+							<n:span class="year">2014</n:span>
+							<n:span class="time">12:00 AM</n:span>
+						</n:time>
+						<n:img alt="Sottball" src="../assets/portal/img/licencia.jpg" />
+						<n:div class="info">
+							<n:h2 class="title">OPERATIVO PARA LICENCIAS DE CONDUCIR</n:h2>
+							<n:p class="desc">No tienes licencia de conducir? el 8 de abril estaremos realizando una jornada para sacar y renovar licencias de conducir.. abierto a todo publico!</n:p>
+						</n:div>
+					</n:li>
+					
+					<n:li>
+						<n:time datetime="2014-07-20 2000">
+							<n:span class="day">20</n:span>
+							<n:span class="month">MAR</n:span>
+							<n:span class="year">2015</n:span>
+							<n:span class="time">8:00 PM</n:span>
+						</n:time>
+						<n:img alt="Sottball" src="../assets/portal/img/softballP.jpg" />
+						<n:div class="info">
+							<n:h2 class="title">INICIO DE TORNEO DE SOFTBALL</n:h2>
+							<n:p class="desc">Incripciones abiertas, inscribe tu equipo y partipa en el torneo!</n:p>
+						</n:div>
+					</n:li>
+
+					<n:li>
+						<n:time datetime="2014-07-31 1600">
+							<n:span class="day">20</n:span>
+							<n:span class="month">FEB</n:span>
+							<n:span class="year">2015</n:span>
+							<n:span class="time">4:00 PM</n:span>
+						</n:time>
+						<n:img alt="Sottball" src="../assets/portal/img/softballP.jpg" />
+						<n:div class="info">
+							<n:h2 class="title">INSCRIPCIONES ABIERTAS PARA TONEO DE SOFTBALL, INSCRIBE TU EQUIPO!</n:h2>
+							<n:p class="desc"> Inscribe tu equipo para toneo que comenzará a partir del </n:p>
+						</n:div>
+					</n:li>
+				
+					
+					
+				</n:ul>
+			</n:div>
+		</n:div>
+	</n:div>
+</panelchildren>
+</panel>
+
+</zk>
+
