@@ -20,7 +20,7 @@
 
 			</div>
 
-			<div class='contenedor'>
+			<div class='contenedor' apply="controllers.ControllerVerAfiliado" >
 
 				<div sclass="page-header">
 					<label value="Planificar Eventos" />
@@ -118,10 +118,12 @@
 
 														<button
 															iconSclass="z-icon-pencil blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
+															tooltiptext="Agregar Actividad" id="btnRegistrarActividades" />
+															
+															
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
+															tooltiptext="Ver Actividades" id="btnVerListaActividades" />
 
 													</div>
 
