@@ -34,7 +34,7 @@
 					</div>
 					<div class="linea-two"></div>
 					<separator spacing="1%"/>
-					<grid mold="paging" pageSize="15" width="" height="100%">
+					<grid mold="paging" pageSize="1" width="" height="100%">
 						<columns class="z-grid z-column-content">
 							<column label="Codigo" align="center" width="30%"/>
 							<column label="Descripcion" align="center"/>
