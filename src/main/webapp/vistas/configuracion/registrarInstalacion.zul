@@ -32,31 +32,31 @@
 					<div class='row'>
 					
 						<div class='col-md-2'>
-							<grid width="100%" sclass="galeria" mold="paging" pageSize="3">
+							<grid id="galery" width="100%" sclass="galeria" mold="paging" pageSize="3">
 								<columns>
 									<column width="100%" align="center"/>
 								</columns>
 								<rows>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
 									</row>
 								</rows>
 							</grid>
@@ -135,6 +135,17 @@
 		}
 		.galeria .z-paging-icon {
 			color:white;
+		}
+		
+		.im{
+			
+		}
+		.im:hover {
+  		-webkit-transform: scale(2);
+  		transform: scale(2);
+  		
+}
+		
 		}
 		
 	</style>
