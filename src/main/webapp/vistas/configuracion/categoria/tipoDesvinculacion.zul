@@ -30,13 +30,14 @@
 			
 				<separator spacing="30px"/>
 				
-				<div class="contenedor">
+				<div class="contenido">
 					<div align="left">
-						<div sclass="page-header">
-				    		<label value="Tipos de desvinculaciones"/>
-		  				</div>
+						<div align="left">
+							<div class='encabezado'>Tipo de Desvinculaciones</div>
+							<div class='linea-two'></div>
+						</div>
 					</div>
-					<separator spacing="20px"/>
+					<separator spacing="30px"/>
 					<grid emptyMessage="No se encuentran tipos registrados" mold="paging"
 							pageSize="15">
 						<columns>

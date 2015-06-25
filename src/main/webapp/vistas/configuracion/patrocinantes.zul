@@ -17,9 +17,10 @@
 			</div>
 			<div class="contenedor" align="center">
 			
-				<div sclass="page-header" align="left">
-				    <label value="Patrocinantes"/>
-		  		</div>
+				<div align="left">
+						<div class='encabezado'>Lista Patrocinates</div>
+						<div class='linea-two'></div>
+				</div>
 				
 				<separator spacing="30px"/>
 				<space/><space/>
@@ -30,15 +31,14 @@
 			
 				<separator spacing="30px"/>
 				
-				<div class="contenedor">
+				<div class="contenido">
 					<div align="left">
-						<div sclass="page-header">
-				    		<label value="Lista Patrocinantes"/>
-		  				</div>
+						<div class='encabezado'>Lista Patrocinates</div>
+						<div class='linea-two'></div>
 					</div>
-					<separator spacing="20px"/>
+					<separator spacing="30px"/>
 					<grid emptyMessage="No se encuentran proveedores registrados" mold="paging"
-							pageSize="2">
+							pageSize="15">
 						<columns>
 							<column label="Evento" align="center" />
 							<column label="Instalacion" align="center" />
