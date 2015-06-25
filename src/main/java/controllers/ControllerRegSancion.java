@@ -12,7 +12,7 @@ public class ControllerRegSancion extends SelectorComposer<Component>{
 	 
 	 @Listen("onClick = #btnRegistrarsanc")
 	    public void showModal(Event e) {
-	        //create a window programmatically and use it as a modal dialog.
+	        //create a window programmatically and use it aa modal dialog.
 	        Window window = (Window)Executions.createComponents(
 	                "agregarSancion.zul", null, null);
 	        window.doModal();

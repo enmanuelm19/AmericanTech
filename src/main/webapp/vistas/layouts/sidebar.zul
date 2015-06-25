@@ -34,6 +34,7 @@
 				<navitem label="Tipo de evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoEventoPrincipal.zul"/>
 				<navitem label="Tipo de preferencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/registrarTipoPreferencias.zul"/>
 				<navitem label="Tipo de instalación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoInstalacion.zul"/>
+				<navitem label="Tipo de Sanción" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tiposSanciones.zul"/>
 				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoActividad.zul"/>
@@ -49,6 +50,7 @@
 				<navitem label="Venta acción" iconSclass="z-icon-angle-double-right" href=""/>
 			</nav>
 			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/administrarFichaSocio.zul"/>
+			<navitem label="Mis Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/misSanciones.zul"/>
 			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
 				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" href=""/>
@@ -62,7 +64,7 @@
 			</nav>
 		</nav>
 		<nav label="Instalaciones" iconSclass="z-icon-home">
-			<navitem label="Visitas" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/visita.zul"/>
+			<navitem label="Visitas" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/registrarVisita.zul"/>
 			<navitem label="Reservación" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/misReservaciones.zul"/>
 			<nav label="Administrar alquiler" iconSclass="z-icon-angle-double-right">
 				<navitem label="Registrar alquiler" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/solicitudAlquiler.zul"/>
