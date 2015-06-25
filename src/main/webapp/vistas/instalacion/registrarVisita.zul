@@ -219,15 +219,15 @@
 			                  			<separator />
 			                  			<separator />
 			                  			<separator />
-			                  			<separator />
-			                  			<separator />
+			                  			
 			                  			<separator />
 			                  		<separator spacing="150px"></separator>
 			                  		<div  >
-			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="85px"/>
-			                    	</div><separator spacing="180px"></separator>
+			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="100px"/>
+			                    	</div><separator spacing="580px"></separator>
+			                    	<separator /><separator /><separator />
 			                  		<div align="center">
-			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="85px"/>
+			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
 			                     	</div><separator spacing="180px"></separator>
 			                  	</hlayout>
 			                  </vlayout>
