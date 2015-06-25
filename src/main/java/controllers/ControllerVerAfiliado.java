@@ -16,11 +16,24 @@ public class ControllerVerAfiliado extends SelectorComposer<Component> {
 	 
 		
 	 @Listen("onClick = #btnVerAfiliado")
-	 public void mostrar(){
+	 public void mostrarAfiliado(){
 		 Window window = (Window)Executions.createComponents("verAfiliadoSocio.zul", null, null);
 		 window.doModal();
 
 	 }
+	 @Listen("onClick = #btnRegistrarActividades")
+	 public void mostrarRegistrarActividades(){
+		 Window window = (Window)Executions.createComponents("administrarEvento/registrarActividad.zul", null, null);
+		 window.doModal();
+
+	 }
+	 @Listen("onClick = #btnVerListaActividades")
+	 public void mostrarListaActividades(){
+		 Window window = (Window)Executions.createComponents("administrarEvento/listaActividades.zul", null, null);
+		 window.doModal();
+
+	 }
+
 
 }
 
