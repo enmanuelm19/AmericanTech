@@ -32,7 +32,7 @@
                 <radio id="ra1" label="Instalaciones" radiogroup="sv1" />
                 <radio id="ra2" label="Eventos" radiogroup="sv1" />
                 <radio id="ra3" label="Socios" radiogroup="sv1" />
-                <radio id="ra4" label="Nuestra Atencio" radiogroup="sv1" />
+                <radio id="ra4" label="Nuestra Atención" radiogroup="sv1" />
                 <radio id="ra5" label="Sugerencia General" radiogroup="sv1" />
           <separator />
          <n:br></n:br>
