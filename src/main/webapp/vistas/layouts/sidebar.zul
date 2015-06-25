@@ -24,7 +24,7 @@
 			<nav label="Configuración" iconSclass="z-icon-cogs">
 		    <navitem label="Perfil del club" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/perfilClub.zul"/>
 			<navitem label="Junta directiva" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/juntaDirectiva.zul"/>
-			<navitem label="Preferencias" iconSclass="z-icon-angle-double-right" href=""/>
+			<navitem label="Preferencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/Preferencia.zul"/>
 			<navitem label="Instalaciones" iconSclass="z-icon-angle-double-right" href=""/>
 						<navitem label="Proveedores" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/proveedores.zul"/>	
 			<navitem label="Patrocinantes" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/patrocinantes.zul"/>
@@ -37,30 +37,29 @@
 				<navitem label="Tipo de Sanción" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tiposSanciones.zul"/>
 				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Motivo postulacion" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoPostulacion.zul"/>
 				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoActividad.zul"/>
-				<navitem label="Tipo sanción" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoSanciones.zul"/> 
-				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" href=""/> 
-				<navitem label="Tipo desvinculación" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoVenta.zul"/> 
+				<navitem label="Tipo desvinculación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoDesvinculacion.zul"/>
 				<navitem label="Cargo junta directiva" iconSclass="z-icon-angle-double-right" href=""/>
 			</nav>
 		</nav>
 		<nav label="Socios" iconSclass="z-icon-user">
 			<nav label="Administrar acciones" iconSclass="z-icon-angle-double-right">
 				<navitem label="Agregar acción" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/acciones.zul"/>
-				<navitem label="Venta acción" iconSclass="z-icon-angle-double-right" href=""/>
 			</nav>
-			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/administrarFichaSocio.zul"/>
+			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/miPerfil.zul"/>
 			<navitem label="Mis Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/misSanciones.zul"/>
 			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
 				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/sanciones.zul"/>
-				<navitem label="Desvinculación acción" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Desvinculación acción" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/desvincularAccion.zul"/>
 			</nav>
 			<navitem label="Solicitar venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/solicitarVenta.zul"/>
 			<nav label="Danos tu opinión" iconSclass="z-icon-angle-double-right">
-				<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right" href=""/>
-				<navitem label="Opinión postulación" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/buzon/vistaGeneralSugerencias.zul"/>
+				<navitem label="Opinión postulación" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/opinionPostulacion.zul"/>
 			</nav>
 		</nav>
 		<nav label="Instalaciones" iconSclass="z-icon-home">
