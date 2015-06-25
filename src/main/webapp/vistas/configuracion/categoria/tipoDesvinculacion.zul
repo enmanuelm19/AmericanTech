@@ -23,12 +23,12 @@
 				
 				<separator spacing="30px"/>
 				<space/><space/>
-				<div class='form-pricing' align="left" width="850px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client'>
-					<button id="btnTipoDesvinculacionRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+				<div class='form-pricing' align="left" width="60%" style="margin-bottom: 20px">
+				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
+					<button id="btnTipoDesvinculacionRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 			
-				<separator spacing="30px"/>
+				<separator spacing="10px"/>
 				
 				<div class="contenido">
 					<div align="left">
@@ -37,20 +37,24 @@
 							<div class='linea-two'></div>
 						</div>
 					</div>
-					<separator spacing="30px"/>
-					<div>
-                		<image src="../../../assets/img/funnel.png" />
-               			<textbox instant="true" width="150px" placeholder="Buscar"/>  
-               			<space width="75px"/>
-                		<image src="../../../assets/img/funnel.png" />
-               			<textbox instant="true" width="150px" placeholder="Buscar"/>  
-               		</div>
+					<separator spacing="20px"/>
 					<grid emptyMessage="No se encuentran tipos registrados" mold="paging"
 							pageSize="15">
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png" />
+               					<textbox instant="true" width="150px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png" />
+               					<textbox instant="true" width="150px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="1" />
+						</auxhead>
 						<columns>
-							<column label="Codigo" align="center" />
-							<column label="Nombre" align="center" />
-							<column align="center" label="Acciones" />
+							<column >Codigo </column>
+							<column >Nombre </column>
+							<column width="100px">Acciones </column>
 						</columns>
 						<rows>
 							<row>
@@ -80,6 +84,9 @@
 								</div>
 							</row>
 						</rows>
+						<foot>
+            				<footer span="3" class="footer_right" label="3 items en la lista" />
+        				</foot>
 					</grid>
 				</div>
 			</div>

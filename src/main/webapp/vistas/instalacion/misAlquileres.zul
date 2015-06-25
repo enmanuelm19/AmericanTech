@@ -23,40 +23,48 @@
 				
 				<separator spacing="30px"/>
 				<space/><space/>
-				<div class='form-pricing' align="left" width="850px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client'>
+				<div class='form-pricing' align="left" width="80%">
+				<div apply="controllers.ControladorModalAbrir" align="right" xmlns:w='client'>
 					<button id="btnProveedoresRegistrar" label="Solicitar" iconSclass="z-icon-floppy-o"  href="solicitudAlquiler.zul" class='boton-guardar'/>
 				</div>
 			
-				<separator spacing="30px"/>
+				<separator spacing="10px"/>
 				
-				<div class="contenedor">
+				<div class="contenido">
 					<div align="left">
-						<div sclass="page-header">
-				    		<label value="Mis Alquileres"/>
-		  				</div>
+						<div class='encabezado'>Mis Alquileres</div>
+						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
 					<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
-							pageSize="2">
+							pageSize="15">
+						
+						<auxhead sclass="category-center">
+							<auxheader colspan="1" />
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="140px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="5" />
+						</auxhead>
 						<columns>
 							<column width="40px" />
-							<column label="Nro Solicitud" align="center" />
-							<column label="Fecha Inicio" align="center" />
-							<column label="Fecha Fin" align="center"/>
-							<column label="Hora Inicio" align="center"/>
-							<column label="Hora Fin" align="center"/>
-							<column align="center" label="Acciones" />
+							<column hflex="2">Nro Solicitud</column>
+							<column hflex="2">Fecha Inicio</column>
+							<column hflex="2">Fecha Fin</column>
+							<column hflex="1">Hora Inicio</column>
+							<column hflex="1">Hora Fin</column>
+							<column width="100px">Acciones</column>
 						</columns>
 						<rows>
 							<row>
                     			 <detail open="false" fulfill="onOpen">
                     			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
-										pageSize="2">
+										pageSize="4">
 									<columns>
-										<column label="Codigo Instalacion" align="center" />
-										<column label="Nombre" align="center" />
-										<column align="center" label="Acciones" />
+										<column>Codigo Instalacion </column>
+										<column>Nombre</column>
+										<column width="100px">Acciones</column>
 									</columns>
 									<rows>
 										<row>
@@ -76,6 +84,9 @@
 											</div>
 										</row>
 									</rows>
+									<foot>
+            							<footer span="2" class="footer_right" label="2 items en la lista" />
+        							</foot>
 									</grid>
                    				 </detail>
                    				 
@@ -95,9 +106,9 @@
                     			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
 										pageSize="2">
 									<columns>
-										<column label="Codigo Instalacion" align="center" />
-										<column label="Nombre" align="center" />
-										<column align="center" label="Acciones" />
+										<column>Codigo Instalacion </column>
+										<column>Nombre</column>
+										<column width="100px">Acciones</column>
 									</columns>
 									<rows>
 										<row>
@@ -109,6 +120,9 @@
 											</div>
 										</row>
 									</rows>
+									<foot>
+            							<footer span="1" class="footer_right" label="1 items en la lista" />
+        							 </foot>
 									</grid>
                    				 </detail>
                    				 
@@ -123,6 +137,9 @@
 								</div>
 							</row>
 						</rows>
+						<foot>
+            				<footer span="7" class="footer_right" label="2 items en la lista" />
+        				 </foot>
 					</grid>
 				</div>
 			</div>
