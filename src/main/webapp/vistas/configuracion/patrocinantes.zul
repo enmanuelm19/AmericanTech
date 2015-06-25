@@ -20,15 +20,14 @@
 				<div sclass="page-header" align="left">
 				    <label value="Patrocinantes"/>
 		  		</div>
-				
 				<separator spacing="30px"/>
 				<space/><space/>
-				<div class='form-pricing' align="left" width="980px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client'>
+				<div class='form-pricing' align="left" width="1050px">
+				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
 					<button id="btnPatrocinatesRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 			
-				<separator spacing="30px"/>
+				<separator spacing="10px"/>
 				
 				<div class="contenido">
 					<div align="left">
@@ -36,22 +35,29 @@
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="30px"/>
-					<div>
-                		<image src="../../assets/img/funnel.png" />
-               			<textbox instant="true" width="110px" placeholder="Buscar"/>
-                		<image src="../../assets/img/funnel.png" />
-               			<textbox instant="true" width="110px" placeholder="Buscar"/>  
-               		</div>
+					
 					<grid emptyMessage="No se encuentran proveedores registrados" mold="paging"
 							pageSize="15">
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="110px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="110px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader label="Datos basicos" colspan="4" />
+						</auxhead>
 						<columns>
-							<column label="Rif/Identificacion" align="center" />
-							<column label="Nombre" align="center" />
-							<column label="Direccion" align="center"/>
-							<column label="Telefono" align="center"/>
-							<column label="Email" align="center" width="220px"/>
-							<column align="center" label="Acciones" />
+							<column hflex="2">Rif/Identificacion </column>
+							<column hflex="2">Nombre</column>
+							<column hflex="2">Direccion </column>
+							<column hflex="2"> Teléfono</column>
+							<column hflex="3"> Email </column>
+							<column hflex="1">Acciones </column>
 						</columns>
+						
 						<rows>
 							<row>
 								<label value="V-1971440201"/>
@@ -89,6 +95,9 @@
 								</div>
 							</row>
 						</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="3 proveedores en la lista" />
+        				 </foot>
 					</grid>
 				</div>
 			</div>
