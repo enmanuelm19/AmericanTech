@@ -1,3 +1,4 @@
+<!-- Responsable Hector Gil -->
 <?page title="Lista Sugerencias" contentType="text/html;charset=UTF-8"?>
 
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
@@ -12,270 +13,554 @@
 		<include src="../../layouts/sidebar.zul" />
 
 		<vlayout spacing="0" hflex="1">
+
+
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 
-					<a label="Atencion al Cliente" href="#" />
-					<label value="Sugerencias" />
+					<span sclass="home-icon z-icon-user" />
+
+					<a label="Sugerencias" href="#" />
+					
 				</div>
 
 			</div>
-			<div class='contenedor'>
-				<div sclass="page-header">
+			<div align="center" class="contenedor">
+
+				<div sclass="page-header" align="left">
 					<label value="Vista General Sugerencias" />
+
 				</div>
 
-				<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
-					<!-- GRID DE GRUPOS-->
 
-					<grid mold="paging" pageSize="15" width="80%">
+				<div class='form-pricing' width="80%">
 
-						<auxhead class="z-auxheader-content">
-							<auxheader label="Sugerencias"
-								align="center" colspan="5" />
-						</auxhead>
+					<div align="left">
+						<div class="encabezado">Sugerencias</div>
+						<div align="left" class="linea-two">
 
-						<auxhead class="z-auxheader-content">
+						</div>
+					</div>
 
-							<auxheader>
-								<combobox id="cmbnoticia"
-									value="Ordenar por." width="50">
-									<comboitem label="Fecha Ascendente" />
-									<comboitem
-										label="Fecha Descendente" />
+					<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
+						<!-- GRID DE GRUPOS-->
 
-								</combobox>
-							</auxheader>
+						<grid mold="paging" pageSize="15" width="80%">
 
-							<auxheader align="right" colspan="4">
 
-								<button iconSclass="z-icon-edit"
-									class='btn-primary boton-guardar' label="Hacer Sugerencia" />
 
-							</auxheader>
+							<auxhead class="z-auxheader-content">
 
-						</auxhead>
-						
-						
-						<columns class="z-grid z-column-content ">
-							<column label="" align="center" width="25%" /><!--Foto -->
-							<column label="" align="center" width="50%" /><!--Foto -->
-							<column label="" align="center" width="25%" /><!--Foto -->
-						</columns>
-						<rows>
-						
-						
-							<row><!-- inicio FILA-->
-								<cell>
-									<image id="" width="30%"
-										height="30%" src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
-								</cell>
-								<cell>
-									<hbox width="100%" align="start">
+								<auxheader>
+									<combobox id="cmbnoticia"
+										value="Ordenar por Fecha." width="50%">
+										<comboitem
+											label="Fecha Ascendente" />
+										<comboitem
+											label="Fecha Descendente" />
+									</combobox>
+								</auxheader>
+								<auxheader>
+									<combobox value="Ordenar Por Tipo Sugerencia"
+										width="50%">
+										<comboitem label="Evento" />
+										<comboitem label="Instalacion" />
+										<comboitem label="Vigilancia" />
+										<comboitem label="Otros" />
 
-										<vbox width="100%">
-											<textbox value="Usuario"
-												width="50%" />
-											<hbox align="right"
-												width="60%">
 
-												<textbox value="Fecha"
-													width="100%" />
+									</combobox>
+								</auxheader>
 
-											</hbox><!-- columna 4 iconos -->
-										</vbox><!-- columna 2 -->
+								<auxheader align="right" colspan="4">
 
+									<button iconSclass="z-icon-trash-o"
+										class='boton-cancelar' label="Eliminar" />
+
+								</auxheader>
+
+							</auxhead>
+
+
+							<columns class="z-grid z-column-content ">
+								<column label="" align="center"
+									width="25%" /><!--Foto -->
+								<column label="" align="center"
+									width="50%" /><!--Foto -->
+								<column label="" align="center"
+									width="25%" /><!--Foto -->
+							</columns>
+							<rows>
+
+
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
+
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
+
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
+
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
+
+										</hbox>
+									</cell>
+
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
 									</hbox>
-								</cell>
+								</row><!-- fin fila-->
 
-								<hbox width="100%" align="end"
-									pack="end">
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
-								</hbox>
-							</row><!-- fin fila-->
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
 
-							<row align="right">
-								<cell></cell>
-								<cell colspan="2">
-								<textbox cols="200" rows="3" type="text"
-									value="" width="100%" />
-								<!-- columna 3 sugerencias -->
-								</cell>								
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
 
-							</row><!-- fin fila-->
-							<row><!-- inicio FILA-->
-								<cell>
-									<image id="" width="30%"
-										height="30%" src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
-								</cell>
-								<cell>
-									<hbox width="100%" align="start">
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
 
-										<vbox width="100%">
-											<textbox value="Usuario"
-												width="50%" />
-											<hbox align="right"
-												width="60%">
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
 
-												<textbox value="Fecha"
-													width="100%" />
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
 
-											</hbox><!-- columna 4 iconos -->
-										</vbox><!-- columna 2 -->
+										</hbox>
+									</cell>
 
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
 									</hbox>
-								</cell>
+								</row><!-- fin fila-->
 
-								<hbox width="100%" align="end"
-									pack="end">
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
-								</hbox>
-							</row><!-- fin fila-->
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
 
-							<row align="right">
-								<cell></cell>
-								<cell colspan="2">
-								<textbox cols="200" rows="3" type="text"
-									value="" width="100%" />
-								<!-- columna 3 sugerencias -->
-								</cell>								
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
 
-							</row><!-- fin fila-->
-							<row><!-- inicio FILA-->
-								<cell>
-									<image id="" width="30%"
-										height="30%" src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
-								</cell>
-								<cell>
-									<hbox width="100%" align="start">
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
 
-										<vbox width="100%">
-											<textbox value="Usuario"
-												width="50%" />
-											<hbox align="right"
-												width="60%">
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
 
-												<textbox value="Fecha"
-													width="100%" />
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
 
-											</hbox><!-- columna 4 iconos -->
-										</vbox><!-- columna 2 -->
+										</hbox>
+									</cell>
 
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
 									</hbox>
-								</cell>
+								</row><!-- fin fila-->
 
-								<hbox width="100%" align="end"
-									pack="end">
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
-								</hbox>
-							</row><!-- fin fila-->
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
 
-							<row align="right">
-								<cell></cell>
-								<cell colspan="2">
-								<textbox cols="200" rows="3" type="text"
-									value="" width="100%" />
-								<!-- columna 3 sugerencias -->
-								</cell>								
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
 
-							</row><!-- fin fila-->
-							<row><!-- inicio FILA-->
-								<cell>
-									<image id="" width="30%"
-										height="30%" src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
-								</cell>
-								<cell>
-									<hbox width="100%" align="start">
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
 
-										<vbox width="100%">
-											<textbox value="Usuario"
-												width="50%" />
-											<hbox align="right"
-												width="60%">
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
 
-												<textbox value="Fecha"
-													width="100%" />
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
 
-											</hbox><!-- columna 4 iconos -->
-										</vbox><!-- columna 2 -->
+										</hbox>
+									</cell>
 
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
 									</hbox>
-								</cell>
+								</row><!-- fin fila-->
 
-								<hbox width="100%" align="end"
-									pack="end">
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
-								</hbox>
-							</row><!-- fin fila-->
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
 
-							<row align="right">
-								<cell></cell>
-								<cell colspan="2">
-								<textbox cols="200" rows="3" type="text"
-									value="" width="100%" />
-								<!-- columna 3 sugerencias -->
-								</cell>								
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
 
-							</row><!-- fin fila-->
-							<row><!-- inicio FILA-->
-								<cell>
-									<image id="" width="30%"
-										height="30%" src="/assets/portal/img/img1.jpg" /><!-- columna 1 -->
-								</cell>
-								<cell>
-									<hbox width="100%" align="start">
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
 
-										<vbox width="100%">
-											<textbox value="Usuario"
-												width="50%" />
-											<hbox align="right"
-												width="60%">
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
 
-												<textbox value="Fecha"
-													width="100%" />
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
 
-											</hbox><!-- columna 4 iconos -->
-										</vbox><!-- columna 2 -->
+										</hbox>
+									</cell>
 
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
 									</hbox>
-								</cell>
+								</row><!-- fin fila-->
 
-								<hbox width="100%" align="end"
-									pack="end">
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar" />
-								</hbox>
-							</row><!-- fin fila-->
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
 
-							<row align="right">
-								<cell></cell>
-								<cell colspan="2">
-								<textbox cols="200" rows="3" type="text"
-									value="" width="100%" />
-								<!-- columna 3 sugerencias -->
-								</cell>								
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
 
-							</row><!-- fin fila-->
-							
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
 
-						</rows>
-					</grid><!-- FIN GRID DE GRUPOS-->
-				</div><!--FIN DIV GRID DE GRUPOS-->
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
 
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
+
+										</hbox>
+									</cell>
+
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
+
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
+
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
+
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
+
+										</hbox>
+									</cell>
+
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
+
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
+
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
+
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
+
+										</hbox>
+									</cell>
+
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
+
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
+
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
+
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
+
+										</hbox>
+									</cell>
+
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell>
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+									<cell>
+										<hbox width="100%"
+											align="start">
+
+											<vbox width="100%">
+												<label
+													value="usuario902" width="50%"
+													style="font-style: oblique;color:Black;font-weight:bold " />
+
+												<hbox align="right"
+													width="60%">
+													<label
+														value="10/01/15" width="100%"
+														style="font-style: oblique;color:grey" />
+
+												</hbox><!-- columna 4 iconos -->
+											</vbox><!-- columna 2 -->
+
+										</hbox>
+									</cell>
+
+									<hbox width="100%" align="end"
+										pack="end">
+										<checkbox />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row align="left"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="2">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value=" El dia xxx alqulile el salon principal y la ....."
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								
+								
+							</rows>
+						</grid><!-- FIN GRID DE GRUPOS-->
+					</div><!--FIN DIV GRID DE GRUPOS-->
+
+				</div>
 			</div>
 		</vlayout>
 	</hlayout>
