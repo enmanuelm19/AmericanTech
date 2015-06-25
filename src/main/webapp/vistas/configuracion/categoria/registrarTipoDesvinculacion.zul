@@ -15,7 +15,7 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="380px" closable="true">
+	<window border="none" title=" " closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 							<span sclass="home-icon z-icon-cogs" />
