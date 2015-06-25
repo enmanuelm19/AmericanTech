@@ -17,14 +17,13 @@
 			</div>
 			<div class="contenedor" align="center">
 			
-				<div align="left">
-						<div class='encabezado'>Lista Patrocinates</div>
-						<div class='linea-two'></div>
-				</div>
+				<div sclass="page-header" align="left">
+				    <label value="Patrocinantes"/>
+		  		</div>
 				
 				<separator spacing="30px"/>
 				<space/><space/>
-				<div class='form-pricing' align="left" width="850px">
+				<div class='form-pricing' align="left" width="980px">
 				<div apply="controllers.ControladorModalAbrir" xmlns:w='client'>
 					<button id="btnPatrocinatesRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
@@ -37,23 +36,29 @@
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="30px"/>
+					<div>
+                		<image src="../../assets/img/funnel.png" />
+               			<textbox instant="true" width="110px" placeholder="Buscar"/>
+                		<image src="../../assets/img/funnel.png" />
+               			<textbox instant="true" width="110px" placeholder="Buscar"/>  
+               		</div>
 					<grid emptyMessage="No se encuentran proveedores registrados" mold="paging"
 							pageSize="15">
 						<columns>
-							<column label="Evento" align="center" />
-							<column label="Instalacion" align="center" />
-							<column label="Socio" align="center"/>
-							<column label="Nro Carnet" align="center"/>
-							<column label="Fecha" align="center"/>
+							<column label="Rif/Identificacion" align="center" />
+							<column label="Nombre" align="center" />
+							<column label="Direccion" align="center"/>
+							<column label="Telefono" align="center"/>
+							<column label="Email" align="center" width="220px"/>
 							<column align="center" label="Acciones" />
 						</columns>
 						<rows>
 							<row>
-								<label value="0001"/>
-								<label value="Caney" />
+								<label value="V-1971440201"/>
 								<label value="Carlos Colmenarez"/>
-								<label value="726263-1"/>
-								<label value="10/12/2015"/>
+								<label value="Acarigua-Portuguesa"/>
+								<label value="0412-7920345" />
+								<label value="carloscolmenarez200@gmail.com" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
@@ -61,11 +66,11 @@
 							</row>
 							
 							<row>
-								<label value="0001"/>
-								<label value="Caney" />
+								<label value="V-1971440201"/>
 								<label value="Carlos Colmenarez"/>
-								<label value="726263-1"/>
-								<label value="10/12/2015"/>
+								<label value="Acarigua-Portuguesa"/>
+								<label value="0412-7920345" />
+								<label value="carloscolmenarez200@gmail.com" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
@@ -73,11 +78,11 @@
 							</row>
 							
 							<row>
-								<label value="0001"/>
-								<label value="Caney" />
+								<label value="V-1971440201"/>
 								<label value="Carlos Colmenarez"/>
-								<label value="726263-1"/>
-								<label value="10/12/2015"/>
+								<label value="Acarigua-Portuguesa"/>
+								<label value="0412-7920345" />
+								<label value="carloscolmenarez200@gmail.com" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								

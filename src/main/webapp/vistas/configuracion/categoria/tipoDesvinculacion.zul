@@ -38,6 +38,13 @@
 						</div>
 					</div>
 					<separator spacing="30px"/>
+					<div>
+                		<image src="../../../assets/img/funnel.png" />
+               			<textbox instant="true" width="150px" placeholder="Buscar"/>  
+               			<space width="75px"/>
+                		<image src="../../../assets/img/funnel.png" />
+               			<textbox instant="true" width="150px" placeholder="Buscar"/>  
+               		</div>
 					<grid emptyMessage="No se encuentran tipos registrados" mold="paging"
 							pageSize="15">
 						<columns>
