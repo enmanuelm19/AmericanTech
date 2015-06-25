@@ -1,0 +1,141 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk>
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div class='breadcrumbs'>
+				<div class='breadcrumb'>
+					<span sclass="home-icon z-icon-puzzle-piece" />
+					<a label="Admin. del Sistema" href="#" />
+					<label value="Instalaciones" />
+				</div>
+			</div>
+			<div class='contenedor' align="center">
+				<div align="left">
+					<div class="page-header">
+						Instalaciones
+					</div>
+				</div>
+				<div class='form-pricing' width="70%">
+					<div align="left">
+						<div class='encabezado'>
+							Datos Básicos
+						</div>
+						<div class='linea-two'></div>
+					</div>
+					<separator spacing="2%"/>
+					<div class='row'>
+					
+						<div class='col-md-2'>
+							<grid width="100%" sclass="galeria" mold="paging" pageSize="3">
+								<columns>
+									<column width="100%" align="center"/>
+								</columns>
+								<rows>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+									<row>
+										<image src="/assets/portal/img/img1.jpg" width="60%"/>
+									</row>
+								</rows>
+							</grid>
+						</div>
+						
+						<div align="right" class='col-md-3'>
+							
+								<image src="/assets/portal/img/img2.jpg" width="100%"/>
+								<separator/>
+								<div><fileupload iconSclass="z-icon-folder-open" class='boton-guardar' label="Examinar"/>
+								
+								</div>
+						</div>
+						
+						<div class='col-md-4' align="left">
+							<vbox>
+								Descripción
+								<textbox width="150%" constraint="no empty"/>
+							</vbox>
+							<separator/>
+							<vbox>
+								Tipo de Instalación
+								<hbox>
+									<combobox width="110%" value="Seleccione Una Opcion">
+										<comboitem label="Caney"/>
+										<comboitem label="Salón"/>
+									</combobox>
+									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar"/>
+								</hbox>
+							</vbox>
+							<separator/>
+							<vbox>
+								Capacidad de Personas
+								<spinner constraint="no empty, no negative, no zero" width="60%"/>
+							</vbox>
+							<separator/>
+							<vbox>
+								Costo Bs.
+								<doublebox constraint="no empty"/>
+							</vbox>
+							<separator spacing="10%"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	<style>
+		.galeria .z-paging {
+			border:none;
+			background: none;
+			margin:0 4%; 
+		}
+		.galeria .z-paging-info {
+		    display:none;
+		}
+		.galeria .z-paging-first {
+			display:none;
+			background: blue;
+		}
+		.galeria .z-paging-last {
+			display:none;
+		}
+		.galeria .z-paging-text {
+			display:none;
+		}
+		.galeria .z-paging-input {
+			display:none;
+		}
+		.galeria .z-paging-button {
+			background: #11BCB7;
+			border-radius: 15px;
+		}
+		.galeria .z-paging-span {
+			background: white;
+		}
+		.galeria .z-paging-icon {
+			color:white;
+		}
+		
+	</style>
+</zk>
