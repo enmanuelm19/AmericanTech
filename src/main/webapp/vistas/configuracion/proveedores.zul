@@ -30,13 +30,12 @@
 			
 				<separator spacing="30px"/>
 				
-				<div class="contenedor">
+				<div class="contenido">
 					<div align="left">
-						<div sclass="page-header">
-				    		<label value="Lista Proveedores"/>
-		  				</div>
+						<div class='encabezado'>Lista Proveedores</div>
+						<div class='linea-two'></div>
 					</div>
-					<separator spacing="20px"/>
+					<separator spacing="30px"/>
 					<grid emptyMessage="No se encuentran proveedores registrados" mold="paging"
 							pageSize="2">
 						<columns>

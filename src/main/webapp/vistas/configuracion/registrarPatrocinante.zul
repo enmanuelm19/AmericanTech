@@ -24,10 +24,15 @@
 					</div>
  
 			</div>
-			<div class='contenedor'>
+			<div class='contenido'>
 				<div sclass="page-header">
 	    			<label value="Registrar Patrocinante"/>
 	  			</div>
+	  			<div align="left">
+						<div class='encabezado'>Datos básico</div>
+						<div class='linea-two'></div>
+				</div>
+				<separator spacing="30px"/>
 				<div align="center">
 					<grid width="580px">
 
