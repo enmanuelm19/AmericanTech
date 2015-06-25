@@ -7,7 +7,7 @@
 <zk xmlns:n="native">
 <window title=" " closable="true" border="none"
 		 action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="70%" width="40%">
+		height="70%" width="40%" >
 			<div class='contenedor'>
 				<div sclass="page-header">
 	    			<label value="Recuperar Contraseña"/>
