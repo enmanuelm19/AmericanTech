@@ -5,9 +5,9 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="540px" closable="true">
-
-
+<window title=" " closable="true" border="none"
+		 action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		height="70%" width="40%">
 			<div class='contenedor'>
 				<div sclass="page-header">
 	    			<label value="Recuperar Contraseña"/>
@@ -16,12 +16,12 @@
                             <n:h3 >¿Cual es el nombre de tu mascota?</n:h3>     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><n:i class="glyphicon glyphicon-pencil"></n:i></span>
-                                        <textbox id="login-username" type="text" class="form-control"  placeholder="Respuesta"/>                                        
+                                        <textbox id="" type="text" class="form-control"  placeholder="Respuesta"/>                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><n:i class="glyphicon glyphicon-envelope"></n:i></span>
-                                        <textbox id="login-password"  class="form-control" placeholder="Email"/>
+                                        <textbox id=""  class="form-control" placeholder="Email"/>
                                     </div>        
 			       </div>
 			        

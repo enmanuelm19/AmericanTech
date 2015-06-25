@@ -1,11 +1,11 @@
 <!-- Responsable Hector Gil -->
 
-<?page title="Registrar Sugerencia"?>
+<?page title="Motivo Venta Accion"?>
 
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 
 <zk xmlns:n="native" class='contenedor'>
@@ -13,17 +13,12 @@
 	<hlayout id="main" spacing="0">
 		<include src="/vistas/layouts/sidebar.zul" />
 		<vlayout spacing="0" hflex="1">
-			
-			
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 
 					<span sclass="home-icon z-icon-user" />
-						<a label="Socio ->" href="#" />
-						<a label=" Danos tu opinion ->" href="#" />
-						<a label="Sugerencias" href="#" />
-						
-					
+
+					<a label="Motivos Venta Accion" href="#" />
 				</div>
 
 			</div>
@@ -34,7 +29,7 @@
 			<div class='contenedor'>
 
 				<div sclass="page-header">
-					<label value="Registrar Sugerencia Socio" />
+					<label value="Administrar Motivo Ventas Accion" />
 
 				</div>
 				<div class='contenido ' align="center">
@@ -47,7 +42,7 @@
 
 							<div align="left">
 								<div class="encabezado">
-									Sugerencias
+									Motivos ventas
 								</div>
 								<div align="left" class="linea-two">
 
@@ -56,41 +51,46 @@
 
 							<div align="center">
 								<grid width="100%" align="center">
-									<rows class="col-md-12">					
-										
-										<row class="col-md-12">
+
+											
+									
+									<rows class="col-md-12">
+									
+									<row class="col-md-12">
 											<div width="80%">
 												<vbox>
-												<label>Tipo Sugerencia</label>
+												<label>Motivos Actuales</label>
 													<combobox
-														value="Seleccione" width="100%">
+														value="Seleccione" width="80%">
 														<comboitem
-															label="Instalacion" />
+															label="Inseguridad"/>
 														<comboitem
-															label="Evento" />
+															label="incapacidad Pago" />
 														<comboitem
-															label="Vigilancia" />
-														<comboitem
-															label="Otros" />
+															label="Venta" />
 													</combobox>
 												</vbox>
 											</div>
+
 										</row>
+
 										<row class="col-md-12">
 											<div width="80%">
-												
-												<label>Escriba aqui su
-													Sugerencia</label>												
-
-													<textbox cols="4"
-														rows="6" type="text"
-														value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
-														width="80%" />
-												
+												<vbox>
+													<label>
+														Nuevo Motivo
+													</label>
+													<textbox cols="5"
+														rows="1" type="text" value="Mudanza" width="100%"
+														tabindex="2" />
+												</vbox>
 											</div>
 
 										</row>
+										
+															
 
+										
 										<row align="center"
 											class="col-md-12 col-centered">
 											<hlayout width="95%">
@@ -98,7 +98,7 @@
 												<div class="col-md-2">
 													<button
 														iconSclass="z-icon-edit" class='boton-guardar'
-														label="Enviar" />
+														label="Guardar" />
 												</div>
 
 
