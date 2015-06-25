@@ -19,6 +19,12 @@
   <image id="image" src="../assets/portal/img/bannerInstalaciones.png" width="100%" /> 
 
  <div  align="center">
+<label style="font-family: 'Lato', sans-serif; font-size:2em;">Galería de Instalaciones </label><n:br></n:br> <n:br></n:br>
+<div align="center" width="75%">
+<label style="font-family: 'Lato', sans-serif; font-size:1.3em;"> 
+El Centro Atlético América cuenta con hermosas instalaciones, entre ellas cancha de beisbol, tenis, básquet, futbol y cancha de bolas criollas, 2 caneys y un salón múltiple, los cuales se encuentran disponibles para disfrute de los socios e invitados
+ </label><n:br></n:br> <n:br></n:br><n:br></n:br>
+ </div>
   <include src="galeria.zul" />
  </div><n:br></n:br>
  <n:br></n:br><n:br></n:br>

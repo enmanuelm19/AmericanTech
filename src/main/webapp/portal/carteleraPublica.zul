@@ -19,6 +19,11 @@
 <image id="image" src="../assets/portal/img/bannerCartelera.png" width="100%" />
 
  <div  align="center" >
+ <label style="font-family: 'Lato', sans-serif; font-size:2em;">
+Información </label><n:br></n:br> <n:br></n:br>
+<label style="font-family: 'Lato', sans-serif; font-size:1.3em;"> 
+Noticias, Eventos e Información para todo público.
+ </label><n:br></n:br> <n:br></n:br><n:br></n:br>
   <include src="../vistas/content/cartelera.zul" />
   <n:br></n:br> <n:br></n:br> <n:br></n:br>
   <include src="../vistas/content/calendario.zul" />
