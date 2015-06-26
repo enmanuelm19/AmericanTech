@@ -11,78 +11,30 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-puzzle-piece"/>
-					    <a label="Cartelera" href="#"/>
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Noticia" href="#"/>
 							<label value="Noticias"/>
 					</div>
  
 			</div>
 
-						<div class='contenedor'>
-								
-					 <div sclass="page-header">
-					    <label value="Noticias"/>
-					  
-					  </div>
-						   <div class='contenido '   align="center"   >
-				   				 <div class="col-md-8 col-centered " 
-				   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-				   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-				   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
-				        			<div class='form-pricing' width="830px" height="685px" style="margin-bottom: 20px">
-				        			
-			
-				          	<div align ="left">	
-				           		<div  class="encabezado">
-				          					Nueva noticia                             									                                                				                             				                             					
-				          		</div>		  			            		
-				           		<div align="left" class="linea-two">     									                                                				                             				                             					
-				          		</div>		            		
-					 		</div>
-				 	<div style="">
-						<grid >
-							<rows>
-								<row>
-									<label value="Titulo" />
-									<textbox type="text" value="" width="140px" />
-								</row>
-								<row height="80">
-									<label value="Descripcion" />
-									<textbox type="text" value="" width="260px" height="50px" />				
-								</row>
-								<row>
-									<label value="Caducidad" />
-									<datebox cols="12" format="medium" onCreate="self.value = new Date()" />
-								</row>
-								<row>
-									<label value="Visibilidad" />
-									<combobox  width="75px" >
-					                    <comboitem label="Socios"/>
-									    <comboitem label="Todos"/>
-					                </combobox>
-								</row>
-								<row>
-									<label value="Subir Imagen" />
-										 <button image="../../assets/img/agregar.jpg"
-							                            onClick="@command('confirm', languageContributionStatus=each)" />
-								</row>				
-								<row>
-									<label value="Publicar de Inmediato" />
-									<checkbox hflex="1" />
-								</row>
+		<div class='contenedor'>
 				
-				
-							</rows>
-						</grid>
-					</div>	
-						<div align="center">
-							<button class="boton-guardar" hflex="0" iconSclass="z-icon-floppy-o" label="Guardar" width="160px"/>
-						</div>
-					<separator spacing="10px"></separator>							
-
-					
+	 <div sclass="page-header">
+	    <label value="Noticia"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"   >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
+        			<div class='form-pricing' width="830px" height="430px">
         			
-                 	<div align="center" apply="controllers.ControllerRegNoticia" xmlns:w='client'>
+                 	<div align="center" >
+  			            		<div align="right" apply="controllers.ControllerRegNoticia" xmlns:w='client'>
+                  					<button id="btnRegistrarnoti" iconSclass="z-icon-floppy-o" class='boton-guardar' label="Agregar Noticia"/>	  			            		
+  			            		</div>
   			            		
   			            		<div align ="left">	
 	                       			<div  class="encabezado">
@@ -93,10 +45,11 @@
                        				</div>		            		
 								</div>
 							
-							<separator spacing="5px"></separator>                  	
-			                   		
+							<separator spacing="5px"></separator>
+				                   		
                    	</div><separator spacing="20px"></separator>
 					 <style src="/widgets/grid/master_detail/style.css" />
+					 
 					    <grid oddRowSclass="myodd" style="overflow:auto;"  mold="paging"
 							pageSize="3">
 							<auxhead sclass="category-center">
