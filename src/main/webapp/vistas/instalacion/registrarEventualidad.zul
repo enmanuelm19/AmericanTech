@@ -11,14 +11,14 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
+					<span sclass="home-icon z-icon-home" />
 					<a label="Instalación" href="#" />
 					<label value="Registrar Eventualidades" />
 				</div>
 
 			</div>
 
-			<div class='contenedor'>
+			<div class='contenedor form-pricing'>
 
 				<div sclass="page-header">
 					<label value="Registrar Eventualidades" />
@@ -35,11 +35,11 @@
 								<rows class="col-md-12">
 
 
-									<row class="col-md-11">
+									<row class="col-md-11" style="padding-left:0px">
 
 										<div>
 											<button label="Registrar" id="btnRegistrar"
-												class='btn-primary btn-primary' />
+												class='boton-guardar' iconSclass="z-icon-floppy-o" />
 										</div>
 
 									</row>
@@ -76,7 +76,7 @@
 													<textbox
 														value="Caney" width="95%" />
 													<button id="btnModificar"
-														iconSclass="z-icon-plus" class='btn-primary btn-primary' />
+														iconSclass="z-icon-pencil blu" class='btn-link' />
 												</row>
 											</rows>
 										</grid>

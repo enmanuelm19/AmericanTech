@@ -49,7 +49,7 @@
 										</div>
 										<div>
 											<button
-												iconSclass="z-icon-search blu" class='btn-link' />
+												iconSclass="z-icon-search" class='btn-primary btn-primary' />
 										</div>
 										<div>
 
@@ -63,13 +63,13 @@
 											<label
 												value="Eventos Disponibles" style="float:left" />
 											<button
-												iconSclass="z-icon-trash-o blu" style="margin:8px;float:right"
+												iconSclass="z-icon-trash-o" style="margin:8px;float:right"
 												class='boton-cancelar' />
 											<button
-												iconSclass="z-icon-pencil blu" style="margin:8px;float:right"
+												iconSclass="z-icon-pencil" style="margin:8px;float:right"
 												class='boton-guardar' />
 											<button
-												iconSclass="z-icon-plus blu" style="margin:8px;float:right"
+												iconSclass="z-icon-plus" style="margin:8px;float:right"
 												class='boton-guardar' />
 										</div>
 									</row>
@@ -138,9 +138,6 @@
 											</columns>
 											<rows>
 												<row>
-													<!-- use custom-attributes to store quarter and months in row, 
-														so it can be accessed later when detail onOpen -->
-
 													<label value="001"
 														width="8%" />
 													<label
@@ -168,8 +165,6 @@
 														</listitem>
 
 													</listbox>
-													<label
-														value="Proyecto de Partido" width="30%" />
 													<label
 														value="Agencia de Festejos WarLike" width="30%" />
 

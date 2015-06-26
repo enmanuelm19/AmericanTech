@@ -19,14 +19,14 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-
+						<span sclass="home-icon z-icon-cogs" />
 					<a label="Regsitar Instalación" href="#" />
 					<label value="Configuración" />
 					<label value="Instalación" />
 				</div>
 
 			</div>
-			<div class='contenedor'>
+			<div class='contenedor form-pricing'>
 				<div sclass="page-header">
 					<label value="Registrar Instalación" />
 				</div>
@@ -132,7 +132,7 @@
 																	sclass="btn-link" iconSclass="z-icon-plus blue"
 																	tooltiptext="Agregar" />
 																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
 																	tooltiptext="Eliminar" />
 															</hbox><!-- columna 2 iconos -->
 														</row>
@@ -149,7 +149,7 @@
 																	sclass="btn-link" iconSclass="z-icon-plus blue"
 																	tooltiptext="Agregar" />
 																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o blue"
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
 																	tooltiptext="Eliminar" />
 															</hbox><!-- columna 2 iconos -->
 														</row>
@@ -173,10 +173,10 @@
 								<separator spacing="5%"></separator>
 
 
-								<button iconSclass="z-icon-edit"
+								<button iconSclass="z-icon-floppy-o"
 									class='boton-guardar' label="Guardar" />
 
-								<button iconSclass="z-icon-edit"
+								<button iconSclass="z-icon-times-circle"
 									class='boton-cancelar' label="Cancelar " />
 							</hbox>
 						</div>

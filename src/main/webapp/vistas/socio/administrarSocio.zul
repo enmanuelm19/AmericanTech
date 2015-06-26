@@ -36,11 +36,11 @@
 
 								<rows class="col-md-12">
 
-									<row class="col-md-11">
+									<row class="col-md-11" style="padding-left:0px">
 										<div>
 											<button
 												iconSclass="z-icon-floppy-o"
-												class='boton-guardar' label="Registrar" />
+												class='btn-primary boton-guardar' label="Registrar" />
 										</div>
 										<div>
 

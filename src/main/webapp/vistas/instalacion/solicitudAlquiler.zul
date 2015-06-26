@@ -11,7 +11,7 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
+					<span sclass="home-icon z-icon-home" />
 					<a label="Eventos" href="#" />
 					<label value="Ejecución del Evento" />
 				</div>
@@ -19,7 +19,7 @@
 			</div>
 
 
-			<div class='contenedor'>
+			<div class='contenedor form-pricing'>
 
 				<div sclass="page-header">
 					<label value="Solicitud Alquiler" />
@@ -50,7 +50,7 @@
 									</div>
 									<div style="margin-top: 23px;">
 										<button
-											iconSclass="z-icon-search" class='btn-guardar' />
+											iconSclass="z-icon-search" class='btn-primary btn-primary' />
 									</div>
 								</row>
 								<row class="col-md-10">
@@ -62,7 +62,7 @@
 									<div style="margin-top: 23px;">
 										<button
 											iconSclass="z-icon-search" style="margin-top: 23px;"
-											class='btn-guardar' />
+											class='btn-primary btn-primary' />
 									</div>
 								</row>
 								<row class="col-md-10">
@@ -112,7 +112,7 @@
 								<row class="col-md-12">
 									<div class="col-md-12">
 										<listbox id="box"
-											multiple="false" checkmark="true">
+											multiple="true" checkmark="true">
 											<listhead>
 												<listheader
 													label="Codigo instalación" />
@@ -143,7 +143,7 @@
 									</div>
 									<div>
 										<button
-											iconSclass="z-icon-floppy-o" class='boton-guardar'
+											iconSclass="z-icon-times-circle" class='boton-cancelar'
 											label="Cancelar" />
 									</div>
 								</row>
