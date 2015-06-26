@@ -16,5 +16,27 @@ public class ControllerAcciones extends SelectorComposer<Component> {
 	                "registrarAccion.zul", null, null);
 	        window.doModal();
 	    }
+	 
+	 @Listen("onClick = #btnDesvincular")
+	    public void showModal1(Event e) {
+	        //create a window programmatically and use it as a modal dialog.
+	        Window window = (Window)Executions.createComponents(
+	                "desvincularAccion.zul", null, null);
+	        window.doModal();
+	    }
+	 @Listen("onClick = #btnDesvincular1")
+	    public void showModal2(Event e) {
+	        //create a window programmatically and use it as a modal dialog.
+	        Window window = (Window)Executions.createComponents(
+	                "desvincularAccion.zul", null, null);
+	        window.doModal();
+	    }
+	 @Listen("onClick = #btnDesvincular2")
+	    public void showModal3(Event e) {
+	        //create a window programmatically and use it as a modal dialog.
+	        Window window = (Window)Executions.createComponents(
+	                "desvincularAccion.zul", null, null);
+	        window.doModal();
+	    }
 
 }

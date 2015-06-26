@@ -11,7 +11,7 @@
 			<div sclass="page-header">
 	    		<label value="Registrar Tipo Sugerencia"/>
 	  		</div>
-	  			<div align="center" class="form-pricing">
+	  			<div align="center">
 			<div align ="left">	
 			<div  class="encabezado">
                      Datos Basicos                             									                                                				                             				                             					
@@ -26,7 +26,7 @@
 			            <row>
 	              			<div class="col-md-12">
 	              				<vbox>
-	              					Descripcion <textbox type="text" rows="4" value="" width="150%" />
+	              					Descripcion <textbox type="text" rows="4" value="" width="260px" />
 	              					<separator spacing="10%"/>
 			                	</vbox>
 			                </div>			                      

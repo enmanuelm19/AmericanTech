@@ -8,10 +8,13 @@
 	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
 	height="450px" width="500px">
 		<div class='contenedor'>
-			<div sclass="page-header">
-	    		<label value="Lista de Actividades"/>
-	  		</div>
-	  			<div align="center" class="form-pricing">
+			<separator spacing="20px"/>
+			<div align="left">
+			<div class='encabezado'>Lista de Tareas</div>
+			<div class='linea-two'></div>
+			</div>
+			<separator spacing="20px"/>
+	  			<div align="center" >
 			
 				<grid width="350px" height="200px" emptyMessage="No se encuentran actividades" mold="paging"
 							pageSize="2">

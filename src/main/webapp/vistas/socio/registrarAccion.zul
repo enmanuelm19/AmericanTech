@@ -6,12 +6,12 @@
 
 <zk xmlns:n="native" >
 	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="340px" width="500px">
+	height="340px" width="500px" >
 		<div class='contenedor'>
 			<div sclass="page-header">
 	    		<label value="Registrar Acción"/>
 	  		</div>
-	  			<div align="center" class="form-pricing">
+	  			<div align="center">
 			<div align ="left">	
 			<div  class="encabezado">
                      Datos Basicos                             									                                                				                             				                             					
