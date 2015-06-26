@@ -48,7 +48,7 @@
 								</row>
 								<row height="80">
 									<label value="Descripcion" />
-									<textbox type="text" value="" width="230px" />				
+									<textbox type="text" value="" width="260px" height="50px" />				
 								</row>
 								<row>
 									<label value="Caducidad" />

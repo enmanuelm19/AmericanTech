@@ -28,7 +28,7 @@
 									<hlayout>
 										<div style="border:1px">
 				                  			<image sclass="myimg" width="100px" height="100px"
-	                      			    	  src="/widgets/grid/master_detail/img/item1.jpg" />
+	                      			    	  src="../../assets/portal/img/img1.jpg" />
 	                             		</div>
 	                             		<div >
 	                             			<div>
