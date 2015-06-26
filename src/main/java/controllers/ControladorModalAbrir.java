@@ -12,7 +12,7 @@ import org.zkoss.zul.Window;
 public class ControladorModalAbrir extends SelectorComposer<Component> {
 	private static final long serialVersionUID = 1L;
 
-	@Listen("onClick = #ccc")
+	@Listen("onClick = #btnRegTipoInstalacion")
 	public void showModal(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
@@ -22,7 +22,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 		
 		
 	}
-	@Listen("onClick = #ddd")
+	@Listen("onClick = #btnRegTipoActividad")
 	public void ikhjk(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
@@ -31,7 +31,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	
 	}
 	
-	@Listen("onClick = #eee")
+	@Listen("onClick = #btnRegTipoNoticia")
 	public void kkkk(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
@@ -40,14 +40,6 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	
 	}
 	
-	@Listen("onClick = #fff")
-	public void lll(Event e) {
-		//create a window programmatically and use it as a modal dialog.
-		Window window = (Window)Executions.createComponents(
-				"registrarTipoSugerencia.zul", null, null);
-		window.doModal();
-	
-	}
 	
 	@Listen("onClick = #btnTipoDesvinculacionRegistrar")
     public void showModalTipoDesvinculacion(Event e) {
