@@ -65,9 +65,7 @@
 		<nav label="Instalaciones" iconSclass="z-icon-home">
 			<navitem label="Visitas" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/registrarVisita.zul"/>
 			<navitem label="Reservación" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/misReservaciones.zul"/>
-			<nav label="Administrar alquiler" iconSclass="z-icon-angle-double-right">
-				<navitem label="Registrar alquiler" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/solicitudAlquiler.zul"/>
-			</nav>
+			<navitem label="Alquileres" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/misAlquileres.zul"/>
 			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/registrarEventualidadInst.zul" />		
 		</nav>
 		<nav label="Eventos"  iconSclass="z-icon-calendar">
