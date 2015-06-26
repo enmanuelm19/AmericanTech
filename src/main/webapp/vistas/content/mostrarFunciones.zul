@@ -1,7 +1,7 @@
 	<div>
 		<grid mold="paging" pageSize="5">
 			<columns class="z-grid z-column-content ">
-				<column label="Descripcion" align="center"/>
+				<column label="DescripciÃ³n" align="center"/>
 			</columns>
 			<rows>
 				<row>

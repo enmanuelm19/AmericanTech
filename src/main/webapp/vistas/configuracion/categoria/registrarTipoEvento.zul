@@ -4,7 +4,7 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" class='contenedor'>
-	<window border="none" height="70%" width="40%" title=" "
+	<window border="none" height="55%" width="40%" title=" "
 		closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<div sclass="contenedor">
@@ -13,10 +13,9 @@
 					<label value="Registrar tipo de evento" />
 				</div>
 
-				<div id="formTipoEvento" width="80%"
-					class='form-pricing' align="left">
+				<div id="formTipoEvento" width="80%" align="left">
 					<div class="encabezado">
-						<label value="Datos Basicos" />
+						<label value="Datos BÃ¡sicos" />
 					</div>
 					<div class='linea-two'></div>
 					<div align="left">
@@ -27,7 +26,7 @@
 							<rows>
 								<row>
 									<vbox>
-										Codigo
+										CÃ³digo
 										<hbox>
 											<textbox
 												id="txtRegTipoEventCodigo" width="100%" />
@@ -35,9 +34,10 @@
 												iconSclass="z-icon-search blue" class="btn-link"
 												tooltiptext="Buscar" />
 										</hbox>
-										Descripcion
+										DescripciÃ³n
 										<textbox
-											id="txtRegTipoEventDescripcion" width="150%" />
+											id="txtRegTipoEventDescripcion" width="150%"
+											constraint="no empty" />
 									</vbox>
 								</row>
 								<row>
@@ -52,7 +52,7 @@
 								<div>
 									<separator spacing="5%" />
 									<button iconSclass="z-icon-floppy-o"
-										class='boton-guardar' label="Registrar" />
+										class='boton-guardar' label="Guardar" />
 								</div>
 								<space spacing="5%" />
 								<div apply="controllers.TipoEvento">
