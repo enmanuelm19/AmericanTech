@@ -29,7 +29,7 @@
 						<row>
 							<div class="col-md-12">
 								<vbox>
-									CÃ³digo
+									Código
 									<hbox width="100%">
 										<textbox type="text" value="" />
 										<button class='btn-link'
@@ -37,7 +37,7 @@
 										</button>
 									</hbox>
 									<separator />
-									DescripciÃ³n
+									Descripción
 									<textbox type="text" value=""
 										width="150%" constraint="no empty" />
 									<separator spacing="10%" />
@@ -59,7 +59,7 @@
 					</div>
 					<grid mold="paging" pageSize="15" width="100%">
 						<columns class="z-grid z-column-content">
-							<column label="DescripciÃ³n" align="center" />
+							<column label="Descripción" align="center" />
 							<column label="Activar" align="center"
 								width="15%" />
 						</columns>

@@ -11,7 +11,7 @@
 			<div class='breadcrumbs'>
 				<div class='breadcrumb'>
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="ConfiguraciÃ³n" href="#" />
+					<a label="Configuración" href="#" />
 					<label value="Instalaciones" />
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 				<div class='form-pricing' width="70%">
 					<div align="left">
 						<div class='encabezado'>
-							Datos BÃ¡sicos
+							Datos Básicos
 						</div>
 						<div class='linea-two'></div>
 					</div>
@@ -73,12 +73,12 @@
 						
 						<div class='col-md-4' align="left">
 							<vbox>
-								DescripciÃ³n
+								Descripción
 								<textbox width="150%" constraint="no empty"/>
 							</vbox>
 							<separator/>
 							<vbox>
-								Tipo de InstalaciÃ³n
+								Tipo de Instalación
 								<hbox>
 									<combobox width="110%" value="Seleccione Una Opcion">
 										<comboitem label="Caney"/>
@@ -112,10 +112,10 @@
 					<div>
 						<grid mold="paging" pageSize="8">
 							<columns>
-								<column label="CÃ³digo" align="center" sort="auto"/>
-								<column label="DescripciÃ³n" align="center" sort="auto"/>
+								<column label="Código" align="center" sort="auto"/>
+								<column label="Descripción" align="center" sort="auto"/>
 								<column label="Cantidad" align="center"/>
-								<column label="AÃ±adir" align="center" width="15%"/>
+								<column label="Añadir" align="center" width="15%"/>
 							</columns>
 							<rows>
 								<row>

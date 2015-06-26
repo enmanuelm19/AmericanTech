@@ -10,12 +10,12 @@
 		<div sclass="contenedor">
 			<div id="contPantalla" align="center">
 				<div sclass="page-header" align="left">
-					<label value="Registrar tipo de evento" />
+					<label value="Registrar Tipo de Evento" />
 				</div>
 
 				<div id="formTipoEvento" width="80%" align="left">
 					<div class="encabezado">
-						<label value="Datos BÃ¡sicos" />
+						<label value="Datos Básicos" />
 					</div>
 					<div class='linea-two'></div>
 					<div align="left">
@@ -26,7 +26,7 @@
 							<rows>
 								<row>
 									<vbox>
-										CÃ³digo
+										Código
 										<hbox>
 											<textbox
 												id="txtRegTipoEventCodigo" width="100%" />
@@ -34,7 +34,7 @@
 												iconSclass="z-icon-search blue" class="btn-link"
 												tooltiptext="Buscar" />
 										</hbox>
-										DescripciÃ³n
+										Descripción
 										<textbox
 											id="txtRegTipoEventDescripcion" width="150%"
 											constraint="no empty" />

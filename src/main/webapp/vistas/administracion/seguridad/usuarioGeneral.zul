@@ -44,9 +44,9 @@
 								sort="auto" />
 							<column label="Nombre" align="center"
 								sort="auto" />
-							<column label="Correo ElectrÃ³nico"
+							<column label="Correo Electrónico"
 								align="center" />
-							<column label="FunciÃ³n" align="center"
+							<column label="Función" align="center"
 								sort="auto" width="10%" />
 							<column label="Foto" align="center" />
 							<column label="Acciones" align="center"

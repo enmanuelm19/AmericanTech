@@ -16,7 +16,7 @@
 					<div>
 						<hbox>
 							<vbox>
-								CÃ©dula
+								Cédula
 								<textbox id="txtRegUsuarioCedula"
 									width="100%" constraint="no empty" />
 							</vbox>
@@ -61,7 +61,7 @@
 							<div>
 								<separator />
 								<vbox>
-									Correo ElectrÃ³nico (requerido)
+									Correo Electrónico (requerido)
 									<textbox id="txtRegUsuarioCorreo"
 										width="130%" constraint="no empty" />
 								</vbox>
@@ -85,7 +85,7 @@
 							<div>
 								<separator />
 								<vbox>
-									ContraseÃ±a (requerido)
+									Contraseña (requerido)
 									<textbox
 										id="txtRegUsuarioContrasena" width="160%"
 										constraint="no empty" />
@@ -94,7 +94,7 @@
 							<div>
 								<separator />
 								<vbox>
-									Confirmar ContraseÃ±a (requerido)
+									Confirmar Contraseña (requerido)
 									<textbox
 										id="txtRegUsuarioConfContrasena" width="110%"
 										constraint="no empty" />

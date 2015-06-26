@@ -32,15 +32,15 @@
 
 					<div class='contenido' align="left" width="80%">
 						<div align="left" class='encabezado'>
-							<label value="InformaciÃ³n" />
+							<label value="Información" />
 						</div>
 						<div class="linea-two"></div>
 						<grid mold="paging" pageSize="15" width=""
 							height="100%">
 							<columns class="z-grid z-column-content">
-								<column label="CÃ³digo" align="center"
+								<column label="Código" align="center"
 									width="30%" sort="auto" />
-								<column label="DescripciÃ³n"
+								<column label="Descripción"
 									align="center" sort="auto" />
 								<column label="Acciones" align="center"
 									width="25%" />
