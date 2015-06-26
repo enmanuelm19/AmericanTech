@@ -22,7 +22,7 @@
 		<!--  <navitem label="Typography" iconSclass="z-icon-text-width"/>-->
 		
 			<nav label="Configuración" iconSclass="z-icon-cogs">
-		    <navitem label="Perfil del club" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/perfilClub.zul"/>
+		    <navitem label="Perfil del club" iconSclass="z-icon-angle-double-right"  href="/america/vistas/configuracion/perfilClub.zul"/>
 			<navitem label="Junta directiva" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/juntaDirectiva.zul"/>
 			<navitem label="Preferencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/Preferencia.zul"/>
 			<navitem label="Instalaciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/registrarInstalacion.zul"/>
@@ -80,7 +80,7 @@
 			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" />		
 		</nav>
 		
-		<nav label="Consulta" iconSclass="z-icon-angle-double-right">
+		<nav label="Consulta" iconSclass="z-icon-th-list">
 			<nav label="Socio" iconSclass="z-icon-user" >
 				<navitem label="Opiniones postulacion" iconSclass="z-icon-angle-double-right" href=""/>
 						</nav>
