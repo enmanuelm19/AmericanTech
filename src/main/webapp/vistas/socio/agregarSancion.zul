@@ -95,18 +95,19 @@
 		        					</vlayout>
 	        					</row>
 		          
-			                  <row class="col-md-11 col-centered">        
-			                  	<hlayout width="" >
-			                  	
-			                  		<separator spacing="150px"></separator>
-			                  		<div>
-			                    		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
-			                    	</div><separator spacing="80px"></separator>
-
-			                     	<div>
-			                    		<button  iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
-			                     	</div>
-			                  	</hlayout>										             		
+			                  <row class="col-md-11 col-centered">  
+			                    <div align="center">    
+				                  	<hlayout width="" >
+				                  		<separator spacing="150px"></separator>
+				                  		<div>
+				                    		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
+				                    	</div><separator spacing="80px"></separator>
+	
+				                     	<div>
+				                    		<button  iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
+				                     	</div>
+				                  	</hlayout>
+			                  	</div>										             		
 			                 </row>
 			 
 			            </rows>
