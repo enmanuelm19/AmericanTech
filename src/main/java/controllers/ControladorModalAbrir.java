@@ -74,5 +74,15 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
         window.doModal();
     }
 	
+	@Listen("onClick = #btnOpinionRegistrar")
+    public void showModalOpinion(Event e) {
+        //create a window programmatically and use it as a modal dialog.
+        Window window = (Window)Executions.createComponents(
+                "opinion.zul", null, null);
+        window.doModal();
+    }
+	
+
+	
 }
 
