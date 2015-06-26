@@ -440,7 +440,7 @@ a:focus {
 .nav-list.z-navbar > ul > .z-nav-open > a,
 .nav-list.z-navbar > ul > .z-nav-open > a:hover,
 .nav-list.z-navbar > ul > .z-nav-open > a:focus {
-  background-color: #fafafa;
+    background-color: rgba(17, 188, 183, 0.62);
 }
 .nav-list.z-navbar > ul .z-nav-selected > .z-nav-content {
   background-color: #ffffff;
@@ -3030,4 +3030,34 @@ margin-top:80px;
   padding: 20px;
   border-radius: 4px;
   box-shadow: rgb(88, 88, 88) 1px 1px 2px 2px;
+}
+
+.z-window-header {
+  font-family: Open Sans;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  color: #FFFFFF;
+  padding: 3px 10px 5px 10px;
+  line-height: 24px;
+  background: rgb(43, 125, 188);
+  overflow: hidden;
+  zoom: 1;
+  cursor: default;
+}
+
+.z-window-icon {
+  font-size: 16px;
+  color: #FAF6F6;
+  width: 28px;
+  height: 24px;
+  -webkit-border-radius: 4px;
+  margin: auto 1px;
+  line-height: 24px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  float: right;
+    background: rgb(43, 125, 188);
+  border: none;
 }
