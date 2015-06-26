@@ -11,7 +11,7 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
+							<span sclass="home-icon z-icon-calendar"/>
 					    <a label="Evento" href="#"/>
 							<label value="Solicitar Evento"/>
 					</div>
@@ -29,7 +29,7 @@
    				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='form-pricing' width="700px" height="460px">
+        			<div class='form-pricing' width="550px" height="460px">
   			            		<div align ="left">	
 	                       			<div  class="encabezado">
                        					Solicitud de evento                             									                                                				                             				                             					
@@ -104,15 +104,6 @@
 	        				<row>
 	        					<vlayout>
 		        					<hlayout>
-
-	        	           				<div>
-	                      					<label value="Codigo" />
-	                      				</div>
-	                      				<div >
-	                      					<textbox type="text" value="" width="140px" />
-	                      				</div>                      				
-		        					</hlayout>
-		        					<hlayout>
 	
 		                      			<div>
 	
@@ -161,18 +152,20 @@
 			                    	    Descripcion <textbox type="text" value="" width="260px" height="60px" />
 			                      </div>		
 								</row>			          
-			                  <row class="col-md-11 col-centered">        
-			                  	<hlayout width="" >
+			                  <row >        
 			                  	
-			                  		<separator spacing="150px"></separator>
-			                  		<div>
-			                    		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Enviar"/>
-			                    	</div><separator spacing="80px"></separator>
 
-			                     	<div>
-			                    		<button  iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
-			                     	</div>
-			                  	</hlayout>										             		
+			                  		<div align="center">
+										<hlayout>
+					                  		<div >
+					                    		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Enviar"/>
+					                    	</div>
+					                    	<separator spacing="100px"></separator>
+					                     	<div>
+					                    		<button  iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
+					                     	</div>
+										</hlayout>
+			                     	</div>										             		
 			                 </row>
 			 
 			            </rows>
