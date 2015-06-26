@@ -6,19 +6,19 @@
 <zk>
 	<window border="none" title=" " closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="45%">
+		width="45%" height="100%">
 		<div class="contenedor" width="100%" align="center">
 			<div sclass="page-header" align="left">
 				<label value="Registrar Usuario" />
 			</div>
-			<div class='form-pricing' align="center" width="100%">
+			<div align="center" width="90%">
 				<div align="left" width="100%">
 					<div>
 						<hbox>
 							<vbox>
-								Cedula
+								Cédula
 								<textbox id="txtRegUsuarioCedula"
-									width="100%" />
+									width="100%" constraint="no empty" />
 							</vbox>
 							<div>
 								<separator spacing="40%" />
@@ -34,7 +34,7 @@
 								Usuario (requerido)
 								<separator />
 								<textbox id="txtRegUsuarioUsuario"
-									width="85%" />
+									width="85%" constraint="no empty" />
 							</div>
 							<div>
 								<separator />
@@ -61,9 +61,9 @@
 							<div>
 								<separator />
 								<vbox>
-									Correo Electronico (requerido)
+									Correo Electrónico (requerido)
 									<textbox id="txtRegUsuarioCorreo"
-										width="130%" />
+										width="130%" constraint="no empty" />
 								</vbox>
 							</div>
 							<div>
@@ -71,7 +71,7 @@
 								<vbox>
 									Nombre
 									<textbox id="txtRegUsuarioNombre"
-										width="150%" />
+										width="150%" constraint="no empty" />
 								</vbox>
 							</div>
 							<div>
@@ -79,7 +79,7 @@
 								<vbox>
 									Apellido
 									<textbox id="txtRegUsuarioApellido"
-										width="150%" />
+										width="150%" constraint="no empty" />
 								</vbox>
 							</div>
 							<div>
@@ -87,7 +87,8 @@
 								<vbox>
 									Contraseña (requerido)
 									<textbox
-										id="txtRegUsuarioContrasena" width="160%" />
+										id="txtRegUsuarioContrasena" width="160%"
+										constraint="no empty" />
 								</vbox>
 							</div>
 							<div>
@@ -95,7 +96,8 @@
 								<vbox>
 									Confirmar Contraseña (requerido)
 									<textbox
-										id="txtRegUsuarioConfContrasena" width="110%" />
+										id="txtRegUsuarioConfContrasena" width="110%"
+										constraint="no empty" />
 								</vbox>
 							</div>
 						</div>
@@ -115,7 +117,7 @@
 					</hbox>
 
 				</div>
-				<separator spacing="30px" />
+				<separator spacing="5%" />
 				<div align="center">
 					<hbox>
 						<div>

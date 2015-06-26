@@ -22,14 +22,14 @@
 			<div sclass="page-header">
 				<label value="Registrar Grupo" />
 			</div>
-			<div align="center" class="form-pricing">
+			<div align="center" width="95%">
 				<grid width="100%">
 					<rows class="col-md-12">
 
 						<row>
 							<div class="col-md-12">
 								<vbox>
-									Codigo
+									Código
 									<hbox width="100%">
 										<textbox type="text" value="" />
 										<button class='btn-link'
@@ -37,9 +37,9 @@
 										</button>
 									</hbox>
 									<separator />
-									Descripcion
+									Descripción
 									<textbox type="text" value=""
-										width="150%" />
+										width="150%" constraint="no empty" />
 									<separator spacing="10%" />
 								</vbox>
 							</div>
@@ -49,7 +49,7 @@
 				</grid>
 
 
-				<div align="center"><!-- INICIO DIV GRID DE FUNCIONES-->
+				<div align="center" width="95%"><!-- INICIO DIV GRID DE FUNCIONES-->
 					<!-- GRID DE FUNCIONES-->
 					<div align="left">
 						<div class='encabezado'>
@@ -57,9 +57,9 @@
 						</div>
 						<div class="linea-two" />
 					</div>
-					<grid mold="paging" pageSize="15" width="90%">
+					<grid mold="paging" pageSize="15" width="100%">
 						<columns class="z-grid z-column-content">
-							<column label="Descripcion" align="center" />
+							<column label="Descripción" align="center" />
 							<column label="Activar" align="center"
 								width="15%" />
 						</columns>
@@ -89,7 +89,7 @@
 				<div>
 					<hbox>
 						<button iconSclass="z-icon-floppy-o"
-							class='boton-guardar' label="Registrar" />
+							class='boton-guardar' label="Guardar" />
 						<space spacing="20%" />
 						<button iconSclass="z-icon-times-circle"
 							class='boton-cancelar' label="Cancelar" />

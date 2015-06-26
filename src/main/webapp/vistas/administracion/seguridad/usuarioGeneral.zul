@@ -11,9 +11,9 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Socios" href="#" />
-					<label value="Administrar Socio" />
+					<span sclass="home-icon z-icon-puzzle-piece" />
+					<a label="Adm. del Sistema" href="#" />
+					<label value="Usuario" />
 				</div>
 
 			</div>
@@ -21,41 +21,36 @@
 			<div class='contenedor' style="padding:10px;">
 
 				<div sclass="page-header">
-					<label value="Administrar Socios" />
+					<label value="Usuario" />
 				</div>
 				<div class='form-pricing'>
-				
-					<div align="left"
+
+					<div align="right"
 						apply="controllers.usuarioGeneralController">
 						<button id="btnUsuarioGeneralReg"
 							iconSclass="z-icon-floppy-o" class='boton-guardar'
 							label="Registrar" />
 					</div>
-					<separator spacing="3%"/>
+					<separator spacing="1%" />
 					<div class='encabezado' align="left">
 						Datos de Usuarios
 					</div>
-					<div class='linea-two'/>
-					<combobox value="Ordenar Por">
-						<comboitem label="Usuario" />
-						<comboitem label="Nombre" />
-						<comboitem label="Funcion" />
-					</combobox>
+					<div class='linea-two' />
 
-					<grid mold="paging" pageSize="8">
+					<grid mold="paging" pageSize="15">
 						<columns class="z-grid z-column-content"
 							menupopup="auto">
 							<column label="Usuario" align="center"
 								sort="auto" />
 							<column label="Nombre" align="center"
 								sort="auto" />
-							<column label="Correo Electronico"
+							<column label="Correo Electrónico"
 								align="center" />
-							<column label="Funcion" align="center"
+							<column label="Función" align="center"
 								sort="auto" width="10%" />
 							<column label="Foto" align="center" />
 							<column label="Acciones" align="center"
-								width="15%" />
+								width="10%" />
 						</columns>
 						<rows>
 							<row>
@@ -63,7 +58,8 @@
 								<label value="Fidel Aliaga" />
 								<label value="fidel.alejos@gmail.com" />
 								<label value="Socio" />
-								<image src="/assets/portal/img/img1.jpg" width="30%" />
+								<image src="/assets/portal/img/img1.jpg"
+									width="30%" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -76,7 +72,8 @@
 								<label value="Carlos Colmenarez" />
 								<label value="carlos@gmail.com" />
 								<label value="Socio" />
-								<image src="/assets/portal/img/img1.jpg" width="30%"/>
+								<image src="/assets/portal/img/img1.jpg"
+									width="30%" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -89,7 +86,8 @@
 								<label value="Hilder Lee" />
 								<label value="hilder@gmail.com" />
 								<label value="Vicepresidente" />
-								<image src="/assets/portal/img/img1.jpg" width="30%" />
+								<image src="/assets/portal/img/img1.jpg"
+									width="30%" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
