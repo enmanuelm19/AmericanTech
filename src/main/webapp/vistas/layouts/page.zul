@@ -11,16 +11,15 @@
   </hlayout>
   
   <separator bar="true"/>
-  <hlayout spacing="30px">
-   
-    <include src="/vistas/content/cartelera.zul" hflex="6"/>
-  </hlayout>
-   <hlayout spacing="24px">
-   <div class="margen-calendario page-header">
-   <include src="/vistas/content/calendario.zul" hflex="6"/>
-   </div>
-  </hlayout>
-  
+
+
+  <div  align="center" >
+
+  <include src="/vistas/content/pruebacartelera.zul" />
+  <n:br></n:br> <n:br></n:br> <n:br></n:br>
+  <include src="/vistas/content/calendario.zul" />
+ 
+ </div>
   
   
 </vlayout>

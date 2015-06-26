@@ -1,41 +1,47 @@
 
-<window title=""  width="100%">
-
-<?link href="assets/portal/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="assets/portal/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<?link rel="stylesheet" type="text/css" href="assets/portal/css/imgeffect.css" ?>
-<?link href="assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
-<?script type="text/javascript" src="assets/portal/js/easing.js"?>
-<?script type="text/javascript" src="assets/portal/js/fliplightbox.min.js"?>
-<?script type="text/javascript" src="assets/portal/js/jquery.easing.min.js"?>
-<?script type="text/javascript" src="assets/portal/js/jquery.magnific-popup.js"?>
-<?script type="text/javascript" src="assets/portal/js/jquery.min.js"?>
-<?script type="text/javascript" src="assets/portal/js/jquery.mixitup.min.js"?>
-<?script type="text/javascript" src="assets/portal/js/jquery.scrollTo.js"?>
-<?script type="text/javascript" src="assets/portal/js/move-top.js"?>
-<?script type="text/javascript" src="assets/portal/js/efecto.js"?>
+<window title=""  width="100%" class="col-md-12">
+<zk xmlns:n="native">
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
+<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
+<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
+<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
+<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
 <include src="header.html" />
 
-<image id="image" src="assets/portal/img/bannerCartelera.png" width="100%" />
 
-    
-   <hlayout spacing="24px" >
-    <div class="row">
-    	<div class='col-md-2 col-md-offset-5' align="center" >
-    <include src="vistas/content/calendario.zul" hflex="5"/>
-    </div>
-    </div>
+<image id="image" src="../assets/portal/img/bannerCartelera.png" width="100%" />
+
+ <div  align="center" >
+ <label style="font-family: 'Lato', sans-serif; font-size:2em;">
+Información </label><n:br></n:br> <n:br></n:br>
+<label style="font-family: 'Lato', sans-serif; font-size:1.3em;"> 
+Noticias, Eventos e Información para todo público.
+ </label><n:br></n:br> <n:br></n:br><n:br></n:br>
+
+ <div width="80%">
+ 
+  <include src="../vistas/content/carteleraExterna.zul" />
+  <n:br></n:br> <n:br></n:br> <n:br></n:br>
+   <label style="font-family: 'Lato', sans-serif; font-size:2em;">
+Eventos</label><n:br></n:br> <n:br></n:br>  <n:br></n:br>
   
-  </hlayout>
-  <hlayout spacing="24px" >
-    <div class="row cartelera-publica-margen">
-    	<div class='col-md-10 col-md-offset-1' align="center" >
-    <include src="vistas/content/cartelera.zul" hflex="5"/>
-    </div>
-    </div>
-  
-  </hlayout>
+  <include src="../vistas/content/calendario.zul" />
+ </div>
+ </div>
+
+
+
+ 
 
 <include src="footer.html" />
-    
+    </zk>
 </window>

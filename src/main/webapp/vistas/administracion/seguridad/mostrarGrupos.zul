@@ -1,0 +1,189 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-puzzle-piece" />
+					<a label="Admin. del Sistema" href="#" />
+					<label value="Grupo" />
+				</div>
+
+			</div>
+			<div class='contenedor' align="center">
+				<div sclass="page-header" align="left">
+					<label value="Grupo" />
+				</div>
+
+				<div align="center" sclass="form-pricing" width="50%"><!-- INICIO DIV GRID DE GRUPOS-->
+
+					<div apply="controllers.grupoGeneralController"
+						align="left">
+						<button id="btnGrupoRegistrar" label="Registrar"
+							iconSclass="z-icon-floppy-o" class='boton-guardar' />
+					</div>
+					<separator spacing="3%" />
+					<div align="left">
+						<div class='encabezado' align="left">
+							Datos de Grupos
+						</div>
+						<div class="linea-two"></div>
+					</div>
+					<!-- GRID DE GRUPOS-->
+					<grid mold="paging" pageSize="8" width="100%">
+						<auxhead class="z-auxheader-content">
+							<auxheader align="left" colspan="2">
+								<textbox width="40%" />
+								<button iconSclass="z-icon-search blue"
+									sclass="btn-link" />
+
+							</auxheader>
+						</auxhead>
+						<columns class="z-grid z-column-content ">
+							<column label="Descripcion" align="center"
+								width="60%" />
+							<column label="Acciones" align="center"
+								width="40%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Junta Directiva" />
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+
+
+								</div>
+							</row>
+							<row>
+								<label value="Adiministracion" />
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+
+
+								</div>
+							</row>
+							<row>
+								<label value="Socios" />
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+
+								</div>
+							</row>
+							<row>
+								<label value="Secretaria" />
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+
+								</div>
+							</row>
+						</rows>
+					</grid><!-- FIN GRID DE GRUPOS-->
+					<separator spacing="20px" />
+				</div><!--FIN DIV GRID DE GRUPOS-->
+				<separator spacing="2%" />
+
+				<div style="padding:5%">
+					<div>
+						<div class='form-pricing' align="center"
+							width="40%">
+							<div align="left">
+								<div class='encabezado'>
+									<label value="Funciones" />
+								</div>
+							</div>
+							<div class='linea-two'></div>
+							<div>
+								<include
+									src="/vistas/content/mostrarFunciones.zul" />
+							</div>
+						</div>
+						<separator spacing="3%" />
+						<div class='form-pricing' align="center"
+							width="70%">
+							<div align="left">
+								<div class='encabezado'>
+									<label value="Usuarios" />
+								</div>
+							</div>
+							<div class='linea-two'></div>
+							<grid mold="paging" pageSize="8">
+								<columns class="z-grid z-column-content"
+									menupopup="auto">
+									<column label="Usuario"
+										align="center" sort="auto" />
+									<column label="Nombre"
+										align="center" sort="auto" />
+									<column label="Correo Electronico"
+										align="center" />
+									<column label="Foto" align="center" />
+								</columns>
+								<rows>
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="30%" />
+									</row>
+									<row>
+										<label value="musiu" />
+										<label
+											value="Carlos Colmenarez" />
+										<label value="carlos@gmail.com" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="30%" />
+									</row>
+									<row>
+										<label value="hilderLee" />
+										<label value="Hilder Lee" />
+										<label value="hilder@gmail.com" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="30%" />
+									</row>
+								</rows>
+							</grid>
+							<!-- FIN GRID DE USUARIOS-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</vlayout>
+	</hlayout>
+</zk>

@@ -1,0 +1,22 @@
+	<div>
+		<grid mold="paging" pageSize="5">
+			<columns class="z-grid z-column-content ">
+				<column label="Descripcion" align="center"/>
+			</columns>
+			<rows>
+				<row>
+					<label value="Modificar Perfil"/>
+				</row>
+				<row>
+					<label value="Registrar Solicitud Reservacion"/>
+				</row>
+				<row>
+					<label value="Publicar Informacion en Cartelera"/>
+				</row>
+				<row>
+					<label value="Revisar Sugerencias"/>
+				</row>	      
+			</rows>
+			
+		</grid>
+	</div>

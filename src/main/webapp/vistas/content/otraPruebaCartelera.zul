@@ -1,0 +1,45 @@
+<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
+		<div class="contenedor">
+					
+						
+						
+								<n:div class="row">
+								<n:div class="[ col-xs-12 col-sm-offset-2 col-sm-6 ]">
+									<n:ul class="event-list">
+											<n:li>
+												<n:time datetime="2014-07-20">
+													<n:span class="day">4</n:span>
+													<n:span class="month">Jul</n:span>
+													<n:span class="year">2014</n:span>
+													<n:span class="time">ALL DAY</n:span>
+												</n:time>
+												<n:img alt="Independence Day" src="/webapp/assets/portal/img/mantenimiento.jpg" />
+												<n:div class="info">
+													<n:h2 class="title">Cuota Especial</n:h2>
+													<n:p class="desc">Por motivo de mantenimiento es necesario solicitar una cuota especial</n:p>
+												</n:div>
+											</n:li>
+										</n:ul>
+									</n:div>
+								</n:div>
+								<div class="row">
+								<grid class="event-list">
+									<columns>
+										<column></column>
+									</columns>
+									<rows>
+										<row class="time">
+											<hbox>
+												<div class="day">4</div>
+											
+											
+											</hbox>
+										</row>
+										
+									</rows>
+								</grid>
+								</div>
+				</div>
+		
+</zk>

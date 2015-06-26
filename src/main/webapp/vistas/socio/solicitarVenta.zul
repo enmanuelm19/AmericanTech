@@ -24,80 +24,107 @@
 					<label value="Solicitar Venta" />
 
 				</div>
-				<div class='contenido ' align="center">
-					<div class="col-md-8 col-centered ">
-						<div class='rcorners6' width="auto"
-							height="350px">
-							<div sclass="col-lg-12 page-header"
-								style="text-align:left; padding-bottom: 0px;padding-top: 0px;
-  background-color: transparent; margin-bottom: 0px; ">
-								<label value="Mis Acciones" />
-							</div>
+				<div class='contenido' align="center">
+				<div class="form-pricing">
+						<div>
+	
+			
+		<div class=" col-md-5 form-pricing" align="center" width="300px" height="300px">
+		
+			<div align="left">
+			<div class='encabezado'>Mis Acciones</div>
+			<div class='linea-two'></div>
+			</div>
+			<separator spacing="20px"/>
+			<grid>
+				<columns>
+							<column hflex="2"># Acción </column>
+							<column hflex="2">Solicitar Venta</column>
+							
+							
+				</columns>
+			
+				<rows>
+					<row>
+						<label value="002" />
+						<button label="Vender" class='boton-guardar' />
+					</row>
+					<row>
+						<label value="003" />
+						<button label="Vender" class='boton-guardar' />
+					</row>
+				</rows>
+			</grid>
+		
+		</div>
+				
+		<div class="col-md-offset-5 form-pricing" width="370px" height="300px">
+		
+			<div align="left">
+			<div class='encabezado'>Informacion de la Venta</div>
+			<div class='linea-two'></div>
+			</div>
+			<separator spacing="20px"/>			
+			<grid>
+			<rows class="col-md-12">
+			     			    
+			                 <row class="col-md-11">
+			              
+			                  	  <div width="80px">
+			              		   	# Acción
+			              		   </div>
+			                       <div>
+			              		   <textbox type="text" value="" width="200px" />
+			                      </div>
+			                      		                      
+			                  </row>
+			                  <row class="col-md-11">
+			              		  <div width="80px"> 	Socio </div>
+			              		   
+			              		   	
+			              <div>
+			              <textbox type="text" value="" width="200px" />
+			                <separator spacing="5px"></separator>	
+			            	
+			                  </div>  		 
+			            
+			              		  
+			              		   	 
+			                      
+			                  </row>
+			                   <row class="col-md-11">
+			              		  <div width="80px"> Motivo </div>
+			              		   
+			              
+			             	      <div>
+							   		 <listbox width="200px" height="25px" selectedItem="@bind(vm.dateFormat)"
+									                            mold="select" tabindex="7">
+									                            <listitem label="" value="" />
+									                             <listitem label="" value="" />
+								     </listbox>     	
+								     <separator spacing="15px"></separator>	
+		    					 </div>
+			                  </row>    
+			                       
+			         
+			               	
+			                  <row class="col-md-3 col-md-offset-3"> <separator spacing="15px"></separator>
+			                  	<hlayout>
+			                 
+			                  	  		<div >
+			                    		<button   iconSclass=""  class='boton-guardar' label="Solicitar Venta"/>
+			                    	</div>
+		
+			                  	</hlayout>
+			             		
+			                 </row>
+			 			
+			            </rows>
+				
+			</grid>
+	
+	</div>
 
-							<hlayout height="100%">
-								<grid width="260px"
-									style="text-align:center; 
-									border: 2px solid #2B7DBC;padding-right: 18px">
-									<columns>
-										<column width="120px">
-											Número Acción
-										</column>
-
-										<column width="110px">
-											Solicitar
-										</column>
-									</columns>
-									<rows>
-										<row>
-											<label value="002" />
-											<button label="Venta"
-												class='btn-primary btn-primary' />
-										</row>
-										<row>
-											<label value="003" />
-											<button label="Venta"
-												class='btn-primary btn-primary' />
-										</row>
-									</rows>
-								</grid>
-
-								<grid
-									style="border: 2px solid #2B7DBC; margin-left: 10px;width: 58%;  float: left;">
-
-									<rows class="col-md-10">
-										<row class="col-md-10">
-											Número de Acción
-										</row>
-										<row class="col-md-10">
-											<textbox type="text"
-												value="" width="250px" tabindex="2" />
-
-										</row>
-										<row class="col-md-10">
-											Socio
-										</row>
-										<row class="col-md-10">
-											<textbox type="text"
-												value="" width="250px" tabindex="2" />
-										</row>
-										<row class="col-md-10">
-											Motivo Solicitud
-										</row>
-										<row class="col-md-10">
-											<textbox type="text"
-												value="" width="280px" height="60px" tabindex="2" />
-
-										</row>
-										<row class="col-md-10">
-											<div>
-												<button
-													class='btn-primary boton-guardar' label="Registrar" />
-											</div>
-										</row>
-									</rows>
-								</grid>
-
-							</hlayout>
 						</div>
 					</div>
 
@@ -113,3 +140,4 @@
 
 
 </zk>
+

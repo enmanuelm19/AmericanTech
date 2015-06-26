@@ -1,0 +1,129 @@
+<window  title="Agregar Sancion" border="normal" width="560px"
+	position="center,center" closable="true" 
+	action="show: slideDown;hide: slideUp">             
+	<hlayout >   
+		<vlayout spacing="0" hflex="1">
+
+		<div >
+				
+		   <div >
+   				 <div >
+        			<div  >
+        			<grid width="680px" fixedLayout="true" >
+  
+			            	<rows class="col-md-12">
+			            		<row>
+  			            		<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Datos basicos                             									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>                     						            		
+			            		</row>
+			                  <row class="col-md-11" >
+                             	<div>
+			                  		
+									<hlayout>
+										<div style="border:1px">
+				                  			<image sclass="myimg" width="100px" height="100px"
+	                      			    	  src="../../assets/portal/img/img1.jpg" />
+	                             		</div>
+	                             		<div >
+	                             			<div>
+	                             				<hlayout>
+		                             				<div>
+		                             					<div>
+		                             						Numero de Carnet
+		                             					</div>
+			                             				<div>
+			                             					Cedula
+		                             					</div>
+			                             				<div>
+			                             					Nombre
+		                             					</div>                             									                                                				
+			                             				<div>
+			                             					Direccion
+		                             					</div>  
+		                             				</div>
+													<div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+			                             				</div>	                             							                             																		
+			                             				<div>
+			                             					<textbox type="text" value="" height="30px" width="240px" />                             									                                                				
+			                             				</div>	
+													</div>
+	                             				</hlayout>                             				                             					
+	                             			</div>	
+							           </div> 
+									</hlayout>			                  		
+								</div>>
+						    </row>
+						</rows>   
+					</grid>
+        			<grid width="580px" >         
+			            	<rows class="col-md-12">
+				                <row class="col-md-11">
+					               	<vlayout>
+						               	<div>
+			        						<label  value="Sancion"  />
+			        					</div>
+			        					<div>
+			        						<hlayout>
+				        						<div>
+				        							Motivo
+				        						</div>
+				        						<div>
+				        							<div align="center">
+				        								<textbox type="text" value="" height="70px" width="370px" />
+				        							</div>	
+				        						</div>
+				        						
+			        						</hlayout>
+			        					</div>
+		        					</vlayout>
+	        					</row>
+		          
+			                  <row class="col-md-11 col-centered">  
+			                    <div align="center">    
+				                  	<hlayout width="" >
+				                  		<separator spacing="150px"></separator>
+				                  		<div>
+				                    		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
+				                    	</div><separator spacing="80px"></separator>
+	
+				                     	<div>
+				                    		<button  iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
+				                     	</div>
+				                  	</hlayout>
+			                  	</div>										             		
+			                 </row>
+			 
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</window>

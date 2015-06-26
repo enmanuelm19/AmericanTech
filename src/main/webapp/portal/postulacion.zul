@@ -16,161 +16,81 @@
 <?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
 <include src="header.html" />
 
-
+<zk xmlns:n="native">
   <image id="image" src="../assets/portal/img/bannerPostulacion.png" width="100%" /> 
   
-  <zk xmlns:n="native" class='contenedor'>
-  <div class='contenedor'>
-				
-	 <div sclass="page-header"  align="center">
-	    <label value="Registrar Postulación"/>
-	  
-	  </div>
-		   <div class='contenido '   align="center"  >
-    <div class="col-md-6 col-centered "  form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        <grid  width="auto">
-          
-            <rows class="col-md-10">
-            
-            	  <row class="col-md-10">
-                   <label style="font-weight: bold">Datos personales</label>
-               </row>
-                  <row class="col-md-10">
-              		  <div>
-              		   Nombre
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                        Cedula
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-                     <row class="col-md-10">
-              		  <div>
-              		   Dirección
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                        Email
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-                      <row class="col-md-10">
-              		  <div>
-              		   Telefono fijo
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                        Telefono Movil
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-               
-                 
-				
-				  <row class="col-md-10">
-              		  <div  >
-              		    ¿Por qué quieres pertenecer al club?
-                    	<textbox rows="5" cols="80"/> 
-                       </div>
-                       
-                 </row> 
-	               <row class="col-md-10 margen-subtitulo-postulacion">
-	                   <label style="font-weight: bold;">Datos del miembro del club que te apadrina</label>
-	               </row>
-	               
-	               <row class="col-md-10">
-                    
-              		  <div>
-              		  Nombre de tu padrino 1
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                        Cedula de tu padrino 1
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-                   
-                    <row class="col-md-10">
-                    
-              		  <div>
-              		  Telefono de tu padrino 1 en el club
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                         Antiguedad de tu padrino 1 en el club
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-                     <row class="col-md-10 margen-subtitulo-postulacion">
-	                   <label style="font-weight: bold">Datos del segundo miembro del club que te apadrina</label>
-	               </row>
-                    
-	               <row class="col-md-10">
-                    
-              		  <div>
-              		  Nombre de tu padrino 2
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                        Cedula de tu padrino 2
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-                   
-                    <row class="col-md-10">
-                    
-              		  <div>
-              		  Telefono de tu padrino 2 en el club
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                        <div class="" >
-                         Antiguedad de tu padrino 2 en el club
-                    	<textbox type="text" value=""
-                        width="250px" tabindex="2" />
-                       </div>
-                 </row>
-                   
-                   
-      
-                 
-                    <row class="col-md-10">
-             			 <div  >
-                    	<button  iconSclass="z-icon-floppy-o" class='btn-info boton-guardar' label="Enviar postulación"/>
-                       </div>
-                 </row>
-                 
-                   
-                 
-                  
-				
-             
-              
-         
-            </rows>
-        </grid>
-    </div>
-
-	</div>		
+  	   
+	<div class='contenido '   align="center"   >			
+    <div class=" "  form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        
+					
+					<div class="" id="contact">
+					<label style="font-family: 'Lato', sans-serif; font-size:2em;">Datos personales</label><n:br></n:br> <n:br></n:br>
+	<div class="wrap">
+		
+		 
 	
-  </div>	
-   
-   
+			  <div class="section group">
+			  
+				  <div class="contact-form"   width="60%" align="center">
+				  	 
+					    	
+					    		<textbox type="text" class="textbox"  placeholder="Tu nombre"/>
+						    	<textbox type="text" class="textbox"  placeholder="Tu Cedula" />
+						    	<div class="clear"> </div>
+						    	<textbox type="text" class="textbox"  placeholder="Tu Telefono movil"/>
+						    	<textbox type="text" class="textbox"  placeholder="Tu Telefono fijo" />
+						    	<div class="clear"> </div>
+						    	<textbox type="text" class="textbox"  placeholder="Tu Dirección"/>
+						    	<textbox type="text" class="textbox"  placeholder="Tu Email" />
+						    	<div class="clear"> </div>
+						    	
+						   
+						    <div>
+						    	<textbox rows="2"  placeholder="¿Por qué quieres pertenecer al club?"  />
+						    </div>
+						    <label style="font-family: 'Lato', sans-serif; font-size:2em;">Miembros del club que te apadrinan</label><n:br></n:br> <n:br></n:br>
+						 
+						
+					    		<textbox type="text" class="textbox"  placeholder="Código del socio (Padrino 1)"/>
+						    	<textbox type="text" class="textbox"  placeholder="Nombre de tu padrino 1" />
+						    	<div class="clear"> </div>
+						    	<textbox type="text" class="textbox"  placeholder="Código del socio (Padrino 2)"/>
+						    	<textbox type="text" class="textbox"  placeholder="Nombre de tu padrino 2" />
+						    		<div class="clear"> </div>
+					   
+					     
+					     <label style="font-family: 'Lato', sans-serif; font-size:2em;">¿Cúales son tus intereses?</label><n:br></n:br> <n:br></n:br>
+						 
+						
+		<checkbox id="l1" label="Danza" onCheck="" />
+        <checkbox id="l2" label="Natación" onCheck="" />
+        <checkbox id="l3" label="Baloncesto" onCheck="" />
+        <checkbox id="l4" label="Futbol" onCheck="" />
+        <checkbox id="l5" label="Tenis" onCheck="" />
+         <separator />
+        <checkbox id="l6" label="Bolas Criollas" onCheck="" />
+        <checkbox id="l7" label="Cultura" onCheck="" />
+        <checkbox id="l8" label="Música" onCheck="" />
+        <checkbox id="l9" label="Arte" onCheck="" />
+        <checkbox id="l10" label="Amistad" onCheck="" />
+        <checkbox id="l11" label="Eventos Sociales" onCheck="" />
+      
+        <separator /> <n:br></n:br>
+					     <span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar postulación"/></span>
+					     <div class="clear"> </div>
+					     
+					     
+				  </div>
+  				
+			
+				 
+			  </div>
+			  </div>
+     	</div>
+     	</div>
+</div>
 </zk>
-
 <include src="footer.html" />
     
 </window>

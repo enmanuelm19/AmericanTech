@@ -1,0 +1,94 @@
+<?page title="Dashboard - ZK Admin" contentType="text/html;charset=UTF-8"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" >
+	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+	height="400px" width="500px" >
+		<div class='contenedor'>
+			<div sclass="page-header">
+	    		<label value="Desvincular Acción"/>
+	  		</div>
+	  			<div align="center">
+			<div align ="left">	
+			<div  class="encabezado">
+                     Datos Basicos                             									                                                				                             				                             					
+              </div>
+              <div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                </div>
+                  <separator spacing="15px"></separator>	
+                </div>		 
+				<grid width="580px" >
+          
+	            	<rows class="col-md-12">
+			            	
+	            	             <row class="col-md-11">
+			                  
+			              		  <div width="90px">
+			              		   	Acción
+			              		   </div>
+			                       <div>
+			              		   <textbox type="text" value="" width="265px"/>
+			                      </div>
+			                      		                      
+			                  </row>
+			                  <row class="col-md-11">
+			              		  <div width="90px"> 	Tipo de Desvinculacion </div>
+			              		   
+			              
+			             	      <div>
+							   		 <listbox  width="265px" height="25px" selectedItem="@bind(vm.dateFormat)"
+									                            mold="select" tabindex="7">
+									                            <listitem label="Venta" value="" />
+									                             <listitem label="Traspaso" value="" />
+								     </listbox>     	
+								     
+		    					 </div>
+			                  </row>
+			                  <row class="col-md-11">
+			              		  <div width="90px"> 	Motivo </div>
+			              		   
+			              
+			             	      <div>
+							   		 <listbox  width="265px" height="25px" selectedItem="@bind(vm.dateFormat)"
+									                            mold="select" tabindex="7">
+									                            <listitem label="" value="" />
+									                             <listitem label="" value="" />
+								     </listbox>     	
+								     
+		    					 </div>
+			                  </row>
+			                  
+			                     <row class="col-md-11">
+			              		  <div width="90px"> Fecha desvinculación </div>
+			              		   
+			              		   	
+			             <div>
+					 <datebox format="@load(vm.dateFormat)" width="140px"  tabindex="7"/>
+			                      </div> 		 
+			            
+			                  </row>
+			                  
+			                
+			                
+			                      <row class="col-md-2 col-md-offset-6">
+			                  	<hlayout width="">
+			                    	<div>
+			                    		<button   class='boton-guardar'  label="Desvincular" />
+			                     	</div><separator spacing="80px"></separator>
+			                 
+			                  	</hlayout>
+			             		
+			                 </row>
+			 			
+			            </rows>
+			        </grid>
+				
+				
+			</div>
+		</div>
+	</window>
+</zk>

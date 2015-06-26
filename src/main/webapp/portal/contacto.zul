@@ -1,26 +1,98 @@
 
-<window title=""  width="100%">
+<zk xmlns:n="native">
+<div>
 
-<?link href="../assets/portal/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../assets/portal/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<?link rel="stylesheet" type="text/css" href="/assets/portal/css/imgeffect.css" ?>
-<?link href="/assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
-<?script type="text/javascript" src="/assets/portal/js/easing.js"?>
-<?script type="text/javascript" src="/assets/portal/js/fliplightbox.min.js"?>
-<?script type="text/javascript" src="/assets/portal/js/jquery.easing.min.js"?>
-<?script type="text/javascript" src="/assets/portal/js/jquery.magnific-popup.js"?>
-<?script type="text/javascript" src="/assets/portal/js/jquery.min.js"?>
-<?script type="text/javascript" src="/assets/portal/js/jquery.mixitup.min.js"?>
-<?script type="text/javascript" src="/assets/portal/js/jquery.scrollTo.js"?>
-<?script type="text/javascript" src="/assets/portal/js/move-top.js"?>
-<?script type="text/javascript" src="/assets/portal/js/efecto.js"?>
-<include src="header.html" />
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
+<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
+<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
+<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
 
-<image id="image" src="/assets/portal/img/bannerContacto.png" width="100%" />
+
+<div class="contact" id="contact">
+	<div class="wrap">
+		<n:h2>Contáctanos</n:h2>
+		<n:h4>¿Tienes alguna Sugerencia?</n:h4>
+		<div class="section group">
+			  <div class="col span_2_of_3">
+				  <div class="contact-form">
+				  	  <n:form>
+				  	   	<n:h5>Tu sugerencia esta relacionada con:</n:h5>
+	
+         
+         <radiogroup id="sv1" onCheck="" />
+                <radio id="ra1" label="Instalaciones" radiogroup="sv1" />
+                <radio id="ra2" label="Eventos" radiogroup="sv1" />
+                <radio id="ra3" label="Socios" radiogroup="sv1" />
+                <radio id="ra4" label="Nuestra Atención" radiogroup="sv1" />
+                <radio id="ra5" label="Sugerencia General" radiogroup="sv1" />
+          <separator />
+         <n:br></n:br>
+					    	
+					    		<textbox class="textbox" placeholder="Tu nombre" ></textbox>
+						    	<textbox  class="textbox" placeholder="Tu email" ></textbox>
+						    	<div class="clear"> </div>
+						   
+						    <div>
+						    	<textbox placeholder="Tu mensaje" rows="7" cols="7"/>
+						    </div>
+						  <div class="col-md-offset-9"><span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar"/></span></div>
+						  <div class="clear"></div>
+					    </n:form>
+				  </div>
+  				</div>
+				<div class="col span_1_of_3">
+					<div class="company_address">
+				     	<n:h5>Información</n:h5>
+						<n:ul class="list3">
+							<n:li>
+								<n:img src="assets/portal/img/location.png" alt=""/>
+								<div class="extra-wrap">
+								  <n:p>Av. Fuerzas Armadas,  </n:p>
+								  <n:p>con Calle 57,</n:p>
+								  <n:p>Concepcion, Barquisimeto.</n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+							
+							<n:li>
+								<n:img src="assets/portal/img/phone.png" alt=""/>
+								<div class="extra-wrap">
+									<n:p>0251-258 2598</n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+							<n:li>
+								<n:img src="assets/portal/img//fax2.png" alt=""/>
+								<div class="extra-wrap">
+									<n:p>0416-6343 8690</n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+							<n:li>
+								<n:img src="assets/portal/img/mail.png" alt=""/>
+								<div class="extra-wrap">
+									<n:p> <a href="mailto:info@mycompany.com"> centroAmerica@gmail.com</a></n:p>
+								</div>
+								<div class="clear"> </div>
+							</n:li>
+						</n:ul>
+				   </div>
+				 </div>
+				 <div class="clear"></div>
+			  </div>
+			  </div>
+     	</div>
+
 
     
-Aqui va un formulario de contacto
-
-<include src="footer.html" />
-    
-</window>
+</div>
+</zk>

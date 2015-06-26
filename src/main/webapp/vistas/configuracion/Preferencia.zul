@@ -1,0 +1,92 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Configuración" href="#"/>
+							<label value="Registrar Preferencia"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Registrar Preferencia"/>
+	  
+	  </div>
+				<div class='contenido'>
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='form-pricing' width="630px"
+							height="270px">
+        		
+        			<grid width="580px" >
+          
+			            	<rows class="col-md-12">
+			            	
+			            		<row class="col-md-12">
+			                  		<div align="left" style="margin-left:18px">
+			                    		<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Registrar" href="registrarTipoPreferencias.zul"/>
+			                    		<separator spacing="15px"></separator>
+			                    	</div>
+			                    </row>
+			                  <row class="col-md-11">
+			              		  <div>
+						          <grid   mold="paging" pageSize="10"  width="550px" >
+						            <auxhead  class="z-auxheader-content">
+						               
+						                <auxheader label="Preferencias" align="center" colspan="5" />
+						            </auxhead>
+						            <columns class="z-grid z-column-content ">
+						                
+						                <column label="Codigo" align="center"  />
+						                <column label="Categoría" align="center" />
+						                <column label="Descripción" align="center" />
+						                <column label="Modificar" align="center"  />
+						                <column label="Eliminar" align="center"  />
+						                
+						            </columns>
+						            <rows>
+								        <row>
+								           <label value="01"/> <label value="deportes"/><label value="Futbol"/>
+								           <button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+										   <button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/> 
+								        </row>
+								        <row>
+								           <label value="02"/><label value="Cocina"/><label value="Dulces"/>
+								           <button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"/>
+									       <button sclass="btn-link" iconSclass="z-icon-trash-o blue" tooltiptext="Eliminar"/>
+								        </row>
+								     </rows>
+						            </grid>
+			                      </div>
+			                  </row> 
+			            </rows>
+			        </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>

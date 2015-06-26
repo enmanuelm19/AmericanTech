@@ -16,11 +16,11 @@
   
   <div sclass="infobox infobox-pink">
     <span sclass="infobox-icon">
-      <span zclass="z-icon-money"/>
+      <span zclass="z-icon-user"/>
     </span>
     <div sclass="infobox-data">
-      <label value="5" sclass="infobox-data-number"/>
-      <div sclass="infobox-content">Nuevos Pagos</div>
+      <label value="2" sclass="infobox-data-number"/>
+      <div sclass="infobox-content">Nuevas Postulaciones</div>
     </div>
     
   </div>

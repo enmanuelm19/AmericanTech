@@ -1,0 +1,133 @@
+<!-- Responsable Hector Gil -->
+
+<?page title="Motivo Venta Accion"?>
+
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+
+					<span sclass="home-icon z-icon-user" />
+
+					<a label="Motivos Venta Accion" href="#" />
+				</div>
+
+			</div>
+
+
+			<!--  <vbox> -->
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="Administrar Motivo Ventas Accion" />
+
+				</div>
+				<div class='contenido ' align="center">
+					<div class="col-md-8 col-centered"
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+
+						<div class='form-pricing' width="60%">
+
+							<div align="left">
+								<div class="encabezado">
+									Motivos ventas
+								</div>
+								<div align="left" class="linea-two">
+
+								</div>
+							</div>
+
+							<div align="center">
+								<grid width="100%" align="center">
+
+											
+									
+									<rows class="col-md-12">
+									
+									<row class="col-md-12">
+											<div width="80%">
+												<vbox>
+												<label>Motivos Actuales</label>
+													<combobox
+														value="Seleccione" width="80%">
+														<comboitem
+															label="Inseguridad"/>
+														<comboitem
+															label="incapacidad Pago" />
+														<comboitem
+															label="Venta" />
+													</combobox>
+												</vbox>
+											</div>
+
+										</row>
+
+										<row class="col-md-12">
+											<div width="80%">
+												<vbox>
+													<label>
+														Nuevo Motivo
+													</label>
+													<textbox cols="5"
+														rows="1" type="text" value="Mudanza" width="100%"
+														tabindex="2" />
+												</vbox>
+											</div>
+
+										</row>
+										
+															
+
+										
+										<row align="center"
+											class="col-md-12 col-centered">
+											<hlayout width="95%">
+
+												<div class="col-md-2">
+													<button
+														iconSclass="z-icon-edit" class='boton-guardar'
+														label="Guardar" />
+												</div>
+
+
+												<div class="col-md-2">
+													<button
+														iconSclass="z-icon-times-circle" class='boton-cancelar'
+														label="Cancelar " />
+												</div>
+
+
+											</hlayout>
+
+										</row>
+
+									</rows>
+
+								</grid>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- </vbox>  -->
+
+
+		</vlayout>
+	</hlayout>
+
+
+</zk>

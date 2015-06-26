@@ -1,0 +1,52 @@
+
+<window  title="Agregar Noticia" border="normal" width="560px"
+	position="center,center" closable="true" 
+	action="show: slideDown;hide: slideUp">
+	<vlayout>
+          	<div align ="left">	
+           		<div  class="encabezado">
+          					Nueva noticia                             									                                                				                             				                             					
+          		</div>		  			            		
+           		<div align="left" class="linea-two">     									                                                				                             				                             					
+          		</div>		            		
+	 		</div>
+ 	
+		<grid>
+			<rows>
+				<row>
+					<label value="Titulo" />
+					<textbox type="text" value="" width="140px" />
+				</row>
+				<row height="80">
+					<label value="Descripcion" />
+					<textbox type="text" value="" width="230px" />				
+				</row>
+				<row>
+					<label value="Caducidad" />
+					<datebox cols="12" format="medium" onCreate="self.value = new Date()" />
+				</row>
+				<row>
+					<label value="Visibilidad" />
+					<combobox  width="75px" >
+	                    <comboitem label="Socios"/>
+					    <comboitem label="Todos"/>
+	                </combobox>
+				</row>
+				<row>
+					<label value="Subir Imagen" />
+						 <button image="/widgets/grid/inline_row_editing/img/tick-small.png"
+			                            onClick="@command('confirm', languageContributionStatus=each)" />
+				</row>				
+				<row>
+					<label value="Publicar de Inmediato" />
+					<checkbox hflex="1" />
+				</row>
+
+
+			</rows>
+		</grid>
+		<div align="center">
+			<button class="boton-guardar" hflex="0" label="Guardar" width="160px"/>
+		</div>	
+	</vlayout>
+</window>

@@ -1,0 +1,120 @@
+<?page title="Consultar Postulaciones - ZK Admin"?>
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="/vistas/layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1"  >
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Consultar Postulantes" href="#"/>
+							<label value="Postulantes"/>
+			 		</div>
+		 	</div>
+		
+				<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Información de los Postulantes"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+	 <div align="left">		
+	
+		</div>			
+					
+					<div class='form-pricing' align="center">
+			        <grid   mold="paging" pageSize="15"  width="75%" >
+			            <auxhead  class="z-auxheader-content">
+			               
+			                <auxheader label="Datos de los postulados" align="center" colspan="5" />
+			                
+			            </auxhead>
+			            <columns class="z-grid z-column-content ">
+			                
+			                <column label="IDPostulacion" align="center"  />
+			                <column label="Nombre Postulante" align="center" />
+			                <column label="Foto" align="center"  />
+			                <column label="Aprobar" align="center"/>
+			                <column label="Denegar"  align="center"/>
+
+			                
+			                
+			            </columns>
+			             <rows>
+						        <row>
+						           <label value="0001"/> <label value="David Cordero"/><image src="assets/portal/check.png"/>
+						           <checkbox id="l1" label=""  />
+						           <button label="X" class="btn-danger" href="../configuracion/motivoPostulacion.zul" />
+						           
+						             
+						        </row>
+						          <row>
+						           <label value="0002"/> <label value="Adda Mendez"/><image src="assets/portal/check.png"/> 
+						           <checkbox id="l2" label="" /> <button label="X" class="btn-danger" href="../configuracion/motivoPostulacion.zul" />
+						           
+						             
+						        </row>
+						          <row>
+						           <label value="0003"/> <label value="Ernesto Castillo"/><image src="assets/portal/check.png"/>
+						           <checkbox id="l3" label="" /><button label="X" class="btn-danger" href="../configuracion/motivoPostulacion.zul" />
+						           
+						             
+						        </row>  
+						        <row>
+						           <label value="0004"/> <label value="Wilfredo Amaro"/><image src="assets/portal/check.png"/>
+						          <checkbox id="l4" label="" /><button label="X" class="btn-danger" />
+						            
+						        </row>
+						         <row>
+						           <label value="0005"/> <label value="Julio Montero"/><image src="assets/portal/check.png"/>
+						           <checkbox id="l5" label="" /><button label="X" class="btn-danger" />
+						             
+						        </row>
+						          <row>
+						           <label value="0006"/> <label value="Arnaldo Jesús"/><image src="assets/portal/check.png"/>
+						           <checkbox id="l6" label="" /><button label="X" class="btn-danger" />
+						           
+						        </row>
+						          <row>
+						           <label value="0007"/> <label value="Pedro "/><image src="assets/portal/check.png"/>
+									<checkbox id="l7" label="" /><button label="X" class="btn-danger" />
+						             
+						        </row>  
+
+
+ 
+
+
+						   
+						     
+						       
+						        
+						    </rows>
+			
+			        </grid>
+			        </div>
+   				</div>
+
+			</div>
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>

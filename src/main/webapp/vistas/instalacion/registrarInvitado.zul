@@ -13,7 +13,7 @@
 					<div sclass="breadcrumb">
 							<span sclass="home-icon z-icon-user"/>
 					    <a label="Instalaciones" href="#"/>
-							<label value="Registrar invitado"/>
+							<label value="Registrar Invitado"/>
 					</div>
  
 			</div>
@@ -21,7 +21,7 @@
 		<div class='contenedor'>
 				
 	 <div sclass="page-header">
-	    <label value="Registrar invitados"/>
+	    <label value="Registrar Invitados"/>
 	  
 	  </div>
 		   <div class='contenido '   align="center"  >
@@ -29,7 +29,7 @@
    				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='rcorners6' width="600px" height="250px">
+        			<div class='form-pricing' width="600px" height="250px">
         		
         			<grid width="580px" >
           

@@ -1,0 +1,100 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Socio" href="#"/>
+							<label value="Opiniones"/>
+					</div>
+ 
+			</div>
+
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Mostrar Opiniones"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='form-pricing' width="600px" height="410px" style="overflow:auto">
+  			            		<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Opiniones sobre postulantes                             									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>
+							<separator spacing="20px"></separator>        			
+        			  <grid oddRowSclass="myodd" style="overflow:auto;">
+					        <columns>
+					            <column width="40px" />
+					            <column label ="Opinion sobre el Postulante" sort="auto" />
+					            <column width="100px" label="Postulante" sort="auto" />
+					            <column width="100px" label="Accion del socio" sort="auto" />					            					            
+					            <column width="100px" label="Fecha" sort="auto" />
+				            					            
+					        </columns>
+					        <rows>
+					            <row>
+					                <detail open="true">
+					                </detail>
+									<label value="Es una persona problematica, cuando esta pasado de tragos arma espectaculos "
+					                                sclass="heavy-italic" /> 
+					                <label value="Jose Molina" sclass="date" />
+					                <label value="032" sclass="date" />					                					                
+					                <label value="09/06/15" sclass="date" />
+					                					                			                					                
+					            </row>
+
+					            <row>
+					                <detail fulfill="onOpen">
+					                  
+					                </detail>
+		                            <label value="Se que raul parra es un ladorn, robo dinero del club donde estuvo previamente."
+		                            	sclass="heavy-italic" />					                
+
+					                <label value="Jose Molina" sclass="date" />
+					                <label value="098" sclass="date" />					                					                
+					                <label value="09/06/15" sclass="date" />
+					            </row>
+					            <row>
+					                <detail fulfill="onOpen">
+					                  
+					                </detail>
+		                            <label value="El señor jose molina es una persona responsable y respetable doy fe de conocerlo desde hace 5 años."
+		                            	sclass="heavy-italic" />					                
+					                <label value="Raul Parra" sclass="date" />
+					                <label value="065" sclass="date" />					                					                
+					                <label value="09/06/15" sclass="date" />
+					            </row>					            					            
+					        </rows>
+					    </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>

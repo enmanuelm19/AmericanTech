@@ -1,4 +1,4 @@
-<panel border="none" collapsible="true" sclass="transparent">
+<panel border="none" width ="80%" collapsible="true" sclass="transparent">
   <caption iconSclass="z-icon-bullhorn orange" label="Cartelera informativa"/>
   <panelchildren>
     <grid sclass="domain">

@@ -1,6 +1,7 @@
 <?page title="Dashboard - ZK Admin"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" class='contenedor'>
@@ -8,28 +9,197 @@
 	<hlayout id="main" spacing="0">
 		<include src="../layouts/sidebar.zul"/>    
 		<vlayout spacing="0" hflex="1">
-				<div sclass="breadcrumbs">
+			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-bullhorn"/>
-					    <a label="Información" href="#"/>
-							<label value="Cartelera"/>
+							<span sclass="home-icon z-icon-puzzle-piece"/>
+					    <a label="Cartelera" href="#"/>
+							<label value="Noticias"/>
 					</div>
  
-					</div>
-	<div class='contenedor'>
-	
-	 <div sclass="page-header">
-	    <label value="Cartelera interna"/>
-	  </div>
-	  
-	  
-	  <hlayout spacing="" class="col-md-12">
-       <include src="../content/cartelera.zul" hflex="6"/>
- 
-	  </hlayout>
-		  
-    </div>		
+			</div>
 
+						<div class='contenedor'>
+								
+					 <div sclass="page-header">
+					    <label value="Noticias"/>
+					  
+					  </div>
+						   <div class='contenido '   align="center"   >
+				   				 <div class="col-md-8 col-centered " 
+				   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+				   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+				   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
+				        			<div class='form-pricing' width="830px" height="685px" style="margin-bottom: 20px">
+				        			
+			
+				          	<div align ="left">	
+				           		<div  class="encabezado">
+				          					Nueva noticia                             									                                                				                             				                             					
+				          		</div>		  			            		
+				           		<div align="left" class="linea-two">     									                                                				                             				                             					
+				          		</div>		            		
+					 		</div>
+				 	<div style="">
+						<grid >
+							<rows>
+								<row>
+									<label value="Titulo" />
+									<textbox type="text" value="" width="140px" />
+								</row>
+								<row height="80">
+									<label value="Descripcion" />
+									<textbox type="text" value="" width="260px" height="50px" />				
+								</row>
+								<row>
+									<label value="Caducidad" />
+									<datebox cols="12" format="medium" onCreate="self.value = new Date()" />
+								</row>
+								<row>
+									<label value="Visibilidad" />
+									<combobox  width="75px" >
+					                    <comboitem label="Socios"/>
+									    <comboitem label="Todos"/>
+					                </combobox>
+								</row>
+								<row>
+									<label value="Subir Imagen" />
+										 <button image="../../assets/img/agregar.jpg"
+							                            onClick="@command('confirm', languageContributionStatus=each)" />
+								</row>				
+								<row>
+									<label value="Publicar de Inmediato" />
+									<checkbox hflex="1" />
+								</row>
+				
+				
+							</rows>
+						</grid>
+					</div>	
+						<div align="center">
+							<button class="boton-guardar" hflex="0" iconSclass="z-icon-floppy-o" label="Guardar" width="160px"/>
+						</div>
+					<separator spacing="10px"></separator>							
+
+					
+        			
+                 	<div align="center" apply="controllers.ControllerRegNoticia" xmlns:w='client'>
+  			            		
+  			            		<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Noticia                 									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>
+							
+							<separator spacing="5px"></separator>                  	
+			                   		
+                   	</div><separator spacing="20px"></separator>
+					 <style src="/widgets/grid/master_detail/style.css" />
+					    <grid oddRowSclass="myodd" style="overflow:auto;"  mold="paging"
+							pageSize="3">
+							<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="80px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="6" />
+							</auxhead>					    
+					        <columns>
+					            <column width="70px" label="Id Noticia" />
+					            <column width="120px" label="Titulo"/>
+					            <column width="200px" label="Descripcion"/>					            					            
+					            <column width="80px" sort="auto" label="Caducidad" />
+					            <column width="65px" label="Foto" sort="auto" />
+					            <column width ="60px" label="Publicar" sort="auto" />
+					            <column width="90px" label="Visibilidad"/>
+					            <column width ="100px" sort="auto" label="Acciones"/>
+					        </columns>
+					        <rows>
+					            <row>
+					                <label value="001" />
+					                <label value="Cuota Especial"  />
+					                <label value="Por motivo de mantenimiento es necesario solicitar una cuota especial" />
+					                <label value="18/06/2015" />
+					                <label value=""  />
+					                <checkbox hflex="1" /> 
+					                <textbox type="text" value="" width="75px" />
+									<div>
+										<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+										<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+									</div>					                					                
+					            </row>
+					            <row>
+					                <label value="002" />
+					                <label value="Mantenimiento de Piscina"  />
+					                <label value="Piscina fuera de servicio" />
+					                <label value="18/06/2015" />
+					                <label value=""  />
+					                <checkbox hflex="1" />
+					                <textbox type="text" value="" width="75px" />
+									<div>
+										<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+										<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+									</div>		
+			                    </row>      
+					            <row>
+					                <label value="002" />
+					                <label value="Mantenimiento de Piscina"  />
+					                <label value="Piscina fuera de servicio" />
+					                <label value="18/06/2015" />
+					                <label value=""  />
+					                <checkbox hflex="1" />
+					                <textbox type="text" value="" width="75px" />
+									<div>
+										<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+										<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+									</div>		
+			                    </row>      
+					            <row>
+					                <label value="002" />
+					                <label value="Mantenimiento de Piscina"  />
+					                <label value="Piscina fuera de servicio" />
+					                <label value="18/06/2015" />
+					                <label value=""  />
+					                <checkbox hflex="1" />
+					                <textbox type="text" value="" width="75px" />
+									<div>
+										<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+										<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+									</div>		
+			                    </row>      
+					            <row>
+					                <label value="002" />
+					                <label value="Mantenimiento de Piscina"  />
+					                <label value="Piscina fuera de servicio" />
+					                <label value="18/06/2015" />
+					                <label value=""  />
+					                <checkbox hflex="1" />
+					                <textbox type="text" value="" width="75px" />
+									<div>
+										<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+										<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+									</div>		
+			                    </row>      
+			                      					        
+			                </rows>
+					    </grid>
+			        </div>
+   				 </div>
+
+	</div>		
+			
+		</div>		
+			
+			
+			
+			
 		</vlayout>
 	</hlayout>
+
+	
 </zk>

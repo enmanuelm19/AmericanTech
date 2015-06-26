@@ -1,0 +1,135 @@
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk>
+	<window border="none" title=" " closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		width="45%">
+		<div class="contenedor" width="100%" align="center">
+			<div sclass="page-header" align="left">
+				<label value="Registrar Usuario" />
+			</div>
+			<div class='form-pricing' align="center" width="100%">
+				<div align="left" width="100%">
+					<div>
+						<hbox>
+							<vbox>
+								Cedula
+								<textbox id="txtRegUsuarioCedula"
+									width="100%" />
+							</vbox>
+							<div>
+								<separator spacing="40%" />
+								<button iconSclass="z-icon-search blue"
+									class="btn-link" tooltiptext="Buscar" />
+							</div>
+						</hbox>
+					</div>
+					<hbox>
+						<div width="100%">
+							<div>
+								<separator />
+								Usuario (requerido)
+								<separator />
+								<textbox id="txtRegUsuarioUsuario"
+									width="85%" />
+							</div>
+							<div>
+								<separator />
+								<hbox>
+									<vbox>
+										Grupo
+										<combobox
+											id="cmbRegUsuarioGrupo" width="110%">
+											<comboitem
+												label="Seleccione Un Grupo" />
+											<comboitem
+												label="Administraion" />
+										</combobox>
+									</vbox>
+									<div>
+										<separator spacing="40%" />
+										<button
+											iconSclass="z-icon-plus blue" class="btn-link"
+											tooltiptext="Agregar" />
+									</div>
+
+								</hbox>
+							</div>
+							<div>
+								<separator />
+								<vbox>
+									Correo Electronico (requerido)
+									<textbox id="txtRegUsuarioCorreo"
+										width="130%" />
+								</vbox>
+							</div>
+							<div>
+								<separator />
+								<vbox>
+									Nombre
+									<textbox id="txtRegUsuarioNombre"
+										width="150%" />
+								</vbox>
+							</div>
+							<div>
+								<separator />
+								<vbox>
+									Apellido
+									<textbox id="txtRegUsuarioApellido"
+										width="150%" />
+								</vbox>
+							</div>
+							<div>
+								<separator />
+								<vbox>
+									Contraseña (requerido)
+									<textbox
+										id="txtRegUsuarioContrasena" width="160%" />
+								</vbox>
+							</div>
+							<div>
+								<separator />
+								<vbox>
+									Confirmar Contraseña (requerido)
+									<textbox
+										id="txtRegUsuarioConfContrasena" width="110%" />
+								</vbox>
+							</div>
+						</div>
+						<space spacing="90%" />
+						<div align="right" width="100%">
+							<vbox>
+								<image src="/assets/portal/img/img1.jpg"
+									width="100%" />
+								<div align="right"
+									class='col-md-offset-5'>
+									<fileupload label="Examinar"
+										iconSclass="z-icon-folder-open" class='boton-guardar' />
+								</div>
+							</vbox>
+
+						</div>
+					</hbox>
+
+				</div>
+				<separator spacing="30px" />
+				<div align="center">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar' label="Guardar" />
+						</div>
+						<space spacing="20px" />
+						<div>
+							<button iconSclass="z-icon-times-circle"
+								class='boton-cancelar' label="Cancelar" />
+						</div>
+					</hbox>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

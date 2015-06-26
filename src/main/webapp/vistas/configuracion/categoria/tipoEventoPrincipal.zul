@@ -1,0 +1,79 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Configuracion" href="#" />
+					<label value="Tipo de evento"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center">
+			
+				<div sclass="page-header" align="left">
+				    <label value="Tipo de evento"/>
+		  		</div>
+				
+				<separator spacing="1%"/>
+				<space/><space/>
+				<div class='form-pricing' width="60%" align="center">
+				<div apply="controllers.TipoEvento" align="left">
+					<button id="btnRegistrar" label="Registrar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+				</div>
+		
+				<div class='contenido' align="left" width="80%">
+					<div align="left" class='encabezado'>
+				    		<label value="Informacion"/>
+					</div>
+					<div class="linea-two"></div>
+					<separator spacing="1%"/>
+					<grid mold="paging" pageSize="1" width="" height="100%">
+						<columns class="z-grid z-column-content">
+							<column label="Codigo" align="center" width="30%"/>
+							<column label="Descripcion" align="center"/>
+							<column label="Acciones" align="center" width="25%"/>
+						</columns>
+						<rows>
+							<row>
+								<label value="0001"/>
+								<label value="Publicos" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="0002"/>
+								<label value="Privados"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="0003"/>
+								<label value="Especial" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</div>
+				
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	
+</zk>

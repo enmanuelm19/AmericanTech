@@ -14,8 +14,8 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
-import com.ucla.america.models.Browser;
-import com.ucla.america.models.BrowserMarketShare;
+import models.Browser;
+import models.BrowserMarketShare;
 
 
 public class ColumnDrilldownComposer extends SelectorComposer<Window> {
@@ -28,7 +28,7 @@ public class ColumnDrilldownComposer extends SelectorComposer<Window> {
         
         chart.getXAxis().setType("category");
         
-        chart.getYAxis().setTitle("Porcentaje de preferencia");
+        chart.getYAxis().setTitle("Porcentajes de preferencia");
         
         chart.getLegend().setEnabled(false);
         

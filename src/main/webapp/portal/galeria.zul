@@ -1,0 +1,25 @@
+<window  width="70%" >
+<zk xmlns:n="native">
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
+<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
+<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
+<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
+<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
+
+
+
+   <n:img src="" id='imagen' class="galeria"  alt=""></n:img>
+   <n:br></n:br>
+
+   <button class="boton-Formulario" iconSclass="z-icon-angle-double-right"/>
+   <n:br></n:br>
+</zk>
+</window>

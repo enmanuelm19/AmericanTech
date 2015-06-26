@@ -1,0 +1,214 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1"  >
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-user"/>
+					    <a label="Socio" href="#"/>
+							<label value="Mis Sanciones"/>
+			 		</div>
+		 	</div>
+		
+				<div class='contenedor' align="center">
+				
+	 <div sclass="page-header" align="left" >
+	    <label value="Mis Sanciones"/>
+	  
+	  </div>
+		   <div  align="center" class='form-pricing'   width="90%" style="margin-bottom: 20px" >
+	 		
+					
+					<div align="left">
+					
+					<div align="left">
+						<div sclass="encabezado">
+				    		<label value="Lista de Mis Saciones"/>
+		  				</div>
+		  				<div class='linea-two'>
+		  				</div>
+					
+					</div>
+					<separator spacing="40px"/>
+					
+			        <grid   mold="paging" pageSize="15"  width="100%" >
+			            <auxhead  class="z-auxheader-content">
+			               
+			                <auxheader label="Información Básica de Mis Sanciones" align="center" colspan="6" />
+			                <auxheader label="Fecha de suspención" align="center" colspan="2" />
+			            </auxhead>
+			            
+			            <auxhead class="z-auxheader-content">
+			            	<auxheader colspan="5" />
+			            	<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="125px" placeholder="Buscar"/>
+            				</auxheader>
+			            	<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="95px" placeholder="dd/mm/aaaa"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="95px" placeholder="dd/mm/aaaa"/>
+            				</auxheader>
+			            	
+			            </auxhead>
+			            <columns class="z-grid z-column-content ">
+							<column label="Nro de Carnet" align="center" /> 
+							<column label="Socio" align="center" sort="auto(engineDisplacement)" /> 
+			                <column label="Evento" align="center"  />
+			                <column label="Instalacion" align="center" />
+			                <column label="Multa" align="center"  /> 
+			                <column label="Motivo" align="center" width="160px" /> 
+			                <column label="Inicio" align="center" width="130px"/>
+			                <column label="Final" align="center" width="130px"/>    
+			            </columns>
+			             <rows>
+			             		<row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Exhibicionismo"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />  
+						        </row>   
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value="Copa America"/>
+						            <label value="Caney Cardenal" /> 
+						             <label value="20.000.BsF"/><label value="Violencia hacia los socios"/> 
+						             <label value="10/05/2014"/><label value="11/06/2014"/>			             
+						        </row>
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Alcoholico"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />
+						        </row> 
+						        
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Exhibicionismo"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />  
+						        </row>   
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value="Copa America"/>
+						            <label value="Caney Cardenal" /> 
+						             <label value="20.000.BsF"/><label value="Violencia hacia los socios"/> 
+						             <label value="10/05/2014"/><label value="11/06/2014"/>			             
+						        </row>
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Alcoholico"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />
+						        </row> 
+						        
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Exhibicionismo"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />  
+						        </row>   
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value="Copa America"/>
+						            <label value="Caney Cardenal" /> 
+						             <label value="20.000.BsF"/><label value="Violencia hacia los socios"/> 
+						             <label value="10/05/2014"/><label value="11/06/2014"/>			             
+						        </row>
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Alcoholico"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />
+						        </row> 
+						        
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Exhibicionismo"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />  
+						        </row>   
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value="Copa America"/>
+						            <label value="Caney Cardenal" /> 
+						             <label value="20.000.BsF"/><label value="Violencia hacia los socios"/> 
+						             <label value="10/05/2014"/><label value="11/06/2014"/>			             
+						        </row>
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Alcoholico"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />
+						        </row> 
+						        
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Exhibicionismo"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />  
+						        </row>   
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value="Copa America"/>
+						            <label value="Caney Cardenal" /> 
+						             <label value="20.000.BsF"/><label value="Violencia hacia los socios"/> 
+						             <label value="10/05/2014"/><label value="11/06/2014"/>			             
+						        </row>
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Alcoholico"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />
+						        </row> 
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Exhibicionismo"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />  
+						        </row>   
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value="Copa America"/>
+						            <label value="Caney Cardenal" /> 
+						             <label value="20.000.BsF"/><label value="Violencia hacia los socios"/> 
+						             <label value="10/05/2014"/><label value="11/06/2014"/>			             
+						        </row>
+						        <row>
+						           <label value="0087"/><label value="Salomon Rondon" /><label value=""/> 
+						            <label value="Piscina" />
+						            <label value="8000.BsF" sclass="label label-danger  arrowed" />
+						            <label value="Alcoholico"/>
+						            <label value="28/04/2015"/><label value="28/06/2015" sclass="label label-danger  arrowed" />
+						        </row> 
+						  </rows>
+						  <foot>
+            				<footer span="8" class="footer_right" label="18 items en la lista" align="left" />
+        				 </foot>      
+			        </grid>
+			        </div>
+   				</div>
+
+			</div>
+			
+			
+		</vlayout>
+	</hlayout>
+
+	
+</zk>

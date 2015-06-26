@@ -112,7 +112,7 @@ body {
 }
 .da-slide .da-link:hover
 {
-	background:#01CAA1;
+	background:#72d3bb;
 }
 .da-img{
 	width: 50px;
@@ -474,7 +474,7 @@ body {
 	height:44px;
 	border: none;
 	text-indent: 100%;
-	background: url(..img/top-move.png) no-repeat right top;
+	background: url("../img/top-move.png") no-repeat right top;
 }
 /* #Tablet (Portrait) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
@@ -1174,3 +1174,84 @@ padding: 1.2em 0em;
 .margen-subtitulo-postulacion{
 	margin-top: 30px;
 }
+
+.boton-Formulario{
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  padding: 0.8em 1.5em;
+  background: #1BBC9B;
+  border: 1px solid #1BBC9B;
+  display: block;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+
+.boton-Formulario:hover{
+  font-family: 'Lato', sans-serif;
+  color: #FFFFFF;
+  padding: 0.8em 1.5em;
+  background: #72d3bb;
+  border: 1px solid #1BBC9B;
+  display: block;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+  text-transform: uppercase;
+   margin: 0 auto;
+}
+
+.galeria{
+	 
+border: 15px solid #1BBC9B;
+width:100%;
+height:500px;
+webkit-box-shadow: 0 3px 5px #bbc3c9;
+-moz-box-shadow: 0 3px 5px #bbc3c9;
+  box-shadow: 1px 2px 3px 1px #777676;
+
+}
+
+.btn-galeria{
+	font-family: 'Lato', sans-serif;
+	font-style:bold;
+  color: #000000;
+  padding: 0.8em 1.5em;
+  background: #1BBC9B;
+  border: 1px solid #1BBC9B;
+  display: block;
+  
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+  text-transform: uppercase;
+  float: left;
+}
+
+.btn-galeria:hover{
+	font-family: 'Lato', sans-serif;
+  color: #000000;
+  padding: 0.8em 1.5em;
+  background: #81dbd3;
+  border: 1px solid #1BBC9B;
+  display: block;
+  
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+  text-transform: uppercase;
+  float: left;
+}
+
