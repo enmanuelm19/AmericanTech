@@ -5,15 +5,15 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" class='contenedor'>
-	<include src="../../layouts/navbar.zul"/>             
+	<include src="../../layouts/navbar.zul" />
 	<hlayout id="main" spacing="0">
-		<include src="../../layouts/sidebar.zul"/>    
+		<include src="../../layouts/sidebar.zul" />
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
-					    <a label="Categorias" href="#"/>
-							<label value="Registrar Tipo de Preferencia"/>
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Instalación" href="#" />
+					<label value="Registrar Recurso" />
 					</div>
  
 			</div>
@@ -21,7 +21,7 @@
 		<div class='contenedor'>
 				
 	 <div sclass="page-header">
-	    <label value="Registrar Tipo de Preferencia"/>
+	    <label value="Recurso"/>
 	  
 	  </div>
 				<div class='contenido'>
@@ -29,53 +29,45 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="550px"
-							height="400px">
-        		  			    <div align ="left">	
+						<div class='form-pricing' width="440px"
+							height="300px">
+        		        		 <div align ="left">	
 	                       			<div  class="encabezado">
                        					Datos Básicos                             									                                                				                             				                             					
                        				</div>		  			            		
-	                       			<div align="left" class="linea-two">
-                        									                                                				                             				                             					
+	                       			<div align="left" class="linea-two">					                                                				                             				                             					
                        				</div>		            		
-								</div>        		
-        			<grid width="100%" >
+								</div>
+								<separator spacing="10px" />
+        			<grid width="580px" >
           
 			            	<rows class="col-md-12">
 			            
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   	Código 
-			                      </div>
-			                  </row>
-			                  <row class="col-md-11">
-  			              		  <div>
-			              		   <textbox type="text" value="" width="250px" />
-			                      </div>
-			                  </row>
 			                  <row class="col-md-11">
 			              		  <div>
 			              		   	Descripción 
 			                      </div>
 			                  </row>
 			                  <row class="col-md-11">
-  			              		  <div>
-			              		   <textbox type="text" value="" width="450px" height="150px" />
+			              		  <div>
+			              		   	<textbox type="text" value="" width="350px" height="100px"/>
 			                      </div>
-			                  </row>  
-  			                  <row class="col-md-11 col-centered">
+			                  </row>			                   	
+			                  <row class="col-md-11 col-centered">
 			                  	<hlayout>
-			                  		<separator></separator>
+			                  		<separator spacing="5px"></separator>
 			                  	</hlayout>	
-			                  </row> 
+			                  	</row>	                  
 			                  <row class="col-md-12" width="100%">
+			                  	<hlayout>
 				                  <div class='col-md-6' style="float: right;padding: 0px;">
 				                  	<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar ' label="Guardar"/>
 				                  </div>
-			                      <div class='col-md-6 ' style="float: left;padding: 0px;">
+			                      <div class='col-md-6 ' style="float: left;padding-left: 80px;">
 			                      	<button    iconSclass="z-icon-trash-o" class='btn boton-cancelar ' label="Cancelar"/>
-			                      </div>	
-			                 </row>	
+			                      </div>
+			                     </hlayout>	
+			                 </row>		 
 			            </rows>
 			        </grid>
 			        </div>

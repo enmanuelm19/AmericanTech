@@ -32,11 +32,11 @@
 				<navitem label="Tipo de sugerencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoSugerencia.zul"/>
 				<navitem label="Tipo de noticia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoNoticia.zul"/>
 				<navitem label="Tipo de evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoEventoPrincipal.zul"/>
-				<navitem label="Tipo de preferencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/registrarTipoPreferencias.zul"/>
+				<navitem label="Tipo de preferencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/registrarPreferencia.zul"/>
 				<navitem label="Tipo de instalación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoInstalacion.zul"/>
 				<navitem label="Tipo de Sanción" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tiposSanciones.zul"/>
-				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" href=""/>
-				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/recursos.zul"/>
+				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/estadoReservacion.zul"/>
 				<navitem label="Motivo postulacion" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoPostulacion.zul"/>
 				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoActividad.zul"/>
 				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoVenta.zul"/> 

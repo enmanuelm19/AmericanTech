@@ -24,18 +24,18 @@
 	    <label value="Tipo de Preferencia"/>
 	  
 	  </div>
-		   <div class='contenido '   align="center"  >
-   				 <div class="col-md-8 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+				<div class='contenido'>
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='rcorners6' width="550px" height="440px">
+						<div class='form-pricing' width="550px"
+							height="480px">
         		  			    <div align ="left">	
 	                       			<div  class="encabezado">
                        					Datos Básicos                             									                                                				                             				                             					
                        				</div>		  			            		
-	                       			<div align="left" class="linea-two">
-                        									                                                				                             				                             					
+	                       			<div align="left" class="linea-two">				                                                				                             				                             					
                        				</div>		            		
 								</div>
         			<grid width="580px" >
@@ -75,20 +75,21 @@
 			                  </row>
 			                  <row class="col-md-11">
   			              		  <div>
-			              		   <textbox type="text" value="" width="450px" height="150px" />
+			              		   <textbox type="text" value="" width="480px" height="150px" />
 			                      </div>
 			                  </row>
- 
-			                                  
-			                  <row class="col-md-11 col-centered">
-			                  	<hlayout >
-			                  		<div>
-			                    		<button  iconSclass="z-icon-floppy-o"  class='btn-primary boton-guardar' label="Guardar"/>
-			                    	</div><separator spacing="80px"></separator>
-			                     	<div>
-			                    		<button    iconSclass="z-icon-trash-o" class='boton-cancelar' label="Cancelar"/>
-			                     	</div>
-			                  	</hlayout>
+ 			                  <row class="col-md-11 col-centered">
+			                  	<hlayout>
+			                  		<separator></separator>
+			                  	</hlayout>	
+			                  	</row>            
+			                  <row class="col-md-12" width="100%">
+				                  <div class='col-md-6' style="float: center;padding-left: 100px;">
+				                  	<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar ' label="Guardar"/>
+				                  </div>
+			                      <div class='col-md-6 ' style="float: left;padding-right: 180px;">
+			                      	<button    iconSclass="z-icon-trash-o" class='btn boton-cancelar ' label="Cancelar"/>
+			                      </div>	
 			                 </row>	
 			            </rows>
 			        </grid>
