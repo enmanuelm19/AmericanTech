@@ -25,7 +25,7 @@
 		    <navitem label="Perfil del club" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/perfilClub.zul"/>
 			<navitem label="Junta directiva" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/juntaDirectiva.zul"/>
 			<navitem label="Preferencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/Preferencia.zul"/>
-			<navitem label="Instalaciones" iconSclass="z-icon-angle-double-right" href=""/>
+			<navitem label="Instalaciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/registrarInstalacion.zul"/>
 						<navitem label="Proveedores" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/proveedores.zul"/>	
 			<navitem label="Patrocinantes" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/patrocinantes.zul"/>
 			<nav label="Categorías" iconSclass="z-icon-angle-double-right">
@@ -97,7 +97,7 @@
 			<nav label="Seguridad" iconSclass="z-icon-angle-double-right" >
 				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/usuarioGeneral.zul"/>
 				<navitem label="Grupos" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/mostrarGrupos.zul"/>
-				<navitem label="Funciones" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Funciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/administrarFunciones.zul"/>
 			</nav>
 			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
 			<navitem label="Backup BD" iconSclass="z-icon-angle-double-right" href=""/>
