@@ -1,44 +1,27 @@
-<?page title="Dashboard - ZK Admin"?>
+<?page title="Dashboard - ZK Admin" contentType="text/html;charset=UTF-8"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" class='contenedor'>
-	<include src="../layouts/navbar.zul"/>             
-	<hlayout id="main" spacing="0">
-		<include src="../layouts/sidebar.zul"/>    
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
-					       <a label="Administrar Socio" href="#"/>
-							<label value="Desvincular Acción"/>
-					</div>
- 
-			</div>
-
+<zk xmlns:n="native" >
+	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+	height="400px" width="500px" >
 		<div class='contenedor'>
-	 <div sclass="page-header">
-	    <label value="Desvincular Acción"/>
-	  
-	  </div>
-		   <div class='contenido '   align="center"   >
-   				 <div class="col-md-8 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)" >
-        			<div class='form-pricing' width="500px" height="280px">
-  			            		<div align ="left">	
-	                       			<div  class="encabezado">
-                       					DATOS BASICOS                           									                                                				                             				                             					
-                       				</div>		  			            		
-	                       			<div align="left" class="linea-two">
-                       					                                                				                             				                             					
-                       				</div>
-								<separator spacing="15px"></separator>	            		
-								</div>	
-        			<grid width="580px" >
+			<div sclass="page-header">
+	    		<label value="Desvincular Acción"/>
+	  		</div>
+	  			<div align="center">
+			<div align ="left">	
+			<div  class="encabezado">
+                     Datos Basicos                             									                                                				                             				                             					
+              </div>
+              <div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                </div>
+                  <separator spacing="15px"></separator>	
+                </div>		 
+				<grid width="580px" >
           
 	            	<rows class="col-md-12">
 			            	
@@ -53,6 +36,19 @@
 			                      		                      
 			                  </row>
 			                  <row class="col-md-11">
+			              		  <div width="90px"> 	Tipo de Desvinculacion </div>
+			              		   
+			              
+			             	      <div>
+							   		 <listbox  width="265px" height="25px" selectedItem="@bind(vm.dateFormat)"
+									                            mold="select" tabindex="7">
+									                            <listitem label="Venta" value="" />
+									                             <listitem label="Traspaso" value="" />
+								     </listbox>     	
+								     
+		    					 </div>
+			                  </row>
+			                  <row class="col-md-11">
 			              		  <div width="90px"> 	Motivo </div>
 			              		   
 			              
@@ -65,6 +61,7 @@
 								     
 		    					 </div>
 			                  </row>
+			                  
 			                     <row class="col-md-11">
 			              		  <div width="90px"> Fecha desvinculación </div>
 			              		   
@@ -89,18 +86,9 @@
 			 			
 			            </rows>
 			        </grid>
-			        </div>
-   				 </div>
-
-	</div>		
-			
-		</div>		
-			
-			
-			
-			
-		</vlayout>
-	</hlayout>
-
-	
+				
+				
+			</div>
+		</div>
+	</window>
 </zk>

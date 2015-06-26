@@ -3,7 +3,6 @@
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native" class='contenedor'>
  
  <include src="../layouts/navbar.zul"/>             
@@ -18,72 +17,63 @@
 					</div>
 			</div>
 			
-<div class='contenedor'>
- 	<div sclass="page-header" height="50px" >
-	    <label value="Acciones"/>
-	</div>
-	
-	<div class='contenido '   align="center"   >
-   	<div class="col-md-8 col-centered " 
-   	form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   	@validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   	captcha=vm.captcha, captchaInput=vm.captchaInput)" >
-     <div class='form-pricing' width="500px" height="550px">
-  			            	
-     <div align="left"  >
-      	<hlayout>
-      	<grid height="100px">
-      	 <rows>
-      	 <row>
-      	<div apply="controllers.ControllerAcciones" xmlns:w='client'>
-    		<button   id="btnRegAcciones" iconSclass="z-icon-floppy-o"  class='boton-guardar'  label="Agregar"/>
-     	</div>
-     	</row>
-     	<row>
-     	<div>
-    		 <listbox  width="150px" height="30px" selectedItem="@bind(vm.dateFormat)"
-			                            mold="select" tabindex="8">
-			                            <listitem label="Ver todas las acciones" value="" />
-			                             <listitem label="Disponible" value="" />
-		     </listbox>     	
-		     
-		     </div>
-		     </row>
-		     
-     	</rows>
-     	</grid>
-		</hlayout>
-	 </div>
-	 <div   align="center" >
-	 
-		<div align="left">
-						<div sclass="page-header">
-				    		<label value="Lista Acciones"/>
-		  				</div>
-					</div>
+<div class='contenedor' align="center" height="970px" apply="controllers.ControllerAcciones">
+				<div sclass="page-header" align="left">
+				    <label value="Acciones"/>
+		  		</div>
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
+				<div  xmlns:w='client' align="right">
+					<button id="btnRegAcciones" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+				</div>
+			
+				<separator spacing="10px"/>
 				
-  		<grid height="330px" emptyMessage="No se encuentran acciones registradas" mold="paging"
-							pageSize="2">
-       <columns>
-        	    <column label="# Acción" width="60px" align="center" />
-                <column label="Propietario" width="80px" align="center" />
-                <column label="Valor" width="50px" align="center"  />
-                <column label="Condición" width="70px" align="center"  />
-                <column label="Publicar en Venta" width="110px" align="center"  />
-                <column label="Desvincular" width="90px" align="center"  />
-        </columns>
-        <rows>
+				
+				<div class="contenido" >
+					<div align="left">
+						<div class='encabezado'>Lista de Acciones</div>
+						<div class='linea-two'></div>
+					</div>
+					<separator spacing="20px"/>
+					
+					<grid emptyMessage="No se encuentran Acciones registradas" mold="paging"
+							pageSize="15" >
+							
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="1" />
+            				 <auxheader colspan="1" />
+						</auxhead>
+						
+						<columns>
+							<column hflex="2"># Acción </column>
+							<column hflex="2">Propietario</column>
+							<column hflex="2">Condición </column>
+							<column hflex="2">Valor</column>
+							<column hflex="2">Desvincular</column>
+							
+						</columns>
+				         <rows>
             <row>
                 <label value="ca-001" />
                 <label value="Pedro Perez" />
-                <label value="500" />
                 <label value="Activa" />
-               <div>
-					<button sclass="btn-link" iconSclass="z-icon-usd blue" tooltiptext="Publicar"/>
-													
-				</div>
-				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" href="/vistas/socio/desvincularAccion.zul"/>								
+             <label value="500" />
+				 <div >
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" id="btnDesvincular"/>								
 				</div> 
                              
                  </row>
@@ -92,41 +82,68 @@
             <row>
                 <label value="ca-002" />
                 <label value="" />
-                <label value="500" />
                 <label value="Disponible" />
-                <div>
-					<button sclass="btn-link" iconSclass="z-icon-usd blue" tooltiptext="Publicar"/>
-													
-				</div>
+                <label value="500" />
+                
+               
 				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" href="/vistas/socio/desvincularAccion.zul"/>								
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" id="btnDesvincular1"/>								
 				</div> 
             </row>
          <row>
                 <label value="ca-003" />
                 <label value="" />
-                <label value="500" />
                 <label value="Disponible" />
-                <div>
-					<button sclass="btn-link" iconSclass="z-icon-usd blue" tooltiptext="Publicar"/>
-													
-				</div>
-				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" href="/vistas/socio/desvincularAccion.zul"/>								
+                <label value="500" />
+               
+           
+				 <div >
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" id="btnDesvincular2"/>								
 				</div> 
             </row>
+            
+            
+            
         </rows>
-  </grid>
-       </div>
+  
+						
+						
+						
+					
+						
+						 <foot>
+            				<footer span="1" class="footer_right" label="3 items en la lista" />
+        				 </foot>
+					</grid>
+					
 
-	</div>
-	</div>
+
+
+
+
+				</div>
 			</div>
-			</div>	
-			
+			</div>
+
+
 		</vlayout>
 	</hlayout>
-			        
 
 
 </zk>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
