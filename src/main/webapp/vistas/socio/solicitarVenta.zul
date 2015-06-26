@@ -25,11 +25,11 @@
 
 				</div>
 				<div class='contenido' align="center">
-				<div class="form-pricing">
+				<div class="form-pricing" width="400px" >
 						<div>
 	
 			
-		<div class=" col-md-5 form-pricing" align="center" width="300px" height="300px">
+		<div align="center">
 		
 			<div align="left">
 			<div class='encabezado'>Mis Acciones</div>
@@ -57,8 +57,8 @@
 			</grid>
 		
 		</div>
-				
-		<div class="col-md-offset-5 form-pricing" width="370px" height="300px">
+			<separator spacing="20px"/>		
+		<div>
 		
 			<div align="left">
 			<div class='encabezado'>Informacion de la Venta</div>
