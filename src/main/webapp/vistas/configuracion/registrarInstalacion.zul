@@ -1,152 +1,192 @@
-<?page title="Dashboard - ZK Admin"?>
+<?page title="Administrar Ficha Socio" contentType="text/html;charset=UTF-8"?>
+
+
+
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<zk>
-	<include src="/vistas/layouts/navbar.zul" />
+
+
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul" />
 	<hlayout spacing="0">
-		<include src="/vistas/layouts/sidebar.zul" />
+		<include src="../layouts/sidebar.zul" />
+
+
+		<!-- /web/src/main/webapp/vistas/layouts/sidebar.zul  -->
 		<vlayout spacing="0" hflex="1">
-			<div class='breadcrumbs'>
-				<div class='breadcrumb'>
-					<span sclass="home-icon z-icon-puzzle-piece" />
-					<a label="Admin. del Sistema" href="#" />
-					<label value="Instalaciones" />
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-cogs" />
+					<a label="Regsitar Instalación" href="#" />
+					<label value="Configuración" />
+					<label value="Instalación" />
 				</div>
+
 			</div>
-			<div class='contenedor' align="center">
-				<div align="left">
-					<div class="page-header">
-						Instalaciones
+			<div class='contenedor form-pricing'>
+				<div sclass="page-header">
+					<label value="Registrar Instalación" />
+				</div>
+
+				<div class='contenido ' align="center" width="80%">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='rcorners6' width="100%">
+
+
+							<vbox>
+								<groupbox width="100%"><!-- GRUPO DATOS BASICOS -->
+									<caption>Datos Basicos</caption>
+
+									<hbox width="100%">
+										<image width="80%" height="35%"
+											src="/assets/portal/img/img1.jpg" />
+
+										<vbox width="100%"
+											style="text-align:center">
+											<hlayout
+												style="margin-left:20px">
+												Descripcion
+												<textbox
+													style="margin-left:5px" value="" width="90%" />
+											</hlayout>
+
+											<hlayout>
+												<label
+													style="margin-left:20px" value="Tipo Ins" />
+												<separator />
+												<separator />
+												<combobox id="cmbColor"
+													width="120px" style="margin-left:20px">
+													<comboitem
+														label="Seleccione" />
+													<comboitem
+														label="001" />
+													<comboitem
+														label="002" />
+												</combobox>
+												<button
+													iconSclass="z-icon-plus blue" sclass="btn-link"  width="20px"
+													height="20px" />
+											</hlayout>
+
+											<hlayout>
+												<label
+													style="margin-left:20px" value="Capacidad" />
+												<spinner
+													constraint="no negative,no zero" tabindex="10"
+													style="margin-left:14px" />
+											</hlayout>
+											<hlayout>
+												<label
+													style="margin-left:20px" value="Costo" />
+												<textbox value=""
+													width="64%" style="margin-left:42px" />
+											</hlayout>
+
+
+										</vbox>
+
+
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO BASICOS -->
+
+								<groupbox width="100%">
+									<caption>Recursos</caption>
+
+									<hbox width="100%">
+										<panel border="none"
+											collapsible="true" sclass="transparent">
+
+											<panelchildren>
+												<grid sclass="domain">
+													<columns>
+														<column
+															width="30%" label="Recurso"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="30%" label="Nombre"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="25%" label="Cantidad"
+															iconSclass="z-icon-caret-right blue" />
+														<column
+															width="15%" label="Añadir" align="center" /><!--Operaciones -->
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="001" />
+															<label
+																value="Parrillera" />
+															<spinner width="95px"
+																constraint="no negative,no zero" tabindex="10" />
+															<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-plus blue"
+																	tooltiptext="Agregar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+														<row>
+															<label
+																value="002" />
+															<label
+																value="Mesa" />
+															<spinner width="95px"
+																constraint="no negative,no zero" tabindex="10" />
+															<hbox>
+
+																<button
+																	sclass="btn-link" iconSclass="z-icon-plus blue"
+																	tooltiptext="Agregar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</hbox><!-- columna 2 iconos -->
+														</row>
+														
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
+
+									</hbox>
+								</groupbox><!-- AQUI TERMINA GRUPO afiliados -->
+
+
+
+							</vbox>
+
+
+							<hbox width="" align="center"
+								pack="center">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-floppy-o"
+									class='boton-guardar' label="Guardar" />
+
+								<button iconSclass="z-icon-times-circle"
+									class='boton-cancelar' label="Cancelar " />
+							</hbox>
+						</div>
 					</div>
 				</div>
-				<div class='form-pricing' width="70%">
-					<div align="left">
-						<div class='encabezado'>
-							Datos Básicos
-						</div>
-						<div class='linea-two'></div>
-					</div>
-					<separator spacing="2%"/>
-					<div class='row'>
-					
-						<div class='col-md-2'>
-							<grid id="galery" width="100%" sclass="galeria" mold="paging" pageSize="3">
-								<columns>
-									<column width="100%" align="center"/>
-								</columns>
-								<rows>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
-									</row>
-								</rows>
-							</grid>
-						</div>
-						
-						<div align="right" class='col-md-3'>
-							
-								<image src="/assets/portal/img/img2.jpg" width="100%"/>
-								<separator/>
-								<div><fileupload iconSclass="z-icon-folder-open" class='boton-guardar' label="Examinar"/>
-								
-								</div>
-						</div>
-						
-						<div class='col-md-4' align="left">
-							<vbox>
-								Descripción
-								<textbox width="150%" constraint="no empty"/>
-							</vbox>
-							<separator/>
-							<vbox>
-								Tipo de Instalación
-								<hbox>
-									<combobox width="110%" value="Seleccione Una Opcion">
-										<comboitem label="Caney"/>
-										<comboitem label="Salón"/>
-									</combobox>
-									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar"/>
-								</hbox>
-							</vbox>
-							<separator/>
-							<vbox>
-								Capacidad de Personas
-								<spinner constraint="no empty, no negative, no zero" width="60%"/>
-							</vbox>
-							<separator/>
-							<vbox>
-								Costo Bs.
-								<doublebox constraint="no empty"/>
-							</vbox>
-							<separator spacing="10%"/>
-						</div>
-					</div>
-				</div>
-			</div>
+
+
+
+
+			</div><!-- FIN CONTENEDOR -->
 		</vlayout>
 	</hlayout>
-	<style>
-		.galeria .z-paging {
-			border:none;
-			background: none;
-			margin:0 4%; 
-		}
-		.galeria .z-paging-info {
-		    display:none;
-		}
-		.galeria .z-paging-first {
-			display:none;
-			background: blue;
-		}
-		.galeria .z-paging-last {
-			display:none;
-		}
-		.galeria .z-paging-text {
-			display:none;
-		}
-		.galeria .z-paging-input {
-			display:none;
-		}
-		.galeria .z-paging-button {
-			background: #11BCB7;
-			border-radius: 15px;
-		}
-		.galeria .z-paging-span {
-			background: white;
-		}
-		.galeria .z-paging-icon {
-			color:white;
-		}
-		
-		.im{
-			
-		}
-		.im:hover {
-  		-webkit-transform: scale(2);
-  		transform: scale(2);
-  		
-}
-		
-		}
-		
-	</style>
 </zk>

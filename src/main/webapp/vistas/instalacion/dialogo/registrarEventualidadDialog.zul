@@ -10,7 +10,7 @@
 			</div>
 
 
-			<div class='contenido '>
+			<div class='contenido form-pricing'>
 				<label value="Datos del Socio"
 					style="margin-left: 32px;" />
 				<div class="col-md-12 col-centered "
@@ -90,11 +90,11 @@
 							<row class="col-md-10">
 								<div>
 									<button iconSclass="z-icon-floppy-o"
-										class='btn-info boton-guardar' label="Guardar" />
+										class='boton-guardar' label="Guardar" />
 								</div>
 								<div>
-									<button iconSclass="z-icon-floppy-o"
-										class='btn-info boton-guardar' label="Cancelar" />
+									<button iconSclass="z-icon-times-circle"
+										class='boton-cancelar' label="Cancelar" />
 								</div>
 							</row>
 

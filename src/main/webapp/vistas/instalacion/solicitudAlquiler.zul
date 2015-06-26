@@ -11,7 +11,7 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
+					<span sclass="home-icon z-icon-home" />
 					<a label="Eventos" href="#" />
 					<label value="Ejecución del Evento" />
 				</div>
@@ -19,7 +19,7 @@
 			</div>
 
 
-			<div class='contenedor'>
+			<div class='contenedor form-pricing'>
 
 				<div sclass="page-header">
 					<label value="Solicitud Alquiler" />
@@ -138,12 +138,12 @@
 								<row class="col-md-10">
 									<div>
 										<button
-											iconSclass="z-icon-floppy-o" class='btn-info boton-guardar'
+											iconSclass="z-icon-floppy-o" class='boton-guardar'
 											label="Guardar" />
 									</div>
 									<div>
 										<button
-											iconSclass="z-icon-floppy-o" class='btn-info boton-guardar'
+											iconSclass="z-icon-times-circle" class='boton-cancelar'
 											label="Cancelar" />
 									</div>
 								</row>
