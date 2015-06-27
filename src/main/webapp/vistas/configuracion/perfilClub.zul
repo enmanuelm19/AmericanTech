@@ -27,15 +27,14 @@
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 						<div class='form-pricing' width="105%"
 							height="100%">
-
+							<separator spacing="2%" />
 							<div class='encabezado'>Datos del Club</div>
 							<div class='linea-two'></div>
-							<separator spacing="2%" />
+							<separator spacing="10%" />
 							<div class="col-md-6" align="center">
 
 								<image
-									src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
-									width="45%" height="45%" />
+									src="/assets/intranet/avatars/americaBordeBlanco.png" width="45%" height="45%" />
 								<separator spacing="2%" />
 								<fileupload
 									iconSclass="z-icon-folder-open" class=' boton-guardar'
@@ -80,33 +79,31 @@
 										<textbox width="60%" />
 									</hlayout>
 								</vlayout>
-								<separator spacing="5%" />
+								<separator spacing="14%" />
 							</div>
-
-							<separator spacing="3%" />
 
 							<div class='encabezado'>
 								Perfil Organizacional
 							</div>
 							<div class='linea-two'></div>
-							<separator spacing="3%" />
+							<separator spacing="8%" />
 							<div class="col-md-6">
 
 								Misión
 								<separator />
 								<textbox rows="5" cols="30" />
-								<separator spacing="5%" />
+								<separator spacing="15%" />
 							</div>
 							<div class="col-md-6">
 
 								Visión
 								<separator />
 								<textbox rows="5" cols="30" />
-								<separator spacing="5%" />
+								<separator spacing="15%" />
 							</div>
 							<div class='encabezado'>Políticas</div>
 							<div class='linea-two'></div>
-							<separator spacing="1%" />
+							<separator spacing="8%" />
 							Reglas De Visita
 							<separator spacing="1%" />
 							<div class="col-md-12">
@@ -177,7 +174,7 @@
 								</hlayout>
 
 							</div>
-
+							<separator spacing="3%" />
 						</div>
 
 					</div>
