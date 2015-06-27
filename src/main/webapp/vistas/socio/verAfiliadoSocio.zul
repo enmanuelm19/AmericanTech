@@ -229,7 +229,7 @@
 				<separator spacing="5%"></separator>
 
 
-				<button iconSclass="z-icon-edit" class='boton-guardar'
+				<button iconSclass="z-icon-floppy-o" class='boton-guardar'
 					label="Guardar" />
 
 				<button iconSclass="z-icon-times-circle" class='boton-cancelar'

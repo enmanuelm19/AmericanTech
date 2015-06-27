@@ -33,9 +33,31 @@ public class ControllerVerAfiliado extends SelectorComposer<Component> {
 		 window.doModal();
 
 	 }
+	 
+	 @Listen("onClick = #btnNuevaSugerencia")
+	 public void mostrarRegistrarSugerencia(){
+		 Window window = (Window)Executions.createComponents("registrarSugerencia.zul", null, null);
+		 window.doModal();
+
+	 }
+	 @Listen("onClick = #btnRegistrarMotivoVenta")
+	 public void mostrarRegistrarMotivoVenta(){
+		 Window window = (Window)Executions.createComponents("registrarMotivoVenta.zul", null, null);
+		 window.doModal();
+
+	 }
+	 @Listen("onClick = #btnEditarMotivoVenta")
+	 public void mostrarEditarMotivoVenta(){
+		 Window window = (Window)Executions.createComponents("registrarMotivoVenta.zul", null, null);
+		 window.doModal();
+
+	 }
 
 
 }
+
+
+
 
 
 

@@ -1,0 +1,86 @@
+<!-- Responsable Hector Gil -->
+
+<?page title="Registrar Motivo Venta Accion"?>
+
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+<window border="none" title=" " closable="true"
+	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	height="30%" width="20%">
+	
+
+					<div
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+
+						<div class='form-pricing' width="100%">
+
+							<div align="left">
+								<div class="encabezado">
+									Motivos ventas
+								</div>
+								<div align="left" class="linea-two">
+
+								</div>
+							</div>
+
+							<div align="center">
+								<grid width="100%" align="center">
+
+											
+									
+									<rows class="col-md-12">									
+									
+										<row class="col-md-12">
+											<div width="80%">
+												<vbox>
+													<label>
+														Nuevo Motivo
+													</label>
+													<textbox cols="5"
+														rows="1" type="text" value="Mudanza" width="100%"
+														tabindex="2" />
+												</vbox>
+											</div>
+
+										</row>
+										
+															
+
+										
+										<row align="center"
+											class="col-md-12 col-centered">
+											<hlayout width="95%">
+
+												<div class="col-md-2">
+													<button
+														iconSclass="z-icon-floppy-o"  class='boton-guardar'
+														label="Guardar" />
+												</div>
+
+
+												<div class="col-md-2">
+													<button
+														iconSclass="z-icon-times-circle" class='boton-cancelar'
+														label="Cancelar " />
+												</div>
+
+
+											</hlayout>
+
+										</row>
+
+									</rows>
+
+								</grid>
+							</div>
+						</div>
+					</div>
+					
+					</window>
+					
