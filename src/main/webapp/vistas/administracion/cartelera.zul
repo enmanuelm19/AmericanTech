@@ -12,8 +12,8 @@
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 							<span sclass="home-icon z-icon-puzzle-piece"/>
-					    <a label="Noticia" href="#"/>
-							<label value="Noticias"/>
+					    <a label="Adm. del sistema" href="#"/>
+							<label value="Cartelera"/>
 					</div>
  
 			</div>
@@ -21,7 +21,7 @@
 		<div class='contenedor'>
 				
 	 <div sclass="page-header">
-	    <label value="Noticia"/>
+	    <label value="Noticias"/>
 	  
 	  </div>
 		   <div class='contenido '   align="center"   >

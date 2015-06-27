@@ -12,8 +12,8 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Empleados" href="#" />
-					<label value="Informacion de los empleados" />
+					<a label="Adm. del sistema" href="#" />
+					<label value="Adjuntar Empleados" />
 				</div>
 			</div>
 			<div class='contenedor'>

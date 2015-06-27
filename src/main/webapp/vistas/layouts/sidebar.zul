@@ -99,6 +99,7 @@
 				<navitem label="Grupos" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/mostrarGrupos.zul"/>
 				<navitem label="Funciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/administrarFunciones.zul"/>
 			</nav>
+			<navitem label="Adjuntar Empleados" iconSclass="z-incon-angle-double-right" href="/america/vistas/administracion/adjuntarEmpleados.zul"></navitem>
 			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
 			<navitem label="Backup BD" iconSclass="z-icon-angle-double-right" href=""/>
 		</nav>
