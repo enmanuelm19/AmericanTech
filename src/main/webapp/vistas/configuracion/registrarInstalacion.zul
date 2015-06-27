@@ -17,191 +17,228 @@
 			</div>
 			<div class='contenedor' align="center">
 				<div align="left">
-					<div class="page-header">
-						Instalaciones
-					</div>
+					<div class="page-header">Instalaciones</div>
 				</div>
 				<div class='form-pricing' width="70%">
 					<div align="left">
-						<div class='encabezado'>
-							Datos Básicos
-						</div>
+						<div class='encabezado'>Datos Básicos</div>
 						<div class='linea-two'></div>
 					</div>
-					<separator spacing="2%"/>
+					<separator spacing="2%" />
 					<div class='row'>
-					
+
 						<div class='col-md-2'>
-							<grid id="galery" width="100%" sclass="galeria" mold="paging" pageSize="3">
+							<grid id="galery" width="100%"
+								sclass="galeria" mold="paging" pageSize="3">
 								<columns>
-									<column width="100%" align="center"/>
+									<column width="100%" align="center" />
 								</columns>
 								<rows>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 									<row>
-										<image src="/assets/portal/img/img1.jpg" width="60%" class='im'/>
+										<image
+											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 									</row>
 								</rows>
 							</grid>
 						</div>
-						
+
 						<div align="right" class='col-md-3'>
-							
-								<image src="/assets/portal/img/img2.jpg" width="100%"/>
-								<separator/>
-								<div><fileupload iconSclass="z-icon-folder-open" class='boton-guardar' label="Examinar"/>
-								
-								</div>
+
+							<image src="/assets/portal/img/img2.jpg"
+								width="100%" />
+							<separator />
+							<div>
+								<fileupload
+									iconSclass="z-icon-folder-open" class='boton-guardar'
+									label="Examinar" />
+
+							</div>
 						</div>
-						
+
 						<div class='col-md-4' align="left">
 							<vbox>
 								Descripción
-								<textbox width="150%" constraint="no empty"/>
+								<textbox width="150%"
+									constraint="no empty" />
 							</vbox>
-							<separator/>
+							<separator />
 							<vbox>
 								Tipo de Instalación
 								<hbox>
-									<combobox width="110%" value="Seleccione Una Opcion">
-										<comboitem label="Caney"/>
-										<comboitem label="SalÃ³n"/>
+									<combobox width="110%"
+										value="Seleccione Una Opcion">
+										<comboitem label="Caney" />
+										<comboitem label="SalÃ³n" />
 									</combobox>
-									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar"/>
+									<button
+										iconSclass="z-icon-plus blue" class='btn-link'
+										tooltiptext="Agregar" />
 								</hbox>
 							</vbox>
-							<separator/>
+							<separator />
 							<vbox>
 								Capacidad de Personas
-								<spinner constraint="no empty, no negative, no zero" width="60%"/>
+								<spinner
+									constraint="no empty, no negative, no zero" width="60%" />
 							</vbox>
-							<separator/>
+							<separator />
 							<vbox>
 								Costo Bs.
-								<doublebox constraint="no empty"/>
+								<doublebox constraint="no empty" />
 							</vbox>
-							<separator spacing="10%"/>
+							<separator spacing="10%" />
 						</div>
 					</div>
 				</div>
-				<separator spacing="3%"/>
-				<div class='form-pricing' width="40%">
+				<separator spacing="3%" />
+				<div class='form-pricing' width="70%">
 					<div align="left">
-					<div class='encabezado'>
-						Recursos
-					</div>
+						<div class='encabezado'>Recursos</div>
 					</div>
 					<div class='linea-two' />
-					<div>
-						<grid mold="paging" pageSize="8">
-							<columns>
-								<column label="Código" align="center" sort="auto"/>
-								<column label="Descripción" align="center" sort="auto"/>
-								<column label="Cantidad" align="center"/>
-								<column label="Añadir" align="center" width="15%"/>
-							</columns>
-							<rows>
-								<row>
-									<label value="0001"/>
-									<label value="Silla"/>
-									<spinner constraint="no empty, no negative"/>
-									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="AÃ±adir"/>
-								</row>
-								
-								<row>
-									<label value="0002"/>
-									<label value="Mesa"/>
-									<spinner constraint="no empty, no negative"/>
-									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="AÃ±adir"/>
-								</row>
-								
-								<row>
-									<label value="0003"/>
-									<label value="Parrillera"/>
-									<spinner constraint="no empty, no negative"/>
-									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="AÃ±adir"/>
-								</row>
-								
-								<row>
-									<label value="0004"/>
-									<label value="Mantel"/>
-									<spinner constraint="no empty, no negative"/>
-									<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="AÃ±adir"/>
-								</row>
-							</rows>
-						</grid>
-						<separator spacing="2%"/>
+					<separator spacing="2%"/>
+					<div class='row' align="center">
+						<div class='col-md-3 col-md-offset-1' align="center">
+							<div align="left">
+								<div class='encabezado'>Recursos Disponibles</div>
+							</div>
+							<div class='linea-two'/>
+						
+							<listbox id="box1" width="100%"
+								mold="paging" pageSize="15">
+								<listhead><listheader align="center"></listheader> </listhead>
+								<listitem>
+									<listcell label="Sillas" />
+								</listitem>
+								<listitem>
+									<listcell label="Mesas" />
+								</listitem>
+								<listitem>
+									<listcell
+										label="Bocinas" />
+								</listitem>
+								<listitem>
+									<listcell label="Manteles" />
+								</listitem>
+								<listitem>
+									<listcell label="Bombillos" />
+								</listitem>
+								<listitem>
+									<listcell
+										label="Parrillera" />
+								</listitem>
+
+							</listbox>
+						</div>
+						<separator />
+						<div class='col-md-2'>
+							<vlayout>
+							<separator spacing="80%"/>
+								<div>
+									<button iconSclass="z-icon-plus"
+										class='btn-primary' />
+								</div>
+								<div>
+									<button
+										iconSclass="z-icon-arrow-right"
+										class='btn-primary' />
+								</div>
+
+								<div>
+									<button
+										iconSclass="z-icon-arrow-left"
+										class='btn-primary' />
+								</div>
+							</vlayout>
+						</div>
+
+						<div class='col-md-5'>
+							<div align="left">
+								<div class='encabezado'>Recursos Asignados</div>
+							</div>
+							<div class='linea-two'/>
+						
+							<listbox id="box2" width="100%" mold="paging" pageSize="15">
+								<listhead sizable="true">
+									<listheader align="center"
+										label="" />
+									<listheader align="center"
+										label="Cantidad" />
+								</listhead>
+								<listitem>
+									<listcell label="Parrillera" />
+									<listcell><spinner constraint="no empty, no negative, no zero"/> </listcell>
+								</listitem>
+								<listitem>
+									<listcell label="Manteles" />
+									<listcell><spinner constraint="no empty, no negative, no zero"/> </listcell>
+								</listitem>
+								<listitem>
+									<listcell label="Mesas" />
+									<listcell><spinner constraint="no empty, no negative, no zero"/> </listcell>
+								</listitem>
+
+							</listbox>
+						</div>
+						<separator spacing="2%" />
 					</div>
 				</div>
-				<separator spacing="5%"/>
+				<separator spacing="5%" />
 				<div>
-					<button class='boton-guardar' iconSclass="z-icon-floppy-o" label="Registrar"/><space spacing="10%"/>
-					<button class='boton-cancelar' iconSclass="z-icon-times-circle" label="Cancelar"/>
+					<button class='boton-guardar'
+						iconSclass="z-icon-floppy-o" label="Registrar" />
+					<space spacing="10%" />
+					<button class='boton-cancelar'
+						iconSclass="z-icon-times-circle" label="Cancelar" />
 				</div>
-				<separator/><separator/><separator/><separator/>
+				<separator />
+				<separator />
+				<separator />
+				<separator />
 			</div>
 		</vlayout>
 	</hlayout>
 	<style>
-		.galeria .z-paging {
-			border:none;
-			background: none;
-			margin:0 4%; 
-		}
-		.galeria .z-paging-info {
-		    display:none;
-		}
-		.galeria .z-paging-first {
-			display:none;
-			background: blue;
-		}
-		.galeria .z-paging-last {
-			display:none;
-		}
-		.galeria .z-paging-text {
-			display:none;
-		}
-		.galeria .z-paging-input {
-			display:none;
-		}
-		.galeria .z-paging-button {
-			background: #11BCB7;
-			border-radius: 15px;
-		}
-		.galeria .z-paging-span {
-			background: white;
-		}
-		.galeria .z-paging-icon {
-			color:white;
-		}
-		
+		.galeria .z-paging { border:none; background: none; margin:0 4%;
+		} .galeria .z-paging-info { display:none; } .galeria
+		.z-paging-first { display:none; background: blue; } .galeria
+		.z-paging-last { display:none; } .galeria .z-paging-text {
+		display:none; } .galeria .z-paging-input { display:none; }
+		.galeria .z-paging-button { background: #11BCB7; border-radius:
+		15px; } .galeria .z-paging-span { background: white; } .galeria
+		.z-paging-icon { color:white; }
+
 		.im{
-			
+
+		} .im:hover { -webkit-transform: scale(2); transform: scale(2);
+
 		}
-		.im:hover {
-  		-webkit-transform: scale(2);
-  		transform: scale(2);
-  		
-}
-		
+
 		}
-		
+
 	</style>
 </zk>

@@ -15,11 +15,11 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window title=" " closable="true" border="none"
+	<window title="" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="95%" width="40%">
 		<div class='contenedor'>
-			<div sclass="page-header">
+			<div sclass="page-header prueb">
 				<label value="Registrar Grupo" />
 			</div>
 			<div align="center" width="95%">
