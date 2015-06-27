@@ -11,7 +11,7 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
+							<span sclass="home-icon z-icon-puzzle-piece"/>
 					    <a label="Noticia" href="#"/>
 							<label value="Noticias"/>
 					</div>
