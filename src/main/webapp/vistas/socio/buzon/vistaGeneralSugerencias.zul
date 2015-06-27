@@ -21,7 +21,7 @@
 					<span sclass="home-icon z-icon-user" />
 
 					<a label="Sugerencias" href="#" />
-					
+
 				</div>
 
 			</div>
@@ -33,7 +33,17 @@
 				</div>
 
 
-				<div class='form-pricing' width="80%">
+				<div class='form-pricing' width="75%">
+
+					<div align="right"
+						apply="controllers.ControllerVerAfiliado">
+						<button id="btnNuevaSugerencia"
+							label="Nueva Sugerencia" iconSclass="z-icon-floppy-o"
+							class='boton-guardar' />
+					</div>
+
+					<separator spacing="10%" />
+
 
 					<div align="left">
 						<div class="encabezado">Sugerencias</div>
@@ -50,10 +60,17 @@
 
 
 							<auxhead class="z-auxheader-content">
-
+								<auxheader label="Foto"
+									align="center">
+								</auxheader>
+								<auxheader label="Usuario"
+									align="center">
+								</auxheader>
 								<auxheader>
+									<image
+										src="../../../assets/img/funnel.png" />
 									<combobox id="cmbnoticia"
-										value="Ordenar por Fecha." width="50%">
+										value="Fecha." width="60%">
 										<comboitem
 											label="Fecha Ascendente" />
 										<comboitem
@@ -61,8 +78,10 @@
 									</combobox>
 								</auxheader>
 								<auxheader>
-									<combobox value="Ordenar Por Tipo Sugerencia"
-										width="50%">
+									<image
+										src="../../../assets/img/funnel.png" />
+									<combobox value="Tipo Sugerencia"
+										width="90%">
 										<comboitem label="Evento" />
 										<comboitem label="Instalacion" />
 										<comboitem label="Vigilancia" />
@@ -72,11 +91,9 @@
 									</combobox>
 								</auxheader>
 
-								<auxheader align="right" colspan="4">
 
-									<button iconSclass="z-icon-trash-o"
-										class='boton-cancelar' label="Eliminar" />
-
+								<auxheader label="Acciones"
+									align="center">
 								</auxheader>
 
 							</auxhead>
@@ -84,478 +101,680 @@
 
 							<columns class="z-grid z-column-content ">
 								<column label="" align="center"
-									width="25%" /><!--Foto -->
+									width="20%" /><!--Foto -->
 								<column label="" align="center"
-									width="50%" /><!--Foto -->
+									width="10%" /><!--Usuario -->
 								<column label="" align="center"
-									width="25%" /><!--Foto -->
+									width="10%" /><!--Fecha -->
+								<column label="" align="center"
+									width="12%" /><!--Tipo Sugerencia -->
+								<column label="" align="center"
+									width="10%" /><!--Acciones -->
 							</columns>
 							<rows>
-
-
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								<row><!-- inicio FILA-->
+									<cell width="20%">
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+
+									<cell>
+
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
+										</hbox>
+									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
+										pack="end">
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row  width="100%"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="4">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
 								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
+								
 								<row><!-- inicio FILA-->
-									<cell>
+									<cell width="20%">
 										<image id="" width="30%"
 											height="30%" src="/assets/portal/img/img1.jpg"
 											style="border-radius:35px" /><!-- columna 1 -->
 									</cell>
+
 									<cell>
-										<hbox width="100%"
-											align="start">
 
-											<vbox width="100%">
-												<label
-													value="usuario902" width="50%"
-													style="font-style: oblique;color:Black;font-weight:bold " />
-
-												<hbox align="right"
-													width="60%">
-													<label
-														value="10/01/15" width="100%"
-														style="font-style: oblique;color:grey" />
-
-												</hbox><!-- columna 4 iconos -->
-											</vbox><!-- columna 2 -->
-
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
 										</hbox>
 									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
 
-									<hbox width="100%" align="end"
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
 										pack="end">
-										<checkbox />
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</hbox>
 								</row><!-- fin fila-->
 
-								<row align="left"><!--Inicio Sugerencia-->
+								<row  width="100%"><!--Inicio Sugerencia-->
 									<cell></cell>
-									<cell colspan="2">
+									<cell colspan="4">
 										<div width="100%"
 											align="left">
 
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value=" El dia xxx alqulile el salon principal y la ....."
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
+												width="100%" />
+										</div>
+									</cell>
+								</row><!-- Fin Sugerencia-->
+								
+								<row><!-- inicio FILA-->
+									<cell width="20%">
+										<image id="" width="30%"
+											height="30%" src="/assets/portal/img/img1.jpg"
+											style="border-radius:35px" /><!-- columna 1 -->
+									</cell>
+
+									<cell>
+
+										<hbox 
+											align="left">
+											<label value="usuario902"
+												style="font-style: oblique;color:Black;font-weight:bold " />
+										</hbox>
+									</cell>
+									<cell>
+										<hbox width="30%" align="end"
+											pack="end">
+											<label value="10/01/15"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+									<cell>
+										<hbox width="30%" align="center"
+											pack="center">
+											<label value="Evento"
+												style="font-style: oblique;color:grey" />
+
+										</hbox><!-- columna 4 iconos -->
+									</cell>
+
+									<hbox width="20%" align="end"
+										pack="end">
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+									</hbox>
+								</row><!-- fin fila-->
+
+								<row  width="100%"><!--Inicio Sugerencia-->
+									<cell></cell>
+									<cell colspan="4">
+										<div width="100%"
+											align="left">
+
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
 												width="100%" />
 										</div>
 									</cell>
 								</row><!-- Fin Sugerencia-->
 								
 								
+
+
+
 							</rows>
 						</grid><!-- FIN GRID DE GRUPOS-->
 					</div><!--FIN DIV GRID DE GRUPOS-->

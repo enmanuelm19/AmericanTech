@@ -13,7 +13,7 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
+					<span sclass="home-icon z-icon-calendar"/>
 					<a label="Socios" href="#" />
 					<label value="Planificar Evento" />
 				</div>
@@ -31,7 +31,7 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="100%"
+						<div class='form-pricing' width="70%"
 							height="auto">
 							<div align="left">
 								<div class="encabezado">
@@ -52,13 +52,15 @@
 												<hbox>
 													Fecha
 													<datebox
-														format="@load(vm.dateFormat)" width="100%" tabindex="7" />
+													 readonly="true"
+														format="short " onCreate="self.value = new Date()" width="100%" tabindex="7" />
 													<button
 														iconSclass="z-icon-search blue " class='btn-link' />
 												</hbox>
 												<hbox>
 													Hora
 													<timebox
+													 readonly="true"
 														format="short" style="  margin-left: 20%;"
 														onCreate="self.value = new Date()" />
 												</hbox>
@@ -79,7 +81,7 @@
 									</row>
 									<row class="col-md-12">
 										<grid sclass="col-md-12"
-											style="100%">
+											style="100%" mold="paging" pageSize="15">
 
 											<columns
 												sclass=" col-md-12">
@@ -117,7 +119,7 @@
 													<div>
 
 														<button
-															iconSclass="z-icon-pencil blue " class='btn-link'
+															iconSclass="z-icon-plus blue " class='btn-link'
 															tooltiptext="Agregar Actividad" id="btnRegistrarActividades" />
 															
 															
@@ -145,7 +147,7 @@
 													<div>
 
 														<button
-															iconSclass="z-icon-pencil blue " class='btn-link'
+															iconSclass="z-icon-plus blue " class='btn-link'
 															tooltiptext="Agregar Actividad" />
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
@@ -171,7 +173,7 @@
 													<div>
 
 														<button
-															iconSclass="z-icon-pencil blue " class='btn-link'
+															iconSclass="z-icon-plus blue " class='btn-link'
 															tooltiptext="Agregar Actividad" />
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
@@ -197,7 +199,7 @@
 													<div>
 
 														<button
-															iconSclass="z-icon-pencil blue " class='btn-link'
+															iconSclass="z-icon-plus blue " class='btn-link'
 															tooltiptext="Agregar Actividad" />
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
@@ -223,7 +225,7 @@
 													<div>
 
 														<button
-															iconSclass="z-icon-pencil blue " class='btn-link'
+															iconSclass="z-icon-plus blue " class='btn-link'
 															tooltiptext="Agregar Actividad" />
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
@@ -249,7 +251,319 @@
 													<div>
 
 														<button
-															iconSclass="z-icon-pencil blue " class='btn-link'
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+
+													</div>
+
+
+												</row>
+																								<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+
+
+													<div>
+
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
 															tooltiptext="Agregar Actividad" />
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
