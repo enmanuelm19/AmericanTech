@@ -18,8 +18,10 @@
 			</div>
 			<div class='contenedor'>
 				<div sclass="page-header">
+					<separator spacing="3%" />
 					<label value="Registrar Junta Directiva" />
 				</div>
+				<separator spacing="3%" />
 				<div class='contenido'>
 					<div class="col-md-8 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
@@ -32,14 +34,30 @@
 							<div class='linea-two'></div>
 							<separator spacing="8%" />
 							<div class="col-md-6">
-								<label value="Fecha inicio:" />
-								<datebox />
+								<hlayout>
+									<label value="Fecha inicio:" />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<datebox />
+								</hlayout>
 								<separator spacing="12%" />
 							</div>
 							<div class="col-md-6">
-								<label value="Fecha Fin:" />
-								<datebox />
-								<separator spacing="12%" />
+								<hlayout>
+									<label value="Fecha Fin:" />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<datebox />
+								</hlayout>
+								<separator spacing="15%" />
 							</div>
 							<div class='encabezado'>Miembros</div>
 							<div class='linea-two'></div>
@@ -48,32 +66,50 @@
 								<div class="col-md-6">
 									<separator spacing="1%" />
 									<image
-										src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
-										width="50%" height="50%" />
-
+										src="/assets/portal/img/img1.jpg" width="60%" class='im' />
 								</div>
 								<div class="col-md-6" align="left">
 									<separator spacing="1%" />
 									<hlayout>
 										<label value="Cédula:" />
 										<separator />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
 										<textbox width="100%" />
 										<button
 											iconSclass="z-icon-search blue" class='btn-link' width="1%" />
 									</hlayout>
-									<separator spacing="5%" />
+									<separator spacing="10%" />
 									<hlayout>
 										<label value="Nombre:" />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
 										<textbox width="100%" />
 									</hlayout>
-									<separator spacing="5%" />
+									<separator spacing="10%" />
 									<hlayout>
 										<label value="Apellido:" />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
 										<textbox width="100%" />
 									</hlayout>
-									<separator spacing="5%" />
+									<separator spacing="10%" />
 									<hlayout>
 										<label value="Cargo:" />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
+										<separator />
 										<separator />
 										<separator />
 										<combobox width="93%">
@@ -84,7 +120,7 @@
 											<comboitem label="Vocero" />
 										</combobox>
 									</hlayout>
-									<separator spacing="10%" />
+									<separator spacing="15%" />
 								</div>
 							</div>
 							<separator spacing="2%" />
@@ -123,8 +159,7 @@
 											<label value="Rodriguez" />
 											<label value="Presidente" />
 											<image
-												src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
-												width="30%" height="30%" />
+												src="/assets/portal/img/img2.jpg" width="40%" />
 											<button
 												iconSclass="z-icon-trash-o red" class='btn-link' />
 										</row>
@@ -134,8 +169,7 @@
 											<label value="Dominguez" />
 											<label value="Vocero" />
 											<image
-												src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
-												width="30%" height="30%" />
+												src="/assets/portal/img/img2.jpg" width="40%" />
 											<button
 												iconSclass="z-icon-trash-o red" class='btn-link' />
 										</row>
@@ -145,15 +179,14 @@
 											<label value="Perez" />
 											<label value="Presidente" />
 											<image
-												src="http://4.bp.blogspot.com/_WJY2T9ntepQ/TOgL3QiYq8I/AAAAAAAAAqg/pfvninh_u-k/s1600/silueta.gif"
-												width="30%" height="30%" />
+												src="/assets/portal/img/img2.jpg" width="40%" />
 											<button
 												iconSclass="z-icon-trash-o red" class='btn-link' />
 										</row>
 									</rows>
 								</grid>
 							</div>
-							<separator spacing="6%" />
+							<separator spacing="8%" />
 							<div class="row" align="center">
 								<hlayout width="">
 									<div>
