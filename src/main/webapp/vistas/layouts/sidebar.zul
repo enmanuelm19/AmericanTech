@@ -73,7 +73,7 @@
 			<nav label="Administrar evento" iconSclass="z-icon-angle-double-right">
 				<navitem label="Registrar evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/evento/registrarEvento.zul"/>
 				<navitem label="Planificar evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/evento/planificarEvento.zul"/>
-				<navitem label="Ejecutar evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/evento/registrarEjecucionEvento.zul"/>
+				<navitem label="Ejecutar evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/evento/administrarEvento/ejecutarEvento.zul"/>
 				<navitem label="Cancelar evento" iconSclass="z-icon-angle-double-right" href=""/>
 			</nav>
 
