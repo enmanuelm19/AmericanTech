@@ -1,0 +1,156 @@
+<?page title="Registrar Evento"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+	<include src="../layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="../layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-calendar" />
+					<a label="Evento" href="#" />
+					<label value="Registrar Evento" />
+				</div>
+
+			</div>
+
+			<div class='contenedor'>
+
+				<div sclass="page-header">
+					<label value="Registrar Evento" />
+
+				</div>
+				<div class='contenido' align="center">
+					<div class="col-md-8 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='form-pricing' width="610px"
+							height="400px">
+							<div align="left">
+								<div class="encabezado">
+									Registrar Evento
+								</div>
+								<div align="left" class="linea-two">
+
+								</div>
+							</div>
+							<separator spacing="10px"></separator>
+
+							<div width="550px">
+
+								<div class="col-md-12"
+									style="text-align: left;">
+									Datos del Evento
+								</div>
+								<div class="col-md-12"
+									style=" margin-top: 3%;text-align:left">
+									Descripcion
+									<textbox type="text" value=""
+										width="260px" height="60px" />
+								</div>
+								<div class="col-md-3"
+									style="text-align:left;margin-top: 3%;">
+
+									Tipo
+								</div>
+								<div class="col-md-12"
+									style="text-align:left">
+									<checkbox id="l2"
+										style="margin-left:5px" onCheck="doChecked()" label="Público" />
+								</div>
+								<div class="col-md-12"
+									style="text-align:left">
+									<checkbox id="l1"
+										style="margin-left:5px" onCheck="doChecked()" label="Privado" />
+								</div>
+
+								<div class="col-md-12" style="text-align:left">
+									Personas Esperadas
+									<spinner
+										constraint="no negative,no zero" tabindex="10" />
+								</div>
+								<div class="col-md-3"
+									style=" margin-top: 2%;text-align:left">
+
+									<div>Fecha de Inicio</div>
+									<div style=" margin-top: 8%;">
+										Hora de Inicio
+									</div>
+								</div>
+								<div class="col-md-3"
+									style=" margin-top: 2%;text-align:left">
+									<div>
+										<datebox id="db0" cols="12"
+											format="short " onCreate="self.value = new Date()" />
+									</div>
+									<div style=" margin-top: 8%;">
+										<timebox id="tb0" cols="12"
+											format="short" onCreate="self.value = new Date()" />
+									</div>
+								</div>
+								<div class="col-md-3"
+									style=" margin-top: 2%;text-align:left">
+									<div>
+
+									</div>
+									<div
+										style=" margin-top: 1%;text-align:left">
+										Fecha de Cierre
+									</div>
+									<div
+										style=" margin-top: 8%;text-align:left">
+										Hora de Cierre
+									</div>
+								</div>
+								<div class="col-md-3"
+									style=" margin-top: 2%;text-align:left">
+									<div>
+
+									</div>
+									<div
+										style=" margin-top: 1%;text-align:left">
+										<datebox cols="12"
+											format="short " onCreate="self.value = new Date()" />
+									</div>
+									<div
+										style=" margin-top: 8%;text-align:left">
+										<timebox cols="12"
+											format="short" onCreate="self.value = new Date()" />
+									</div>
+								</div>
+
+								<div align="center" class="col-md-12"
+									style=" margin-top: 17%;">
+									
+										<div class="col-md-6" style="text-align:right">
+											<button
+												iconSclass="z-icon-floppy-o" class='boton-guardar'
+												label="Guardar" />
+										</div>
+										<div class="col-md-6" style="text-align:left">
+											<button
+												iconSclass="z-icon-times-circle" class='boton-cancelar'
+												label="Cancelar" />
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+
+		</vlayout>
+	</hlayout>
+
+
+</zk>
