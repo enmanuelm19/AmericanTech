@@ -12,8 +12,8 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Perfil Del Club" href="#" />
-					<label value="Información Del Club" />
+					<a label="Configuración" href="#" />
+					<label value="Perfil Del Club" />
 				</div>
 			</div>
 			<div class='contenedor'>
@@ -30,10 +30,12 @@
 						<div class='form-pricing' width="105%"
 							height="100%">
 							<separator spacing="2%" />
-							<div class='encabezado'>Datos del Club</div>
+							<div class='encabezado'>Datos Del Club</div>
 							<div class='linea-two'></div>
-							<separator spacing="10%" />
+							<separator spacing="13%" />
 							<div class="col-md-6" align="center">
+								<separator />
+								<separator />
 								<image
 									src="/assets/intranet/avatars/americaBordeBlanco.png"
 									width="45%" height="45%" />
@@ -44,6 +46,9 @@
 								<separator spacing="5%" />
 							</div>
 							<div class="col-md-6">
+								<separator />
+								<separator />
+								<separator />
 								<vlayout>
 									<hlayout>
 										<label value="Ríf:" />
@@ -97,7 +102,7 @@
 										<textbox width="60%" />
 									</hlayout>
 								</vlayout>
-								<separator spacing="14%" />
+								<separator spacing="25%" />
 							</div>
 							<div class='encabezado'>
 								Perfil Organizacional
@@ -111,7 +116,7 @@
 								<separator />
 								<separator />
 								<textbox rows="5" cols="30" />
-								<separator spacing="15%" />
+								<separator spacing="20%" />
 							</div>
 							<div class="col-md-6">
 								Visión
@@ -120,13 +125,13 @@
 								<separator />
 								<separator />
 								<textbox rows="5" cols="30" />
-								<separator spacing="15%" />
+								<separator spacing="25%" />
 							</div>
 							<div class='encabezado'>Políticas</div>
 							<div class='linea-two'></div>
-							<separator spacing="8%" />
+							<separator spacing="12%" />
 							Reglas De Visita
-							<separator spacing="5%" />
+							<separator spacing="8%" />
 							<div class="col-md-12">
 								<grid
 									emptyMessage="No se encuentran miembros registrados"
@@ -163,7 +168,7 @@
 									</rows>
 								</grid>
 							</div>
-							<separator spacing="4%" />
+							<separator spacing="15%" />
 							<div class="row" align="center">
 								<separator spacing="3%" />
 								<hlayout width="">

@@ -12,8 +12,8 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Junta Directiva" href="#" />
-					<label value="Información De La Juta Directiva" />
+					<a label="Configuración" href="#" />
+					<label value="Junta Directiva" />
 				</div>
 			</div>
 			<div class='contenedor'>
@@ -32,7 +32,7 @@
 							<separator spacing="2%" />
 							<div class='encabezado'>Periodo</div>
 							<div class='linea-two'></div>
-							<separator spacing="8%" />
+							<separator spacing="12%" />
 							<div class="col-md-6">
 								<hlayout>
 									<label value="Fecha inicio:" />
@@ -44,7 +44,7 @@
 									<separator />
 									<datebox />
 								</hlayout>
-								<separator spacing="12%" />
+								<separator spacing="15%" />
 							</div>
 							<div class="col-md-6">
 								<hlayout>
@@ -57,11 +57,11 @@
 									<separator />
 									<datebox />
 								</hlayout>
-								<separator spacing="15%" />
+								<separator spacing="20%" />
 							</div>
 							<div class='encabezado'>Miembros</div>
 							<div class='linea-two'></div>
-							<separator spacing="10%" />
+							<separator spacing="20%" />
 							<div class="row" align="center">
 								<div class="col-md-6">
 									<separator spacing="1%" />
@@ -89,7 +89,6 @@
 										<separator />
 										<separator />
 										<separator />
-										<separator />
 										<textbox width="100%" />
 									</hlayout>
 									<separator spacing="10%" />
@@ -99,13 +98,11 @@
 										<separator />
 										<separator />
 										<separator />
-										<separator />
 										<textbox width="100%" />
 									</hlayout>
 									<separator spacing="10%" />
 									<hlayout>
 										<label value="Cargo:" />
-										<separator />
 										<separator />
 										<separator />
 										<separator />
@@ -123,17 +120,17 @@
 									<separator spacing="15%" />
 								</div>
 							</div>
-							<separator spacing="2%" />
+							<separator spacing="12%" />
 							<div class="row" align="center">
 								<button iconSclass="z-icon-plus-circle"
 									class='btn-primary boton-guardar' label="Añadir" />
 							</div>
-							<separator spacing="8%" />
+							<separator spacing="15%" />
 							<div class='encabezado'>
 								Listar Miembros
 							</div>
 							<div class='linea-two'></div>
-							<separator spacing="10%" />
+							<separator spacing="15%" />
 							<div class="col-md-12">
 								<grid
 									emptyMessage="No se encuentran miembros registrados"
@@ -186,7 +183,7 @@
 									</rows>
 								</grid>
 							</div>
-							<separator spacing="8%" />
+							<separator spacing="17%" />
 							<div class="row" align="center">
 								<hlayout width="">
 									<div>
