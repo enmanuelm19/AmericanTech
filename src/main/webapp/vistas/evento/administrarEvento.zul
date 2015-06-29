@@ -11,8 +11,8 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Socios" href="#" />
+					<span sclass="home-icon z-icon-calendar" />
+					<a label="Evento" href="#" />
 					<label value="Administrar Eventos" />
 				</div>
 
@@ -24,7 +24,7 @@
 					<label value="Administrar Eventos" />
 
 				</div>
-				<div class='contenido ' align="center">
+				<div class='contenido formpricing' align="center">
 					<div class="col-md-12 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
