@@ -203,7 +203,15 @@
 							<div class="col-md-12"
 								style="margin-top: 67%;" align="left"><!-- GRUPO INTERESES -->
 
-								<label>Intereses</label>
+								<div align="left">
+									<div class="encabezado">
+										Intereses
+									</div>
+									<div align="left"
+										class="linea-two">
+
+									</div>
+								</div>
 
 								<hbox width="100%"
 									style="margin-top: 31px">

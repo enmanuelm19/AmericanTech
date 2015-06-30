@@ -191,7 +191,15 @@
 							<div class="col-md-12"
 								style="margin-top: 67%;" align="left"><!-- GRUPO INTERESES -->
 
-								<label>Intereses</label>
+								<div align="left">
+									<div class="encabezado">
+										Intereses
+									</div>
+									<div align="left"
+										class="linea-two">
+
+									</div>
+								</div>
 
 								<hbox width="100%"
 									style="margin-top: 31px">
@@ -270,8 +278,14 @@
 										tooltiptext="Editar Intereses" />
 								</hbox>
 							</div><!-- AQUI TERMINA GRUPO INTERESES -->
-							<groupbox width="100%"><!-- GRUPO accion -->
-								<caption>Datos de la Accion</caption>
+							<div align="left">
+								<div class="encabezado">
+									Datos de la Acción
+								</div>
+								<div align="left" class="linea-two">
+
+								</div>
+							</div>
 
 								<hbox width="100%">
 									<panel border="none"
@@ -307,11 +321,16 @@
 
 
 								</hbox>
-							</groupbox><!-- AQUI TERMINA GRUPO accion -->
 
 
-							<groupbox width="100%"><!-- GRUPO afilaido -->
-								<caption>Datos del Afiliado</caption>
+							<div align="left">
+								<div class="encabezado">
+									Datos del Afiliado
+								</div>
+								<div align="left" class="linea-two">
+
+								</div>
+							</div>
 
 								<hbox width="100%">
 									<panel border="none"
@@ -320,8 +339,8 @@
 										<panelchildren
 											style="text-align: right">
 											<button sclass="btn-link"
-												iconSclass="z-icon-plus blue"
-												tooltiptext="Agregar Afiliado" id="btnAgregar"/>
+												iconSclass="z-icon-plus blue" tooltiptext="Agregar Afiliado"
+												id="btnAgregar" />
 											<button sclass="btn-link"
 												iconSclass="z-icon-trash-o red"
 												tooltiptext="Eliminar Afiliado" />
@@ -388,7 +407,6 @@
 									</panel>
 
 								</hbox>
-							</groupbox><!-- AQUI TERMINA GRUPO afiliados -->
 
 
 
