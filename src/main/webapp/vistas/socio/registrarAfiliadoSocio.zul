@@ -1,0 +1,316 @@
+<!-- Responsable Hector Gil - Copiado por Wilmer Aponte -->
+
+<?page title="Registrar Afiliado" contentType="text/html;charset=UTF-8"?>
+
+
+
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+
+
+<zk xmlns:n="native">
+	<include src="../layouts/navbar.zul" />
+	<hlayout spacing="0">
+		<include src="../layouts/sidebar.zul" />
+
+
+
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Socio" href="#" />
+					<label value="Registrar Afiliado" />
+				</div>
+			</div>
+
+			<div class='contenedor' align="center"
+				apply="controllers.SocioController">
+				<div sclass="page-header" align="left">
+					<label value="Registrar Afiliado" />
+				</div>
+
+				<div class='contenido ' align="center" width="75%">
+					<div class="col-md-11 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='form-pricing' width="100%">
+
+							<div align="left">
+								<div class="encabezado">
+									Datos del Afiliado
+								</div>
+								<div align="left" class="linea-two">
+
+								</div>
+							</div>
+							<div class="col-md-4"
+								style="margin-top: 10px">
+								<image width="60%" height="35%"
+									src="/assets/portal/img/img1.jpg" />
+							</div>
+							<div class="col-md-8"
+								style="text-align:left; margin-top: 13px;">
+								<div class="col-md-12">
+									<div class="col-md-5">
+										<label value="Cédula"
+											style="padding-right: 10px " />
+									</div>
+									<div class="col-md-7"
+										style="padding:0px">
+										<div class="col-md-10">
+											<textbox readonly="true"
+												value="V18122444" />
+										</div>
+										<div class="col-md-2"
+											style="padding:0px; text-align:left">
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue"
+												tooltiptext="Editar Datos de Contacto" />
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Numero Carnet
+									</div>
+									<div class="col-md-7">
+										<textbox readonly="true"
+											value="123456" width="50%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Parentesco
+									</div>
+									<div class="col-md-7">
+										<combobox value="Seleccione"
+											width="50%">
+											<comboitem label="Hijo(a)" />
+											<comboitem label="Esposa" />
+										</combobox>
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Primer Nombre
+									</div>
+									<div class="col-md-7">
+										<textbox value="Jesus"
+											width="90%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Segundo Nombre
+									</div>
+									<div class="col-md-7">
+										<textbox value="Jesus"
+											width="88%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Primer Apellido
+									</div>
+									<div class="col-md-7">
+										<textbox value="Jesus"
+											width="88%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Segundo Apellido
+									</div>
+									<div class="col-md-7">
+										<textbox value="Jesus"
+											width="88%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">Correo</div>
+									<div class="col-md-7">
+										<textbox
+											value="hdhdhdh@jdhdh.com" width="100%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">Telefono</div>
+									<div class="col-md-7">
+										<textbox value="04135689256"
+											width="80%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Nacimiento
+									</div>
+									<div class="col-md-7">
+										<textbox value="10/01/70"
+											width="50%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+
+										Edad
+									</div>
+									<div class="col-md-7">
+										<textbox value="33" width="25%" />
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										<label>Sexo</label>
+									</div>
+									<div class="col-md-7">
+										<combobox value="M"
+											width="35%">
+											<comboitem label="F" />
+										</combobox>
+									</div>
+								</div>
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">
+										Direccion
+									</div>
+									<div class="col-md-7">
+										<textbox cols="45" rows="4"
+											type="text"
+											value="Av venezuela con Av vargas edificio greco, piso 29 apartamento C-85-D,Barquisimeto,Edo Lara"
+											width="100%" />
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-md-12"
+								style="margin-top: 67%;" align="left"><!-- GRUPO INTERESES -->
+
+								<div align="left">
+									<div class="encabezado">
+										Intereses
+									</div>
+									<div align="left"
+										class="linea-two">
+
+									</div>
+								</div>
+
+								<hbox width="100%"
+									style="margin-top: 31px">
+
+
+									<vbox>
+										<label>Deportes</label>
+										<checkbox id="l1" label="Futbol"
+											onCheck="doChecked()" />
+										<checkbox id="l2"
+											label="Beisbol" onCheck="doChecked()" />
+										<checkbox id="l3" label="Basket"
+											onCheck="doChecked()" />
+										<checkbox id="l4"
+											label="Softball" onCheck="doChecked()" />
+									</vbox>
+									<separator></separator>
+									<separator></separator>
+									<separator></separator>
+									<separator></separator>
+									<vbox>
+										<label>Cultura</label>
+										<checkbox id=""
+											label="Ping Pong" onCheck="doChecked()" />
+										<checkbox id=""
+											label="Bolas Criollas" onCheck="doChecked()" />
+										<checkbox id="" label="Natacion"
+											onCheck="doChecked()" />
+										<checkbox id="" label="Domino"
+											onCheck="doChecked()" />
+									</vbox>
+									<separator></separator>
+									<separator></separator>
+									<vbox>
+										<label>Social</label>
+										<checkbox id="" label="Bailar"
+											onCheck="doChecked()" />
+
+										<checkbox id=""
+											label="Tocar Cuatro" onCheck="doChecked()" />
+										<checkbox id=""
+											label="Escuchar musica" onCheck="doChecked()" />
+										<checkbox id="" label="Teatro"
+											onCheck="doChecked()" />
+									</vbox>
+									<separator></separator>
+									<separator></separator>
+									<vbox>
+										<label>Academico</label>
+										<checkbox id="" label="Bailar"
+											onCheck="doChecked()" />
+
+										<checkbox id=""
+											label="Tocar Cuatro" onCheck="doChecked()" />
+										<checkbox id=""
+											label="Escuchar musica" onCheck="doChecked()" />
+										<checkbox id="" label="Teatro"
+											onCheck="doChecked()" />
+									</vbox>
+									<separator></separator>
+									<separator></separator>
+									<vbox>
+										<label>Otros</label>
+										<checkbox id="" label="Bailar"
+											onCheck="doChecked()" />
+
+										<checkbox id=""
+											label="Tocar Cuatro" onCheck="doChecked()" />
+										<checkbox id=""
+											label="Escuchar musica" onCheck="doChecked()" />
+										<checkbox id="" label="Teatro"
+											onCheck="doChecked()" />
+									</vbox>
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue"
+										tooltiptext="Editar Intereses" />
+								</hbox>
+							</div><!-- AQUI TERMINA GRUPO INTERESES -->
+
+							<separator></separator>
+							<separator></separator>
+							<separator></separator>
+							<hbox width="" align="center"
+								pack="center">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-edit"
+									class='boton-guardar' label="Guardar" />
+
+								<button iconSclass="z-icon-times-circle"
+									class='boton-cancelar' label="Cancelar " />
+							</hbox>
+						</div>
+					</div>
+				</div>
+
+			</div><!-- FIN CONTENEDOR -->
+		</vlayout>
+	</hlayout>
+</zk>

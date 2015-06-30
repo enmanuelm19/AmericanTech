@@ -1,4 +1,4 @@
-<?page title="Dashboard - ZK Admin"?>
+<?page title="Solicitud Alquiler"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
@@ -12,25 +12,31 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-home" />
-					<a label="Eventos" href="#" />
-					<label value="Ejecución del Evento" />
+					<a label="Instalación" href="#" />
+					<label value="Solicitud Alquiler" />
 				</div>
 
 			</div>
 
 
-			<div class='contenedor form-pricing'>
+			<div class='contenedor'>
 
 				<div sclass="page-header">
 					<label value="Solicitud Alquiler" />
 
 				</div>
 
-				<div class='contenido '
+				<div class='contenido  form-pricing'
 					style="margin-left: 90px; width:900px">
-					<label value="Datos de la Instalación"
-						style="margin-left: 32px;" />
-					<div class="col-md-12 col-centered "
+					<div align="left">
+						<div class="encabezado">
+							Datos de la Instalación
+						</div>
+						<div align="left" class="linea-two">
+
+						</div>
+					</div>
+					<div class="col-md-12 col-centered " style="margin-top: 10px"
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
 						<div class="col-md-3">
 							<image
@@ -38,16 +44,14 @@
 								sclass="icon" tooltiptext="Juan Moreno" />
 						</div>
 						<grid class="col-md-8">
-
 							<rows class="col-md-12">
 								<row class="col-md-10">
-
 									<div class="col-md-10">
 										Número Carnet
 										<textbox type="text" value=""
 											width="250px" tabindex="2" />
 									</div>
-									<div style="margin-top: 23px;">
+									<div  class="col-md-2" style="margin-top: 23px;">
 										<button
 											iconSclass="z-icon-search" class='btn-primary btn-primary' />
 									</div>
@@ -56,7 +60,7 @@
 									<div class="col-md-10">
 										Cédula
 										<textbox type="text" value=""
-											width="250px" tabindex="2" style="margin-top: 23px;" />
+											width="250px" tabindex="2" style="" />
 									</div>
 									<div style="margin-top: 23px;">
 										<button
@@ -134,17 +138,13 @@
 
 
 
-								<row class="col-md-10">
-									<div>
+								<row class="col-md-12 col-centered" style="text-align:center">
 										<button
 											iconSclass="z-icon-floppy-o" class='boton-guardar'
 											label="Guardar" />
-									</div>
-									<div>
 										<button
 											iconSclass="z-icon-times-circle" class='boton-cancelar'
 											label="Cancelar" />
-									</div>
 								</row>
 
 							</rows>
