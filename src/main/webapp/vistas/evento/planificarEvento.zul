@@ -13,18 +13,15 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-calendar"/>
+					<span sclass="home-icon z-icon-calendar" />
 					<a label="Socios" href="#" />
 					<label value="Planificar Evento" />
 				</div>
-
 			</div>
-
-			<div class='contenedor' apply="controllers.ControllerVerAfiliado" >
-
+			<div class='contenedor'
+				apply="controllers.ControllerVerAfiliado">
 				<div sclass="page-header">
 					<label value="Planificar Eventos" />
-
 				</div>
 				<div class='contenido ' align="center">
 					<div class="col-md-12 col-centered "
@@ -35,73 +32,69 @@
 							height="auto">
 							<div align="left">
 								<div class="encabezado">
-									Planificar Evento
+									Eventos Disponibles
 								</div>
 								<div align="left" class="linea-two">
 
 								</div>
 							</div>
 							<grid width="100%">
-
 								<rows class="col-md-12">
-
-									<row class="col-md-12"
-										width="100%">
-										<hbox width="100%">
-											<vbox width="60%">
-												<hbox>
-													Fecha
-													<datebox
-													 readonly="true"
-														format="short " onCreate="self.value = new Date()" width="100%" tabindex="7" />
-													<button
-														iconSclass="z-icon-search blue " class='btn-link' />
-												</hbox>
-												<hbox>
-													Hora
-													<timebox
-													 readonly="true"
-														format="short" style="  margin-left: 20%;"
-														onCreate="self.value = new Date()" />
-												</hbox>
-											</vbox>
-										</hbox>
-									</row>
-
-									<row class="col-md-12">
-
-
-										<div align="right"
-											sclass="col-md-12">
-
-											<label
-												value="Eventos Disponibles" style="float:left" />
-
-										</div>
-									</row>
 									<row class="col-md-12">
 										<grid sclass="col-md-12"
 											style="100%" mold="paging" pageSize="15">
+											<auxhead
+												class="z-auxheader-content">
+												<auxheader
+													label="Codigo" align="center">
+												</auxheader>
+												<auxheader
+													label="Descripcion" align="center">
+												</auxheader>
+												<auxheader>
 
+													<hbox>
+														<image
+															src="../../assets/img/funnel.png" />
+														Fecha
+														<datebox
+															readonly="true" format="short "
+															onCreate="self.value = new Date()" width="100%"
+															tabindex="7" />
+													</hbox>
+												</auxheader>
+												<auxheader label="Hora"
+													align="center">
+
+												</auxheader>
+												<auxheader
+													label="Condicion" align="center">
+												</auxheader>
+												<auxheader
+													label="Cantidad Socios" align="center">
+												</auxheader>
+												<auxheader
+													label="Detalles" align="center">
+												</auxheader>
+											</auxhead>
 											<columns
-												sclass=" col-md-12">
-												<column label="Codigo"
-													width="7%" />
-												<column
-													label="Descripción" width="15%" />
-												<column label="Fecha"
-													width="9%" />
-												<column label="Hora"
-													width="7%" />
-												<column
-													label="Condición v" width="7%" />
-												<column
-													label="Cant. Socios" width="7%" />
-												<column label="Detalles"
-													width="16%" />
-
-
+												class="z-grid z-column-content ">
+												<column label=""
+													width="5%" align="center" />
+												<column label=""
+													width="15%" align="center" />
+												<column label=""
+													width="15%" align="center" />
+												<column label=""
+													width="5%" align="center" />
+												<column label=""
+													width="7%" align="center" />
+												<column label=""
+													width="10%" align="center" />
+												<column label=""
+													width="8%" align="center" />
 											</columns>
+
 											<rows>
 												<row>
 													<label value="001" />
@@ -114,22 +107,177 @@
 													<label
 														value="Iniciada" />
 													<label value="100" />
-
-
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad"
+															id="btnRegistrarActividades" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades"
+															id="btnVerListaActividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
 													<div>
 
 														<button
 															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" id="btnRegistrarActividades" />
-															
-															
+															tooltiptext="Agregar Actividad" />
 														<button
 															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" id="btnVerListaActividades" />
-
+															tooltiptext="Ver Actividades" />
 													</div>
-
-
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
+												</row>
+												<row>
+													<label value="001" />
+													<label
+														value="Semana Deportiva" />
+													<label
+														value="12/12/1920" />
+													<label
+														value="12:00" />
+													<label
+														value="Iniciada" />
+													<label value="100" />
+													<div>
+														<button
+															iconSclass="z-icon-plus blue " class='btn-link'
+															tooltiptext="Agregar Actividad" />
+														<button
+															iconSclass="z-icon-search blue " class='btn-link'
+															tooltiptext="Ver Actividades" />
+													</div>
 												</row>
 												<row>
 													<label value="001" />
@@ -261,7 +409,7 @@
 
 
 												</row>
-																								<row>
+												<row>
 													<label value="001" />
 													<label
 														value="Semana Deportiva" />
@@ -287,7 +435,7 @@
 
 
 												</row>
-																								<row>
+												<row>
 													<label value="001" />
 													<label
 														value="Semana Deportiva" />
@@ -313,7 +461,7 @@
 
 
 												</row>
-																								<row>
+												<row>
 													<label value="001" />
 													<label
 														value="Semana Deportiva" />
@@ -339,215 +487,7 @@
 
 
 												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-
-
-													<div>
-
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-
-													</div>
-
-
-												</row>
-																								<row>
+												<row>
 													<label value="001" />
 													<label
 														value="Semana Deportiva" />
