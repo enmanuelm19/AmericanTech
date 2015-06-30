@@ -19,9 +19,9 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
+					<span sclass="home-icon z-icon-home" />
 					<a label="Instalación" href="#" />
-					<label value="Registro" />
+					<label value="Eventualidad" />
 				</div>
 
 			</div>
@@ -40,60 +40,82 @@
 						<div class='form-pricing' width="750px"
 							height="680px">
 
-							<div class='form-pricing' width="700px"
-								height="260px">
-								Datos del Socio
-								<separator spacing="20px" />
+							<div class='encabezado'>Datos del Socio</div>
+							<div class='linea-two'></div>
+							<separator spacing="7%" />
+								
+								
 
-								<div class="col-md-4">
+								
 
-									<div class='form-pricing'
+									<div class='col-md-6'
 										align="center" width="140px" height="170px">
 										<image
-											src="assets/avatars/avatar2.png" width="100px" height="80px" />
+											src="../../assets/portal/img/img1.jpg" width="100px" height="80px" />
 										<button
 											class='btn-primary boton-guardar' label="Examinar" />
+											
 									</div>
-								</div>
-
-								<div class="">
+									
+						
+									
+								
 
 									<vlayout>
-										
+											
 
 										<hlayout>
 											<label value="Numero Carnet:" />
 											<textbox rows="1" cols="20"/>
 											<separator />
-											<button  iconSclass="z-icon-search"  class='btn-primary btn-primary col-md-3 btn_bus'/>
+											<button iconSclass="z-icon-search"  class='btn-primary btn-primary'  />
 										</hlayout>
 										<hlayout>
 											<label value="Cédula:" />
-											<separator spacing="80%" />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator spacing="120%" />
 											<textbox rows="1" cols="30"/>
 											
 										</hlayout>
 										<hlayout>
 											<label value="Nombre:" />
-
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											<separator />
+											
 											<textbox cols="30"/>
 										</hlayout>
 									</vlayout>
-								</div>
-							</div>
-							<separator spacing="30px" />
+								
+							
+							<separator spacing="20%" />
 
-							<div class='form-pricing' width="700px"
-								height="260px">
-								Datos Basicos
+
+							<div class='encabezado'>Datos Básicos</div>
+							<div class='linea-two'></div>
 								<separator spacing="30px" />
-<hlayout>
-												<label value="Evento" />
+											<hlayout>
+												<label value="Evento:" />
 												<separator />
 												<separator />
 												<separator />
 												<separator />
-												<separator spacing="20px" />
+												
+												<separator spacing="29%" />
                                                 <combobox width="200px"> 
 													<comboitem
 														label="" />
@@ -105,7 +127,8 @@
 											</hlayout>
 											<separator spacing="10px" />
 											<hlayout>
-												<label value="Instalación" />
+												<label value="Instalación:" />
+												<separator spacing="25%" />
 												<combobox width="200px"> 
 													<comboitem
 														label="" />
@@ -123,7 +146,7 @@
 											<textbox rows="4" cols="60"/>
 										</hlayout>
 											
-							</div>
+							
 							<separator spacing="30px" />
 
 							
@@ -131,11 +154,10 @@
 							<div class="row" align="center">
 								<hlayout width="">
 
-									<separator spacing="200px">
+									<separator spacing="150px">
 									</separator>
 									<div>
-										<button
-											class='btn-primary boton-guardar' label="Guardar" />
+										<button iconSclass="z-icon-floppy-o" class='btn boton-guardar' label="Guardar" width="100px" />
 									</div>
 									<separator />
 									<separator />
@@ -151,8 +173,7 @@
 
 
 									<div>
-										<button
-											class='btn-primary boton-guardar' label="Cancelar" />
+										<button iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="100px" />
 									</div>
 								</hlayout>
 
