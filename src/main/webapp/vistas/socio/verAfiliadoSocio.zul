@@ -10,7 +10,7 @@
 
 <window border="none" title=" " closable="true"
 	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	height="100%" width="40%">
+	height="95%" width="40%">
 	<!--  class='form-pricing ' -->
 
 	<div
@@ -27,218 +27,217 @@
 				</div>
 			</div>
 
-			<groupbox width="100%"><!-- GRUPO DATOS BASICOS -->
 
-				<hbox width="90%">
-					<image width="60%" height="35%"
-						src="/assets/portal/img/img2.jpg" />
+			<hbox align="center" pack="center" width="90%"><!-- GRUPO DATOS BASICOS -->
+				<image width="70%" height="45%"
+					src="/assets/portal/img/img2.jpg" style="border-radius:50%" />
 
-					<vbox height="65%">
-						<hlayout>
-							<label value="Cédula" />
-							<separator />
-							<separator />
-							<textbox value="V19872203" readonly="true" />
+				<vbox height="65%">
+					<hlayout>
+						<label value="Cédula" />
+						<separator />
+						<separator />
+						<textbox value="V19872203" readonly="true" />
 
-							<button sclass="btn-link"
-								iconSclass="z-icon-pencil blue"
-								tooltiptext="Editar Datos de Contacto" />
+						<button sclass="btn-link"
+							iconSclass="z-icon-pencil blue"
+							tooltiptext="Editar Datos de Contacto" />
 
-						</hlayout>
-						<hlayout>
-							Numero Carnet
-							<textbox readonly="true" value="123456"
-								width="50%" />
-						</hlayout>
-						<hlayout>
-							Parentesco
-							<textbox readonly="true" value="Hijo"
-								width="50%" />
-						</hlayout>
-
-
-						<hlayout>
-							1er Nombre
-							<textbox readonly="true" value="Jesus"
-								width="90%" />
-						</hlayout>
-						<hlayout>
-							2do Nombre
-							<textbox readonly="true" value="Jesus"
-								width="88%" />
-						</hlayout>
-
-						<hlayout>
-
-							1er Apellido
-							<textbox readonly="true" value="Jesus"
-								width="90%" />
-						</hlayout>
+					</hlayout>
+					<hlayout>
+						Numero Carnet
+						<textbox readonly="true" value="123456"
+							width="50%" />
+					</hlayout>
+					<hlayout>
+						Parentesco
+						<textbox readonly="true" value="Hijo"
+							width="50%" />
+					</hlayout>
 
 
-						<hlayout>
-							2do Apellido
-							<textbox readonly="true" value="Jesus"
-								width="88%" />
+					<hlayout>
+						1er Nombre
+						<textbox readonly="true" value="Jesus"
+							width="90%" />
+					</hlayout>
+					<hlayout>
+						2do Nombre
+						<textbox readonly="true" value="Jesus"
+							width="88%" />
+					</hlayout>
 
-						</hlayout>
-						<hlayout>
-							Correo
-							<textbox readonly="true"
-								value="hdhdhdh@jdhdh.com" width="100%" />
+					<hlayout>
 
-						</hlayout>
-
-						<hlayout>
-
-							Telefono
-							<textbox readonly="true" value="04135689256"
-								width="80%" />
-						</hlayout>
-
-						<hlayout>
-							Nacimiento
-							<textbox readonly="true" value="10/01/70"
-								width="50%" />
-
-						</hlayout>
-
-						<hlayout>
-
-							Edad
-							<textbox readonly="true" value="33"
-								width="25%" />
-						</hlayout>
-
-						<hlayout>
-
-							<label>Sexo</label>
-							<combobox value="M" width="35%">
-								<comboitem label="F" />
-							</combobox>
-						</hlayout>
-						<hlayout>
-							Direccion
-							<textbox readonly="true" cols="45" rows="4"
-								type="text"
-								value="Av venezuela con Av vargas edificio greco, piso 29 apartamento C-85-D,Barquisimeto,Edo Lara"
-								width="80%" />
-
-						</hlayout>
-
-					</vbox>
+						1er Apellido
+						<textbox readonly="true" value="Jesus"
+							width="90%" />
+					</hlayout>
 
 
+					<hlayout>
+						2do Apellido
+						<textbox readonly="true" value="Jesus"
+							width="88%" />
 
-				</hbox>
-			</groupbox><!-- AQUI TERMINA GRUPO BASICOS -->
+					</hlayout>
+					<hlayout>
+						Correo
+						<textbox readonly="true"
+							value="hdhdhdh@jdhdh.com" width="100%" />
 
-			<groupbox width="100%"><!-- GRUPO INTERESES -->
-				<caption>Intereses</caption>
+					</hlayout>
 
+					<hlayout>
 
+						Telefono
+						<textbox readonly="true" value="04135689256"
+							width="80%" />
+					</hlayout>
 
-				<hbox width="100%">
+					<hlayout>
+						Nacimiento
+						<textbox readonly="true" value="10/01/70"
+							width="50%" />
 
-					<vbox>
-						<label>Deportes</label>
+					</hlayout>
 
-						<checkbox id="l1" label="Futbol"
-							onCheck="doChecked()" />
+					<hlayout>
 
-						<checkbox id="l2" label="Beisbol"
-							onCheck="doChecked()" />
-						<checkbox id="l3" label="Basket"
-							onCheck="doChecked()" />
-						<checkbox id="l4" label="Softball"
-							onCheck="doChecked()" />
+						Edad
+						<textbox readonly="true" value="33" width="25%" />
+					</hlayout>
 
+					<hlayout>
 
+						<label>Sexo</label>
+						<combobox value="M" width="35%">
+							<comboitem label="F" />
+						</combobox>
+					</hlayout>
+					<hlayout>
+						Direccion
+						<textbox readonly="true" cols="45" rows="2"
+							type="text"
+							value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara"
+							width="90%" />
 
-					</vbox>
-					<separator></separator>
-					<separator></separator>
-					<separator></separator>
-					<separator></separator>
-
-					<vbox>
-						<label>Cultura</label>
-						<checkbox id="" label="Ping Pong"
-							onCheck="doChecked()" />
-
-						<checkbox id="" label="Bolas Criollas"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Natacion"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Domino"
-							onCheck="doChecked()" />
-					</vbox>
-					<separator></separator>
-					<separator></separator>
-					<vbox>
-						<label>Social</label>
-						<checkbox id="" label="Bailar"
-							onCheck="doChecked()" />
-
-						<checkbox id="" label="Tocar Cuatro"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Escuchar musica"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Teatro"
-							onCheck="doChecked()" />
-					</vbox>
-					<separator></separator>
-					<separator></separator>
-					<vbox>
-						<label>Academico</label>
-						<checkbox id="" label="Bailar"
-							onCheck="doChecked()" />
-
-						<checkbox id="" label="Tocar Cuatro"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Escuchar musica"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Teatro"
-							onCheck="doChecked()" />
-					</vbox>
-					<separator></separator>
-					<separator></separator>
-					<vbox>
-						<label>Otros</label>
-						<checkbox id="" label="Bailar"
-							onCheck="doChecked()" />
-
-						<checkbox id="" label="Tocar Cuatro"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Escuchar musica"
-							onCheck="doChecked()" />
-						<checkbox id="" label="Teatro"
-							onCheck="doChecked()" />
-					</vbox>
-					<button sclass="btn-link"
-						iconSclass="z-icon-pencil blue" tooltiptext="Editar Intereses" />
+					</hlayout>
+				</vbox>
+			</hbox><!-- AQUI TERMINA GRUPO BASICOS -->
 
 
 
 
-				</hbox>
-			</groupbox><!-- AQUI TERMINA GRUPO INTERESES -->
+			<div align="left">
+				<div class="encabezado">Intereses</div>
+				<div align="left" class="linea-two">
+
+				</div>
+			</div>
+			
+			<hbox align="center" pack="center" width="100%"><!-- GRUPO INTERESES -->
+
+				<vbox>
+					<label>Deportes</label>
+
+					<checkbox id="l1" label="Futbol"
+						onCheck="doChecked()" />
+
+					<checkbox id="l2" label="Beisbol"
+						onCheck="doChecked()" />
+					<checkbox id="l3" label="Basket"
+						onCheck="doChecked()" />
+					<checkbox id="l4" label="Softball"
+						onCheck="doChecked()" />
+
+
+
+				</vbox>
+				<separator></separator>
+				<separator></separator>
+				<separator></separator>
+				<separator></separator>
+
+				<vbox>
+					<label>Cultura</label>
+					<checkbox id="" label="Ping Pong"
+						onCheck="doChecked()" />
+
+					<checkbox id="" label="Bolas Criollas"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Natacion"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Domino"
+						onCheck="doChecked()" />
+				</vbox>
+				<separator></separator>
+				<separator></separator>
+				<vbox>
+					<label>Social</label>
+					<checkbox id="" label="Bailar"
+						onCheck="doChecked()" />
+
+					<checkbox id="" label="Tocar Cuatro"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Escuchar musica"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Teatro"
+						onCheck="doChecked()" />
+				</vbox>
+				<separator></separator>
+				<separator></separator>
+				<vbox>
+					<label>Academico</label>
+					<checkbox id="" label="Bailar"
+						onCheck="doChecked()" />
+
+					<checkbox id="" label="Tocar Cuatro"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Escuchar musica"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Teatro"
+						onCheck="doChecked()" />
+				</vbox>
+				<separator></separator>
+				<separator></separator>
+				<vbox>
+					<label>Otros</label>
+					<checkbox id="" label="Bailar"
+						onCheck="doChecked()" />
+
+					<checkbox id="" label="Tocar Cuatro"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Escuchar musica"
+						onCheck="doChecked()" />
+					<checkbox id="" label="Teatro"
+						onCheck="doChecked()" />
+				</vbox>
+				<button sclass="btn-link"
+					iconSclass="z-icon-pencil blue" tooltiptext="Editar Intereses" />
+
+
+
+
+			</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
+
 
 			<hbox width="100%" align="center" pack="center">
 
 				<separator spacing="5%"></separator>
-
-
-				<button iconSclass="z-icon-floppy-o" class='boton-guardar'
-					label="Guardar" />
-
-				<button iconSclass="z-icon-times-circle" class='boton-cancelar'
-					label="Cancelar " />
+				<button iconSclass="z-icon-floppy-o"
+					class='boton-guardar' label="Guardar" />
+				<space></space>
+				<space></space>
+				<space></space>
+				<space></space>
+				<space></space>
+				<space></space>
+				<button iconSclass="z-icon-times-circle"
+					class='boton-cancelar' label="Cancelar " />
 			</hbox>
 
 		</div>
 	</div>
-
-
 </window>
 
