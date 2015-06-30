@@ -45,3 +45,26 @@
 .btn_bus{
 	margin-left: 5px;
 }
+
+
+.ventana .z-window-header{
+	background: white;
+	border-radius: 5px 5px 0px 0px;
+	}
+.ventana .z-window-close{
+	background:#11BCB7;
+	border-radius:8px;
+}
+
+.ventana .z-window-icon{
+	color:white;
+}
+.ventana .z-window-content{
+	border:none;
+	border-radius: 0px 0px 5px 5px;
+}
+.ventana {
+	border:2px solid #11BCB7;
+	border-radius: 10px;
+	background: white;
+}
