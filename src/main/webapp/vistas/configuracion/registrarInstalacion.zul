@@ -20,6 +20,7 @@
 					<div class="page-header">Instalaciones</div>
 				</div>
 				<div class='form-pricing' width="70%">
+				<div width="100%">
 					<div align="left">
 						<div class='encabezado'>Datos Básicos</div>
 						<div class='linea-two'></div>
@@ -115,20 +116,22 @@
 					</div>
 				</div>
 				<separator spacing="3%" />
-				<div class='form-pricing' width="70%">
+				<div width="100%">
 					<div align="left">
 						<div class='encabezado'>Recursos</div>
 					</div>
 					<div class='linea-two' />
 					<separator spacing="2%"/>
 					<div class='row' align="center">
+						
 						<div class='col-md-3 col-md-offset-1' align="center">
+							<separator/>
 							<div align="left">
-								<div class='encabezado'>Recursos Disponibles</div>
+								<div>Recursos Disponibles</div>
 							</div>
 							<div class='linea-two'/>
 						
-							<listbox id="box1" width="100%"
+							<listbox width="100%"
 								mold="paging" pageSize="15">
 								<listhead><listheader align="center"></listheader> </listhead>
 								<listitem>
@@ -178,11 +181,11 @@
 
 						<div class='col-md-5'>
 							<div align="left">
-								<div class='encabezado'>Recursos Asignados</div>
+								<div>Recursos Asignados</div>
 							</div>
 							<div class='linea-two'/>
 						
-							<listbox id="box2" width="100%" mold="paging" pageSize="15">
+							<listbox width="100%" mold="paging" pageSize="15">
 								<listhead sizable="true">
 									<listheader align="center"
 										label="" />
@@ -216,6 +219,7 @@
 						iconSclass="z-icon-times-circle" label="Cancelar" />
 				</div>
 				<separator />
+			</div>
 				<separator />
 				<separator />
 				<separator />
