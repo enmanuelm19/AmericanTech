@@ -4,32 +4,30 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" class='contenedor'>
-	   <window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="900px"  closable="true">
+<zk xmlns:n="native" >
+<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="800px" width="800px" closable="true">
 		   	<div sclass="breadcrumbs">
 		   		<div sclass="breadcrumb">
 		   			<span sclass="home-icon z-icon-calendar" />
-		   				<a label="Eventos" href="#" />
+		   				<a label="Eventos" />
 		   			 	  <label value="Planificar Evento"/>
 		   		</div>
 		   	</div>
 		   	
 	<div class='contenedor'>
-		 <div sclass="page-header">
+		 <div sclass="page-header"  >
 		 		<label value ="Registrar Actividad" />
 		 		
 		 </div>
-		 
-	       
-			<div class='contenido '   align="center"  >
-			
-   				 <div class="col-md-8 col-centered " 
+		 <div  align="letf"  >
+   				 <div class="col-md-11 col-centered " 
    				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='form-pricing' width="690px" height="680px">
+			
+        			<div>
         			<div align="left">
-        				<div class="encabezado">
+        				<div class="encabezado" >
         					Datos Básicos
         				</div>
         				<div class="linea-two">
@@ -37,8 +35,8 @@
         				</div>
         			</div>
         			<separator/><separator/>
-        			<grid width="620px">
-         
+        		
+         	<grid width="800px" align="center">
 			            	<rows class="col-md-11" >
 			            	
 			           
@@ -227,27 +225,26 @@
 										   </vlayout>			
 									</row>
 							
-							    <row align="center">
+							    <row  align="center">
 							     <vlayout>
 							    <separator/><separator/><separator/><separator/>
-			                  	<hlayout width="">
-			                  	
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	<separator/><separator/><separator/><separator/><separator/><separator/>
-			                  	
+			                  	<hlayout class="col-md-12 col-centered ">
+			                  		
+			                  		<separator/><separator/><separator/><separator/><separator/><separator/><separator/><separator/>
+			                  		<separator/><separator/><separator/><separator/><separator/><separator/><separator/><separator/>
+			                  		<separator/><separator/><separator/><separator/><separator/><separator/><separator/><separator/>
+			                  		<separator/><separator/><separator/><separator/><separator/><separator/><separator/><separator/>
+			                  		<separator/><separator/><separator/><separator/><separator/><separator/><separator/><separator/>
+			                  		
 			                  		<separator spacing="150px"></separator>
 			                  		
 			                  		<div>
 
-			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="85px"/>
+			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="100px"/>
 			                    	</div><separator spacing="180px"></separator>
+			                    	<separator/><separator/><separator/>
 			                  		<div>
-			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="85px"/>
+			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
 			                     	</div><separator spacing="180px"></separator>
 			                  	</hlayout>  
 			                  	

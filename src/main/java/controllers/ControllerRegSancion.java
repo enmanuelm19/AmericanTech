@@ -10,11 +10,11 @@ import org.zkoss.zul.Window;
 public class ControllerRegSancion extends SelectorComposer<Component>{
 	 private static final long serialVersionUID = 1L;
 	 
-	 @Listen("onClick = #btnRegistrarsanc")
+	 @Listen("onClick = #btnRegistrarsancion")
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it aa modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "agregarSancion.zul", null, null);
+	                "registrarTipoSancion.zul", null, null);
 	        window.doModal();
 	    }
 	
