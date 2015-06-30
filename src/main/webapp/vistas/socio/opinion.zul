@@ -18,7 +18,7 @@
 	<window border="none" title=" " action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="540px" closable="true">
 		<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-cogs" />
+							<span sclass="home-icon z-icon-user" />
 					    	<a label="Socio" href="#"/>
 							<label value="Registrar Opinión"/>
 					</div>

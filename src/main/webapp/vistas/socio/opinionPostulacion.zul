@@ -10,7 +10,7 @@
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-cogs" />
+					<span sclass="home-icon z-icon-user" />
 					<a label="Socio" href="#"/>
 					<label value="Postulantes"/>
 				</div>
@@ -62,7 +62,7 @@
 							<row>
 						           <label value="0001"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar"  iconSclass="z-icon-reorder blue"/>
@@ -77,7 +77,7 @@
 							<row>
 						           <label value="0002"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar1"  iconSclass="z-icon-reorder blue"/>
@@ -87,7 +87,7 @@
 							<row>
 						           <label value="0003"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar2"  iconSclass="z-icon-reorder blue"/>
@@ -97,7 +97,7 @@
 							<row>
 						           <label value="0004"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar3"  iconSclass="z-icon-reorder blue"/>
@@ -107,7 +107,7 @@
 							<row>
 						           <label value="0005"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar4"  iconSclass="z-icon-reorder blue"/>
@@ -117,7 +117,7 @@
 							<row>
 						           <label value="0006"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar5"  iconSclass="z-icon-reorder blue"/>
@@ -127,7 +127,7 @@
 							<row>
 						           <label value="0007"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar6"  iconSclass="z-icon-reorder blue"/>
@@ -137,7 +137,7 @@
 							<row>
 						           <label value="0008"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar7"  iconSclass="z-icon-reorder blue"/>
@@ -147,7 +147,7 @@
 							<row>
 						           <label value="0009"/> 
 						           <label value="David Cordero"/>
-						           <image src="assets/portal/check.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar8"  iconSclass="z-icon-reorder blue"/>
@@ -157,7 +157,7 @@
 							<row>
 						           <label value="0010"/> 
 						           <label value="David Cordero"/>
-						           <image src="../../../assets/portal/img/icon1.png"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button id="btnOpinionRegistrar9"  iconSclass="z-icon-reorder blue"/>
@@ -173,7 +173,7 @@
 
 						</rows>
 						 <foot>
-            				<footer span="6" class="footer_right" label="23 items en la lista" />
+            				<footer span="6" class="footer_right" label="10 items en la lista" />
         				 </foot>
 					</grid>
 				</div>
