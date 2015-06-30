@@ -1939,7 +1939,7 @@ a:focus {
 }
 .z-panel-icon > i {
   font-size: 14px;
-  color: #aaaaaa;
+  color: #11BCB7;
 }
 .z-panel-icon .z-icon-caret-up:before {
   content: "\f077";
@@ -3032,6 +3032,21 @@ margin-top:80px;
   box-shadow: rgb(88, 88, 88) 1px 1px 2px 2px;
 }
 
+.z-window {
+  overflow: hidden !important;
+  zoom: 1;
+  border: none;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  padding: 4px;
+  background: #FFFFFF;
+}
+
+.z-window-noborder {
+  border: solid;
+  padding: 4px 4px 0;
+}
+
 .z-window-header {
   font-family: Open Sans;
   font-size: 13px;
@@ -3040,7 +3055,7 @@ margin-top:80px;
   color: #FFFFFF;
   padding: 3px 10px 5px 10px;
   line-height: 24px;
-  background: rgb(43, 125, 188);
+  background: rgb(223, 240, 216);
   overflow: hidden;
   zoom: 1;
   cursor: default;
@@ -3061,3 +3076,5 @@ margin-top:80px;
     background: rgb(43, 125, 188);
   border: none;
 }
+
+
