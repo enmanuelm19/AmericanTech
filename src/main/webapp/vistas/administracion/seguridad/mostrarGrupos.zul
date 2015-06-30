@@ -21,8 +21,8 @@
 				<div sclass="page-header" align="left">
 					<label value="Grupo" />
 				</div>
-
-				<div align="center" sclass="form-pricing" width="50%"><!-- INICIO DIV GRID DE GRUPOS-->
+	<div class='form-pricing' width="60%">
+				<div align="center" width="80%"><!-- INICIO DIV GRID DE GRUPOS-->
 
 					<div apply="controllers.grupoGeneralController"
 						align="right">
@@ -119,8 +119,8 @@
 
 				<div style="padding:5%">
 					<div>
-						<div class='form-pricing' align="center"
-							width="40%">
+						<div align="center"
+							width="60%">
 							<div align="left">
 								<div class='encabezado'>
 									<label value="Funciones" />
@@ -133,8 +133,8 @@
 							</div>
 						</div>
 						<separator spacing="3%" />
-						<div class='form-pricing' align="center"
-							width="70%">
+						<div align="center"
+							width="100%">
 							<div align="left">
 								<div class='encabezado'>
 									<label value="Usuarios" />
@@ -182,6 +182,7 @@
 
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 		</vlayout>
