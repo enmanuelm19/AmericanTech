@@ -28,8 +28,8 @@
 					<div align="right"
 						apply="controllers.usuarioGeneralController">
 						<button id="btnUsuarioGeneralReg"
-							iconSclass="z-icon-floppy-o" class='boton-guardar'
-							label="Registrar" />
+							iconSclass="z-icon-plus" class='boton-guardar'
+							label="Agregar Nuevo" />
 					</div>
 					<separator spacing="1%" />
 					<div class='encabezado' align="left">

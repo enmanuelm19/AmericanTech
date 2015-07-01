@@ -26,8 +26,8 @@
 				<space />
 				<div class='form-pricing' width="60%" align="center">
 					<div apply="controllers.TipoEvento" align="right">
-						<button id="btnRegistrar" label="Registrar"
-							iconSclass="z-icon-floppy-o" class='boton-guardar' />
+						<button id="btnRegistrar" label="Agregar Nuevo"
+							iconSclass="z-icon-plus" class='boton-guardar' />
 					</div>
 
 					<div class='contenido' align="left" width="80%">
