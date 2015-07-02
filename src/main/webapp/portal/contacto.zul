@@ -29,11 +29,11 @@
 	
          
          <radiogroup id="sv1" onCheck="" />
-                <radio id="ra1" label="Instalaciones" radiogroup="sv1" />
-                <radio id="ra2" label="Eventos" radiogroup="sv1" />
-                <radio id="ra3" label="Socios" radiogroup="sv1" />
-                <radio id="ra4" label="Nuestra Atención" radiogroup="sv1" />
-                <radio id="ra5" label="Sugerencia General" radiogroup="sv1" />
+                <radio id="ra1" label="Instalaciones" radiogroup="sv1" style="margin-right:15px;" />
+                <radio id="ra2" label="Eventos" radiogroup="sv1" style="margin-right:15px;"  />
+                <radio id="ra3" label="Socios" radiogroup="sv1" style="margin-right:15px;" />
+                <radio id="ra4" label="Nuestra Atención" radiogroup="sv1" style="margin-right:15px;"  />
+                <radio id="ra5" label="Sugerencia General" radiogroup="sv1"  style="margin-right:15px;" />
           <separator />
          <n:br></n:br>
 					    	

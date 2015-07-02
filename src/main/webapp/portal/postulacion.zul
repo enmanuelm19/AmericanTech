@@ -2,7 +2,7 @@
 <window title=""  width="100%">
 
 <?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
 <?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
 <?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
 <?script type="text/javascript" src="../assets/portal/js/easing.js"?>
@@ -25,7 +25,7 @@
         
 					
 					<div class="" id="contact">
-					<label style="font-family: 'Lato', sans-serif; font-size:2em;">Datos personales</label><n:br></n:br> <n:br></n:br>
+				<n:br></n:br>	<n:br></n:br><label style="font-family: 'Lato', sans-serif; font-size:2em;">Datos personales</label><n:br></n:br> <n:br></n:br>
 	<div class="wrap">
 		
 		 
@@ -38,12 +38,21 @@
 					    		<textbox type="text" class="textbox"  placeholder="Tu nombre"/>
 						    	<textbox type="text" class="textbox"  placeholder="Tu Cedula" />
 						    	<div class="clear"> </div>
-						    	<textbox type="text" class="textbox"  placeholder="Tu Telefono movil"/>
-						    	<textbox type="text" class="textbox"  placeholder="Tu Telefono fijo" />
-						    	<div class="clear"> </div>
 						    	<textbox type="text" class="textbox"  placeholder="Tu Dirección"/>
 						    	<textbox type="text" class="textbox"  placeholder="Tu Email" />
+						    	
 						    	<div class="clear"> </div>
+						    	<textbox type="text" class="textbox"  placeholder="Tu Telefono"/>
+						    <label style="font-family:'Lato', sans-serif; font-size:1em;float: left;">Sexo:</label><n:br></n:br>
+						    			    	<radiogroup id="sv1" onCheck="" style="float: left;" >
+             								   <radio id="ra1" label="Femenino" radiogroup="sv1" style="margin-right:15px;"/> 
+                								<radio id="ra2" label="Masculino" radiogroup="sv1" />   
+                								</radiogroup>
+          <separator />
+       
+						    	<div class="clear">
+						    	
+						    </div>
 						    	
 						   
 						    <div>
@@ -63,18 +72,18 @@
 					     <label style="font-family: 'Lato', sans-serif; font-size:2em;">¿Cúales son tus intereses?</label><n:br></n:br> <n:br></n:br>
 						 
 						
-		<checkbox id="l1" label="Danza" onCheck="" />
-        <checkbox id="l2" label="Natación" onCheck="" />
-        <checkbox id="l3" label="Baloncesto" onCheck="" />
-        <checkbox id="l4" label="Futbol" onCheck="" />
-        <checkbox id="l5" label="Tenis" onCheck="" />
+		<checkbox id="l1" label="Danza" onCheck="" style="margin-right:15px;" />
+        <checkbox id="l2" label="Natación" onCheck=""  style="margin-right:15px;"/>
+        <checkbox id="l3" label="Baloncesto" onCheck="" style="margin-right:15px;" />
+        <checkbox id="l4" label="Futbol" onCheck="" style="margin-right:15px;" />
+        <checkbox id="l5" label="Tenis" onCheck="" style="margin-right:15px;" />
          <separator />
-        <checkbox id="l6" label="Bolas Criollas" onCheck="" />
-        <checkbox id="l7" label="Cultura" onCheck="" />
-        <checkbox id="l8" label="Música" onCheck="" />
-        <checkbox id="l9" label="Arte" onCheck="" />
-        <checkbox id="l10" label="Amistad" onCheck="" />
-        <checkbox id="l11" label="Eventos Sociales" onCheck="" />
+        <checkbox id="l6" label="Bolas Criollas" onCheck="" style="margin-right:15px;" />
+        <checkbox id="l7" label="Cultura" onCheck=""  style="margin-right:15px;"/>
+        <checkbox id="l8" label="Música" onCheck="" style="margin-right:15px;" />
+        <checkbox id="l9" label="Arte" onCheck="" style="margin-right:15px;"/>
+        <checkbox id="l10" label="Amistad" onCheck="" style="margin-right:15px;" />
+      
       
         <separator /> <n:br></n:br>
 					     <span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar postulación"/></span>
