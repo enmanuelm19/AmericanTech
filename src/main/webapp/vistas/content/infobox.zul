@@ -1,7 +1,8 @@
 <vlayout sclass="infobox-container" xmlns:n="native">
+
   <hlayout spacing="0" style="padding-top:1px">
   
-  <div sclass="infobox infobox-blue">
+ <div sclass="infobox infobox-blue">
     <span sclass="infobox-icon">
       <span zclass="z-icon-comments"/>
     </span>
@@ -10,11 +11,20 @@
       <div sclass="infobox-content">Nuevas sugerencias</div>
     </div>
   
-  </div>
+  </div> 
+  
+  
+  
+  <!--   <div align="left">
+  	<a href="#">Sugerencias <span class="badge">  42</span></a><separator></separator>
+	<a href="#">Postulaciones<span class="badge"> 1</span></a>
+	<a href="#">Solicitudes<span class="badge">2</span></a>  
+  </div>-->
+ 
   
 
   
-  <div sclass="infobox infobox-pink">
+ <div sclass="infobox infobox-pink">
     <span sclass="infobox-icon">
       <span zclass="z-icon-user"/>
     </span>

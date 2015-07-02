@@ -43,7 +43,7 @@
 							<n:span class="time">8:00 PM</n:span>
 						</n:time>
 						<n:div class="info">
-							<n:h2 class="title">Mouse0270's 24th Birthday!</n:h2>
+							<n:h2 class="title">Misa aniversario club</n:h2>
 							<n:p class="desc">Bar Hopping in Erie, Pa.</n:p>
 						</n:div>
 					</n:li>
@@ -56,8 +56,8 @@
 							<n:span class="time">4:00 PM</n:span>
 						</n:time>
 						<n:div class="info">
-							<n:h2 class="title">Disney Junior Live On Tour!</n:h2>
-							<n:p class="desc"> Pirate and Princess Adventure</n:p>
+							<n:h2 class="title">Torneo de bolas criollas.</n:h2>
+							<n:p class="desc"> Inscribete ya.</n:p>
 						</n:div>
 					</n:li>
 				</n:ul>
