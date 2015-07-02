@@ -78,7 +78,7 @@
 										<separator />
 										<separator />
 										<separator />
-										<textbox width="100%" />
+										<textbox width="100%" style="margin-bottom:8px; " />
 										<button
 											iconSclass="z-icon-search blue" class='btn-link' width="1%" />
 									</hlayout>
@@ -89,7 +89,7 @@
 										<separator />
 										<separator />
 										<separator />
-										<textbox width="100%" />
+										<textbox width="100%" style="margin-bottom:8px;"></textbox>
 									</hlayout>
 									<separator spacing="10%" />
 									<hlayout>
@@ -98,7 +98,7 @@
 										<separator />
 										<separator />
 										<separator />
-										<textbox width="100%" />
+										<textbox width="100%" style="margin-bottom:8px;" />
 									</hlayout>
 									<separator spacing="10%" />
 									<hlayout>
