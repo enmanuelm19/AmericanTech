@@ -7,6 +7,7 @@
 <zk xmlns:n="native" >
 	<window style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Sugerencia" closable="true" border="none" action="show: slideDown({duration: 300});
 			 hide:slideUp({duration: 300})" height="45%" width="35%">
+			 <caption iconSclass="z-icon-cogs"/>
 		<div class="contenedor" align="center">
 			<separator spacing="20px"/>
 			<div align="left" width="90%" style="margin-bottom: 20px">

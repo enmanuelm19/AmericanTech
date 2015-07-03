@@ -5,37 +5,32 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="340px" width="500px">
-		<div class='contenedor'>
-			<div sclass="page-header">
-	    		<label value="Registrar Tipo Noticia"/>
-	  		</div>
-	  			<div align="center">
+	<window title=" Registrar Tipo Noticia" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+	height="45%" width="35%">
+	 <caption iconSclass="z-icon-cogs"/>
+		<div class='contenedor' align="center">
+		<separator spacing="20px"/>
+		<div align="left" width="90%" style="margin-bottom: 20px">
 			<div align ="left">	
-			<div  class="encabezado">
-                     Datos Basicos                             									                                                				                             				                             					
-              </div>
-              <div align="left" class="linea-two">
-                        									                                                				                             				                             					
-                </div>	
-                </div>		 
-				<grid width="300px" >          
-			     	<rows class="col-md-12">
-			          
+				<div  class="encabezado">  Datos Basicos  </div>      					
+              	<div align="left" class="linea-two"></div>	         
+            </div>
+            	
+            	<separator spacing="25px"/> 	 
+				<grid>          
+			     	<rows>			          
 			            <row>
-	              			<div class="col-md-12">
-	              				<vbox>
-	              					Descripcion <textbox type="text" rows="4" value="" width="260px" />
-	              					<separator spacing="10%"/>
-			                	</vbox>
+	              			<div>
+	              				<hbox>
+	              					<div> Descripción </div>   	<separator spacing="5%" />                      									                                                				                             				                             					
+	              				 	<textbox type="text" rows="3" value="" width="200%"/>
+			                	</hbox>
 			                </div>			                      
-			       	    </row>
-			                  
+			       	    </row>			                  
 		            </rows>
 		        </grid>
 			        
-      		    <separator spacing="5%"/>
+      		    <separator spacing="40px"/>
 			     <div align="center">
 							<hbox>
 								<div>
@@ -52,7 +47,6 @@
 
 							</hbox>
 						</div>
-			</div>
-		</div>
+		</div></div>
 	</window>
 </zk>

@@ -5,83 +5,60 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" class='contenedor'>
-	<include src="../../layouts/navbar.zul" />
-	<hlayout id="main" spacing="0">
-		<include src="../../layouts/sidebar.zul" />
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Instalación" href="#" />
-					<label value="Registrar Recurso" />
-					</div>
- 
-			</div>
+	<window border="none" height="45%" width="35%" style="iconSclass=z-icon-cogs;" title=" Registrar Recurso"
+		closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		 <caption iconSclass="z-icon-cogs"/>
+		 
+		<div class="contenedor" align="center">
+			<separator spacing="20px"/>
+		<div align="left" width="90%" style="margin-bottom: 20px">
+	  		<div align="center">
+				<div align ="left">	
+					<div  class="encabezado">
+		                     Datos Básicos                             									                                                				                             				                             					
+		            </div>
+		              <div align="left" class="linea-two">
+		                        									                                                				                             				                             					
+		             </div>	
+                </div>
+                <separator spacing="1%"/>		 
+						<grid width="100%">
+							<rows>
+								<row>
+									<hbox>
+										<div>
+											<label value="Descripcion"/>
+										</div>
+										<separator/><separator/><separator/>
+										<div>
+											 <textbox  type="text" rows="3" value="" width="200%" constraint="no empty" />
+										</div>
+									</hbox>
+								</row>
 
-		<div class='contenedor'>
-				
-	 <div sclass="page-header">
-	    <label value="Recurso"/>
-	  
-	  </div>
-				<div class='contenido'>
-					<div class="col-md-8 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="440px"
-							height="300px">
-        		        		 <div align ="left">	
-	                       			<div  class="encabezado">
-                       					Datos Básicos                             									                                                				                             				                             					
-                       				</div>		  			            		
-	                       			<div align="left" class="linea-two">					                                                				                             				                             					
-                       				</div>		            		
+							</rows>
+						</grid>
+			        
+      		    <separator spacing="4%"/>
+			     <div align="center">
+							<hbox>
+								<div>
+									<separator spacing="5%" />
+									<button iconSclass="z-icon-floppy-o"
+										class='boton-guardar' label="Guardar" />
 								</div>
-								<separator spacing="10px" />
-        			<grid width="580px" >
-          
-			            	<rows class="col-md-12">
-			            
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   	Descripción 
-			                      </div>
-			                  </row>
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   	<textbox type="text" value="" width="350px" height="100px"/>
-			                      </div>
-			                  </row>			                   	
-			                  <row class="col-md-11 col-centered">
-			                  	<hlayout>
-			                  		<separator spacing="5px"></separator>
-			                  	</hlayout>	
-			                  	</row>	                  
-			                  <row class="col-md-12" width="100%">
-			                  	<hlayout>
-				                  <div class='col-md-6' style="float: right;padding: 0px;">
-				                  	<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar ' label="Guardar"/>
-				                  </div>
-			                      <div class='col-md-6 ' style="float: left;padding-left: 80px;">
-			                      	<button    iconSclass="z-icon-trash-o" class='btn boton-cancelar ' label="Cancelar"/>
-			                      </div>
-			                     </hlayout>	
-			                 </row>		 
-			            </rows>
-			        </grid>
-			        </div>
-   				 </div>
+								<space spacing="5%" />
+								<div apply="controllers.TipoEvento">
+									<separator spacing="5%" />
+									<button  iconSclass="z-icon-times-circle"
+										class='boton-cancelar' label="Cancelar" />
+								</div>
 
-	</div>		
-			
-		</div>		
-			
-			
-			
-			
-		</vlayout>
-	</hlayout>
-
-	
+							</hbox>
+				</div>
+			</div>
+		</div>
+	</div>
+	</window>
 </zk>
