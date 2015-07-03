@@ -1,0 +1,212 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+<include src="/vistas/layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="/vistas/layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-cogs" />
+					<a label="Configuracion" href="#"/>
+					<label value="Instalaciones"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center" >
+			
+				<div sclass="page-header" align="left">
+				    <label value="Instalaciones"/>
+		  		</div>
+				
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
+				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
+					<button id="btnInstalacionesRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+				</div>
+			
+				<separator spacing="10px"/>
+				
+				<div class="contenido">
+					<div align="left">
+						<div class='encabezado'>Lista Instalaciones</div>
+						<div class='linea-two'></div>
+					</div>
+					<separator spacing="30px"/>
+					
+					<grid emptyMessage="No se encuentran instalaciones registradas" mold="paging"
+							pageSize="15">
+						<auxhead sclass="category-center">
+							<auxheader colspan="1" />
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="3" />
+						</auxhead>
+						<columns>
+							<column width="40px" />
+							<column hflex="2">Nombre</column>
+							<column hflex="2">Tipo Instalacion</column>
+							<column hflex="1">Capacidad </column>
+							<column hflex="1">Costo/Hora</column>
+							<column width="100px">Acciones </column>
+						</columns>
+						
+						<rows>
+							<row>
+								<detail open="false" fulfill="onOpen">
+                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+										pageSize="4">
+									<columns>
+										<column>Recurso</column>
+										<column>Nombre</column>
+										<column>Cantidad</column>
+										<column width="100px">Acciones</column>
+									</columns>
+									<rows>
+										<row>
+											<label value="0001"/>
+											<label value="Pelotas" />
+											<label value="20" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+										<row>
+											<label value="0002"/>
+											<label value="Bates" />
+											<label value="8" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+									</rows>
+									<foot>
+            							<footer span="2" class="footer_right" label="2 items en la lista" />
+        							</foot>
+									</grid>
+                   				 </detail>
+							
+							
+								<label value="Cancha Softball"/>
+								<label value="Deportivo"/>
+								<label value="20"/>
+								<label value="3000 Bs" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<detail open="false" fulfill="onOpen">
+                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+										pageSize="4">
+									<columns>
+										<column>Recurso</column>
+										<column>Nombre</column>
+										<column>Cantidad</column>
+										<column width="100px">Acciones</column>
+									</columns>
+									<rows>
+										<row>
+											<label value="0001"/>
+											<label value="Pelotas" />
+											<label value="20" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+										<row>
+											<label value="0002"/>
+											<label value="Bates" />
+											<label value="8" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+									</rows>
+									<foot>
+            							<footer span="2" class="footer_right" label="2 items en la lista" />
+        							</foot>
+									</grid>
+                   				 </detail>
+								<label value="Cancha Softball"/>
+								<label value="Deportivo"/>
+								<label value="20"/>
+								<label value="3000 Bs" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<detail open="false" fulfill="onOpen">
+                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+										pageSize="4">
+									<columns>
+										<column>Recurso</column>
+										<column>Nombre</column>
+										<column>Cantidad</column>
+										<column width="100px">Acciones</column>
+									</columns>
+									<rows>
+										<row>
+											<label value="0001"/>
+											<label value="Pelotas" />
+											<label value="20" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+										<row>
+											<label value="0002"/>
+											<label value="Bates" />
+											<label value="8" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+											</div>
+										</row>
+									</rows>
+									<foot>
+            							<footer span="2" class="footer_right" label="2 items en la lista" />
+        							</foot>
+									</grid>
+                   				 </detail>
+								<label value="Cancha Softball"/>
+								<label value="Deportivo"/>
+								<label value="20"/>
+								<label value="3000 Bs" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+						</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="3 items en la lista" />
+        				 </foot>
+					</grid>
+				</div>
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	
+</zk>
