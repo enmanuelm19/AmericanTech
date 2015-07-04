@@ -4,17 +4,17 @@
 
 
 
-<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 
 
 <zk xmlns:n="native">
-	<include src="../layouts/navbar.zul" />
+	<include src="../../layouts/navbar.zul" />
 	<hlayout spacing="0">
-		<include src="../layouts/sidebar.zul" />
+		<include src="../../layouts/sidebar.zul" />
 
 
 

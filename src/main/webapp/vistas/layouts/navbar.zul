@@ -22,7 +22,7 @@
 			<menu tooltiptext="John's Avatar" label="Bienvenido, nombre" image="/assets/intranet/avatars/avatar.png">
 				<menupopup>
 					
-					<menuitem label="Perfil" iconSclass="z-icon-user"/>
+					<menuitem label="Perfil" iconSclass="z-icon-user" href="america/vistas/socio/miPerfil.zul"/>
 					<menuseparator/>
 					<menuitem label="Salir" href="layouts/ingreso.zul" iconSclass="z-icon-off"/>
 				</menupopup>
