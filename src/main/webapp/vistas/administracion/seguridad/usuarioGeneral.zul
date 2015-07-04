@@ -18,12 +18,12 @@
 
 			</div>
 
-			<div class='contenedor' style="padding:10px;">
+			<div class='contenedor' align="center" style="padding:10px;">
 
-				<div sclass="page-header">
+				<div sclass="page-header" align="left">
 					<label value="Usuario" />
 				</div>
-				<div class='form-pricing'>
+				<div class='form-pricing' align="left" width="85%">
 
 					<div align="right"
 						apply="controllers.usuarioGeneralController">
@@ -37,20 +37,19 @@
 					</div>
 					<div class='linea-two' />
 
-					<grid mold="paging" pageSize="15">
+					<grid mold="paging" pageSize="10">
 						<columns class="z-grid z-column-content"
 							menupopup="auto">
-							<column label="Usuario" align="center"
+							<column hflex="2" label="Usuario"
 								sort="auto" />
-							<column label="Nombre" align="center"
+							<column hflex="2" label="Nombre"
 								sort="auto" />
-							<column label="Correo Electrónico"
-								align="center" />
-							<column label="Función" align="center"
-								sort="auto" width="10%" />
-							<column label="Foto" align="center" />
-							<column label="Acciones" align="center"
-								width="10%" />
+							<column hflex="2" label="Correo Electrónico" />
+							<column label="Función" 
+								sort="auto"  />
+							<column hflex="2" label="Foto" />
+							<column label="Acciones" 
+								width="15%" />
 						</columns>
 						<rows>
 							<row>
@@ -59,7 +58,7 @@
 								<label value="fidel.alejos@gmail.com" />
 								<label value="Socio" />
 								<image src="/assets/portal/img/img1.jpg"
-									width="30%" />
+									width="40%" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -67,13 +66,14 @@
 										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
+							
 							<row>
-								<label value="musiu" />
-								<label value="Carlos Colmenarez" />
-								<label value="carlos@gmail.com" />
+								<label value="fidel.alejos" />
+								<label value="Fidel Aliaga" />
+								<label value="fidel.alejos@gmail.com" />
 								<label value="Socio" />
 								<image src="/assets/portal/img/img1.jpg"
-									width="30%" />
+									width="40%" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -81,13 +81,14 @@
 										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
+							
 							<row>
-								<label value="hilderLee" />
-								<label value="Hilder Lee" />
-								<label value="hilder@gmail.com" />
-								<label value="Vicepresidente" />
+								<label value="fidel.alejos" />
+								<label value="Fidel Aliaga" />
+								<label value="fidel.alejos@gmail.com" />
+								<label value="Socio" />
 								<image src="/assets/portal/img/img1.jpg"
-									width="30%" />
+									width="40%" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />

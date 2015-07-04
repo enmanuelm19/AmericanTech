@@ -12,7 +12,7 @@
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Categoria" href="#" />
-					<label value="Tipo de Sanción"/>
+					<label value="Tipos de Sanciones"/>
 				</div>
 			</div>
 			<div class="contenedor" align="center">
@@ -20,20 +20,17 @@
 				<div sclass="page-header" align="left">
 				    <label value="Tipos de Sanciones"/>
 		  		</div>
-				
-				<separator spacing="30px"/>
+	
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
 				<div apply="controllers.ControllerRegSancion" xmlns:w='client' align="right">
-					<button id="btnRegistrarsancion" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"   class='boton-guardar'/>
+					<button id="btnRegistrarsancion" label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar'/>
 				</div>
 			
-				
-				
 				<div class="contenido">
 					<div align="left">
 						<div sclass="encabezado">
-				    		<label value="Lista de Tipos de Saciones"/>
+				    		<label value="Lista Tipos de Saciones"/>
 		  				</div>
 		  				<div class='linea-two'>
 		  				</div>
@@ -41,22 +38,22 @@
 					</div>
 					<separator spacing="20px"/>
 					<grid emptyMessage="No se encuentran tipo de sanciones registradas" mold="paging"
-							pageSize="15" width="100%" >
+							pageSize="10" >
 						<auxhead sclass="category-center">
 							<auxheader>
 								<image src="../../../assets/img/funnel.png" />
-								<textbox instant="true"  width="140px" placeholder="Buscar"/>
+								<textbox instant="true"  width="85%" placeholder="Buscar"/>
 							</auxheader>
 							<auxheader >
 								<image src="../../../assets/img/funnel.png" />
-								<textbox instant="true"  width="200px" placeholder="Buscar"/>
+								<textbox instant="true"  width="85%" placeholder="Buscar"/>
 							</auxheader>
 							 <auxheader colspan="1" />
 						</auxhead>	
 						<columns>
-							<column label="Código" align="center" width="180px" />
-							<column label="Descripción" align="center" width="340px" />
-							<column label="Acciones" align="center" width="20%"/>
+							<column hflex="2">Codigo</column>
+							<column hflex="2">Tipo Sancion</column>
+							<column width="15%">Acciones</column>
 						</columns>
 						<rows>
 							

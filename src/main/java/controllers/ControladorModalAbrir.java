@@ -31,6 +31,33 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	
 	}
 	
+	@Listen("onClick = #btnRegistrarRecurso")
+	public void showModalRecurso(Event e) {
+		//create a window programmatically and use it as a modal dialog.
+		Window window = (Window)Executions.createComponents(
+				"registrarRecurso.zul", null, null);
+		window.doModal();
+	
+	}
+	
+	@Listen("onClick = #btnRegTipoEvento")
+	public void showModalTipoEvento(Event e) {
+		//create a window programmatically and use it as a modal dialog.
+		Window window = (Window)Executions.createComponents(
+				"registrarTipoEvento.zul", null, null);
+		window.doModal();
+	
+	}
+	
+	@Listen("onClick = #btnRegTipoPreferencia")
+	public void showModalTipoPreferencia(Event e) {
+		//create a window programmatically and use it as a modal dialog.
+		Window window = (Window)Executions.createComponents(
+				"registrarTipoPreferencia.zul", null, null);
+		window.doModal();
+	
+	}
+	
 	@Listen("onClick = #btnRegTipoNoticia")
 	public void kkkk(Event e) {
 		//create a window programmatically and use it as a modal dialog.
