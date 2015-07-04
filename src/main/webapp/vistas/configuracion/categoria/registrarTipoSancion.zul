@@ -5,98 +5,65 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="420px"  closable="true">
-		   	<div sclass="breadcrumbs">
-		   		<div sclass="breadcrumb">
-		   			<span sclass="home-icon z-icon-cogs" />
-		   				<a label="Categoria"  />
-		   			 	  <label value="Registrar Tipo de Sancion"/>
-		   		</div>
-		   	</div>
-		   	
-	<div class='contenedor'>
-		 <div sclass="page-header">
-		 		<label value ="Registrar Tipo de Sancion" />
-		 		
-		 </div>
-		 		<div    align="center"  >
-   				 <div class="col-md-11 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div>
-        			<div align="left">
-        				<div class="encabezado">
-        					Datos Básicos
-        				</div>
-        				<div class="linea-two">
-        				</div>
-        			</div>
-        			<separator/><separator/><separator/><separator/>
-        			<grid width="600px">
-          
-			            	<rows class="col-md-12" >
-			            		
-			            		
-			               
-			                    <row class="col-md-8">
-			              			<hlayout>
-			              			<div>
-			                  			<label   width="140px"  value= "Descripción"/> 
-			                  		</div>
-			                  		<separator /><separator /><separator /><separator />
-			                  		<separator />
-			                  		</hlayout>
-			              		  	<div>
-			              		   	  <textbox cols="30" rows="2" type="text" value="" width="380px" height="100px"/>
-			                      	</div>
-								</row>
-								
-								
-						
-								
-								
-								
-								
-								
-								
-								
-								
-					  		<row align="center">
-					  		<vlayout>
-					  		<separator/>
-					  		<separator/>
-			                  	<hlayout width="">
-			                  	
-			                  		<separator spacing="150px"></separator>
-			                  		<div>
-			                    		<button  width="100px" height="40px" iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar"/>
-			                    	</div><separator spacing="80px"></separator>
-			                  		
-			                     	<div>
-			                    		<button width="100px" height="40px" iconSclass="z-icon-times" class='btn boton-cancelar' label="Cancelar"/>
-			                     	</div>
-			                  	</hlayout>
-			             	</vlayout>	
-			                 </row>
-					  		
-			            </rows>
-		  					
-			        </grid>
+<window border="none" height="45%" width="35%" style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Sancion"
+		closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		<caption iconSclass="z-icon-cogs"/>
 
-		 		   </div>
-   				</div>
-	       </div>		
-	       
-		
-		 	
-		 	
-		 </div>	
-		   	
-		
-		 
-		</window>   			
-	
+		<div class="contenedor" align="center">
+			<separator spacing="20px"/>
+		<div align="left" width="90%" style="margin-bottom: 20px">
+	  		<div align="center">
+				<div align ="left">	
+					<div  class="encabezado">
+		                     Datos Básicos                             									                                                				                             				                             					
+		            </div>
+		              <div align="left" class="linea-two">
+		                        									                                                				                             				                             					
+		             </div>	
+                </div>
+                <separator spacing="25px"/>		 
+						<grid width="100%">
+							<rows>
+								<row>
+									<vbox>	
+										<hbox>
+											<div>
+												<label value="Descripcion" />
+											</div>
+											<separator /><separator/><separator/>
+											<div>
+												<textbox id="txtRegTipoEventDescripcion" type="text" rows="3" value="" width="200%" constraint="no empty" />
+									
+											</div>
+										</hbox>									
+									</vbox>
+								</row>
+
+							</rows>
+						</grid>
+			        
+      		    <separator spacing="25px"/>
+			     <div align="center">
+							<hbox>
+								<div>
+									<separator spacing="5%" />
+									<button iconSclass="z-icon-floppy-o"
+										class='boton-guardar' label="Guardar" />
+								</div>
+								<space spacing="5%" />
+								<div apply="controllers.TipoEvento">
+									<separator spacing="5%" />
+									<button  iconSclass="z-icon-times-circle"
+										class='boton-cancelar' label="Cancelar" />
+								</div>
+
+							</hbox>
+				</div>
+			</div>
+		</div>
+	</div>
+	</window>
 
 	
 </zk>

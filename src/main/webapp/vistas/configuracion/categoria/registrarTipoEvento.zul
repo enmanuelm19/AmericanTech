@@ -4,50 +4,47 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" class='contenedor'>
-	<window border="none" height="55%" width="40%" title=" "
+	<window border="none" height="45%" width="35%" style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Evento"
 		closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
-		<div sclass="contenedor">
-			<div id="contPantalla" align="center">
-				<div sclass="page-header" align="left">
-					<label value="Registrar Tipo de Evento" />
-				</div>
+			<caption iconSclass="z-icon-cogs"/>
 
-				<div id="formTipoEvento" width="80%" align="left">
-					<div class="encabezado">
-						<label value="Datos Básicos" />
-					</div>
-					<div class='linea-two'></div>
-					<div align="left">
+		<div class="contenedor" align="center">
+			<separator spacing="20px"/>
+		<div align="left" width="90%" style="margin-bottom: 20px">
+	  		<div align="center">
+				<div align ="left">	
+					<div  class="encabezado">
+		                     Datos Básicos                             									                                                				                             				                             					
+		            </div>
+		              <div align="left" class="linea-two">
+		                        									                                                				                             				                             					
+		             </div>	
+                </div>
+                <separator spacing="20px"/>		 
 						<grid width="100%">
-							<columns>
-								<column align="center" />
-							</columns>
 							<rows>
 								<row>
 									<vbox>
-										Código
 										<hbox>
+											Código
 											<textbox
 												id="txtRegTipoEventCodigo" width="100%" />
 											<button
 												iconSclass="z-icon-search blue" class="btn-link"
 												tooltiptext="Buscar" />
 										</hbox>
-										Descripción
-										<textbox
-											id="txtRegTipoEventDescripcion" width="150%"
-											constraint="no empty" />
+										<hbox>
+										Descripcion <textbox id="txtRegTipoEventDescripcion" type="text" rows="1" value="" width="200%" constraint="no empty" />
+										</hbox>
 									</vbox>
 								</row>
-								<row>
-
-								</row>
-
 
 							</rows>
 						</grid>
-						<div align="center">
+			        
+      		    <separator spacing="20px"/>
+			     <div align="center">
 							<hbox>
 								<div>
 									<separator spacing="5%" />
@@ -57,17 +54,14 @@
 								<space spacing="5%" />
 								<div apply="controllers.TipoEvento">
 									<separator spacing="5%" />
-									<button
-										id="btnRegTipoEventoCancelar" iconSclass="z-icon-times-circle"
+									<button  iconSclass="z-icon-times-circle"
 										class='boton-cancelar' label="Cancelar" />
 								</div>
 
 							</hbox>
-						</div>
-					</div>
-
 				</div>
 			</div>
 		</div>
+	</div>
 	</window>
 </zk>
