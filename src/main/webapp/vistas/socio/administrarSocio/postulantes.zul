@@ -1,0 +1,232 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="jquery.raty.min.js"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+<script type="text/javascript">
+			$(function()
+		{
+			/*
+				Basic Example with custom image path
+				path : indicate custom path to the star image
+			*/
+			$('#star').raty({ path: 'http://wbotelhos.com/raty/lib/img/' });
+			
+			
+			/*
+				Predefined score with half star,
+				score : You can pass any value for it, not necessarily,
+						a data- value.
+						You can use a rating-score too.
+						but then 
+						code will be return $(this).attr('rating-score');
+				half 	: that will enable user to add half star rating
+				target  : define the rating hint container
+				targetKeep : this will allow used to
+					keep selected result inside hint container
+					defining false will loose selected value
+			*/
+
+			$('#predefined-star').raty(
+			{
+				path: 'http://wbotelhos.com/raty/lib/img/',
+				half: true,
+				target: '#result',
+				targetKeep: true,
+				score: function()
+				{
+					return $(this).attr('data-score');
+				}
+			});
+		});
+	</script>
+<include src="../../layouts/navbar.zul" />
+	<hlayout id="main" spacing="0">
+		<include src="../../layouts/sidebar.zul" />
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Socio" href="#"/>
+					<label value="Postulantes"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center" >
+			
+				<div sclass="page-header" align="left">
+				    <label value="Información de los Postulantes"/>
+		  		</div>
+				
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
+
+			
+				<separator spacing="10px"/>
+				
+				<div class="contenido">
+					<div align="left">
+						<div class='encabezado'>Datos de los Postulados</div>
+						<div class='linea-two'></div>
+					</div>
+					<separator spacing="30px"/>
+					
+					<grid emptyMessage="" mold="paging"
+							pageSize="15">
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="4" />
+						</auxhead>
+						<columns>
+							<column hflex="3">IDPostulación </column>
+							<column hflex="3">Nombre Postulante</column>
+							<column hflex="2">Foto </column>
+							<column hflex="2"> Acción Socio</column>
+							<column hflex="2"> Decision </column>
+							<column hflex="2"> Clasificacion </column>
+
+						</columns>
+						
+						<rows>
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+									<div class="row lead">
+        							<n:div id="predefined-star" data-score="2.5"></n:div> <n:div id="result" style="font-size: 15px !important;"></n:div>
+									</div>
+									
+							</row>
+							
+							<row>
+						           <label value="0002"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0003"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0004"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0005"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+								<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0006"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0007"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0008"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0009"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+							<row>
+						           <label value="0010"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
+									<button iconSclass="glyphicon glyphicon-remove red"></button>
+									</div>
+							</row>
+							
+
+							
+
+							
+
+
+
+						</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="10 items en la lista" />
+        				 </foot>
+					</grid>
+				</div>
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	
+</zk>

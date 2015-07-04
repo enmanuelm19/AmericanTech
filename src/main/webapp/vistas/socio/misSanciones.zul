@@ -38,7 +38,7 @@
 					</div>
 					<separator spacing="40px"/>
 					
-			        <grid   mold="paging" pageSize="15"  width="100%" >
+			        <grid   mold="paging" pageSize="10"  width="100%" >
 			            <auxhead  class="z-auxheader-content">
 			               
 			                <auxheader label="Información Básica de Mis Sanciones" align="center" colspan="6" />
