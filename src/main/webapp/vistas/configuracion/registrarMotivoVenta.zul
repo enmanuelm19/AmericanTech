@@ -1,86 +1,64 @@
-<!-- Responsable Hector Gil -->
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<?page title="Registrar Motivo Venta Accion"?>
-
-<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+	<window border="none" height="45%" width="35%" style="iconSclass=z-icon-cogs;" title=" Registrar Motivo Venta"
+		closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 
 
-<window border="none" title=" " closable="true"
-	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	height="30%" width="20%">
-	
+		<div class="contenedor" align="center">
+			<separator spacing="20px"/>
+		<div align="left" width="90%" style="margin-bottom: 20px">
+	  		<div align="center">
+				<div align ="left">	
+					<div  class="encabezado">
+		                     Motivo                             									                                                				                             				                             					
+		            </div>
+		              <div align="left" class="linea-two">
+		                        									                                                				                             				                             					
+		             </div>	
+                </div>
+                <separator spacing="20px"/>		 
+						<grid width="100%">
+							<rows>
+								<row>
+									<hbox>
+										<div>
+											<label value="Descripcion"/>
+										</div>
+										<separator/><separator/><separator/>
+										<div>
+											 <textbox  type="text" rows="3" value="" width="200%" constraint="no empty" />
+										</div>
+									</hbox>
+								</row>
 
-					<div
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-
-						<div class='form-pricing' width="100%">
-
-							<div align="left">
-								<div class="encabezado">
-									Motivos ventas
+							</rows>
+						</grid>
+			        
+      		    <separator spacing="20px"/>
+			     <div align="center">
+							<hbox>
+								<div>
+									<separator spacing="5%" />
+									<button iconSclass="z-icon-floppy-o"
+										class='boton-guardar' label="Guardar" />
 								</div>
-								<div align="left" class="linea-two">
-
+								<space spacing="5%" />
+								<div apply="controllers.TipoEvento">
+									<separator spacing="5%" />
+									<button  iconSclass="z-icon-times-circle"
+										class='boton-cancelar' label="Cancelar" />
 								</div>
-							</div>
 
-							<div align="center">
-								<grid width="100%" align="center">
-
-											
-									
-									<rows class="col-md-12">									
-									
-										<row class="col-md-12">
-											<div width="80%">
-												<vbox>
-													<label>
-														Nuevo Motivo
-													</label>
-													<textbox cols="5"
-														rows="1" type="text" value="Mudanza" width="100%"
-														tabindex="2" />
-												</vbox>
-											</div>
-
-										</row>
-										
-															
-
-										
-										<row align="center"
-											class="col-md-12 col-centered">
-											<hlayout width="95%">
-
-												<div class="col-md-2">
-													<button
-														iconSclass="z-icon-floppy-o"  class='boton-guardar'
-														label="Guardar" />
-												</div>
-
-
-												<div class="col-md-2">
-													<button
-														iconSclass="z-icon-times-circle" class='boton-cancelar'
-														label="Cancelar " />
-												</div>
-
-
-											</hlayout>
-
-										</row>
-
-									</rows>
-
-								</grid>
-							</div>
-						</div>
-					</div>
-					
-					</window>
-					
+							</hbox>
+				</div>
+			</div>
+		</div>
+	</div>
+	</window>
+</zk>

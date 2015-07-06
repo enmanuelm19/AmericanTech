@@ -4,14 +4,15 @@
     <a label="Bienvenido" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
   </div>
   
-  <separator height="12px"/>
+    <!-- <separator height="12px"/>
   <hlayout spacing="24px">
-    <include src="/vistas/content/infobox.zul" hflex="7"/>
+ 
+     <include src="/vistas/content/infobox.zul" hflex="7"/>
 
   </hlayout>
   
   <separator bar="true"/>
-
+-->
 
   <div  align="center" >
 

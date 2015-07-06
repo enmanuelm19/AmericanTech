@@ -12,20 +12,19 @@
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Configuracion" href="#"/>
-					<label value="Tipo desvinculacion"/>
+					<label value="Tipos Desvinculaciones"/>
 				</div>
 			</div>
 			<div class="contenedor" align="center">
 			
 				<div sclass="page-header" align="left">
-				    <label value="Desvinculaciones"/>
+				    <label value="Tipos Desvinculaciones"/>
 		  		</div>
 				
-				<separator spacing="30px"/>
 				<space/><space/>
-				<div class='form-pricing' align="left" width="60%" style="margin-bottom: 20px">
+				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
 				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnTipoDesvinculacionRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+					<button id="btnTipoDesvinculacionRegistrar" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
@@ -33,28 +32,28 @@
 				<div class="contenido">
 					<div align="left">
 						<div align="left">
-							<div class='encabezado'>Tipo de Desvinculaciones</div>
+							<div class='encabezado'>Lista Tipo de Desvinculaciones</div>
 							<div class='linea-two'></div>
 						</div>
 					</div>
 					<separator spacing="20px"/>
-					<grid emptyMessage="No se encuentran tipos registrados" mold="paging"
+					<grid emptyMessage="No se encuentran tipos de desvinculaciones registrados" mold="paging"
 							pageSize="15">
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
             					<image src="../../../assets/img/funnel.png" />
-               					<textbox instant="true" width="150px" placeholder="Buscar"/>
+               					<textbox instant="true" width="85%" placeholder="Buscar"/>
             				</auxheader>
             				<auxheader colspan="1">
             					<image src="../../../assets/img/funnel.png" />
-               					<textbox instant="true" width="150px" placeholder="Buscar"/>
+               					<textbox instant="true" width="85%" placeholder="Buscar"/>
             				</auxheader>
             				 <auxheader colspan="1" />
 						</auxhead>
 						<columns>
 							<column >Codigo </column>
-							<column >Nombre </column>
-							<column width="100px">Acciones </column>
+							<column >Tipo Desvinculacion</column>
+							<column width="15%">Acciones </column>
 						</columns>
 						<rows>
 							<row>

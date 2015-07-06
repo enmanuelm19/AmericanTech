@@ -1,70 +1,68 @@
-<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
-
-<!-- Load Bootstrap  -->
+<?page title="Dashboard - ZK Admin"?>
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
-
-<!-- Google Open Sans font -->
-<!-- Load fonts from local -->
-<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-
-<!-- Unmark if we want to use fonts from google server
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
--->
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+	<window border="none" height="45%" width="35%" style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Desvinculacion"
+		closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<caption iconSclass="z-icon-cogs"/>
 
-<zk xmlns:n="native" >
-	<window border="none" title=" " closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
-		<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-cogs" />
-					    	<a label="Configuracion" href="#"/>
-							<label value="Registrar Tipo Desvinculacion"/>
-					</div>
- 
-			</div>
-			<div class='contenido'>
-				<div sclass="page-header">
-	    			<label value="Registrar Tipo Desvinculacion"/>
-	  			</div>
-	  			<div align="left">
-						<div class='encabezado'>Datos básico</div>
-						<div class='linea-two'></div>
+		<div class="contenedor" align="center">
+			<separator spacing="20px"/>
+		<div align="left" width="90%" style="margin-bottom: 20px">
+	  		<div align="center">
+				<div align ="left">	
+					<div  class="encabezado">
+		                     Datos Básicos                             									                                                				                             				                             					
+		            </div>
+		              <div align="left" class="linea-two">
+		                        									                                                				                             				                             					
+		             </div>	
+                </div>
+                <separator spacing="15px"/>		 
+						<grid width="100%">
+							<rows>
+								<row>
+									<vbox>
+										
+										<hbox>
+											Código 
+											<textbox
+												id="txtRegTipoEventCodigo" width="100%" />
+											<button
+												iconSclass="z-icon-search blue" class="btn-link"
+												tooltiptext="Buscar" />
+										</hbox>
+										<hbox>
+											Nombre <textbox id="txtRegTipoEventDescripcion" type="text" rows="1" value="" width="150%" constraint="no empty" />
+										</hbox>
+									</vbox>
+								</row>
+
+							</rows>
+						</grid>
+			        
+      		    <separator spacing="20px"/>
+			     <div align="center">
+							<hbox>
+								<div>
+									<separator spacing="5%" />
+									<button iconSclass="z-icon-floppy-o"
+										class='boton-guardar' label="Guardar" />
+								</div>
+								<space spacing="5%" />
+								<div apply="controllers.TipoEvento">
+									<separator spacing="5%" />
+									<button  iconSclass="z-icon-times-circle"
+										class='boton-cancelar' label="Cancelar" />
+								</div>
+
+							</hbox>
 				</div>
-				<separator spacing="30px"/>
-				
-				<div align="center">
-					<grid width="580px">
-
-								<rows class="col-md-12">
-
-									<row class="col-md-11">
-										<div>
-											Codigo
-											<textbox type="text"
-												value="" width="100px" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-search blue" />
-										</div>
-									</row>
-									<row class="col-md-11">
-										<div>
-										Nombre
-											<textbox type="text"
-												value="" width="208px" />
-										</div>
-									</row>
-			            </rows>
-			        </grid>
-			       
-			        <separator spacing="40px"/>
-			        <div>
-						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
-						<space spacing="40px" />
-						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
-			        </div><separator spacing="60px"></separator>
-				</div>
 			</div>
-		</window>
+		</div>
+	</div>
+	</window>
 </zk>

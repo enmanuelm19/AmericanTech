@@ -3047,20 +3047,6 @@ margin-top:80px;
   padding: 4px 4px 0;
 }
 
-.z-window-header {
-  font-family: Open Sans;
-  font-size: 13px;
-  font-weight: normal;
-  font-style: normal;
-  color: #FFFFFF;
-  padding: 3px 10px 5px 10px;
-  line-height: 24px;
-  background: rgb(223, 240, 216);
-  overflow: hidden;
-  zoom: 1;
-  cursor: default;
-}
-
 .z-window-icon {
   font-size: 16px;
   color: #FAF6F6;
@@ -3077,4 +3063,99 @@ margin-top:80px;
   border: none;
 }
 
+.notificaciones{
+  background-color: #2e6589;
+  color: #FFF;
+  display: block;
+  line-height: 45px;
+  height: 45px;
+  border-left: 1px solid #DDD;
+  text-align: center;
+  height: 100%;
+  width: auto;
+  min-width: 50px;
+  padding: 0 8px;
+  position: relative;
+}
 
+.z-window-header{
+	background:  #2B7DBC;
+	border-radius: 5px 5px 0px 0px;
+	font-variant: small-caps;
+  	color: #FFFFFF;
+    font-size: 16px;
+  	font-weight: normal;
+  	font-style: normal;
+    padding: 3px 10px 5px 10px;
+	}
+	
+.z-window-close{
+	background:#11BCB7;
+	border-radius:8px;
+}
+.z-window-close:hover{
+	border: 1px solid #11BCB7;
+}
+.z-window-icon{
+	color:white;
+}
+.z-window-icon:hover{
+	color:#11BCB7;
+	background: white none repeat scroll 0%;
+}
+.z-window-content{
+	border:none;
+	border-radius: 0px 0px 5px 5px;
+}
+.z-window {
+	border:2px solid #11BCB7;
+	border-radius: 10px;
+	background: white;
+}
+
+--------MASCARA MODAL--------------------
+.z-modal-mask{
+	background: #333 none repeat scroll 0% 0%;
+opacity: 0.7;
+position: absolute;
+}
+
+-----------HOVER MENU ITEM NAVBAR--------------
+.z-menupopup .z-menuitem-content:hover{
+	background:#2B7DBC;
+	color:white;
+}
+
+------------PAGING---------------------
+.z-paging { 
+	border:none; 
+	background: none; 
+	margin:0 4%;
+}
+.z-paging-info { 
+	color:#2B7DBC;
+}
+
+.z-paging-text {
+	color: #2B7DBC;
+} 
+.z-paging-input { 
+	color: #2B7DBC;
+	border: 1px solid #2B7DBC;
+	align: center;
+	width:20px;
+}
+.z-paging-button[disabled] .z-paging-icon, .z-paging-button[disabled] .z-paging-icon:hover {
+    color: #FFF;
+    }
+.z-paging-button { 
+	background: #2B7DBC;
+	border-radius:16px;
+}
+.z-paging-span { 
+	background: white;
+}
+.z-paging .z-paging-icon {
+    font-size: 16px;
+    color: white;
+}

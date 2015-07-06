@@ -4,87 +4,97 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" class='contenedor'>
-	<include src="/vistas/layouts/navbar.zul" />
+<include src="/vistas/layouts/navbar.zul" />
 	<hlayout id="main" spacing="0">
 		<include src="/vistas/layouts/sidebar.zul" />
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Configuracion" href="#" />
-					<label value="Tipo de Evento" />
+					<a label="Categoria" href="#"/>
+					<label value="Tipos de Preferecias"/>
 				</div>
 			</div>
-			<div class="contenedor" align="center">
-
+			<div class="contenedor" align="center" height="970px">
+			
 				<div sclass="page-header" align="left">
-					<label value="Tipo de Evento" />
+				    <label value="Tips de Eventos"/>
+		  		</div>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
+				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
+					<button id="btnRegTipoEvento" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
-
-				<separator spacing="1%" />
-				<space />
-				<space />
-				<div class='form-pricing' width="60%" align="center">
-					<div apply="controllers.TipoEvento" align="right">
-						<button id="btnRegistrar" label="Agregar Nuevo"
-							iconSclass="z-icon-plus" class='boton-guardar' />
+			
+				<separator spacing="10px"/>
+				
+				<div class="contenido" >
+					<div align="left">
+						<div class='encabezado'>Lista Tipos de Eventos</div>
+						<div class='linea-two'></div>
 					</div>
+					<separator spacing="20px"/>
+					
+					<grid emptyMessage="No se encuentran tipos de eventos registrados" mold="paging"
+							pageSize="10" >
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png" />
+               					<textbox instant="true" width="85%" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png" />
+               					<textbox instant="true" width="85%" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="1" />
+						</auxhead>
+						
+						<columns>
+							<column hflex="2">Codigo </column>
+							<column hflex="2">Tipo Evento</column>
+							<column width="15%">Acciones </column>
+						</columns>
+						
+						<rows>
+							<row>
+							    <label value="001" />
+								<label value="Publicos" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							<row>
+							   <label value="002" />
+								<label value="Privados" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							<row>
+							    <label value="003" />
+								<label value="Especiales" />
+								<div>
 
-					<div class='contenido' align="left" width="80%">
-						<div align="left" class='encabezado'>
-							<label value="Información" />
-						</div>
-						<div class="linea-two"></div>
-						<grid mold="paging" pageSize="15" width=""
-							height="100%">
-							<columns class="z-grid z-column-content">
-								<column label="Código" align="center"
-									width="30%" sort="auto" />
-								<column label="Descripción"
-									align="center" sort="auto" />
-								<column label="Acciones" align="center"
-									width="25%" />
-							</columns>
-							<rows>
-								<row>
-									<label value="0001" />
-									<label value="Publicos" />
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-									</div>
-								</row>
-
-								<row>
-									<label value="0002" />
-									<label value="Privados" />
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-									</div>
-								</row>
-
-								<row>
-									<label value="0003" />
-									<label value="Especial" />
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-									</div>
-								</row>
-							</rows>
-						</grid>
-					</div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							
+						</rows>
+						
+						 <foot>
+            				<footer span="1" class="footer_right" label="4 items en la lista" />
+        				 </foot>
+					</grid>
 
 				</div>
+			</div>
 			</div>
 		</vlayout>
 	</hlayout>
-
+	
 </zk>
