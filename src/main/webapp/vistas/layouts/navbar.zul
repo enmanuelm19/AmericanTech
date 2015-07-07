@@ -1,8 +1,8 @@
-<div sclass="navbar" apply="application.NavbarComposer">
+<div sclass="navbar" apply="application.NavbarComposer" width="100%">
 	<!-- Brand Logo -->
 	
-	 <image tooltiptext="Avatar" src="/assets/intranet/avatars/americaBordeBlanco.png" sclass="pull-left  msg-photo"/>
-	 <a label="Centro Atlético América" sclass="pull-left navbar-brand" iconSclass=""/>
+	 <image tooltiptext="Avatar" width="5%" height="45%" src="/assets/img/AmericanTechP.png" sclass="pull-left  msg-photo"/>
+	
 	<!-- Navbar -->
 	<hlayout sclass="nav-user pull-right" spacing="0">
 		
