@@ -1,8 +1,8 @@
 package models;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Evento {
 	
@@ -17,22 +17,22 @@ public class Evento {
 	private int vistasEsperadas;
 	
 	//coleccion de Actividades.. relacion muchos a muchos;
-	private Set<Actividad> actividades=new HashSet<Actividad>();
+	private List<Actividad> actividades=new ArrayList<Actividad>();
 	
 	//coleccion de Visitas.. relacion muchos a muchos;
-	private Set<Visita> visitas=new HashSet<Visita>();
+	private List<Visita> visitas=new ArrayList<Visita>();
 	
 	//coleccion de Patrocinantes.. relacion muchos a muchos;
-	private Set<Patrocinante> patrocinantes=new HashSet<Patrocinante>();
+	private List<Patrocinante> patrocinantes=new ArrayList<Patrocinante>();
 	
 	//coleccion de Eventualidades. relacion uno a muchos.
-	private Set<Eventualidad> eventualidades=new HashSet<Eventualidad>();
+	private List<Eventualidad> eventualidades=new ArrayList<Eventualidad>();
 	
 	//coleccion de Noticias. relacion uno a muchos.
-	private Set<Noticia> noticias= new HashSet<Noticia>();
+	private List<Noticia> noticias= new ArrayList<Noticia>();
 	
 	//coleccion de CalendarioFecha. relacion uno a muchos.
-	private Set<CalendarioFecha> calendarioFechas=new HashSet<CalendarioFecha>();
+	private List<CalendarioFecha> calendarioFechas=new ArrayList<CalendarioFecha>();
 	
 	public Evento() {
 		super();
@@ -59,7 +59,7 @@ public class Evento {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void Id(int id) {
 		this.id = id;
 	}
 
@@ -127,51 +127,51 @@ public class Evento {
 		this.vistasEsperadas = vistasEsperadas;
 	}
 
-	public Set<Actividad> getActividades() {
+	public List<Actividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(Set<Actividad> actividades) {
+	public void setActividades(List<Actividad> actividades) {
 		this.actividades = actividades;
 	}
 
-	public Set<Visita> getVisitas() {
+	public List<Visita> getVisitas() {
 		return visitas;
 	}
 
-	public void setVisitas(Set<Visita> visitas) {
+	public void setVisitas(List<Visita> visitas) {
 		this.visitas = visitas;
 	}
 
-	public Set<Patrocinante> getPatrocinantes() {
+	public List<Patrocinante> getPatrocinantes() {
 		return patrocinantes;
 	}
 
-	public void setPatrocinantes(Set<Patrocinante> patrocinantes) {
+	public void setPatrocinantes(List<Patrocinante> patrocinantes) {
 		this.patrocinantes = patrocinantes;
 	}
 
-	public Set<Eventualidad> getEventualidades() {
+	public List<Eventualidad> getEventualidades() {
 		return eventualidades;
 	}
 
-	public void setEventualidades(Set<Eventualidad> eventualidades) {
+	public void setEventualidades(List<Eventualidad> eventualidades) {
 		this.eventualidades = eventualidades;
 	}
 
-	public Set<Noticia> getNoticias() {
+	public List<Noticia> getNoticias() {
 		return noticias;
 	}
 
-	public void setNoticias(Set<Noticia> noticias) {
+	public void setNoticias(List<Noticia> noticias) {
 		this.noticias = noticias;
 	}
 
-	public Set<CalendarioFecha> getCalendarioFechas() {
+	public List<CalendarioFecha> getCalendarioFechas() {
 		return calendarioFechas;
 	}
 
-	public void setCalendarioFechas(Set<CalendarioFecha> calendarioFechas) {
+	public void setCalendarioFechas(List<CalendarioFecha> calendarioFechas) {
 		this.calendarioFechas = calendarioFechas;
 	}
 	

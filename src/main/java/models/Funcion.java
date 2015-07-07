@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Funcion {
 	
@@ -10,7 +10,7 @@ public class Funcion {
 	private String url;
 	
 	//coleccion de Grupos.. relacion muchos a muchos
-	private Set<Grupo> grupos= new HashSet<Grupo>();
+	private List<Grupo> grupos= new ArrayList<Grupo>();
 	
 	public Funcion() {
 		super();
@@ -48,11 +48,11 @@ public class Funcion {
 		this.url = url;
 	}
 
-	public Set<Grupo> getGrupos() {
+	public List<Grupo> getGrupos() {
 		return grupos;
 	}
 
-	public void setGrupos(Set<Grupo> grupos) {
+	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
 	}
 }

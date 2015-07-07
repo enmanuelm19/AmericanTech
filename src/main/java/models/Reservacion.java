@@ -1,8 +1,8 @@
 package models;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Reservacion {
 	
@@ -14,7 +14,7 @@ public class Reservacion {
 	private Socio socioId;
 	
 	//Coleccion de Estados de reservacion.. relacion uno a muchos.
-	private Set<EstadoReservacion> estados=new HashSet<EstadoReservacion>();
+	private List<EstadoReservacion> estados=new ArrayList<EstadoReservacion>();
 	
 	public Reservacion() {
 		super();
@@ -79,11 +79,11 @@ public class Reservacion {
 		this.socioId = socioId;
 	}
 
-	public Set<EstadoReservacion> getEstados() {
+	public List<EstadoReservacion> getEstados() {
 		return estados;
 	}
 
-	public void setEstados(Set<EstadoReservacion> estados) {
+	public void setEstados(List<EstadoReservacion> estados) {
 		this.estados = estados;
 	}
 }

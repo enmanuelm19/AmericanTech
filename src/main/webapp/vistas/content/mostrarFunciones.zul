@@ -1,5 +1,5 @@
 	<div>
-		<grid mold="paging" pageSize="5">
+		<grid mold="paging" pageSize="5" model="@load(vm.funcionesAll)">
 			<columns class="z-grid z-column-content ">
 				<column label="Descripción" align="center"/>
 			</columns>

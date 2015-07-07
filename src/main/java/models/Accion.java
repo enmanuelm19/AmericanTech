@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Accion {
 	private int id;
@@ -11,13 +11,13 @@ public class Accion {
 	private Socio socioId;
 	
 	//coleccion de Ventas.. relacion uno a muchos
-	private Set<Venta> ventas= new HashSet<Venta>();
+	private List<Venta> ventas= new ArrayList<Venta>();
 	
 	//coleccion de Postulaciones.. relacion uno a muchos
-	private Set<Postulacion> postulaciones= new HashSet<Postulacion>();
+	private List<Postulacion> postulaciones= new ArrayList<Postulacion>();
 	
 	//coleccion de Desvinculaciones.. relacion uno a muchos
-	private Set<Desvinculacion> desvinculaciones=new HashSet<Desvinculacion>();
+	private List<Desvinculacion> desvinculaciones=new ArrayList<Desvinculacion>();
 	
 	public Accion() {
 		super();
@@ -38,7 +38,7 @@ public class Accion {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void ListId(int id) {
 		this.id = id;
 	}
 
@@ -74,27 +74,27 @@ public class Accion {
 		this.socioId = socioId;
 	}
 
-	public Set<Venta> getVentas() {
+	public List<Venta> getVentas() {
 		return ventas;
 	}
 
-	public void setVentas(Set<Venta> ventas) {
+	public void setVentas(List<Venta> ventas) {
 		this.ventas = ventas;
 	}
 
-	public Set<Postulacion> getPostulaciones() {
+	public List<Postulacion> getPostulaciones() {
 		return postulaciones;
 	}
 
-	public void setPostulaciones(Set<Postulacion> postulaciones) {
+	public void setPostulaciones(List<Postulacion> postulaciones) {
 		this.postulaciones = postulaciones;
 	}
 
-	public Set<Desvinculacion> getDesvinculaciones() {
+	public List<Desvinculacion> getDesvinculaciones() {
 		return desvinculaciones;
 	}
 
-	public void setDesvinculaciones(Set<Desvinculacion> desvinculaciones) {
+	public void ListDesvinculaciones(List<Desvinculacion> desvinculaciones) {
 		this.desvinculaciones = desvinculaciones;
 	}
 }

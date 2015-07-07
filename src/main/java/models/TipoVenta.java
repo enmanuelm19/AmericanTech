@@ -1,14 +1,14 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TipoVenta {
 	private int id;
 	private String descripcion;
 
 	//Coleccion de ventas.. relacion uno a muchos
-	private Set<Venta> ventas= new HashSet<Venta>();
+	private List<Venta> ventas= new ArrayList<Venta>();
 	
 	public TipoVenta() {
 		super();
@@ -37,11 +37,11 @@ public class TipoVenta {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Venta> getVentas() {
+	public List<Venta> getVentas() {
 		return ventas;
 	}
 
-	public void setVentas(Set<Venta> ventas) {
+	public void setVentas(List<Venta> ventas) {
 		this.ventas = ventas;
 	}
 }

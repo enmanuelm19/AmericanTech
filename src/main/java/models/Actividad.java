@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Actividad {
 	
@@ -12,13 +12,13 @@ public class Actividad {
 	private TipoActividad tipoActividadId;
 	
 	//Coleccion de Eventos.. Relacion muchos a muchos;
-	private Set<Evento> eventos=new HashSet<Evento>();
+	private List<Evento> eventos=new ArrayList<Evento>();
 	
 	//coleccion de Instalciones.. relacion muchos a muchos:
-	private Set<Instalacion> instalaciones=new HashSet<Instalacion>();
+	private List<Instalacion> instalaciones=new ArrayList<Instalacion>();
 	
 	//coleccion de Proveedores.. relacion muchos a muchos
-	private Set<Proveedor> proveedores=new HashSet<Proveedor>();
+	private List<Proveedor> proveedores=new ArrayList<Proveedor>();
 	
 	public Actividad() {
 		super();
@@ -75,27 +75,27 @@ public class Actividad {
 		this.tipoActividadId = tipoActividadId;
 	}
 
-	public Set<Evento> getEventos() {
+	public List<Evento> getEventos() {
 		return eventos;
 	}
 
-	public void setEventos(Set<Evento> eventos) {
+	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
 
-	public Set<Instalacion> getInstalaciones() {
+	public List<Instalacion> getInstalaciones() {
 		return instalaciones;
 	}
 
-	public void setInstalaciones(Set<Instalacion> instalaciones) {
+	public void setInstalaciones(List<Instalacion> instalaciones) {
 		this.instalaciones = instalaciones;
 	}
 
-	public Set<Proveedor> getProveedores() {
+	public List<Proveedor> getProveedores() {
 		return proveedores;
 	}
 
-	public void setProveedores(Set<Proveedor> proveedores) {
+	public void setProveedores(List<Proveedor> proveedores) {
 		this.proveedores = proveedores;
 	}
 }

@@ -1,8 +1,8 @@
 package models;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SolicitudEvento {
 	private int id;
@@ -12,7 +12,7 @@ public class SolicitudEvento {
 	private Socio socioId;
 	
 	//Coleccion de Estados de solicitud. relacion uno a muchos.
-	private Set<EstadoSolicitud> estados= new HashSet<EstadoSolicitud>();
+	private List<EstadoSolicitud> estados= new ArrayList<EstadoSolicitud>();
 	
 	public SolicitudEvento() {
 		super();
@@ -69,11 +69,11 @@ public class SolicitudEvento {
 		this.socioId = socioId;
 	}
 
-	public Set<EstadoSolicitud> getEstados() {
+	public List<EstadoSolicitud> getEstados() {
 		return estados;
 	}
 
-	public void setEstados(Set<EstadoSolicitud> estados) {
+	public void setEstados(List<EstadoSolicitud> estados) {
 		this.estados = estados;
 	}
 	

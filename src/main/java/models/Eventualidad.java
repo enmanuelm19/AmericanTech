@@ -1,8 +1,8 @@
 package models;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Eventualidad {
 	
@@ -14,7 +14,7 @@ public class Eventualidad {
 	private Instalacion instalacionId;
 
 	//Coleccion de aspectosEventualidades.. relacion uno a muchos
-	private Set<AspectosEventualidad> aspectos= new HashSet<AspectosEventualidad>();
+	private List<AspectosEventualidad> aspectos= new ArrayList<AspectosEventualidad>();
 	
 	public Eventualidad() {
 		super();
@@ -80,11 +80,11 @@ public class Eventualidad {
 		this.instalacionId = instalacionId;
 	}
 
-	public Set<AspectosEventualidad> getAspectos() {
+	public List<AspectosEventualidad> getAspectos() {
 		return aspectos;
 	}
 
-	public void setAspectos(Set<AspectosEventualidad> aspectos) {
+	public void setAspectos(List<AspectosEventualidad> aspectos) {
 		this.aspectos = aspectos;
 	}
 }

@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Preferencia {
 	
@@ -10,7 +10,7 @@ public class Preferencia {
 	private TipoPreferencia tipoPreferenciaId;
 	
 	//coleccion de Personas.. relacion muchos a muchos
-	private Set<Persona> personas= new HashSet<Persona>();
+	private List<Persona> personas= new ArrayList<Persona>();
 	
 	public Preferencia() {
 		super();
@@ -49,11 +49,11 @@ public class Preferencia {
 		this.tipoPreferenciaId = tipoPreferenciaId;
 	}
 
-	public Set<Persona> getPersonas() {
+	public List<Persona> getPersonas() {
 		return personas;
 	}
 
-	public void setPersonas(Set<Persona> personas) {
+	public void setPersonas(List<Persona> personas) {
 		this.personas = personas;
 	}
 	
