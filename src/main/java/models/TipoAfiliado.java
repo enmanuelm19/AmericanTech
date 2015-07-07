@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TipoAfiliado {
 
@@ -9,7 +9,7 @@ public class TipoAfiliado {
 	private String descripcion;
 
 	//Coleccion de afiliados.. relacion uno a muchos
-	private Set<Afiliado> afiliados= new HashSet<Afiliado>();
+	private List<Afiliado> afiliados= new ArrayList<Afiliado>();
 	
 	public TipoAfiliado() {
 		super();
@@ -38,11 +38,11 @@ public class TipoAfiliado {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Afiliado> getAfiliados() {
+	public List<Afiliado> getAfiliados() {
 		return afiliados;
 	}
 
-	public void setAfiliados(Set<Afiliado> afiliados) {
+	public void setAfiliados(List<Afiliado> afiliados) {
 		this.afiliados = afiliados;
 	}
 }

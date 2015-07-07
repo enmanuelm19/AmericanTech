@@ -4,13 +4,11 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk>
-	<window border="none" title=" " closable="true"
+	<window border="none" title="Registrar Usuario" closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="45%" height="100%">
+		width="45%" height="100%" style="iconSclass=z-icon-puzzle-piece;">
+		<caption iconSclass="z-icon-puzzle-piece"/>
 		<div class="contenedor" width="100%" align="center">
-			<div sclass="page-header" align="left">
-				<label value="Registrar Usuario" />
-			</div>
 			<div align="center" width="90%">
 				<div align="left" width="100%">
 					<div>

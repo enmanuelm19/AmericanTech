@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
 	
@@ -13,13 +13,13 @@ public class Usuario {
 	private Persona personaId;
 	
 	//coleccion de Sugerencias.. relacion uno a muchos
-	private Set<Sugerencia> sugerencias= new HashSet<Sugerencia>();
+	private List<Sugerencia> sugerencias= new ArrayList<Sugerencia>();
 	
 	//coleccion de Grupo.. relacion muchos a muchos
-	private Set<Grupo> grupos= new HashSet<Grupo>();
+	private List<Grupo> grupos= new ArrayList<Grupo>();
 	
 	//coleccion de Opiniones.. relacion uno a muchos
-	private Set<Opinion> opiniones=new HashSet<Opinion>();
+	private List<Opinion> opiniones=new ArrayList<Opinion>();
 	
 	public Usuario() {
 		super();
@@ -85,27 +85,27 @@ public class Usuario {
 		this.personaId = personaId;
 	}
 
-	public Set<Sugerencia> getSugerencias() {
+	public List<Sugerencia> getSugerencias() {
 		return sugerencias;
 	}
 
-	public void setSugerencias(Set<Sugerencia> sugerencias) {
+	public void setSugerencias(List<Sugerencia> sugerencias) {
 		this.sugerencias = sugerencias;
 	}
 
-	public Set<Grupo> getGrupos() {
+	public List<Grupo> getGrupos() {
 		return grupos;
 	}
 
-	public void setGrupos(Set<Grupo> grupos) {
+	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
 	}
 
-	public Set<Opinion> getOpiniones() {
+	public List<Opinion> getOpiniones() {
 		return opiniones;
 	}
 
-	public void setOpiniones(Set<Opinion> opiniones) {
+	public void setOpiniones(List<Opinion> opiniones) {
 		this.opiniones = opiniones;
 	}
 }

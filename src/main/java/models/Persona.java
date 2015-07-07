@@ -1,8 +1,8 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class Persona {
 	
@@ -21,10 +21,10 @@ public class Persona {
 	private String direccion;
 	
 	//coleccion de Preferencias.. relacion uno a muchos
-	private Set<Preferencia> preferencias= new HashSet<Preferencia>();
+	private List<Preferencia> preferencias= new ArrayList<Preferencia>();
 	
 	//coleccion de Eventualidades.. relacion uno a muchos
-	private Set<Eventualidad> eventualidades= new HashSet<Eventualidad>();
+	private List<Eventualidad> eventualidades= new ArrayList<Eventualidad>();
 	
 	public Persona() {
 		super();
@@ -155,19 +155,19 @@ public class Persona {
 		this.direccion = direccion;
 	}
 
-	public Set<Preferencia> getPreferencias() {
+	public List<Preferencia> getPreferencias() {
 		return preferencias;
 	}
 
-	public void setPreferencias(Set<Preferencia> preferencias) {
+	public void setPreferencias(List<Preferencia> preferencias) {
 		this.preferencias = preferencias;
 	}
 
-	public Set<Eventualidad> getEventualidades() {
+	public List<Eventualidad> getEventualidades() {
 		return eventualidades;
 	}
 
-	public void setEventualidades(Set<Eventualidad> eventualidades) {
+	public void setEventualidades(List<Eventualidad> eventualidades) {
 		this.eventualidades = eventualidades;
 	}
 	

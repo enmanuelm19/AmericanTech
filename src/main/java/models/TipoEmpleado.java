@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TipoEmpleado {
 	
@@ -9,7 +9,7 @@ public class TipoEmpleado {
 	private String descripcion;
 	
 	//Coleccion de empleados. relacion uno a muchos
-	private Set<Empleado> empleados=new HashSet<Empleado>();
+	private List<Empleado> empleados=new ArrayList<Empleado>();
 	
 	public TipoEmpleado() {
 		super();
@@ -38,11 +38,11 @@ public class TipoEmpleado {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Empleado> getEmpleados() {
+	public List<Empleado> getEmpleados() {
 		return empleados;
 	}
 
-	public void setEmpleados(Set<Empleado> empleados) {
+	public void setEmpleados(List<Empleado> empleados) {
 		this.empleados = empleados;
 	}
 }

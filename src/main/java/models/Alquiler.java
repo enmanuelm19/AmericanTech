@@ -1,8 +1,8 @@
 package models;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Alquiler {
 	
@@ -13,10 +13,10 @@ public class Alquiler {
 	private Reservacion reservacionId;
 	
 	//coleccion de Invitados.. relacion uno a muchos
-	private Set<Invitado> invitados=new HashSet<Invitado>();
+	private List<Invitado> invitados=new ArrayList<Invitado>();
 	
 	//coleccion de Proveedores.. relacion muchos a muchos
-	private Set<Proveedor> proveedores= new HashSet<Proveedor>();
+	private List<Proveedor> proveedores= new ArrayList<Proveedor>();
 	
 	public Alquiler() {
 		super();
@@ -73,19 +73,19 @@ public class Alquiler {
 		this.reservacionId = reservacionId;
 	}
 
-	public Set<Invitado> getInvitados() {
+	public List<Invitado> getInvitados() {
 		return invitados;
 	}
 
-	public void setInvitados(Set<Invitado> invitados) {
+	public void setInvitados(List<Invitado> invitados) {
 		this.invitados = invitados;
 	}
 
-	public Set<Proveedor> getProveedores() {
+	public List<Proveedor> getProveedores() {
 		return proveedores;
 	}
 
-	public void setProveedores(Set<Proveedor> proveedores) {
+	public void setProveedores(List<Proveedor> proveedores) {
 		this.proveedores = proveedores;
 	}
 }

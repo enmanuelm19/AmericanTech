@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Exonerado {
 	
@@ -11,7 +11,7 @@ public class Exonerado {
 	private Persona personaId;
 	
 	//coleccion de Sanciones.. relacion uno a muchos
-	private Set<Sancion> sanciones=new HashSet<Sancion>();
+	private List<Sancion> sanciones=new ArrayList<Sancion>();
 	
 	public Exonerado() {
 		super();
@@ -59,11 +59,11 @@ public class Exonerado {
 		this.personaId = personaId;
 	}
 
-	public Set<Sancion> getSanciones() {
+	public List<Sancion> getSanciones() {
 		return sanciones;
 	}
 
-	public void setSanciones(Set<Sancion> sanciones) {
+	public void setSanciones(List<Sancion> sanciones) {
 		this.sanciones = sanciones;
 	}
 }

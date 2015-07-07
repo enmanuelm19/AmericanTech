@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteExterno {
 	
@@ -11,7 +11,7 @@ public class ClienteExterno {
 	private String correo;
 	
 	//coleccion de Sugerencias.. relacion uno a muchos
-	private Set<Sugerencia> sugerencias= new HashSet<Sugerencia>();
+	private List<Sugerencia> sugerencias= new ArrayList<Sugerencia>();
 	
 	public ClienteExterno() {
 		super();
@@ -58,11 +58,11 @@ public class ClienteExterno {
 		this.correo = correo;
 	}
 
-	public Set<Sugerencia> getSugerencias() {
+	public List<Sugerencia> getSugerencias() {
 		return sugerencias;
 	}
 
-	public void setSugerencias(Set<Sugerencia> sugerencias) {
+	public void setSugerencias(List<Sugerencia> sugerencias) {
 		this.sugerencias = sugerencias;
 	}
 }

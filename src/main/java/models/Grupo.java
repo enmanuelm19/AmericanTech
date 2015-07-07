@@ -1,18 +1,21 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Grupo {
 	
 	private int id;
 	private String descripcion;
 	
+	//Atributo descFiltro para Filtrar
+	private String descFiltro="";
+	
 	//coleccion de Usuarios.. relacion muchos a muchos
-	private Set<Usuario> usuarios= new HashSet<Usuario>();
+	private List<Usuario> usuarios= new ArrayList<Usuario>();
 	
 	//coleccion de Funciones.. relacion muchos a muchos
-	private Set<Funcion> funciones= new HashSet<Funcion>();
+	private List<Funcion> funciones= new ArrayList<Funcion>();
 	
 	public Grupo() {
 		super();
@@ -41,19 +44,29 @@ public class Grupo {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Set<Usuario> usuarios) {
+	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 
-	public Set<Funcion> getFunciones() {
+	public List<Funcion> getFunciones() {
 		return funciones;
 	}
 
-	public void setFunciones(Set<Funcion> funciones) {
+	public void setFunciones(List<Funcion> funciones) {
 		this.funciones = funciones;
 	}
+	
+	//funcion set para el atributo a filtrar.
+	public void setDescFiltro(String descFiltro) {
+		this.descFiltro = descFiltro==null?"":descFiltro.trim();
+	}
+	//funcion get para el atributo a filtrar.
+	public String getDescFiltro() {
+		return descFiltro;
+	}
+
 }

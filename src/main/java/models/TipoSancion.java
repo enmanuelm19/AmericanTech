@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TipoSancion {
 
@@ -9,7 +9,7 @@ public class TipoSancion {
 	private String descripcion;
 
 	//Coleccion de sanciones.. relacion uno a muchos
-	private Set<Sancion> sancions=new HashSet<Sancion>();
+	private List<Sancion> sancions=new ArrayList<Sancion>();
 	
 	public TipoSancion() {
 		super();
@@ -38,11 +38,11 @@ public class TipoSancion {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Sancion> getSancions() {
+	public List<Sancion> getSancions() {
 		return sancions;
 	}
 
-	public void setSancions(Set<Sancion> sancions) {
+	public void setSancions(List<Sancion> sancions) {
 		this.sancions = sancions;
 	}
 }

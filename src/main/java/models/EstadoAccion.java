@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EstadoAccion {
 	
@@ -9,7 +9,7 @@ public class EstadoAccion {
 	private String descripcion;
 
 	//Coleccion de acciones.. relacion uno a muchos
-	private Set<Accion> accions= new HashSet<Accion>();
+	private List<Accion> accions= new ArrayList<Accion>();
 	
 	public EstadoAccion() {
 		super();
@@ -38,11 +38,11 @@ public class EstadoAccion {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Accion> getAccions() {
+	public List<Accion> getAccions() {
 		return accions;
 	}
 
-	public void setAccions(Set<Accion> accions) {
+	public void setAccions(List<Accion> accions) {
 		this.accions = accions;
 	}
 }
