@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Club {
 
@@ -16,10 +16,10 @@ public class Club {
 	private String telfAlternativo;
 
 	//Coleccion de politicas.. relacion uno a muchos
-	private Set<Politica> politicas= new HashSet<Politica>();
+	private List<Politica> politicas= new ArrayList<Politica>();
 
 	//Coleccion de juntasD.. relacion uno a muchos
-	private Set<JuntaDirectiva> juntas= new HashSet<JuntaDirectiva>();
+	private List<JuntaDirectiva> juntas= new ArrayList<JuntaDirectiva>();
 	
 	public Club() {
 		super();
@@ -113,19 +113,19 @@ public class Club {
 		this.telfAlternativo = telfAlternativo;
 	}
 
-	public Set<Politica> getPoliticas() {
+	public List<Politica> getPoliticas() {
 		return politicas;
 	}
 
-	public void setPoliticas(Set<Politica> politicas) {
+	public void setPoliticas(List<Politica> politicas) {
 		this.politicas = politicas;
 	}
 
-	public Set<JuntaDirectiva> getJuntas() {
+	public List<JuntaDirectiva> getJuntas() {
 		return juntas;
 	}
 
-	public void setJuntas(Set<JuntaDirectiva> juntas) {
+	public void setJuntas(List<JuntaDirectiva> juntas) {
 		this.juntas = juntas;
 	}	
 }

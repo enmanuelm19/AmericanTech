@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Instalacion {
 	
@@ -10,19 +10,19 @@ public class Instalacion {
 	private int capacidad;
 	
 	//coleccion de actividades.. relacion muchos a muchos
-	private Set<Actividad> actividades= new HashSet<Actividad>();
+	private List<Actividad> actividades= new ArrayList<Actividad>();
 	
 	//coleccion de Recursos.. relacion muchos a muchos
-	private Set<Recurso> recursos= new HashSet<Recurso>();
+	private List<Recurso> recursos= new ArrayList<Recurso>();
 	
 	//coleccion de Reservaciones.. relacion uno a muchos
-	private Set<Reservacion> reservaciones= new HashSet<Reservacion>();
+	private List<Reservacion> reservaciones= new ArrayList<Reservacion>();
 	
 	//coleccion de Eventualidades.. relacion uno a muchos
-	private Set<Eventualidad> eventualidades= new HashSet<Eventualidad>();
+	private List<Eventualidad> eventualidades= new ArrayList<Eventualidad>();
 	
 	//coleccion de Galeria.. relacion uno a muchos
-	private Set<Galeria> galerias= new HashSet<Galeria>();
+	private List<Galeria> galerias= new ArrayList<Galeria>();
 	
 	public Instalacion() {
 		super();
@@ -60,43 +60,43 @@ public class Instalacion {
 		this.capacidad = capacidad;
 	}
 
-	public Set<Actividad> getActividades() {
+	public List<Actividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(Set<Actividad> actividades) {
+	public void setActividades(List<Actividad> actividades) {
 		this.actividades = actividades;
 	}
 
-	public Set<Recurso> getRecursos() {
+	public List<Recurso> getRecursos() {
 		return recursos;
 	}
 
-	public void setRecursos(Set<Recurso> recursos) {
+	public void setRecursos(List<Recurso> recursos) {
 		this.recursos = recursos;
 	}
 
-	public Set<Reservacion> getReservaciones() {
+	public List<Reservacion> getReservaciones() {
 		return reservaciones;
 	}
 
-	public void setReservaciones(Set<Reservacion> reservaciones) {
+	public void setReservaciones(List<Reservacion> reservaciones) {
 		this.reservaciones = reservaciones;
 	}
 
-	public Set<Eventualidad> getEventualidades() {
+	public List<Eventualidad> getEventualidades() {
 		return eventualidades;
 	}
 
-	public void setEventualidades(Set<Eventualidad> eventualidades) {
+	public void setEventualidades(List<Eventualidad> eventualidades) {
 		this.eventualidades = eventualidades;
 	}
 
-	public Set<Galeria> getGalerias() {
+	public List<Galeria> getGalerias() {
 		return galerias;
 	}
 
-	public void setGalerias(Set<Galeria> galerias) {
+	public void setGalerias(List<Galeria> galerias) {
 		this.galerias = galerias;
 	}
 }

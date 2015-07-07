@@ -1,17 +1,17 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Proveedor {
 	private int id;
 	private Persona personaId;
 	
 	//coleccion de Alquileres.. relacion muchos a muchos
-	private Set<Alquiler> alquileres=new HashSet<Alquiler>();
+	private List<Alquiler> alquileres=new ArrayList<Alquiler>();
 	
 	//coleccion de Actividades.. relacion muchos a muchos
-	private Set<Actividad> actividades= new HashSet<Actividad>();
+	private List<Actividad> actividades= new ArrayList<Actividad>();
 	
 	public Proveedor() {
 		super();
@@ -40,19 +40,19 @@ public class Proveedor {
 		this.personaId = personaId;
 	}
 
-	public Set<Alquiler> getAlquileres() {
+	public List<Alquiler> getAlquileres() {
 		return alquileres;
 	}
 
-	public void setAlquileres(Set<Alquiler> alquileres) {
+	public void setAlquileres(List<Alquiler> alquileres) {
 		this.alquileres = alquileres;
 	}
 
-	public Set<Actividad> getActividades() {
+	public List<Actividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(Set<Actividad> actividades) {
+	public void setActividades(List<Actividad> actividades) {
 		this.actividades = actividades;
 	}
 	

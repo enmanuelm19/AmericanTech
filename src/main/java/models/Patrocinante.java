@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Patrocinante {
 	
@@ -9,7 +9,7 @@ public class Patrocinante {
 	private Persona personaId;
 	
 	//Coleccion de eventos.. relacion muchos a muchos
-	private Set<Evento> eventos= new HashSet<Evento>();
+	private List<Evento> eventos= new ArrayList<Evento>();
 	
 	
 	public Patrocinante() {
@@ -39,11 +39,11 @@ public class Patrocinante {
 		this.personaId = personaId;
 	}
 
-	public Set<Evento> getEventos() {
+	public List<Evento> getEventos() {
 		return eventos;
 	}
 
-	public void setEventos(Set<Evento> eventos) {
+	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
 }

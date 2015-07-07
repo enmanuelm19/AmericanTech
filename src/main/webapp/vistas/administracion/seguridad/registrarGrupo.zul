@@ -15,13 +15,11 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window title=" " closable="true" border="none"
+	<window closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="95%" width="40%">
+		height="70%" width="40%" style="iconSclass=z-icon-puzzle-piece;" title=" Registrar Grupo">
+		<caption iconSclass="z-icon-puzzle-piece"/>
 		<div class='contenedor'>
-			<div sclass="page-header prueb">
-				<label value="Registrar Grupo" />
-			</div>
 			<div align="center" width="95%">
 				<grid width="100%">
 					<rows class="col-md-12">
@@ -29,14 +27,6 @@
 						<row>
 							<div class="col-md-12">
 								<vbox>
-									Código
-									<hbox width="100%">
-										<textbox type="text" value="" />
-										<button class='btn-link'
-											iconSclass="z-icon-search blue" tooltiptext="Buscar">
-										</button>
-									</hbox>
-									<separator />
 									Descripción
 									<textbox type="text" value=""
 										width="150%" constraint="no empty" />
@@ -47,7 +37,6 @@
 
 					</rows>
 				</grid>
-
 
 				<div align="center" width="95%"><!-- INICIO DIV GRID DE FUNCIONES-->
 					<!-- GRID DE FUNCIONES-->

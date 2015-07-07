@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Aspecto {
 	
@@ -9,7 +9,7 @@ public class Aspecto {
 	private String descripcion;
 
 	//Coleccion de aspectoEventualidad.. relacion uno a muchos
-	private Set<AspectosEventualidad> aspectos= new HashSet<AspectosEventualidad>();
+	private List<AspectosEventualidad> aspectos= new ArrayList<AspectosEventualidad>();
 	
 	public Aspecto() {
 		super();
@@ -38,11 +38,11 @@ public class Aspecto {
 		this.descripcion = descripcion;
 	}
 
-	public Set<AspectosEventualidad> getAspectos() {
+	public List<AspectosEventualidad> getAspectos() {
 		return aspectos;
 	}
 
-	public void setAspectos(Set<AspectosEventualidad> aspectos) {
+	public void setAspectos(List<AspectosEventualidad> aspectos) {
 		this.aspectos = aspectos;
 	}
 }

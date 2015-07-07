@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Socio {
 	
@@ -10,25 +10,25 @@ public class Socio {
 	private Persona personaId;
 	
 	//Coleccion de Acciones que puede tener un Socio. Relacion Uno a muchos;
-	private Set<Accion> acciones=new HashSet<Accion>();
+	private List<Accion> acciones=new ArrayList<Accion>();
 	
 	//Coleccion de Afiliados que puede tener un Socio. Relacion uno a muchos;
-	private Set<Afiliado> afiliados= new HashSet<Afiliado>();
+	private List<Afiliado> afiliados= new ArrayList<Afiliado>();
 	
 	//Coleccion de Sanciones que puede tener un Socio. Relacion Uno a muchos;
-	private Set<Sancion> sanciones= new HashSet<Sancion>();
+	private List<Sancion> sanciones= new ArrayList<Sancion>();
 	
 	//Coleccion de Visitas que puede tener un Socio. Relacion Uno a muchos;
-	private Set<Visita> visitas=new HashSet<Visita>();
+	private List<Visita> visitas=new ArrayList<Visita>();
 	
 	//Coleccion de Reservaciones que puede tener un Socio. Relacion Uno a muchos;
-	private Set<Reservacion> reservaciones=new HashSet<Reservacion>();
+	private List<Reservacion> reservaciones=new ArrayList<Reservacion>();
 	
 	//Coleccion de SolicitudEvento que puede tener un Socio. Relacion Uno a muchos;
-	private Set<SolicitudEvento> solicitudEventos=new HashSet<SolicitudEvento>();
+	private List<SolicitudEvento> solicitudEventos=new ArrayList<SolicitudEvento>();
 
 	//coleccion de Desvinculaciones.. relacion uno a muchos
-	private Set<Desvinculacion> desvinculaciones=new HashSet<Desvinculacion>();
+	private List<Desvinculacion> desvinculaciones=new ArrayList<Desvinculacion>();
 	
 	public Socio() {
 		super();
@@ -66,59 +66,59 @@ public class Socio {
 		this.personaId = personaId;
 	}
 
-	public Set<Accion> getAcciones() {
+	public List<Accion> getAcciones() {
 		return acciones;
 	}
 
-	public void setAcciones(Set<Accion> acciones) {
+	public void setAcciones(List<Accion> acciones) {
 		this.acciones = acciones;
 	}
 
-	public Set<Afiliado> getAfiliados() {
+	public List<Afiliado> getAfiliados() {
 		return afiliados;
 	}
 
-	public void setAfiliados(Set<Afiliado> afiliados) {
+	public void setAfiliados(List<Afiliado> afiliados) {
 		this.afiliados = afiliados;
 	}
 
-	public Set<Sancion> getSanciones() {
+	public List<Sancion> getSanciones() {
 		return sanciones;
 	}
 
-	public void setSanciones(Set<Sancion> sanciones) {
+	public void setSanciones(List<Sancion> sanciones) {
 		this.sanciones = sanciones;
 	}
 
-	public Set<Visita> getVisitas() {
+	public List<Visita> getVisitas() {
 		return visitas;
 	}
 
-	public void setVisitas(Set<Visita> visitas) {
+	public void setVisitas(List<Visita> visitas) {
 		this.visitas = visitas;
 	}
 
-	public Set<Reservacion> getReservaciones() {
+	public List<Reservacion> getReservaciones() {
 		return reservaciones;
 	}
 
-	public void setReservaciones(Set<Reservacion> reservaciones) {
+	public void setReservaciones(List<Reservacion> reservaciones) {
 		this.reservaciones = reservaciones;
 	}
 
-	public Set<SolicitudEvento> getSolicitudEventos() {
+	public List<SolicitudEvento> getSolicitudEventos() {
 		return solicitudEventos;
 	}
 
-	public void setSolicitudEventos(Set<SolicitudEvento> solicitudEventos) {
+	public void setSolicitudEventos(List<SolicitudEvento> solicitudEventos) {
 		this.solicitudEventos = solicitudEventos;
 	}
 
-	public Set<Desvinculacion> getDesvinculaciones() {
+	public List<Desvinculacion> getDesvinculaciones() {
 		return desvinculaciones;
 	}
 
-	public void setDesvinculaciones(Set<Desvinculacion> desvinculaciones) {
+	public void setDesvinculaciones(List<Desvinculacion> desvinculaciones) {
 		this.desvinculaciones = desvinculaciones;
 	}
 	

@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Postulado {
 	
@@ -9,7 +9,7 @@ public class Postulado {
 	private Persona personaId;
 	
 	//Coleccion de postulaciones.. relacion uno a muchos
-	private Set<Postulacion> postulacions= new HashSet<Postulacion>();
+	private List<Postulacion> postulacions= new ArrayList<Postulacion>();
 	
 	public Postulado() {
 		super();
@@ -38,11 +38,11 @@ public class Postulado {
 		this.personaId = personaId;
 	}
 
-	public Set<Postulacion> getPostulacions() {
+	public List<Postulacion> getPostulacions() {
 		return postulacions;
 	}
 
-	public void setPostulacions(Set<Postulacion> postulacions) {
+	public void setPostulacions(List<Postulacion> postulacions) {
 		this.postulacions = postulacions;
 	}
 }

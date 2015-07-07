@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MotivoDesvinculacion {
 	
@@ -9,7 +9,7 @@ public class MotivoDesvinculacion {
 	private String descripcion;
 
 	//Coleccion de desvinculaciones.. relacion uno a muchos
-	private Set<Desvinculacion> desvinculacions= new HashSet<Desvinculacion>();
+	private List<Desvinculacion> desvinculacions= new ArrayList<Desvinculacion>();
 	
 	public MotivoDesvinculacion() {
 		super();
@@ -38,11 +38,11 @@ public class MotivoDesvinculacion {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Desvinculacion> getDesvinculacions() {
+	public List<Desvinculacion> getDesvinculacions() {
 		return desvinculacions;
 	}
 
-	public void setDesvinculacions(Set<Desvinculacion> desvinculacions) {
+	public void setDesvinculacions(List<Desvinculacion> desvinculacions) {
 		this.desvinculacions = desvinculacions;
 	}	
 }

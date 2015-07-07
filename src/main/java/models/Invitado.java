@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Invitado {
 	
@@ -9,7 +9,7 @@ public class Invitado {
 	private Persona personaId;
 	
 	//coleccion de Alquileres.. relacion muchos a muchos
-	private Set<Alquiler> alquileres= new HashSet<Alquiler>();
+	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
 	
 	public Invitado() {
 		super();
@@ -38,11 +38,11 @@ public class Invitado {
 		this.personaId = personaId;
 	}
 
-	public Set<Alquiler> getAlquileres() {
+	public List<Alquiler> getAlquileres() {
 		return alquileres;
 	}
 
-	public void setAlquileres(Set<Alquiler> alquileres) {
+	public void setAlquileres(List<Alquiler> alquileres) {
 		this.alquileres = alquileres;
 	}
 }

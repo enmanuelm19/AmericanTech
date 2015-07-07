@@ -1,8 +1,9 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+
 
 public class JuntaDirectiva {
 	
@@ -12,7 +13,7 @@ public class JuntaDirectiva {
 	private Club clubId;
 
 	//coleccion de Miembros.. relacion uno a muchos
-	private Set<MiembroJunta> miembros=new HashSet<MiembroJunta>();
+	private List<MiembroJunta> miembros=new ArrayList<MiembroJunta>();
 	
 	public JuntaDirectiva() {
 		super();
@@ -59,11 +60,11 @@ public class JuntaDirectiva {
 		this.clubId = clubId;
 	}
 
-	public Set<MiembroJunta> getMiembros() {
+	public List<MiembroJunta> getMiembros() {
 		return miembros;
 	}
 
-	public void setMiembros(Set<MiembroJunta> miembros) {
+	public void setMiembros(List<MiembroJunta> miembros) {
 		this.miembros = miembros;
 	}
 }

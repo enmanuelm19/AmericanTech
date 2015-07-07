@@ -21,168 +21,131 @@
 				<div sclass="page-header" align="left">
 					<label value="Grupo" />
 				</div>
-	<div class='form-pricing' width="60%">
-				<div align="center" width="80%"><!-- INICIO DIV GRID DE GRUPOS-->
+				<div class='form-pricing' width="60%">
+					<div align="center" width="80%"
+						apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.grupoGeneralViewModel')"><!-- INICIO DIV GRID DE GRUPOS-->
 
-					<div apply="controllers.grupoGeneralController"
-						align="right">
-						<button id="btnGrupoRegistrar" label="Agregar Nuevo"
-							iconSclass="z-icon-plus" class='boton-guardar' />
-					</div>
-					<separator spacing="1%" />
-					<div align="left">
-						<div class='encabezado' align="left">
-							Datos de Grupos
+						<div align="right">
+							<button id="btnGrupoRegistrar"
+								label="Agregar Nuevo" iconSclass="z-icon-plus"
+								class='boton-guardar' onClick="@command('showModal')" />
 						</div>
-						<div class="linea-two"></div>
-					</div>
-					<!-- GRID DE GRUPOS-->
-					<grid mold="paging" pageSize="15" width="100%">
-						<auxhead class="z-auxheader-content">
-							<auxheader align="left" colspan="2">
-								<textbox width="40%" />
-								<button iconSclass="z-icon-search blue"
-									sclass="btn-link" />
+						<separator spacing="1%" />
+						<div align="left">
+							<div class='encabezado' align="left">
+								Datos de Grupos
+							</div>
+							<div class="linea-two"></div>
+						</div>
+						<!-- GRID DE GRUPOS-->
+						<grid mold="paging" pageSize="15"
+							width="100%" model="@load(vm.gruposAll)" emptyMessage="Ningun Registro Encontrado">
+							<auxhead class="z-auxheader-content">
+								<auxheader align="left" colspan="2">
+									<textbox width="40%" instant="true" value="@bind(vm.grupo.descFiltro)" onChange="@command('filtroGrupo')" />
+									<button
+										iconSclass="z-icon-search blue" sclass="btn-link" />
 
-							</auxheader>
-						</auxhead>
-						<columns class="z-grid z-column-content ">
-							<column label="Descripción" align="center"
-								width="60%" />
-							<column label="Acciones" align="center"
-								width="40%" />
-						</columns>
-						<rows>
-							<row>
-								<label value="Junta Directiva" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</auxheader>
+							</auxhead>
+							<columns class="z-grid z-column-content ">
+								<column label="Descripción"
+									align="center" width="60%" />
+								<column label="Acciones" align="center"
+									width="40%" />
+							</columns>
+							<rows>
+							<template name="model">
+								<row>
+									<label value="@load(each.descripcion)" />
+									<div>
+										<button sclass="btn-link"
+											iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios"/>
+										<button sclass="btn-link"
+											iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" onClick="@command('funcionesGrupo', Grupo=each)"/>
+										<button sclass="btn-link"
+											iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 
 
+									</div>
+								</row>
+								</template>
+							</rows>
+						</grid><!-- FIN GRID DE GRUPOS-->
+						<separator spacing="20px" />
+					</div><!--FIN DIV GRID DE GRUPOS-->
+					<separator spacing="2%" />
+
+					<div style="padding:5%">
+						<div>
+							<div align="center" width="60%">
+								<div align="left">
+									<div class='encabezado'>
+										<label value="Funciones" />
+									</div>
 								</div>
-							</row>
-							<row>
-								<label value="AdiministraciÃ³n" />
+								<div class='linea-two'></div>
 								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-
-
-								</div>
-							</row>
-							<row>
-								<label value="Socios" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-
-								</div>
-							</row>
-							<row>
-								<label value="Secretaria" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-group blue" tooltiptext="Ver Usuarios" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-list blue" tooltiptext="Ver Funciones" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-
-								</div>
-							</row>
-						</rows>
-					</grid><!-- FIN GRID DE GRUPOS-->
-					<separator spacing="20px" />
-				</div><!--FIN DIV GRID DE GRUPOS-->
-				<separator spacing="2%" />
-
-				<div style="padding:5%">
-					<div>
-						<div align="center"
-							width="60%">
-							<div align="left">
-								<div class='encabezado'>
-									<label value="Funciones" />
+									<include
+										src="/vistas/content/mostrarFunciones.zul"/>
 								</div>
 							</div>
-							<div class='linea-two'></div>
-							<div>
-								<include
-									src="/vistas/content/mostrarFunciones.zul" />
-							</div>
-						</div>
-						<separator spacing="3%" />
-						<div align="center"
-							width="100%">
-							<div align="left">
-								<div class='encabezado'>
-									<label value="Usuarios" />
+							<separator spacing="3%" />
+							<div align="center" width="100%">
+								<div align="left">
+									<div class='encabezado'>
+										<label value="Usuarios" />
+									</div>
 								</div>
-							</div>
-							<div class='linea-two'></div>
-							<grid mold="paging" pageSize="8">
-								<columns class="z-grid z-column-content"
-									menupopup="auto">
-									<column label="Usuario"
-										align="center" sort="auto" />
-									<column label="Nombre"
-										align="center" sort="auto" />
-									<column label="Correo ElectrÃ³nico"
-										align="center" />
-									<column label="Foto" align="center" />
-								</columns>
-								<rows>
-									<row>
-										<label value="fidel.alejos" />
-										<label value="Fidel Aliaga" />
-										<label
-											value="fidel.alejos@gmail.com" />
-										<image
-											src="/assets/portal/img/img1.jpg" width="30%" />
-									</row>
-									<row>
-										<label value="musiu" />
-										<label
-											value="Carlos Colmenarez" />
-										<label value="carlos@gmail.com" />
-										<image
-											src="/assets/portal/img/img1.jpg" width="30%" />
-									</row>
-									<row>
-										<label value="hilderLee" />
-										<label value="Hilder Lee" />
-										<label value="hilder@gmail.com" />
-										<image
-											src="/assets/portal/img/img1.jpg" width="30%" />
-									</row>
-								</rows>
-							</grid>
-							<!-- FIN GRID DE USUARIOS-->
+								<div class='linea-two'></div>
+								<grid mold="paging" pageSize="8">
+									<columns
+										class="z-grid z-column-content" menupopup="auto">
+										<column label="Usuario"
+											align="center" sort="auto" />
+										<column label="Nombre"
+											align="center" sort="auto" />
+										<column
+											label="Correo ElectrÃ³nico" align="center" />
+										<column label="Foto"
+											align="center" />
+									</columns>
+									<rows>
+										<row>
+											<label value="fidel.alejos" />
+											<label value="Fidel Aliaga" />
+											<label
+												value="fidel.alejos@gmail.com" />
+											<image
+												src="/assets/portal/img/img1.jpg" width="30%" />
+										</row>
+										<row>
+											<label value="musiu" />
+											<label
+												value="Carlos Colmenarez" />
+											<label
+												value="carlos@gmail.com" />
+											<image
+												src="/assets/portal/img/img1.jpg" width="30%" />
+										</row>
+										<row>
+											<label value="hilderLee" />
+											<label value="Hilder Lee" />
+											<label
+												value="hilder@gmail.com" />
+											<image
+												src="/assets/portal/img/img1.jpg" width="30%" />
+										</row>
+									</rows>
+								</grid>
+								<!-- FIN GRID DE USUARIOS-->
 
+							</div>
 						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 		</vlayout>
