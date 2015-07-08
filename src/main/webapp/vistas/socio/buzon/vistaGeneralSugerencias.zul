@@ -33,12 +33,12 @@
 				</div>
 
 
-				<div class='form-pricing' width="75%">
+				<div class='form-pricing' width="75%" style="margin-bottom: 20px;">
 
 					<div align="right"
 						apply="controllers.ControllerVerAfiliado">
 						<button id="btnNuevaSugerencia"
-							label="Nueva Sugerencia" iconSclass="z-icon-floppy-o"
+							label="Nueva Sugerencia" iconSclass="z-icon-plus"
 							class='boton-guardar' />
 					</div>
 
@@ -55,7 +55,7 @@
 					<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
 						<!-- GRID DE GRUPOS-->
 
-						<grid mold="paging" pageSize="15" width="80%">
+						<grid mold="paging" pageSize="10" width="100%" height="80%">
 
 
 

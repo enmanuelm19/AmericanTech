@@ -5,43 +5,6 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" class='contenedor'>
-<script type="text/javascript">
-			$(function()
-		{
-			/*
-				Basic Example with custom image path
-				path : indicate custom path to the star image
-			*/
-			$('#star').raty({ path: 'http://wbotelhos.com/raty/lib/img/' });
-			
-			
-			/*
-				Predefined score with half star,
-				score : You can pass any value for it, not necessarily,
-						a data- value.
-						You can use a rating-score too.
-						but then 
-						code will be return $(this).attr('rating-score');
-				half 	: that will enable user to add half star rating
-				target  : define the rating hint container
-				targetKeep : this will allow used to
-					keep selected result inside hint container
-					defining false will loose selected value
-			*/
-
-			$('#predefined-star').raty(
-			{
-				path: 'http://wbotelhos.com/raty/lib/img/',
-				half: true,
-				target: '#result',
-				targetKeep: true,
-				score: function()
-				{
-					return $(this).attr('data-score');
-				}
-			});
-		});
-	</script>
 <include src="../../layouts/navbar.zul" />
 	<hlayout id="main" spacing="0">
 		<include src="../../layouts/sidebar.zul" />
@@ -74,7 +37,7 @@
 					<separator spacing="30px"/>
 					
 					<grid emptyMessage="" mold="paging"
-							pageSize="15">
+							pageSize="10" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.ControladorModalAbrir')">
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
             					<image src="../../../assets/img/funnel.png" />
@@ -84,13 +47,14 @@
             					<image src="../../../assets/img/funnel.png" />
                					<textbox instant="true" width="120px" placeholder="Buscar"/>
             				</auxheader>
-            				 <auxheader colspan="4" />
+            				 <auxheader colspan="5" />
 						</auxhead>
 						<columns>
 							<column hflex="3">IDPostulación </column>
 							<column hflex="3">Nombre Postulante</column>
 							<column hflex="2">Foto </column>
 							<column hflex="2"> Acción Socio</column>
+							<column hflex="2">Opiniones</column>
 							<column hflex="2"> Decision </column>
 							<column hflex="2"> Clasificacion </column>
 
@@ -102,7 +66,10 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
-									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
+									<div xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
 									</div>
@@ -117,6 +84,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -128,6 +98,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -139,6 +112,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -150,6 +126,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 								<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -161,6 +140,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -172,6 +154,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -183,6 +168,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -194,6 +182,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>
@@ -205,6 +196,9 @@
 						           <label value="David Cordero"/>
 						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
 						           <label value="032"  />
+						           <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalOpiniones')" ></button>
+						           </div>
 									<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="center">
 									<button   iconSclass="glyphicon glyphicon-ok blue" href="registrarSocio.zul"/>
 									<button iconSclass="glyphicon glyphicon-remove red"></button>

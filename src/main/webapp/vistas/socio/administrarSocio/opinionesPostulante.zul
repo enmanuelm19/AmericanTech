@@ -1,0 +1,246 @@
+<?page title="Opiniones" contentType="text/html;charset=UTF-8"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
+<window title="Opiniones" closable="true" width="70%">
+	
+	<hlayout spacing="0">
+	
+		<vlayout spacing="0" hflex="1">
+			
+			
+			<div class='contenedor' align="center"
+				apply="controllers.ControllerVerAfiliado">		
+
+				<div sclass="page-header" align="left">
+					<label value="Opiniones" />
+				</div>
+
+				<div class='contenido ' align="center" width="100%">
+					<div class=" col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						
+						<div width="100%">
+
+							<vbox>
+								<div align="left">
+									<div class="encabezado">
+										Datos del Postulante
+									</div>
+									<div align="left"
+										class="linea-two">
+									</div>
+								</div>
+
+								<hbox align="center" pack="center" width="90%"><!-- GRUPO DATOS BASICOS -->
+									<image width="80%" height="55%"
+										src="/assets/portal/img/img1.jpg" style="border-radius:50%" />
+
+									<vbox height="65%">
+										<hlayout>
+											<label value="Cédula" />
+											<separator />
+											<separator />
+											<textbox readonly="true"
+												value="V18122444" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue"
+												tooltiptext="Editar Datos de Contacto" />
+										</hlayout>
+										<hlayout>
+											Numero Carnet
+											<textbox readonly="true"
+												value="123456" width="50%" />
+										</hlayout>
+
+										<hlayout>
+											Primer Nombre
+											<textbox readonly="true"
+												value="Jesus" width="90%" />
+										</hlayout>
+										<hlayout>
+											Segundo Nombre
+											<textbox readonly="true"
+												value="Jesus" width="88%" />
+										</hlayout>
+
+										<hlayout>
+
+											Primer Apellido
+											<textbox readonly="true"
+												value="Jesus" width="90%" />
+										</hlayout>
+
+
+										<hlayout>
+											Segundo Apellido
+											<textbox readonly="true"
+												value="Jesus" width="88%" />
+
+										</hlayout>
+										<hlayout>
+											Correo
+											<textbox readonly="true"
+												value="hdhdhdh@jdhdh.com" width="100%" />
+
+										</hlayout>
+
+										<hlayout>
+
+											Telefono
+											<textbox readonly="true"
+												value="04135689256" width="80%" />
+										</hlayout>
+
+										<hlayout>
+											Nacimiento
+											<textbox readonly="true"
+												value="10/01/70" width="50%" />
+
+										</hlayout>
+
+										<hlayout>
+
+											Edad
+											<textbox readonly="true"
+												value="33" width="25%" />
+										</hlayout>
+
+										<hlayout>
+											<label>Sexo</label>
+											<combobox value="M"
+												width="35%">
+												<comboitem label="F" />
+											</combobox>
+
+										</hlayout>
+										<hlayout>
+											Direccion
+											<textbox readonly="true"
+												cols="45" rows="2" type="text"
+												value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara"
+												width="90%" />
+
+										</hlayout>
+
+									</vbox>
+								</hbox><!-- AQUI TERMINA GRUPO BASICOS -->
+								<div align="left">
+									<div class="encabezado">
+										Datos Afiliado
+									</div>
+									<div align="left"
+										class="linea-two">
+
+									</div>
+								</div>
+
+
+								<hbox width="100%"><!-- Inicio GRUPO afilaido -->
+
+
+									<panel border="none"
+										collapsible="true" sclass="transparent">
+
+										<panelchildren>
+											<grid sclass="domain">
+												<columns
+													sclass="z-grid z-column-content">
+
+													<column width="30%"
+														label="Socio"
+														iconSclass="z-icon-caret-right blue" align="center" />
+													<column width="45%"
+														label="Opinion" iconSclass="z-icon-caret-right blue" align="center" />
+													<column width="25%"
+														label="Calificacion" iconSclass="z-icon-caret-right blue" align="center" />
+
+												</columns>
+												<rows>
+													<row>
+
+														<label
+															value="El chavo" />
+														<textbox cols="45" rows="3" readonly="true" value="Se me chispotio"></textbox>
+														<label
+															value="3 stars" />
+
+													</row>
+													<row>
+
+														<label
+															value="Girfales" />
+														<textbox cols="45" rows="3" readonly="true" value="tah TAAH TAAAAHHHH"></textbox>
+														<label
+															value="1 stars" />
+
+													</row>
+													<row>
+
+														<label
+															value="Ñoño" />
+														<textbox cols="45" rows="3" readonly="true" value="Mirelo a el! Mirelo a el!"></textbox>
+														<label
+															value="2 stars" />
+
+													</row>
+												</rows>
+											</grid>
+										</panelchildren>
+									</panel>
+
+								</hbox><!-- AQUI TERMINA GRUPO afiliados -->
+
+
+
+
+							</vbox>
+
+							<separator></separator>
+							<separator></separator>
+							<separator></separator>
+							<hbox width="" align="center"
+								pack="center">
+
+								<separator spacing="5%"></separator>
+
+
+								<button iconSclass="z-icon-edit"
+									class='boton-guardar' label="Guardar" />
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+								<space></space>
+
+								<button iconSclass="z-icon-times-circle"
+									class='boton-cancelar' label="Cancelar " />
+							</hbox>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div><!-- FIN CONTENEDOR -->
+		</vlayout>
+	</hlayout>
+	</window>
+</zk>

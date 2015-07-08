@@ -1,5 +1,6 @@
 package controllers;
 
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -100,6 +101,14 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
                 "opinion.zul", null, null);
         window.doModal();
     }
+	
+	   @Command
+	    public void showModalOpiniones(Event e) {
+	        //create a window programmatically and use it as a modal dialog.
+	        Window window = (Window)Executions.createComponents(
+	                "opinionesPostulante.zul", null, null);
+	        window.doModal();
+	    }
 	
 
 	

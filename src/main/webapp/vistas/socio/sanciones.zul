@@ -25,7 +25,7 @@
 				<space/><space/>
 				<div class='form-pricing' align="left" width="80%" style="margin-bottom: 20px">
 				<div apply="controllers.ControllerRegSancion" xmlns:w='client' align="right">
-					<button id="btnRegistrarsanc" label="Agregar Nueva" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+					<button id="btnRegistrarsanc" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
