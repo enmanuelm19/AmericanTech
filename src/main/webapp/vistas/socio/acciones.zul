@@ -17,7 +17,7 @@
 					</div>
 			</div>
 			
-<div class='contenedor' align="center" height="970px" apply="controllers.ControllerAcciones">
+<div class='contenedor' align="center" height="970px" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.ControllerAcciones')">
 				<div sclass="page-header" align="left">
 				    <label value="Acciones"/>
 		  		</div>
@@ -25,7 +25,7 @@
 				<space/><space/>
 				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
 				<div  xmlns:w='client' align="right">
-					<button id="btnRegAcciones" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+					<button id="btnRegAcciones" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar' onClick="@command('showModal')"/>
 				</div>
 			
 				<separator spacing="10px"/>
@@ -39,7 +39,7 @@
 					<separator spacing="20px"/>
 					
 					<grid emptyMessage="No se encuentran Acciones registradas" mold="paging"
-							pageSize="15" >
+							pageSize="15" model="@load(vm.accionesAll)" >
 							
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
@@ -67,43 +67,18 @@
 							
 						</columns>
 				         <rows>
+				         <template name="model">
             <row>
-                <label value="ca-001" />
+                <label value="@load(each.id)" />
                 <label value="Pedro Perez" />
-                <label value="Activa" />
-             <label value="500" />
+                <label value="@load(each.disponibilidad)" />
+             <label value="@load(each.valor)" />
 				 <div >
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" id="btnDesvincular"/>								
+                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" onClick="@command('showModal1')"/>								
 				</div> 
                              
                  </row>
-            
-            
-            <row>
-                <label value="ca-002" />
-                <label value="" />
-                <label value="Disponible" />
-                <label value="500" />
-                
-               
-				 <div>
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" id="btnDesvincular1"/>								
-				</div> 
-            </row>
-         <row>
-                <label value="ca-003" />
-                <label value="" />
-                <label value="Disponible" />
-                <label value="500" />
-               
-           
-				 <div >
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" id="btnDesvincular2"/>								
-				</div> 
-            </row>
-            
-            
-            
+            </template>
         </rows>
   
 						
