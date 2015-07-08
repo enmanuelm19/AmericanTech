@@ -1,29 +1,12 @@
 <?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
 
-<!-- Load Bootstrap  -->
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
-
-<!-- Google Open Sans font -->
-<!-- Load fonts from local -->
 <?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-
-<!-- Unmark if we want to use fonts from google server
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
--->
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window border="none" title=" " action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="540px" closable="true">
-		<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user" />
-					    	<a label="Socio" href="#"/>
-							<label value="Registrar Opinión"/>
-					</div>
- 
-			</div>
+	<window border="none" title="Registrar Opinion " action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="35em" closable="true">
 			<div class='contenido'>
 				<div sclass="page-header">
 	    			<label value="Registrar Opinión"/>
@@ -34,15 +17,15 @@
 				</div>
 				<separator spacing="30px"/>
 				<div align="center">
-					<grid width="580px">
+					<grid width="40em">
 
 								<rows class="col-md-12">
 
 									<row class="col-md-11">
-										<div>
+										<div align="center" class="col-md-12">
 											Descripción
 											<textbox type="text" cols="6" rows="6" 
-												value="" width="380px" />
+												width="35em"/>
 
 										</div>
 										

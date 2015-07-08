@@ -4,41 +4,32 @@
 
 
 
-<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 
 
 <zk xmlns:n="native">
-	<include src="../layouts/navbar.zul" />
-	<hlayout spacing="0">
-		<include src="../layouts/sidebar.zul" />
+	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		 width="70%">
+	<hlayout spacing="0" apply="controllers.SocioController">
 
 
 
 		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Socio" href="#" />
-					<label value="Registrar Afiliado" />
-				</div>
-			</div>
-
-			<div class='contenedor' align="center"
-				apply="controllers.SocioController">
+			
 				<div sclass="page-header" align="left">
 					<label value="Registrar Afiliado" />
 				</div>
 
-				<div class='contenido ' align="center" width="75%">
+				<div class='contenido ' align="center" width="100%">
 					<div class="col-md-11 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="100%">
+						<div  width="100%">
 
 							<div align="left">
 								<div class="encabezado">
@@ -310,7 +301,8 @@
 					</div>
 				</div>
 
-			</div><!-- FIN CONTENEDOR -->
+		
 		</vlayout>
 	</hlayout>
+	</window>
 </zk>

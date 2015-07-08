@@ -49,10 +49,9 @@
 			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/miPerfil.zul"/>
 			<navitem label="Mis Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/misSanciones.zul"/>
 			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
-				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href="administrarSocio/postulantes.zul"/>
+				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/administrarSocio/postulantes.zul"/>
 				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" href=""/>
 				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/sanciones.zul"/>
-				<navitem label="Desvinculación acción" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/desvincularAccion.zul"/>
 			</nav>
 			<navitem label="Solicitar venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/solicitarVenta.zul"/>
 			<nav label="Danos tu opinión" iconSclass="z-icon-angle-double-right">
@@ -75,7 +74,7 @@
 				<navitem label="Cancelar evento" iconSclass="z-icon-angle-double-right" href=""/>
 			</nav>
 
-			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" />		
+			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/registrarEventualidadInst.zul" />		
 		</nav>
 		
 		<nav label="Consulta" iconSclass="z-icon-th-list">

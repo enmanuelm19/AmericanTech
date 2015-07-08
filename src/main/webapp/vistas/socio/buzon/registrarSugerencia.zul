@@ -6,50 +6,10 @@
 <?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
-
-<!-- <zk xmlns:n="native" class='contenedor'> -->
-<!-- 	<include src="/vistas/layouts/navbar.zul" /> -->
-<!-- 	<hlayout id="main" spacing="0"> -->
-<!-- 		<include src="/vistas/layouts/sidebar.zul" /> -->
-<!-- 		<vlayout spacing="0" hflex="1"> -->
-
-
-<!-- 			<div sclass="breadcrumbs"> -->
-<!-- 				<div sclass="breadcrumb"> -->
-
-<!-- 					<span sclass="home-icon z-icon-user" /> -->
-<!-- 						<a label="Socio ->" href="#" /> -->
-<!-- 						<a label=" Danos tu opinion ->" href="#" /> -->
-<!-- 						<a label="Sugerencias" href="#" /> -->
-
-
-<!-- 				</div> -->
-
-<!-- 			</div> -->
-
-
-<!-- 			 -->
-
-<!-- 			<div class='contenedor'> -->
-
-<!-- 				<div sclass="page-header"> -->
-<!-- 					<label value="Registrar Sugerencia Socio" /> -->
-
-<!-- 				</div> -->
-<!-- 				<div class='contenido ' align="center"> -->
-<!-- 					<div class="col-md-8 col-centered" -->
-<!-- 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit') -->
-<!--    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword,  -->
-<!--    				   captcha=vm.captcha, captchaInput=vm.captchaInput)"> -->
-
-
-
-
-<window border="none" title=" " closable="true"
+<window border="none" title="Registrar Sugerencia " closable="true"
 	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	height="45%" width="30%">
-	<!--  class='form-pricing ' -->
+	 width="35em" height="26em">
+	
 
 	<div
 		form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
@@ -65,9 +25,9 @@
 
 
 
-		<div class='form-pricing' width="100%">
+		<div  width="100%">
 
-			<div align="left">
+			<div align="">
 				<div class="encabezado">Sugerencias</div>
 				<div align="left" class="linea-two">
 
@@ -134,19 +94,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- 				</div> -->
-
-	<!-- 			</div> -->
-	
-	-->
-
-
-	<!-- 		</vlayout> -->
-	<!-- 	</hlayout> -->
-
-
-	<!-- </zk> -->
 
 
 </window>
