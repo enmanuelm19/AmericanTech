@@ -1,104 +1,134 @@
-<?page title="Solicitud Alquiler"?>
+<?page title="Registrar Visita"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" class='contenedor'>
-	<include src="../layouts/navbar.zul" />
-	<hlayout id="main" spacing="0">
-		<include src="../layouts/sidebar.zul" />
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-home" />
-					<a label="Instalación" href="#" />
-					<label value="Solicitud Alquiler" />
-				</div>
-
-			</div>
-
-
-			<div class='contenedor'>
-
-				<div sclass="page-header">
-					<label value="Solicitud Alquiler" />
-
-				</div>
-
-				<div class='contenido  form-pricing'
-					style="margin-left: 90px; width:900px">
-					<div align="left">
+	
+	<window border="none" height="104%" width="45%" style="iconSclass=z-icon-cogs;" title=" Solicitar Alquiler"
+		closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		
+		
+				 <div    align="center"  >
+					 		
+			   		 <separator />  <separator />  
+							  <div align="left" width="90%">
+								      	<div class="encabezado">
+								      		Datos del Socio
+								      	</div >
+								      	<div class="linea-two" >
+				
+								      	</div>	
+							      </div>
+								 <separator/><separator/><separator/>
+			        	<grid width="600px" >
+			         	
+						       <rows class="col-md-11" >
+						            
+						            <row class="col-md-3" height="140px">
+										<div>
+						                  		<image src="../../assets/portal/img/icon1.png" width="120px"
+													sclass="icon" tooltiptext="Icono" />
+						                 </div>
+						            </row>
+						            <row class="col-md-9">
+							                  <div>
+							                  	<hlayout>
+							                  	<label  width="50%" value= "Nro. de Carnet" />
+							                  	<separator /><separator />
+							                  	<separator />         
+							                  	</hlayout>
+							                  	</div>		                 
+							              		  <div>
+							              		   	 <textbox    type="text" value="" width="120px" />
+							                      </div>
+							                      <div>
+							                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+							                      </div>			                      
+						              </row>
+						              <row class="col-md-9">
+						                  <div>
+						                  <hlayout>
+						                  	<label  width="50%" value= "Cedula" />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+						                  	<separator />
+											<separator />
+						                  	<separator />
+						                  	<separator />
+						               </hlayout>
+						                  	</div>
+						              		  <div>
+						              		   	 <textbox    type="text" value="" width="120px" />
+						                      </div>
+						                      <div>
+						                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+						                      </div>			                      
+						               </row>
+						               <row class="col-md-9">
+						              			<div>
+						              				<hlayout>
+						                  			<label   width="50%"  value= "Nombre"/> 
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			<separator />
+						                  			</hlayout>
+						                  		</div>
+						              		  	<div>
+						              		   	  <textbox  type="text" value="" width="100%" />
+						                      	</div>
+										</row>
+								  
+						           </rows>
+					  					
+						    </grid>
+			<separator/><separator/><separator/>
+	
+        			<div align="left" width="90%"> 
 						<div class="encabezado">
-							Datos de la Instalación
+							Datos de Alquiler
 						</div>
-						<div align="left" class="linea-two">
-
+						<div class="linea-two">
 						</div>
 					</div>
-					<div class="col-md-12 col-centered " style="margin-top: 10px"
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class="col-md-3">
-							<image
-								src="../../assets/portal/img/icon1.png" width="120px"
-								sclass="icon" tooltiptext="Juan Moreno" />
-						</div>
-						<grid class="col-md-8">
-							<rows class="col-md-12">
-								<row class="col-md-10">
-									<div class="col-md-10">
-										Número Carnet
-										<textbox type="text" value=""
-											width="250px" tabindex="2" />
-									</div>
-									<div  class="col-md-2" style="margin-top: 23px;">
-										<button
-											iconSclass="z-icon-search" class='btn-primary btn-primary' />
-									</div>
-								</row>
-								<row class="col-md-10">
-									<div class="col-md-10">
-										Cédula
-										<textbox type="text" value=""
-											width="250px" tabindex="2" style="" />
-									</div>
-									<div style="margin-top: 23px;">
-										<button
-											iconSclass="z-icon-search" style="margin-top: 23px;"
-											class='btn-primary btn-primary' />
-									</div>
-								</row>
-								<row class="col-md-10">
-									<div class="col-md-10">
-										Nombre
-										<textbox type="text" value=""
-											width="250px" tabindex="2" />
-									</div>
-								</row>
-							</rows>
-						</grid>
+	 				<separator/><separator/><separator/>
+        			<grid width="600px" >
+          
+			            	<rows class="col-md-9" >
+			            <row>
 
-						<grid class="col-lg-12">
-							<rows>
-								<row>
-									<label value="Datos Básicos" />
-								</row>
-								<row class="col-md-10">
-									<div>
+			            </row>
+			                  <row class="col-md-11">
+			                  <div>
 										Fecha Inicio
 
 										<datebox
 											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
 									</div>
-									<div>
+								<div>
 										Fecha Fin
 
 										<datebox
 											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
-									</div>
-								</row>
-								<row class="col-md-10">
-									<div>
+								</div>				                      
+			                  </row>
+			                    <row class="col-md-11">
+			              			<div>
 										Hora Inicio
 
 										<timebox
@@ -111,9 +141,11 @@
 											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
 									</div>
 								</row>
-
-								<row class="col-md-12">
-									<div class="col-md-12">
+							
+								<row class="col-md-3">
+								</row>
+							<row class="col-md-8 col-centered">
+			              		<div>
 										<listbox id="box"
 											multiple="true" checkmark="true">
 											<listhead>
@@ -133,29 +165,34 @@
 											
 										</listbox>
 									</div>
+							</row>
+						
+							    <row align="center">
+			                  	<vlayout>
+			                  	<separator /><separator /><separator/>
 
-								</row>
+			                  	<hlayout >
+			                  	<separator />
+			                  			
+			                  		<separator spacing="150px"></separator>
+			                  		<div  >
+			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="100px"/>
+			                    	</div><separator spacing="580px"></separator>
+			                    	<separator /><separator /><separator />
+			                  		<div align="center">
+			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
+			                     	</div><separator spacing="180px"></separator>
+			                  	</hlayout>
+			                  </vlayout>
+			             		
+			                 </row>
+			            </rows>
+		  					
+			        </grid>
 
 
+		 		   </div>
 
-								<row class="col-md-12 col-centered" style="text-align:center">
-										<button
-											iconSclass="z-icon-floppy-o" class='boton-guardar'
-											label="Guardar" />
-										<button
-											iconSclass="z-icon-times-circle" class='boton-cancelar'
-											label="Cancelar" />
-								</row>
-
-							</rows>
-						</grid>
-					</div>
-
-				</div>
-
-			</div>
-		</vlayout>
-	</hlayout>
-
-
+</window>
+	
 </zk>

@@ -25,7 +25,7 @@
 				<space/><space/>
 				<div class='form-pricing' align="left" width="80%">
 				<div apply="controllers.ControladorModalAbrir" align="right" xmlns:w='client'>
-					<button id="btnProveedoresRegistrar" label="Solicitar" iconSclass="z-icon-floppy-o"  href="solicitudAlquiler.zul" class='boton-guardar'/>
+					<button id="btnSolicitarAlquiler" label="Solicitar" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
