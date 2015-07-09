@@ -1,4 +1,4 @@
-<?page title="Dashboard - ZK Admin"?>
+<?page title="Registrar Visita"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
@@ -29,8 +29,8 @@
 			   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
 			   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
 			   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-			        			<div class='form-pricing' width="550px" height="200px">
-							     
+			        			<div class='form-pricing' width="600px" height="485px">
+							     <separator/>
 							  <div align="left">
 								      	<div class="encabezado">
 								      		Datos del Socio
@@ -42,7 +42,7 @@
 								 <separator/><separator/><separator/>
 			        	<grid width="600px">
 			         	
-						       <rows class="col-md-10" >
+						       <rows class="col-md-11" >
 						            
 						            <row class="col-md-3" height="140px">
 										<div>
@@ -113,17 +113,8 @@
 						           </rows>
 					  					
 						    </grid>
-			
-					 	</div>
-			   		</div>
-				  </div>		
-	       
-			<div class='contenido '   align="center"  >
-   				 <div class="col-md-8 col-centered " 
-   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-        			<div class='form-pricing' width="550px" height="250px">
+			<separator/><separator/><separator/>
+	
         			<div align="left"> 
 						<div class="encabezado">
 							Datos del Invitado
@@ -183,7 +174,7 @@
 							<row class="col-md-11">
 			              			<div>
 			              			<hlayout>
-			                  			<label   width="400px" value= "Instalaciiones"/> 
+			                  			<label   width="400px" value= "Instalación"/> 
 			                  			<separator /><separator />
 	
 
@@ -203,7 +194,7 @@
 							
 							    <row align="center">
 			                  	<vlayout>
-			                  	<separator /><separator />
+			                  	<separator /><separator /><separator/>
 
 			                  	<hlayout >
 			                  	<separator />
@@ -215,11 +206,6 @@
 			                  			<separator />
 			                  			<separator />
 			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			
 			                  			<separator />
 			                  		<separator spacing="150px"></separator>
 			                  		<div  >

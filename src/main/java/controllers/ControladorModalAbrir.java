@@ -102,6 +102,15 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
         window.doModal();
     }
 	
+	 @Listen("onClick = #btnSolicitarAlquiler")
+	    public void showModalAlquiler(Event e) {
+	        //create a window programmatically and use it as a modal dialog.
+	        Window window = (Window)Executions.createComponents(
+	                "solicitudAlquiler.zul", null, null);
+	        window.doModal();
+	    }
+	
+	
 	   @Command
 	    public void showModalOpiniones(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
@@ -109,7 +118,8 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	                "opinionesPostulante.zul", null, null);
 	        window.doModal();
 	    }
-	
+	   
+	  
 
 	
 }

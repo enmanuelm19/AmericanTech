@@ -12,7 +12,7 @@
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-home" />
 					<a label="Instalación" href="#"/>
-					<label value="Reservaciones"/>
+					<label value="Reservación"/>
 				</div>
 			</div>
 			<div class="contenedor" align="center" >
@@ -36,7 +36,7 @@
 					<separator spacing="30px"/>
 					
 					<grid emptyMessage="No se encuentran proveedores registrados" mold="paging"
-							pageSize="15">
+							pageSize="12">
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
             					<image src="../../assets/img/funnel.png" />
@@ -259,7 +259,7 @@
 
 						</rows>
 						 <foot>
-            				<footer span="6" class="footer_right" label="23 items en la lista" />
+            				<footer span="6" class="footer_right" label="15 items en la lista" />
         				 </foot>
 					</grid>
 				</div>
