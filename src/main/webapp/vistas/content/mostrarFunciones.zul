@@ -1,21 +1,14 @@
 	<div>
-		<grid mold="paging" pageSize="5" model="@load(vm.funcionesAll)">
+		<grid mold="paging" pageSize="15" model="@load(vm.funcionAll)" emptyMessage="Ningun Registro Encontrado">
 			<columns class="z-grid z-column-content ">
 				<column label="Descripción" align="center"/>
 			</columns>
 			<rows>
+			<template name="model">
 				<row>
-					<label value="Modificar Perfil"/>
+					<label value="@load(each.nombre)"/>
 				</row>
-				<row>
-					<label value="Registrar Solicitud Reservacion"/>
-				</row>
-				<row>
-					<label value="Publicar Informacion en Cartelera"/>
-				</row>
-				<row>
-					<label value="Revisar Sugerencias"/>
-				</row>	      
+				</template>	      
 			</rows>
 			
 		</grid>

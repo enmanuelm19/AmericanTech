@@ -21,10 +21,9 @@
 				<div sclass="page-header" align="left">
 					<label value="Grupo" />
 				</div>
-				<div class='form-pricing' width="60%">
-					<div align="center" width="80%"
-						apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.grupoGeneralViewModel')"><!-- INICIO DIV GRID DE GRUPOS-->
+				<div class='form-pricing' width="60%" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.grupoGeneralViewModel')">
+					<div align="center" width="80%"><!-- INICIO DIV GRID DE GRUPOS-->
 
 						<div align="right">
 							<button id="btnGrupoRegistrar"
@@ -81,7 +80,7 @@
 
 					<div style="padding:5%">
 						<div>
-							<div align="center" width="60%">
+							<div align="center" width="60%" visible="@load(vm.verFunciones)">
 								<div align="left">
 									<div class='encabezado'>
 										<label value="Funciones" />

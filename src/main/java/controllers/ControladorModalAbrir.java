@@ -19,10 +19,8 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 		Window window = (Window)Executions.createComponents(
 				"registrarTipoInstalacion.zul", null, null);
 		window.doModal();
-		
-		
-		
 	}
+	
 	@Listen("onClick = #btnRegTipoActividad")
 	public void ikhjk(Event e) {
 		//create a window programmatically and use it as a modal dialog.

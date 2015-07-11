@@ -19,7 +19,4 @@ public class AccionService {
 	public static void setAcciones(List<Accion> acciones) {
 		AccionService.acciones = acciones;
 	}
-	
-	
-
 }

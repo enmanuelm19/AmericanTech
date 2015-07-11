@@ -24,6 +24,7 @@ public class grupoGeneralViewModel {
 
 	private List<Grupo> grupoTodos=gruposAll;//Coleccion con que se llenara la grid
 	private List<Funcion> funcionAll=new ArrayList<Funcion>();
+	private boolean verFunciones=false;
 	
 	static {
     	gruposAll.add(new Grupo(1,"Administracion"));
@@ -73,9 +74,16 @@ public class grupoGeneralViewModel {
 	 }
 	 
 	 @Command
-	 @NotifyChange("funcionAll")
+	 @NotifyChange({"funcionAll","verFunciones"} )
 	 public void funcionesGrupo(@BindingParam("Grupo") Grupo g){
-		 funcionAll= (List<Funcion>) g.getFunciones();
+		 funcionAll.add(new Funcion(1, "nose", "dd"));
+		 funcionAll.add(new Funcion(2, "noseerrqq", "dd"));
+		 funcionAll.add(new Funcion(3, "noserree", "dd"));
+		 funcionAll.add(new Funcion(4, "noseww", "dd"));
+		 funcionAll.add(new Funcion(5, "nosesss", "dd"));
+		 verFunciones=true;
 	 }
-	 
+	public boolean getVerFunciones(){
+		return verFunciones;
+	}
 }
