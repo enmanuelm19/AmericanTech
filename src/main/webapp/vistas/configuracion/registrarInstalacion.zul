@@ -4,22 +4,11 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<include src="/vistas/layouts/navbar.zul" />
-	<hlayout spacing="0">
-		<include src="/vistas/layouts/sidebar.zul" />
-		<vlayout spacing="0" hflex="1">
-			<div class='breadcrumbs'>
-				<div class='breadcrumb'>
-					<span sclass="home-icon z-icon-cogs" />
-					<a label="Configuración" href="#" />
-					<label value="Instalaciones" />
-				</div>
-			</div>
+	<window title="Registrar Instalacion" width="60%" style="iconSclass=z-icon-cogs;" closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<caption iconSclass="z-icon-cogs"/>
 			<div class='contenedor' align="center">
-				<div align="left">
-					<div class="page-header">Instalaciones</div>
-				</div>
-				<div class='form-pricing' width="70%">
+				<div width="95%">
 				<div width="100%">
 					<div align="left">
 						<div class='encabezado'>Datos Básicos</div>
@@ -224,8 +213,7 @@
 				<separator />
 				<separator />
 			</div>
-		</vlayout>
-	</hlayout>
+	</window>
 	<style>
 		.galeria .z-paging { border:none; background: none; margin:0 4%;
 		} .galeria .z-paging-info { display:none; } .galeria

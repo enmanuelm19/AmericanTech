@@ -15,7 +15,7 @@
 					<label value="Instalaciones"/>
 				</div>
 			</div>
-			<div class="contenedor" align="center" >
+			<div class="contenedor" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.gestionarInstalacionesViewModel')">
 			
 				<div sclass="page-header" align="left">
 				    <label value="Instalaciones"/>
@@ -24,8 +24,8 @@
 				<separator spacing="30px"/>
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnInstalacionesRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+				<div align="right">
+					<button id="btnInstalacionesRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar' onClick="@command('showModalRegInst')"/>
 				</div>
 			
 				<separator spacing="10px"/>
