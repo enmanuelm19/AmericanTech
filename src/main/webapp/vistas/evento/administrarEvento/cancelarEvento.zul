@@ -5,45 +5,38 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" class='contenedor'>
- 
- <include src="../../layouts/navbar.zul"/>             
+	<include src="/vistas/layouts/navbar.zul" />
 	<hlayout id="main" spacing="0">
-		<include src="../../layouts/sidebar.zul"/>    
+		<include src="/vistas/layouts/sidebar.zul" />
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-calendar"/>
-					    <a label="Eventos" href="#"/>
-					   	<label value="Ejecutar Evento"/>
-					</div>
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-calendar" />
+					<a label="Eventos" href="#" />
+					<label value=" Cancelar Evento" />
+				</div>
 			</div>
+			<div class='contenedor'>
+				<div sclass="page-header">
+					<label value="Cancelar Evento" />
+				</div>
+				<div class='contenido ' align="center">
+					<div class="col-md-12 col-centered "
+						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+						<div class='form-pricing' width="700px"
+							height="auto">
+							<div align="left">
+								<div class="encabezado">
+									Lista de Eventos
+								</div>
+								<div align="left" class="linea-two">
 
-<div class="contenedor" align="center"  apply="controllers.ControllerEjecutarEvento">
-			
-				<div sclass="page-header" align="left">
-				    <label value="Ejecutar Evento"/>
-		  		</div>
-				<separator spacing="30px"/>
-				<space/><space/>
-				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
-			
-			
-				<separator spacing="10px"/>
-				
-				<div class="contenido" >
-					<div align="left">
-						<div class='encabezado'>Lista de Eventos</div>
-						<div class='linea-two'></div>
-					</div>
-					<separator spacing="20px"/>
-					
-					 
-						
-						
-						
-		
-					
-					<grid width="100%">
+								</div>
+							</div>
+							<separator spacing="20px"/>
+							<grid width="100%">
 								<rows class="col-md-12">
 									<row class="col-md-12">
 										
@@ -86,36 +79,38 @@
 												<row>
 													<label value="001" />
 													<label
-														value="Semana Deportiva"/>
+														value="Semana Deportiva" />
 													<label
 														value="12/12/1920" />
 													<label
 														value="12:00" />
-													<progressmeter  value="10" width="80px" />
+													<label
+														value="Iniciada" />
 													<label value="100" />
 													<div>
 														<button
-															iconSclass="z-icon-check-square-o blue " class='btn-link'
+															iconSclass="z-icon-times-circle red " class='btn-link'
 															tooltiptext="Cancelar Evento"
-															id="btnMostrar1"  />
+															id="" />
 														
 													</div>
 												</row>
 												<row>
 													<label value="001" />
 													<label
-														value="Semana Deportiva"  />
+														value="Semana Deportiva" />
 													<label
 														value="12/12/1920" />
 													<label
 														value="12:00" />
-													 <progressmeter  value="50" width="80px" />
+													<label
+														value="Iniciada" />
 													<label value="100" />
 													<div>
 														<button
-															iconSclass="z-icon-check-square-o blue " class='btn-link'
+															iconSclass="z-icon-times-circle red " class='btn-link'
 															tooltiptext="Cancelar Evento"
-															 id="btnMostrar2" />
+															id="" />
 													</div>
 												</row>
 												
@@ -133,19 +128,17 @@
 
 								</rows>
 							</grid>
-					
-
-
-
-
+						</div>
+					</div>
 
 				</div>
+
 			</div>
-			</div>
+
+
 
 
 		</vlayout>
 	</hlayout>
-
 
 </zk>

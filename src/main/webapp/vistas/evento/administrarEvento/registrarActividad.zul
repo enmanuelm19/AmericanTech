@@ -5,22 +5,13 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window border="none"
-		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="800px" width="800px" closable="true">
-		<div sclass="breadcrumbs">
-			<div sclass="breadcrumb">
-				<span sclass="home-icon z-icon-calendar" />
-				<a label="Eventos" />
-				<label value="Planificar Evento" />
-			</div>
-		</div>
+	<window style="iconSclass=z-icon-cogs;" title=" Registrar Actividad" closable="true" border="none" action="show: slideDown({duration: 300});
+			 hide:slideUp({duration: 300})" height="700px" width="700px">
+			 <caption iconSclass="z-icon-calendar"/>
+		
 
 		<div class='contenedor'>
-			<div sclass="page-header">
-				<label value="Registrar Actividad" />
-
-			</div>
+			
 			<div align="letf">
 				<div class="col-md-11 col-centered "
 					form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
@@ -28,6 +19,7 @@
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 
 					<div>
+					<separator spacing="20px"/>
 						<div align="left">
 							<div class="encabezado">Datos Básicos</div>
 							<div class="linea-two">

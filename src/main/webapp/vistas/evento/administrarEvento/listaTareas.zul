@@ -5,12 +5,13 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+	<window style="iconSclass=z-icon-cogs;" title="Actividades por Evento" closable="true"  border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
 	height="450px" width="500px">
+	<caption iconSclass="z-icon-calendar"/>
 		<div class='contenedor'>
 			<separator spacing="20px"/>
 			<div align="left">
-			<div class='encabezado'>Lista de Tareas</div>
+			<div class='encabezado'>Lista de Actividades</div>
 			<div class='linea-two'></div>
 			</div>
 			<separator spacing="20px"/>
@@ -28,7 +29,7 @@
 											<columns>
 												<column width="40px" />
 												<column
-													label="Informacón de las Actividades" />
+													label="Información de las Actividades" />
 
 											</columns>
 											<rows>
@@ -139,10 +140,3 @@
 		</div>
 	</window>
 </zk>
-
-
-
-
-
-
-
