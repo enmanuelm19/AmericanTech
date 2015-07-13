@@ -5,40 +5,27 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" class='contenedor'>
-	<window border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="90%" width="90%"  closable="true">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-calendar" />
-					<a label="Eventos" href="#" />
-					<label value="Planificar Evento" />
-				</div>
-
-			</div>
+	<window style="iconSclass=z-icon-cogs;" title="Actividades por Evento " closable="true" border="none" action="show: slideDown({duration: 300});
+			 hide:slideUp({duration: 300})" height="400px" width="500px">
+			 <caption iconSclass="z-icon-calendar"/>
+		
+		
 
 			<div class='contenedor'>
 
-				<div sclass="page-header">
-					<label value="Actividades por Evento" />
-
-				</div>
-				<div class='contenido ' align="center">
-					<div class="col-md-8 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="100%" height="auto">
 						<div align="left">
         				<div class="encabezado">
-        					Actividades por Evento: Dia del Padre
+        					Lista de Actividades
         				</div>
         				<div class="linea-two">
         				
         				</div>
         			</div>
         			<separator/><separator/><separator/><separator/>
-
-							<grid width="100%">
-
+<div align="center" >
+			
+						<grid width="350px" height="200px" emptyMessage="No se encuentran actividades" mold="paging"
+							pageSize="2">
 								<rows class="col-md-12">
 
 								
@@ -49,7 +36,7 @@
 											<columns>
 												<column width="40px" />
 												<column
-													label=""  />
+													label="Información de las Actividades"  />
 
 											</columns>
 											<rows>
@@ -59,19 +46,16 @@
 														fulfill="onOpen">
 														<grid
 															sclass="inner-grid">
-															<columns>
+								<columns>
 																<column
-																	label="Tareas" width="350px" align="center" />
+																	label="" width="50px" iconSclass="z-icon-check-square-o"  />
 																<column
-																	label="Cumplidas" width="150px" align="center" />
-																	
-
+																	label="Tareas" width="300px" />
+																
 															</columns>
 															<rows>
 																<row>
 
-																	<label
-																		value="Decoración" width="60%" />
 																	<listbox id="box"
 																			multiple="true" checkmark="true">
 					
@@ -79,12 +63,14 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	
+																	<label
+																		value="Decoración" width="60%" />
 																</row>
 																
 																<row>
 
-																	<label
-																		value="Contratar Sonido" width="60%" />
+																	
 																	<listbox id="box1"
 																			multiple="true" checkmark="true">
 					
@@ -92,13 +78,14 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Contratar Sonido" width="60%" />
 
 																</row>
 																
 																	<row>
 
-																	<label
-																		value="Mantenimiento del Salon" width="60%" />
+																	
 																	<listbox id="box2"
 																			multiple="true" checkmark="true">
 					
@@ -106,13 +93,14 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Mantenimiento del Salon" width="60%" />
 
 																</row>
 																
 																	<row>
 
-																	<label
-																		value="Instalar mesas" width="60%" />
+																	
 																	<listbox id="box3"
 																			multiple="true" checkmark="true">
 					
@@ -120,13 +108,14 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Instalar mesas" width="60%" />
 
 																</row>
 																
 																	<row>
 
-																	<label
-																		value="Contratar Animadores" width="60%" />
+																
 																	<listbox id="box4"
 																			multiple="true" checkmark="true">
 					
@@ -134,13 +123,14 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																		<label
+																		value="Contratar Animadores" width="60%" />
 
 																</row>
 																
 																<row>
 
-																	<label
-																		value="Refrigerios" width="60%" />
+																	
 																	<listbox 
 																			multiple="true" checkmark="true">
 					
@@ -148,6 +138,8 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Refrigerios" width="60%" />
 
 																</row>
 																
@@ -172,17 +164,14 @@
 															sclass="inner-grid">
 															<columns>
 																<column
-																	label="Tareas" width="350px" align="center" />
+																	label="" width="50px" iconSclass="z-icon-check-square-o"  />
 																<column
-																	label="Cumplidas" width="150px" align="center" />
-																	
-
-															</columns>
-															<rows>
+																	label="Tareas" width="300px" />
+																
+															</columns>														<rows>
 																<row>
 
-																	<label
-																		value="Montar Tarima" width="60%" />
+																	
 																	<listbox id="box5" multiple="true" checkmark="true">
 																			
 					
@@ -190,12 +179,13 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Montar Tarima" width="60%" />
 																</row>
 																
 																	<row>
 
-																	<label
-																		value="Contratar Banda Musical " width="60%" />
+																	
 																	<listbox id="box6"
 																			multiple="true" checkmark="true">
 					
@@ -203,14 +193,15 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Contratar Banda Musical " width="60%" />
 
 																</row>
 																
 																
 																	<row>
 
-																	<label
-																		value="Montar Tarima" width="60%" />
+																	
 																	<listbox id="box8"
 																			multiple="true" checkmark="true">
 					
@@ -218,6 +209,8 @@
 																				<listcell/>
 																			</listitem>																			
 																	</listbox>
+																	<label
+																		value="Montar Tarima" width="60%" />
 
 																</row>
 																
@@ -241,9 +234,8 @@
 						</div>
 					</div>
 
-				</div>
+			
 
-			</div>
 
  </window>
 
