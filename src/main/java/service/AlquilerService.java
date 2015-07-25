@@ -24,5 +24,11 @@ public class AlquilerService {
 		alquileres.add(new Alquiler(id++, new Date(), new Date(), 5000, reservacion));
 		alquileres.add(new Alquiler(id++, new Date(), new Date(), 5000, reservacion));
 	}
+	public static List<Alquiler> getAlquileres() {
+		return alquileres;
+	}
+	public static void setAlquileres(List<Alquiler> alquileres) {
+		AlquilerService.alquileres = alquileres;
+	}
 
 }

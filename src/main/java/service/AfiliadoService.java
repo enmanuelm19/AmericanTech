@@ -20,4 +20,12 @@ public class AfiliadoService {
 		afiliados.add(new Afiliado(id++,"12345-1", personas.get(1), tipoAfiliado, socio));
 		afiliados.add(new Afiliado(id++,"12345-2", personas.get(3),tipoAfiliado,socio));
 	}
+	public static List<Afiliado> getAfiliados() {
+		return afiliados;
+	}
+	public static void setAfiliados(List<Afiliado> afiliados) {
+		AfiliadoService.afiliados = afiliados;
+	}
+	
+	
 }
