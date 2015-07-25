@@ -30,4 +30,11 @@ public class AspectoEventualidadService {
 		aspectoEventualidad.add(new AspectosEventualidad(id++, aspectos.get(2), eventualidad, "Moderada"));
 		
 	}
+	public static List<AspectosEventualidad> getAspectoEventualidad() {
+		return aspectoEventualidad;
+	}
+	public static void setAspectoEventualidad(List<AspectosEventualidad> aspectoEventualidad) {
+		AspectoEventualidadService.aspectoEventualidad = aspectoEventualidad;
+	}
+	
 }
