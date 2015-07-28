@@ -1,7 +1,6 @@
 //Created by: Enmanuel Medina, Team: O'Sullivan
 package controllers;
 
-import org.apache.poi.hssf.record.formula.functions.Na;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -29,6 +28,8 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	private Navitem btnProveedores;
 	@Wire
 	private Navitem btnPatrocinantes;
+	@Wire
+	private Navitem btnReglas;
 	//Configuracion -> Categorias
 	
 	private Div contenido;
@@ -53,7 +54,7 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	
 	public void onClick$btnPreferencias(){
 		
-		pagina = "configuracion/Preferencia.zul";
+		pagina = "configuracion/preferencia.zul";
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}
@@ -75,6 +76,13 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	public void onClick$btnPatrocinantes(){
 		
 		pagina = "configuracion/patrocinantes.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnReglas(){
+		
+		pagina = "configuracion/reglasClub.zul";
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}

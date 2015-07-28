@@ -83,6 +83,11 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
         window.doModal();
     }
 	
+	@Listen("onClick = #btnPreferenciasRegistrar")
+	public void showModalPreferencia(Event e){
+		Window window = (Window)Executions.createComponents("configuracion/registrarPreferencias.zul", null, null);
+		window.doModal();
+	}
 
 	@Listen("onClick = #btnProveedoresRegistrar")
     public void showModalProveedor(Event e) {

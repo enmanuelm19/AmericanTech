@@ -28,6 +28,7 @@
 			<navitem label="Instalaciones" id="btnInstalaciones" iconSclass="z-icon-angle-double-right" />
 			<navitem label="Proveedores" id="btnProveedores" iconSclass="z-icon-angle-double-right"/>	
 			<navitem label="Patrocinantes" id="btnPatrocinantes" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Reglas Club" id="btnReglas" iconSclass="z-icon-angle-double-right"></navitem>
 			<nav label="Categorías" iconSclass="z-icon-angle-double-right">
 				<navitem label="Tipo de sugerencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoSugerencia.zul"/>
 				<navitem label="Tipo de noticia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoNoticia.zul"/>

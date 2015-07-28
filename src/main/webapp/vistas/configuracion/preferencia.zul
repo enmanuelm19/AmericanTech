@@ -24,7 +24,7 @@
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
 				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnProveedoresRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+					<button id="btnPreferenciasRegistrar" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
