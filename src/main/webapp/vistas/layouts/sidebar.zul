@@ -17,17 +17,17 @@
 		</div>-->
 	</div>
 	<!-- Navigation List -->
-	<navbar id="navbar" sclass="nav-list" orient="vertical">
+	<navbar id="navbar" sclass="nav-list" orient="vertical" apply="controllers.ControllerNavigation">
 		<navitem label="Inicio" iconSclass="z-icon-home" selected="true" href="/america/vistas/index.zul"/>
 		<!--  <navitem label="Typography" iconSclass="z-icon-text-width"/>-->
 		
 			<nav label="Configuración" iconSclass="z-icon-cogs">
-		    <navitem label="Perfil del club" iconSclass="z-icon-angle-double-right"  href="/america/vistas/configuracion/perfilClub.zul"/>
-			<navitem label="Junta directiva" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/juntaDirectiva.zul"/>
-			<navitem label="Preferencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/Preferencia.zul"/>
-			<navitem label="Instalaciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/registrarInstalacion.zul"/>
-						<navitem label="Proveedores" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/proveedores.zul"/>	
-			<navitem label="Patrocinantes" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/patrocinantes.zul"/>
+		    <navitem label="Perfil del club" id="btnPerfilClub" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Junta directiva" id="btnJuntaDirectiva" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Preferencias" id="btnPreferencias" iconSclass="z-icon-angle-double-right" />
+			<navitem label="Instalaciones" id="btnInstalaciones" iconSclass="z-icon-angle-double-right" />
+			<navitem label="Proveedores" id="btnProveedores" iconSclass="z-icon-angle-double-right"/>	
+			<navitem label="Patrocinantes" id="btnPatrocinantes" iconSclass="z-icon-angle-double-right"/>
 			<nav label="Categorías" iconSclass="z-icon-angle-double-right">
 				<navitem label="Tipo de sugerencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoSugerencia.zul"/>
 				<navitem label="Tipo de noticia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoNoticia.zul"/>

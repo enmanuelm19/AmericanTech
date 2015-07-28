@@ -14,13 +14,15 @@
 
 <zk xmlns:n="native">
 	<include src="layouts/navbar.zul"/>             
-	<hlayout id="main" spacing="0">
+	<div id="main">
 		<include src="layouts/sidebar.zul"/>    
 		<vlayout spacing="0" hflex="1">
+		<div id="contenido" width="100%">
 			<include src="layouts/breadcrumbs.zul"/>
 			<include src="layouts/page.zul"/>
+		</div>
 		</vlayout>
-	</hlayout>
+	</div>
 
 	
 </zk>

@@ -79,7 +79,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
     public void showModalPatrocinante(Event e) {
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
-                "registrarPatrocinante.zul", null, null);
+                "configuracion/registrarPatrocinante.zul", null, null);
         window.doModal();
     }
 	
@@ -88,7 +88,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
     public void showModalProveedor(Event e) {
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
-                "registrarProveedor.zul", null, null);
+                "configuracion/registrarProveedor.zul", null, null);
         window.doModal();
     }
 	
