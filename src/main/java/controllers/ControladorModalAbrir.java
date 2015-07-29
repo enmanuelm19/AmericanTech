@@ -17,7 +17,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	public void showModal(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
-				"registrarTipoInstalacion.zul", null, null);
+				"configuracion/categoria/registrarTipoInstalacion.zul", null, null);
 		window.doModal();
 	}
 	
@@ -34,7 +34,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	public void showModalRecurso(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
-				"registrarRecurso.zul", null, null);
+				"configuracion/categoria/registrarRecurso.zul", null, null);
 		window.doModal();
 	
 	}
@@ -43,7 +43,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	public void showModalTipoEvento(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
-				"registrarTipoEvento.zul", null, null);
+				"configuracion/categoria/registrarTipoEvento.zul", null, null);
 		window.doModal();
 	
 	}
@@ -52,7 +52,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	public void showModalTipoPreferencia(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
-				"registrarTipoPreferencia.zul", null, null);
+				"configuracion/categoria/registrarTipoPreferencia.zul", null, null);
 		window.doModal();
 	
 	}
@@ -61,7 +61,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	public void kkkk(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
-				"registrarTipoNoticia.zul", null, null);
+				"configuracion/categoria/registrarTipoNoticia.zul", null, null);
 		window.doModal();
 	
 	}
@@ -113,7 +113,12 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	        window.doModal();
 	    }
 	
-	
+	@Listen("onClick = #btnRegEstadoReservacion")
+	public void showModalEstadoReservacion(Event e){
+		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarEstadoReservacion.zul", null, null);
+		window.doModal();
+	}
+	 
 	   @Command
 	    public void showModalOpiniones(Event e) {
 	        //create a window programmatically and use it as a modal dialog.

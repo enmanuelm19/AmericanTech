@@ -30,15 +30,15 @@
 			<navitem label="Patrocinantes" id="btnPatrocinantes" iconSclass="z-icon-angle-double-right"/>
 			<navitem label="Reglas Club" id="btnReglas" iconSclass="z-icon-angle-double-right"></navitem>
 			<nav label="Categorías" iconSclass="z-icon-angle-double-right">
-				<navitem label="Tipo de sugerencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoSugerencia.zul"/>
-				<navitem label="Tipo de noticia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoNoticia.zul"/>
-				<navitem label="Tipo de evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoEventoPrincipal.zul"/>
-				<navitem label="Tipo de preferencia" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/registrarPreferencia.zul"/>
-				<navitem label="Tipo de instalación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoInstalacion.zul"/>
-				<navitem label="Tipo de Sanción" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tiposSanciones.zul"/>
-				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/recursos.zul"/>
-				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/estadoReservacion.zul"/>
-				<navitem label="Motivo postulacion" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoPostulacion.zul"/>
+				<navitem label="Tipo de sugerencia" iconSclass="z-icon-angle-double-right" id="btnTipoSugerencia"/>
+				<navitem label="Tipo de noticia" iconSclass="z-icon-angle-double-right" id="btnTipoNoticia"/>
+				<navitem label="Tipo de evento" iconSclass="z-icon-angle-double-right" id="btnTipoEvento"/>
+				<navitem label="Tipo de preferencia" iconSclass="z-icon-angle-double-right" id="btnTipoPreferencia"/>
+				<navitem label="Tipo de instalación" iconSclass="z-icon-angle-double-right" id="btnTipoInstalacion"/>
+				<navitem label="Tipo de Sanción" iconSclass="z-icon-angle-double-right" id="btnTipoSancion"/>
+				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" id="btnRecurso"/>
+				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" id="btnEstadoReservacion"/>
+				<navitem label="Motivo postulacion" iconSclass="z-icon-angle-double-right" id="btnMotivoPostulacion"/>
 				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoActividad.zul"/>
 				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoVenta.zul"/> 
 				<navitem label="Tipo desvinculación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoDesvinculacion.zul"/>

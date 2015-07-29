@@ -31,6 +31,24 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	@Wire
 	private Navitem btnReglas;
 	//Configuracion -> Categorias
+	@Wire
+	private Navitem btnTipoSugerencia;
+	@Wire
+	private Navitem btnTipoNoticia;
+	@Wire
+	private Navitem btnTipoEvento;
+	@Wire
+	private Navitem btnTipoPreferencia;
+	@Wire
+	private Navitem btnTipoInstalacion;
+	@Wire
+	private Navitem btnTipoSancion;
+	@Wire
+	private Navitem btnRecurso;
+	@Wire
+	private Navitem btnEstadoReservacion;
+	@Wire
+	private Navitem btnMotivoPostulacion;
 	
 	private Div contenido;
 	private String pagina;
@@ -86,5 +104,68 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}
+	
+	//Configuracion -> Categoria
+	public void onClick$btnTipoSugerencia(){
+		
+		pagina = "configuracion/categoria/tipoSugerencia.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
 
+	public void onClick$btnTipoNoticia(){
+		
+		pagina = "configuracion/categoria/tipoNoticia.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnTipoEvento(){
+		
+		pagina = "configuracion/categoria/tipoEventoPrincipal.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnTipoPreferencia(){
+		
+		pagina = "configuracion/categoria/tipoPreferencia.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnTipoInstalacion(){
+		
+		pagina = "configuracion/categoria/tipoInstalacion.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnTipoSancion(){
+		
+		pagina = "configuracion/categoria/tiposSanciones.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnRecurso(){
+		
+		pagina = "configuracion/categoria/recursos.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnEstadoReservacion(){
+		
+		pagina = "configuracion/categoria/estadoReservacion.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnMotivoPostulacion(){
+		
+		pagina = "configuracion/categoria/motivoPostulacion.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
 }
