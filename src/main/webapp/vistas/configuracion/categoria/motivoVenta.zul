@@ -8,31 +8,31 @@
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Categoria" href="#"/>
-					<label value="Tipo de Actividad"/>
+					<label value="Motivo Venta"/>
 				</div>
 			</div>
 			<div class="contenedor" align="center" height="970px">
 			
 				<div sclass="page-header" align="left">
-				    <label value="Tipo de Actividad"/>
+				    <label value="Motivo Venta"/>
 		  		</div>
 				<separator spacing="30px"/>
 				<space/><space/>
 				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnRegTipoActividad" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
+				<div apply="controllers.ControllerVerAfiliado" xmlns:w='client' align="right">
+					<button id="btnRegistrarMotivoVenta" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
 				
 				<div class="contenido" >
 					<div align="left">
-						<div class='encabezado'>Lista de Tipo de Actividades</div>
+						<div class='encabezado'>Lista de Motivo Venta</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
 					
-					<grid emptyMessage="No se encuentran tipos de Actividads registrados" mold="paging"
+					<grid emptyMessage="No se encuentran motivo de ventas registrados" mold="paging"
 							pageSize="10" >
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
@@ -47,15 +47,15 @@
 						</auxhead>
 						
 						<columns>
-							<column hflex="2">Id Tipo de Actividad </column>
-							<column hflex="2">Nombre Tipo de Actividad</column>
+							<column hflex="2">Id Motivo </column>
+							<column hflex="2">Nombre Motivo</column>
 							<column width="100px">Acciones </column>
 						</columns>
 						
 						<rows>
 							<row>
 							    <label value="001" />
-								<label value="Actividad1" />
+								<label value="Motivo01" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
@@ -63,7 +63,7 @@
 							</row>
 							<row>
 							   <label value="002" />
-								<label value="Actividad2" />
+								<label value="Motivo02" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
@@ -71,7 +71,7 @@
 							</row>
 							<row>
 							    <label value="003" />
-								<label value="Actividad3" />
+								<label value="Motivo3" />
 								<div>
 
 									<button sclass="btn-link"
@@ -82,7 +82,7 @@
 							</row>
 							<row>
 							    <label value="004" />
-								<label value="Actividad4" />
+								<label value="Motivo04" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -91,24 +91,24 @@
 								</div>
 							</row>
 								<row>
-							    <label value="001" />
-								<label value="Actividad1" />
+							    <label value="005" />
+								<label value="Motivo05" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
 							<row>
-							   <label value="002" />
-								<label value="Actividad2" />
+							   <label value="006" />
+								<label value="Motivo06" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
 							<row>
-							    <label value="003" />
-								<label value="Actividad3" />
+							    <label value="007" />
+								<label value="Motivo07" />
 								<div>
 
 									<button sclass="btn-link"
@@ -118,8 +118,8 @@
 								</div>
 							</row>
 							<row>
-							    <label value="004" />
-								<label value="Actividad4" />
+							    <label value="008" />
+								<label value="Motivo08" />
 								<div>
 									<button sclass="btn-link"
 										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -128,24 +128,24 @@
 								</div>
 							</row>
 								<row>
-							    <label value="001" />
-								<label value="Actividad1" />
+							    <label value="009" />
+								<label value="Motivo09" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
 							<row>
-							   <label value="002" />
-								<label value="Actividad2" />
+							   <label value="010" />
+								<label value="Motivo10" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
 							<row>
-							    <label value="003" />
-								<label value="Actividad3" />
+							    <label value="011" />
+								<label value="Motivo11" />
 								<div>
 
 									<button sclass="btn-link"
@@ -154,58 +154,9 @@
 										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
-							<row>
-							    <label value="004" />
-								<label value="Actividad4" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-								<row>
-							    <label value="001" />
-								<label value="Actividad1" />
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							<row>
-							   <label value="002" />
-								<label value="Actividad2" />
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							<row>
-							    <label value="003" />
-								<label value="Actividad3" />
-								<div>
-
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							<row>
-							    <label value="004" />
-								<label value="Actividad4" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							
-						</rows>
-						
+							</rows>
 						 <foot>
-            				<footer span="1" class="footer_right" label="16 items en la lista" />
+            				<footer span="1" class="footer_right" label="11 items en la lista" />
         				 </foot>
 					</grid>
 					

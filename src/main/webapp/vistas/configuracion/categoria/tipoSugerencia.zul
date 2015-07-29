@@ -1,8 +1,4 @@
-<?page title="Dashboard - ZK Admin"?>
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
 <zk xmlns:n="native">
 <div>
 	<hlayout  spacing="0">
@@ -24,7 +20,7 @@
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
 				<div apply="controllers.ControllerTipoSugerencia" xmlns:w='client' align="right">
-					<button id="btnRegTipoSugerencia" label="Agregar Nuevo" iconSclass="z-icon-floppy-o"  class='boton-guardar'/>
+					<button id="btnRegTipoSugerencia" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>

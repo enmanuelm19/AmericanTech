@@ -39,10 +39,10 @@
 				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" id="btnRecurso"/>
 				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" id="btnEstadoReservacion"/>
 				<navitem label="Motivo postulacion" iconSclass="z-icon-angle-double-right" id="btnMotivoPostulacion"/>
-				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoActividad.zul"/>
-				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/motivoVenta.zul"/> 
-				<navitem label="Tipo desvinculación" iconSclass="z-icon-angle-double-right" href="/america/vistas/configuracion/categoria/tipoDesvinculacion.zul"/>
-				<navitem label="Cargo junta directiva" iconSclass="z-icon-angle-double-right" href=""/>
+				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" id="btnTipoActividad"/>
+				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" id="btnMotivoVenta"/> 
+				<navitem label="Tipo desvinculación" iconSclass="z-icon-angle-double-right" id="btnTipoDesvinculacion"/>
+				<navitem label="Cargo junta directiva" iconSclass="z-icon-angle-double-right" id="btnCargoJunta"/>
 			</nav>
 		</nav>
 		<nav label="Socios" iconSclass="z-icon-user">

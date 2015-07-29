@@ -49,6 +49,14 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	private Navitem btnEstadoReservacion;
 	@Wire
 	private Navitem btnMotivoPostulacion;
+	@Wire
+	private Navitem btnTipoActividad;
+	@Wire
+	private Navitem btnMotivoVenta;
+	@Wire
+	private Navitem btnTipoDesvinculacion;
+	@Wire
+	private Navitem btnCargoJunta;
 	
 	private Div contenido;
 	private String pagina;
@@ -165,6 +173,34 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	public void onClick$btnMotivoPostulacion(){
 		
 		pagina = "configuracion/categoria/motivoPostulacion.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnTipoActividad(){
+		
+		pagina = "configuracion/categoria/tipoActividad.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnMotivoVenta(){
+		
+		pagina = "configuracion/categoria/motivoVenta.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnTipoDesvinculacion(){
+		
+		pagina = "configuracion/categoria/tipoDesvinculacion.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnCargoJunta(){
+		
+		pagina = "configuracion/categoria/cargoJunta.zul";
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}

@@ -25,7 +25,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	public void ikhjk(Event e) {
 		//create a window programmatically and use it as a modal dialog.
 		Window window = (Window)Executions.createComponents(
-				"registrarTipoActividad.zul", null, null);
+				"configuracion/categoria/registrarTipoActividad.zul", null, null);
 		window.doModal();
 	
 	}
@@ -71,7 +71,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
     public void showModalTipoDesvinculacion(Event e) {
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
-                "registrarTipoDesvinculacion.zul", null, null);
+                "configuracion/categoria/registrarTipoDesvinculacion.zul", null, null);
         window.doModal();
     }
 	
@@ -116,6 +116,18 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	@Listen("onClick = #btnRegEstadoReservacion")
 	public void showModalEstadoReservacion(Event e){
 		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarEstadoReservacion.zul", null, null);
+		window.doModal();
+	}
+	
+	@Listen("onClick = #btnRegMotivoPostulacion")
+	public void showModalMotivoPostulacion(Event e){
+		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarMotivoPostulacion.zul", null, null);
+		window.doModal();
+	}
+	
+	@Listen("onClick = #btnRegCargos")
+	public void showModalCargos(Event e){
+		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarCargoJunta.zul", null, null);
 		window.doModal();
 	}
 	 

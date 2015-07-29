@@ -42,7 +42,7 @@ public class ControllerVerAfiliado extends SelectorComposer<Component> {
 	 }
 	 @Listen("onClick = #btnRegistrarMotivoVenta")
 	 public void mostrarRegistrarMotivoVenta(){
-		 Window window = (Window)Executions.createComponents("registrarMotivoVenta.zul", null, null);
+		 Window window = (Window)Executions.createComponents("configuracion/categoria/registrarMotivoVenta.zul", null, null);
 		 window.doModal();
 
 	 }
