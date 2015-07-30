@@ -13,7 +13,7 @@ public class ControllerEjecutarEvento extends SelectorComposer<Component> {
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "listaTareas.zul", null, null);
+	                "evento/administrarEvento/listaTareas.zul", null, null);
 	        window.doModal();
 	    }
 	 
@@ -21,7 +21,7 @@ public class ControllerEjecutarEvento extends SelectorComposer<Component> {
 	    public void showModal1(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "listaTareas.zul", null, null);
+	                "evento/administrarEvento/listaTareas.zul", null, null);
 	        window.doModal();
 	    }
 }

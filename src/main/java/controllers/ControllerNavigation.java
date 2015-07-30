@@ -3,10 +3,7 @@ package controllers;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
-import org.zkoss.zkmax.zul.Navitem;
-import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
 
 public class ControllerNavigation extends GenericForwardComposer<Component>{
@@ -260,6 +257,49 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	}
 	
 	public void onClick$btnEventualidades(){
+		
+		pagina = "instalacion/registrarEventualidadInst.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	//Evento
+	public void onClick$btnSolicitarEvento(){
+		
+		pagina = "evento/solicitarEvento.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnRegistrarEvento(){
+		
+		pagina = "evento/administrarEvento/registrarEvento.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnPlanificarEvento(){
+		
+		pagina = "evento/administrarEvento/planificarEvento.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnEjecutarEvento(){
+		
+		pagina = "evento/administrarEvento/ejecutarEvento.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnCancelarEvento(){
+		
+		pagina = "evento/administrarEvento/cancelarEvento.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnEventualidadEvento(){
 		
 		pagina = "instalacion/registrarEventualidadInst.zul";
 		contenido.getChildren().clear();

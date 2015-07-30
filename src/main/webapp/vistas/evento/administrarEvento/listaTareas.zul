@@ -6,7 +6,7 @@
 
 <zk xmlns:n="native" >
 	<window style="iconSclass=z-icon-cogs;" title="Actividades por Evento" closable="true"  border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="450px" width="500px">
+	height="70%" width="55%">
 	<caption iconSclass="z-icon-calendar"/>
 		<div class='contenedor'>
 			<separator spacing="20px"/>
