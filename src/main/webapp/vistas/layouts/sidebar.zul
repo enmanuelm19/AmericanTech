@@ -60,10 +60,11 @@
 			</nav>
 		</nav>
 		<nav label="Instalaciones" iconSclass="z-icon-home">
-			<navitem label="Visitas" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/registrarVisita.zul"/>
-			<navitem label="Reservación" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/misReservaciones.zul"/>
-			<navitem label="Alquileres" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/misAlquileres.zul"/>
-			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" href="/america/vistas/instalacion/registrarEventualidadInst.zul" />		
+			<navitem label="Visitas" iconSclass="z-icon-angle-double-right" id="btnVisitas"/>
+			<navitem label="Reservación" iconSclass="z-icon-angle-double-right" id="btnMisReservaciones"/>
+			<navitem label="Alquileres" iconSclass="z-icon-angle-double-right" id="btnAlquileres"></navitem>
+			<navitem label="Mis Alquileres" iconSclass="z-icon-angle-double-right" id="btnMisAlquileres"/>
+			<navitem label="Eventualidades" iconSclass="z-icon-angle-double-right" id="btnEventualidades" />		
 		</nav>
 		<nav label="Eventos"  iconSclass="z-icon-calendar">
 			<navitem label="Solicitudes evento" iconSclass="z-icon-angle-double-right" href="/america/vistas/evento/solicitarEvento.zul"/>

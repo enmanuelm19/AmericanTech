@@ -109,7 +109,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	    public void showModalAlquiler(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "solicitudAlquiler.zul", null, null);
+	                "instalacion/solicitudAlquiler.zul", null, null);
 	        window.doModal();
 	    }
 	

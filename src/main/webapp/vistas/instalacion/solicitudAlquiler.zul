@@ -29,7 +29,7 @@
 						            
 						            <row class="col-md-3" height="140px">
 										<div>
-						                  		<image src="../../assets/portal/img/icon1.png" width="120px"
+						                  		<image src="../assets/portal/img/icon1.png" width="120px"
 													sclass="icon" tooltiptext="Icono" />
 						                 </div>
 						            </row>

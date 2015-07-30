@@ -16,69 +16,7 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	//Configuracion
-	@Wire
-	private Navitem btnPerfilClub;
-	@Wire
-	private Navitem btnJuntaDirectiva;
-	@Wire
-	private Navitem btnPreferencias;
-	@Wire
-	private Navitem btnInstalaciones;
-	@Wire
-	private Navitem btnProveedores;
-	@Wire
-	private Navitem btnPatrocinantes;
-	@Wire
-	private Navitem btnReglas;
-	//Configuracion -> Categorias
-	@Wire
-	private Navitem btnTipoSugerencia;
-	@Wire
-	private Navitem btnTipoNoticia;
-	@Wire
-	private Navitem btnTipoEvento;
-	@Wire
-	private Navitem btnTipoPreferencia;
-	@Wire
-	private Navitem btnTipoInstalacion;
-	@Wire
-	private Navitem btnTipoSancion;
-	@Wire
-	private Navitem btnRecurso;
-	@Wire
-	private Navitem btnEstadoReservacion;
-	@Wire
-	private Navitem btnMotivoPostulacion;
-	@Wire
-	private Navitem btnTipoActividad;
-	@Wire
-	private Navitem btnMotivoVenta;
-	@Wire
-	private Navitem btnTipoDesvinculacion;
-	@Wire
-	private Navitem btnCargoJunta;
-	//Socio
-	@Wire
-	private Navitem btnAcciones;
-	@Wire
-	private Navitem btnMiPerfil;
-	@Wire
-	private Navitem btnMisSanciones;
-	@Wire
-	private Navitem btnSolicitarVenta;
-	//Socio -> Administrar Socio
-	@Wire
-	private Navitem btnRegistrarSocio;
-	@Wire
-	private Button btnRegistro;
-	@Wire
-	private Navitem btnSanciones;
-	//Socio -> Buzon
-	@Wire
-	private Navitem btnSugerencias;
-	@Wire
-	private Navitem btnOpinion;
+	
 	
 	private Div contenedor1;
 	private Div contenido;
@@ -292,5 +230,39 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}
-
+	//Instalacion
+	public void onClick$btnVisitas(){
+		
+		pagina = "instalacion/registrarVisita.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnMisReservaciones(){
+		
+		pagina = "instalacion/misReservaciones.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnAlquileres(){
+		
+		pagina = "instalacion/administrarAlquileres.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnMisAlquileres(){
+		
+		pagina = "instalacion/misAlquileres.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnEventualidades(){
+		
+		pagina = "instalacion/registrarEventualidadInst.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
 }
