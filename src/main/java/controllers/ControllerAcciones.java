@@ -21,7 +21,7 @@ public class ControllerAcciones {
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "registrarAccion.zul", null, null);
+	                "socio/registrarAccion.zul", null, null);
 	        window.doModal();
 	    }
 	 

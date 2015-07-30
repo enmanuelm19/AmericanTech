@@ -17,7 +17,7 @@ public class ControllerVerAfiliado extends SelectorComposer<Component> {
 		
 	 @Listen("onClick = #btnVerAfiliado")
 	 public void mostrarAfiliado(){
-		 Window window = (Window)Executions.createComponents("verAfiliadoSocio.zul", null, null);
+		 Window window = (Window)Executions.createComponents("socio/verAfiliadoSocio.zul", null, null);
 		 window.doModal();
 
 	 }
@@ -36,7 +36,7 @@ public class ControllerVerAfiliado extends SelectorComposer<Component> {
 	 
 	 @Listen("onClick = #btnNuevaSugerencia")
 	 public void mostrarRegistrarSugerencia(){
-		 Window window = (Window)Executions.createComponents("registrarSugerencia.zul", null, null);
+		 Window window = (Window)Executions.createComponents("socio/buzon/registrarSugerencia.zul", null, null);
 		 window.doModal();
 
 	 }

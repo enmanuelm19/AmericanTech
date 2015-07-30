@@ -17,6 +17,12 @@ public class ControllerRegSancion extends SelectorComposer<Component>{
 	                "configuracion/categoria/registrarTipoSancion.zul", null, null);
 	        window.doModal();
 	    }
+	 
+	 @Listen("onClick = #btnRegSancion")
+	 public void showModalRegistroSancion(Event e){
+		 Window window = (Window)Executions.createComponents("socio/administrarSocio/agregarSancion.zul", null, null);
+		 window.doModal();
+	 }
 	
 
 }

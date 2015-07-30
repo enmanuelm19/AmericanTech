@@ -5,8 +5,8 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="340px" width="500px" >
+	<window title="Registrar Accion" style="iconSclass=z-icon-user;" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+	height="70%" width="55%" >
 		<div class='contenedor'>
 			<div sclass="page-header">
 	    		<label value="Registrar Acción"/>

@@ -46,18 +46,17 @@
 			</nav>
 		</nav>
 		<nav label="Socios" iconSclass="z-icon-user">
-			<navitem label="Acciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/acciones.zul"/>
-			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/miPerfil.zul"/>
-			<navitem label="Mis Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/misSanciones.zul"/>
+			<navitem label="Acciones" iconSclass="z-icon-angle-double-right" id="btnAcciones"/>
+			<navitem label="Mi perfil" iconSclass="z-icon-angle-double-right" id="btnMiPerfil"/>
+			<navitem label="Mis Sanciones" iconSclass="z-icon-angle-double-right" id="btnMisSanciones"/>
 			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
-				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/administrarSocio/postulantes.zul"/>
-				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" href=""/>
-				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/sanciones.zul"/>
+				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" id="btnRegistrarSocio"/>
+				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" id="btnSanciones"/>
 			</nav>
-			<navitem label="Solicitar venta" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/solicitarVenta.zul"/>
+			<navitem label="Solicitar venta" iconSclass="z-icon-angle-double-right" id="btnSolicitarVenta"/>
 			<nav label="Danos tu opinión" iconSclass="z-icon-angle-double-right">
-				<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/buzon/vistaGeneralSugerencias.zul"/>
-				<navitem label="Opinión postulación" iconSclass="z-icon-angle-double-right" href="/america/vistas/socio/opinionPostulacion.zul"/>
+				<navitem label="Sugerencias" iconSclass="z-icon-angle-double-right" id="btnSugerencias"/>
+				<navitem label="Opinión postulación" iconSclass="z-icon-angle-double-right" id="btnOpinion"/>
 			</nav>
 		</nav>
 		<nav label="Instalaciones" iconSclass="z-icon-home">

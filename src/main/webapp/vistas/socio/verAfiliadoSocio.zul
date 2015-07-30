@@ -8,9 +8,9 @@
 
 
 
-<window border="none" title=" " closable="true"
+<window border="none" title="Ver Afiliado " closable="true"
 	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	height="95%" width="40%">
+	 width="55%">
 	<!--  class='form-pricing ' -->
 
 	<div
@@ -19,7 +19,7 @@
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 
 
-		<div class='form-pricing' width="100%" height="100%">
+		<div  width="100%" height="100%">
 			<div align="left">
 				<div class="encabezado">Datos del Afiliado</div>
 				<div align="left" class="linea-two">

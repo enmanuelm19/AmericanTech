@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zkmax.zul.Navitem;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
 
 public class ControllerNavigation extends GenericForwardComposer<Component>{
@@ -57,7 +58,29 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	private Navitem btnTipoDesvinculacion;
 	@Wire
 	private Navitem btnCargoJunta;
+	//Socio
+	@Wire
+	private Navitem btnAcciones;
+	@Wire
+	private Navitem btnMiPerfil;
+	@Wire
+	private Navitem btnMisSanciones;
+	@Wire
+	private Navitem btnSolicitarVenta;
+	//Socio -> Administrar Socio
+	@Wire
+	private Navitem btnRegistrarSocio;
+	@Wire
+	private Button btnRegistro;
+	@Wire
+	private Navitem btnSanciones;
+	//Socio -> Buzon
+	@Wire
+	private Navitem btnSugerencias;
+	@Wire
+	private Navitem btnOpinion;
 	
+	private Div contenedor1;
 	private Div contenido;
 	private String pagina;
 	
@@ -204,4 +227,70 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}
+	
+	//Socio
+	public void onClick$btnAcciones(){
+		
+		pagina = "socio/acciones.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnMiPerfil(){
+		
+		pagina = "socio/miPerfil.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnMisSanciones(){
+		
+		pagina = "socio/misSanciones.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnSolicitarVenta(){
+		
+		pagina = "socio/solicitarVenta.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	//Socio -> Administrar Socio
+	public void onClick$btnRegistrarSocio(){
+		
+		pagina = "socio/administrarSocio/postulantes.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnRegistro(){
+		
+		pagina = "socio/administrarSocio/registrarSocio.zul";
+		contenedor1.getChildren().clear();
+		contenedor1 = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnSanciones(){
+		
+		pagina = "socio/administrarSocio/sanciones.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnOpiniones(){
+		
+		pagina = "socio/administrarSocio/mostrarOpinion.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	//Socio -> Buzon
+	public void onClick$btnSugerencias(){
+		
+		pagina = "socio/buzon/vistaGeneralSugerencias.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+
 }

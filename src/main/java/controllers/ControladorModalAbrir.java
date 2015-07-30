@@ -101,7 +101,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
     public void showModalOpinion(Event e) {
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
-                "opinion.zul", null, null);
+                "socio/buzon/opinion.zul", null, null);
         window.doModal();
     }
 	
@@ -135,7 +135,7 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 	    public void showModalOpiniones(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "opinionesPostulante.zul", null, null);
+	                "socio/administrarSocio/opinionesPostulante.zul", null, null);
 	        window.doModal();
 	    }
 	   

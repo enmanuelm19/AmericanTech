@@ -15,7 +15,7 @@ public class SocioController extends SelectorComposer<Component> {
 		
 	 @Listen("onClick = #btnAgregar")
 	 public void mostrarAfiliado(){
-		 Window window = (Window)Executions.createComponents("registrarAfiliadoSocio.zul", null, null);
+		 Window window = (Window)Executions.createComponents("socio/administrarSocio/registrarAfiliadoSocio.zul", null, null);
 		 window.doModal();
 
 	 }
