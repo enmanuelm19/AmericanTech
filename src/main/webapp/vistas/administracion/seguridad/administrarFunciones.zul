@@ -1,12 +1,7 @@
-<?page title="Dashboard - ZK Admin"?>
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<include src="/vistas/layouts/navbar.zul" />
+	<div>
 	<hlayout spacing="0">
-		<include src="/vistas/layouts/sidebar.zul" />
+		
 		<vlayout spacing="0" hflex="1">
 			<div class='breadcrumbs'>
 				<div class='breadcrumb'>
@@ -31,4 +26,5 @@
 
 		</vlayout>
 	</hlayout>
+	</div>
 </zk>

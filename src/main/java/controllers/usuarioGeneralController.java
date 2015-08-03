@@ -14,7 +14,7 @@ public class usuarioGeneralController extends SelectorComposer<Component>{
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "agregarUsuario.zul", null, null);
+	                "administracion/seguridad/agregarUsuario.zul", null, null);
 	        window.doModal();
 	    }
 	}

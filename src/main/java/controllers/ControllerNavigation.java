@@ -305,4 +305,54 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 		contenido.getChildren().clear();
 		contenido = (Div) Executions.createComponents(pagina, null, null);
 	}
+	
+	//Administracion
+	public void onClick$btnUsuarioConsulta(){
+		
+		pagina = "administracion/seguridad/usuarioGeneral.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnUsuarioConsulta2(){
+		
+		pagina = "administracion/seguridad/usuarioGeneral.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnUsuarioConsulta3(){
+		
+		pagina = "administracion/seguridad/usuarioGeneral.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnGrupos(){
+		
+		pagina = "administracion/seguridad/mostrarGrupos.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnFunciones(){
+		
+		pagina = "administracion/seguridad/administrarFunciones.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnEmpleados(){
+		
+		pagina = "administracion/adjuntarEmpleados.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
+	
+	public void onClick$btnCartelera(){
+		
+		pagina = "administracion/cartelera.zul";
+		contenido.getChildren().clear();
+		contenido = (Div) Executions.createComponents(pagina, null, null);
+	}
 }

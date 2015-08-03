@@ -83,22 +83,22 @@
 				<navitem label="Opiniones postulacion" iconSclass="z-icon-angle-double-right" href=""/>
 						</nav>
 			<nav label="Instalacion" iconSclass="z-icon-home" >
-				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/usuarioGeneral.zul"/>
+				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" id="btnUsuarioConsulta"/>
 			</nav>
 			<nav label="Evento" iconSclass="z-icon-calendar" >
-				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/usuarioGeneral.zul"/>
+				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" id="btnUsuarioConsulta2"/>
 			</nav>
 			
 		</nav>
 		
 		<nav label="Adm. del sistema" iconSclass="z-icon-puzzle-piece">
 			<nav label="Seguridad" iconSclass="z-icon-angle-double-right" >
-				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/usuarioGeneral.zul"/>
-				<navitem label="Grupos" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/mostrarGrupos.zul"/>
-				<navitem label="Funciones" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/seguridad/administrarFunciones.zul"/>
+				<navitem label="Usuario" iconSclass="z-icon-angle-double-right" id="btnUsuarioConsulta3"/>
+				<navitem label="Grupos" iconSclass="z-icon-angle-double-right" id="btnGrupos"/>
+				<navitem label="Funciones" iconSclass="z-icon-angle-double-right" id="btnFunciones"/>
 			</nav>
-			<navitem label="Adjuntar Empleados" iconSclass="z-incon-angle-double-right" href="/america/vistas/administracion/adjuntarEmpleados.zul"></navitem>
-			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" href="/america/vistas/administracion/cartelera.zul"/>
+			<navitem label="Adjuntar Empleados" iconSclass="z-incon-angle-double-right" id="btnEmpleados"></navitem>
+			<navitem label="Cartelera" iconSclass="z-icon-angle-double-right" id="btnCartelera"/>
 			<navitem label="Backup BD" iconSclass="z-icon-angle-double-right" href=""/>
 		</nav>
 		
