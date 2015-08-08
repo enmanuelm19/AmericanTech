@@ -8,31 +8,31 @@
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Categoria" href="#"/>
-					<label value="Tipos de Instalaciones"/>
+					<label value="Motivo Postulacion"/>
 				</div>
 			</div>
 			<div class="contenedor" align="center" height="970px">
 			
 				<div sclass="page-header" align="left">
-				    <label value="Tipos de Instalaciones"/>
+				    <label value="Motivo Postulacion"/>
 		  		</div>
 				
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
 				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnRegTipoInstalacion" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
+					<button id="btnRegMotivoPostulacion" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
 				
 				<div class="contenido" >
 					<div align="left">
-						<div class='encabezado'>Lista Tipos de Instalaciones</div>
+						<div class='encabezado'>Lista Motivos Postulacion</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
 					
-					<grid emptyMessage="No se encuentran tipos de instalciones registrados" mold="paging"
+					<grid emptyMessage="No se encuentran motivos postulacion registrados" mold="paging"
 							pageSize="10" >
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
@@ -48,14 +48,14 @@
 						
 						<columns>
 							<column hflex="2">Codigo</column>
-							<column hflex="2">Tipo Instalacion</column>
-							<column width="15%">Acciones</column>
+							<column hflex="2">Motivo</column>
+							<column width="15%">Acciones </column>
 						</columns>
 						
 						<rows>
 							<row>
 							    <label value="001" />
-								<label value="Deprtiva" />
+								<label value="Motivo01" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
@@ -63,19 +63,48 @@
 							</row>
 							<row>
 							   <label value="002" />
-								<label value="Social" />
+								<label value="Motivo02" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 								</div>
 							</row>
-							
+							<row>
+							    <label value="003" />
+								<label value="Motivo03" />
+								<div>
+
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+							<row>
+							    <label value="004" />
+								<label value="Motivo04" />
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
+								<row>
+							    <label value="005" />
+								<label value="Motivo05" />
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+								</div>
+							</row>
 						</rows>
 						
 						 <foot>
-            				<footer span="1" class="footer_right" label="16 items en la lista" />
+            				<footer span="1" class="footer_right" label="5 items en la lista" />
         				 </foot>
 					</grid>
+					
 				</div>
 			</div>
 			</div>
@@ -83,10 +112,3 @@
 	</hlayout>
 	</div>
 </zk>
-
-
-
-
-
-
-						

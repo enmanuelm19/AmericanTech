@@ -1,16 +1,8 @@
-<!-- Responsable Hector Gil -->
-<?page title="Lista Sugerencias" contentType="text/html;charset=UTF-8"?>
-
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 
 <zk xmlns:n="native">
-	<include src="../../layouts/navbar.zul" />
+	<div>
 	<hlayout spacing="0">
-		<include src="../../layouts/sidebar.zul" />
+		
 
 		<vlayout spacing="0" hflex="1">
 
@@ -68,7 +60,7 @@
 								</auxheader>
 								<auxheader>
 									<image
-										src="../../../assets/img/funnel.png" />
+										src="../assets/img/funnel.png" />
 									<combobox id="cmbnoticia"
 										value="Fecha." width="60%">
 										<comboitem
@@ -79,7 +71,7 @@
 								</auxheader>
 								<auxheader>
 									<image
-										src="../../../assets/img/funnel.png" />
+										src="../assets/img/funnel.png" />
 									<combobox value="Tipo Sugerencia"
 										width="90%">
 										<comboitem label="Evento" />
@@ -783,4 +775,5 @@
 			</div>
 		</vlayout>
 	</hlayout>
+	</div>
 </zk>

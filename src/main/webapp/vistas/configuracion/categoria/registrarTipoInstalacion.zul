@@ -5,7 +5,7 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window border="none" height="45%" width="35%" style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Instalacion"
+	<window border="none" height="70%" width="55%" style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Instalacion"
 		closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 			<caption iconSclass="z-icon-cogs"/>

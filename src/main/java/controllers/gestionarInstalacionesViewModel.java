@@ -10,7 +10,7 @@ public class gestionarInstalacionesViewModel {
     public void showModalRegInst(Event e) {
         //create a window programmatically and use it as a modal dialog.
         Window window = (Window)Executions.createComponents(
-                "registrarInstalacion.zul", null, null);
+                "configuracion/registrarInstalacion.zul", null, null);
         window.doModal();
     }
 }

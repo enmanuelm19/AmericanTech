@@ -1,13 +1,14 @@
-<?page title="Dashboard - ZK Admin"?>
+<?page title="Motivo Postulacion" contentType="text/html;charset=UTF-8"?>
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<zk xmlns:n="native">
-	<window border="none" height="70%" width="55%" style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Desvinculacion"
+
+<zk xmlns:n="native" >
+<window border="none" height="70%" width="55%" style="iconSclass=z-icon-cogs;" title=" Registrar Motivo Postulacion"
 		closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
-	<caption iconSclass="z-icon-cogs"/>
+		<caption iconSclass="z-icon-cogs"/>
 
 		<div class="contenedor" align="center">
 			<separator spacing="20px"/>
@@ -21,30 +22,28 @@
 		                        									                                                				                             				                             					
 		             </div>	
                 </div>
-                <separator spacing="15px"/>		 
+                <separator spacing="25px"/>		 
 						<grid width="100%">
 							<rows>
 								<row>
-									<vbox>
-										
+									<vbox>	
 										<hbox>
-											Código 
-											<textbox
-												id="txtRegTipoEventCodigo" width="100%" />
-											<button
-												iconSclass="z-icon-search blue" class="btn-link"
-												tooltiptext="Buscar" />
-										</hbox>
-										<hbox>
-											Nombre <textbox id="txtRegTipoEventDescripcion" type="text" rows="1" value="" width="150%" constraint="no empty" />
-										</hbox>
+											<div>
+												<label value="Descripcion" />
+											</div>
+											<separator /><separator/><separator/>
+											<div>
+												<textbox id="txtRegTipoEventDescripcion" type="text" rows="3" value="" width="200%" constraint="no empty" />
+									
+											</div>
+										</hbox>									
 									</vbox>
 								</row>
 
 							</rows>
 						</grid>
 			        
-      		    <separator spacing="20px"/>
+      		    <separator spacing="25px"/>
 			     <div align="center">
 							<hbox>
 								<div>
@@ -65,4 +64,6 @@
 		</div>
 	</div>
 	</window>
+
+	
 </zk>

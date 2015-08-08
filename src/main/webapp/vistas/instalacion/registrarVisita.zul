@@ -1,13 +1,7 @@
-<?page title="Registrar Visita"?>
-<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
-<zk xmlns:n="native" class='contenedor'>
-	<include src="../layouts/navbar.zul" />
-	 <hlayout id="main" spacing="0" >
-		 <include src="../layouts/sidebar.zul"/>
+<zk xmlns:n="native" >
+	<div>
+	 <hlayout spacing="0" >
+		 
 		   <vlayout hflex="1" spacing="0" >
 		   
 		   	<div sclass="breadcrumbs">
@@ -46,7 +40,7 @@
 						            
 						            <row class="col-md-3" height="140px">
 										<div>
-						                  		<image src="../../assets/portal/img/img1.jpg"  width="100px" height="100px" />
+						                  		<image src="../assets/portal/img/img1.jpg"  width="100px" height="100px" />
 						                 </div>
 						            </row>
 						            <row class="col-md-9">
@@ -239,5 +233,5 @@
 		</vlayout>
 	</hlayout>
 
-	
+	</div>
 </zk>

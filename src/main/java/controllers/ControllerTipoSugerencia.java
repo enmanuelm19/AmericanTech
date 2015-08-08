@@ -14,7 +14,7 @@ public class ControllerTipoSugerencia extends SelectorComposer<Component> {
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "registrarTipoSugerencia.zul", null, null);
+	                "configuracion/categoria/registrarTipoSugerencia.zul", null, null);
 	        window.doModal();
 	    }
 }

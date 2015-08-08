@@ -1,24 +1,10 @@
 <!-- Responsable Hector Gil - Copiado por Wilmer Aponte -->
 
-<?page title="Registrar Socio" contentType="text/html;charset=UTF-8"?>
-
-
-
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
-
 
 <zk xmlns:n="native">
-	<include src="../../layouts/navbar.zul" />
+	<div>
 	<hlayout spacing="0">
-		<include src="../../layouts/sidebar.zul" />
-
-
-
-		<vlayout spacing="0" hflex="1">
+				<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-user" />
@@ -432,4 +418,5 @@
 			</div><!-- FIN CONTENEDOR -->
 		</vlayout>
 	</hlayout>
+	</div>
 </zk>

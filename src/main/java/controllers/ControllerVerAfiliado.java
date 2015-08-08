@@ -17,32 +17,32 @@ public class ControllerVerAfiliado extends SelectorComposer<Component> {
 		
 	 @Listen("onClick = #btnVerAfiliado")
 	 public void mostrarAfiliado(){
-		 Window window = (Window)Executions.createComponents("verAfiliadoSocio.zul", null, null);
+		 Window window = (Window)Executions.createComponents("socio/verAfiliadoSocio.zul", null, null);
 		 window.doModal();
 
 	 }
 	 @Listen("onClick = #btnRegistrarActividades")
 	 public void mostrarRegistrarActividades(){
-		 Window window = (Window)Executions.createComponents("administrarEvento/registrarActividad.zul", null, null);
+		 Window window = (Window)Executions.createComponents("evento/administrarEvento/registrarActividad.zul", null, null);
 		 window.doModal();
 
 	 }
 	 @Listen("onClick = #btnVerListaActividades")
 	 public void mostrarListaActividades(){
-		 Window window = (Window)Executions.createComponents("administrarEvento/listaActividades.zul", null, null);
+		 Window window = (Window)Executions.createComponents("evento/administrarEvento/listaActividades.zul", null, null);
 		 window.doModal();
 
 	 }
 	 
 	 @Listen("onClick = #btnNuevaSugerencia")
 	 public void mostrarRegistrarSugerencia(){
-		 Window window = (Window)Executions.createComponents("registrarSugerencia.zul", null, null);
+		 Window window = (Window)Executions.createComponents("socio/buzon/registrarSugerencia.zul", null, null);
 		 window.doModal();
 
 	 }
 	 @Listen("onClick = #btnRegistrarMotivoVenta")
 	 public void mostrarRegistrarMotivoVenta(){
-		 Window window = (Window)Executions.createComponents("registrarMotivoVenta.zul", null, null);
+		 Window window = (Window)Executions.createComponents("configuracion/categoria/registrarMotivoVenta.zul", null, null);
 		 window.doModal();
 
 	 }

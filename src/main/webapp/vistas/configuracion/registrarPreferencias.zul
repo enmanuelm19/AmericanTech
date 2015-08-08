@@ -4,32 +4,22 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" class='contenedor'>
-	<include src="../layouts/navbar.zul"/>             
-	<hlayout id="main" spacing="0">
-		<include src="../layouts/sidebar.zul"/>    
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-user"/>
-					    <a label="Configuración" href="#"/>
-							<label value="Tipo de Preferencia"/>
-					</div>
- 
-			</div>
+<zk xmlns:n="native" >
+	<window  title="Registrar Preferencia" style="iconSclass=z-icon-cogs;" action="show:slideDown({duration: 300}); hide:slideUp({duration: 300})" height="650px" closable="true" width="55%">
+		
 
 		<div class='contenedor'>
 				
 	 <div sclass="page-header">
-	    <label value="Tipo de Preferencia"/>
+	    <label value="Registrar Preferencia"/>
 	  
 	  </div>
-				<div class='contenido'>
-					<div class="col-md-8 col-centered "
+				
+					<div class="col-md-10 col-centered "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="550px"
+						<div  width="550px"
 							height="480px">
         		  			    <div align ="left">	
 	                       			<div  class="encabezado">
@@ -96,15 +86,14 @@
 			        </div>
    				 </div>
 
-	</div>		
+	
 			
 		</div>		
 			
 			
 			
 			
-		</vlayout>
-	</hlayout>
+		</window>
 
 	
 </zk>

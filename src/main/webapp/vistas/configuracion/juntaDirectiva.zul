@@ -1,226 +1,123 @@
+<!-- Created by: Anthony Rodriguez, Team: O'Sullivan -->
 <?page title="Dashboard - ZK Admin"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native" class='contenedor'>
-	<include src="../layouts/navbar.zul" />
-	<hlayout id="main" spacing="0">
-		<include src="../layouts/sidebar.zul" />
+<div>
+	<hlayout spacing="0">
+		
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Configuración" href="#" />
-					<label value="Junta Directiva" />
+					<a label="Configuracion" href="#"/>
+					<label value="Junta Directiva"/>
 				</div>
 			</div>
-			<div class='contenedor'>
-				<div sclass="page-header">
-					<separator spacing="3%" />
-					<label value="Registrar Junta Directiva" />
+			<div class="contenedor" align="center">
+			
+				<div sclass="page-header" align="left">
+				    <label value="Junta Directiva"/>
+		  		</div>
+				
+				<space/><space/>
+				<div class='form-pricing' align="left" width="80%">
+				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
+					<button id="btnJuntaDirectivaRegistrar" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
-				<separator spacing="3%" />
-				<div class='contenido'>
-					<div class="col-md-8 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="105%"
-							height="100%">
-							<separator spacing="2%" />
-							<div class='encabezado'>Periodo</div>
-							<div class='linea-two'></div>
-							<separator spacing="12%" />
-							<div class="col-md-6">
-								<hlayout>
-									<label value="Fecha inicio:" />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<datebox />
-								</hlayout>
-								<separator spacing="15%" />
-							</div>
-							<div class="col-md-6">
-								<hlayout>
-									<label value="Fecha Fin:" />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<datebox />									
-								</hlayout>
-								<separator spacing="20%" />
-							</div>
-							<div class='encabezado'>Miembros</div>
-							<div class='linea-two'></div>
-							<separator spacing="20%" />
-							<div class="row" align="center">
-								<div class="col-md-6">
-									<separator spacing="1%" />
-									<image
-										src="/assets/portal/img/img1.jpg" width="60%" class='im' />
-								</div>
-								<div class="col-md-6" align="left">
-									<separator spacing="1%" />
-									<hlayout>
-										<label value="Cédula:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox width="100%" style="margin-bottom:8px; " />
-										<button
-											iconSclass="z-icon-search blue" class='btn-link' width="1%" />
-									</hlayout>
-									<separator spacing="10%" />
-									<hlayout>
-										<label value="Nombre:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox width="100%" style="margin-bottom:8px;"></textbox>
-									</hlayout>
-									<separator spacing="10%" />
-									<hlayout>
-										<label value="Apellido:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox width="100%" style="margin-bottom:8px;" />
-									</hlayout>
-									<separator spacing="10%" />
-									<hlayout>
-										<label value="Cargo:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<combobox width="93%">
-											<comboitem
-												label="Presidente" />
-											<comboitem
-												label="Vicepresidente" />
-											<comboitem label="Vocero" />
-										</combobox>
-									</hlayout>
-									<separator spacing="15%" />
-								</div>
-							</div>
-							<separator spacing="12%" />
-							<div class="row" align="center">
-								<button iconSclass="z-icon-plus-circle"
-									class='btn-primary boton-guardar' label="Añadir" />
-							</div>
-							<separator spacing="15%" />
-							<div class='encabezado'>
-								Listar Miembros
-							</div>
-							<div class='linea-two'></div>
-							<separator spacing="15%" />
-							<div class="col-md-12">
-								<grid
-									emptyMessage="No se encuentran miembros registrados"
-									mold="paging" pageSize="2" style="border:1px solid white ">
-									<columns>
-										<column label="Cédula"
-											sort="auto" align="center" />
-										<column label="Nombre"
-											sort="auto" align="center" />
-										<column label="Apellido"
-											sort="auto" align="center" />
-										<column label="Cargo"
-											sort="auto" align="center" />
-										<column label="Foto"
-											align="center" />
-										<column label="Eliminar"
-											align="center" />
-									</columns>
-									<rows>
-										<row>
-											<label value="21125730" />
-											<label value="Anthony" />
-											<label value="Rodriguez" />
-											<label value="Presidente" />
-											<image
-												src="/assets/portal/img/img2.jpg" width="40%" />
-											<button
-												iconSclass="z-icon-trash-o red" class='btn-link' />
-										</row>
-										<row>
-											<label value="12342673" />
-											<label value="Romulo" />
-											<label value="Dominguez" />
-											<label value="Vocero" />
-											<image
-												src="/assets/portal/img/img2.jpg" width="40%" />
-											<button
-												iconSclass="z-icon-trash-o red" class='btn-link' />
-										</row>
-										<row>
-											<label value="10987234" />
-											<label value="Juan" />
-											<label value="Perez" />
-											<label value="Presidente" />
-											<image
-												src="/assets/portal/img/img2.jpg" width="40%" />
-											<button
-												iconSclass="z-icon-trash-o red" class='btn-link' />
-										</row>
-									</rows>
-								</grid>
-							</div>
-							<separator spacing="17%" />
-							<div class="row" align="center">
-								<hlayout width="">
-									<div>
-										<button
-											iconSclass="z-icon-floppy-o"
-											class='btn-primary boton-guardar' label="Guardar" />
-									</div>
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<div>
-										<button
-											iconSclass="z-icon-times-circle" class='boton-cancelar'
-											label="Cancelar" />
-									</div>
-								</hlayout>
-
-							</div>
-							<separator spacing="3%" />
-						</div>
-
+			
+				<separator spacing="10px"/>
+				
+				<div class="contenido">
+					<div align="left">
+						<div class='encabezado'>Lista Miembros</div>
+						<div class='linea-two'></div>
 					</div>
+					<separator spacing="30px"/>
+					
+					<grid emptyMessage="No se encuentran miembros registrados" mold="paging"
+							pageSize="10">
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../assets/img/funnel.png" />
+               					<textbox instant="true" width="85%" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../assets/img/funnel.png" />
+               					<textbox instant="true" width="85%" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="4" />
+						</auxhead>
 
+						<columns>
+							<column hflex="2">Cédula</column>
+							<column hflex="2">Nombre</column>
+							<column hflex="2">Apellido</column>
+							<column hflex="2">Cargo</column>
+							<column hflex="2">Foto</column>
+							<column width="15%">Acciones </column>
+						</columns>
+						
+						<rows>
+							<row>
+								<label value="21125730" />
+								<label value="Anthony" />
+								<label value="Rodriguez" />
+								<label value="Presidente" />
+								<image src="/assets/portal/img/img2.jpg" width="40%" />			
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="21125730" />
+								<label value="Anthony" />
+								<label value="Rodriguez" />
+								<label value="Presidente" />
+								<image src="/assets/portal/img/img2.jpg" width="40%" />			
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="21125730" />
+								<label value="Anthony" />
+								<label value="Rodriguez" />
+								<label value="Presidente" />
+								<image src="/assets/portal/img/img2.jpg" width="40%" />			
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+							<row>
+								<label value="21125730" />
+								<label value="Anthony" />
+								<label value="Rodriguez" />
+								<label value="Presidente" />
+								<image src="/assets/portal/img/img2.jpg" width="40%" />			
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							
+						</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="4 items en la lista" />
+        				 </foot>
+					</grid>
 				</div>
-
 			</div>
-
+			</div>
 		</vlayout>
-
 	</hlayout>
-
+	</div>
 </zk>

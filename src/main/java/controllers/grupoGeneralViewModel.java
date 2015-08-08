@@ -50,7 +50,7 @@ public class grupoGeneralViewModel {
     
 	 @Command
 	 public void showModal(Event e) {
-		 Window window = (Window)Executions.createComponents("registrarGrupo.zul", null, null);
+		 Window window = (Window)Executions.createComponents("administracion/seguridad/registrarGrupo.zul", null, null);
 	     	window.doModal();
 	 }
 	 	
