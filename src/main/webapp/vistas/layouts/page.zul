@@ -1,20 +1,9 @@
-<vlayout sclass="page-content" xmlns:n="native" spacing="0">
+<vlayout sclass="page-content" xmlns:n="native" spacing="0" class="contenedor" hflex="1" vflex="1" >
   <div sclass="page-header">
     <label value="Inicio"/>
     <a label="Bienvenido" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
   </div>
-  
-    <!-- <separator height="12px"/>
-  <hlayout spacing="24px">
- 
-     <include src="/vistas/content/infobox.zul" hflex="7"/>
-
-  </hlayout>
-  
-  <separator bar="true"/>
--->
-
-  <div  align="center" >
+  <div  align="center" class="col-lg-12" >
 
   <include src="/vistas/content/pruebacartelera.zul" />
   <n:br></n:br> <n:br></n:br> <n:br></n:br>

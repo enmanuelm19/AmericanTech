@@ -13,16 +13,16 @@
 <?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<include src="layouts/navbar.zul"/>             
+	<include src="layouts/navbar.zul" />
 	<div id="main">
-	<hlayout spacing="0">
-		<include src="layouts/sidebar.zul"/>    
-		<div id="contenido">
-			<include src="layouts/breadcrumbs.zul"/>
-			<include src="layouts/page.zul"/>
-		</div>
+		<hlayout spacing="0">
+			<include src="layouts/sidebar.zul" />
+			<div id="contenido" hflex="1">
+				<include src="layouts/breadcrumbs.zul" />
+				<include src="layouts/page.zul" />
+			</div>
 		</hlayout>
 	</div>
 
-	
+
 </zk>

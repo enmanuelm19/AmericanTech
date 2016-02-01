@@ -1,71 +1,101 @@
 <?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-<panel border="none" class="col-md-12" collapsible="true" sclass="transparent">
-<caption iconSclass="z-icon-bullhorn orange" label="Cartelera informativa"/>
-  <panelchildren>
-  <separator></separator>  <separator></separator>
-<n:div class="container" align="center">
-		<n:div class="row">
-			<n:div class="[ col-xs-12 col-sm-offset-1 col-sm-10 ]">
-				<n:ul class="event-list">
-					<n:li>
-						<n:time datetime="2014-07-20">
-							<n:span class="day">4</n:span>
-							<n:span class="month">Jul</n:span>
-							<n:span class="year">2014</n:span>
-							<n:span class="time">ALL DAY</n:span>
-						</n:time>
-						<n:div class="info">
-							<n:h2 class="title">Cuota Especial</n:h2>
-							<n:p class="desc">Por motivo de mantenimiento es necesario solicitar una cuota especial</n:p>
-						</n:div>
-					</n:li>
+	<panel border="none" class="col-md-12" collapsible="true"
+		sclass="transparent">
+		<caption iconSclass="z-icon-bullhorn orange"
+			label="Cartelera informativa" />
+		<panelchildren>
+			<separator></separator>
+			<separator></separator>
+			<n:div class="container" align="center">
+				<n:div class="row">
+					<n:div
+						class="[ col-xs-12 col-sm-offset-1 col-sm-10 ]">
+						<n:ul class="event-list">
+							<n:li>
+								<n:time datetime="2014-07-20">
+									<n:span class="day">4</n:span>
+									<n:span class="month">Jul</n:span>
+									<n:span class="year">2014</n:span>
+									<n:span class="time">
+										ALL DAY
+									</n:span>
+								</n:time>
+								<n:div class="info">
+									<n:h2 class="title">
+										Cuota Especial
+									</n:h2>
+									<n:p class="desc">
+										Por motivo de mantenimiento es
+										necesario solicitar una cuota
+										especial
+									</n:p>
+								</n:div>
+							</n:li>
 
-					<n:li>
-						<n:time datetime="2014-07-20 0000">
-							<n:span class="day">8</n:span>
-							<n:span class="month">Jul</n:span>
-							<n:span class="year">2014</n:span>
-							<n:span class="time">12:00 AM</n:span>
-						</n:time>
-						<n:div class="info">
-							<n:h2 class="title">NUEVA POSTULACIÓN</n:h2>
-							<n:p class="desc">Se ha postulado Juan Perez</n:p>
-						</n:div>
-					</n:li>
+							<n:li>
+								<n:time datetime="2014-07-20 0000">
+									<n:span class="day">8</n:span>
+									<n:span class="month">Jul</n:span>
+									<n:span class="year">2014</n:span>
+									<n:span class="time">
+										12:00 AM
+									</n:span>
+								</n:time>
+								<n:div class="info">
+									<n:h2 class="title">
+										NUEVA POSTULACIÓN
+									</n:h2>
+									<n:p class="desc">
+										Se ha postulado Juan Perez
+									</n:p>
+								</n:div>
+							</n:li>
 
-					<n:li>
-						<n:time datetime="2014-07-20 2000">
-							<n:span class="day">20</n:span>
-							<n:span class="month">Jan</n:span>
-							<n:span class="year">2014</n:span>
-							<n:span class="time">8:00 PM</n:span>
-						</n:time>
-						<n:div class="info">
-							<n:h2 class="title">Misa aniversario club</n:h2>
-							<n:p class="desc">Bar Hopping in Erie, Pa.</n:p>
-						</n:div>
-					</n:li>
+							<n:li>
+								<n:time datetime="2014-07-20 2000">
+									<n:span class="day">20</n:span>
+									<n:span class="month">Jan</n:span>
+									<n:span class="year">2014</n:span>
+									<n:span class="time">
+										8:00 PM
+									</n:span>
+								</n:time>
+								<n:div class="info">
+									<n:h2 class="title">
+										Misa aniversario club
+									</n:h2>
+									<n:p class="desc">
+										Bar Hopping in Erie, Pa.
+									</n:p>
+								</n:div>
+							</n:li>
 
-					<n:li>
-						<n:time datetime="2014-07-31 1600">
-							<n:span class="day">31</n:span>
-							<n:span class="month">Jan</n:span>
-							<n:span class="year">2014</n:span>
-							<n:span class="time">4:00 PM</n:span>
-						</n:time>
-						<n:div class="info">
-							<n:h2 class="title">Torneo de bolas criollas.</n:h2>
-							<n:p class="desc"> Inscribete ya.</n:p>
-						</n:div>
-					</n:li>
-				</n:ul>
+							<n:li>
+								<n:time datetime="2014-07-31 1600">
+									<n:span class="day">31</n:span>
+									<n:span class="month">Jan</n:span>
+									<n:span class="year">2014</n:span>
+									<n:span class="time">
+										4:00 PM
+									</n:span>
+								</n:time>
+								<n:div class="info">
+									<n:h2 class="title">
+										Torneo de bolas criollas.
+									</n:h2>
+									<n:p class="desc">
+										Inscribete ya.
+									</n:p>
+								</n:div>
+							</n:li>
+						</n:ul>
+					</n:div>
+				</n:div>
 			</n:div>
-		</n:div>
-	</n:div>
-</panelchildren>
-</panel>
+		</panelchildren>
+	</panel>
 
 
 </zk>
