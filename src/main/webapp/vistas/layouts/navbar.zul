@@ -4,7 +4,7 @@
 	 <image tooltiptext="Avatar" width="9%"  src="/assets/img/AmericanTechP.png" sclass="pull-left  msg-photo"/>
 	
 	<!-- Navbar -->
-	<hlayout sclass="nav-user pull-right" spacing="0" style="margin-top: 7px;">
+	<hlayout sclass="nav-user pull-right" spacing="0">
 		
 		<a id="anoti" iconSclass="z-icon-bell" popup="notipp, position=after_end, type=toggle"  sclass="blue">
 			<label value="8" sclass="badge badge-info"/>
