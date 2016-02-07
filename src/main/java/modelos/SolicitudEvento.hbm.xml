@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.SolicitudEvento" table="solicitud_evento" schema="public" optimistic-lock="version">
+        <id name="idSolicitudEvento" type="int">
+            <column name="id_solicitud_evento" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="socio" class="modelos.Socio" fetch="select">
+            <column name="socioid_socio" not-null="true" />
+        </many-to-one>
+        <property name="fechaEvento" type="date">
+            <column name="fecha_evento" length="13" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" not-null="true" />
+        </property>
+        <property name="fechaSolicitud" type="date">
+            <column name="fecha_solicitud" length="13" not-null="true" />
+        </property>
+        <set name="estadoSolicituds" table="estado_solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="solicitud_eventoid_solicitud_evento" not-null="true" />
+            </key>
+            <one-to-many class="modelos.EstadoSolicitud" />
+        </set>
+    </class>
+</hibernate-mapping>

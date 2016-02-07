@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Instalacion" table="instalacion" schema="public" optimistic-lock="version">
+        <id name="idInstalacion" type="int">
+            <column name="id_instalacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tipoInstalacion" class="modelos.TipoInstalacion" fetch="select">
+            <column name="tipo_instalacionid_tipo_instalacion" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="30" not-null="true" />
+        </property>
+        <property name="capacidad" type="short">
+            <column name="capacidad" not-null="true" />
+        </property>
+        <property name="precioAlquiler" type="float">
+            <column name="precio_alquiler" precision="8" scale="8" not-null="true" />
+        </property>
+        <set name="reservacions" table="reservacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instalacionid_instalacion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Reservacion" />
+        </set>
+        <set name="actividadInstalacions" table="actividad_instalacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instalacionid_instalacion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.ActividadInstalacion" />
+        </set>
+        <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instalacionid_instalacion" />
+            </key>
+            <one-to-many class="modelos.Foto" />
+        </set>
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instalacionid_instalacion" />
+            </key>
+            <one-to-many class="modelos.Eventualidad" />
+        </set>
+        <set name="recursoInstalacions" table="recurso_instalacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instalacionid_instalacion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.RecursoInstalacion" />
+        </set>
+    </class>
+</hibernate-mapping>

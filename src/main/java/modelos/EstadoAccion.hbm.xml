@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.EstadoAccion" table="estado_accion" schema="public" optimistic-lock="version">
+        <id name="idEstadoAccion" type="int">
+            <column name="id_estado_accion" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="30" not-null="true" />
+        </property>
+        <set name="accions" table="accion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estado_accionid_estado_accion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Accion" />
+        </set>
+    </class>
+</hibernate-mapping>

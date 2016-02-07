@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">123</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/America</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="modelos/CalendarioFecha.hbm.xml" />
+        <mapping resource="modelos/Politica.hbm.xml" />
+        <mapping resource="modelos/TipoInstalacion.hbm.xml" />
+        <mapping resource="modelos/MotivoPostulacion.hbm.xml" />
+        <mapping resource="modelos/Patrocinante.hbm.xml" />
+        <mapping resource="modelos/Invitado.hbm.xml" />
+        <mapping resource="modelos/Desvinculacion.hbm.xml" />
+        <mapping resource="modelos/Sugerencia.hbm.xml" />
+        <mapping resource="modelos/ProveedorActividad.hbm.xml" />
+        <mapping resource="modelos/Evento.hbm.xml" />
+        <mapping resource="modelos/Archivo.hbm.xml" />
+        <mapping resource="modelos/VisitaEvento.hbm.xml" />
+        <mapping resource="modelos/Foto.hbm.xml" />
+        <mapping resource="modelos/Actividad.hbm.xml" />
+        <mapping resource="modelos/Postulado.hbm.xml" />
+        <mapping resource="modelos/Preferencia.hbm.xml" />
+        <mapping resource="modelos/Empleado.hbm.xml" />
+        <mapping resource="modelos/Visita.hbm.xml" />
+        <mapping resource="modelos/CalendarioHora.hbm.xml" />
+        <mapping resource="modelos/Eventualidad.hbm.xml" />
+        <mapping resource="modelos/Hora.hbm.xml" />
+        <mapping resource="modelos/InvitadoAlquiler.hbm.xml" />
+        <mapping resource="modelos/Recurso.hbm.xml" />
+        <mapping resource="modelos/Sancion.hbm.xml" />
+        <mapping resource="modelos/Venta.hbm.xml" />
+        <mapping resource="modelos/Funcion.hbm.xml" />
+        <mapping resource="modelos/RedClub.hbm.xml" />
+        <mapping resource="modelos/TipoSugerencia.hbm.xml" />
+        <mapping resource="modelos/MotivoDesvinculacion.hbm.xml" />
+        <mapping resource="modelos/SolicitudEvento.hbm.xml" />
+        <mapping resource="modelos/Socio.hbm.xml" />
+        <mapping resource="modelos/Persona.hbm.xml" />
+        <mapping resource="modelos/TipoEmpleado.hbm.xml" />
+        <mapping resource="modelos/EstadoAccion.hbm.xml" />
+        <mapping resource="modelos/Grupo.hbm.xml" />
+        <mapping resource="modelos/Noticia.hbm.xml" />
+        <mapping resource="modelos/NoticiaPreferencia.hbm.xml" />
+        <mapping resource="modelos/ClienteExterno.hbm.xml" />
+        <mapping resource="modelos/Proveedor.hbm.xml" />
+        <mapping resource="modelos/Opinion.hbm.xml" />
+        <mapping resource="modelos/PreferenciaEvento.hbm.xml" />
+        <mapping resource="modelos/RecursoInstalacion.hbm.xml" />
+        <mapping resource="modelos/TipoActividad.hbm.xml" />
+        <mapping resource="modelos/TipoEvento.hbm.xml" />
+        <mapping resource="modelos/Accion.hbm.xml" />
+        <mapping resource="modelos/Cargo.hbm.xml" />
+        <mapping resource="modelos/Reservacion.hbm.xml" />
+        <mapping resource="modelos/Postulacion.hbm.xml" />
+        <mapping resource="modelos/Instalacion.hbm.xml" />
+        <mapping resource="modelos/EstadoSolicitud.hbm.xml" />
+        <mapping resource="modelos/Usuario.hbm.xml" />
+        <mapping resource="modelos/MiembroJunta.hbm.xml" />
+        <mapping resource="modelos/TipoAfiliado.hbm.xml" />
+        <mapping resource="modelos/Club.hbm.xml" />
+        <mapping resource="modelos/TipoPreferencia.hbm.xml" />
+        <mapping resource="modelos/Afiliado.hbm.xml" />
+        <mapping resource="modelos/FuncionGrupo.hbm.xml" />
+        <mapping resource="modelos/RedPersona.hbm.xml" />
+        <mapping resource="modelos/PartocinanteEvento.hbm.xml" />
+        <mapping resource="modelos/UsuarioGrupo.hbm.xml" />
+        <mapping resource="modelos/ActividadInstalacion.hbm.xml" />
+        <mapping resource="modelos/JuntaDirectiva.hbm.xml" />
+        <mapping resource="modelos/MotivoVenta.hbm.xml" />
+        <mapping resource="modelos/ActividadEvento.hbm.xml" />
+        <mapping resource="modelos/MotivoSancion.hbm.xml" />
+        <mapping resource="modelos/Alquiler.hbm.xml" />
+        <mapping resource="modelos/PreferenciaPersona.hbm.xml" />
+        <mapping resource="modelos/RedSocial.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

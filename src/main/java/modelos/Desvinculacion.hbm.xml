@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Desvinculacion" table="desvinculacion" schema="public" optimistic-lock="version">
+        <id name="idDesvinculacion" type="int">
+            <column name="id_desvinculacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="accion" class="modelos.Accion" fetch="select">
+            <column name="accionid_accion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="motivoDesvinculacion" class="modelos.MotivoDesvinculacion" fetch="select">
+            <column name="motivo_desvinculacionid_motivo_desvinculacion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="socio" class="modelos.Socio" fetch="select">
+            <column name="socioid_socio" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="motivo" type="string">
+            <column name="motivo" length="120" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

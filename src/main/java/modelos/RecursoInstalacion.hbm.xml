@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.RecursoInstalacion" table="recurso_instalacion" schema="public" optimistic-lock="version">
+        <id name="idRecursoInstalacion" type="int">
+            <column name="id_recurso_instalacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select">
+            <column name="instalacionid_instalacion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="recurso" class="modelos.Recurso" fetch="select">
+            <column name="recursoid_recurso" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="short">
+            <column name="cantidad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

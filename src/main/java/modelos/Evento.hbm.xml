@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Evento" table="evento" schema="public" optimistic-lock="version">
+        <id name="idEvento" type="int">
+            <column name="id_evento" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tipoEvento" class="modelos.TipoEvento" fetch="select">
+            <column name="tipo_eventoid_tipo_evento" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="150" not-null="true" />
+        </property>
+        <property name="visitasEsperadas" type="short">
+            <column name="visitas_esperadas" not-null="true" />
+        </property>
+        <property name="condicionEstado" type="string">
+            <column name="condicion_estado" length="9" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="hora" type="date">
+            <column name="hora" length="13" not-null="true" />
+        </property>
+        <property name="publico" type="boolean">
+            <column name="publico" not-null="true" />
+        </property>
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" />
+            </key>
+            <one-to-many class="modelos.Eventualidad" />
+        </set>
+        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" />
+            </key>
+            <one-to-many class="modelos.Noticia" />
+        </set>
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" not-null="true" />
+            </key>
+            <one-to-many class="modelos.PreferenciaEvento" />
+        </set>
+        <set name="visitaEventos" table="visita_evento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" not-null="true" />
+            </key>
+            <one-to-many class="modelos.VisitaEvento" />
+        </set>
+        <set name="partocinanteEventos" table="partocinante_evento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" not-null="true" />
+            </key>
+            <one-to-many class="modelos.PartocinanteEvento" />
+        </set>
+        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" />
+            </key>
+            <one-to-many class="modelos.CalendarioFecha" />
+        </set>
+        <set name="actividadEventos" table="actividad_evento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" not-null="true" />
+            </key>
+            <one-to-many class="modelos.ActividadEvento" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
+        <id name="idClub" type="int">
+            <column name="id_club" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+            <column name="logo" not-null="true" />
+        </many-to-one>
+        <property name="rif" type="string">
+            <column name="rif" length="14" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="30" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="12" not-null="true" />
+        </property>
+        <property name="mision" type="string">
+            <column name="mision" length="250" not-null="true" />
+        </property>
+        <property name="vision" type="string">
+            <column name="vision" length="250" not-null="true" />
+        </property>
+        <property name="telfAlternativo" type="string">
+            <column name="telf_alternativo" length="12" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="35" not-null="true" />
+        </property>
+        <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clubid_club" />
+            </key>
+            <one-to-many class="modelos.Foto" />
+        </set>
+        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clubid_club" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Politica" />
+        </set>
+        <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clubid_club" not-null="true" />
+            </key>
+            <one-to-many class="modelos.JuntaDirectiva" />
+        </set>
+        <set name="redClubs" table="red_club" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clubid_club" not-null="true" />
+            </key>
+            <one-to-many class="modelos.RedClub" />
+        </set>
+    </class>
+</hibernate-mapping>

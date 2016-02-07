@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Archivo" table="archivo" schema="public" optimistic-lock="version">
+        <id name="idArchivo" type="int">
+            <column name="id_archivo" />
+            <generator class="assigned" />
+        </id>
+        <property name="url" type="string">
+            <column name="url" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <property name="extension" type="string">
+            <column name="extension" length="10" not-null="true" />
+        </property>
+        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="foto" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Noticia" />
+        </set>
+        <set name="alquilers" table="alquiler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="lista_proveedores" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Alquiler" />
+        </set>
+        <set name="clubs" table="club" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="logo" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Club" />
+        </set>
+        <set name="personas" table="persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="foto" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Persona" />
+        </set>
+    </class>
+</hibernate-mapping>
