@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.ClienteExterno" table="cliente_externo" schema="public" optimistic-lock="version">
+        <id name="idCliente" type="int">
+            <column name="id_cliente" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="20" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="50" not-null="true" />
+        </property>
+        <set name="sugerencias" table="sugerencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cliente_externoid_cliente" />
+            </key>
+            <one-to-many class="modelos.Sugerencia" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Politica" table="politica" schema="public" optimistic-lock="version">
+        <id name="idPolitica" type="int">
+            <column name="id_politica" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="club" class="modelos.Club" fetch="select">
+            <column name="clubid_club" not-null="true" />
+        </many-to-one>
+        <property name="parametro" type="string">
+            <column name="parametro" length="20" not-null="true" />
+        </property>
+        <property name="valor" type="short">
+            <column name="valor" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

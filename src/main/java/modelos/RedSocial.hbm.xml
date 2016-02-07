@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.RedSocial" table="red_social" schema="public" optimistic-lock="version">
+        <id name="idRedSocial" type="int">
+            <column name="id_red_social" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="40" not-null="true" />
+        </property>
+        <set name="redPersonas" table="red_persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="red_socialid_red_social" not-null="true" />
+            </key>
+            <one-to-many class="modelos.RedPersona" />
+        </set>
+        <set name="redClubs" table="red_club" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="red_socialid_red_social" />
+            </key>
+            <one-to-many class="modelos.RedClub" />
+        </set>
+    </class>
+</hibernate-mapping>

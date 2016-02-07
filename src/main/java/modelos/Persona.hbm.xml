@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Persona" table="persona" schema="public" optimistic-lock="version">
+        <id name="idPersona" type="int">
+            <column name="id_persona" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+            <column name="foto" not-null="true" />
+        </many-to-one>
+        <property name="identificacion" type="string">
+            <column name="identificacion" length="12" />
+        </property>
+        <property name="primerNombre" type="string">
+            <column name="primer_nombre" length="15" not-null="true" />
+        </property>
+        <property name="segundoNombre" type="string">
+            <column name="segundo_nombre" length="15" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="primer_apellido" length="15" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="segundo_apellido" length="15" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="fecha_nac" length="13" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="1" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="45" />
+        </property>
+        <property name="telefono" type="short">
+            <column name="telefono" not-null="true" />
+        </property>
+        <property name="telefonoFijo" type="java.lang.Short">
+            <column name="telefono_fijo" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="80" />
+        </property>
+        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Empleado" />
+        </set>
+        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.MiembroJunta" />
+        </set>
+        <set name="afiliados" table="afiliado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" />
+            </key>
+            <one-to-many class="modelos.Afiliado" />
+        </set>
+        <set name="redPersonas" table="red_persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.RedPersona" />
+        </set>
+        <set name="socios" table="socio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Socio" />
+        </set>
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" />
+            </key>
+            <one-to-many class="modelos.Eventualidad" />
+        </set>
+        <set name="invitados" table="invitado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Invitado" />
+        </set>
+        <set name="postulados" table="postulado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Postulado" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Usuario" />
+        </set>
+        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="personaid_persona" not-null="true" />
+            </key>
+            <one-to-many class="modelos.PreferenciaPersona" />
+        </set>
+    </class>
+</hibernate-mapping>
