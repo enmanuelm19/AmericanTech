@@ -1,209 +1,193 @@
+<div xmlns:n="native" class='contenedor'>
 
-
-	<div xmlns:n="native" class='contenedor'>
-
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-cogs" />
-					<a label="Configuración" href="#" />
-					<label value="Perfil Del Club" />
-				</div>
+	<vlayout spacing="0" hflex="1">
+		<div sclass="breadcrumbs">
+			<div sclass="breadcrumb">
+				<span sclass="home-icon z-icon-cogs" />
+				<a label="Configuración" href="#" />
+				<label value="Perfil Del Club" />
 			</div>
-			<div class='contenedor'>
-				<div sclass="page-header">
-					<separator spacing="3%" />
-					<label value="Perfil Del Club" />
-				</div>
+		</div>
+		<div class='contenedor'>
+			<div sclass="page-header">
 				<separator spacing="3%" />
-				<div class='contenido'>
-					<div class="col-md-8 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+				<label value="Perfil Del Club" />
+			</div>
+			<separator spacing="3%" />
+			<div class='contenido'>
+				<div class="col-md-8 col-centered "
+					form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="105%"
-							height="100%">
+					<div class='form-pricing' width="105%"
+						height="100%">
+						<separator spacing="2%" />
+						<div class='encabezado'>Datos Del Club</div>
+						<div class='linea-two'></div>
+						<separator spacing="13%" />
+						<div class="col-md-4" align="center">
+							<separator />
+							<separator />
+							<image
+								src="/assets/intranet/avatars/americaBordeBlanco.png"
+								width="60%" height="60%" />
 							<separator spacing="2%" />
-							<div class='encabezado'>Datos Del Club</div>
-							<div class='linea-two'></div>
-							<separator spacing="13%" />
-							<div class="col-md-6" align="center">
-								<separator />
-								<separator />
-								<image
-									src="/assets/intranet/avatars/americaBordeBlanco.png"
-									width="45%" height="45%" />
-								<separator spacing="2%" />
-								<fileupload
-									iconSclass="z-icon-folder-open" class=' boton-guardar'
-									label="Examinar" />
-								<separator spacing="5%" />
-							</div>
-							<div class="col-md-6">
-								<separator />
-								<separator />
-								<separator />
-								<vlayout>
-									<hlayout>
-										<label value="Ríf:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox width="60%" />
-									</hlayout>
-									<separator spacing="8%" />
-									<hlayout>
-										<label value="Nombre:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox width="105%" />
-									</hlayout>
-									<separator spacing="8%" />
-									<hlayout>
-										<label value="Dirección:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox rows="4" />
-									</hlayout>
-									<separator spacing="8%" />
-									<hlayout>
-										<label value="Teléfono:" />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<separator />
-										<textbox width="60%" />
-									</hlayout>
-								</vlayout>
-								<separator spacing="25%" />
-							</div>
-							<div class='encabezado'>
-								Perfil Organizacional
-							</div>
-							<div class='linea-two'></div>
-							<separator spacing="8%" />
-							<div class="col-md-6">
-								Misión
-								<separator />
-								<separator />
-								<separator />
-								<separator />
-								<textbox rows="5" cols="30" />
-								<separator spacing="20%" />
-							</div>
-							<div class="col-md-6">
-								Visión
-								<separator />
-								<separator />
-								<separator />
-								<separator />
-								<textbox rows="5" cols="30" />
-								<separator spacing="25%" />
-							</div>
-							<div class='encabezado'>Políticas</div>
-							<div class='linea-two'></div>
-							<separator spacing="12%" />
-							Reglas De Visita
-							<separator spacing="8%" />
-							<div class="col-md-12">
-								<grid
-									emptyMessage="No se encuentran miembros registrados"
-									mold="paging" pageSize="2" style="border:1px solid white ">
-									<columns>
-										<column label="Persona"
-											sort="auto" align="center" />
-										<column label="Parentesco"
-											sort="auto" align="center" />
-										<column
-											label="Numero De Invitados" sort="auto" align="center" />
-										<column
-											label="Frecuencia Mensual" sort="auto" align="center" />
-									</columns>
-									<rows>
-										<row>
-											<label value="Socio" />
-											<label value="" />
-											<label value="2" />
-											<label value="1" />
-										</row>
-										<row>
-											<label value="Afiliado" />
-											<label value="Hijo" />
-											<label value="1" />
-											<label value="2" />
-										</row>
-										<row>
-											<label value="Afiliado" />
-											<label value="Esposa" />
-											<label value="0" />
-											<label value="3" />
-										</row>
-									</rows>
-								</grid>
-							</div>
-							<separator spacing="15%" />
-							<div class="row" align="center">
-								<separator spacing="3%" />
-								<hlayout width="">
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<div>
-										<button
-											iconSclass="z-icon-floppy-o"
-											class='btn-primary boton-guardar' label="Guardar" />
-									</div>
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<div>
-										<button
-											iconSclass="z-icon-times-circle" class='boton-cancelar'
-											label="Cancelar" />
-									</div>
-								</hlayout>
-
-							</div>
-							<separator spacing="3%" />
+							<fileupload iconSclass="z-icon-folder-open"
+								class=' boton-guardar' label="Examinar" />
+							<separator spacing="5%" />
 						</div>
+						<div class="col-md-6">
+							<separator />
+							<separator />
+							<separator />
+							<vlayout>
+								<hlayout>
+									<label value="RIF:" />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<textbox width="100%" />
+								</hlayout>
+								<separator spacing="8%" />
+								<hlayout>
+									<label value="Nombre:" />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<textbox width="100%" />
+								</hlayout>
+								<separator spacing="8%" />
+								<hlayout>
+									<label value="Dirección:" />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<textbox rows="4" />
+								</hlayout>
+								<separator spacing="8%" />
+								<hlayout>
+									<label value="Teléfono:" />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<separator />
+									<textbox width="100%" />
+								</hlayout>
+							</vlayout>
+							<separator spacing="25%" />
+						</div>
+						<div class='encabezado'>
+							Perfil Organizacional
+						</div>
+						<div class='linea-two'></div>
+						<separator spacing="20%" />
+						<div class="col-md-6"
+							style="padding-top:20px">
+							Misión:
+							<textbox rows="5" cols="30" />
+							<separator spacing="20%" />
+						</div>
+						<div class="col-md-6"
+							style="padding-top:20px">
+							Visión:
+							<textbox rows="5" cols="30" />
+							<separator spacing="25%" />
+						</div>
+						<div class='encabezado'>Políticas</div>
+						<div class='linea-two'></div>
+						<separator spacing="12%" />
+						Reglas De Visita
+						<separator spacing="8%" />
+						<div class="col-md-12">
+							<grid
+								emptyMessage="No se encuentran miembros registrados"
+								mold="paging" pageSize="2" style="border:1px solid white ">
+								<columns>
+									<column label="Persona" sort="auto"
+										align="center" />
+									<column label="Parentesco"
+										sort="auto" align="center" />
+									<column label="Numero De Invitados"
+										sort="auto" align="center" />
+									<column label="Frecuencia Mensual"
+										sort="auto" align="center" />
+								</columns>
+								<rows>
+									<row>
+										<label value="Socio" />
+										<label value="" />
+										<label value="2" />
+										<label value="1" />
+									</row>
+									<row>
+										<label value="Afiliado" />
+										<label value="Hijo" />
+										<label value="1" />
+										<label value="2" />
+									</row>
+									<row>
+										<label value="Afiliado" />
+										<label value="Esposa" />
+										<label value="0" />
+										<label value="3" />
+									</row>
+								</rows>
+							</grid>
+						</div>
+						<separator spacing="15%" />
+						<div class="row" align="center">
+							<separator spacing="3%" />
+							<hlayout width="">
+								<separator />
+								<separator />
+								<separator />
+								<separator />
+								<div>
+									<button iconSclass="z-icon-floppy-o"
+										class='btn-primary boton-guardar' label="Guardar" />
+								</div>
+								<separator />
+								<separator />
+								<separator />
 
+								<div>
+									<button
+										iconSclass="z-icon-times-circle" class='boton-cancelar'
+										label="Cancelar" />
+								</div>
+							</hlayout>
+
+						</div>
+						<separator spacing="3%" />
 					</div>
 
 				</div>
 
 			</div>
 
-		</vlayout>
+		</div>
 
-	
+	</vlayout>
+
+
 </div>

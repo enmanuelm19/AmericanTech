@@ -1,0 +1,80 @@
+<?page title="Junta Directiva"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk>
+	<window title="Registrar Miembro" width="60%"
+		style="iconSclass=z-icon-cogs;" closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		<caption iconSclass="z-icon-cogs" />
+		<div class="col-md-12" align="center">
+			<div align="left">
+				<div class='encabezado'>Datos Básicos</div>
+				<div class='linea-two'></div>
+			</div>
+			<separator spacing="2%" />
+			<div class='row' style="padding-top:20px">
+				<div class='col-md-1' />
+				<div align="right" class='col-md-3'>
+
+					<image src="/assets/portal/img/img2.jpg"
+						width="100%" />
+					<separator />
+					<div>
+						<fileupload iconSclass="z-icon-folder-open blue"
+							class='boton-guardar' label="Examinar" />
+
+					</div>
+				</div>
+
+				<div class='col-md-8' align="left">
+					<vbox>
+
+						Número de Carnet
+						<hbox>
+							<textbox width="110%" constraint="no empty" />
+							<button iconSclass="z-icon-search blue"
+								style="padding-left: 20px;" class='btn-link'
+								tooltiptext="Agregar" />
+						</hbox>
+					</vbox>
+					<separator />
+					<vbox>
+						Cédula
+						<hbox>
+							<textbox width="110%" constraint="no empty" />
+							<button iconSclass="z-icon-search blue"
+								style="padding-left: 20px;" class='btn-link'
+								tooltiptext="Agregar" />
+						</hbox>
+					</vbox>
+					<separator />
+					<vbox>
+						Nombre
+						<textbox width="110%" constraint="no empty" />
+					</vbox>
+					<separator />
+					<vbox>
+						Cargo
+						<hbox>
+							<combobox width="110%"
+								value="Seleccione Una Opcion">
+								<comboitem label="Presidente" />
+								<comboitem label="Tesorero" />
+							</combobox>
+						</hbox>
+					</vbox>
+					<separator spacing="30%" />
+				</div>				
+			</div>
+			<div class="row" >
+					<button class='boton-guardar'
+						iconSclass="z-icon-floppy-o" label="Registrar" />
+					<space spacing="3%" />
+					<button class='boton-cancelar'
+						iconSclass="z-icon-times-circle" label="Cancelar" />
+				</div>
+		</div>
+	</window>
+</zk>
