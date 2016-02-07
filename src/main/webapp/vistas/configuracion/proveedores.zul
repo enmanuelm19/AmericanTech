@@ -1,4 +1,4 @@
-<div>
+<div class="contenedor">
 	<hlayout spacing="0">
 	
 		<vlayout spacing="0" hflex="1">
