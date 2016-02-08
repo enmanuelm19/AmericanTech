@@ -10,7 +10,7 @@
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-						<span sclass="home-icon z-icon-cogs" />
+						<span sclass="home-icon z-icon-group" />
 						<a label="Configuracion" href="#" />
 						<label value="Reglas Club" />
 					</div>
