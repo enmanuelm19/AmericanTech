@@ -27,9 +27,10 @@
 						<div class='encabezado'>Datos básicos</div>
 						<div class='linea-two'></div>
 				</div>
-				<separator spacing="30px"/>
+				 <space spacing="15%" />
+				
 				<div align="center">
-					<grid width="580px">
+					<grid >
 
 								<rows class="">
 
@@ -37,7 +38,7 @@
 										<div>
 											Rif/Indentificacion
 											<textbox type="text"
-												value="" width="208px"  constraint="no empty" />
+												value="" width="80%"  constraint="no empty" />
 											<button sclass="btn-link"
 												iconSclass="z-icon-search blue" />
 										</div>
