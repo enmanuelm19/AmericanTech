@@ -1,0 +1,186 @@
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+
+	<window border="none" title="Registrar postulado"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="50%" height="auto"
+		style="iconSclass=z-icon-group;">
+		<caption iconSclass="z-icon-group" />
+
+
+		<div class='contenido'>
+			<radiogroup id="sv1" />
+
+			<div align="left">
+				<div class='encabezado'>Datos básicos</div>
+				<div class='linea-two'></div>
+			</div>
+			<space spacing="15%" />
+
+			<div align="center">
+				<grid>
+
+					<rows class="">
+
+						<row class="col-md-12">
+							<div align="center" width="80%">
+								<vbox align="center">
+									<image align="center"
+										src="/assets/portal/img/img1.jpg" width="54%" />
+									<div align="center">
+										<fileupload label="Examinar"
+											iconSclass="z-icon-folder-open" class='boton-guardar' />
+									</div>
+								</vbox>
+							</div>
+							<div>
+								Rif/Indentificacion
+								<textbox type="text" value=""
+									width="80%" constraint="no empty" />
+								<button sclass="btn-link"
+									iconSclass="z-icon-search blue" />
+								Nombre
+								<textbox type="text" value=""
+									width="100%" tabindex="2" constraint="no empty" />
+
+							</div>
+
+						</row>
+
+						<row class="col-md-12">
+							<div>
+								Apellido
+								<textbox type="text" value=""
+									width="100%" tabindex="2" constraint="no empty" />
+							</div>
+							<div>
+								Dirección
+								<textbox type="text" value=""
+									width="100%" tabindex="2" constraint="no empty" />
+							</div>
+
+						</row>
+						<row class="col-md-12">
+							<div>
+								Teléfono Local
+								<textbox type="text" value=""
+									width="100%" tabindex="2" constraint="no empty" />
+							</div>
+							<div>
+								Teléfono movil
+								<textbox type="text" value=""
+									width="100%" tabindex="2" constraint="no empty" />
+							</div>
+						</row>
+
+						<row class="col-md-12">
+							<div>
+								Email
+								<textbox type="text" value=""
+									width="100%"
+									constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" />
+							</div>
+							<div>
+								Sexo
+								<div>
+									<radio id="ra1" label="Masculino"
+										radiogroup="sv1" style="margin-right:10%;" />
+									<radio id="ra2" label="Femenino"
+										radiogroup="sv1" />
+								</div>
+							</div>
+
+						</row>
+						<row class="col-md-12">
+							<div>
+								Fecha de nacimiento
+								<div style="margin-bottom:5%;">
+									<datebox id="db0" width="100%"
+										cols="12" format="short " onCreate="self.value = new Date()" />
+								</div>
+								Fecha de Postulacion
+								<div>
+									<datebox id="db1" width="100%"
+										cols="12" format="short " onCreate="self.value = new Date()" />
+								</div>
+							</div>
+							<div>
+								Motivo
+								<textbox type="text" value="" rows="5"
+									width="100%" constraint="no empty" />
+
+							</div>
+
+						</row>
+						<row class="col-md-12">
+							<div>
+								Carnet de padrino Nro 1
+								<textbox type="text" value=""
+									width="100%" constraint="no empty" />
+							</div>
+							<div>
+								Carnet de padrino Nro 2
+								<textbox type="text" value=""
+									width="100%" constraint="no empty" />
+							</div>
+
+						</row>
+							<row class="col-md-12">
+							<div> <label>Intereses de Postulado</label></div>
+							<div  align="" width="80%" >
+								
+								<checkbox id="l1" label="Danza"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l2" label="Natación"
+									onCheck="" style="margin-right:3%;"/>
+								<checkbox id="l3" label="Baloncesto"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l4" label="Futbol"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l5" label="Tenis"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l7" label="Cultura"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l8" label="Música"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l9" label="Arte"
+									onCheck="" style="margin-right:3%;" />
+								<checkbox id="l10" label="Amistad"
+									onCheck="" style="margin-right:3%;"/>
+							</div>
+							
+
+						</row>
+		
+
+					</rows>
+				</grid>
+				<space spacing="30%" />
+
+				<div>
+					<button iconSclass="z-icon-floppy-o"
+						class='boton-guardar' label="Registrar" />
+					<space spacing="10%" />
+					<button iconSclass="z-icon-times"
+						class='boton-cancelar' label="Cancelar" />
+				</div>
+				<space spacing="25%" />
+			</div>
+		</div>
+	</window>
+</zk>

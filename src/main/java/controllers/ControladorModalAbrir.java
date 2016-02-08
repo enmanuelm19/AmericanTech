@@ -140,5 +140,26 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 		Window window = (Window)Executions.createComponents("configuracion/registrarMiembroJunta.zul", null, null);
 		window.doModal();
 	}
+	
+	@Listen("onClick = #btnRegistrarReglas")
+	public void showModalRegistrarReglasVisitas(Event e){
+		Window window = (Window)Executions.createComponents("configuracion/registrarRegla.zul", null, null);
+		window.doModal();
+	}
+	
+	@Listen("onClick = #btnRegistrarReglasAfiliacion")
+	public void showModalRegistrarReglasAfiliacion(Event e){
+		Window window = (Window)Executions.createComponents("configuracion/registrarRegla.zul", null, null);
+		window.doModal();
+	}
+	
+	@Listen("onClick = #btnRegistrarPostulado")
+	public void showModalRegistrarPostulado(Event e){
+		Window window = (Window)Executions.createComponents("postulado/registrarPostulado.zul", null, null);
+		window.doModal();
+	}
+	
+	
+
 
 }

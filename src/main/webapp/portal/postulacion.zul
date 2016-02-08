@@ -1,105 +1,192 @@
+<window title="" width="100%">
 
-<window title=""  width="100%">
+	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+	<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+	<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+	<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
+	<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
+	<include src="header.html" />
 
-<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
-<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
-<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
-<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
-<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
-<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
-<include src="header.html" />
+	<zk xmlns:n="native">
+		<image id="image"
+			src="../assets/portal/img/bannerPostulacion.png" width="100%" />
 
-<zk xmlns:n="native">
-  <image id="image" src="../assets/portal/img/bannerPostulacion.png" width="100%" /> 
-  
-  	   
-	<div class='contenido '   align="center"   >			
-    <div class=" "  form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+
+		<div class='contenido ' align="center">
+			<div class=" "
+				form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+
+
+				<div class="" id="contact">
+					<n:br></n:br>
+					<n:br></n:br>
+					<label
+						style="font-family: 'Lato', sans-serif; font-size:2em;">
+						Datos personales
+					</label>
+					<n:br></n:br>
+					<n:br></n:br>
+					<div class="wrap">
+
+
+
+						<div class="section group">
+
+							<div class="contact-form" width="60%"
+								align="center">
+
+
+
+								<textbox type="text" class="textbox"
+									placeholder="Tu Cedula" constraint="no empty" />
+								<textbox type="text" class="textbox"
+									placeholder="Tu nombre" constraint="no empty" />
+								<div class="clear"></div>
+								<textbox type="text" class="textbox"
+									placeholder="Tu Apellido" constraint="no empty" />
+								<textbox type="text" class="textbox"
+									placeholder="Tu Dirección" constraint="no empty" />
+								<div class="clear"></div>
+								<textbox type="text" class="textbox"
+									placeholder="Tu Email"
+									constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" />
+								<textbox type="text" class="textbox"
+									placeholder="Tu Telefono fijo" />
+								<div class="clear"></div>
+
+								<textbox type="text" class="textbox"
+									placeholder="Tu Telefono movil" />
+								<label
+									style="font-family:'Lato', sans-serif; font-size:1em;float: left;">
+									Sexo:
+								</label>
+								<n:br></n:br>
+								<radiogroup id="sv1" onCheck=""
+									style="float: left;">
+									<radio id="ra1" label="Femenino"
+										radiogroup="sv1" style="margin-right:15px;" />
+									<radio id="ra2" label="Masculino"
+										radiogroup="sv1" />
+								</radiogroup>
+								<separator />
+
+								<div class="clear"></div>
+
+								<textbox type="text" class="textbox"
+									placeholder="Tu Telefono fijo" />
+								<div>
+									<label
+										style="font-family:'Lato', sans-serif; font-size:1em;float: left; margin-top: -10px;">
+										Fecha de nacimiento:
+									</label>
+									<n:br></n:br>
+
+									<datebox
+										style="width:43%;height: 47px; margin-left: -62px; margin-top: -10px;"
+										constraint="no empty, no future: Especifica un valor válido"
+										class="textbox" placeholder="Tu fecha de nacimiento dd-mm-yyy"
+										compact="false" buttonVisible="false" />
+								</div>
+								<div class="clear"></div>
+
+								<div>
+									<textbox rows="2"
+										placeholder="¿Por qué quieres pertenecer al club?"
+										constraint="no empty" />
+								</div>
+								<label
+									style="font-family: 'Lato', sans-serif; font-size:2em;">
+									Miembros del club que te apadrinan
+								</label>
+								<n:br></n:br>
+								<n:br></n:br>
+
+
+								<textbox type="text" class="textbox"
+									placeholder="Código del socio (Padrino 1)"
+									constraint="no empty" />
+								<textbox type="text" class="textbox"
+									placeholder="Código del socio (Padrino 2)"
+									constraint="no empty" />
+								<div class="clear"></div>
+
+								<div class="clear"></div>
+
+
+								<label
+									style="font-family: 'Lato', sans-serif; font-size:2em;">
+									¿Cúales son tus intereses?
+								</label>
+								<n:br></n:br>
+								<n:br></n:br>
+
+
+								<checkbox id="l1" label="Danza"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l2" label="Natación"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l3" label="Baloncesto"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l4" label="Futbol"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l5" label="Tenis"
+									onCheck="" style="margin-right:15px;" />
+								<separator />
+								<checkbox id="l7" label="Cultura"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l8" label="Música"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l9" label="Arte"
+									onCheck="" style="margin-right:15px;" />
+								<checkbox id="l10" label="Amistad"
+									onCheck="" style="margin-right:15px;" />
+
+
+								<separator />
+								<n:br></n:br>
+								<span>
+									<button iconSclass="z-icon-floppy-o"  class='boton-Formulario' label="Enviar postulación " >
+									            <attribute name="onClick"><![CDATA[
+									Messagebox.show("Esta seguro de enviar su postulacion?", "Confirm Dialog", Messagebox.OK | Messagebox.IGNORE  | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+									    public void onEvent(Event evt) throws InterruptedException {
+									        if (evt.getName().equals("onOK")) {
+									            alert("Su postulacion ha sido enviada con exito! será contactado lo mas pronto posible");
+									        } else if (evt.getName().equals("onIgnore")) {
+									            Messagebox.show("Ignorar?", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+									        } else {
+									            alert("Envío cancelado!");
+									        }
+									    }
+									});
+									]]></attribute>
+								 </button>
+								</span>
+								<div class="clear"></div>
+
+
+							</div>
+
+
         
-					
-					<div class="" id="contact">
-				<n:br></n:br>	<n:br></n:br><label style="font-family: 'Lato', sans-serif; font-size:2em;">Datos personales</label><n:br></n:br> <n:br></n:br>
-	<div class="wrap">
-		
-		 
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</zk>
+	<include src="footer.html" />
 	
-			  <div class="section group">
-			  
-				  <div class="contact-form"   width="60%" align="center">
-				  	 
-					    	
-					    		<textbox type="text" class="textbox"  placeholder="Tu nombre"/>
-						    	<textbox type="text" class="textbox"  placeholder="Tu Cedula" />
-						    	<div class="clear"> </div>
-						    	<textbox type="text" class="textbox"  placeholder="Tu Dirección"/>
-						    	<textbox type="text" class="textbox"  placeholder="Tu Email" />
-						    	
-						    	<div class="clear"> </div>
-						    	<textbox type="text" class="textbox"  placeholder="Tu Telefono"/>
-						    <label style="font-family:'Lato', sans-serif; font-size:1em;float: left;">Sexo:</label><n:br></n:br>
-						    			    	<radiogroup id="sv1" onCheck="" style="float: left;" >
-             								   <radio id="ra1" label="Femenino" radiogroup="sv1" style="margin-right:15px;"/> 
-                								<radio id="ra2" label="Masculino" radiogroup="sv1" />   
-                								</radiogroup>
-          <separator />
-       
-						    	<div class="clear">
-						    	
-						    </div>
-						    	
-						   
-						    <div>
-						    	<textbox rows="2"  placeholder="¿Por qué quieres pertenecer al club?"  />
-						    </div>
-						    <label style="font-family: 'Lato', sans-serif; font-size:2em;">Miembros del club que te apadrinan</label><n:br></n:br> <n:br></n:br>
-						 
-						
-					    		<textbox type="text" class="textbox"  placeholder="Código del socio (Padrino 1)"/>
-						    	<textbox type="text" class="textbox"  placeholder="Nombre de tu padrino 1" />
-						    	<div class="clear"> </div>
-						    	<textbox type="text" class="textbox"  placeholder="Código del socio (Padrino 2)"/>
-						    	<textbox type="text" class="textbox"  placeholder="Nombre de tu padrino 2" />
-						    		<div class="clear"> </div>
-					   
-					     
-					     <label style="font-family: 'Lato', sans-serif; font-size:2em;">¿Cúales son tus intereses?</label><n:br></n:br> <n:br></n:br>
-						 
-						
-		<checkbox id="l1" label="Danza" onCheck="" style="margin-right:15px;" />
-        <checkbox id="l2" label="Natación" onCheck=""  style="margin-right:15px;"/>
-        <checkbox id="l3" label="Baloncesto" onCheck="" style="margin-right:15px;" />
-        <checkbox id="l4" label="Futbol" onCheck="" style="margin-right:15px;" />
-        <checkbox id="l5" label="Tenis" onCheck="" style="margin-right:15px;" />
-         <separator />
-        <checkbox id="l6" label="Bolas Criollas" onCheck="" style="margin-right:15px;" />
-        <checkbox id="l7" label="Cultura" onCheck=""  style="margin-right:15px;"/>
-        <checkbox id="l8" label="Música" onCheck="" style="margin-right:15px;" />
-        <checkbox id="l9" label="Arte" onCheck="" style="margin-right:15px;"/>
-        <checkbox id="l10" label="Amistad" onCheck="" style="margin-right:15px;" />
-      
-      
-        <separator /> <n:br></n:br>
-					     <span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar postulación"/></span>
-					     <div class="clear"> </div>
-					     
-					     
-				  </div>
-  				
-			
-				 
-			  </div>
-			  </div>
-     	</div>
-     	</div>
-</div>
-</zk>
-<include src="footer.html" />
-    
+
+
 </window>

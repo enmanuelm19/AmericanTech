@@ -16,14 +16,15 @@
 
 <zk xmlns:n="native">
 
-	<window border="none" title="Registrar Proveedor"
+	<window border="none" title="Registrar Reglas del club"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="70%"
+		closable="true" width="40%" height="85%"
 		style="iconSclass=z-icon-puzzle-piece;">
 		<caption iconSclass="z-icon-cogs" />
 
 
 		<div class='contenido'>
+			<radiogroup id="sv1" />
 
 			<div align="left">
 				<div class='encabezado'>Datos básicos</div>
@@ -34,46 +35,57 @@
 			<div align="center">
 				<grid>
 
-					<rows class="">
+					<rows>
 
 						<row class="col-md-12">
 							<div>
-								Rif/Indentificacion
-								<textbox type="text" value=""
-									width="80%" constraint="no empty" />
-								<button sclass="btn-link"
-									iconSclass="z-icon-search blue" />
+								La regla esta relacionada con:
+
+								<radio id="ra1" label="Visita"
+									radiogroup="sv1" style="margin-right:15px; margin-left:15px;" />
+								<radio id="ra2" label="Afiliacion"
+									radiogroup="sv1" style="margin-right:15px;" />
 							</div>
 
+						</row>
+						<row class="col-md-12">
 							<div>
-								Nombre
+								Descripción de la regla
+								<textbox type="text" rows="5"
+									width="100%" tabindex="10" constraint="no empty" />
+							</div>
+
+						</row>
+						<row class="col-md-12">
+
+							<div>
+								Parentesco
 								<textbox type="text" value=""
 									width="100%" tabindex="2" constraint="no empty" />
 							</div>
 						</row>
 						<row class="col-md-12">
-							<div>
-								Dirección
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
-							</div>
-							<div>
-								Telefono
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
-							</div>
 
+							<div>
+								Cant de visitas/invitados permitidos
+								<textbox type="text" value=""
+									width="100%" tabindex="2" constraint="no empty" />
+							</div>
+							
 						</row>
 						<row class="col-md-12">
-							<vlayout>
-								Email
+							<div>
+								Frecuencia mensual
 								<textbox type="text" value=""
-									width="100%" tabindex="2"
-									constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" />
-							</vlayout>
+									width="100%" tabindex="2" constraint="no empty" />
+							</div>
+							
 						</row>
+						
+						
 
 					</rows>
+
 				</grid>
 				<space spacing="15%" />
 

@@ -102,9 +102,9 @@
 			<navitem label="Backup BD" iconSclass="z-icon-angle-double-right" href=""/>
 		</nav>
 		
-		
-	
-		
+		<nav label="Postulaciones" iconSclass="z-icon-group">
+			<navitem label="Postulados" iconSclass="z-incon-angle-double-right" id="btnPostulado"></navitem>
+		</nav>
 		
 		
 		<navitem id="calitem" label="Calendar" iconSclass="z-icon-calendar" visible="false"/>
