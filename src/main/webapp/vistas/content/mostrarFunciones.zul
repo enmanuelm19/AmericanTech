@@ -1,5 +1,5 @@
 	<div>
-		<grid mold="paging" pageSize="15" model="@load(vm.funcionAll)" emptyMessage="Ningun Registro Encontrado">
+		<grid mold="paging" pageSize="10" model="@load(vm.funcionAll)" emptyMessage="Ningun Registro Encontrado">
 			<columns class="z-grid z-column-content ">
 				<column label="Descripción" align="center"/>
 			</columns>

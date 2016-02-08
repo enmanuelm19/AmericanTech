@@ -1,91 +1,93 @@
-<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
-
 <!-- Load Bootstrap  -->
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
-
 <!-- Google Open Sans font -->
 <!-- Load fonts from local -->
 <?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-
 <!-- Unmark if we want to use fonts from google server
 	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 -->
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native">
 	<window closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="70%" width="40%" style="iconSclass=z-icon-puzzle-piece;" title=" Registrar Grupo">
-		<caption iconSclass="z-icon-puzzle-piece"/>
-		<div class='contenedor'>
-			<div align="center" width="95%">
-				<grid width="100%">
-					<rows class="col-md-12">
+		class="col-md-6" style="iconSclass=z-icon-puzzle-piece;"
+		title=" Registrar Grupo">
+		<caption iconSclass="z-icon-puzzle-piece" />
 
+		<div class='contenido form-group'>
+		
+			<div class="row">
+				<div align="left">
+					<div class='encabezado'>
+						<label value="Nombre" />
+					</div>
+					<div class="linea-two" />
+				</div>
+
+				<grid>
+					<rows>
 						<row>
-							<div class="col-md-12">
-								<vbox>
+							<div>
+								<label class="col-md-3">
 									Descripción
-									<textbox type="text" value=""
-										width="150%" constraint="no empty" />
-									<separator spacing="10%" />
-								</vbox>
+								</label>
+								<textbox type="text" class="col-md-7"
+									constraint="no empty" />
+								<separator spacing="10%" />
+
 							</div>
 						</row>
 
 					</rows>
 				</grid>
-
-				<div align="center" width="95%"><!-- INICIO DIV GRID DE FUNCIONES-->
-					<!-- GRID DE FUNCIONES-->
-					<div align="left">
-						<div class='encabezado'>
-							<label value="Funciones" />
-						</div>
-						<div class="linea-two" />
-					</div>
-					<grid mold="paging" pageSize="15" width="100%">
-						<columns class="z-grid z-column-content">
-							<column label="Descripción" align="center" />
-							<column label="Activar" align="center"
-								width="15%" />
-						</columns>
-						<rows>
-							<row>
-								<label value="Modificar Perfil" />
-								<checkbox />
-							</row>
-							<row>
-								<label
-									value="Registrar Solicitud Reservacion" />
-								<checkbox />
-							</row>
-							<row>
-								<label
-									value="Publicar Informacion en Cartelera" />
-								<checkbox />
-							</row>
-							<row>
-								<label value="Revisar Sugerencias" />
-								<checkbox />
-							</row>
-						</rows>
-					</grid><!-- FIN GRID DE FUNCIONES-->
-				</div><!--FIN DIV GRID DE FUNCIONES-->
-				<separator spacing="5%" />
-				<div>
-					<hbox>
-						<button iconSclass="z-icon-floppy-o"
-							class='boton-guardar' label="Guardar" />
-						<space spacing="20%" />
-						<button iconSclass="z-icon-times-circle"
-							class='boton-cancelar' label="Cancelar" />
-					</hbox>
-				</div>
-				<separator spacing="5%"></separator>
 			</div>
+			<!-- INICIO DIV GRID DE FUNCIONES-->
+			<!-- GRID DE FUNCIONES-->
+			<div class="row">
+				<div align="left">
+					<div class='encabezado'>
+						<label value="Funciones" />
+					</div>
+					<div class="linea-two" />
+				</div>
+				<grid mold="paging" pageSize="10">
+					<columns class="z-grid z-column-content">
+						<column label="Descripción" align="center" />
+						<column label="Activar" align="center"
+							width="30%" />
+					</columns>
+					<rows>
+						<row>
+							<label value="Modificar Perfil" />
+							<checkbox />
+						</row>
+						<row>
+							<label
+								value="Registrar Solicitud Reservacion" />
+							<checkbox />
+						</row>
+						<row>
+							<label
+								value="Publicar Informacion en Cartelera" />
+							<checkbox />
+						</row>
+						<row>
+							<label value="Revisar Sugerencias" />
+							<checkbox />
+						</row>
+					</rows>
+				</grid><!-- FIN GRID DE FUNCIONES-->
+			</div><!--FIN DIV GRID DE FUNCIONES-->
+
+			<div class="row">
+			<separator spacing="30px"></separator>
+						<button iconSclass="z-icon-floppy-o"
+							class='boton-guardar col-md-3 col-md-offset-2' label="Guardar" />
+						<button iconSclass="z-icon-times-circle"
+							class='boton-cancelar col-md-3 col-md-offset-2' label="Cancelar" />
+			</div>
+			
 		</div>
 	</window>
 </zk>
