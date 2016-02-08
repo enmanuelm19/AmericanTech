@@ -2,133 +2,152 @@
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk>
 	<window border="none" title="Registrar Usuario" closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="45%" height="100%" style="iconSclass=z-icon-puzzle-piece;">
-		<caption iconSclass="z-icon-puzzle-piece"/>
-		<div class="contenedor" width="100%" align="center">
-			<div align="center" width="90%">
-				<div align="left" width="100%">
-					<div>
-						<hbox>
-							<vbox>
-								Cédula
-								<textbox id="txtRegUsuarioCedula"
-									width="100%" constraint="no empty" />
-							</vbox>
-							<div>
-								<separator spacing="40%" />
-								<button iconSclass="z-icon-search blue"
-									class="btn-link" tooltiptext="Buscar" />
-							</div>
-						</hbox>
-					</div>
-					<hbox>
-						<div width="100%">
-							<div>
-								<separator />
-								Usuario (requerido)
-								<separator />
-								<textbox id="txtRegUsuarioUsuario"
-									width="85%" constraint="no empty" />
-							</div>
-							<div>
-								<separator />
-								<hbox>
-									<vbox>
-										Grupo
-										<combobox
-											id="cmbRegUsuarioGrupo" width="110%">
-											<comboitem
-												label="Seleccione Un Grupo" />
-											<comboitem
-												label="Administraion" />
-										</combobox>
-									</vbox>
-									<div>
-										<separator spacing="40%" />
-										<button
-											iconSclass="z-icon-plus blue" class="btn-link"
-											tooltiptext="Agregar" />
-									</div>
+		class="col-md-8" style="iconSclass=z-icon-puzzle-piece;">
+		<caption iconSclass="z-icon-puzzle-piece" />
 
-								</hbox>
-							</div>
-							<div>
-								<separator />
-								<vbox>
-									Correo Electrónico (requerido)
-									<textbox id="txtRegUsuarioCorreo"
-										width="130%" constraint="no empty" />
-								</vbox>
-							</div>
-							<div>
-								<separator />
-								<vbox>
-									Nombre
-									<textbox id="txtRegUsuarioNombre"
-										width="150%" constraint="no empty" />
-								</vbox>
-							</div>
-							<div>
-								<separator />
-								<vbox>
-									Apellido
-									<textbox id="txtRegUsuarioApellido"
-										width="150%" constraint="no empty" />
-								</vbox>
-							</div>
-							<div>
-								<separator />
-								<vbox>
-									Contraseña (requerido)
-									<textbox
-										id="txtRegUsuarioContrasena" width="160%"
-										constraint="no empty" />
-								</vbox>
-							</div>
-							<div>
-								<separator />
-								<vbox>
-									Confirmar Contraseña (requerido)
-									<textbox
-										id="txtRegUsuarioConfContrasena" width="110%"
-										constraint="no empty" />
-								</vbox>
-							</div>
-						</div>
-						<space spacing="90%" />
-						<div align="right" width="100%">
-							<vbox>
-								<image src="/assets/portal/img/img1.jpg"
-									width="100%" />
-								<div align="right"
-									class='col-md-offset-5'>
-									<fileupload label="Examinar"
-										iconSclass="z-icon-folder-open" class='boton-guardar' />
+		<div class="contenido form-group">
+
+			<div align="left">
+				<div class="encabezado">Datos Basicos</div>
+				<div class="linea-two"></div>
+			</div>
+			<separator spacing="30px"></separator>
+			<div class="row">
+				<div class="col-md-6">
+					<grid>
+						<rows>
+							<row class="col-md-12">
+								<div>
+									<label class="col-md-3">
+										Cedula
+									</label>
+									<textbox constraint="no empty"
+										class="col-md-7">
+									</textbox>
+									<button
+										iconSclass="z-icon-search blue" class="col-md-2 btn-link">
+									</button>
 								</div>
-							</vbox>
-
-						</div>
-					</hbox>
-
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Usuario
+									</label>
+									<textbox constraint="no empty"
+										class="col-md-9">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Grupo
+									</label>
+									<combobox>
+										<comboitem
+											label="Seleccione un grupo">
+										</comboitem>
+										<comboitem label="Secretaria"></comboitem>
+										<comboitem label="Vigilante"></comboitem>
+										<comboitem
+											label="Administrador">
+										</comboitem>
+									</combobox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Correo electronico
+									</label>
+									<textbox type="email"
+										class="col-md-9" constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Nombre
+									</label>
+									<textbox class="col-md-9"
+										constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Apellido
+									</label>
+									<textbox class="col-md-9"
+										constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Telefono
+									</label>
+									<textbox class="col-md-9"
+										constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Fecha de Nacimiento
+									</label>
+									<datebox id="DateFchInicio" cols="12"
+								format="short " onCreate="self.value = new Date()" />
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Contraseña
+									</label>
+									<textbox class="col-md-9"
+										constraint="no empty" type="password">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Confirmar contraseña
+									</label>
+									<textbox class="col-md-9"
+										constraint="no empty" type="password">
+									</textbox>
+								</div>
+							</row>
+						</rows>
+					</grid>
 				</div>
-				<separator spacing="5%" />
-				<div align="center">
-					<hbox>
-						<div>
-							<button iconSclass="z-icon-floppy-o"
-								class='boton-guardar' label="Guardar" />
-						</div>
-						<space spacing="20px" />
-						<div>
-							<button iconSclass="z-icon-times-circle"
-								class='boton-cancelar' label="Cancelar" />
-						</div>
-					</hbox>
+				<div class="col-md-6">
+					<div class="input-group">
+						<image src="/assets/portal/img/img1.jpg"
+							class='img-responsive col-md-offset-4' />
+						<fileupload label="Examinar"
+							iconSclass="z-icon-folder-open"
+							class='boton-guardar col-md-offset-7' />
+					</div>
 				</div>
+			</div>
+			<div class="row col-md-12">
+				<button class="boton-guardar col-md-3 col-md-offset-2"
+					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
+				</button>
+				<button class="boton-cancelar col-md-3 col-md-offset-2"
+					iconSclass="z-icon-times" type="button" label="Cancelar">
+				</button>
 			</div>
 		</div>
 	</window>

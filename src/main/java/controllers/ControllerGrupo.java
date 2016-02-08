@@ -1,24 +1,21 @@
 package controllers;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 import models.Funcion;
 import models.Grupo;
 
-import org.apache.poi.hssf.record.ArrayRecord;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
-public class grupoGeneralViewModel {
+public class ControllerGrupo {
 	private Grupo grupo = new Grupo();
 	private static List<Grupo> gruposAll=new ArrayList<Grupo>(); //Coleccion que tiene que ser estatica.. esta se va a usar como referencia en el filtro
 

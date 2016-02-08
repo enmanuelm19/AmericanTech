@@ -1,102 +1,287 @@
-<zk xmlns:n="native" >
-	<div>
-	<hlayout  spacing="0">
-		
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-puzzle-piece" />
-					<a label="Adm. del Sistema" href="#" />
-					<label value="Usuario" />
-				</div>
+<zk xmlns:n="native">
+	<div class="contenedor">
+		<hlayout spacing="0">
 
-			</div>
-
-			<div class='contenedor' align="center" style="padding:10px;">
-
-				<div sclass="page-header" align="left">
-					<label value="Usuario" />
-				</div>
-				<div class='form-pricing' align="left" width="85%">
-
-					<div align="right"
-						apply="controllers.usuarioGeneralController">
-						<button id="btnUsuarioGeneralReg"
-							iconSclass="z-icon-plus" class='boton-guardar'
-							label="Agregar Nuevo" />
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-puzzle-piece" />
+						<a label="Adm. del Sistema" href="#" />
+						<label value="Usuario" />
 					</div>
-					<separator spacing="1%" />
-					<div class='encabezado' align="left">
-						Datos de Usuarios
-					</div>
-					<div class='linea-two' />
-
-					<grid mold="paging" pageSize="10">
-						<columns class="z-grid z-column-content"
-							menupopup="auto">
-							<column hflex="2" label="Usuario"
-								sort="auto" />
-							<column hflex="2" label="Nombre"
-								sort="auto" />
-							<column hflex="2" label="Correo Electrónico" />
-							<column label="Función" 
-								sort="auto"  />
-							<column hflex="2" label="Foto" />
-							<column label="Acciones" 
-								width="15%" />
-						</columns>
-						<rows>
-							<row>
-								<label value="fidel.alejos" />
-								<label value="Fidel Aliaga" />
-								<label value="fidel.alejos@gmail.com" />
-								<label value="Socio" />
-								<image src="/assets/portal/img/img1.jpg"
-									width="40%" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							
-							<row>
-								<label value="fidel.alejos" />
-								<label value="Fidel Aliaga" />
-								<label value="fidel.alejos@gmail.com" />
-								<label value="Socio" />
-								<image src="/assets/portal/img/img1.jpg"
-									width="40%" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							
-							<row>
-								<label value="fidel.alejos" />
-								<label value="Fidel Aliaga" />
-								<label value="fidel.alejos@gmail.com" />
-								<label value="Socio" />
-								<image src="/assets/portal/img/img1.jpg"
-									width="40%" />
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-						</rows>
-					</grid><!-- FIN GRID DE USUARIOS-->
-					<separator />
-
 				</div>
-			</div>
-		</vlayout>
-	</hlayout>
+
+				<div class='contenedor' align="center">
+
+					<div sclass="page-header" align="left">
+						<label value="Usuario" />
+					</div>
+					<space></space>
+					<div class='form-pricing' align="left" width="90%"
+						style="margin-bottom: 20px">
+
+						<div align="right"
+							apply="controllers.ControllerUsuario" xmlns:w="client">
+							<button id="btnUsuarioGeneralReg"
+								iconSclass="z-icon-plus" class='boton-guardar'
+								label="Agregar Nuevo" />
+						</div>
+
+						<div class="contenido">
+							<div align="left">
+								<div class="encabezado">Datos de Usuarios</div>
+								<div class='linea-two' />
+							</div>
+							<separator spacing="20px"></separator>
+
+							<grid mold="paging" pageSize="10" emptyMessage="No se encontraron registros">
+								<columns class="z-grid z-column-content"
+									menupopup="auto">
+									<column hflex="2" label="Usuario"
+										sort="auto" />
+									<column hflex="2" label="Nombre"
+										sort="auto" />
+									<column hflex="2"
+										label="Correo Electrónico" />
+									<column label="Grupo" sort="auto" />
+									<column hflex="2" label="Foto" />
+									<column label="Acciones"
+										width="15%" />
+								</columns>
+								<rows>
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+									
+									<row>
+										<label value="fidel.alejos" />
+										<label value="Fidel Aliaga" />
+										<label
+											value="fidel.alejos@gmail.com" />
+										<label value="Socio" />
+										<image
+											src="/assets/portal/img/img1.jpg" width="40%" />
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+										</div>
+									</row>
+								</rows>
+								<foot>
+									<footer span="4" class="footer_right" label="14 items en la lista"></footer>
+								</foot>
+							</grid><!-- FIN GRID DE USUARIOS-->
+							<separator />
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
 	</div>
 </zk>
