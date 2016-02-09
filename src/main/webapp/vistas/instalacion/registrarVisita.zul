@@ -1,237 +1,227 @@
-<zk xmlns:n="native" >
-	<div>
-	 <hlayout spacing="0" >
-		 
-		   <vlayout hflex="1" spacing="0" >
-		   
-		   	<div sclass="breadcrumbs">
-		   		<div sclass="breadcrumb">
-		   			<span sclass="home-icon z-icon-home" />
-		   				<a label="Instalaciones" href="#" />
-		   			 	  <label value="Visitas"/>
-		   		</div>
-		   	</div>
-		   	
-	<div class='contenedor'>
-		 <div sclass="page-header">
-		 		<label value ="Registrar Invitado" />
-		 		
-		 </div>
-				 <div    align="center"  >
-					 		
-			   		 <div class="col-md-11 col-centered " 
-			   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-			   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-			   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-			        			<div class='form-pricing' width="600px" height="485px">
-							     <separator/>
-							  <div align="left">
-								      	<div class="encabezado">
-								      		Datos del Socio
-								      	</div>
-								      	<div class="linea-two">
-				
-								      	</div>	
-							      </div>
-								 <separator/><separator/><separator/>
-			        	<grid width="600px">
-			         	
-						       <rows class="col-md-11" >
-						            
-						            <row class="col-md-3" height="140px">
-										<div>
-						                  		<image src="../assets/portal/img/img1.jpg"  width="100px" height="100px" />
-						                 </div>
-						            </row>
-						            <row class="col-md-9">
-							                  <div>
-							                  	<hlayout>
-							                  	<label  width="50%" value= "Nro. de Carnet" />
-							                  	<separator /><separator />
-							                  	<separator />         
-							                  	</hlayout>
-							                  	</div>		                 
-							              		  <div>
-							              		   	 <textbox    type="text" value="" width="120px" />
-							                      </div>
-							                      <div>
-							                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
-							                      </div>			                      
-						              </row>
-						              <row class="col-md-9">
-						                  <div>
-						                  <hlayout>
-						                  	<label  width="50%" value= "Cedula" />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-											<separator />
-						                  	<separator />
-						                  	<separator />
-						               </hlayout>
-						                  	</div>
-						              		  <div>
-						              		   	 <textbox    type="text" value="" width="120px" />
-						                      </div>
-						                      <div>
-						                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
-						                      </div>			                      
-						               </row>
-						               <row class="col-md-9">
-						              			<div>
-						              				<hlayout>
-						                  			<label   width="50%"  value= "Nombre"/> 
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			</hlayout>
-						                  		</div>
-						              		  	<div>
-						              		   	  <textbox  type="text" value="" width="100%" />
-						                      	</div>
-										</row>
-								  
-						           </rows>
-					  					
-						    </grid>
-			<separator/><separator/><separator/>
-	
-        			<div align="left"> 
-						<div class="encabezado">
-							Datos del Invitado
-						</div>
-						<div class="linea-two">
-						</div>
+<?page title="Registrar Visita- ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+      <div>   
+	<hlayout  spacing="0">
+		  
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+							<span sclass="home-icon z-icon-home"/>
+					    <a label="Instalación" href="#"/>
+							<label value="Registrar Visita"/>
 					</div>
-	 				<separator/><separator/><separator/>
-        			<grid width="350px">
-          
-			            	<rows class="col-md-9" >
-			            <row>
+ 
+			</div>
 
-			            </row>
-			                  <row class="col-md-11">
-			                  <div>
-			                  <hlayout>
-			                  	<label  width="50%" value= "Cedula" />
-			                  	<separator />	                  
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	<separator />
-			                  	</hlayout>
-			                  	</div>
-			                  
-			              		  <div>
-			              		   	 <textbox    type="text" value="" width="100px" />
-			                      </div>
-			                      <div>
-			                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
-			                      </div>			                      
-			                  </row>
-			                    <row class="col-md-11">
-			              			<div>
-			              			<hlayout>
-			                  			<label   width="50%" value= "Nombre"/>
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  		</hlayout> 
-			                  		</div>
-			              		  	<div>
-			              		   	  <textbox  type="text" value="" width="180px" />
-			                      	</div>
-								</row>
-							<row class="col-md-11">
-			              			<div>
-			              			<hlayout>
-			                  			<label   width="400px" value= "Instalación"/> 
-			                  			<separator /><separator />
-	
+		<div class='contenedor'>
+				
+	 <div sclass="page-header">
+	    <label value="Registrar Invitado"/>
+	  
+	  </div>
+		   <div class='contenido '   align="center"  >
+   				 <div class="col-md-8 col-centered " 
+   				  form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        			<div class='form-pricing' width="100%" height="100%">
+  			            	<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Datos Del Socio                            									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>	
+								<separator spacing="2%"></separator> 	    
+        			<grid width="98%" fixedLayout="true" >
+  
+			            	<rows class="col-md-12">
+			            		
+			                  <row class="col-md-11" >
+                             	<div>
+			                  		
+									<hlayout>
+										<div style="border:1px">
+										
+				                  			<image
+	                      	src="/assets/portal/img/img1.jpg" width="40%" class='im' />
+	                             		</div>
+	                             		<div >
+	                             			<div>
+	                             				<hlayout>
+		                             				<div>
+		                             					<div>
+		                             						Número de Carnet
+		                             					</div>
+		                             					<separator spacing="6%"></separator>
+			                             				<div>
+			                             					Cédula
+		                             					</div>
+		                             					<separator spacing="6%"></separator>
+			                             				<div>
+			                             					Nombre
+		                             					</div> 
+		                             					<separator spacing="4%"></separator>
+		                             					<div>
+			                             					Apellido
+		                             					</div> 
+		                             					<separator spacing="2%"></separator>                            									                                                				
+		                             				</div>
+													<div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
 
-			                  		</hlayout>
-			                  		</div>
-			              		  	<div>
-			         
-							<combobox width="200px">
-						   		 <comboitem label="Caney Churuguara"/>
-						   		 <comboitem label="Piscina"/>
-						   		 <comboitem label="Campo de futbol"/>
-						   		 <comboitem label="Caney Cardenal"/>
-							</combobox>
-							  	</div>	
-							  	
-							</row>
-							
-							    <row align="center">
-			                  	<vlayout>
-			                  	<separator /><separator /><separator/>
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>	                             							                             																		
+													</div>
+	                             				</hlayout>                             				                             					
+	                             			</div>	
+							           </div> 
+									</hlayout>			                  		
+								</div>
+						    </row>
+						</rows>   
+					</grid>
+					<separator spacing="2%"></separator> 
+					<div align ="left">	
+	                       			<div  class="encabezado">
+                       					Datos Del Invitado                           									                                                				                             				                             					
+                       				</div>		  			            		
+	                       			<div align="left" class="linea-two">
+                        									                                                				                             				                             					
+                       				</div>		            		
+								</div>	
+								<separator spacing="2%"></separator> 
+        			<grid width="90%" >         
+			            	<rows class="col-md-12">
+				                
 
-			                  	<hlayout >
-			                  	<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  			<separator />
-			                  		<separator spacing="150px"></separator>
-			                  		<div  >
-			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="100px"/>
-			                    	</div><separator spacing="580px"></separator>
-			                    	<separator /><separator /><separator />
-			                  		<div align="center">
-			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
-			                     	</div><separator spacing="180px"></separator>
-			                  	</hlayout>
-			                  </vlayout>
-			             		
-			                 </row>
+	        				<row>
+	        					<vlayout>
+		        					<hlayout>
+
+	        	           			<div >
+	                             			<div>
+	                             				<hlayout>
+		                             				<div>
+			                             				<div>
+			                             					Cédula
+		                             					</div>
+		                             					<separator spacing="8%"></separator>
+			                             				<div>
+			                             					Nombre
+		                             					</div> 
+		                             					<separator spacing="12%"></separator> 
+		                             					<div>
+			                             					Apellido
+		                             					</div> 
+		                             					<separator spacing="10%"></separator> 
+		                             					<div>
+			                             					Instalación
+		                             					</div> 
+		                             					          <separator spacing="6%"></separator>    
+		                             				<div>
+		                      					          Fecha 
+		                      				          </div>            									                                                				
+		                             				</div>
+		                             				
+		                             				
+		                      				<separator spacing="2%"></separator> 
+													<div>
+			                             	
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
+			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>
+			                             				<div>
+			                             					<textbox type="text" value="" width="65%" />                             									                                                				
+			                             				</div>
+			                             				<separator spacing="2%"></separator>
+			                             				<div>
+			                             			   <combobox width="65%">
+			                             					 <comboitem label=""/>
+			                             					  <comboitem label=""/>
+			                             			   </combobox>   
+			                             			   								                                                				
+			                             				</div>	
+			                             				<separator spacing="2%"></separator>  	 
+			                             				<div>
+			                             				<datebox  width="65%"/>
+			                             				</div>     
+			                             				<separator spacing="2%"></separator>  	                       							                             																		
+													</div>
+	                             				</hlayout>                             				                             					
+	                             			</div>	
+							           </div>	
+	                      				                      				
+		        					</hlayout>
+		        									                      		
+								</vlayout>
+			                  </row>   
+					         
+			          
+			 
 			            </rows>
-		  					
+			           
 			        </grid>
+			        <separator spacing="2%"></separator>
+			                <div>    
+			                      
+			                  	<hlayout width="">
+			                  	
+			                  		
+			                  		<div>
+			                    		<button
+											iconSclass="z-icon-floppy-o"
+											class='btn-primary boton-guardar' label="Guardar" />
+			                    	</div>
+			                    	<separator spacing="2%"></separator>
 
+			                     	<div>
+			                    		<button
+											iconSclass="z-icon-times-circle" class='boton-cancelar'
+											label="Cancelar" />
+			                     	</div>
+			                  	</hlayout>										             		
+			                 </div>
+			        </div>
+			        
+   				 </div>
 
-
-		 		   </div>
-   				</div>
-	       </div>		
+	</div>		
 			
-		 	
-		 	
-		 </div>	
-		   	
-		
-		 
-		   			
+		</div>		
+			
+			
+			
+			
 		</vlayout>
 	</hlayout>
-
-	</div>
+</div>
+	
 </zk>
