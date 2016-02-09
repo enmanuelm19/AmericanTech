@@ -6,95 +6,71 @@
 <?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<window border="none" title="Registrar Sugerencia " closable="true"
-	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	 width="35em" height="26em">
-	
-
-	<div
-		form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 
 
+<zk xmlns:n="native">
+
+	<window border="none" title="Registrar Sugerencia"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="48%" height="55%"
+		style="iconSclass=z-icon-user;">
+		<caption iconSclass="z-icon-user" />
 
 
+		<div class='contenido'>
 
-
-
-
-
-
-		<div  width="100%">
-
-			<div align="">
-				<div class="encabezado">Sugerencias</div>
-				<div align="left" class="linea-two">
-
-				</div>
+			<div align="left">
+				<div class='encabezado'>Datos básicos</div>
+				<div class='linea-two'></div>
 			</div>
+			<space spacing="15%" />
 
 			<div align="center">
-				<grid width="100%" align="center">
-					<rows class="col-md-12">
+				<grid>
 
+					<rows class="">
 						<row class="col-md-12">
-							<div width="100%">
-								<vbox>
-									<label>Tipo Sugerencia</label>
-									<combobox value="Seleccione"
-										width="100%"  type="text" readonly="true">
-										<comboitem label="Instalacion" />
-										<comboitem label="Evento" />
-										<comboitem label="Vigilancia" />
-										<comboitem label="Otros" />
-									</combobox>
-								</vbox>
-							</div>
-						</row>
-						<row class="col-md-12">
-							<div width="100%">
-
-								<label>
-									Escriba aqui su Sugerencia
-								</label>
-
-								<textbox cols="4" rows="6" type="text" readonly="true"
-									value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
-									width="80%" />
-
+							<div>
+								Tipo   
+								<!--<combobox id="cmbTipo" width="150px">            
+									model="@load(vm.colors)" selectedItem="@bind(vm.shirtColor)" > 
+									                    
+									<template name="model">
+										                        
+										<comboitem label="@load(each)"                             
+											image="@load(vm.getIconImage(each))" />
+										                    
+									</template>
+									  <comboitem label="Prueba"></comboitem>       
+								</combobox>-->
+								<combobox></combobox>
 							</div>
 
 						</row>
-
-						<row align="center"
-							class="col-md-12 col-centered">
-							<hlayout width="100%">
-
-								<div class="col-md-2">
-									<button iconSclass="z-icon-floppy-o"
-										class='boton-guardar' label="Guardar" />
-								</div>
-
-
-								<div class="col-md-2">
-									<button
-										iconSclass="z-icon-times-circle" class='boton-cancelar'
-										label="Cancelar " />
-								</div>
-
-
-							</hlayout>
+						<row class="col-md-12">
+							<div>
+								Escriba aquí su sugerencia
+								<textbox cols="45" rows="4"
+									readonly="false" type="text" value="" width="100%"
+									constraint="no empty" />
+							</div>
 
 						</row>
 
 					</rows>
-
 				</grid>
+				<space spacing="15%" />
+
+				<div>
+					<button iconSclass="z-icon-floppy-o"
+						class='boton-guardar' label="Registrar" />
+					<space spacing="10%" />
+					<button iconSclass="z-icon-times"
+						class='boton-cancelar' label="Cancelar" />
+				</div>
+				<separator spacing="5%" />
 			</div>
 		</div>
-	</div>
-
-
-</window>
+	</window>
+</zk>
 
