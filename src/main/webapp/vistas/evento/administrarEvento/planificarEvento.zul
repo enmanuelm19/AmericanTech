@@ -1,144 +1,401 @@
 <!-- Responsable Hector Gil -->
-<zk xmlns:n="native" >
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
 	<div>
-	<hlayout spacing="0">
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-calendar" />
-					<a label="Eventos" href="#" />
-					<label value="Planificar Evento" />
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-calendar" />
+						<a label="Eventos" href="#" />
+						<label value="Planificar Evento" />
+					</div>
 				</div>
-			</div>
-			<div class='contenedor'
-				apply="controllers.ControllerVerAfiliado">
-				<div sclass="page-header">
-					<label value="Planificar Eventos" />
-				</div>
-				<div class='contenido ' align="center">
-					<div class="col-md-12 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="700px"
-							height="auto">
-							<div align="left">
-								<div class="encabezado">
-									Lista de Eventos
+				<div class='contenedor'
+					apply="controllers.ControllerVerAfiliado">
+					<div sclass="page-header">
+						<label value="Planificar Eventos" />
+					</div>
+					<div class='contenido ' align="center">
+						<div class="col-md-12 col-centered ">
+							<div class='form-pricing' width="105%"
+								style="margin-bottom: 20px">
+								<div align="left">
+									<div class="encabezado">
+										Lista de Eventos
+									</div>
+									<div align="left" class="linea-two" />
 								</div>
-								<div align="left" class="linea-two">
+								<separator spacing="20px" />
 
-								</div>
+								<grid
+									emptyMessage="No se encuentran eventos registrados"
+									mold="paging" pageSize="10">
+
+
+									<auxhead sclass="category-center">
+
+										<auxheader colspan="1" />
+
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<textbox instant="true"
+												width="85px" placeholder="Buscar" />
+										</auxheader>
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<datebox readonly="true"
+												format="short" onCreate="self.value = new Date()"
+												width="85px" tabindex="7" />
+										</auxheader>
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<datebox readonly="true"
+												format="short" onCreate="self.value = new Date()"
+												width="85px" tabindex="7" />
+										</auxheader>
+										<auxheader colspan="2" />
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<combobox instant="true"
+												width="85px" placeholder="Buscar">
+												<comboitem
+													label="espera" />
+												<comboitem
+													label="iniciada" />
+												<comboitem
+													label="culminada" />
+												<comboitem
+													label="cancelada" />
+											</combobox>
+
+										</auxheader>
+										<auxheader colspan="2" />
+
+									</auxhead>
+
+									<columns>
+										<column width="4%"></column>
+										<column width="16%">
+											Descripción
+										</column>
+										<column width="16%">
+											Fecha de inicio
+										</column>
+										<column width="16%">
+											Fecha de fin
+										</column>
+										<column width="10%">
+											Hr. Inicio
+										</column>
+										<column width="9%">
+											Hr. Fin
+										</column>
+										<column width="16%">
+											Condición
+										</column>
+										<column width="8%">
+											Visitas
+										</column>
+										<column width="11%">
+											Acciones
+										</column>
+									</columns>
+
+									<rows>
+										<row>
+											<detail open="false"
+												fulfill="onOpen">
+												<grid
+													emptyMessage="No se encuentran actividades registradas"
+													mold="paging" pageSize="5">
+													<auxhead
+														sclass="category-center">
+
+														<auxheader
+															colspan="2" />
+
+													</auxhead>
+
+													<columns>
+														<column
+															width="60%">
+															Actividad
+														</column>
+														<column
+															width="25%">
+															Tipo
+															actividad
+														</column>
+														<column
+															width="15%">
+															Acciones
+														</column>
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="Decoración" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+
+															<label
+																value="Contratar Sonido" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Mantenimiento del Salon" />
+															<label
+																value="Mantenimiento" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Instalar mesas" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Contratar Animadores" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Refrigerios" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+													</rows>
+												</grid>
+											</detail>
+											<label
+												value="Semana Deportiva" />
+											<label value="12/12/1920" />
+											<label value="12/12/1920" />
+											<label value="12:00" />
+											<label value="12:00" />
+											<label value="Iniciada" />
+											<label value="100" />
+											<div>
+												<button
+													iconSclass="z-icon-plus blue " sclass="btn-link"
+													tooltiptext="Agregar actividad"
+													id="btnRegistrarActividades" width="10%" />
+												<button
+													iconSclass="z-icon-trash-o red" sclass='btn-link'
+													tooltiptext="Eliminar evento" id="btnVerListaActividades"
+													width="10%" />
+											</div>
+										</row>
+										<row>
+											<detail open="false"
+												fulfill="onOpen">
+												<grid
+													emptyMessage="No se encuentran actividades registradas"
+													mold="paging" pageSize="5">
+													<auxhead
+														sclass="category-center">
+
+														<auxheader
+															colspan="2" />
+
+													</auxhead>
+
+													<columns>
+														<column
+															width="60%">
+															Actividad
+														</column>
+														<column
+															width="25%">
+															Tipo
+															actividad
+														</column>
+														<column
+															width="15%">
+															Acciones
+														</column>
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="Decoración" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+
+															<label
+																value="Contratar Sonido" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Mantenimiento del Salon" />
+															<label
+																value="Mantenimiento" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Instalar mesas" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Contratar Animadores" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
+															<label
+																value="Refrigerios" />
+															<label
+																value="Logistica" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+													</rows>
+												</grid>
+											</detail>
+											<label
+												value="Semana Deportiva" />
+											<label value="12/12/1920" />
+											<label value="12/12/1920" />
+											<label value="12:00" />
+											<label value="12:00" />
+											<label value="Iniciada" />
+											<label value="100" />
+											<div>
+												<button
+													iconSclass="z-icon-plus blue " sclass='btn-link'
+													tooltiptext="Agregar actividad" width="10%" />
+												<button
+													iconSclass="z-icon-trash-o red" sclass='btn-link'
+													tooltiptext="Eliminar eveno" width="10%" />
+											</div>
+										</row>
+									</rows>
+								</grid>
+
 							</div>
-							<separator spacing="20px"/>
-							<grid width="100%">
-								<rows class="col-md-12">
-									<row class="col-md-12">
-										
-										<grid emptyMessage="No se encuentran eventos registrados" mold="paging"
-							pageSize="10">
-							
-						
-							<auxhead sclass="category-center">
-            				<auxheader colspan="1" />
-            			
-							<auxheader colspan="1">
-            					<image src="../assets/img/funnel.png" />
-               					<textbox instant="true" width="100px" placeholder="Buscar"/>
-            				</auxheader>            				
-            				<auxheader colspan="1">
-            					<image src="../assets/img/funnel.png" />
-               					<datebox
-															readonly="true" format="short "
-															onCreate="self.value = new Date()" width="100px"
-															tabindex="7" />
-            				</auxheader>
-            				 <auxheader colspan="1" />
-            				 <auxheader colspan="1" />
-            				 <auxheader colspan="1" />
-            				 <auxheader colspan="1" />
-            				 <auxheader colspan="1" />
-							</auxhead>
-							
-							<columns>
-							<column width="8%"> Código</column>
-							<column width="20%"> Descripción</column>
-							<column width="20%"> Fecha de inicio </column>
-							<column width="10%"> Hora </column>
-							<column width="12%"> Condición</column>
-							<column width="20%"> Cantidad de Socios</column>
-							<column width="10%"> Detalles</column>
-						</columns>
-						
-											<rows>
-												<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-													<div>
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad"
-															id="btnRegistrarActividades" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades"
-															id="btnVerListaActividades" />
-													</div>
-												</row>
-												<row>
-													<label value="001" />
-													<label
-														value="Semana Deportiva" />
-													<label
-														value="12/12/1920" />
-													<label
-														value="12:00" />
-													<label
-														value="Iniciada" />
-													<label value="100" />
-													<div>
-														<button
-															iconSclass="z-icon-plus blue " class='btn-link'
-															tooltiptext="Agregar Actividad" />
-														<button
-															iconSclass="z-icon-search blue " class='btn-link'
-															tooltiptext="Ver Actividades" />
-													</div>
-												</row>
-												
-
-
-											</rows>
-										</grid>
-
-
-									</row>
-
-									<row
-										class="col-md-11 col-centered">
-									</row>
-
-								</rows>
-							</grid>
 						</div>
+
 					</div>
 
 				</div>
 
-			</div>
-
-
-
-
-		</vlayout>
-	</hlayout>
-</div>
+			</vlayout>
+		</hlayout>
+	</div>
 </zk>
