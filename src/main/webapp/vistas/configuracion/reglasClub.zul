@@ -25,7 +25,7 @@
 					<space />
 					<div class='form-pricing' align="left" width="90%"
 						style="margin-bottom: 20px">
-						<div apply="controllers.ControladorModalAbrir"
+						<div apply="controllers.ControllerPolitica"
 							xmlns:w='client' align="right">
 							<button id="btnRegistrarReglas"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
@@ -39,7 +39,8 @@
 								</div>
 								<div class='linea-two'></div>
 							</div>
-							<separator spacing="20px" />
+							<space spacing="10%" />
+							
 
 							<grid
 								emptyMessage="No se encuentran reglas registradas" mold="paging"
@@ -255,8 +256,9 @@
 								</foot>
 							</grid>
 						</div>
-						<separator spacing="20px" />
-						<div apply="controllers.ControladorModalAbrir"
+						<space spacing="20%" />
+						
+						<div apply="controllers.ControllerPolitica"
 							xmlns:w='client' align="right">
 							<button id="btnRegistrarReglasAfiliacion"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
@@ -270,7 +272,7 @@
 								</div>
 								<div class='linea-two'></div>
 							</div>
-							<separator spacing="20px" />
+							<space spacing="20%" />
 
 							<grid
 								emptyMessage="No se encuentran reglas registradas" mold="paging"
@@ -459,7 +461,9 @@
 
 						</div>
 					</div>
+					<space spacing="80%" />
 				</div>
+				
 			</vlayout>
 		</hlayout>
 	</div>

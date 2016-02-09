@@ -71,18 +71,18 @@
 								<textbox type="text" value=""
 									width="100%" tabindex="2" constraint="no empty" />
 							</div>
-							
+
 						</row>
 						<row class="col-md-12">
 							<div>
-								Frecuencia mensual
+								Frecuencia
 								<textbox type="text" value=""
 									width="100%" tabindex="2" constraint="no empty" />
 							</div>
-							
+
 						</row>
-						
-						
+
+
 
 					</rows>
 
