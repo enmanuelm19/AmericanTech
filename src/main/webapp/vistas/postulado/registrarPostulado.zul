@@ -140,14 +140,16 @@
 							</div>
 
 						</row>
-							<row class="col-md-12">
-							<div> <label>Intereses de Postulado</label></div>
-							<div  align="" width="80%" >
-								
+						<row class="col-md-12">
+							<div>
+								<label>Intereses de Postulado</label>
+							</div>
+							<div align="" width="80%">
+
 								<checkbox id="l1" label="Danza"
 									onCheck="" style="margin-right:3%;" />
 								<checkbox id="l2" label="Natación"
-									onCheck="" style="margin-right:3%;"/>
+									onCheck="" style="margin-right:3%;" />
 								<checkbox id="l3" label="Baloncesto"
 									onCheck="" style="margin-right:3%;" />
 								<checkbox id="l4" label="Futbol"
@@ -161,13 +163,10 @@
 								<checkbox id="l9" label="Arte"
 									onCheck="" style="margin-right:3%;" />
 								<checkbox id="l10" label="Amistad"
-									onCheck="" style="margin-right:3%;"/>
+									onCheck="" style="margin-right:3%;" />
 							</div>
-							
 
 						</row>
-		
-
 					</rows>
 				</grid>
 				<space spacing="30%" />
