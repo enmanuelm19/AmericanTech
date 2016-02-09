@@ -312,9 +312,9 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 		contenido.appendChild(contenedor);
 	}
 	
-	public void onClick$btnRegistrarEvento(){
+	public void onClick$btnListaEventos(){
 		
-		pagina = "evento/administrarEvento/registrarEvento.zul";
+		pagina = "evento/administrarEvento/listaEventos.zul";
 		contenido.getChildren().clear();
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);

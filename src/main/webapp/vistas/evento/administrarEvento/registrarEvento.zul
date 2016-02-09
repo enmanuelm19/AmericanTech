@@ -1,41 +1,36 @@
 <zk xmlns:n="native" >
+
+	<window title="Registrar Evento" style="iconSclass=z-icon-user;" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+	height="70%" width="45%" >
 	<div>
 	<hlayout spacing="0">
 		
 		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-calendar" />
-					<a label="Eventos" href="#" />
-					<label value="Registrar Evento" />
-				</div>
 
-			</div>
 
 			<div class='contenedor'>
 
-				<div sclass="page-header">
-					<label value="Registrar Evento" />
 
-				</div>
 				<div class='contenido' align="center">
-					<div class="col-md-8 col-centered "
+					<div class="col-md-8 col-left "
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="550px"
-							height="400px">
-							<div align="left">
+						
+							
+							<div align="left" width="150%">
 								<div class="encabezado">
 									Datos del Evento
 								</div>
-								<div align="left" class="linea-two">
+								
+								<div class="linea-two">
 
 								</div>
+								
 							</div>
-							<separator spacing="10px"></separator>
+							<separator spacing="60px"></separator>
 		<grid width="580px" >  
-		<rows class="col-md-12">
+		<rows class="col-md-11">
 		
 			<row>
 			<vlayout>
@@ -141,8 +136,7 @@
 								
 								
 								
-									
-								</div>
+					
 
 							
 							
@@ -160,4 +154,5 @@
 	</hlayout>
 
 </div>
+</window>
 </zk>
