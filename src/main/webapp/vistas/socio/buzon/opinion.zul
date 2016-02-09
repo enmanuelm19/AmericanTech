@@ -5,45 +5,133 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" >
-	<window border="none" title="Registrar Opinion " action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="35em" closable="true">
-			<div class='contenido'>
-				<div sclass="page-header">
-	    			<label value="Registrar Opinión"/>
-	  			</div>
-	  			<div align="left">
-						<div class='encabezado'>Datos</div>
-						<div class='linea-two'></div>
-				</div>
-				<separator spacing="30px"/>
-				<div align="center">
-					<grid width="40em">
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
 
-								<rows class="col-md-12">
-
-									<row class="col-md-11">
-										<div align="center" class="col-md-12">
-											Descripción
-											<textbox type="text" cols="6" rows="6" 
-												width="35em"/>
-
-										</div>
-										
-
-									</row>
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
 
-			
-			            </rows>
-			        </grid>
-			       
-			        <separator spacing="40px"/>
-			        <div>
-						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
-						<space spacing="40px" />
-						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
-			        </div><separator spacing="80px"/>
-				</div>
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+
+	<window border="none" title="Registrar Opinión"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="48%" height="55%"
+		style="iconSclass=z-icon-user;">
+		<caption iconSclass="z-icon-user" />
+
+
+		<div class='contenido'>
+
+			<div align="left">
+				<div class='encabezado'>Datos básicos</div>
+				<div class='linea-two'></div>
 			</div>
-		</window>
+			<separator spacing="30px" />
+			<div align="center">
+				<grid width="580px">
+
+					<rows class="col-md-12">
+						<row class="col-md-12">
+							<div>
+								<hlayout>
+									<div>
+										<div>
+											<label id="lblDescripcion"
+												width="50%" value="Descripción" />
+										</div>
+										<separator spacing="5px">
+										</separator>
+									</div>
+
+									<div>
+										<div>
+											<textbox id="txtDescripcion"
+												type="text" cols="6" rows="6" width="35em" />
+										</div>
+										<separator spacing="5px">
+										</separator>
+
+									</div>
+								</hlayout>
+							</div>
+
+						</row>
+						<row class="col-md-12">
+							<div>
+								<hlayout>
+									<div>
+										<div>
+											<label id="lblClasificacion"
+												width="50%" value="Clasificación" />
+										</div>
+										<separator spacing="5px">
+										</separator>
+									</div>
+
+									<div>
+										<div class="ec-stars-wrapper">
+
+											<a href="#">
+												<span
+													class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span
+													class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span
+													class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span
+													class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span
+													class="glyphicon glyphicon-star">
+												</span>
+											</a>
+										</div>
+
+									</div>
+								</hlayout>
+							</div>
+
+						</row>
+						<row class="col-md-3 col-md-offset-3">
+							<separator spacing="15px"></separator>
+							<hlayout>
+								<div>
+									<button id="btnGuardar"
+										iconSclass="z-icon-envelope" class='boton-guardar'
+										label="Enviar" />
+								</div>
+								<space bar="False" spacing="5%" />
+								<div>
+									<button id="btnCancelar"
+										iconSclass="z-icon-times-circle" class='boton-cancelar'
+										label="Cancelar" />
+								</div>
+							</hlayout>
+						</row>
+					</rows>
+				</grid>
+			</div>
+		</div>
+	</window>
 </zk>
