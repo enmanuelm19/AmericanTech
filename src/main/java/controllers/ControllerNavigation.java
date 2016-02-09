@@ -408,4 +408,12 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);
 	}
+	
+	public void onClick$btnPostulado(){
+		
+		pagina = "postulado/postulado.zul";
+		contenido.getChildren().clear();
+		contenedor = (Div) Executions.createComponents(pagina, null, null);
+		contenido.appendChild(contenedor);
+	}
 }
