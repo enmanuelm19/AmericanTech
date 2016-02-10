@@ -6,18 +6,17 @@
 
 <zk xmlns:n="native" class='contenedor'>
 	
-	<window border="none" height="104%" width="45%" style="iconSclass=z-icon-cogs;" title=" Solicitar Alquiler"
+	<window border="none" height="104%" width="45%" style="iconSclass=home-icon z-icon-home;" title=" Solicitar Alquiler"
 		closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		<caption iconSclass="home-icon z-icon-home" />
 		
-		
-				 <div    align="center"  >
-					 		
-			   		 <separator />  <separator />  
-							  <div align="left" width="90%">
-								      	<div class="encabezado">
-								      		Datos del Socio
-								      	</div >
+		<div align="center"  >	 		
+			<separator />  <separator />  
+			<div align="left" width="90%">
+				<div class="encabezado">
+					Datos del Socio
+					</div >
 								      	<div class="linea-two" >
 				
 								      	</div>	
@@ -45,7 +44,7 @@
 							              		   	 <textbox    type="text" value="" width="120px" />
 							                      </div>
 							                      <div>
-							                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+							                      	<button  iconSclass="z-icon-search blue"  class='btn-link'/>
 							                      </div>			                      
 						              </row>
 						              <row class="col-md-9">
@@ -70,7 +69,7 @@
 						              		   	 <textbox    type="text" value="" width="120px" />
 						                      </div>
 						                      <div>
-						                      	<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>
+						                      	<button  iconSclass="z-icon-search blue"  class='btn-link'/>
 						                      </div>			                      
 						               </row>
 						               <row class="col-md-9">
@@ -180,7 +179,7 @@
 			                    	</div><separator spacing="580px"></separator>
 			                    	<separator /><separator /><separator />
 			                  		<div align="center">
-			                    		<button  iconSclass="z-icon-times-circle"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
+			                    		<button  iconSclass="z-icon-times"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
 			                     	</div><separator spacing="180px"></separator>
 			                  	</hlayout>
 			                  </vlayout>
