@@ -69,7 +69,7 @@
 		<nav label="Eventos"  iconSclass="z-icon-calendar">
 			<navitem label="Solicitudes evento" iconSclass="z-icon-angle-double-right" id="btnSolicitudesEvento"/>
 			<nav label="Administrar evento" iconSclass="z-icon-angle-double-right">
-				<navitem label="Registrar evento" iconSclass="z-icon-angle-double-right" id="btnRegistrarEvento"/>
+				<navitem label="Lista Eventos" iconSclass="z-icon-angle-double-right" id="btnListaEventos"/>
 				<navitem label="Planificar evento" iconSclass="z-icon-angle-double-right" id="btnPlanificarEvento"/>
 				<navitem label="Ejecutar evento" iconSclass="z-icon-angle-double-right" id="btnEjecutarEvento"/>
 				<navitem label="Cancelar evento" iconSclass="z-icon-angle-double-right" id="btnCancelarEvento"/>
