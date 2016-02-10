@@ -1,72 +1,77 @@
-<?page title="Dashboard - ZK Admin" contentType="text/html;charset=UTF-8"?>
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window title="Registrar Accion" style="iconSclass=z-icon-user;" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="70%" width="55%" >
-		<div class='contenedor'>
-			<div sclass="page-header">
-	    		<label value="Registrar Acción"/>
-	  		</div>
-	  			<div align="center">
-			<div align ="left">	
-			<div  class="encabezado">
-                     Datos Basicos                             									                                                				                             				                             					
-              </div>
-              <div align="left" class="linea-two">
-                        									                                                				                             				                             					
-                </div>
-                  <separator spacing="15px"></separator>	
-                </div>		 
-				<grid width="400px" >
-          
-	            	<rows class="col-md-12">
-			     			    
-			                 <row class="col-md-11">
-			              
-			                  	  <div width="80px">
-			              		   	# Acción
-			              		   </div>
-			                       <div>
-			              		   <textbox type="text" value="" width="200px" />
-			                      </div>
-			                      		                      
-			                  </row>
-			                  <row class="col-md-11">
-			              		  <div width="80px"> 	Valor </div>
-			              		   
-			              		   	
-			              <div>
-			              <textbox type="text" value="" width="200px" />
-			              <separator spacing="15px"></separator>	
-			                  </div>  		 
-			            
-			              		  
-			              		   	 
-			                      
-			                  </row>
-			               	
-			                  <row class="col-md-2 col-md-offset-2"> <separator spacing="15px"></separator>
-			                  	<hlayout>
-			                 
-			                  	  		<div >
-			                    		<button   iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
-			                    	</div>
-			                    	<div >
-			                    		<button    iconSclass="z-icon-times-circle" class='boton-cancelar' label="Cancelar"/>
-			                    	</div>
-			                  	</hlayout>
-			             		
-			                 </row>
-			 			
+
+	<window border="none" title="Registrar Accion" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
+	width="48%" height="70%" style="iconSclass=z-icon-puzzle-piece;">
+		<caption iconSclass="home-icon z-icon-user"/>
+ 
+			
+			<div class='contenido'>
+				
+	  			<div align="left">
+						<div class='encabezado'>Acción</div>
+						<div class='linea-two'></div>
+				</div>
+				 <space spacing="15%" />
+				
+				<div align="center">
+					<grid class="hola" >
+
+								<rows class="">
+
+									<row class="col-md-12">
+										<div>
+											<label value="Id Accion" class="col-md-12"/>
+											<textbox type="text" class="col-md-12"
+												value="" width="100%"  constraint="no empty" />
+											
+										</div>
+										
+										
+										
+									</row >
+									<row class="col-md-12">
+										
+										<div>
+											<label value="Condición" class="col-md-12"/>
+											<combobox width="100%" class="col-md-12"> 
+												<comboitem label="" />
+												<comboitem label="" />
+												<comboitem label="" />
+											</combobox>
+										</div>
+										
+										
+									</row >
+									
+									
+									
+			
 			            </rows>
 			        </grid>
-				
-				
+			       <space spacing="15%" />
+			       
+			        <div>
+						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
+						<space spacing="10%" />
+						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
+			        </div><separator spacing="5%"/>
+				</div>
 			</div>
-		</div>
-	</window>
+		</window>
 </zk>

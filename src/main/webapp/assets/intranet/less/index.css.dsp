@@ -3159,3 +3159,9 @@ position: absolute;
     font-size: 16px;
     color: white;
 }
+div.z-div span {
+    padding-left: 0px !important;
+}
+div.hola table {
+    width: 50% !important;
+}
