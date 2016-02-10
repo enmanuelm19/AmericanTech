@@ -5,7 +5,10 @@ import java.util.List;
 
 public class Proveedor {
 	private int id;
-	private Persona personaId;
+	private String nombre;
+	private String direccion;
+	private String telefono;
+	private String correo;
 	
 	//coleccion de Alquileres.. relacion muchos a muchos
 	private List<Alquiler> alquileres=new ArrayList<Alquiler>();
@@ -18,10 +21,45 @@ public class Proveedor {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Proveedor(int id, Persona personaId) {
+	public Proveedor(int id, String nombre, String direccion, String telefono, String correo) {
 		super();
 		this.id = id;
-		this.personaId = personaId;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.correo = correo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
 	public int getId() {
@@ -32,13 +70,6 @@ public class Proveedor {
 		this.id = id;
 	}
 
-	public Persona getPersonaId() {
-		return personaId;
-	}
-
-	public void setPersonaId(Persona personaId) {
-		this.personaId = personaId;
-	}
 
 	public List<Alquiler> getAlquileres() {
 		return alquileres;

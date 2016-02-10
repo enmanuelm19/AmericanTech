@@ -141,4 +141,10 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 		window.doModal();
 	}
 	
+	@Listen("onClick = #btnRegistrarEvento")
+	public void showModalListaeventos(Event e){
+		Window window = (Window)Executions.createComponents("evento/administrarEvento/registrarEvento.zul", null, null);
+		window.doModal();
+	}
+	
 }

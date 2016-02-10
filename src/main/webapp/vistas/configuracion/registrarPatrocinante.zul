@@ -1,7 +1,7 @@
 <?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
 
 <!-- Load Bootstrap  -->
-<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
 
 
 <!-- Google Open Sans font -->
@@ -15,29 +15,30 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window border="none" title="Registrar Patrocinantes" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="540px" closable="true">
+	<window border="none" title="Registrar Patrocinantes" 
+			action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
+			height="70%" closable="true" width="48%"
+			style="iconSclass=home-icon z-icon-cogs">
+			<caption iconSclass="z-icon-cogs" />
 		
  
 		
 			<div class='contenido'>
-				<div sclass="page-header">
-	    			<label value="Registrar Patrocinante"/>
-	  			</div>
 	  			<div align="left">
-						<div class='encabezado'>Datos básico</div>
+						<div class='encabezado'>Datos básicos</div>
 						<div class='linea-two'></div>
 				</div>
-				<separator spacing="30px"/>
+				<space spacing="15%"/>
 				<div align="center">
-					<grid width="580px">
+					<grid >
 
-								<rows class="col-md-12">
+								<rows class="">
 
-									<row class="col-md-11">
+									<row class="col-md-12">
 										<div>
 											Rif/Indentificacion
 											<textbox type="text"
-												value="" width="208px" />
+												value="" width="80%" constraint="no empty"/>
 											<button sclass="btn-link"
 												iconSclass="z-icon-search blue" />
 										</div>
@@ -45,39 +46,39 @@
 										<div>
 										Nombre
 											<textbox type="text"
-												value="" width="208px" tabindex="2"/>
+												value="" width="100%" tabindex="2" constraint="no empty"/>
 										</div>
 									</row>
-									<row class="col-md-11">
+									<row class="col-md-12">
 										<div>
 											Dirección
 											<textbox type="text"
-												value="" width="272px" tabindex="2"/>
+												value="" width="100%" tabindex="2" constraint="no empty"/>
 										</div>
 										<div>
-											Telfono
+											Telefono
 											<textbox type="text"
-												value="" width="208px" tabindex="2" />
+												value="" width="100%" tabindex="2" constraint="no empty" />
 										</div>
 
 									</row>
-									<row class="col-md-11">
+									<row class="col-md-12">
 										<vlayout>
 											Email
 											<textbox type="text"
-												value="" width="272px" tabindex="2"/>
+												value="" width="100%" tabindex="2" constraint="no empty"/>
 										</vlayout>
 									</row>
 			
 			            </rows>
 			        </grid>
 			       
-			        <separator spacing="40px"/>
+			        <space spacing="15%"/>
 			        <div>
 						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
-						<space spacing="40px" />
+						<space spacing="10%" />
 						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
-			        </div><separator spacing="80px"/>
+			        </div><separator spacing="5%"/>
 				</div>
 			</div>
 		</window>
