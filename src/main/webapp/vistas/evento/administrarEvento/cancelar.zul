@@ -5,7 +5,7 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window border="none" title="Registrar Actividad"
+	<window border="none" title="Cancelar Evento"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		closable="true" width="48%" height="70%"
 		style="iconSclass=z-icon-puzzle-piece;">
@@ -27,19 +27,9 @@
 
 						<row class="col-md-12">
 							<div>
-								Descripción
+								Motivo
 								<textbox type="text" value="" cols="4" rows="2"
 									width="80%" constraint="no empty" />
-								
-							</div>
-
-							<div>
-								Tipo Actividad
-								<combobox>
-									<comboitem label="Logistica"></comboitem>
-									<comboitem label="Cultural"></comboitem>
-									<comboitem label="Deportiva"></comboitem>
-								</combobox>
 							</div>
 						</row>
 					</rows>
