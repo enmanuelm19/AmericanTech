@@ -1,0 +1,194 @@
+
+<zk xmlns:n="native">
+<div id="contenedor1" apply="controllers.ControllerNavigation">
+	<hlayout spacing="0">
+		<vlayout spacing="0" hflex="1">
+			<div sclass="breadcrumbs">
+				<div sclass="breadcrumb">
+					<span sclass="home-icon z-icon-user" />
+					<a label="Socio" href="#"/>
+					<label value="Afiliados"/>
+				</div>
+			</div>
+			<div class="contenedor" align="center" >
+			
+				<div sclass="page-header" align="left">
+				    <label value="Registrar Afiliados"/>
+		  		</div>
+				
+				<separator spacing="30px"/>
+				<space/><space/>
+				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
+
+			
+				<separator spacing="10px"/>
+				
+				<div class="contenido">
+					<div align="left">
+						<div class='encabezado'>Datos de los Socios</div>
+						<div class='linea-two'></div>
+					</div>
+					<separator spacing="30px"/>
+					
+					<grid emptyMessage="" mold="paging"
+							pageSize="10" apply="controllers.ControllerRegistrarAfiliado">
+						<auxhead sclass="category-center">
+            				<auxheader colspan="1">
+            					<image src="../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				<auxheader colspan="1">
+            					<image src="../assets/img/funnel.png" />
+               					<textbox instant="true" width="120px" placeholder="Buscar"/>
+            				</auxheader>
+            				 <auxheader colspan="3" />
+						</auxhead>
+						<columns>
+							<column hflex="3">Cédula</column>
+							<column hflex="3">Nombre Socio</column>
+							<column hflex="2">Foto </column>
+							<column hflex="2"> Acción Socio</column>
+							<column hflex="2">Registrar afiliado</column>
+							
+
+						</columns>
+						
+						<rows>
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button id="btnverAfiliado" iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+						<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							<row>
+						           <label value="0001"/> 
+						           <label value="David Cordero"/>
+						           <image src="/assets/portal/img/img2.jpg" width="40%" align="center"/>
+						           <label value="032"  />
+						          <div align="center">
+						           <button iconSclass="glyphicon glyphicon-th-list blue" onClick="@command('showModalAfiliados')" ></button>
+						           </div>
+									
+									
+							</row>
+							
+
+							
+
+							
+
+
+
+						</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="10 items en la lista" />
+        				 </foot>
+					</grid>
+				</div>
+			</div>
+			</div>
+		</vlayout>
+	</hlayout>
+	</div>
+</zk>

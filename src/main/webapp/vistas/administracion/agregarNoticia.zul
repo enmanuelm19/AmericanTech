@@ -1,51 +1,115 @@
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
 
-<window  title="Agregar Noticia" border="normal" width="560px"
-	position="center,center" closable="true" 
-	action="show: slideDown;hide: slideUp">
-          					<div align ="left">	
-				           		<div  class="encabezado">
-				          					Nueva noticia                             									                                                				                             				                             					
-				          		</div>		  			            		
-				           		<div align="left" class="linea-two">     									                                                				                             				                             					
-				          		</div>		            		
-					 		</div>
-				 	<div style="">
-						<grid >
-							<rows>
-								<row>
-									<label value="Titulo" />
-									<textbox type="text" value="" width="180px" />
-								</row>
-								<row height="80">
-									<label value="Descripcion" />
-									<textbox type="text" value="" width="260px" height="50px" />				
-								</row>
-								<row>
-									<label value="Caducidad" />
-									<datebox cols="12" format="medium" onCreate="self.value = new Date()" />
-								</row>
-								<row>
-									<label value="Visibilidad" />
-									<combobox  width="75px" >
-					                    <comboitem label="Socios"/>
-									    <comboitem label="Todos"/>
-					                </combobox>
-								</row>
-								<row>
-									<label value="Subir Imagen" />
-										 <button image="../../assets/img/agregar.jpg"
-							                            onClick="@command('confirm', languageContributionStatus=each)" />
-								</row>				
-								<row>
-									<label value="Publicar de Inmediato" />
-									<checkbox hflex="1" />
-								</row>
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" >
+
+	<window border="none" title="Registrar Noticia" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
+	width="48%" height="70%" style="iconSclass=z-icon-puzzle-piece;">
+		<caption iconSclass="z-icon-puzzle-piece"/>
+ 
+			
+			<div class='contenido'>
 				
+	  			<div align="left">
+						<div class='encabezado'>Noticia</div>
+						<div class='linea-two'></div>
+				</div>
+				 <space spacing="15%" />
 				
-							</rows>
-						</grid>
-					</div>			
-						<div align="center">
-							<button class="boton-guardar" hflex="0" iconSclass="z-icon-floppy-o" label="Guardar" width="160px"/>
-						</div>
-</window>
+				<div align="center">
+					<grid >
+
+								<rows class="">
+
+									<row class="col-md-12">
+										<div>
+											<label value="Titulo" class="col-md-12"/>
+											<textbox type="text"
+												value="" width="100%"  constraint="no empty" />
+											
+										</div>
+										<div>
+											 <button upload="true,maxsize=300" class='boton-guardar col-md-12' label="Imagen destacada">
+										        <attribute name="onUpload"><![CDATA[
+										            org.zkoss.util.media.Media media = event.getMedia();
+										            if (media instanceof org.zkoss.image.Image) {
+										                org.zkoss.zul.Image image = new org.zkoss.zul.Image();
+										                image.setContent(media);
+										                image.setParent(pics);
+										            } else {
+										                Messagebox.show("Not an image: "+media, "Error", Messagebox.OK, Messagebox.ERROR);
+										                break;
+										            }
+										        ]]></attribute>
+										    </button>
+										</div>
+										
+									</row >
+									<row  class="col-md-12">
+										<div>
+											<label value="Evento" class="col-md-12"/>
+											<textbox type="text"
+												value="" width="80%"  constraint="no empty" />
+											<button sclass="btn-link"
+												iconSclass="z-icon-search blue" />
+										</div>
+										<div>
+											<label value="Condición" class="col-md-12"/>
+											<combobox width="100%"> 
+												<comboitem label="" />
+												<comboitem label="" />
+												<comboitem label="" />
+											</combobox>
+										</div>
+										
+
+									</row>
+									<row class="col-md-12">
+										
+										<div>
+											<label value="Fecha de Caducidad" class="col-md-12"/>
+											<datebox id="DateFechaCaducidad" width="100%" cols="12" format="short " onCreate="self.value = new Date()" />
+										</div>
+										<div>
+											<label value="Público" class="col-md-12"/>
+											<combobox width="100%"> 
+												<comboitem label="" />
+												<comboitem label="" />
+												<comboitem label="" />
+											</combobox>
+										</div>
+									</row>
+									<row class="col-md-12">
+										
+										<div>
+											<label value="Contenido" class="col-md-12"/>
+											<textbox id="txtDescripcion" readonly="false" cols="45" rows="2" type="text" value="" width="100%" />
+										</div>
+									</row>
+			
+			            </rows>
+			        </grid>
+			       <space spacing="15%" />
+			       
+			        <div>
+						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
+						<space spacing="10%" />
+						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
+			        </div><separator spacing="5%"/>
+				</div>
+			</div>
+		</window>
+</zk>
