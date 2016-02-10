@@ -1,17 +1,20 @@
-
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" >
 <div>
 	<hlayout spacing="0">
-		
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Categoria" href="#" />
-					<label value="Tipos de Sanciones"/>
+					<label value="Tipo de Sanción"/>
 				</div>
 			</div>
-			<div class="contenedor" align="center">
+			<div class="contenedor" align="center" height="970px">
 			
 				<div sclass="page-header" align="left">
 				    <label value="Tipos de Sanciones"/>
@@ -19,8 +22,8 @@
 	
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
-				<div apply="controllers.ControllerRegSancion" xmlns:w='client' align="right">
-					<button id="btnRegistrarTipoSancion" label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar'/>
+				<div apply="controllers.ControllerTipoSancion" xmlns:w='client' align="right">
+					<button id="btnRegTipoSancion" style="margin-bottom: -4%"  label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar'/>
 				</div>
 			
 				<div class="contenido">
@@ -49,7 +52,7 @@
 						<columns>
 							<column hflex="2">Codigo</column>
 							<column hflex="2">Tipo Sancion</column>
-							<column width="15%">Acciones</column>
+							<column width="20%" align="center" >Acciones</column>
 						</columns>
 						<rows>
 							
@@ -213,5 +216,5 @@
 			</div>
 		</vlayout>
 	</hlayout>
-	</div>
+</div>	
 </zk>

@@ -13,14 +13,12 @@
 			</div>
 			<div class="contenedor" align="center" height="970px">
 			
-				<div sclass="page-header" align="left">
+				<div sclass="page-header" align="left" style="margin-bottom: 4%;">
 				    <label value="Cargos Junta Directiva"/>
 		  		</div>
-				<separator spacing="30px"/>
-				<space/><space/>
-				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnRegCargos" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
+				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
+				<div apply="controllers.ControllerCargarJuntaDirectiva" xmlns:w='client' align="right">
+					<button id="btnRegCargoJunta" label="Agregar Nuevo" style="margin-bottom: -4%" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
@@ -47,9 +45,9 @@
 						</auxhead>
 						
 						<columns>
-							<column hflex="2">Id Cargo </column>
+							<column hflex="2">Código </column>
 							<column hflex="2">Nombre Cargo</column>
-							<column width="100px">Acciones </column>
+							<column width="20%" align="center">Acciones </column>
 						</columns>
 						
 						<rows>

@@ -97,7 +97,7 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	
 	public void onClick$btnTipoEvento(){
 		
-		pagina = "configuracion/categoria/tipoEventoPrincipal.zul";
+		pagina = "configuracion/categoria/tipoEvento.zul";
 		contenido.getChildren().clear();
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);
@@ -129,7 +129,7 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	
 	public void onClick$btnRecurso(){
 		
-		pagina = "configuracion/categoria/recursos.zul";
+		pagina = "configuracion/categoria/tipoRecurso.zul";
 		contenido.getChildren().clear();
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);
@@ -145,7 +145,7 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	
 	public void onClick$btnMotivoPostulacion(){
 		
-		pagina = "configuracion/categoria/motivoPostulacion.zul";
+		pagina = "configuracion/categoria/tipoMotivoPostulacion.zul";
 		contenido.getChildren().clear();
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);
@@ -161,7 +161,7 @@ public class ControllerNavigation extends GenericForwardComposer<Component>{
 	
 	public void onClick$btnMotivoVenta(){
 		
-		pagina = "configuracion/categoria/motivoVenta.zul";
+		pagina = "configuracion/categoria/tipoMotivoVenta.zul";
 		contenido.getChildren().clear();
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);

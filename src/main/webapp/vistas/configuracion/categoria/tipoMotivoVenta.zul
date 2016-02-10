@@ -1,46 +1,47 @@
-<?page title="AmericaTech"  contentType="text/html" charset="UTF-8" ?>
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<!-- Responsable Hector Gil -->
+<?page title="Motivo Venta" contentType="text/html;charset=UTF-8"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native">
-<div>
-	<hlayout  spacing="0">
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-cogs" />
-					<a label="Categoria" href="#" />
-					<label value="Tipos de Sugerencias" />
-				</div>
-			</div>
-			<div class="contenedor" align="center" height="970px">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-cogs" />
+						<a label="Motivo Ventas" href="#" />
+					</div>
 
-				<div sclass="page-header" align="left">
-					<label value="Tipos de Sugerencias" />
 				</div>
+				<div align="center" class="contenedor" height="970px">
 
-				<space />
-				<space />
-				<div class='form-pricing' align="left" width="70%"
-					style="margin-bottom: 20px">
-					<div apply="controllers.ControllerTipoSugerencia"
-						xmlns:w='client' align="right">
-						<button id="btnRegTipoSugerencia"
-							label="Agregar Nuevo" iconSclass="z-icon-plus"
-							class='boton-guardar' style="margin-bottom: -4%" />
+					<div sclass="page-header" align="left" style="margin-bottom: 4%;">
+						<label value="Motivo Ventas" />
+
 					</div>
 
 
+					<div class='form-pricing' width="70%" style="margin-bottom: 20px">
+						<div align="right"
+							apply="controllers.ControllerTipoMotivoVenta">
+							<button id="btnRegTipoMotivoVenta"
+								label="Agregar Nuevo" iconSclass="z-icon-plus" style="margin-bottom: -4%"
+								class='boton-guardar' />
+						</div>
 
-					<div class="contenido">
+						<separator spacing="10px" />
+
+					<div class="contenido" >
 						<div align="left">
-							<div class='encabezado'>
-								Lista Tipos de Sugerencias
+							<div class="encabezado">Motivo Ventas</div>
+							<div align="left" class="linea-two">
+
 							</div>
-							<div class='linea-two'></div>
 						</div>
 						<separator spacing="20px" />
+
 
 						<grid
 							emptyMessage="No se encuentran tipos de sugerencias registrados"
@@ -61,6 +62,7 @@
 								<auxheader colspan="1" />
 							</auxhead>
 
+
 							<columns>
 								<column hflex="2">Codigo</column>
 								<column hflex="2">
@@ -70,11 +72,10 @@
 									Acciones
 								</column>
 							</columns>
-
 							<rows>
 								<row>
 									<label value="001" />
-									<label value="Instalaciones" />
+									<label value="Motivo 01" />
 									<div>
 										<button sclass="btn-link"
 											iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -84,7 +85,7 @@
 								</row>
 								<row>
 									<label value="002" />
-									<label value="Eventos" />
+									<label value="Motivo 02" />
 									<div>
 										<button sclass="btn-link"
 											iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -94,9 +95,8 @@
 								</row>
 								<row>
 									<label value="003" />
-									<label value="Socios" />
+									<label value="Motivo 03" />
 									<div>
-
 										<button sclass="btn-link"
 											iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
 										<button sclass="btn-link"
@@ -105,7 +105,7 @@
 								</row>
 								<row>
 									<label value="004" />
-									<label value="Nuestra Atencion" />
+									<label value="Motivo 04" />
 									<div>
 										<button sclass="btn-link"
 											iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
@@ -113,34 +113,16 @@
 											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
 									</div>
 								</row>
-								<row>
-									<label value="001" />
-									<label value="Sugerencia General" />
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-									</div>
-								</row>
+
 							</rows>
-
-							<foot>
-								<footer span="1" class="footer_right"
-									label="5 items en la lista" />
-							</foot>
-						</grid>
-
+							 <foot>
+            				<footer span="1" class="footer_right" label="5 items en la lista" />
+        				 </foot>
+						</grid><!-- FIN GRID DE GRUPOS-->
 					</div>
 				</div>
-			</div>
-		</vlayout>
-	</hlayout>
-</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
 </zk>
-
-
-
-
-
-
