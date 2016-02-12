@@ -16,7 +16,7 @@ import service.AccionService;
 
 public class ControllerAcciones {
 	
-	 
+	 	
 	    @Command
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it as a modal dialog.

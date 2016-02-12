@@ -37,7 +37,6 @@
 				<navitem label="Tipo de instalación" iconSclass="z-icon-angle-double-right" id="btnTipoInstalacion"/>
 				<navitem label="Tipo de Sanción" iconSclass="z-icon-angle-double-right" id="btnTipoSancion"/>
 				<navitem label="Recursos" iconSclass="z-icon-angle-double-right" id="btnRecurso"/>
-				<navitem label="Estado reservación" iconSclass="z-icon-angle-double-right" id="btnEstadoReservacion"/>
 				<navitem label="Motivo postulacion" iconSclass="z-icon-angle-double-right" id="btnMotivoPostulacion"/>
 				<navitem label="Tipo de actividad" iconSclass="z-icon-angle-double-right" id="btnTipoActividad"/>
 				<navitem label="Motivo venta" iconSclass="z-icon-angle-double-right" id="btnMotivoVenta"/> 
@@ -51,7 +50,9 @@
 			<navitem label="Mis Sanciones" iconSclass="z-icon-angle-double-right" id="btnMisSanciones"/>
 			<nav label="Administrar socio" iconSclass="z-icon-angle-double-right">
 				<navitem label="Registrar socio" iconSclass="z-icon-angle-double-right" id="btnRegistrarSocio"/>
+				<navitem label="Registrar afiliado" iconSclass="z-icon-angle-double-right" id="btnRegistrarAfiliado"/>
 				<navitem label="Sanciones" iconSclass="z-icon-angle-double-right" id="btnSanciones"/>
+				
 			</nav>
 			<navitem label="Solicitar venta" iconSclass="z-icon-angle-double-right" id="btnSolicitarVenta"/>
 			<nav label="Danos tu opinión" iconSclass="z-icon-angle-double-right">

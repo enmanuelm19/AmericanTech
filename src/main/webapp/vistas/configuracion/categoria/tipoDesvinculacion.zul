@@ -1,17 +1,20 @@
-
+<?page title="AmericaTech"  contentType="text/html" charset="UTF-8" ?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" >
 <div>
 	<hlayout spacing="0">
-		
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Configuracion" href="#"/>
-					<label value="Tipos Desvinculaciones"/>
+					<label value="Tipos Desvinculación"/>
 				</div>
 			</div>
-			<div class="contenedor" align="center">
+			<div class="contenedor" align="center" height="970px">
 			
 				<div sclass="page-header" align="left">
 				    <label value="Tipos Desvinculaciones"/>
@@ -19,8 +22,8 @@
 				
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnTipoDesvinculacionRegistrar" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
+				<div apply="controllers.ControllerTipoDesvinculacion" xmlns:w='client' align="right">
+					<button id="btnRegTipoDesvinculacion" label="Agregar Nuevo" iconSclass="z-icon-plus" style="margin-bottom: -4%" class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
@@ -34,7 +37,7 @@
 					</div>
 					<separator spacing="20px"/>
 					<grid emptyMessage="No se encuentran tipos de desvinculaciones registrados" mold="paging"
-							pageSize="10">
+							pageSize="15">
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
             					<image src="../assets/img/funnel.png" />
@@ -49,7 +52,7 @@
 						<columns>
 							<column >Codigo </column>
 							<column >Tipo Desvinculacion</column>
-							<column width="15%">Acciones </column>
+							<column width="20%" align="center">Acciones </column>
 						</columns>
 						<rows>
 							<row>

@@ -55,25 +55,27 @@
 						</auxhead>
 						
 						<columns>
-							<column hflex="2"># Acción </column>
 							<column hflex="2">Propietario</column>
 							<column hflex="2">Condición </column>
-							<column hflex="2">Valor</column>
-							<column hflex="2">Desvincular</column>
+							<column hflex="2">Acciones</column>
 							
 						</columns>
 				         <rows>
 				         <template name="model">
-            <row>
-                <label value="@load(each.id)" />
-                <label value="Pedro Perez" />
-                <label value="@load(each.disponibilidad)" />
-             <label value="@load(each.valor)" />
-				 <div >
-                    <button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Desvincular" onClick="@command('showModal1')"/>								
-				</div> 
+	            <row>
+	               
+	               	<label value="Pedro Perez"/>
+					<label value="Disponible"/>
+					<div>
+						<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+						<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+					</div>
                              
                  </row>
+                 
+               
+                 
+                
             </template>
         </rows>
   
