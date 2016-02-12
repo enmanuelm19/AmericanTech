@@ -1,32 +1,35 @@
-
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native" >
 <div>
 	<hlayout  spacing="0">
-		
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Categoria" href="#" />
-					<label value="Recursos"/>
+					<label value="Tipo de Recurso"/>
 				</div>
 			</div>
-			<div class="contenedor" align="center">
+			<div class="contenedor" align="center"  height="970px">
 			
 				<div sclass="page-header" align="left">
-				    <label value="Recursos"/>
+				    <label value="Tipo de Recursos"/>
 		  		</div>
 	
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnRegistrarRecurso" label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar'/>
+				<div apply="controllers.ControllerTipoRecurso" xmlns:w='client' align="right">
+					<button id="btnRegTipoRecurso" label="Agregar Nuevo" style="margin-bottom: -4%"  iconSclass="z-icon-plus" class='boton-guardar'/>
 				</div>
 			
 				<div class="contenido">
 					<div align="left">
 						<div sclass="encabezado">
-				    		<label value="Lista de Recurso"/>
+				    		<label value="Lista Tipo de Recurso"/>
 		  				</div>
 		  				<div class='linea-two'>
 		  				</div>
@@ -49,7 +52,7 @@
 						<columns>
 							<column hflex="2">Codigo</column>
 							<column hflex="2">Recurso</column>
-							<column width="15%">Acciones</column>
+							<column width="20%" align="center">Acciones</column>
 						</columns>
 						<rows>
 							
@@ -73,7 +76,7 @@
 							
 						</rows>
 						<foot>
-            				<footer span="6" class="footer_right" label="18 items en la lista" align="left" />
+            				<footer span="6" class="footer_right" label="2 items en la lista" align="left" />
         				 </foot>
 					</grid>
 				</div>
@@ -81,5 +84,5 @@
 			</div>
 		</vlayout>
 	</hlayout>
-	</div>
+</div>	
 </zk>

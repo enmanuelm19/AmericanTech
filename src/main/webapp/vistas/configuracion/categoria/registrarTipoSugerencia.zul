@@ -1,51 +1,46 @@
-<?page title="Dashboard - ZK Admin" contentType="text/html;charset=UTF-8"?>
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native" >
-	<window style="iconSclass=z-icon-cogs;" title=" Registrar Tipo Sugerencia" closable="true" border="none" action="show: slideDown({duration: 300});
-			 hide:slideUp({duration: 300})" height="70%" width="55%">
+	<window style="iconSclass=z-icon-cogs; height:auto;" title=" Registrar Tipo Sugerencia" closable="true" border="none" 
+				action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="50%" width="40%" >
 			 <caption iconSclass="z-icon-cogs"/>
 		<div class="contenedor" align="center">
-			<separator spacing="20px"/>
-			<div align="left" width="90%" style="margin-bottom: 20px">
-	  	
+			<div align="left" width="90%" >
 				<div align ="left">	
-					<div  class="encabezado">
+					<div  class="encabezado" style="margin-top: 4%">
 	                     Datos Básicos                             									                                                				                             				                             					
 	            	</div>
-	              	<div align="left" class="linea-two"/>
-	            </div>	
-                	
-                <separator spacing="25px"/> 
+	              	<div align="left" class="linea-two" style="margin-bottom: 6%"/>
+	            </div>	  	
 				<grid >          
 			     	<rows>
-			            <row>
-	              				<hbox>
-	              				<div> Descripción </div>   	<separator spacing="5%" />                      									                                                				                             				                             					
-	              				 <textbox type="text" rows="3" value="" width="200%"/>
-	              				</hbox>	                      
-			       	    </row>        
-		            </rows>
-		        </grid>
-			        
-      		    <separator spacing="40px"/>
-			     <div align="center">
-					<hbox>
+			     	<row>
+			     	<div class="row col-md-12">
+			     		<div class="col-md-4">
+			     			Descripción
+			     		</div>
+			     		<div class="col-md-8">
+			     		 <textbox type="text" rows="4" value="" width="100%" constraint="no empty" />
+			     		</div>
+			     	</div>	
+			     	</row>
+			     	</rows>
+		        </grid>			   
+			     <div align="center" style="margin-top: 7%;">
+					<hbox >
 						<div>
-							<separator spacing="5%" />
-							<button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Guardar" />
+							<button iconSclass="z-icon-floppy-o" class='boton-guardar' style="margin-bottom: 400px; margin-right:5px" label="Guardar" />
 						</div>
-						<space spacing="5%" />
-						<div apply="controllers.TipoEvento">
-							<separator spacing="5%" />
-							<button  iconSclass="z-icon-times-circle" class='boton-cancelar' label="Cancelar" />
+						<div >
+							<button id="cancelarBtn"  iconSclass="z-icon-times-circle" class='boton-cancelar' style="margin-bottom: 6%" label="Cancelar" />
 						</div>
 					</hbox>
 				</div>
-		
-		</div></div>
+			</div>
+		</div>
 	</window>
 </zk>

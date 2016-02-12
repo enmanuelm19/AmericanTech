@@ -1,8 +1,11 @@
-
-<zk xmlns:n="native">
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" >
 <div>
-	<hlayout spacing="0">
-		
+	<hlayout  spacing="0">
 		<vlayout spacing="0" hflex="1">
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
@@ -13,14 +16,12 @@
 			</div>
 			<div class="contenedor" align="center" height="970px">
 			
-				<div sclass="page-header" align="left">
+				<div sclass="page-header" align="left" style="margin-bottom: 4%;">
 				    <label value="Tipo de Actividad"/>
 		  		</div>
-				<separator spacing="30px"/>
-				<space/><space/>
-				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
-				<div apply="controllers.ControladorModalAbrir" xmlns:w='client' align="right">
-					<button id="btnRegTipoActividad" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
+				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
+				<div apply="controllers.ControllerTipoActividad" xmlns:w='client' align="right">
+					<button id="btnRegTipoActividad" style="margin-bottom: -4%" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar'/>
 				</div>
 			
 				<separator spacing="10px"/>
@@ -33,7 +34,7 @@
 					<separator spacing="20px"/>
 					
 					<grid emptyMessage="No se encuentran tipos de Actividads registrados" mold="paging"
-							pageSize="10" >
+							pageSize="15" >
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
             					<image src="../assets/img/funnel.png" />
@@ -47,9 +48,9 @@
 						</auxhead>
 						
 						<columns>
-							<column hflex="2">Id Tipo de Actividad </column>
-							<column hflex="2">Nombre Tipo de Actividad</column>
-							<column width="100px">Acciones </column>
+							<column hflex="2">Código </column>
+							<column hflex="2">Tipo de Actividad</column>
+							<column width="20%" align="center">Acciones </column>
 						</columns>
 						
 						<rows>
@@ -208,12 +209,6 @@
             				<footer span="1" class="footer_right" label="16 items en la lista" />
         				 </foot>
 					</grid>
-					
-
-
-
-
-
 				</div>
 			</div>
 			</div>
