@@ -1,10 +1,6 @@
-<?page title="AmericaTech"  contentType="text/html" charset="UTF-8" ?>
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<zk xmlns:n="native" >
-	<div>
+<?page title="AmericanTech" contentType="text/html" charset="UTF-8"?>
+<zk xmlns:n="native"  >
+	<div class="contenedor" >
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -14,14 +10,13 @@
 						<label value="Tipos de Noticia" />
 					</div>
 				</div>
-				<div class="contenedor" align="center" height="970px">
-
+				<div  align="center">
 					<div sclass="page-header" align="left">
 						<label value="Tipos de Noticias" />
 					</div>
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="70%"
+					<div class='form-pricing' align="left" width="90%" 
 						style="margin-bottom: 20px">
 						<div apply="controllers.ControllerTipoNoticia" xmlns:w='client'
 							align="right">
@@ -43,7 +38,7 @@
 
 							<grid
 								emptyMessage="No se encuentran tipos de Noticias registrados"
-								mold="paging" pageSize="10">
+								mold="paging" pageSize="10" >
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
@@ -135,7 +130,7 @@
 									</row>
 								</rows>
 								<foot>
-									<footer span="1"
+									<footer span="6"
 										class="footer_right" label="4 items en la lista" />
 								</foot>
 							</grid>

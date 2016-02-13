@@ -7,14 +7,14 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zul.Window;
 
-public class ControllerTipoMotivoPostulacion extends SelectorComposer<Component> {
+public class ControllerMotivoPostulacion extends SelectorComposer<Component> {
 	private static final long serialVersionUID = 1L;
 	 
-	 @Listen("onClick = #btnRegTipoMotivoPostulacion")
+	 @Listen("onClick = #btnRegMotivoPostulacion")
 	    public void showModal(Event e) {
 	        //create a window programmatically and use it as a modal dialog.
 	        Window window = (Window)Executions.createComponents(
-	                "configuracion/categoria/registrarTipoMotivoPostulacion.zul", null, null);
+	                "configuracion/categoria/registrarMotivoPostulacion.zul", null, null);
 	        window.doModal();
 	    }
 
