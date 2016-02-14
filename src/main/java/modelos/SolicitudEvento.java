@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,9 +13,13 @@ public class SolicitudEvento implements java.io.Serializable {
 
 	private int idSolicitudEvento;
 	private Socio socio;
-	private Date fechaEvento;
-	private String descripcion;
 	private Date fechaSolicitud;
+	private String descripcion;
+	private Date fechaInicioSolicitud;
+	private Date fechaFinSolicitud;
+	private Date horaInicio;
+	private Date horaFin;
+	private boolean publico;
 	private Set<EstadoSolicitud> estadoSolicituds = new HashSet<EstadoSolicitud>(
 			0);
 
@@ -23,21 +27,33 @@ public class SolicitudEvento implements java.io.Serializable {
 	}
 
 	public SolicitudEvento(int idSolicitudEvento, Socio socio,
-			String descripcion, Date fechaSolicitud) {
+			Date fechaSolicitud, String descripcion, Date fechaInicioSolicitud,
+			Date fechaFinSolicitud, Date horaInicio, Date horaFin,
+			boolean publico) {
 		this.idSolicitudEvento = idSolicitudEvento;
 		this.socio = socio;
-		this.descripcion = descripcion;
 		this.fechaSolicitud = fechaSolicitud;
+		this.descripcion = descripcion;
+		this.fechaInicioSolicitud = fechaInicioSolicitud;
+		this.fechaFinSolicitud = fechaFinSolicitud;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
+		this.publico = publico;
 	}
 
 	public SolicitudEvento(int idSolicitudEvento, Socio socio,
-			Date fechaEvento, String descripcion, Date fechaSolicitud,
-			Set<EstadoSolicitud> estadoSolicituds) {
+			Date fechaSolicitud, String descripcion, Date fechaInicioSolicitud,
+			Date fechaFinSolicitud, Date horaInicio, Date horaFin,
+			boolean publico, Set<EstadoSolicitud> estadoSolicituds) {
 		this.idSolicitudEvento = idSolicitudEvento;
 		this.socio = socio;
-		this.fechaEvento = fechaEvento;
-		this.descripcion = descripcion;
 		this.fechaSolicitud = fechaSolicitud;
+		this.descripcion = descripcion;
+		this.fechaInicioSolicitud = fechaInicioSolicitud;
+		this.fechaFinSolicitud = fechaFinSolicitud;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
+		this.publico = publico;
 		this.estadoSolicituds = estadoSolicituds;
 	}
 
@@ -57,12 +73,12 @@ public class SolicitudEvento implements java.io.Serializable {
 		this.socio = socio;
 	}
 
-	public Date getFechaEvento() {
-		return this.fechaEvento;
+	public Date getFechaSolicitud() {
+		return this.fechaSolicitud;
 	}
 
-	public void setFechaEvento(Date fechaEvento) {
-		this.fechaEvento = fechaEvento;
+	public void setFechaSolicitud(Date fechaSolicitud) {
+		this.fechaSolicitud = fechaSolicitud;
 	}
 
 	public String getDescripcion() {
@@ -73,12 +89,44 @@ public class SolicitudEvento implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Date getFechaSolicitud() {
-		return this.fechaSolicitud;
+	public Date getFechaInicioSolicitud() {
+		return this.fechaInicioSolicitud;
 	}
 
-	public void setFechaSolicitud(Date fechaSolicitud) {
-		this.fechaSolicitud = fechaSolicitud;
+	public void setFechaInicioSolicitud(Date fechaInicioSolicitud) {
+		this.fechaInicioSolicitud = fechaInicioSolicitud;
+	}
+
+	public Date getFechaFinSolicitud() {
+		return this.fechaFinSolicitud;
+	}
+
+	public void setFechaFinSolicitud(Date fechaFinSolicitud) {
+		this.fechaFinSolicitud = fechaFinSolicitud;
+	}
+
+	public Date getHoraInicio() {
+		return this.horaInicio;
+	}
+
+	public void setHoraInicio(Date horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public Date getHoraFin() {
+		return this.horaFin;
+	}
+
+	public void setHoraFin(Date horaFin) {
+		this.horaFin = horaFin;
+	}
+
+	public boolean isPublico() {
+		return this.publico;
+	}
+
+	public void setPublico(boolean publico) {
+		this.publico = publico;
 	}
 
 	public Set<EstadoSolicitud> getEstadoSolicituds() {

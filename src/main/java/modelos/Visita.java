@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,26 +16,29 @@ public class Visita implements java.io.Serializable {
 	private Invitado invitado;
 	private Socio socio;
 	private Date fecha;
+	private Date hora;
 	private boolean externo;
 	private Set<VisitaEvento> visitaEventos = new HashSet<VisitaEvento>(0);
 
 	public Visita() {
 	}
 
-	public Visita(int idVisita, Date fecha, boolean externo) {
+	public Visita(int idVisita, Date fecha, Date hora, boolean externo) {
 		this.idVisita = idVisita;
 		this.fecha = fecha;
+		this.hora = hora;
 		this.externo = externo;
 	}
 
 	public Visita(int idVisita, Afiliado afiliado, Invitado invitado,
-			Socio socio, Date fecha, boolean externo,
+			Socio socio, Date fecha, Date hora, boolean externo,
 			Set<VisitaEvento> visitaEventos) {
 		this.idVisita = idVisita;
 		this.afiliado = afiliado;
 		this.invitado = invitado;
 		this.socio = socio;
 		this.fecha = fecha;
+		this.hora = hora;
 		this.externo = externo;
 		this.visitaEventos = visitaEventos;
 	}
@@ -78,6 +81,14 @@ public class Visita implements java.io.Serializable {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public Date getHora() {
+		return this.hora;
+	}
+
+	public void setHora(Date hora) {
+		this.hora = hora;
 	}
 
 	public boolean isExterno() {

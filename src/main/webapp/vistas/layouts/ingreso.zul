@@ -14,11 +14,11 @@
 		style="background: url('../../assets/portal/img/bannerAmericaIngreso.png') no-repeat !important;
   background-size: 100% 100%;"
 		class='lock-screen'>
-		<div class="lock-wrapper"
-			style="  margin: 13% 0% 0% 30% !important; position:fixed">
+		<div class="lock-wrapper" apply="controllers.ControllerInicioSesion"
+			style="  margin: 13% 0% 0% 30% !important; position:fixed" >
 			<div class="lock-box text-center">
 				<div class="lock-name" style="padding: 8px 8px;">
-					<textbox placeholder="Usuario" id="exampleInput"
+					<textbox id="usuario" placeholder="Usuario" 
 						style="width: 64%;padding: 7px 5px;  border-color: white;"
 						class="form-control lock-input" />
 				</div>
@@ -27,13 +27,12 @@
 				<div class="lock-pwd"
 					style="  padding: 0px 0 0 75px;">
 					<div class="form-group">
-						<textbox type="password"
-							placeholder="Contraseña" id="exampleInputPassword2"
+						<textbox id="pass" type="password"
+							placeholder="Contraseña"
 							sclass="form-control lock-input"
 							style=" border-color: white;  margin-top: 9px;" />
 							
-						<button sclass="btn btn-lock"
-							href="../index.zul"
+						<button id="loguear" sclass="btn btn-lock" 
 							style="color:#1FB5AD !important;border:0px;padding-top: 7px;margin-top:-1px"
 							iconSclass="fa fa-arrow-right" type="submit">
 						</button>

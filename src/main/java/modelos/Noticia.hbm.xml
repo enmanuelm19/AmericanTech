@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Noticia" table="noticia" schema="public" optimistic-lock="version">
         <id name="idNoticia" type="int">
@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
-            <column name="foto" not-null="true" />
+            <column name="foto" />
         </many-to-one>
         <many-to-one name="evento" class="modelos.Evento" fetch="select">
             <column name="eventoid_evento" />
@@ -34,6 +34,9 @@
         </property>
         <property name="fechaCreacion" type="date">
             <column name="fecha_creacion" length="13" not-null="true" />
+        </property>
+        <property name="hora" type="time">
+            <column name="hora" length="15" not-null="true" />
         </property>
         <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="true" fetch="select">
             <key>

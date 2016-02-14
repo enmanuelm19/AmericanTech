@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -12,12 +12,13 @@ import java.util.Set;
 public class Evento implements java.io.Serializable {
 
 	private int idEvento;
-	private TipoEvento tipoEvento;
 	private String descripcion;
 	private short visitasEsperadas;
 	private String condicionEstado;
-	private Date fecha;
-	private Date hora;
+	private Date fechaInicio;
+	private Date fechaFin;
+	private Date horaInicio;
+	private Date horaFin;
 	private boolean publico;
 	private Set<Eventualidad> eventualidads = new HashSet<Eventualidad>(0);
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
@@ -34,34 +35,37 @@ public class Evento implements java.io.Serializable {
 	public Evento() {
 	}
 
-	public Evento(int idEvento, TipoEvento tipoEvento, String descripcion,
-			short visitasEsperadas, String condicionEstado, Date fecha,
-			Date hora, boolean publico) {
+	public Evento(int idEvento, String descripcion, short visitasEsperadas,
+			String condicionEstado, Date fechaInicio, Date fechaFin,
+			Date horaInicio, Date horaFin, boolean publico) {
 		this.idEvento = idEvento;
-		this.tipoEvento = tipoEvento;
 		this.descripcion = descripcion;
 		this.visitasEsperadas = visitasEsperadas;
 		this.condicionEstado = condicionEstado;
-		this.fecha = fecha;
-		this.hora = hora;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
 		this.publico = publico;
 	}
 
-	public Evento(int idEvento, TipoEvento tipoEvento, String descripcion,
-			short visitasEsperadas, String condicionEstado, Date fecha,
-			Date hora, boolean publico, Set<Eventualidad> eventualidads,
-			Set<Noticia> noticias, Set<PreferenciaEvento> preferenciaEventos,
+	public Evento(int idEvento, String descripcion, short visitasEsperadas,
+			String condicionEstado, Date fechaInicio, Date fechaFin,
+			Date horaInicio, Date horaFin, boolean publico,
+			Set<Eventualidad> eventualidads, Set<Noticia> noticias,
+			Set<PreferenciaEvento> preferenciaEventos,
 			Set<VisitaEvento> visitaEventos,
 			Set<PartocinanteEvento> partocinanteEventos,
 			Set<CalendarioFecha> calendarioFechas,
 			Set<ActividadEvento> actividadEventos) {
 		this.idEvento = idEvento;
-		this.tipoEvento = tipoEvento;
 		this.descripcion = descripcion;
 		this.visitasEsperadas = visitasEsperadas;
 		this.condicionEstado = condicionEstado;
-		this.fecha = fecha;
-		this.hora = hora;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
 		this.publico = publico;
 		this.eventualidads = eventualidads;
 		this.noticias = noticias;
@@ -78,14 +82,6 @@ public class Evento implements java.io.Serializable {
 
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
-	}
-
-	public TipoEvento getTipoEvento() {
-		return this.tipoEvento;
-	}
-
-	public void setTipoEvento(TipoEvento tipoEvento) {
-		this.tipoEvento = tipoEvento;
 	}
 
 	public String getDescripcion() {
@@ -112,20 +108,36 @@ public class Evento implements java.io.Serializable {
 		this.condicionEstado = condicionEstado;
 	}
 
-	public Date getFecha() {
-		return this.fecha;
+	public Date getFechaInicio() {
+		return this.fechaInicio;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getHora() {
-		return this.hora;
+	public Date getFechaFin() {
+		return this.fechaFin;
 	}
 
-	public void setHora(Date hora) {
-		this.hora = hora;
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public Date getHoraInicio() {
+		return this.horaInicio;
+	}
+
+	public void setHoraInicio(Date horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public Date getHoraFin() {
+		return this.horaFin;
+	}
+
+	public void setHoraFin(Date horaFin) {
+		this.horaFin = horaFin;
 	}
 
 	public boolean isPublico() {
