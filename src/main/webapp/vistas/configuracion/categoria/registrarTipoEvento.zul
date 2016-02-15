@@ -10,7 +10,7 @@
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%">
 		<caption iconSclass="z-icon-cogs" />
-		<div class="contenedor" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.ViewModelTipoEvento')">
+		<div class="contenedor" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoEventoViewModel')">
 			<div align="left" width="90%">
 				<div align="left">
 					<div class="encabezado" style="margin-top: 4%">
