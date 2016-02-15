@@ -23,7 +23,7 @@ import org.zkoss.zul.Window;
 
 import service.TipoEventoService;
 
-public class ViewModelTipoEvento {
+public class TipoEventoViewModel {
 	
 	//Declararcion de Variables a utilizar
 	TipoEventoService service= new TipoEventoService(); //Enlace a clase servicio --Luego cambiar por el DAO--
@@ -32,7 +32,7 @@ public class ViewModelTipoEvento {
 	private List<TipoEvento> tiposAll= new ArrayList<TipoEvento>(); //contendra los todos registros
 	private TipoEvento tipoE=new TipoEvento(); //enlace con el modelo
 	//CONSTRUCTOR DE LA CLASE --INICIALIZACIÓN DE TODOS LOS REGISTROS--
-	public ViewModelTipoEvento() {
+	public TipoEventoViewModel() {
 		// TODO Auto-generated constructor stub
 		try {
 			tiposAll=service.getTipoEvento();
@@ -140,7 +140,7 @@ public class ViewModelTipoEvento {
 		}
 			tiposAll= tip; 
 	}
-}
+}	
 
 
 

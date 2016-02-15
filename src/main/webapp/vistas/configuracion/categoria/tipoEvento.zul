@@ -20,7 +20,7 @@
 		  		</div>
 				<space/><space/>
 				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px" 
-					apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.ViewModelTipoEvento')">
+					apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoEventoViewModel')">
 					<div xmlns:w='client' align="right">
 						<button id="btnRegTipoEvento" label="Agregar Nuevo" iconSclass="z-icon-plus" style="margin-bottom: -4%"
 								 class='boton-guardar' onClick="@command('showModal')"/>
