@@ -3165,3 +3165,28 @@ div.z-div span {
 div.hola table {
     width: 50% !important;
 }
+
+.z-auxheader{
+	border-bottom: 1px solid rgba(92, 197, 202, 0.7);
+	border-left: 0px solid transparent;
+	background:transparent;
+}
+.z-column{
+	border-left: 1px solid transparent;
+}
+.z-grid-header-border{
+	border-bottom: 1px solid rgba(92, 197, 202, 0.7);
+}
+.z-grid-footer, .z-grid-paging-bottom{
+	border-top: 1px solid rgba(92, 197, 202, 0.7);
+}
+.z-grid-footer{
+	background: transparent;
+}
+.z-paging{
+	border-bottom: 1px solid rgba(92, 197, 202, 0.7);
+	background: transparent;
+}
+.z-grid .z-column-content, .z-footer-content{
+	color: #2B7DBC;
+}

@@ -5,12 +5,12 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window style="iconSclass=z-icon-cogs; height:auto;"
+	<window id="winRegistrarTipoE" style="iconSclass=z-icon-cogs; height:auto;"
 		title=" Registrar Tipo Evento" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%">
 		<caption iconSclass="z-icon-cogs" />
-		<div class="contenedor" align="center">
+		<div class="contenedor" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoEventoViewModel')">
 			<div align="left" width="90%">
 				<div align="left">
 					<div class="encabezado" style="margin-top: 4%">
@@ -25,8 +25,7 @@
 							<div class="row col-md-12">
 								<div class="col-md-4">Descripción</div>
 								<div class="col-md-8">
-									<textbox type="text" rows="4"
-										value="" width="100%" constraint="no empty" />
+									<textbox type="text" width="100%" value="@bind(vm.tipoE.descripcion)" constraint="no empty" />
 								</div>
 							</div>
 						</row>
@@ -37,12 +36,12 @@
 						<div>
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
-								style="margin-bottom: 400px; margin-right:5px" label="Guardar" />
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar" onClick="@command('agregarTipoEvento', win=winRegistrarTipoE)"/>
 						</div>
 						<div>
 							<button id="cancelarBtn"
-								iconSclass="z-icon-times-circle" class='boton-cancelar'
-								style="margin-bottom: 6%" label="Cancelar" />
+								iconSclass="z-icon-times" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar" onClick="@command('cerrarModal', win=winRegistrarTipoE)"/>
 						</div>
 					</hbox>
 				</div>
