@@ -14,87 +14,91 @@
 					<label value="Tipo de Evento"/>
 				</div>
 			</div>
-			<div class="contenedor" align="center" height="970px">
-			
+			<div class="contenedor" align="center">
 				<div sclass="page-header" align="left">
 				    <label value="Tipos de Eventos"/>
 		  		</div>
 				<space/><space/>
-				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px">
-				<div apply="controllers.ControllerTipoEvento" xmlns:w='client' align="right">
-					<button id="btnRegTipoEvento" label="Agregar Nuevo" iconSclass="z-icon-plus" style="margin-bottom: -4%"
-							 class='boton-guardar'/>
-				</div>
-			
-				<separator spacing="10px"/>
-				
-				<div class="contenido" >
-					<div align="left">
-						<div class='encabezado'>Lista Tipos de Eventos</div>
-						<div class='linea-two'></div>
+				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px" 
+					apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.ViewModelTipoEvento')">
+					<div xmlns:w='client' align="right">
+						<button id="btnRegTipoEvento" label="Agregar Nuevo" iconSclass="z-icon-plus" style="margin-bottom: -4%"
+								 class='boton-guardar' onClick="@command('showModal')"/>
 					</div>
-					<separator spacing="20px"/>
-					
-					<grid emptyMessage="No se encuentran tipos de eventos registrados" mold="paging"
+			
+					<separator spacing="10px"/>
+				
+					<div class="contenido" >
+						<div align="left">
+							<div class='encabezado'>Lista Tipos de Eventos</div>
+							<div class='linea-two'></div>
+						</div>
+						<separator spacing="20px"/>
+						<grid model="@load(vm.allTipoEvento)" emptyMessage="Ningun Registro Encontrado" mold="paging"
 							pageSize="10" >
-						<auxhead sclass="category-center">
-            				<auxheader colspan="1">
-            					<image src="../assets/img/funnel.png" />
-               					<textbox instant="true" width="85%" placeholder="Buscar"/>
-            				</auxheader>
-            				<auxheader colspan="1">
-            					<image src="../assets/img/funnel.png" />
-               					<textbox instant="true" width="85%" placeholder="Buscar"/>
-            				</auxheader>
-            				 <auxheader colspan="1" />
-						</auxhead>
-						
-						<columns>
-							<column hflex="2">Codigo </column>
-							<column hflex="2">Tipo Evento</column>
-							<column width="20%" align="center">Acciones </column>
-						</columns>
-						
-						<rows>
-							<row>
-							    <label value="001" />
-								<label value="Publicos" />
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							<row>
-							   <label value="002" />
-								<label value="Privados" />
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
-							<row>
-							    <label value="003" />
-								<label value="Especiales" />
-								<div>
-
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-								</div>
-							</row>
+							<auxhead sclass="category-center">
+	            				<auxheader colspan="1">
+	            					<image src="../assets/img/funnel.png" />
+	               					<textbox instant="true" width="85%" placeholder="Buscar" value="@bind(vm.tipoE.idFiltro)" onChange="@command('filtroTipo')"/>
+	            				</auxheader>
+	            				<auxheader colspan="1">
+	            					<image src="../assets/img/funnel.png" />
+	               					<textbox instant="true" width="85%" placeholder="Buscar" value="@bind(vm.tipoE.descFiltro)" onChange="@command('filtroTipo')"/>
+	            				</auxheader>
+	            				<auxheader colspan="1" />
+							</auxhead>
 							
-						</rows>
-						
-						 <foot>
-            				<footer span="1" class="footer_right" label="4 items en la lista" />
-        				 </foot>
-					</grid>
-
+							<columns>
+								<column>Código </column>
+								<column>Descripción</column>
+								<column width="20%" align="center">Acciones </column>
+							</columns>
+							
+							<rows>
+								<template name="model">
+									<row>
+									    <label value="@load(each.id)" />
+										<label value="@load(each.descripcion)" />
+										<div>
+											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('seleccionEdicion', Tipo=each)"/>
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminarTipo', Tipo=each)"/>
+										</div>
+									</row>
+								</template>
+															
+							</rows>
+							
+							 <foot>
+	            				<footer span="1" class="footer_right" label="@load(vm.cantRegistros)" />
+	        				 </foot>
+						</grid>
+					</div>
+					<div style="padding:0px 30px 30px 30px">
+						<grid visible="@load(vm.activarEdicion)">
+							<auxhead>
+								<auxheader colspan="3">Editar Datos</auxheader>
+							</auxhead>
+							<columns>
+								<column>Código</column>
+								<column>Descripción</column>
+								<column align="center">Acciones</column>
+							</columns>
+							<rows>
+								<row>
+									<label value="@load(vm.seleccionEdicion.id)" />
+									<textbox value="@bind(vm.seleccionEdicion.descripcion)" width="95%" />
+									<div>
+										<button sclass="btn-link" iconSclass="z-icon-check green" tooltiptext="Guardar" onClick="@command('guardarEdicion')"/>
+										<button sclass="btn-link" iconSclass="z-icon-times red" tooltiptext="Cancelar" onClick="@command('cancelarEdicion')"/>
+									</div>
+									
+								</row>
+							</rows>
+						</grid>
+					</div>
 				</div>
-			</div>
 			</div>
 		</vlayout>
 	</hlayout>
-	</div>
+</div>
 </zk>
