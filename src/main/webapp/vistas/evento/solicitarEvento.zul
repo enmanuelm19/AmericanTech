@@ -9,97 +9,103 @@
 
 		<div class='contenido'>
 
-			
+
 			<div align="center">
-		
+
 
 				<div align="left">
 					<div class="encabezado">Datos del Evento</div>
 					<div align="left" class="linea-two"></div>
 				</div>
 				<space bar="False" spacing="10%" />
-				
+
 				<grid width="" fixedLayout="true">
-				
-						<rows class="">
-						
+
+					<rows class="">
+
 						<row class="col-md-12">
 							<div>
-								Tipo de evento<n:br></n:br>	
-			                      <combobox width ="85%">
-								    <comboitem label="Publico"/>
-								    <comboitem label="Privado"/>
-								  </combobox>
-			               
+								Tipo de evento
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Publico" />
+									<comboitem label="Privado" />
+								</combobox>
+
 							</div>
 
-						<div>
-								Instalación <n:br></n:br>	
-			                      <combobox width ="85%">
-								    <comboitem label="Caney de Rafa"/>
-								    <comboitem label="Chevecita"/>
-								    <comboitem label="Salon Principal"/>
-								    <comboitem label="Piscina"/>
-								  </combobox>
-			               
+							<div>
+								Instalación
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Caney de Rafa" />
+									<comboitem label="Chevecita" />
+									<comboitem label="Salon Principal" />
+									<comboitem label="Piscina" />
+								</combobox>
+
 							</div>
 						</row>
 
 						<row class="col-md-12">
 							<div>
-								Fecha inicio <n:br></n:br>
-									<datebox id="DateFchInicio" width ="85%"
-											cols="12" format="short "
-									onCreate="self.value = new Date()" />
+								Fecha inicio
+								<n:br></n:br>
+								<datebox id="DateFchInicio" width="85%"
+									cols="12" format="short " onCreate="self.value = new Date()" />
 							</div>
 
 							<div>
-								Fecha fin <n:br></n:br>
-								<datebox id="DateFchCierre"
-												cols="12" format="short " width ="85%"
-												onCreate="self.value = new Date()" />
+								Fecha fin
+								<n:br></n:br>
+								<datebox id="DateFchCierre" cols="12"
+									format="short " width="85%" onCreate="self.value = new Date()" />
 							</div>
 						</row>
 						<row class="col-md-12">
 							<div>
-								Hora inicio <n:br></n:br>
-								<timebox id="TimeHorInicio"
-												cols="12" format="short" onCreate="self.value = new Date()" width ="85%"/>
+								Hora inicio
+								<n:br></n:br>
+								<timebox id="TimeHorInicio" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
 							</div>
 							<div>
-								Hora cierre  <n:br></n:br>
-								<timebox id="TimeHorCierre"
-												cols="12" format="short" onCreate="self.value = new Date()"  width ="85%"/>
+								Hora cierre
+								<n:br></n:br>
+								<timebox id="TimeHorCierre" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
 							</div>
 
 						</row>
 						<row class="col-md-12">
-						<div>
-								Cantidad esperada de visitas  <n:br></n:br>
-								<textbox type="text"
-									width ="85%" tabindex="10" constraint="no empty"  />
-									</div>
-						
-								<div>
-								Descripción del evento  <n:br></n:br>
+							<div>
+								Cantidad esperada de visitas
+								<n:br></n:br>
+								<textbox type="text" width="85%"
+									tabindex="10" constraint="no empty" />
+							</div>
+
+							<div>
+								Descripción del evento
+								<n:br></n:br>
 								<textbox type="text" rows="5"
-									width ="85%" tabindex="10" constraint="no empty" />
-									</div>
+									width="85%" tabindex="10" constraint="no empty" />
+							</div>
 						</row>
-				
-					
+
+
 					</rows>
 				</grid>
 				<space spacing="35%" />
 				<div>
-					
+
 					<button iconSclass="z-icon-floppy-o"
 						class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
-					<space spacing="15%" />
+				<space spacing="15%" />
 			</div>
 		</div>
 	</window>
