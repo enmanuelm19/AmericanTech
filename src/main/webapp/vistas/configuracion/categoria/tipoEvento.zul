@@ -60,6 +60,7 @@
 									    <label value="@load(each.id)" />
 										<label value="@load(each.descripcion)" />
 										<div>
+											<button sclass="btn-link" iconSclass="z-icon-file-text-o green" tooltiptext="Ver Detalle"/>
 											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('seleccionEdicion', Tipo=each)"/>
 											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminarTipo', Tipo=each)"/>
 										</div>

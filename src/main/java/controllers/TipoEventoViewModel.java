@@ -8,12 +8,16 @@ import java.util.List;
 
 
 
+
+
 import models.TipoEvento;
 
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.Validator;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.bind.validator.AbstractValidator;
 import org.zkoss.zk.ui.Executions;
@@ -27,11 +31,12 @@ public class TipoEventoViewModel {
 	
 	//Declararcion de Variables a utilizar
 	TipoEventoService service= new TipoEventoService(); //Enlace a clase servicio --Luego cambiar por el DAO--
-	private TipoEvento seleccionado; //indicara que registro de la grid seleccione para edición
+	private TipoEvento seleccionado=new TipoEvento(); //indicara que registro de la grid seleccione para edición
 	private boolean editar=false; //manejo de visibilidad del grid editor.
 	private List<TipoEvento> tiposAll= new ArrayList<TipoEvento>(); //contendra los todos registros
 	private TipoEvento tipoE=new TipoEvento(); //enlace con el modelo
 	//CONSTRUCTOR DE LA CLASE --INICIALIZACIÓN DE TODOS LOS REGISTROS--
+	
 	public TipoEventoViewModel() {
 		// TODO Auto-generated constructor stub
 		try {
@@ -80,23 +85,36 @@ public class TipoEventoViewModel {
 	
 /****************************AGREGAR*************************/
 	@Command
-	@NotifyChange({"allTipoEvento","cantRegistros"})
 	public void agregarTipoEvento(@BindingParam("win")  Window win){
 		if(tipoE.getDescripcion() != null && !tipoE.getDescripcion().equalsIgnoreCase("")){
 			service.agregarTipoEvento(this.tipoE);
-			win.detach();	
+			BindUtils.postGlobalCommand(null,null,"refresh",null);
+			win.detach();
 		}
 	}
-	
+	@GlobalCommand
+	@NotifyChange({"allTipoEvento","cantRegistros"})
+	public void refresh(){
+		tiposAll=service.getTipoEvento();
+	}
 /****************************EDICIÓN*************************/
 	//Método activado cuando selecciono la opcion editar
 	@Command
-	@NotifyChange({"seleccionEdicion","activarEdicion"}) //notifica cambio en los métodos getSeleccionEdicion() y getActivarEdicion()
 	public void seleccionEdicion(@BindingParam("Tipo") TipoEvento tipo){ //recibe del activador una variable llamada Tipo.
-		this.seleccionado=tipo; //guardo temporalmente el registro a editar
-		this.editar=true;
+		System.out.println("ssj: "+tipo.getDescripcion());
+		this.seleccionado=tipo;
+		BindUtils.postGlobalCommand(null,null,"mode",null);
+		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarTipoEvento.zul", null,null);
+		window.doModal();
+		//guardo temporalmente el registro a editar
 	}
 	
+	@GlobalCommand
+	@NotifyChange({"tipoE"})
+	public void mode(){
+		this.tipoE=this.seleccionado;
+		System.out.println("nose: "+tipoE.getDescripcion());
+	}
 	//Método que retorna el registro a editar
 	public TipoEvento getSeleccionEdicion(){
 		return this.seleccionado;
@@ -132,7 +150,7 @@ public class TipoEventoViewModel {
 		List<TipoEvento> tip = new ArrayList<TipoEvento>();
 		String desc = tipoE.getDescFiltro().toLowerCase();//asignar las letras escritas en el campo filtro
 		
-		for (Iterator<TipoEvento> i = tiposAll.iterator(); i.hasNext();) {
+		for (Iterator<TipoEvento> i = service.getTipoEvento().iterator(); i.hasNext();) {
 			TipoEvento tmp = i.next();
 			if (tmp.getDescripcion().toLowerCase().contains(desc)) {//comparo si en el campo descripcion estan las letras que tipee.
 				tip.add(tmp);
