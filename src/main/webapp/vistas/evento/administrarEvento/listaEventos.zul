@@ -8,7 +8,7 @@
 			<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 							<span sclass="home-icon z-icon-calendar"/>
-					    <a label="Evento" href="#"/>
+					    <a label="Eventos" href="#"/>
 					   	<label value="Lista de Eventos"/>
 					</div>
 			</div>

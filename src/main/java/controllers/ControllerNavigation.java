@@ -431,4 +431,13 @@ public void onClick$btnRegistrarAfiliado(){
 		contenedor = (Div) Executions.createComponents(pagina, null, null);
 		contenido.appendChild(contenedor);
 	}
+	public void onClick$btnListaSolicitudes(){
+		
+		pagina = "evento/administrarEvento/listaSolicitudes.zul";
+		contenido.getChildren().clear();
+		contenedor = (Div) Executions.createComponents(pagina, null, null);
+		contenido.appendChild(contenedor);
+	}
+	
+	
 }
