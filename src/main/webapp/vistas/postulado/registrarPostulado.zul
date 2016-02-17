@@ -139,37 +139,92 @@
 									width="100%" constraint="no empty" />
 							</div>
 
-						</row>
-						<row class="col-md-12">
-							<div>
-								<label>Intereses de Postulado</label>
-							</div>
-							<div align="" width="80%">
-
-								<checkbox id="l1" label="Danza"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l2" label="Natación"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l3" label="Baloncesto"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l4" label="Futbol"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l5" label="Tenis"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l7" label="Cultura"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l8" label="Música"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l9" label="Arte"
-									onCheck="" style="margin-right:3%;" />
-								<checkbox id="l10" label="Amistad"
-									onCheck="" style="margin-right:3%;" />
-							</div>
-
-						</row>
+						</row>						
 					</rows>
 				</grid>
 				<space spacing="30%" />
+				<!-- AQUI TERMINA GRUPO BASICOS -->
+
+									<div align="left">
+										<div class="encabezado">
+											Intereses
+										</div>
+										<div align="left"
+											class="linea-two">
+
+										</div>
+									</div>
+
+									<hbox align="center" pack="center"
+										width="100%"><!-- GRUPO INTERESES -->
+										<grid
+											emptyMessage="No se encuentran reglas registradas"
+											mold="paging" pageSize="10">
+											<auxhead
+												sclass="category-center">											
+												
+												<auxheader
+													colspan="1">
+												</auxheader>
+											</auxhead>
+
+											<columns>
+												<column hflex="3">
+													Tipo Preferencia
+												</column>
+												<column hflex="3">
+													Preferencia
+												</column>
+
+												
+											</columns>
+											<rows>
+												<row>
+													<label
+														value="Deporte" />
+													<label
+														value="Futbol" />
+													
+												</row>
+												<row>
+													<label
+														value="Deporte" />
+													<label
+														value="beisbol" />
+
+													
+												</row>
+												<row>
+													<label
+														value="Deporte" />
+													<label
+														value="Basket" />
+
+													
+												</row>
+												<row>
+													<label
+														value="Deporte" />
+													<label
+														value="Softball" />
+
+													
+													
+												</row>
+												
+
+
+											</rows>
+											<foot>
+												<footer span="3"
+													class="footer_right" label="3 items en la lista" />
+											</foot>
+										</grid>
+
+
+
+									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
+				
 
 				<div>
 					<button iconSclass="z-icon-floppy-o"
