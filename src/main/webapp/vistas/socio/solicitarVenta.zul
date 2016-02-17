@@ -74,29 +74,16 @@
 			                      </div>
 			                      		                      
 			                  </row>
-			                  <row class="col-md-11">
-			              		  <div width="80px"> 	Socio </div>
-			              		   
-			              		   	
-			              <div>
-			              <textbox type="text" value="" width="200px" />
-			                <separator spacing="5px"></separator>	
-			            	
-			                  </div>  		 
-			            
-			              		  
-			              		   	 
-			                      
-			                  </row>
+			                  
 			                   <row class="col-md-11">
-			              		  <div width="80px"> Motivo </div>
+			              		  <div width="80px"> Motivo Venta </div>
 			              		   
 			              
 			             	      <div>
 							   		 <listbox width="200px" height="25px" selectedItem="@bind(vm.dateFormat)"
 									                            mold="select" tabindex="7">
-									                            <listitem label="" value="" />
-									                             <listitem label="" value="" />
+									                            <listitem label="Motivo 01" value="" />
+									                             <listitem label="Motico 02" value="" />
 								     </listbox>     	
 								     <separator spacing="15px"></separator>	
 		    					 </div>

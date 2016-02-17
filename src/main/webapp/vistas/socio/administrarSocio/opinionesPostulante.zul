@@ -14,310 +14,370 @@
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 							<div width="100%">
-								<vbox>
-									<div align="left">
-										<div class="encabezado">
-											Datos del Postulante
-										</div>
-										<div align="left"
-											class="linea-two">
-										</div>
+								<div align="left">
+									<div class='encabezado'>
+										Datos del Postulante
 									</div>
-
-									<hbox align="center" pack="center"
-										width="90%"><!-- GRUPO DATOS BASICOS -->
-
-										<image width="80%" height="55%"
-											src="/assets/portal/img/img1.jpg" style="border-radius:50%" />
-
-										<vbox height="65%">
-											<hlayout>
-												Cédula
-												<textbox readonly="true"
-													value="V18122444" />
-											</hlayout>
-											<hlayout>
-												Numero Carnet
-												<textbox readonly="true"
-													value="123456" width="50%" />
-											</hlayout>
-
-											<hlayout>
-												Primer Nombre
-												<textbox readonly="true"
-													value="Jesus" width="90%" />
-											</hlayout>
-											<hlayout>
-												Segundo Nombre
-												<textbox readonly="true"
-													value="Jesus" width="88%" />
-											</hlayout>
-											<hlayout>
-
-												Primer Apellido
-												<textbox readonly="true"
-													value="Jesus" width="90%" />
-											</hlayout>
-											<hlayout>
-												Segundo Apellido
-												<textbox readonly="true"
-													value="Jesus" width="88%" />
-
-											</hlayout>
-											<hlayout>
-												Correo
-												<textbox readonly="true"
-													value="hdhdhdh@jdhdh.com" width="100%" />
-											</hlayout>
-											<hlayout>
-												Teléfono Móvil
-												<textbox readonly="true"
-													value="04135689256" width="80%" />
-											</hlayout>
-											<hlayout>
-												Teléfono Fijo
-												<textbox readonly="true"
-													value="02512334578" width="80%" />
-											</hlayout>
-											<hlayout>
-												Nacimiento
-												<textbox readonly="true"
-													value="10/01/70" width="50%" />
-											</hlayout>
-											<hlayout>
-												Edad
-												<textbox readonly="true"
-													value="33" width="25%" />
-											</hlayout>
-											<hlayout>
-												<label>Sexo</label>
-												<combobox
-													readonly="true" value="M" width="35%">
-												</combobox>
-											</hlayout>
-											<hlayout>
-												Dirección
-												<textbox readonly="true"
-													cols="45" rows="2" type="text"
-													value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara"
-													width="90%" />
-											</hlayout>
-										</vbox>
-										<vbox height="100%"><!--OPINIONES  -->
-
-											<hlayout>
-												1er Padrino
-												<textbox readonly="true"
-													value="Jose herrera" width="80%" />
-											</hlayout>
-											<hlayout>
-												2do Padrino
-												<textbox readonly="true"
-													value="Ana Montana" width="80%" />
-											</hlayout>
-											<hlayout>
-												#Carnet 1er Padrino
-												<textbox readonly="true"
-													value="Jose herrera" width="80%" />
-											</hlayout>
-											<hlayout>
-												#Carnet 2do Padrino
-												<textbox readonly="true"
-													value="Ana Montana" width="80%" />
-											</hlayout>
-											<hlayout>
-												Motivo Postulacion
-												<textbox readonly="true"
-													value="Deportes" width="80%" />
-											</hlayout>
-
-											<hlayout>
-												<label>
-													Mi calificación
-												</label>
-												<combobox
-													readonly="true" value="0" width="35%">
-													<comboitem
-														label="1" />
-													<comboitem
-														label="2" />
-													<comboitem
-														label="3" />
-													<comboitem
-														label="4" />
-													<comboitem
-														label="5" />
-												</combobox>
-
-											</hlayout>
-
-											<hlayout>
-												Mi Opinión
-												<textbox
-													readonly="false" cols="45" rows="10" type="text"
-													value="Buena Persona,hsjsss scvjlcjlblcbcvl,Descripcion,fecha opinion,calificacion"
-													width="90%" />
-											</hlayout>
-											<div align="right">
-												<button
-													sclass="btn-link" iconSclass="z-icon-pencil blue"
-													tooltiptext="Modificar" />
-												<button
-													sclass="btn-link" iconSclass="z-icon-trash-o red"
-													tooltiptext="Eliminar" />
-											</div>
-										</vbox>
-									</hbox><!-- AQUI TERMINA GRUPO BASICOS -->
-
-
-									<div class="contenido">
-										<div align="left">
-											<div class='encabezado'>
-												Opiniones
-											</div>
-											<div class='linea-two'></div>
-										</div>
-										<separator spacing="20px" />
-
-										<grid
-											emptyMessage="No hay opiniones" mold="paging"
-											pageSize="10">
-											<auxhead
-												sclass="category-center">
-												<auxheader
-													colspan="1">
-													<image
-														src="../assets/img/funnel.png" />
+									<div class='linea-two'></div>
+								</div>
+								<separator spacing="20px" />
+								<div class="col-md-6">
+									<grid>
+										<rows>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="Cédula" />
 													<textbox
-														instant="true" width="85%" placeholder="Buscar" />
-												</auxheader>
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="V18122444">
+													</textbox>
+												</div>
+											</row>
 
-												<auxheader colspan="3" />
-											</auxhead>
-											<columns>
-												<column hflex="2">
-													Socio
-												</column>
-												<column hflex="2">
-													Opinión
-												</column>
-												<column>
-													calificación
-												</column>
-												<column>Fecha</column>
-											</columns>
-											<rows>
-												<row>
+											<row>
+												<div>
 													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
-												</row>
-												<row>
-													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
+														class="col-md-4" value="Numero Carnet" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="123456">
+													</textbox>
 
-												</row>
-												<row>
-													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
 
-												</row>
-												<row>
-													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
+												</div>
+											</row>
 
-												</row>
-												<row>
+											<row>
+												<div>
 													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
+														class="col-md-4" value="Primer Nombre" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="Jesus">
+													</textbox>
 
-												</row>
-												<row>
+												</div>
+											</row>
+											<row>
+												<div>
 													<label
-														value="Miguel" />
+														class="col-md-4" value="Segundo Nombre" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="Jesus">
+													</textbox>
+												</div>
+											</row>
+											<row>
+												<div>
 													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
+														class="col-md-4" value="Primer Apellido" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="Jesus">
+													</textbox>
 
-												</row>
-												<row>
+												</div>
+											</row>
+											<row>
+												<div>
 													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
+														class="col-md-4" value="Segundo Apellido" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="Jesus">
+													</textbox>
 
-												</row>
-												<row>
+												</div>
+											</row>
+											<row>
+												<div>
 													<label
-														value="Miguel" />
+														class="col-md-4" value="Correo" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														type="email" value="hdhdhdh@jdhdh.com">
+													</textbox>
+												</div>
+											</row>
+											<row>
+												<div>
 													<label
-														value="Mala Persona" />
-													<label value="3" />
+														class="col-md-4" value="Telefono" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="04135689256">
+													</textbox>
+												</div>
+											</row>
+											<row>
+												<div>
 													<label
-														value="12/12/2012" />
+														class="col-md-4" value="Nacimiento" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="10/01/70">
+													</textbox>
+												</div>
+											</row>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="Edad" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="33">
+													</textbox>
+												</div>
+											</row>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="Sexo" />
+													<checkbox
+														label="Masculino" />
+													<checkbox
+														label="Femenino" />
+												</div>
+											</row>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="Direccion" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														cols="45" rows="2" type="text"
+														value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
 
-												</row>
-												<row>
-													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
+												</div>
+											</row>
+										</rows>
+									</grid>
+								</div>
 
-												</row>
-												<row>
-													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
-												</row>
-												<row>
-													<label
-														value="Miguel" />
-													<label
-														value="Mala Persona" />
-													<label value="3" />
-													<label
-														value="12/12/2012" />
-												</row>
-											</rows>
-										</grid>
+								<!--OPINIONES  -->
+
+								<div class="col-md-6">
+									<div class="input-group">
+										<image
+											src="/assets/portal/img/img1.jpg"
+											class='img-responsive col-md-offset-1' />
+										<separator spacing="30px">
+										</separator>
+
 									</div>
-								</vbox>
+									<grid>
+										<rows>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="1er Padrino" />
+													<textbox
+														class="col-md-6" readonly="true" value="Jose Herrera">
+													</textbox>
+												</div>
+											</row>
+
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="2do Padrino" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="Ana Montana">
+													</textbox>
+
+
+												</div>
+											</row>
+
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="#Carnet 1er Padrino" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="12345">
+													</textbox>
+
+												</div>
+											</row>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="#Carnet 2do Padrino" />
+													<textbox
+														constraint="no empty" class="col-md-6" readonly="true"
+														value="678910">
+													</textbox>
+												</div>
+											</row>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="Motivo Postulacion" />
+													<textbox
+														class="col-md-6" readonly="true" value="Deportes">
+													</textbox>
+
+												</div>
+											</row>
+											<row>
+												<div>
+													<label
+														class="col-md-4" value="Calificación Promedio" />
+													<textbox
+														class="col-md-6" readonly="true" value="3">
+													</textbox>
+												</div>
+											</row>
+
+										</rows>
+									</grid>
+								</div>
+
+								<!-- AQUI TERMINA GRUPO BASICOS -->
+
+								<separator spacing="30px"></separator>
+
+								<div class="contenido">
+									<div align="left">
+										<div class='encabezado'>
+											Opiniones
+										</div>
+										<div class='linea-two'></div>
+									</div>
+									<separator spacing="20px" />
+
+									<grid
+										emptyMessage="No hay opiniones" mold="paging" pageSize="10">
+										<auxhead
+											sclass="category-center">
+											<auxheader colspan="1">
+												<image
+													src="../assets/img/funnel.png" />
+												<textbox instant="true"
+													width="85%" placeholder="Buscar" />
+											</auxheader>
+
+											<auxheader colspan="3" />
+										</auxhead>
+										<columns>
+											<column hflex="2">
+												Socio
+											</column>
+											<column hflex="2">
+												Opinión
+											</column>
+											<column>
+												calificación
+											</column>
+											<column>Fecha</column>
+										</columns>
+										<rows>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+										</rows>
+									</grid>
+								</div>
+
+
+
 								<hlayout>
 									<div>
 										<button
