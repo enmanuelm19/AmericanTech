@@ -1,7 +1,7 @@
 <!-- Trabajado por Hector Gil 08/02/16-->
 <zk>
 	<window title="Agregar Sancion" border="normal" width="40%"
-		height="50%" position="center,center" closable="true"
+		height="60%" position="center,center" closable="true"
 		action="show: slideDown;hide: slideUp">
 		<caption iconSclass="z-icon-user" />
 		<hlayout spacing="0">
@@ -10,7 +10,7 @@
 					<div>
 						<div>
 							<div>
-								<grid width="680px"
+								<grid width="100%"
 									fixedLayout="true">
 									<rows class="col-md-12">
 										<row>
@@ -55,12 +55,15 @@
 																		Motivo
 																	</div>
 																	<div>
-																		Fecha
-																		Inicio
+																		Prohibicion Entrada
 																	</div>
 																	<div>
 																		Fecha
-																		Final
+																		Inicio Prohibicion 
+																	</div>
+																	<div>
+																		Fecha
+																		Final Prohibicion
 																	</div>
 																	<div>
 																		Monto
@@ -98,9 +101,12 @@
 																			<comboitem
 																				label="desorden" />
 																			<comboitem
-																				label="Otros" />
+																				label="Morosidad" />
 																		</combobox>
 																	</div>
+																	<div>
+																		<checkbox>
+																		</checkbox>																	</div>
 																	<div>
 																		<datebox
 																			cols="12" format="short "

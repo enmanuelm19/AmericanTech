@@ -31,7 +31,7 @@
 					<rows class="">
 						<row class="col-md-12">
 							<div>
-								Tipo   
+								Tipo Sugerencia   
 								<!--<combobox id="cmbTipo" width="150px">            
 									model="@load(vm.colors)" selectedItem="@bind(vm.shirtColor)" > 
 									                    
