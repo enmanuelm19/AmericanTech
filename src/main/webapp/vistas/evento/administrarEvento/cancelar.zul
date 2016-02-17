@@ -7,9 +7,9 @@
 <zk xmlns:n="native">
 	<window border="none" title="Cancelar Evento"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="70%"
+		closable="true" width="48%" height="50%"
 		style="iconSclass=z-icon-puzzle-piece;">
-		<caption iconSclass="z-icon-cogs" />
+		<caption iconSclass="z-icon-calendar" />
 
 
 		<div class='contenido'>
@@ -34,7 +34,7 @@
 						</row>
 					</rows>
 				</grid>
-				<separator spacing="15%" />
+				<space spacing="45%" />
 
 				<div>
 					<button iconSclass="z-icon-floppy-o"
@@ -43,7 +43,7 @@
 					<button iconSclass="z-icon-times"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
-				<separator spacing="5%" />
+			<space spacing="15%" />
 			</div>
 		</div>
 	</window>
