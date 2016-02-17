@@ -19,7 +19,7 @@
 				<div class="page-header" align="left">
 				    <label value="Patrocinantes"/>
 		  		</div>
-				
+				<separator spacing="1%" />
 				<space/><space/>
 				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
 				<div apply="controllers.ControllerRegistrarPatrocinantes" xmlns:w='client' align="right">
@@ -31,7 +31,7 @@
 						<div class='encabezado'>Lista Patrocinates</div>
 						<div class='linea-two'></div>
 					</div>
-					<separator spacing="1%"/>
+					<separator spacing="30px"/>
 					
 					<grid emptyMessage="No se encuentran pratrocinates registrados" mold="paging"
 							pageSize="10">

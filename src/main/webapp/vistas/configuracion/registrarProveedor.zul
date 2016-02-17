@@ -23,68 +23,84 @@
 		<caption iconSclass="z-icon-cogs" />
 
 
-		<div class='contenido'>
-
+			<div class='contenido'>
 			<div align="left">
 				<div class='encabezado'>Datos básicos</div>
 				<div class='linea-two'></div>
 			</div>
-			<space spacing="15%" />
+			<separator spacing="30px" />
+			<div class="row">
+				<div class="col-md-9">
+					<grid>
 
-			<div align="center">
-				<grid>
+						<rows>
+								<row>
+								<div>
+								<label class="col-md-3">RIF</label>
+								<textbox constraint="no empty"
+								class="col-md-3">
+								</textbox>
+								<button
+								iconSclass="z-icon-search blue" class="col-md-2 btn-link">
+								</button>
+								</div>
+								</row> 
 
-					<rows class="">
+							<row>
+								<div>
+									<label class="col-md-3">
+										Nombre
+									</label>
+									<textbox constraint="no empty"
+										class="col-md-9">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Email
+									</label>
+									<textbox type="email"
+										class="col-md-9" constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Teléfono
+									</label>
+									<textbox class="col-md-3"
+										constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">
+										Dirección
+									</label>
+									<textbox id="txtMision" rows="5"
+										cols="30" class="col-md-9" constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+						</rows>
+					</grid>
 
-						<row class="col-md-12">
-							<div>
-								Rif/Indentificacion
-								<textbox type="text" value=""
-									width="80%" constraint="no empty" />
-								<button sclass="btn-link"
-									iconSclass="z-icon-search blue" />
-							</div>
 
-							<div>
-								Nombre
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
-							</div>
-						</row>
-						<row class="col-md-12">
-							<div>
-								Dirección
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
-							</div>
-							<div>
-								Telefono
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
-							</div>
-
-						</row>
-						<row class="col-md-12">
-							<vlayout>
-								Email
-								<textbox type="text" value=""
-									width="100%" tabindex="2"
-									constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" />
-							</vlayout>
-						</row>
-
-					</rows>
-				</grid>
-				<space spacing="15%" />
-
-				<div>
-					<button iconSclass="z-icon-floppy-o"
-						class='boton-guardar' label="Registrar" />
-					<space spacing="10%" />
-					<button iconSclass="z-icon-times"
-						class='boton-cancelar' label="Cancelar" />
 				</div>
-				<separator spacing="5%" />
+
+			</div>
+			<separator spacing="20px"></separator>
+			<div class="row col-md-12">
+				<button class="boton-guardar col-md-3 col-md-offset-2"
+					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
+				</button>
+				<button class="boton-cancelar col-md-3 col-md-offset-2"
+					iconSclass="z-icon-times" type="button" label="Cancelar">
+				</button>
 			</div>
 		</div>
 	</window>
