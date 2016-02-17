@@ -12,7 +12,7 @@ public class ControllerCancelarEvento extends SelectorComposer<Component> {
 	private static final long serialVersionUID = 1L;
 	 
 		
-	 @Listen("onClick = #btnCancelarEvento")
+	 @Listen("onClick = #btnEstadoEvento")
 	 public void mostrarAfiliado(){
 		 Window window = (Window)Executions.createComponents("evento/administrarEvento/cancelar.zul", null, null);
 		 window.doModal();

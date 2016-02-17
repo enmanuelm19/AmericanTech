@@ -1,158 +1,124 @@
-<zk xmlns:n="native" >
+<zk xmlns:n="native">
 
-	<window title="Registrar Evento" style="iconSclass=z-icon-user;" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" 
-	height="70%" width="45%" >
-	<div>
-	<hlayout spacing="0">
-		
-		<vlayout spacing="0" hflex="1">
-
-
-			<div class='contenedor'>
+	<window border="none" title="Registrar Evento"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="48%" height="auto"
+		style="iconSclass= z-icon-calendar;">
+		<caption iconSclass="z-icon-calendar" />
 
 
-				<div class='contenido' align="center">
-					<div class="col-md-8 col-left "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						
-							
-							<div align="left" width="150%">
-								<div class="encabezado">
-									Datos del Evento
-								</div>
-								
-								<div class="linea-two">
+		<div class='contenido'>
 
-								</div>
-								
+
+			<div align="center">
+
+
+				<div align="left">
+					<div class="encabezado">Datos del Evento</div>
+					<div align="left" class="linea-two"></div>
+				</div>
+				<space bar="False" spacing="10%" />
+
+				<grid width="" fixedLayout="true">
+
+					<rows class="">
+
+						<row class="col-md-12">
+							<div>
+								Tipo de evento
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Publico" />
+									<comboitem label="Privado" />
+								</combobox>
+
 							</div>
-							<separator spacing="60px"></separator>
-		<grid width="580px" >  
-		<rows class="col-md-11">
-		
-			<row>
-			<vlayout>
-			<hlayout>
-			<div width="90px"> Descripción </div>
-			<div>
-				<textbox type="text" value="" width="370px" height="60px" />
-			</div>
-			</hlayout>					                      		
-			</vlayout>
-			</row>
-			
-			<row>
-			<vlayout>
-			<hlayout>
-			
-			<div width="90px"> Tipo </div>
-			<div width="100px">
-				<checkbox id="l2"   label="Público"  />
-			</div>
-			<div width="100px">
-				<checkbox id="l1" label="Privado"  />
-			</div>
-			
-			</hlayout>					                      		
-			</vlayout>
-			</row>
-			
-			<row>
-			<vlayout>
-			<hlayout>
-			<div width="90px"> Personas Esperadas </div>
-			<div>
-			<spinner constraint="no negative,no zero" tabindex="10" />
-			</div>
-			
-			</hlayout>					                      		
-			</vlayout>
-			</row>
-			
-			<row>
-	        <vlayout>
-		    <hlayout>
-			<div>
-				<div> Fecha de Inicio </div>
-				<div> Hora de Inicio </div>
-			</div>
-			<div>
-			    <div>
-				<datebox id="db0" cols="12" format="short " onCreate="self.value = new Date()" />
-				</div>
-			    <div>
-			    <timebox id="tb0" cols="12" format="short" onCreate="self.value = new Date()" />
-			    </div>
-			</div>
-			<div>
-		    	<div >
-		    				
-		        </div>
-   				<div>
-   					Fecha de Cierre
-   				</div>
-   				<div>
-   					Hora de Cierre
-   				</div>
-			</div>									
-			<div>
-            	<div>
-                		 
-                </div>
-                <div>
-                <datebox  cols="12" format="short " onCreate="self.value = new Date()" />
-                </div>
-                <div>
-                <timebox  cols="12" format="short" onCreate="self.value = new Date()" />
-                </div>
-			</div>	
 
-			</hlayout>					                      		
-			</vlayout>
-            </row>
-            <row>
-            <separator spacing="15px"></separator>
-			 </row>
-			<row class="col-md-3 col-md-offset-3">
-			<hlayout>
-			                 
-              	<div >
-               	<button   iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
-                </div>
-                <div >
-                <button  iconSclass="z-icon-times-circle" class='boton-cancelar' label="Cancelar" />
-				</div>
-            </hlayout>
-			             		
-			</row>
-			</rows>
-			</grid>
-								
+							<div>
+								Instalación
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Caney de Rafa" />
+									<comboitem label="Chevecita" />
+									<comboitem label="Salon Principal" />
+									<comboitem label="Piscina" />
+								</combobox>
 
-					
-								
-								
-								
-								
-					
+							</div>
+						</row>
+
+						<row class="col-md-12">
+							<div>
+								Fecha inicio
+								<n:br></n:br>
+								<datebox id="DateFchInicio" width="85%"
+									cols="12" format="short " onCreate="self.value = new Date()" />
+							</div>
+
+							<div>
+								Fecha fin
+								<n:br></n:br>
+								<datebox id="DateFchCierre" cols="12"
+									format="short " width="85%" onCreate="self.value = new Date()" />
+							</div>
+						</row>
+						<row class="col-md-12">
+							<div>
+								Hora inicio
+								<n:br></n:br>
+								<timebox id="TimeHorInicio" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+							<div>
+								Hora cierre
+								<n:br></n:br>
+								<timebox id="TimeHorCierre" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+
+						</row>
+						<row class="col-md-12">
+							<div>
+							
+								Tipo de Evento
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Deportivo" />
+									<comboitem label="Cultural" />
+									<comboitem label="Social" />
+									<comboitem label="Recreativa" />
+								</combobox>
 
 							
 							
-						</div>
-					</div>
+								Cantidad esperada de visitas
+								<n:br></n:br>
+								<textbox type="text" width="85%"
+									tabindex="10" constraint="no empty" />
+							</div>
 
+							<div>
+								Descripción del evento
+								<n:br></n:br>
+								<textbox type="text" rows="5"
+									width="85%" tabindex="10" constraint="no empty" />
+							</div>
+						</row>
+
+
+					</rows>
+				</grid>
+				<space spacing="35%" />
+				<div>
+
+					<button iconSclass="z-icon-floppy-o"
+						class='boton-guardar' label="Registrar" />
+					<space spacing="10%" />
+					<button iconSclass="z-icon-times"
+						class='boton-cancelar' label="Cancelar" />
 				</div>
-
-	
-
-
-
-
-		</vlayout>
-	</hlayout>
-
-</div>
-</window>
+				<space spacing="15%" />
+			</div>
+		</div>
+	</window>
 </zk>

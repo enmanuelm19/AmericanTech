@@ -20,7 +20,7 @@
 					<div sclass="page-header" align="left">
 						<label value="Reglas Club" />
 					</div>
-
+					<separator spacing="1%" />
 					<space />
 					<space />
 					<div class='form-pricing' align="left" width="90%"
@@ -61,17 +61,17 @@
 									<auxheader colspan="3" />
 								</auxhead>
 								<columns>
-									<column hflex="2">
+									<column hflex="3">
 										Descripcion
 									</column>
-									<column hflex="2">
+									<column hflex="3">
 										Parentesco con el socio
 									</column>
-									<column>
+									<column hflex="3">
 										Nro de invitados Permitidos
 									</column>
 									<column>Frecuencia</column>
-									<column width="15%">
+									<column hflex="2">
 										Acciones
 									</column>
 								</columns>
@@ -272,7 +272,7 @@
 								</div>
 								<div class='linea-two'></div>
 							</div>
-							<space spacing="20%" />
+							<space spacing="1%" />
 
 							<grid
 								emptyMessage="No se encuentran reglas registradas" mold="paging"
@@ -296,7 +296,7 @@
 									<column hflex="2">
 										Cantidad permitida
 									</column>
-									<column width="15%">
+									<column hflex="2">
 										Acciones
 									</column>
 								</columns>

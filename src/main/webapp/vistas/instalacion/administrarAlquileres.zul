@@ -17,14 +17,16 @@
  					<label value="Administrar Alquileres"/>
  				</div>
  			
- 				<div class='form-pricing'  width="95%">
- 					<div align="left">
+ 				<div class='form-pricing'  width="95%" align="left">
+ 					<div class="contenido">
+ 							<div align="left">
 		  						<div class='encabezado'>
 		  							<label value="Reservaciones"/>
 		  						</div>
 		  					</div>
 		  					<div class='linea-two'></div>
 		  					<div>
+		  					<separator spacing="30px"/>
  						<grid mold="paging" pageSize="8">
  							<columns menupopup="auto">
  								<column label="Numero de Reservacion" align="center" sort="auto" width="15%"/>
@@ -91,27 +93,78 @@
  									<label value="04-03-2016"/>
  									<label value="11:00"/>
  									<label value="14:00"/>
- 									
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
  									</div>
  								</row>
+ 								<row>
+ 									<label value="0006"/>
+ 									<label value="Caney de Rafa"/>
+ 									<label value="Jose Rivero"/>
+ 									<label value="04-03-2016"/>
+ 									<label value="11:00"/>
+ 									<label value="14:00"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0007"/>
+ 									<label value="Caney de Rafa"/>
+ 									<label value="Jose Rivero"/>
+ 									<label value="04-03-2016"/>
+ 									<label value="11:00"/>
+ 									<label value="14:00"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0008"/>
+ 									<label value="Caney de Rafa"/>
+ 									<label value="Jose Rivero"/>
+ 									<label value="04-03-2016"/>
+ 									<label value="11:00"/>
+ 									<label value="14:00"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row>
+ 								<row>
+ 									<label value="0009"/>
+ 									<label value="Caney de Rafa"/>
+ 									<label value="Jose Rivero"/>
+ 									<label value="04-03-2016"/>
+ 									<label value="11:00"/>
+ 									<label value="14:00"/>
+ 									<div>
+ 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
+ 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
+ 									</div>
+ 								</row> 								 								 								 								
  							</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="15 items en la lista" />
+        				 </foot> 							
  						</grid>
  					</div>
- 					
- 					
+ 				  </div>	
  				</div>
  				<separator spacing="5%"/>
- 				<div class="form-pricing" width="95%">
- 					<div align="left">
+ 				<div class="form-pricing" width="95%" align="left">
+ 					<div class="contenido">
+ 							<div align="left">
 		  						<div class='encabezado'>
 		  							<label value="Alquileres"/>
 		  						</div>
 		  					</div>
 		  					<div class='linea-two'></div>
 		  					<div>
+		  					<separator spacing="30px"/>
  						<grid mold="paging" pageSize="5">
  							<columns menupopup="auto">
  								<column label="Numero de Alquiler" align="center"/>
@@ -120,7 +173,6 @@
  								<column label="Fecha" align="center"/>
  								<column label="Hora" align="center"/>
  								<column label="Monto Bs" align="center"/>
- 								<column label="Cancelar" align="center" width="15%"/>
  							</columns>
  							<rows>
  								<row>
@@ -130,9 +182,6 @@
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
 									<label value="90000"/>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
- 									</div>
  								</row>
  								<row>
  									<label value="0002"/>
@@ -142,10 +191,6 @@
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
 									<label value="90000"/>
- 									
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
- 									</div>
  								</row>
  								<row>
  									<label value="0003"/>
@@ -154,9 +199,6 @@
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
 									<label value="90000"/>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
- 									</div>
  								</row>
  								<row>
  									<label value="0004"/>
@@ -165,9 +207,6 @@
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
 									<label value="90000"/>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
- 									</div>
  								</row>
  								<row>
  									<label value="0005"/>
@@ -176,13 +215,22 @@
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
 									<label value="90000"/>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Cancelar"/>
- 									</div>
  								</row>
+ 								<row>
+ 									<label value="0006"/>
+ 									<label value="0005"/>
+ 									<label value="Jose Rivero"/>
+ 									<label value="25-01-2016"/>
+									<label value="12:00"/>
+									<label value="90000"/>
+ 								</row> 								
  							</rows>
+						 <foot>
+            				<footer span="6" class="footer_right" label="15 items en la lista" />
+        				 </foot> 							
  						</grid>
  					</div>
+ 				  </div>
  				</div>
  				<separator spacing="2%"/>
  			</div>

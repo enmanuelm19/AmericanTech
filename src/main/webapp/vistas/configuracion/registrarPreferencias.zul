@@ -4,96 +4,67 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" >
-	<window  title="Registrar Preferencia" style="iconSclass=z-icon-cogs;" action="show:slideDown({duration: 300}); hide:slideUp({duration: 300})" height="650px" closable="true" width="55%">
-		
+<zk xmlns:n="native">
+	<window title="Registrar Preferencia"
+		style="iconSclass=z-icon-cogs;"
+		action="show:slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		class="col-md-8" height="50%" closable="true" width="40%">
+		<caption iconSclass="z-icon-cogs" />
 
-		<div class='contenedor'>
-				
-	 <div sclass="page-header">
-	    <label value="Registrar Preferencia"/>
-	  
-	  </div>
-				
-					<div class="col-md-10 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div  width="550px"
-							height="480px">
-        		  			    <div align ="left">	
-	                       			<div  class="encabezado">
-                       					Datos Básicos                             									                                                				                             				                             					
-                       				</div>		  			            		
-	                       			<div align="left" class="linea-two">				                                                				                             				                             					
-                       				</div>		            		
+
+
+		<div class="contenido ">
+			<div align="left">
+				<div class="encabezado">Datos básicos</div>
+				<div align="left" class="linea-two"></div>
+			</div>
+			<space spacing="15%" />
+			<div align="center" class="row">
+				<div class="col-md-10">
+					<grid>
+						<rows>
+							<row>
+								<div>
+									<label class="col-md-3">Tipo</label>
+									<combobox width="40%" height=""
+										selectedItem="@bind(vm.dateFormat)">
+										<comboitem label=" " value="" />
+										<comboitem label="Deportes" value="" />
+										<comboitem label="Cocina" value="" />
+										<comboitem label="Manualidades" value="" />
+									</combobox>
 								</div>
-        			<grid width="580px" >
-          
-			            	<rows class="col-md-12">
-			            
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   	Código 
-			                      </div>
-			                  </row>
-			                  <row class="col-md-11">
-  			              		  <div>
-			              		   <textbox type="text" value="" width="250px" />
-			                      </div>
-			                  </row>
-		                     <row class="col-md-11">
-		              		  <div  >
-		              		   Categoría
-		              		   </div>
-		              		 </row>
-		              		 <row class="col-md-11">
-		              		   <div  >
-		                    	  <listbox  width="250px" height="24px" selectedItem="@bind(vm.dateFormat)"
-		                            mold="select" >
-		                            <listitem label=" " value="" />
-		                            <listitem label="Deportes" value="" />
-		                            <listitem label="Cocina" value="" />
-		                            <listitem label="Manualidades" value="" />
-		                        </listbox>
-		                       </div>	
-		                      </row> 
-			                  <row class="col-md-11">
-			              		  <div>
-			              		   	Descripción 
-			                      </div>
-			                  </row>
-			                  <row class="col-md-11">
-  			              		  <div>
-			              		   <textbox type="text" value="" width="480px" height="150px" />
-			                      </div>
-			                  </row>
- 			                  <row class="col-md-11 col-centered">
-			                  	<hlayout>
-			                  		<separator></separator>
-			                  	</hlayout>	
-			                  	</row>            
-			                  <row class="col-md-12" width="100%">
-				                  <div class='col-md-6' style="float: center;padding-left: 100px;">
-				                  	<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar ' label="Guardar"/>
-				                  </div>
-			                      <div class='col-md-6 ' style="float: left;padding-right: 180px;">
-			                      	<button    iconSclass="z-icon-trash-o" class='btn boton-cancelar ' label="Cancelar"/>
-			                      </div>	
-			                 </row>	
-			            </rows>
-			        </grid>
-			        </div>
-   				 </div>
+							</row>
+							<row>
+								<div>
 
-	
-			
-		</div>		
-			
-			
-			
-			
-		</window>
+									<label class="col-md-3">
+										Descripción
+									</label>
+									<textbox id="txtDireccion" rows="5"
+										cols="30" class="col-md-9" constraint="no empty">
+									</textbox>
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</div>
 
-	
+				<separator spacing="20px" />
+				
+				<div class="row col-md-12">
+					<button
+						class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
+						type="button" iconSclass="z-icon-floppy-o">
+					</button>
+					<button
+						class="boton-cancelar col-md-3 col-md-offset-2"
+						iconSclass="z-icon-times" type="button" label="Cancelar">
+					</button>
+				</div>
+			
+		</div>
+
+	</window>
 </zk>

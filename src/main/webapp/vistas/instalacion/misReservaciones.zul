@@ -11,30 +11,22 @@
 				</div>
 			</div>
 			<div class="contenedor" align="center" >
-			
 				<div sclass="page-header" align="left">
 				    <label value="Mis Reservaciones"/>
 		  		</div>
-				
-				<separator spacing="30px"/>
+				<separator spacing="1%"/>
 				<space/><space/>
 				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
 					<div align="right" apply="controllers.ControllerReservacionGeneral" xmlns:w="client">
 							<button id="btnMisReservacionesReg" iconSclass="z-icon-plus" class='boton-guardar' label="Agregar Nuevo" />
 						</div>
-						
-				
-				<separator spacing="10px"/>
-				
 				<div class="contenido">
 					<div align="left">
 						<div class='encabezado'>Lista de Reservaciones</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="30px"/>
-					
-					<grid emptyMessage="No se encuentran reservaciones registrados" mold="paging"
-							pageSize="10">
+					<grid emptyMessage="No se encuentran reservaciones registrados" mold="paging" pageSize="10">
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
             					<image src="../assets/img/funnel.png" />
@@ -47,15 +39,126 @@
 							<column hflex="2">Socio </column>
 							<column hflex="2"> Fecha </column>
 							<column hflex="2"> Hora</column>
+							<column hflex="2"> Hora fin</column>
 							<column width="100px">Acciones </column>
 						</columns>
-						
 						<rows>
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="David Montero"/>
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
+								<div>
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+								</div>
+							</row>
+							<row>
+						          <label value="Caney de Rafa"/> 
+						          <label value="David Montero"/>
+						          <label value="10/01/2015"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
@@ -66,151 +169,41 @@
 						          <label value="Caney de Rafa"/> 
 						          <label value="David Montero"/>
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
 								</div>
 							</row>
-							
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="David Montero"/>
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
 								</div>
 							</row>
-							
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="David Montero"/>
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
 								</div>
 							</row>
-							
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="David Montero"/>
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="David Montero"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM-3:00 PM"/>
+						          <label value="12:00 PM"/>
+						          <label value="3:00 PM"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
