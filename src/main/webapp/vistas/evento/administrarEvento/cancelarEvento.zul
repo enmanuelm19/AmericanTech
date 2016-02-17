@@ -1,4 +1,370 @@
 <!-- Responsable Hector Gil -->
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-calendar" />
+						<a label="Eventos" href="#" />
+						<label value="Finalizar Evento" />
+					</div>
+				</div>
+				<div class='contenedor'
+					apply="controllers.ControllerCancelarEvento">
+					<div sclass="page-header">
+						<label value="Cierre del Evento" />
+					</div>
+					<div class='contenido ' align="center">
+						<div class="col-md-12 col-centered ">
+							<div class='form-pricing' width="100%"
+								style="margin-bottom: 20px">
+								<div align="left">
+									<div class="encabezado">
+										Lista de Eventos
+									</div>
+									<div align="left" class="linea-two" />
+								</div>
+								<separator spacing="20px" />
+
+								<grid
+									emptyMessage="No se encuentran eventos registrados"
+									mold="paging" pageSize="10">
+
+
+									<auxhead sclass="category-center">
+
+										<auxheader colspan="1" />
+
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<textbox instant="true"
+												width="80%" placeholder="Buscar" />
+										</auxheader>
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<textbox instant="true"
+												width="80%" placeholder="Buscar" />
+										</auxheader>
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<textbox instant="true"
+												width="80%" placeholder="Buscar" />
+										</auxheader>
+										<auxheader colspan="2" />
+										<auxheader colspan="1">
+											<image
+												src="../assets/img/funnel.png" />
+											<textbox instant="true"
+												width="80%" placeholder="Buscar" />
+
+										</auxheader>
+										<auxheader colspan="9">
+
+											</auxheader>
+										</auxhead>
+
+									<columns>
+										<column width="4%"></column>
+										<column width="16%">
+											Descripción
+										</column>
+										<column width="10%">
+											Fecha inicio
+										</column>
+										<column width="10%">
+											Fecha fin
+										</column>
+										<column width="7%">
+											Hr. Inicio
+										</column>
+										<column width="7%">
+											Hr. Fin
+										</column>
+										<column width="10%">
+											Instalación
+										</column>
+										<column width="10%">
+											Tipo evento
+										</column>
+										<column width="10%">
+											Visitas
+										</column>
+										<column width="16%">
+											Editar Estado del evento
+										</column>
+									</columns>
+
+									<rows>
+										<row>
+											<detail open="false"
+												fulfill="onOpen">
+												<grid
+													emptyMessage="No se encuentran actividades registradas"
+													mold="paging" pageSize="5">
+													<auxhead
+														sclass="category-center">
+
+														<auxheader
+															colspan="2" />
+
+													</auxhead>
+
+													<columns>
+														<column
+															width="">
+															Actividad
+														</column>
+														<column
+															width="">
+															Hora
+														</column>
+														<column
+															width="">
+															Fecha
+														</column>
+														<column
+															width="">
+															Estado
+														</column>
+														<column
+															width="15%">
+															Descripcion
+														</column>
+														<column
+															width="">
+															Tipo
+															actividad
+														</column>
+														
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="Juego de softbol" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value="Finalizado" />
+															<label
+																value="C.A.America vs Italo" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+														<row>
+															<label
+																value="Juego de Tennis" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value="No Finalizado" />
+															<label
+																value="C.A.America vs Italo" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+														<row>
+															<label
+																value="Juego de Bolas criollas" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value="Finalizado" />
+															<label
+																value="Italo vs Canario" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+														<row>
+															<label
+																value="Juego de softbol" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value=" No Finalizado" />
+															<label
+																value="C.A.America vs Italo" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+
+													</rows>
+												</grid>
+											</detail>
+											<label
+												value="Semana Deportiva" />
+											<label value="12/12/1920" />
+											<label value="12/12/1920" />
+											<label value="12:00" />
+											<label value="12:00" />
+											<label value="Cancha softbol" />
+											<label value="Deportivo" />
+											<label value="100" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue "
+														tooltiptext="Eliminar"  id="btnEstadoEvento"/>
+											</div>
+										</row>
+										<row>
+											<detail open="false"
+												fulfill="onOpen">
+												<grid
+													emptyMessage="No se encuentran actividades registradas"
+													mold="paging" pageSize="5">
+													<auxhead
+														sclass="category-center">
+
+														<auxheader
+															colspan="2" />
+
+													</auxhead>
+
+													<columns>
+														<column
+															width="">
+															Actividad
+														</column>
+														<column
+															width="">
+															Hora
+														</column>
+														<column
+															width="">
+															Fecha
+														</column>
+														<column
+															width="">
+															Estado
+														</column>
+														<column
+															width="15%">
+															Descripcion
+														</column>
+														<column
+															width="">
+															Tipo
+															actividad
+														</column>
+														
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="Juego de softbol" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value="Finalizado" />
+															<label
+																value="C.A.America vs Italo" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+														<row>
+															<label
+																value="Juego de Tennis" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value="No Finalizado" />
+															<label
+																value="C.A.America vs Italo" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+														<row>
+															<label
+																value="Juego de Bolas criollas" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value="Finalizado" />
+															<label
+																value="Italo vs Canario" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+														<row>
+															<label
+																value="Juego de softbol" />
+															<label
+																value="08:00AM-05:00PM" />
+															<label
+																value="03/03/2016-03/03/2016" />
+															<label
+																value=" No Finalizado" />
+															<label
+																value="C.A.America vs Italo" />
+															<label
+																value="Deportiva" />
+														
+														</row>
+													</rows>
+												</grid>
+											</detail>
+											<label
+												value="Semana Deportiva" />
+											<label value="12/12/1920" />
+											<label value="12/12/1920" />
+											<label value="12:00" />
+											<label value="12:00" />
+											<label value="Cancha softbol" />
+											<label value="Deportivo" />
+											<label value="100" />
+											<div>
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue "
+																	tooltiptext="Eliminar" />
+											</div>
+										</row>
+									</rows>
+								</grid>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>
+
+
+
+<!--
 <zk xmlns:n="native">
 	<div>
 		<hlayout spacing="0">
@@ -79,28 +445,36 @@
 
 									<columns>
 										<column width="4%"></column>
-										<column width="16%" align="left">
+										<column width="16%"
+											align="left">
 											Descripción
 										</column>
-										<column width="16%" align="left">
+										<column width="16%"
+											align="left">
 											Fecha de inicio
 										</column>
-										<column width="16%" align="left">
+										<column width="16%"
+											align="left">
 											Fecha de fin
 										</column>
-										<column width="10%" align="left">
+										<column width="10%"
+											align="left">
 											Hr. Inicio
 										</column>
-										<column width="9%" align="left">
+										<column width="9%"
+											align="left">
 											Hr. Fin
 										</column>
-										<column width="16%" align="left">
+										<column width="16%"
+											align="left">
 											Condición
 										</column>
-										<column width="8%" align="left">
+										<column width="8%"
+											align="left">
 											Visitas
 										</column>
-										<column width="11%" align="center">
+										<column width="11%"
+											align="center">
 											Acciones
 										</column>
 									</columns>
@@ -130,7 +504,7 @@
 															Tipo
 															actividad
 														</column>
-											
+
 
 													</columns>
 													<rows>
@@ -139,7 +513,7 @@
 																value="Decoración" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 														<row>
 
@@ -147,40 +521,41 @@
 																value="Contratar Sonido" />
 															<label
 																value="Logistica" />
-														
+
 														</row>
 														<row>
 															<label
 																value="Mantenimiento del Salon" />
 															<label
 																value="Mantenimiento" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Instalar mesas" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Contratar Animadores" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Refrigerios" />
 															<label
 																value="Logistica" />
-					
+
 														</row>
 													</rows>
 												</grid>
 											</detail>
-											<label value="Semana Deportiva" />
+											<label
+												value="Semana Deportiva" />
 											<label value="12/12/1920" />
 											<label value="12/12/1920" />
 											<label value="12:00" />
@@ -190,7 +565,7 @@
 											<button
 												iconSclass="z-icon-times red" sclass='btn-link'
 												tooltiptext="Cancelar evento" id="btnCancelarEvento" />
-											
+
 										</row>
 										<row>
 											<detail open="false"
@@ -230,35 +605,35 @@
 																value="Contratar Sonido" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Mantenimiento del Salon" />
 															<label
 																value="Mantenimiento" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Instalar mesas" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Contratar Animadores" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 														<row>
 															<label
 																value="Refrigerios" />
 															<label
 																value="Logistica" />
-															
+
 														</row>
 													</rows>
 												</grid>
@@ -274,7 +649,7 @@
 											<button
 												iconSclass="z-icon-times red" sclass='btn-link'
 												tooltiptext="Cancelar evento" />
-											
+
 										</row>
 									</rows>
 								</grid>
@@ -289,4 +664,4 @@
 			</vlayout>
 		</hlayout>
 	</div>
-</zk>
+</zk>-->

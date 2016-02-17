@@ -80,10 +80,10 @@
 						<row class="col-md-12">
 							<div>
 							
-								Tipo de actividad
+								Tipo de Evento
 								<n:br></n:br>
 								<combobox width="85%">
-									<comboitem label="Deportiva" />
+									<comboitem label="Deportivo" />
 									<comboitem label="Cultural" />
 									<comboitem label="Social" />
 									<comboitem label="Recreativa" />

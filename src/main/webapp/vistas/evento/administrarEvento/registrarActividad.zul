@@ -1,59 +1,111 @@
-<?page title="Dashboard - ZK Admin"?>
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native">
-	<window border="none" title="Registrar Actividad"
+
+	<window border="none" title="Agregar Actividad"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="70%"
-		style="iconSclass=z-icon-puzzle-piece;">
-		<caption iconSclass="z-icon-cogs" />
+		closable="true" width="48%" height="auto"
+		style="iconSclass= z-icon-calendar;">
+		<caption iconSclass="z-icon-calendar" />
 
 
 		<div class='contenido'>
 
-			<div align="left">
-				<div class='encabezado'>Datos básicos</div>
-				<div class='linea-two'></div>
-			</div>
-			<space spacing="15%" />
 
 			<div align="center">
-				<grid>
+
+
+				<div align="left">
+					<div class="encabezado">Datos básicos</div>
+					<div align="left" class="linea-two"></div>
+				</div>
+				<space bar="False" spacing="10%" />
+
+				<grid width="" fixedLayout="true">
 
 					<rows class="">
 
 						<row class="col-md-12">
 							<div>
-								Descripción
-								<textbox type="text" value="" cols="4" rows="2"
-									width="80%" constraint="no empty" />
-								
+								Nombre de la actividad
+								<n:br></n:br>
+								<textbox type="text" width="85%"
+									tabindex="10" constraint="no empty" />
+
+							</div>
+							<div>
+								Tipo de actividad
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Deportiva" />
+									<comboitem label="Cultural" />
+									<comboitem label="Musical" />
+								</combobox>
+
+							</div>
+
+
+						</row>
+
+						<row class="col-md-12">
+							<div>
+								Fecha inicio
+								<n:br></n:br>
+								<datebox id="DateFchInicio" width="85%"
+									cols="12" format="short " onCreate="self.value = new Date()" />
 							</div>
 
 							<div>
-								Tipo Actividad
-								<combobox>
-									<comboitem label="Logistica"></comboitem>
-									<comboitem label="Cultural"></comboitem>
-									<comboitem label="Deportiva"></comboitem>
-								</combobox>
+								Fecha fin
+								<n:br></n:br>
+								<datebox id="DateFchCierre" cols="12"
+									format="short " width="85%" onCreate="self.value = new Date()" />
 							</div>
 						</row>
+						<row class="col-md-12">
+							<div>
+								Hora inicio
+								<n:br></n:br>
+								<timebox id="TimeHorInicio" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+							<div>
+								Hora cierre
+								<n:br></n:br>
+								<timebox id="TimeHorCierre" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+
+						</row>
+						<row class="col-md-12">
+
+
+							<div>
+								Descripción de la actividad
+								<n:br></n:br>
+								<textbox type="text" rows="5"
+									width="85%" tabindex="10" constraint="no empty" />
+							</div>
+							<div>
+								Finalizada?
+								<n:br></n:br>
+								<checkbox id="l1" label=" " />
+
+							</div>
+
+						</row>
+
+
 					</rows>
 				</grid>
-				<separator spacing="15%" />
-
+				<space spacing="35%" />
 				<div>
+
 					<button iconSclass="z-icon-floppy-o"
 						class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
-				<separator spacing="5%" />
+				<space spacing="15%" />
 			</div>
 		</div>
 	</window>

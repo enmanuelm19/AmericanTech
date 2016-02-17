@@ -28,7 +28,7 @@
 						<div
 							apply="controllers.ControllerSolicitudesEvento" xmlns:w='client'
 							align="right">
-							
+
 						</div>
 						<div class="contenido">
 							<div align="left">
@@ -61,10 +61,8 @@
 									</auxheader>
 								</auxhead>
 								<columns>
-							<!--  <column hflex="2">Socio</column> -->		
-									<column hflex="2">
-										Socio
-									</column>
+									<!--  <column hflex="2">Socio</column> -->
+									<column hflex="2">Socio</column>
 									<column hflex="2">
 										Fecha Inicio
 									</column>
@@ -78,28 +76,35 @@
 									</column>
 									<column hflex="2">Hora Fin</column>
 									<column hflex="2">Invitados</column>
-									<column hflex="2">Descripcion</column>
-									<column hflex="3">Aprobar/Rechazar</column>
+									<column hflex="2">
+										Descripcion
+									</column>
+									<column hflex="3">
+										Aprobar/Rechazar
+									</column>
 								</columns>
 
 								<rows>
 									<row>
-										<label value="Juan Perez" /> 
+										<label value="Juan Perez" />
 										<label value="10/01/2016" />
 										<label value="10/01/2016" />
 										<label value="Privado" />
 										<label value="Chevecita" />
 										<label value="08:00AM" />
 										<label value="10:00PM" />
-										
+
 										<label value="10" />
-										<label value="sdsdsd dsdsdsdsdsd" />
-										
+										<label
+											value="sdsdsd dsdsdsdsdsd" />
+
 										<div>
 											<button sclass="btn-link"
-												iconSclass="z-icon-check green" id="btnAprobar" tooltiptext="Aprobar" />
+												iconSclass="z-icon-check green" id="btnAprobar"
+												tooltiptext="Aprobar" />
 											<button sclass="btn-link"
-												iconSclass="z-icon-times-circle red" id="btnCancelar" tooltiptext="Eliminar" />
+												iconSclass="z-icon-times-circle red" id="btnCancelar"
+												tooltiptext="Eliminar" />
 										</div>
 									</row>
 								</rows>
