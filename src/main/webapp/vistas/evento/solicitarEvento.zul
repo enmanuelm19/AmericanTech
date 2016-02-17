@@ -2,199 +2,110 @@
 
 	<window border="none" title="Solicitar Evento"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="70%"
+		closable="true" width="48%" height="auto"
 		style="iconSclass= z-icon-calendar;">
 		<caption iconSclass="z-icon-calendar" />
 
 
 		<div class='contenido'>
 
-			<div align="left">
-				<div class='encabezado'>Datos básicos</div>
-				<div class='linea-two'></div>
-			</div>
-			<separator spacing="30px" />
+
 			<div align="center">
-				<grid width="680px" fixedLayout="true">
-					<rows class="col-md-12">
-						<row class="col-md-2">
-							<div style="border:1px">
-								<image sclass="myimg" width="100px"
-									height="100px" src="../assets/portal/img/img1.jpg" />
-							</div>
-						</row>
-						<row class="col-md-10">
-							<div>
-								<hlayout>
-									<div>
-										<div>
-											<label id="lblNumCarnet"
-												width="50%" value="Número Carnet" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<label id="lblCedula"
-												width="50%" value="Cédula" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<label id="lblNombre"
-												width="50%" value="Nombre" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
 
-									<div>
-										<div>
-											<intbox id="txtNroCarnet"
-												constraint="no negative,no zero,no empty" width="60%" />
-											<button
-												iconSclass="z-icon-search" class='btn-primary btn-primary' />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<intbox id="txtCedula"
-												constraint="no negative,no zero, no empty" width="90px" />
-											<button
-												iconSclass="z-icon-search" class='btn-primary btn-primary' />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<textbox type="text"
-												value="" width="100%" />
-										</div>
-									</div>
-								</hlayout>
-							</div>
-						</row>
-					</rows>
-				</grid>
-
-				<separator spacing="10px"></separator>
 
 				<div align="left">
 					<div class="encabezado">Datos del Evento</div>
 					<div align="left" class="linea-two"></div>
 				</div>
+				<space bar="False" spacing="10%" />
 
-				<separator spacing="10px"></separator>
-				<grid width="680px" fixedLayout="true">
-					<rows class="col-md-12">
-						<row>
-							<vlayout>
-								<hlayout>
-									<div>
-										<div>
-											<label id="lblFchInicio"
-												width="50%" value="Fecha Inicio" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<label id="lblHorInicio"
-												width="50%" value="Hora Inicio" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-									<space bar="False" spacing="5%" />
-									<div>
-										<div>
-											<datebox id="DateFchInicio"
-												cols="12" format="short "
-												onCreate="self.value = new Date()" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<timebox id="TimeHorInicio"
-												cols="12" format="short" onCreate="self.value = new Date()" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-									<space bar="False" spacing="5%" />
-									<div>
-										<div>
-											<label id="lblFchCierre"
-												width="50%" value="Fecha Cierre" />
-										</div>
-										<separator spacing="5px" />
-										<div>
-											<label id="lblHorCierre"
-												width="50%" value="Hora Cierre" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-									<space bar="False" spacing="5%" />
-									<div>
-										<div>
-											<datebox id="DateFchCierre"
-												cols="12" format="short "
-												onCreate="self.value = new Date()" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-										<div>
-											<timebox id="TimeHorCierre"
-												cols="12" format="short" onCreate="self.value = new Date()" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-									<space bar="False" spacing="5%" />
-								</hlayout>
-							</vlayout>
+				<grid width="" fixedLayout="true">
+
+					<rows class="">
+
+						<row class="col-md-12">
+							<div>
+								Tipo de evento
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Publico" />
+									<comboitem label="Privado" />
+								</combobox>
+
+							</div>
+
+							<div>
+								Instalación
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem label="Caney de Rafa" />
+									<comboitem label="Chevecita" />
+									<comboitem label="Salon Principal" />
+									<comboitem label="Piscina" />
+								</combobox>
+
+							</div>
 						</row>
-						<row>
-							<vlayout>
-								<hlayout>
-									<div>
-										<div>
-											<label id="lblDescripcion"
-												width="50%" value="Descripción" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-									<space bar="False" spacing="5%" />
-									<div>
-										<textbox id="txtDescripcion"
-											readonly="false" cols="45" rows="2" type="text" value=""
-											width="90%" />
-										<separator spacing="5px">
-										</separator>
-									</div>
-								</hlayout>
-							</vlayout>
 
+						<row class="col-md-12">
+							<div>
+								Fecha inicio
+								<n:br></n:br>
+								<datebox id="DateFchInicio" width="85%"
+									cols="12" format="short " onCreate="self.value = new Date()" />
+							</div>
+
+							<div>
+								Fecha fin
+								<n:br></n:br>
+								<datebox id="DateFchCierre" cols="12"
+									format="short " width="85%" onCreate="self.value = new Date()" />
+							</div>
+						</row>
+						<row class="col-md-12">
+							<div>
+								Hora inicio
+								<n:br></n:br>
+								<timebox id="TimeHorInicio" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+							<div>
+								Hora cierre
+								<n:br></n:br>
+								<timebox id="TimeHorCierre" cols="12"
+									format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+
+						</row>
+						<row class="col-md-12">
+							<div>
+								Cantidad esperada de visitas
+								<n:br></n:br>
+								<textbox type="text" width="85%"
+									tabindex="10" constraint="no empty" />
+							</div>
+
+							<div>
+								Descripción del evento
+								<n:br></n:br>
+								<textbox type="text" rows="5"
+									width="85%" tabindex="10" constraint="no empty" />
+							</div>
 						</row>
 
 
-						<row class="col-md-3 col-md-offset-3">
-							<separator spacing="15px"></separator>
-							<hlayout>
-								<div>
-									<button id="btnGuardar"
-										iconSclass="z-icon-envelope" class='boton-guardar'
-										label="Enviar" />
-								</div>
-								<space bar="False" spacing="5%" />
-								<div>
-									<button id="btnCancelar"
-										iconSclass="z-icon-times-circle" class='boton-cancelar'
-										label="Cancelar" />
-								</div>
-							</hlayout>
-						</row>
 					</rows>
 				</grid>
+				<space spacing="35%" />
+				<div>
+
+					<button iconSclass="z-icon-floppy-o"
+						class='boton-guardar' label="Registrar" />
+					<space spacing="10%" />
+					<button iconSclass="z-icon-times"
+						class='boton-cancelar' label="Cancelar" />
+				</div>
+				<space spacing="15%" />
 			</div>
 		</div>
 	</window>

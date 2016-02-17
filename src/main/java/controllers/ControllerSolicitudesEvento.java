@@ -17,5 +17,23 @@ public class ControllerSolicitudesEvento extends SelectorComposer<Component> {
 		Window window = (Window) Executions.createComponents("evento/solicitarEvento.zul",null, null);
 		window.doModal();
 	}
+	
+	@Listen("onClick = #btnAprobar")
+	public void showModalSolicitudes(Event e) {
+		// create a window programmatically and use it as a modal dialog.
+		Window window = (Window) Executions.createComponents("evento/administrarEvento/registrarEvento.zul",null, null);
+		window.doModal();
+	}
+	
+	@Listen("onClick = #btnCancelar")
+	public void showModalCancelar(Event e) {
+		// create a window programmatically and use it as a modal dialog.
+		Window window = (Window) Executions.createComponents("evento/administrarEvento/cancelar.zul",null, null);
+		window.doModal();
+	}
+	
+	
+	
+	
 
 }
