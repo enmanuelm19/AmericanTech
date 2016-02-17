@@ -24,169 +24,179 @@
 						<separator spacing="2%" />
 						<div class='encabezado'>Datos Del Club</div>
 						<div class='linea-two'></div>
-						<separator spacing="13%" />
-						<div class="col-md-4" align="center">
-							<separator />
-							<separator />
-							<image
-								src="/assets/intranet/avatars/americaBordeBlanco.png"
-								width="60%" height="60%" />
-							<separator spacing="2%" />
-							<fileupload iconSclass="z-icon-folder-open"
-								class=' boton-guardar' label="Examinar" />
-							<separator spacing="5%" />
+						<separator spacing="30px" />
+						<div class="row">
+							<div class="col-md-4">
+								<div class="input-group">
+									<image
+										src="/assets/intranet/avatars/americaBordeBlanco.png"
+										class='img-responsive col-md-offset-9' width="60%" />
+									<fileupload label="Examinar"
+										iconSclass="z-icon-folder-open"
+										class='boton-guardar col-md-offset-7' />
+								</div>
+							</div>
+							<div class="col-md-8">
+								<grid>
+									<rows>
+										<row class="col-md-12">
+											<div>
+												<label
+													class="col-md-3">
+													RIF
+												</label>
+												<textbox id="txtRif"
+													constraint="no empty" class="col-md-4">
+												</textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Nombre
+												</label>
+												<textbox
+													constraint="no empty" class="col-md-9">
+												</textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Dirección
+												</label>
+												<textbox
+													id="txtDireccion" rows="5" cols="30" class="col-md-9"
+													constraint="no empty">
+												</textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Teléfono
+												</label>
+												<textbox
+													id="txtTelefono" class="col-md-6" constraint="no empty">
+												</textbox>
+											</div>
+										</row>
+									</rows>
+								</grid>
+							</div>
+
 						</div>
-						<div class="col-md-6">
-							<separator />
-							<separator />
-							<separator />
-							<vlayout>
-								<hlayout>
-									<label value="RIF:" />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<textbox width="100%" />
-								</hlayout>
-								<separator spacing="8%" />
-								<hlayout>
-									<label value="Nombre:" />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<textbox width="100%" />
-								</hlayout>
-								<separator spacing="8%" />
-								<hlayout>
-									<label value="Dirección:" />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<textbox rows="4" />
-								</hlayout>
-								<separator spacing="8%" />
-								<hlayout>
-									<label value="Teléfono:" />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<separator />
-									<textbox width="100%" />
-								</hlayout>
-							</vlayout>
-							<separator spacing="25%" />
-						</div>
+
+						<separator spacing="15px" />
 						<div class='encabezado'>
 							Perfil Organizacional
 						</div>
 						<div class='linea-two'></div>
-						<separator spacing="20%" />
-						<div class="col-md-6"
-							style="padding-top:20px">
-							Misión:
-							<textbox rows="5" cols="30" />
-							<separator spacing="20%" />
+						<separator spacing="30px" />
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-6">
+									<label class="col-md-2">
+										Misión
+									</label>
+									<textbox id="txtMision" rows="5" cols="30"
+										class="col-md-10" constraint="no empty">
+									</textbox>
+								</div>
+
+								<div class="col-md-6">
+									<label class="col-md-2">
+										Visión
+									</label>
+									<textbox id="txtVision" rows="5"
+										cols="30" class="col-md-10" constraint="no empty">
+									</textbox>
+								</div>
+							</div>
+
 						</div>
-						<div class="col-md-6"
-							style="padding-top:20px">
-							Visión:
-							<textbox rows="5" cols="30" />
-							<separator spacing="25%" />
-						</div>
-						<div class='encabezado'>Políticas</div>
+						<separator spacing="15px" />
+						<div class='encabezado'>Redes Sociales</div>
 						<div class='linea-two'></div>
-						<separator spacing="12%" />
-						Reglas De Visita
-						<separator spacing="8%" />
-						<div class="col-md-12">
-							<grid
-								emptyMessage="No se encuentran miembros registrados"
-								mold="paging" pageSize="2" style="border:1px solid white ">
-								<columns>
-									<column label="Persona" sort="auto"
-										align="center" />
-									<column label="Parentesco"
-										sort="auto" align="center" />
-									<column label="Numero De Invitados"
-										sort="auto" align="center" />
-									<column label="Frecuencia Mensual"
-										sort="auto" align="center" />
-								</columns>
-								<rows>
-									<row>
-										<label value="Socio" />
-										<label value="" />
-										<label value="2" />
-										<label value="1" />
-									</row>
-									<row>
-										<label value="Afiliado" />
-										<label value="Hijo" />
-										<label value="1" />
-										<label value="2" />
-									</row>
-									<row>
-										<label value="Afiliado" />
-										<label value="Esposa" />
-										<label value="0" />
-										<label value="3" />
-									</row>
-								</rows>
-							</grid>
-						</div>
-						<separator spacing="15%" />
-						<div class="row" align="center">
-							<separator spacing="3%" />
-							<hlayout width="">
-								<separator />
-								<separator />
-								<separator />
-								<separator />
-								<div>
-									<button iconSclass="z-icon-floppy-o"
-										class='btn-primary boton-guardar' label="Guardar" />
-								</div>
-								<separator />
-								<separator />
-								<separator />
+						<separator spacing="30px" />
+						<div class="row">
 
-								<div>
-									<button
-										iconSclass="z-icon-times-circle" class='boton-cancelar'
-										label="Cancelar" />
-								</div>
-							</hlayout>
+							<div class="col-md-6">
+								<grid>
+									<rows>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Enlace
+												</label>
+												<textbox id="txtEnlace"
+													class="col-md-6" constraint="no empty">
+												</textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Red Social
+												</label>
+												<combobox>
+													<comboitem
+														label="Seleccione una Red Social">
+													</comboitem>
+													<comboitem
+														label="Facebook">
+													</comboitem>
+													<comboitem
+														label="Twitter">
+													</comboitem>
+													<comboitem
+														label="Instagram">
+													</comboitem>
+												</combobox>
+											</div>
+										</row>
 
+									</rows>
+								</grid>
+							</div>
+							<div class="col-md-6">
+
+								<listbox>
+									<listhead>
+										<listheader width="50%"
+											align="center" label="Red Social" />
+										<listheader width="50%"
+											align="center" label="Enlace" />
+
+									</listhead>
+
+									<listitem label="Twitter" />
+									<listitem label="AmericanTech" />
+								</listbox>
+							</div>
 						</div>
-						<separator spacing="3%" />
+
 					</div>
 
 				</div>
 
 			</div>
-
+					<separator spacing="20px"></separator>
+			<div class="row col-md-12">
+				<button class="boton-guardar col-md-3 col-md-offset-2"
+					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
+				</button>
+				<button class="boton-cancelar col-md-3 col-md-offset-2"
+					iconSclass="z-icon-times" type="button" label="Cancelar">
+				</button>
+			</div>
 		</div>
-
 	</vlayout>
 
 

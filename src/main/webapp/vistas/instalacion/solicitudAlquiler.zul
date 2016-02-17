@@ -6,191 +6,72 @@
 
 <zk xmlns:n="native" class='contenedor'>
 	
-	<window border="none" height="104%" width="45%" style="iconSclass=home-icon z-icon-home;" title=" Solicitar Alquiler"
+	<window border="none" height="70%" width="48%" style="iconSclass=home-icon z-icon-home;" title=" Solicitar Alquiler"
 		closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<caption iconSclass="home-icon z-icon-home" />
 		
-		<div align="center"  >	 		
-			<separator />  <separator />  
-			<div align="left" width="90%">
+		<div class="contenido"  >	 	
+	     	<div align="left" > 
 				<div class="encabezado">
-					Datos del Socio
-					</div >
-								      	<div class="linea-two" >
-				
-								      	</div>	
-							      </div>
-								 <separator/><separator/><separator/>
-			        	<grid width="600px" >
-			         	
-						       <rows class="col-md-11" >
-						            
-						            <row class="col-md-3" height="140px">
-										<div>
-						                  		<image src="../assets/portal/img/icon1.png" width="120px"
-													sclass="icon" tooltiptext="Icono" />
-						                 </div>
-						            </row>
-						            <row class="col-md-9">
-							                  <div>
-							                  	<hlayout>
-							                  	<label  width="50%" value= "Nro. de Carnet" />
-							                  	<separator /><separator />
-							                  	<separator />         
-							                  	</hlayout>
-							                  	</div>		                 
-							              		  <div>
-							              		   	 <textbox    type="text" value="" width="120px" />
-							                      </div>
-							                      <div>
-							                      	<button  iconSclass="z-icon-search blue"  class='btn-link'/>
-							                      </div>			                      
-						              </row>
-						              <row class="col-md-9">
-						                  <div>
-						                  <hlayout>
-						                  	<label  width="50%" value= "Cedula" />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-						                  	<separator />
-											<separator />
-						                  	<separator />
-						                  	<separator />
-						               </hlayout>
-						                  	</div>
-						              		  <div>
-						              		   	 <textbox    type="text" value="" width="120px" />
-						                      </div>
-						                      <div>
-						                      	<button  iconSclass="z-icon-search blue"  class='btn-link'/>
-						                      </div>			                      
-						               </row>
-						               <row class="col-md-9">
-						              			<div>
-						              				<hlayout>
-						                  			<label   width="50%"  value= "Nombre"/> 
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			<separator />
-						                  			</hlayout>
-						                  		</div>
-						              		  	<div>
-						              		   	  <textbox  type="text" value="" width="100%" />
-						                      	</div>
-										</row>
-								  
-						           </rows>
-					  					
-						    </grid>
-			<separator/><separator/><separator/>
-	
-        			<div align="left" width="90%"> 
-						<div class="encabezado">
-							Datos de Alquiler
-						</div>
-						<div class="linea-two">
-						</div>
-					</div>
-	 				<separator/><separator/><separator/>
-        			<grid width="600px" >
+					Datos de Alquiler
+				</div>
+				<div class="linea-two">
+				</div>
+			</div>
+			<space spacing="15%" />
+			<div align="center">		
+        		<grid  >
           
-			            	<rows class="col-md-9" >
-			            <row>
-
-			            </row>
-			                  <row class="col-md-11">
-			                  <div>
-										Fecha Inicio
-
-										<datebox
-											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
-									</div>
-								<div>
-										Fecha Fin
-
-										<datebox
-											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
-								</div>				                      
-			                  </row>
-			                    <row class="col-md-11">
-			              			<div>
-										Hora Inicio
-
-										<timebox
-											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
-									</div>
-									<div>
-										Hora Fin
-
-										<timebox
-											format="@load(vm.dateFormat)" width="250px" tabindex="7" />
-									</div>
-								</row>
-							
-								<row class="col-md-3">
-								</row>
-							<row class="col-md-8 col-centered">
-			              		<div>
-										<listbox id="box"
-											multiple="true" checkmark="true">
-											<listhead>
-												<listheader
-													label="Codigo instalación" />
-												<listheader label="Nombre Instalación" />
-											</listhead>
-											<listitem>
-												<listcell label="0001" />
-												<listcell
-													label="Caney" />
-											</listitem>
-											<listitem>
-												<listcell label="002" />
-												<listcell label="Cancha" />
-											</listitem>
-											
-										</listbox>
-									</div>
-							</row>
+		           <rows class="" >
+	                  <row class="col-md-12">
+	                  	<div>
+							Fecha Inicio
+							<datebox format="@load(vm.dateFormat)" width="100%" tabindex="7" />
+						</div>
+						<div>
+							Fecha Fin
+							<datebox format="@load(vm.dateFormat)" width="100%" tabindex="7" />
+						</div>				                      
+	                  </row>
+	                  <row class="col-md-12">
+	              	  	<div>
+							Hora Inicio
+							<timebox format="@load(vm.dateFormat)" width="100%" tabindex="7" />
+						</div>
+						<div>
+							Hora Fin
+							<timebox format="@load(vm.dateFormat)" width="100%" tabindex="7" />
+						</div>
+					  </row>
 						
-							    <row align="center">
-			                  	<vlayout>
-			                  	<separator /><separator /><separator/>
+					  <row class="col-md-12 ">
 
-			                  	<hlayout >
-			                  	<separator />
-			                  			
-			                  		<separator spacing="150px"></separator>
-			                  		<div  >
-			                    		<button  iconSclass="z-icon-floppy-o"  class='btn boton-guardar' label="Registrar" width="100px"/>
-			                    	</div><separator spacing="580px"></separator>
-			                    	<separator /><separator /><separator />
-			                  		<div align="center">
-			                    		<button  iconSclass="z-icon-times"  class='btn boton-cancelar' label="Cancelar" width="100px"/>
-			                     	</div><separator spacing="180px"></separator>
-			                  	</hlayout>
-			                  </vlayout>
-			             		
-			                 </row>
-			            </rows>
-		  					
-			        </grid>
-
-
-		 		   </div>
+					  </row>   
+		          </rows>		
+			   </grid>
+               <div  class="">
+				  <listbox id="box" multiple="true" checkmark="true">
+						<listhead>
+							<listheader label="Nombre Instalación" />
+						</listhead>
+						<listitem>
+							<listcell label="Caney" />
+						</listitem>
+						<listitem>
+							<listcell label="Cancha" />
+						</listitem>
+				  </listbox>
+			  </div>			   
+	   		  <space spacing="15%" />
+			  <div>
+				  <button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Registrar" />
+				  <space spacing="10%" />
+				  <button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" />
+			  </div>
+			  <separator spacing="5%" />
+			  </div>
+		 </div>
 
 </window>
 	
