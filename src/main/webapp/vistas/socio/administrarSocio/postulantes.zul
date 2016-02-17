@@ -51,32 +51,41 @@
 										<textbox instant="true"
 											width="120px" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="5" />
+									<auxheader colspan="8" />
 								</auxhead>
 								<columns>
 									<column hflex="2">Foto</column>
-									<column hflex="3">
-										Nombre Postulado
+									<column hflex="2">
+										1er Postulado
+									</column>
+									<column hflex="2">
+										2do Nombre
+									</column>
+									<column hflex="2">
+										1er Apellido
+									</column>
+									<column hflex="2">
+										2do apellido
 									</column>
 
-									<column hflex="2">#Acción</column>
-									<column hflex="2">Fecha</column>
+									<column hflex="1">#Acción</column>
+									<column hflex="1">Fecha</column>
 									<!-- Fecha Postulación -->
 
 
 									<column hflex="2">Opiniones</column>
 									<column hflex="2">Acciones</column>
-									<column hflex="2">
-
-										Calificación Promedio
-									</column>
+									<column hflex="2">Calificaciónes</column>
 								</columns>
 
 								<rows>
 									<row>
 										<image
 											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
+										<label value="David" /><!-- 1erNombre -->
+										<label value="Angel" /><!-- 2doNombre -->
+										<label value="Cordero" /><!-- 1er Apellido -->
+										<label value="Ron" /><!-- 2 Apellido -->
 										<label value="032" /><!-- #Accion -->
 										<label value="08/08/08" />
 										<div align="center"><!-- Opiniones -->
@@ -88,255 +97,15 @@
 										<div xmlns:w='client'
 											align="center">
 											<button
-												iconSclass="glyphicon glyphicon-ok blue" id="btnRegistro" />
+												iconSclass="glyphicon glyphicon-ok blue" id="btnRegistroSoc" 
+												onClick="@command('abrirRegistroSocio')" />
 											<button
 												iconSclass="glyphicon glyphicon-remove red">
 											</button>
 										</div>
 										<label value="2" />
 									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David Cordero" /><!-- Nombre -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
-											</button>
-										</div>
-										<div xmlns:w='client'
-											align="center">
-											<button
-												iconSclass="glyphicon glyphicon-ok blue" />
-											<button
-												iconSclass="glyphicon glyphicon-remove red">
-											</button>
-										</div>
-										<label value="2" />
-									</row>
+
 								</rows>
 								<foot>
 									<footer span="6"

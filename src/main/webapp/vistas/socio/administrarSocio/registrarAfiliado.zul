@@ -1,310 +1,260 @@
+<window border="none" title="Afiliados " closable="true"
+	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	width="65%">
 
 
-<?page title="Registrar Afiliado" contentType="text/html;charset=UTF-8"?>
-
-
-
-<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
-
-
-<zk xmlns:n="native">
-	<window border="none" title="Afiliados" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
-	width="60%" style="iconSclass=z-icon-puzzle-piece;">
-		<caption iconSclass="home-icon z-icon-user"/>
-	<hlayout spacing="0" apply="controllers.SocioController">
-
-
-
-		<vlayout spacing="0" hflex="1">
-			
-				<div sclass="page-header" align="left">
-					<label value="Registrar Afiliado" />
-				</div>
-
-				<div class='contenido ' align="center" width="100%">
-					<div class="col-md-11 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+	<div class="col-md-10 col-centered "
+		form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div  width="100%">
 
-							<div align="left">
-								<div class="encabezado">
-									Datos del Afiliado
-								</div>
-								<div align="left" class="linea-two">
 
-								</div>
-							</div>
-							<div class="col-md-4"
-								style="margin-top: 10px">
-								<image width="60%" height="35%"
-									src="/assets/portal/img/img1.jpg" />
-							</div>
-							<div class="col-md-8"
-								style="text-align:left; margin-top: 13px;">
-								<div class="col-md-10">
-									<div class="col-md-12" style="padding-left: 0px !important; ">
-										<label value="Cédula"
-											style="padding-left: 0px !important; "  />
-									</div>
-									<div class="col-md-12"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="80%"  constraint="no empty" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-search blue" />
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Nombre"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Segundo nombre"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Apellido"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Segundo Apellido"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Fecha de Nacimiento" class="col-md-12"/>
-										<datebox id="DateFechaCaducidad" width="100%" cols="12" format="short " onCreate="self.value = new Date()" />
-									</div>
-									
-								</div>
-								<div class="col-md-8">
+		<div width="100%" height="100%">
+
+			<div align="left">
+				<div class="encabezado">Afiliados</div>
+				<div align="left" class="linea-two">
+
+				</div>
+			</div>
+
+
+			<div align="right">
+				<button iconSclass="z-icon-plus blue " sclass="btn-link"
+					tooltiptext="Agregar Afiliado" width="10%" />
+			</div>
+			<hbox width="100%"><!-- Inicio GRUPO afilaido -->
+
+
+
+				<panel border="none" collapsible="true"
+					sclass="transparent">
+
+					<panelchildren>
+						<grid sclass="domain">
+							<columns sclass="z-grid z-column-content">
+
+								<column width="30%"
+									label="numero carnet" iconSclass="z-icon-caret-right blue"
+									align="center" />
+								<column width="30%" label="nombre"
+									iconSclass="z-icon-caret-right blue" align="center" />
+								<column width="25%" label="parentesco"
+									iconSclass="z-icon-caret-right blue" align="center" />
+								<column width="15%" align="center"
+									label="Ver" />
+
+							</columns>
+							<rows>
+								<row>
+
+									<label value="12345" />
+									<label value="laura" />
+									<label value="Esposa" />
 									<div>
-										<label value="Sexo" class="col-md-12"/>
-										<combobox value="M"
-											width="100%">
-											<comboitem label="F" />
-										</combobox>
+										<button sclass="btn-link"
+											iconSclass="z-icon-search blue" tooltiptext="Ver"
+											id="btnVerAfiliado" />
 									</div>
-									
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Mail"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Teléfono"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Teléfono fijo"
-											style="padding-left: 0px; " />
-									</div>
-									<div class="col-md-10"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-10" style="padding-left: 0px !important; ">
-										<label value="Dirección"
-											style="padding-left: 0px; " />
-									</div>
-									<textbox cols="45" rows="4"
-											type="text"
-											width="85%" />
-								</div>
-								<div class="col-md-8">
-									<div>
-										<label value="Tipo de Afiliado" class="col-md-6"/>
-										<combobox width="100%"> 
-											<comboitem label="" />
-											<comboitem label="" />
-											<comboitem label="" />
-										</combobox>
-									</div>
-									
-								</div>
-								<div class="col-md-10">
-									<div class="col-md-12" style="padding-left: 0px !important; ">
-										<label value="Id Socio"
-											style="padding-left: 0px !important; "  />
-									</div>
-									<div class="col-md-12"
-										style="padding:0px">
-										<textbox type="text"
-												value="" width="80%"  constraint="no empty" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-search blue" />
-									</div>
-								</div>
-								
 
-							</div>
+								</row>
+								<row>
 
-							<div class="col-md-12"
-								style="margin-top: 67%;" align="left"><!-- GRUPO INTERESES -->
-
-								<div align="left">
-									<div class="encabezado">
-										Intereses
-									</div>
-									<div align="left"
-										class="linea-two">
-
-									</div>
-								</div>
-
-								<hbox width="100%"
-									style="margin-top: 31px">
-
-
-									<vbox>
-										<label>Deportes</label>
-										<checkbox id="l1" label="Futbol"
-											onCheck="doChecked()" />
-										<checkbox id="l2"
-											label="Beisbol" onCheck="doChecked()" />
-										<checkbox id="l3" label="Basket"
-											onCheck="doChecked()" />
-										<checkbox id="l4"
-											label="Softball" onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Cultura</label>
-										<checkbox id=""
-											label="Ping Pong" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Bolas Criollas" onCheck="doChecked()" />
-										<checkbox id="" label="Natacion"
-											onCheck="doChecked()" />
-										<checkbox id="" label="Domino"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Social</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
-
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Academico</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
-
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Otros</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
-
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
+									<label value="12345" />
+									<label value="miguel" />
+									<label value="hijo" />
 									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue"
-										tooltiptext="Editar Intereses" />
-								</hbox>
-							</div><!-- AQUI TERMINA GRUPO INTERESES -->
+										iconSclass="z-icon-search blue" tooltiptext="Ver" />
 
-							<separator></separator>
-							<separator></separator>
-							<separator></separator>
-							<space spacing="15%" />
-			       
-			        <div>
-						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
-						<space spacing="10%" />
-						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
-			        </div><separator spacing="5%"/>
-						</div>
+								</row>
+								<row>
+
+									<label value="12345" />
+									<label value="maria" />
+									<label value="hija" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-search blue" tooltiptext="Ver" />
+
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+
+			</hbox><!-- AQUI TERMINA GRUPO afiliados -->
+
+			<!-- GRUPO DATOS BASICOS -->
+
+			<div align="left">
+				<div class="encabezado">Datos Afiliado</div>
+				<div align="left" class="linea-two">
+
+				</div>
+			</div>
+
+
+			<div class="row">
+				<separator spacing="30px"></separator>
+				<div class="col-md-4">
+					<div class="input-group">
+						<image src="/assets/portal/img/img1.jpg"
+							class='img-responsive col-md-offset-1' />
+						<separator spacing="30px"></separator>
+						<fileupload label="Examinar"
+							iconSclass="z-icon-folder-open"
+							class='boton-guardar col-md-offset-4' />
 					</div>
 				</div>
 
-		
-		</vlayout>
-	</hlayout>
-	</window>
-</zk>
+				<div class="col-md-6">
+					<grid>
+						<rows>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Cédula" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="V18122444">
+									</textbox>
+								</div>
+							</row>
+
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Numero Carnet" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="123456">
+									</textbox>
+
+
+								</div>
+							</row>
+
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Primer Nombre" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="Jesus">
+									</textbox>
+
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Segundo Nombre" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="Jesus">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Primer Apellido" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="Jesus">
+									</textbox>
+
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Segundo Apellido" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="Jesus">
+									</textbox>
+
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Correo" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" type="email"
+										value="hdhdhdh@jdhdh.com">
+									</textbox>
+									<button class="col-md-2 btn-link"
+										iconSclass="z-icon-pencil blue" />
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Telefono" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="04135689256">
+									</textbox>
+									<button class="col-md-2 btn-link"
+										iconSclass="z-icon-pencil blue" />
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Nacimiento" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="10/01/70">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Edad" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="33">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Sexo" />
+									<checkbox label="Masculino" />
+									<checkbox label="Femenino" />
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Direccion" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" cols="45" rows="2"
+										type="text"
+										value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
+									<button class="col-md-2 btn-link"
+										iconSclass="z-icon-pencil blue" />
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</div>
+
+
+			<!-- AQUI TERMINA GRUPO BASICOS -->
+
+			<separator spacing="30px"></separator>
+			<hbox width="100%" align="center" pack="center">
+
+				<separator spacing="5%"></separator>
+
+
+				<button iconSclass="z-icon-edit" class='boton-guardar'
+					label="Guardar" />
+
+				<space bar="False" spacing="5%" />
+
+				<button iconSclass="z-icon-times-circle"
+					class='boton-cancelar' label="Cancelar " />
+			</hbox>
+
+		</div>
+	</div>
+</window>
+

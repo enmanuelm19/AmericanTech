@@ -1,422 +1,209 @@
 <!-- Responsable Hector Gil - Copiado por Wilmer Aponte -->
 
 
-<zk xmlns:n="native">
-	<div>
-	<hlayout spacing="0">
-				<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Socio" href="#" />
-					<label value="Registrar Socio" />
+<window border="none" title="Registrar Socio " closable="true"
+	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	width="60%">
+
+
+	<div class="col-md-10 col-centered "
+		form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+
+
+		<div align="left">
+			<div class="encabezado">Datos del Socio</div>
+			<div align="left" class="linea-two">
+
+			</div>
+		</div>
+
+		<separator spacing="30px"></separator>
+		<div class="row">
+			<separator spacing="30px"></separator>
+			<div class="col-md-3">
+				<div class="input-group">
+					<image src="/assets/portal/img/img2.jpg"
+						class='img-responsive col-md-offset-1' />
+					<separator spacing="30px"></separator>
+					<fileupload label="Examinar"
+						iconSclass="z-icon-folder-open"
+						class='boton-guardar col-md-offset-4' />
 				</div>
 			</div>
 
-			<div class='contenedor' align="center"
-				apply="controllers.SocioController">
-				<div sclass="page-header" align="left">
-					<label value="Registrar Socio" />
-				</div>
-
-				<div class='contenido ' align="center" width="75%">
-					<div class="col-md-11 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="100%">
-
-							<div align="left">
-								<div class="encabezado">
-									Datos del Socio
-								</div>
-								<div align="left" class="linea-two">
-
-								</div>
+			<div class="col-md-7">
+				<grid>
+					<rows>
+						<row>
+							<div>
+								<label class="col-md-4" value="Cédula" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="V18122444">
+								</textbox>
 							</div>
-							<div class="col-md-4"
-								style="margin-top: 10px">
-								<image width="60%" height="35%"
-									src="/assets/portal/img/img1.jpg" />
-							</div>
-							<div class="col-md-8"
-								style="text-align:left; margin-top: 13px;">
-								<div class="col-md-12">
-									<div class="col-md-5">
-										<label value="Cédula"
-											style="padding-right: 10px " />
-									</div>
-									<div class="col-md-7"
-										style="padding:0px">
-										<div class="col-md-10">
-											<textbox readonly="true"
-												value="V18122444" />
-										</div>
-										<div class="col-md-2"
-											style="padding:0px; text-align:left">
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue"
-												tooltiptext="Editar Datos de Contacto" />
-										</div>
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Numero Carnet
-									</div>
-									<div class="col-md-7">
-										<textbox readonly="true"
-											value="123456" width="50%" />
-									</div>
-								</div>
+						</row>
 
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Primer Nombre
-									</div>
-									<div class="col-md-7">
-										<textbox value="Jesus"
-											width="90%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Segundo Nombre
-									</div>
-									<div class="col-md-7">
-										<textbox value="Jesus"
-											width="88%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Primer Apellido
-									</div>
-									<div class="col-md-7">
-										<textbox value="Jesus"
-											width="88%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Segundo Apellido
-									</div>
-									<div class="col-md-7">
-										<textbox value="Jesus"
-											width="88%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">Correo</div>
-									<div class="col-md-7">
-										<textbox
-											value="hdhdhdh@jdhdh.com" width="100%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">Telefono</div>
-									<div class="col-md-7">
-										<textbox value="04135689256"
-											width="80%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Nacimiento
-									</div>
-									<div class="col-md-7">
-										<textbox value="10/01/70"
-											width="50%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Numero Carnet" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="123456">
+								</textbox>
 
-										Edad
-									</div>
-									<div class="col-md-7">
-										<textbox value="33" width="25%" />
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										<label>Sexo</label>
-									</div>
-									<div class="col-md-7">
-										<combobox value="M"
-											width="35%">
-											<comboitem label="F" />
-										</combobox>
-									</div>
-								</div>
-								<div class="col-md-12"
-									style="margin-top: 31px">
-									<div class="col-md-5">
-										Direccion
-									</div>
-									<div class="col-md-7">
-										<textbox cols="45" rows="4"
-											type="text"
-											value="Av venezuela con Av vargas edificio greco, piso 29 apartamento C-85-D,Barquisimeto,Edo Lara"
-											width="100%" />
-									</div>
-								</div>
 
 							</div>
+						</row>
 
-							<div class="col-md-12"
-								style="margin-top: 67%;" align="left"><!-- GRUPO INTERESES -->
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Primer Nombre" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="David">
+								</textbox>
 
-								<div align="left">
-									<div class="encabezado">
-										Intereses
-									</div>
-									<div align="left"
-										class="linea-two">
-
-									</div>
-								</div>
-
-								<hbox width="100%"
-									style="margin-top: 31px">
-
-
-									<vbox>
-										<label>Deportes</label>
-										<checkbox id="l1" label="Futbol"
-											onCheck="doChecked()" />
-										<checkbox id="l2"
-											label="Beisbol" onCheck="doChecked()" />
-										<checkbox id="l3" label="Basket"
-											onCheck="doChecked()" />
-										<checkbox id="l4"
-											label="Softball" onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Cultura</label>
-										<checkbox id=""
-											label="Ping Pong" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Bolas Criollas" onCheck="doChecked()" />
-										<checkbox id="" label="Natacion"
-											onCheck="doChecked()" />
-										<checkbox id="" label="Domino"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Social</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
-
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Academico</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
-
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Otros</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
-
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue"
-										tooltiptext="Editar Intereses" />
-								</hbox>
-							</div><!-- AQUI TERMINA GRUPO INTERESES -->
-							<div align="left">
-								<div class="encabezado">
-									Datos de la Acción
-								</div>
-								<div align="left" class="linea-two">
-
-								</div>
 							</div>
-
-								<hbox width="100%">
-									<panel border="none"
-										collapsible="true" sclass="transparent">
-										<panelchildren>
-											<grid sclass="domain">
-												<columns>
-													<column width="50%"
-														label="Numero Accion"
-														iconSclass="z-icon-caret-right blue" />
-													<column width="35%"
-														label="Valor BS" iconSclass="z-icon-caret-right blue" />
-												</columns>
-												<rows>
-													<row>
-														<label
-															value="12345" />
-														<label
-															value="60.000" sclass="label label-primary arrowed" />
-													</row>
-													<row>
-														<label
-															value="78916" />
-														<label
-															value="60.000" sclass="label label-primary arrowed" />
-													</row>
-												</rows>
-											</grid>
-										</panelchildren>
-									</panel>
-
-
-
-
-								</hbox>
-
-
-							<div align="left">
-								<div class="encabezado">
-									Datos del Afiliado
-								</div>
-								<div align="left" class="linea-two">
-
-								</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Segundo Nombre" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="Angel">
+								</textbox>
 							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Primer Apellido" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="Cordero">
+								</textbox>
 
-								<hbox width="100%">
-									<panel border="none"
-										collapsible="true" sclass="transparent">
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Segundo Apellido" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="ron">
+								</textbox>
 
-										<panelchildren
-											style="text-align: right">
-											<button sclass="btn-link"
-												iconSclass="z-icon-plus blue" tooltiptext="Agregar Afiliado"
-												id="btnAgregar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red"
-												tooltiptext="Eliminar Afiliado" />
-											<grid sclass="domain">
-												<columns
-													sclass="z-grid z-column-content">
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Correo" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" type="email"
+									value="hdhdhdh@jdhdh.com">
+								</textbox>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Telefono" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="04135689256">
+								</textbox>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Nacimiento" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="10/01/70">
+								</textbox>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Edad" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" value="33">
+								</textbox>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Sexo" />
+								<checkbox label="Masculino" />
+								<checkbox label="Femenino" />
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"
+									value="Direccion" />
+								<textbox constraint="no empty"
+									class="col-md-6" readonly="true" cols="45" rows="2" type="text"
+									value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
 
-													<column width="30%"
-														label="numero carnet"
-														iconSclass="z-icon-caret-right blue" />
-													<column width="30%"
-														label="nombre" iconSclass="z-icon-caret-right blue" />
-													<column width="25%"
-														label="parentesco" iconSclass="z-icon-caret-right blue" />
-													<column width="15%"
-														align="center" label="Ver" />
-
-												</columns>
-												<rows>
-													<row>
-
-														<label
-															value="12345" />
-														<label
-															value="laura" />
-														<label
-															value="Esposa" />
-														<div>
-															<button
-																sclass="btn-link" iconSclass="z-icon-search blue"
-																tooltiptext="Ver" id="btnVerAfiliado" />
-														</div>
-
-													</row>
-													<row>
-
-														<label
-															value="12345" />
-														<label
-															value="miguel" />
-														<label
-															value="hijo" />
-														<button
-															sclass="btn-link" iconSclass="z-icon-search blue"
-															tooltiptext="Ver" />
-
-													</row>
-													<row>
-
-														<label
-															value="12345" />
-														<label
-															value="maria" />
-														<label
-															value="hija" />
-														<button
-															sclass="btn-link" iconSclass="z-icon-search blue"
-															tooltiptext="Ver" />
-
-													</row>
-												</rows>
-											</grid>
-										</panelchildren>
-									</panel>
-
-								</hbox>
-
-
-
-							<separator></separator>
-							<separator></separator>
-							<separator></separator>
-							<hbox width="" align="center"
-								pack="center">
-
-								<separator spacing="5%"></separator>
+							</div>
+						</row>
+					</rows>
+				</grid>
+			</div>
+		</div>
 
 
-								<button iconSclass="z-icon-edit"
-									class='boton-guardar' label="Guardar" />
 
-								<button iconSclass="z-icon-times-circle"
-									class='boton-cancelar' label="Cancelar " />
-							</hbox>
-						</div>
-					</div>
-				</div>
 
-			</div><!-- FIN CONTENEDOR -->
-		</vlayout>
-	</hlayout>
+
+		<!-- NO LLEVA INTERESES -->
+		<div align="left">
+			<div class="encabezado">Datos de la Acción</div>
+			<div align="left" class="linea-two">
+
+			</div>
+		</div>
+
+		<hbox width="100%">
+			<panel border="none" collapsible="true"
+				sclass="transparent">
+				<panelchildren>
+					<grid sclass="domain">
+						<columns>
+							<column width="50%" label="Numero Accion"
+								iconSclass="z-icon-caret-right blue" />
+							<column width="35%" label="Valor BS"
+								iconSclass="z-icon-caret-right blue" />
+						</columns>
+						<rows>
+							<row>
+								<label value="032" />
+								<label value="60.000"
+									sclass="label label-primary arrowed" />
+							</row>
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+		</hbox>
+
+	
+		
+		<separator spacing="30px"></separator>
+		<hbox width="100%" align="center" pack="center">
+
+			<separator spacing="5%"></separator>
+
+
+			<button iconSclass="z-icon-edit" class='boton-guardar'
+				label="Guardar" />
+
+			<space bar="False" spacing="5%" />
+
+			<button iconSclass="z-icon-times-circle"
+				class='boton-cancelar' label="Cancelar " />
+		</hbox>
+
 	</div>
-</zk>
+</window>
