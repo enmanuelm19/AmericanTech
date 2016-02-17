@@ -17,7 +17,7 @@
 <zk xmlns:n="native" >
 
 	<window border="none" title="Registrar Accion" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
-	width="48%" height="70%" style="iconSclass=z-icon-puzzle-piece;">
+	width="45%" height="48%" style="iconSclass=z-icon-puzzle-piece;">
 		<caption iconSclass="home-icon z-icon-user"/>
  
 			
@@ -36,24 +36,32 @@
 
 									<row class="col-md-12">
 										<div>
-											<label value="Id Accion" class="col-md-12"/>
+											<label value="#Accion" class="col-md-12"/>
 											<textbox type="text" class="col-md-12"
 												value="" width="100%"  constraint="no empty" />
 											
 										</div>
+										</row >
+									<row class="col-md-12">
 										
+										<div>
+											<label value="Estado Accion" class="col-md-12"/>
+											<combobox width="100%" class="col-md-12"> 
+												<comboitem label="" />
+												<comboitem label="" />
+												<comboitem label="" />
+											</combobox>
+										</div>
 										
 										
 									</row >
 									<row class="col-md-12">
 										
 										<div>
-											<label value="Condición" class="col-md-12"/>
-											<combobox width="100%" class="col-md-12"> 
-												<comboitem label="" />
-												<comboitem label="" />
-												<comboitem label="" />
-											</combobox>
+											<label value="Valor" class="col-md-12"/>
+											<textbox type="text" class="col-md-12"
+												value="" width="100%"  constraint="no empty" />
+											
 										</div>
 										
 										
