@@ -146,9 +146,9 @@ public class ControladorModalAbrir extends SelectorComposer<Component> {
 		Window window = (Window)Executions.createComponents("evento/administrarEvento/registrarEvento.zul", null, null);
 		window.doModal();
 	}
-	@Listen("onClick = #btnRegistroSoc")
+	@Command
 	public void abrirRegistroSocio(Event e){
-		Window window = (Window)Executions.createComponents("vistas/socio/administrarSocio/registrarSocio.zul", null, null);
+		Window window = (Window)Executions.createComponents("socio/administrarSocio/registrarSocio.zul", null, null);
 		window.doModal();
 	}
 	
