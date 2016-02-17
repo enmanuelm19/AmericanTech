@@ -9,6 +9,11 @@ import confi.Sesion;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+
+/**
+ * creado por Tony Suarez
+ */
+
 public class ActividadEventoDao {
 
 private Sesion sesionPostgres;

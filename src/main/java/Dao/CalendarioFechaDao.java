@@ -3,12 +3,17 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
-import modelos.CalendarioFecha;;
+import modelos.CalendarioFecha;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+
+/**
+ * creado por Tony Suarez
+ */
+
 public class CalendarioFechaDao {
 
 private Sesion sesionPostgres;

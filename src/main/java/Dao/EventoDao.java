@@ -9,6 +9,11 @@ import confi.Sesion;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+
+/**
+ * creado por Tony Suarez
+ */
+
 public class EventoDao {
 
 private Sesion sesionPostgres;
@@ -71,7 +76,7 @@ private Sesion sesionPostgres;
 	   List<Evento> datos = new ArrayList<Evento>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<AccEventoion>) em.createCriteria(Evento.class).list();             
+	    datos =  (List<Evento>) em.createCriteria(Evento.class).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
