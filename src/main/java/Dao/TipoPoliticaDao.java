@@ -1,21 +1,22 @@
 //Creado por: Edward Rodriguez  17/02/2016
 package Dao;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import modelos.Usuario;
-import confi.Sesion;
+import modelos.TipoPolitica;
 
-import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-public class UsuarioDao {
+import confi.Sesion;
+
+public class TipoPoliticaDao {
 	private Sesion sesionPostgres;
 	
-	
-	public void agregarUsuario(Usuario dato) throws Exception{
+	// Agrega un registro a la tabla.
+	public void agregarTipoPolitica(TipoPolitica dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -32,43 +33,42 @@ public class UsuarioDao {
          } 
 	}
 	
-	public Usuario obtenerUsuario(String username, String clave) throws Exception{		 
-		    @SuppressWarnings("static-access")
-			Session sesion = sesionPostgres.getSessionFactory().openSession();   
-		    Usuario dato = null;        
-	            try{
-	                dato = (Usuario) sesion.createCriteria(Usuario.class)
-	                		.add(Restrictions.eq("username",username))
-	                		.add(Restrictions.eq("contrasenna", clave)).uniqueResult();
-	            } catch (Exception e) {  
-	            e.printStackTrace();
-	           
-	            throw new Exception(e.getMessage(),e.getCause());
-	            }  finally {  
-	                sesion.close();  
-	            }       
-		    return dato;
-	}
 	
-	public Usuario obtenerUsuarioPersona(int idPersona)throws Exception{
+	//Obtiene un TipoPolitica especifico
+	public TipoPolitica obtenerTipoPolitica(int id) throws Exception{		 
 	    @SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();   
-	    Usuario dato = null;        
+	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+	    TipoPolitica dato = null;        
             try{
-                dato = (Usuario) sesion.createCriteria(Usuario.class)
-                		.add(Restrictions.eq("personaid_persona", idPersona)).uniqueResult();
+                dato = (TipoPolitica) sesion.get(TipoPolitica.class,  id);
             } catch (Exception e) {  
             e.printStackTrace();
-           
             throw new Exception(e.getMessage(),e.getCause());
             }  finally {  
                 sesion.close();  
-            }       
+            }  
 	    return dato;
-		
 	}
 	
-	public void eliminarUsuario(Usuario dato) throws Exception{		 
+	//Obtener un tipo de politica mediante la descripcion
+	public TipoPolitica obtenerTipoDescripcion(String descrip) throws Exception{		 
+	    @SuppressWarnings("static-access")
+	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+	    TipoPolitica dato = null;        
+            try{
+                dato = (TipoPolitica) sesion.createCriteria(TipoPolitica.class)
+                		.add(Restrictions.eq("descripcion", descrip)).uniqueResult();
+            } catch (Exception e) {  
+            e.printStackTrace();
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }  
+	    return dato;
+	}
+	
+	//Elimina un TipoPolitica en especifico
+	public void eliminarTipoPolitica(TipoPolitica dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();    
         Transaction tx = null;  
@@ -76,17 +76,16 @@ public class UsuarioDao {
             tx = sesion.beginTransaction();  
             sesion.delete(dato);  
             tx.commit();  
-           
         } catch (Exception e) {  
             tx.rollback();  
-           
             throw new Exception(e.getMessage(), e.getCause());
         } finally {  
             sesion.close();  
         }  
    }
 	
-	public void actualizarUsuario(Usuario dato) throws Exception{
+	//Actualiza un Registro
+	public void actualizarTipoPolitica(TipoPolitica dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -103,19 +102,18 @@ public class UsuarioDao {
          } 
 	}
 	
-	public List<Usuario> obtenerTodos() throws Exception {            
-      
-	   List<Usuario> datos = new ArrayList<Usuario>();  
+	//Obtiene una lista de todos los registros de la tabla TipoPolitica
+	public List<TipoPolitica> obtenerTodos() throws Exception {            
+	   List<TipoPolitica> datos = new ArrayList<TipoPolitica>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Usuario>) em.createCriteria(Usuario.class).list();             
+	    datos =  (List<TipoPolitica>) em.createCriteria(TipoPolitica.class).list();             
         } catch (Exception e) {             
-       
          throw new Exception(e.getMessage(),e.getCause());
         } finally {  
           em.close();  
         } 
-       
         return datos; 
-	}	
+	}
+
 }
