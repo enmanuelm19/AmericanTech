@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -15,6 +15,7 @@ public class Sugerencia implements java.io.Serializable {
 	private Usuario usuario;
 	private String descripcion;
 	private Date fecha;
+	private Date hora;
 
 	public Sugerencia() {
 	}
@@ -29,13 +30,14 @@ public class Sugerencia implements java.io.Serializable {
 
 	public Sugerencia(int idSugerencia, ClienteExterno clienteExterno,
 			TipoSugerencia tipoSugerencia, Usuario usuario, String descripcion,
-			Date fecha) {
+			Date fecha, Date hora) {
 		this.idSugerencia = idSugerencia;
 		this.clienteExterno = clienteExterno;
 		this.tipoSugerencia = tipoSugerencia;
 		this.usuario = usuario;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
+		this.hora = hora;
 	}
 
 	public int getIdSugerencia() {
@@ -84,6 +86,14 @@ public class Sugerencia implements java.io.Serializable {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public Date getHora() {
+		return this.hora;
+	}
+
+	public void setHora(Date hora) {
+		this.hora = hora;
 	}
 
 }

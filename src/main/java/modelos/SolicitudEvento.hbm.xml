@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.SolicitudEvento" table="solicitud_evento" schema="public" optimistic-lock="version">
         <id name="idSolicitudEvento" type="int">
@@ -11,14 +11,26 @@
         <many-to-one name="socio" class="modelos.Socio" fetch="select">
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
-        <property name="fechaEvento" type="date">
-            <column name="fecha_evento" length="13" />
+        <property name="fechaSolicitud" type="date">
+            <column name="fecha_solicitud" length="13" not-null="true" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />
         </property>
-        <property name="fechaSolicitud" type="date">
-            <column name="fecha_solicitud" length="13" not-null="true" />
+        <property name="fechaInicioSolicitud" type="date">
+            <column name="fecha_inicio_solicitud" length="13" not-null="true" />
+        </property>
+        <property name="fechaFinSolicitud" type="date">
+            <column name="fecha_fin_solicitud" length="13" not-null="true" />
+        </property>
+        <property name="horaInicio" type="time">
+            <column name="hora_inicio" length="15" not-null="true" />
+        </property>
+        <property name="horaFin" type="time">
+            <column name="hora_fin" length="15" not-null="true" />
+        </property>
+        <property name="publico" type="boolean">
+            <column name="publico" not-null="true" />
         </property>
         <set name="estadoSolicituds" table="estado_solicitud" inverse="true" lazy="true" fetch="select">
             <key>

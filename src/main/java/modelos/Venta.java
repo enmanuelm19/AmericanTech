@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -21,8 +21,10 @@ public class Venta implements java.io.Serializable {
 	public Venta() {
 	}
 
-	public Venta(int idVenta, MotivoVenta motivoVenta, Date fecha, float monto) {
+	public Venta(int idVenta, Accion accion, MotivoVenta motivoVenta,
+			Date fecha, float monto) {
 		this.idVenta = idVenta;
+		this.accion = accion;
 		this.motivoVenta = motivoVenta;
 		this.fecha = fecha;
 		this.monto = monto;

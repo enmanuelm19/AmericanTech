@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +20,7 @@ public class Club implements java.io.Serializable {
 	private String vision;
 	private String telfAlternativo;
 	private String correo;
+	private String eslogan;
 	private Set<Foto> fotos = new HashSet<Foto>(0);
 	private Set<Politica> politicas = new HashSet<Politica>(0);
 	private Set<JuntaDirectiva> juntaDirectivas = new HashSet<JuntaDirectiva>(0);
@@ -45,9 +46,9 @@ public class Club implements java.io.Serializable {
 
 	public Club(int idClub, Archivo archivo, String rif, String nombre,
 			String direccion, String telefono, String mision, String vision,
-			String telfAlternativo, String correo, Set<Foto> fotos,
-			Set<Politica> politicas, Set<JuntaDirectiva> juntaDirectivas,
-			Set<RedClub> redClubs) {
+			String telfAlternativo, String correo, String eslogan,
+			Set<Foto> fotos, Set<Politica> politicas,
+			Set<JuntaDirectiva> juntaDirectivas, Set<RedClub> redClubs) {
 		this.idClub = idClub;
 		this.archivo = archivo;
 		this.rif = rif;
@@ -58,6 +59,7 @@ public class Club implements java.io.Serializable {
 		this.vision = vision;
 		this.telfAlternativo = telfAlternativo;
 		this.correo = correo;
+		this.eslogan = eslogan;
 		this.fotos = fotos;
 		this.politicas = politicas;
 		this.juntaDirectivas = juntaDirectivas;
@@ -142,6 +144,14 @@ public class Club implements java.io.Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public String getEslogan() {
+		return this.eslogan;
+	}
+
+	public void setEslogan(String eslogan) {
+		this.eslogan = eslogan;
 	}
 
 	public Set<Foto> getFotos() {

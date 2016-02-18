@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Persona" table="persona" schema="public" optimistic-lock="version">
         <id name="idPersona" type="int">
@@ -9,25 +9,19 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
-            <column name="foto" not-null="true" />
+            <column name="foto" />
         </many-to-one>
         <property name="identificacion" type="string">
             <column name="identificacion" length="12" />
         </property>
-        <property name="primerNombre" type="string">
-            <column name="primer_nombre" length="15" not-null="true" />
+        <property name="nombre" type="string">
+            <column name="nombre" length="15" not-null="true" />
         </property>
-        <property name="segundoNombre" type="string">
-            <column name="segundo_nombre" length="15" />
-        </property>
-        <property name="primerApellido" type="string">
-            <column name="primer_apellido" length="15" not-null="true" />
-        </property>
-        <property name="segundoApellido" type="string">
-            <column name="segundo_apellido" length="15" />
+        <property name="apellido" type="string">
+            <column name="apellido" length="15" not-null="true" />
         </property>
         <property name="fechaNac" type="date">
-            <column name="fecha_nac" length="13" not-null="true" />
+            <column name="fecha_nac" length="13" />
         </property>
         <property name="sexo" type="string">
             <column name="sexo" length="1" not-null="true" />
@@ -35,11 +29,11 @@
         <property name="correo" type="string">
             <column name="correo" length="45" />
         </property>
-        <property name="telefono" type="short">
-            <column name="telefono" not-null="true" />
+        <property name="telefono" type="string">
+            <column name="telefono" length="12" />
         </property>
-        <property name="telefonoFijo" type="java.lang.Short">
-            <column name="telefono_fijo" />
+        <property name="telefonoFijo" type="string">
+            <column name="telefono_fijo" length="12" />
         </property>
         <property name="direccion" type="string">
             <column name="direccion" length="80" />
@@ -58,7 +52,7 @@
         </set>
         <set name="afiliados" table="afiliado" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="personaid_persona" />
+                <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Afiliado" />
         </set>

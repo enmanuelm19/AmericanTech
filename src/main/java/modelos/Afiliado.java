@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,9 +20,10 @@ public class Afiliado implements java.io.Serializable {
 	public Afiliado() {
 	}
 
-	public Afiliado(int idAfilado, Socio socio, TipoAfiliado tipoAfiliado,
-			String nroCarnet) {
+	public Afiliado(int idAfilado, Persona persona, Socio socio,
+			TipoAfiliado tipoAfiliado, String nroCarnet) {
 		this.idAfilado = idAfilado;
+		this.persona = persona;
 		this.socio = socio;
 		this.tipoAfiliado = tipoAfiliado;
 		this.nroCarnet = nroCarnet;

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,24 +11,37 @@ import java.util.Set;
 public class Funcion implements java.io.Serializable {
 
 	private int idFuncion;
+	private Funcion funcion;
 	private String nombre;
-	private String url;
+	private String pagina;
+	private int iconUri;
+	private String clase;
+	private Set<Funcion> funcions = new HashSet<Funcion>(0);
 	private Set<FuncionGrupo> funcionGrupos = new HashSet<FuncionGrupo>(0);
 
 	public Funcion() {
 	}
 
-	public Funcion(int idFuncion, String nombre, String url) {
+	public Funcion(int idFuncion, Funcion funcion, String nombre,
+			String pagina, int iconUri, String clase) {
 		this.idFuncion = idFuncion;
+		this.funcion = funcion;
 		this.nombre = nombre;
-		this.url = url;
+		this.pagina = pagina;
+		this.iconUri = iconUri;
+		this.clase = clase;
 	}
 
-	public Funcion(int idFuncion, String nombre, String url,
+	public Funcion(int idFuncion, Funcion funcion, String nombre,
+			String pagina, int iconUri, String clase, Set<Funcion> funcions,
 			Set<FuncionGrupo> funcionGrupos) {
 		this.idFuncion = idFuncion;
+		this.funcion = funcion;
 		this.nombre = nombre;
-		this.url = url;
+		this.pagina = pagina;
+		this.iconUri = iconUri;
+		this.clase = clase;
+		this.funcions = funcions;
 		this.funcionGrupos = funcionGrupos;
 	}
 
@@ -40,6 +53,14 @@ public class Funcion implements java.io.Serializable {
 		this.idFuncion = idFuncion;
 	}
 
+	public Funcion getFuncion() {
+		return this.funcion;
+	}
+
+	public void setFuncion(Funcion funcion) {
+		this.funcion = funcion;
+	}
+
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -48,12 +69,36 @@ public class Funcion implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getUrl() {
-		return this.url;
+	public String getPagina() {
+		return this.pagina;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setPagina(String pagina) {
+		this.pagina = pagina;
+	}
+
+	public int getIconUri() {
+		return this.iconUri;
+	}
+
+	public void setIconUri(int iconUri) {
+		this.iconUri = iconUri;
+	}
+
+	public String getClase() {
+		return this.clase;
+	}
+
+	public void setClase(String clase) {
+		this.clase = clase;
+	}
+
+	public Set<Funcion> getFuncions() {
+		return this.funcions;
+	}
+
+	public void setFuncions(Set<Funcion> funcions) {
+		this.funcions = funcions;
 	}
 
 	public Set<FuncionGrupo> getFuncionGrupos() {

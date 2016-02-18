@@ -52,19 +52,23 @@ public class TipoSugerencia {
 	}
 	
 	public String getDescFiltro() {
+		if(descFiltro==null)
+			return "";
 		return descFiltro;
 	}
 
 	public void setDescFiltro(String descFiltro) {
-		this.descFiltro = descFiltro;
+		this.descFiltro = descFiltro==null?"":descFiltro.trim();
 	}
 
 	public String getIdFiltro() {
+		if(idFiltro==null)
+			return "";
 		return idFiltro;
 	}
 
 	public void setIdFiltro(String idFiltro) {
-		this.idFiltro = idFiltro;
+		this.idFiltro = idFiltro==null?"":idFiltro.trim();
 	}
 
 	public String getEstatus() {

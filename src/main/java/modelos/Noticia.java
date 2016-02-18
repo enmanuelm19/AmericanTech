@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -21,28 +21,28 @@ public class Noticia implements java.io.Serializable {
 	private boolean publico;
 	private String enlace;
 	private Date fechaCreacion;
+	private Date hora;
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
 			0);
 
 	public Noticia() {
 	}
 
-	public Noticia(int idNoticia, Archivo archivo, String descripcion,
-			boolean condicion, Date caducidad, boolean publico,
-			Date fechaCreacion) {
+	public Noticia(int idNoticia, String descripcion, boolean condicion,
+			Date caducidad, boolean publico, Date fechaCreacion, Date hora) {
 		this.idNoticia = idNoticia;
-		this.archivo = archivo;
 		this.descripcion = descripcion;
 		this.condicion = condicion;
 		this.caducidad = caducidad;
 		this.publico = publico;
 		this.fechaCreacion = fechaCreacion;
+		this.hora = hora;
 	}
 
 	public Noticia(int idNoticia, Archivo archivo, Evento evento,
 			String titulo, String descripcion, boolean condicion,
 			Date caducidad, boolean publico, String enlace, Date fechaCreacion,
-			Set<NoticiaPreferencia> noticiaPreferencias) {
+			Date hora, Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.idNoticia = idNoticia;
 		this.archivo = archivo;
 		this.evento = evento;
@@ -53,6 +53,7 @@ public class Noticia implements java.io.Serializable {
 		this.publico = publico;
 		this.enlace = enlace;
 		this.fechaCreacion = fechaCreacion;
+		this.hora = hora;
 		this.noticiaPreferencias = noticiaPreferencias;
 	}
 
@@ -134,6 +135,14 @@ public class Noticia implements java.io.Serializable {
 
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Date getHora() {
+		return this.hora;
+	}
+
+	public void setHora(Date hora) {
+		this.hora = hora;
 	}
 
 	public Set<NoticiaPreferencia> getNoticiaPreferencias() {
