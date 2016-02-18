@@ -28,13 +28,14 @@ public class TipoSugerenciaService {
 	
 	public static void agregarTipoSugerencia(TipoSugerencia tipo){
 		tipo.setEstatus("A");
-		tipo.setId(id);
+		tipo.setId(id++);
 		tipoS.add(tipo);
 	}
 	
 	public static void updateTipoSugerencia(TipoSugerencia tipo){
 		for(int i=0; i<tipoS.size(); i++){
 			if(tipoS.get(i).getId() == tipo.getId()){
+				System.out.println("entro a editar");
 				tipoS.set(i, tipo);
 			}
 		}
