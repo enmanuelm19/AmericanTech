@@ -1,21 +1,22 @@
 //Creado por: Edward Rodriguez  17/02/2016
 package Dao;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import modelos.Usuario;
-import confi.Sesion;
+import modelos.SolicitudEvento;
 
-import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-public class UsuarioDao {
+import confi.Sesion;
+
+public class SolicitudEventoDao {
 	private Sesion sesionPostgres;
 	
-	
-	public void agregarUsuario(Usuario dato) throws Exception{
+	// Agrega un registro a la tabla.
+	public void agregarSolicitudEvento(SolicitudEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -31,32 +32,15 @@ public class UsuarioDao {
              em.close();  
          } 
 	}
-	
-	public Usuario obtenerUsuario(String username, String clave) throws Exception{		 
-		    @SuppressWarnings("static-access")
-			Session sesion = sesionPostgres.getSessionFactory().openSession();   
-		    Usuario dato = null;        
-	            try{
-	                dato = (Usuario) sesion.createCriteria(Usuario.class)
-	                		.add(Restrictions.eq("username",username))
-	                		.add(Restrictions.eq("contrasenna", clave)).uniqueResult();
-	            } catch (Exception e) {  
-	            e.printStackTrace();
-	           
-	            throw new Exception(e.getMessage(),e.getCause());
-	            }  finally {  
-	                sesion.close();  
-	            }       
-		    return dato;
-	}
-	
-	public Usuario obtenerUsuarioPersona(int idPersona)throws Exception{
+
+	//Obtiene una lista con todas las solicitudes de evento hechas por un socio.
+	public List<SolicitudEvento> obtenerSolicitudSocio(int idSocio)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
-	    Usuario dato = null;        
+	    List<SolicitudEvento> datos = new ArrayList<SolicitudEvento>();        
             try{
-                dato = (Usuario) sesion.createCriteria(Usuario.class)
-                		.add(Restrictions.eq("personaid_persona", idPersona)).uniqueResult();
+                datos = (List<SolicitudEvento>) sesion.createCriteria(SolicitudEvento.class)
+                		.add(Restrictions.eq("socioid_socio",idSocio)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -64,11 +48,28 @@ public class UsuarioDao {
             }  finally {  
                 sesion.close();  
             }       
-	    return dato;
-		
+	    return datos;	
 	}
 	
-	public void eliminarUsuario(Usuario dato) throws Exception{		 
+	//Obtiene una Solicitud especifica
+	public SolicitudEvento obtenerSancion(int id) throws Exception{		 
+	    @SuppressWarnings("static-access")
+	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+	    SolicitudEvento dato = null;        
+            try{
+                dato = (SolicitudEvento) sesion.get(SolicitudEvento.class,  id);
+            } catch (Exception e) {  
+            e.printStackTrace();
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }  
+	    return dato;
+	
+	}
+	
+	//Elimina una Solicitud en especifico
+	public void eliminarSolicitud(SolicitudEvento dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();    
         Transaction tx = null;  
@@ -76,17 +77,16 @@ public class UsuarioDao {
             tx = sesion.beginTransaction();  
             sesion.delete(dato);  
             tx.commit();  
-           
         } catch (Exception e) {  
             tx.rollback();  
-           
             throw new Exception(e.getMessage(), e.getCause());
         } finally {  
             sesion.close();  
         }  
    }
 	
-	public void actualizarUsuario(Usuario dato) throws Exception{
+	//Actualiza un Registro
+	public void actualizarSolicitud(SolicitudEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -103,19 +103,20 @@ public class UsuarioDao {
          } 
 	}
 	
-	public List<Usuario> obtenerTodos() throws Exception {            
+	//Obtiene una lista de todos los registros de la tabla SolicitudEvento
+	public List<SolicitudEvento> obtenerTodos() throws Exception {            
       
-	   List<Usuario> datos = new ArrayList<Usuario>();  
+	   List<SolicitudEvento> datos = new ArrayList<SolicitudEvento>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Usuario>) em.createCriteria(Usuario.class).list();             
+	    datos =  (List<SolicitudEvento>) em.createCriteria(SolicitudEvento.class).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
         } finally {  
           em.close();  
         } 
-       
         return datos; 
-	}	
+	}
+
 }
