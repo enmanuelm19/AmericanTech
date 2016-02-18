@@ -1,61 +1,41 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
+import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import models.TipoSugerencia;
 import service.TipoSugerenciaService;
 
-public class TipoSugerenciaViewModel{
+public class TipoSugerenciaViewModel {
 
-	
-	private TipoSugerencia seleccionado; 								
-	private boolean editar = false; 
-	private List<TipoSugerencia> tiposAll; 
+	private List<TipoSugerencia> tiposAll;
 	private TipoSugerencia tipoS;
 
-	public TipoSugerenciaViewModel() {	
-		tipoS = new TipoSugerencia(); 
+	@Init
+	public void init() {
+		tipoS = new TipoSugerencia();
 		tiposAll = new ArrayList<TipoSugerencia>();
 		tiposAll = TipoSugerenciaService.getTipoSugerencia();
 	}
 
-	@Command
-	public void cerrarModal(@BindingParam("win") Window win) {
-		win.detach();
-	}
+	public ListModelList<TipoSugerencia> getAllTipoSugerencia() {
 
-	// M�todo para mostrar el formulario de registro
-	@Command
-	public void showModal() {
-		this.tipoS = new TipoSugerencia();
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoSugerencia.zul", null,
-				null);
-		window.doModal();
-	}
-
-	// M�todo que gestiona la visualizaci�n de la grid edici�n
-	public boolean getActivarEdicion() {
-		return this.editar;
-	}
-
-	// M�todo que retorna todos los registros. este metodo se llamara en la
-	// grid.
-	public List<TipoSugerencia> getAllTipoSugerencia() {
-		
-		System.out.println("entro");
-		
 		return new ListModelList<TipoSugerencia>(tiposAll);
 	}
 
-
-	// M�todo de conteo de registros, llamado en el footer de la grid
 	public String getCantRegistros() {
 		return tiposAll.size() + " items en la lista";
 	}
@@ -68,72 +48,60 @@ public class TipoSugerenciaViewModel{
 		this.tipoS = tipoS;
 	}
 
-	/**************************** AGREGAR *************************/
 	@Command
-	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
-	public void agregarTipoSugerencia(@BindingParam("win") Window win) {
-		if (tipoS.getDescripcion() != null && !tipoS.getDescripcion().equalsIgnoreCase("")) {
-			TipoSugerenciaService.agregarTipoSugerencia(this.tipoS);
-			win.detach();
-			tiposAll = TipoSugerenciaService.getTipoSugerencia();
-		}
+	public void showModal(@BindingParam("Tipo") TipoSugerencia tipo) {
+		Map<String, Object> args = new HashMap<String, Object>();
+		args.put("TipoSugerencia", tipo);
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoSugerencia.zul",
+				null, args);
+		window.doModal();
 	}
-
-	/**************************** EDICION *************************/
-	// Metodo activado cuando selecciono la opcion editar
-	@Command
-	@NotifyChange({ "seleccionEdicion", "activarEdicion" })
-	public void seleccionEdicion(@BindingParam("Tipo") TipoSugerencia tipo) {
-		this.seleccionado = tipo; // guardo temporalmente el registro a editar
-		this.editar = true;
-	}
-
-	// M�todo que retorna el registro a editar
-	public TipoSugerencia getSeleccionEdicion() {
-		return this.seleccionado;
-	}
-
-	// M�todo activado cuando cancelo la edici�n
-	@Command
-	@NotifyChange({ "activarEdicion" })
-	public void cancelarEdicion() {
-		this.editar = false;
-		this.seleccionado = new TipoSugerencia();
-	}
-
-	@Command
-	@NotifyChange({ "allTipoSugerencia", "activarEdicion" })
-	public void guardarEdicion(@BindingParam("Tipo") TipoSugerencia tipo) {
-		this.editar = false;
-	}
-
-	/*****************************
-	 * ELIMINAR REGISTRO
-	 *****************************/
 
 	@Command
 	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
-	public void eliminarTipo(@BindingParam("Tipo") TipoSugerencia tipo) {
-		tipo.setEstatus("E");
-		TipoSugerenciaService.updateTipoSugerencia(tipo);
-		tiposAll = TipoSugerenciaService.getTipoSugerencia();
+	public void eliminar(@BindingParam("Tipo") final TipoSugerencia tipo) {
+
+		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "Confirmar",
+				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+					public void onEvent(Event evt) throws InterruptedException {
+						if (evt.getName().equals("onOK")) {
+							try {
+								tipo.setEstatus("E");
+								TipoSugerenciaService.updateTipoSugerencia(tipo);
+								tiposAll = TipoSugerenciaService.getTipoSugerencia();
+								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+										Messagebox.INFORMATION);
+								BindUtils.postGlobalCommand(null, null, "refreshTipoSugerencia", null);
+							} catch (Exception e) {
+								Messagebox.show(e.getMessage(), tipo.getDescripcion() + " No se pudo eliminar",
+										Messagebox.OK, Messagebox.ERROR);
+							}
+						}
+					}
+				});
 	}
 
-	/********************************** FILTRO **********************************/
 	@Command
 	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
-	public void filtroTipo() {
+	public void filtro() {
 		List<TipoSugerencia> tip = new ArrayList<TipoSugerencia>();
 		String desc = tipoS.getDescFiltro().toLowerCase();
-		
-		
+		String id = tipoS.getIdFiltro().toLowerCase();
+
 		for (Iterator<TipoSugerencia> i = TipoSugerenciaService.getTipoSugerencia().iterator(); i.hasNext();) {
 			TipoSugerencia tmp = i.next();
-			if (tmp.getDescripcion().toLowerCase().contains(desc)) {
+			if (tmp.getDescripcion().toLowerCase().contains(desc)
+					&& String.valueOf(tmp.getId()).toLowerCase().contains(id)) {
 				tip.add(tmp);
 			}
 		}
 		tiposAll = tip;
 	}
-	
+
+	@GlobalCommand
+	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
+	public void refreshTipoSugerencia() {
+		tiposAll = TipoSugerenciaService.getTipoSugerencia();
+	}
+
 }
