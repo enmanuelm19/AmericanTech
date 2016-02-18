@@ -15,8 +15,24 @@
 <zk xmlns:n="native">
 	<include src="layouts/navbar.zul" />
 	<div id="main">
-		<hlayout spacing="0">
-			<include src="layouts/sidebar.zul" />
+		<hlayout spacing="0" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
+			<div id="sidebar" sclass="sidebar" >
+	<!-- Navigation List -->
+	<div> 
+	<navbar id="navbar" sclass="nav-list" orient="vertical">
+		<navitem label="Inicio" iconSclass="z-icon-home" selected="true" href="/america/vistas/index.zul"/>
+	</navbar>
+	</div>  
+	<!-- Toggler -->
+	<div sclass="sidebar-collapse">
+		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
+	</div>
+	<!-- Tooptip for Calender Navitem -->
+	<popup id="calpp" zclass="tooltip" sclass="right tooltip-error cal">
+		<span zclass="tooltip-arrow"/>
+		<label zclass="tooltip-inner" value="2 Important Event"/>
+	</popup>
+</div>
 			<div id="contenido" hflex="1">
 				<include src="layouts/breadcrumbs.zul" />
 				<include src="layouts/page.zul" />
