@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 07/02/2016 10:09:11 AM by Hibernate Tools 4.3.1
+// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -14,15 +14,13 @@ public class Persona implements java.io.Serializable {
 	private int idPersona;
 	private Archivo archivo;
 	private String identificacion;
-	private String primerNombre;
-	private String segundoNombre;
-	private String primerApellido;
-	private String segundoApellido;
+	private String nombre;
+	private String apellido;
 	private Date fechaNac;
 	private String sexo;
 	private String correo;
-	private short telefono;
-	private Short telefonoFijo;
+	private String telefono;
+	private String telefonoFijo;
 	private String direccion;
 	private Set<Empleado> empleados = new HashSet<Empleado>(0);
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
@@ -39,33 +37,27 @@ public class Persona implements java.io.Serializable {
 	public Persona() {
 	}
 
-	public Persona(int idPersona, Archivo archivo, String primerNombre,
-			String primerApellido, Date fechaNac, String sexo, short telefono) {
+	public Persona(int idPersona, String nombre, String apellido, String sexo) {
 		this.idPersona = idPersona;
-		this.archivo = archivo;
-		this.primerNombre = primerNombre;
-		this.primerApellido = primerApellido;
-		this.fechaNac = fechaNac;
+		this.nombre = nombre;
+		this.apellido = apellido;
 		this.sexo = sexo;
-		this.telefono = telefono;
 	}
 
 	public Persona(int idPersona, Archivo archivo, String identificacion,
-			String primerNombre, String segundoNombre, String primerApellido,
-			String segundoApellido, Date fechaNac, String sexo, String correo,
-			short telefono, Short telefonoFijo, String direccion,
-			Set<Empleado> empleados, Set<MiembroJunta> miembroJuntas,
-			Set<Afiliado> afiliados, Set<RedPersona> redPersonas,
-			Set<Socio> socios, Set<Eventualidad> eventualidads,
-			Set<Invitado> invitados, Set<Postulado> postulados,
-			Set<Usuario> usuarios, Set<PreferenciaPersona> preferenciaPersonas) {
+			String nombre, String apellido, Date fechaNac, String sexo,
+			String correo, String telefono, String telefonoFijo,
+			String direccion, Set<Empleado> empleados,
+			Set<MiembroJunta> miembroJuntas, Set<Afiliado> afiliados,
+			Set<RedPersona> redPersonas, Set<Socio> socios,
+			Set<Eventualidad> eventualidads, Set<Invitado> invitados,
+			Set<Postulado> postulados, Set<Usuario> usuarios,
+			Set<PreferenciaPersona> preferenciaPersonas) {
 		this.idPersona = idPersona;
 		this.archivo = archivo;
 		this.identificacion = identificacion;
-		this.primerNombre = primerNombre;
-		this.segundoNombre = segundoNombre;
-		this.primerApellido = primerApellido;
-		this.segundoApellido = segundoApellido;
+		this.nombre = nombre;
+		this.apellido = apellido;
 		this.fechaNac = fechaNac;
 		this.sexo = sexo;
 		this.correo = correo;
@@ -108,36 +100,20 @@ public class Persona implements java.io.Serializable {
 		this.identificacion = identificacion;
 	}
 
-	public String getPrimerNombre() {
-		return this.primerNombre;
+	public String getNombre() {
+		return this.nombre;
 	}
 
-	public void setPrimerNombre(String primerNombre) {
-		this.primerNombre = primerNombre;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getSegundoNombre() {
-		return this.segundoNombre;
+	public String getApellido() {
+		return this.apellido;
 	}
 
-	public void setSegundoNombre(String segundoNombre) {
-		this.segundoNombre = segundoNombre;
-	}
-
-	public String getPrimerApellido() {
-		return this.primerApellido;
-	}
-
-	public void setPrimerApellido(String primerApellido) {
-		this.primerApellido = primerApellido;
-	}
-
-	public String getSegundoApellido() {
-		return this.segundoApellido;
-	}
-
-	public void setSegundoApellido(String segundoApellido) {
-		this.segundoApellido = segundoApellido;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public Date getFechaNac() {
@@ -164,19 +140,19 @@ public class Persona implements java.io.Serializable {
 		this.correo = correo;
 	}
 
-	public short getTelefono() {
+	public String getTelefono() {
 		return this.telefono;
 	}
 
-	public void setTelefono(short telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	public Short getTelefonoFijo() {
+	public String getTelefonoFijo() {
 		return this.telefonoFijo;
 	}
 
-	public void setTelefonoFijo(Short telefonoFijo) {
+	public void setTelefonoFijo(String telefonoFijo) {
 		this.telefonoFijo = telefonoFijo;
 	}
 

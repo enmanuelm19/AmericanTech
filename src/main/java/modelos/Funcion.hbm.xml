@@ -1,19 +1,34 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Funcion" table="funcion" schema="public" optimistic-lock="version">
         <id name="idFuncion" type="int">
             <column name="id_funcion" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="funcion" class="modelos.Funcion" fetch="select">
+            <column name="padreid_funcion" not-null="true" />
+        </many-to-one>
         <property name="nombre" type="string">
             <column name="nombre" length="30" not-null="true" />
         </property>
-        <property name="url" type="string">
-            <column name="url" length="70" not-null="true" />
+        <property name="pagina" type="string">
+            <column name="pagina" length="120" not-null="true" />
         </property>
+        <property name="iconUri" type="int">
+            <column name="icon_uri" not-null="true" />
+        </property>
+        <property name="clase" type="string">
+            <column name="clase" length="120" not-null="true" />
+        </property>
+        <set name="funcions" table="funcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="padreid_funcion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Funcion" />
+        </set>
         <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="funcionid_funcion" not-null="true" />

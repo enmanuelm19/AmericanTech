@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/02/2016 10:09:12 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Afiliado" table="afiliado" schema="public" optimistic-lock="version">
         <id name="idAfilado" type="int">
@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="persona" class="modelos.Persona" fetch="select">
-            <column name="personaid_persona" />
+            <column name="personaid_persona" not-null="true" />
         </many-to-one>
         <many-to-one name="socio" class="modelos.Socio" fetch="select">
             <column name="socioid_socio" not-null="true" />
