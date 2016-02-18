@@ -10,6 +10,10 @@ import org.hibernate.Transaction;
 
 import confi.Sesion;
 
+/**
+ * creado por José Francisco Morón
+ */
+
 public class RedSocialDao {
 
 private Sesion sesionPostgres;

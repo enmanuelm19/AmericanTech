@@ -9,6 +9,9 @@ import confi.Sesion;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 
+/**
+ * creado por José Francisco Morón
+ */
 public class PatrocinanteDao {
 	
 private Sesion sesionPostgres;

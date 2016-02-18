@@ -10,6 +10,10 @@ import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+/**
+ * creado por José Francisco Morón
+ */
+
 public class OpinionDao {
 	private Sesion sesionPostgres;
 	

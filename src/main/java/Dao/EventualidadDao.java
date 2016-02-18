@@ -1,24 +1,24 @@
 package Dao;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
-import modelos.Proveedor;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
+import modelos.Eventualidad;
 import confi.Sesion;
 
+import org.hibernate.Transaction;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
 /**
- * creado por José Francisco Morón
+ * creado por Rosmary Fuentes
  */
 
-public class ProveedorDao {
-
+public class EventualidadDao {
+	
 private Sesion sesionPostgres;
 	
-	public void agregarProveedor(Proveedor dato) throws Exception{
+	public void agregarEventualidad(Eventualidad dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -35,12 +35,12 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public Proveedor obtenerProveedor(int id) throws Exception{		 
+	public Eventualidad obtenerEventualidad(int id) throws Exception{		 
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();  
-	    Proveedor dato = null;        
+	    Eventualidad dato = null;        
             try{
-                dato = (Proveedor ) sesion.get(Proveedor .class,  id);
+                dato = (Eventualidad ) sesion.get(Eventualidad .class,  id);
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -52,7 +52,7 @@ private Sesion sesionPostgres;
 	    return dato;
 }
 	
-	public void eliminarProveedor(Proveedor dato) throws Exception{		 
+	public void eliminarEventualidad(Eventualidad dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();    
         Transaction tx = null;  
@@ -70,7 +70,7 @@ private Sesion sesionPostgres;
         }  
    }
 	
-	public void actualizarProveedor(Proveedor dato) throws Exception{
+	public void actualizarEventualidad(Eventualidad dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -87,12 +87,12 @@ private Sesion sesionPostgres;
          } 
 	}
 
-	public List<Proveedor> obtenerTodos() throws Exception {            
+	public List<Eventualidad> obtenerTodos() throws Exception {            
 	      
-		   List<Proveedor> datos = new ArrayList<Proveedor>();  
+		   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<Proveedor>) em.createCriteria(Proveedor.class).list();             
+		    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -102,5 +102,5 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
-		
+
 }
