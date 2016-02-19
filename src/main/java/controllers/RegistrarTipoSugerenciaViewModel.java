@@ -7,13 +7,14 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Window;
-import models.TipoSugerencia;
-import service.TipoSugerenciaService;
+import Dao.TipoSugerenciaDao;
+import modelos.TipoSugerencia;
 
 public class RegistrarTipoSugerenciaViewModel {
 
 	private TipoSugerencia tipoSugerencia;
 	private boolean editable;
+	private TipoSugerenciaDao tipoDao;
 
 	@Init
 	public void init(@ExecutionArgParam("TipoSugerencia") TipoSugerencia tipo) {
@@ -24,6 +25,7 @@ public class RegistrarTipoSugerenciaViewModel {
 			this.tipoSugerencia = tipo;
 			this.editable = true;
 		}
+		tipoDao = new TipoSugerenciaDao();
 	}
 
 	public boolean isEditable() {
@@ -48,14 +50,14 @@ public class RegistrarTipoSugerenciaViewModel {
 	}
 
 	@Command
-	public void guardar(@BindingParam("win") Window win) {
+	public void guardar(@BindingParam("win") Window win) throws Exception {
 		
 		if (tipoSugerencia.getDescripcion() != null && !tipoSugerencia.getDescripcion().equalsIgnoreCase("") )
 		{
 			if (!editable)
-				TipoSugerenciaService.agregarTipoSugerencia(tipoSugerencia);
+				tipoDao.agregarTipoSugerencia(tipoSugerencia);
 
-			else TipoSugerenciaService.updateTipoSugerencia(tipoSugerencia);
+			else tipoDao.actualizarTipoSugerencia(tipoSugerencia);
 				
 			win.detach();
 			BindUtils.postGlobalCommand(null,null,"refreshTipoSugerencia",null);

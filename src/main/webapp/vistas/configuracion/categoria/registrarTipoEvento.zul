@@ -8,7 +8,7 @@
 	<window id="winRegistrarTipoE" style="iconSclass=z-icon-cogs; height:auto;"
 		title=" Registrar Tipo Evento" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%">
+		height="50%" width="40%" mode="modal">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoEventoViewModel')">
 			<div align="left" width="90%">
