@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import modelos.TipoPreferencia;
+
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -16,27 +19,28 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-import Dao.TipoSugerenciaDao;
-import modelos.TipoSugerencia;
 
-public class TipoSugerenciaViewModel {
+import Dao.TipoPreferenciaDao;
 
-	private List<TipoSugerencia> tiposAll;
-	private TipoSugerenciaDao tipoDao;
+
+public class TipoPreferenciaViewModel {
+
+	private List<TipoPreferencia> tiposAll;
+	private TipoPreferenciaDao tipoDao;
 	private String descFiltro;
 	private String idFiltro;
 
 	@Init
 	public void init() throws Exception {
 		
-		tiposAll = new ArrayList<TipoSugerencia>();
-		tipoDao = new TipoSugerenciaDao();
+		tiposAll = new ArrayList<TipoPreferencia>();
+		tipoDao = new TipoPreferenciaDao();
 		tiposAll = tipoDao.obtenerTodos();
 	}
 
-	public ListModelList<TipoSugerencia> getAllTipoSugerencia() {
+	public ListModelList<TipoPreferencia> getAllTipoPreferencia() {
 
-		return new ListModelList<TipoSugerencia>(tiposAll);
+		return new ListModelList<TipoPreferencia>(tiposAll);
 	}
 
 	public String getCantRegistros() {
@@ -64,28 +68,28 @@ public class TipoSugerenciaViewModel {
 	}
 
 	@Command
-	public void showModal(@BindingParam("Tipo") TipoSugerencia tipo) {
+	public void showModal(@BindingParam("Tipo") TipoPreferencia tipo) {
 		Map<String, Object> args = new HashMap<String, Object>();
-		args.put("TipoSugerencia", tipo);
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoSugerencia.zul",
+		args.put("TipoPreferencia", tipo);
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoPreferencia.zul",
 				null, args);
 		window.doModal();
 	}
 
 	@Command
-	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
-	public void eliminar(@BindingParam("Tipo") final TipoSugerencia tipo) {
+	@NotifyChange({ "allTipoPreferencia", "cantRegistros" })
+	public void eliminar(@BindingParam("Tipo") final TipoPreferencia tipo) {
 
 		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
-								tipoDao.eliminarTipoSugerencia(tipo);
+								tipoDao.eliminarTipoPreferencia(tipo);
 								tiposAll = tipoDao.obtenerTodos();
 								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshTipoSugerencia", null);
+								BindUtils.postGlobalCommand(null, null, "refreshTipoPreferencia", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), tipo.getDescripcion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
@@ -96,16 +100,16 @@ public class TipoSugerenciaViewModel {
 	}
 
 	@Command
-	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
+	@NotifyChange({ "allTipoPreferencia", "cantRegistros" })
 	public void filtro() throws Exception {
-		List<TipoSugerencia> tip = new ArrayList<TipoSugerencia>();
+		List<TipoPreferencia> tip = new ArrayList<TipoPreferencia>();
 		String desc = getDescFiltro().toLowerCase();
 		String id = getIdFiltro().toLowerCase();
 
-		for (Iterator<TipoSugerencia> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
-			TipoSugerencia tmp = i.next();
+		for (Iterator<TipoPreferencia> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
+			TipoPreferencia tmp = i.next();
 			if (tmp.getDescripcion().toLowerCase().contains(desc)
-					&& String.valueOf(tmp.getIdTipoSugerencia()).toLowerCase().contains(id)) {
+					&& String.valueOf(tmp.getIdTipoPreferencia()).toLowerCase().contains(id)) {
 				tip.add(tmp);
 			}
 		}
@@ -113,8 +117,8 @@ public class TipoSugerenciaViewModel {
 	}
 
 	@GlobalCommand
-	@NotifyChange({ "allTipoSugerencia", "cantRegistros" })
-	public void refreshTipoSugerencia() throws Exception {
+	@NotifyChange({ "allTipoPreferencia", "cantRegistros" })
+	public void refreshTipoPreferencia() throws Exception {
 		tiposAll = tipoDao.obtenerTodos();
 	}
 }
