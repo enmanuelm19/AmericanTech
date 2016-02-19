@@ -1,8 +1,10 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 
 
 
@@ -102,10 +104,10 @@ public class TipoEventoViewModel {
 	@Command
 	public void seleccionEdicion(@BindingParam("Tipo") TipoEvento tipo){ //recibe del activador una variable llamada Tipo.
 		System.out.println("ssj: "+tipo.getDescripcion());
-		this.seleccionado=tipo;
-		BindUtils.postGlobalCommand(null,null,"mode",null);
-		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarTipoEvento.zul", null,null);
-		window.doModal();
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+	    map.put("tipoE", tipo );
+		Executions.createComponents("configuracion/categoria/registrarTipoEvento.zul", null,map);
+		
 		//guardo temporalmente el registro a editar
 	}
 	
