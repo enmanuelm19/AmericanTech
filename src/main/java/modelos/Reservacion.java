@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
+// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,9 +15,9 @@ public class Reservacion implements java.io.Serializable {
 	private Instalacion instalacion;
 	private Socio socio;
 	private Date fechaInicio;
+	private short fechaFin;
 	private Date horaInic;
 	private Date horaFin;
-	private short fechaFin;
 	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
 			0);
@@ -26,26 +26,26 @@ public class Reservacion implements java.io.Serializable {
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, Date horaInic, Date horaFin, short fechaFin) {
+			Date fechaInicio, short fechaFin, Date horaInic, Date horaFin) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
 		this.socio = socio;
 		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 		this.horaInic = horaInic;
 		this.horaFin = horaFin;
-		this.fechaFin = fechaFin;
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, Date horaInic, Date horaFin, short fechaFin,
+			Date fechaInicio, short fechaFin, Date horaInic, Date horaFin,
 			Set<Alquiler> alquilers, Set<CalendarioFecha> calendarioFechas) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
 		this.socio = socio;
 		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 		this.horaInic = horaInic;
 		this.horaFin = horaFin;
-		this.fechaFin = fechaFin;
 		this.alquilers = alquilers;
 		this.calendarioFechas = calendarioFechas;
 	}
@@ -82,6 +82,14 @@ public class Reservacion implements java.io.Serializable {
 		this.fechaInicio = fechaInicio;
 	}
 
+	public short getFechaFin() {
+		return this.fechaFin;
+	}
+
+	public void setFechaFin(short fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
 	public Date getHoraInic() {
 		return this.horaInic;
 	}
@@ -96,14 +104,6 @@ public class Reservacion implements java.io.Serializable {
 
 	public void setHoraFin(Date horaFin) {
 		this.horaFin = horaFin;
-	}
-
-	public short getFechaFin() {
-		return this.fechaFin;
-	}
-
-	public void setFechaFin(short fechaFin) {
-		this.fechaFin = fechaFin;
 	}
 
 	public Set<Alquiler> getAlquilers() {
