@@ -46,7 +46,6 @@ CREATE TABLE sancion (
   id_sancion                SERIAL NOT NULL, 
   descripcion              varchar(200) NOT NULL, 
   socioid_socio            int2, 
-  exoneradoid_exonerado    int2, 
   fecha_inic               date NOT NULL, 
   fecha_fin                date NOT NULL, 
   monto                    float4, 
@@ -135,15 +134,15 @@ CREATE TABLE calendario_fecha (
   eventoid_evento           int2, 
   PRIMARY KEY (id_calendario_fecha));
 CREATE TABLE evento (
-  id_evento          SERIAL NOT NULL, 
-  descripcion       varchar(150) NOT NULL, 
-  visitas_esperadas int2 NOT NULL, 
-  condicion_estado  varchar(9) NOT NULL, 
-  fecha_inicio      date NOT NULL, 
-  fecha_fin         date NOT NULL, 
-  hora_inicio       time NOT NULL, 
-  hora_fin          time NOT NULL, 
-  publico           bool NOT NULL, 
+  id_evento                      SERIAL NOT NULL, 
+  descripcion                   varchar(150) NOT NULL, 
+  visitas_esperadas             int2 NOT NULL, 
+  fecha_inicio                  date NOT NULL, 
+  fecha_fin                     date NOT NULL, 
+  hora_inicio                   time NOT NULL, 
+  hora_fin                      time NOT NULL, 
+  publico                       bool NOT NULL, 
+  estado_eventoid_estado_evento int2 NOT NULL, 
   PRIMARY KEY (id_evento));
 CREATE TABLE visita_evento (
   id_visita_evento  SERIAL NOT NULL, 
@@ -164,10 +163,10 @@ CREATE TABLE patrocinante (
   correo          int2 NOT NULL, 
   PRIMARY KEY (id_patrocinante));
 CREATE TABLE partocinante_evento (
-  id_patrocinante_actividad    SERIAL NOT NULL, 
+  id_patrocinante_evento       SERIAL NOT NULL, 
   patrocinanteid_patrocinante int2 NOT NULL, 
   eventoid_evento             int2 NOT NULL, 
-  PRIMARY KEY (id_patrocinante_actividad));
+  PRIMARY KEY (id_patrocinante_evento));
 CREATE TABLE proveedor (
   id_proveedor  SERIAL NOT NULL, 
   nombre       varchar(30) NOT NULL, 
@@ -179,6 +178,7 @@ CREATE TABLE proveedor_actividad (
   id_proveedor_actividad  SERIAL NOT NULL, 
   proveedorid_proveedor  int2 NOT NULL, 
   actividadid_actividad  int2 NOT NULL, 
+  detalle                varchar(150), 
   PRIMARY KEY (id_proveedor_actividad));
 CREATE TABLE funcion (
   id_funcion       SERIAL NOT NULL, 
@@ -198,9 +198,9 @@ CREATE TABLE reservacion (
   instalacionid_instalacion int2 NOT NULL, 
   socioid_socio             int2 NOT NULL, 
   fecha_inicio              date NOT NULL, 
+  fecha_fin                 int2 NOT NULL, 
   hora_inic                 time NOT NULL, 
   hora_fin                  time NOT NULL, 
-  fecha_fin                 int2 NOT NULL, 
   PRIMARY KEY (id_reservacion));
 CREATE TABLE afiliado (
   id_afilado                     SERIAL NOT NULL, 
@@ -433,6 +433,15 @@ CREATE TABLE tipo_politica (
   id_tipo_politica  SERIAL NOT NULL, 
   descripcion      varchar(30), 
   PRIMARY KEY (id_tipo_politica));
+CREATE TABLE estado_evento (
+  id_estado_evento  SERIAL NOT NULL, 
+  nombre           varchar(40) NOT NULL, 
+  PRIMARY KEY (id_estado_evento));
+CREATE TABLE motivo_cancelacion (
+  id_motivo_cancelacion  SERIAL NOT NULL, 
+  descipcion            varchar(255) NOT NULL, 
+  eventoid_evento       int2 NOT NULL, 
+  PRIMARY KEY (id_motivo_cancelacion));
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr55454 FOREIGN KEY (usuarioid_usuario) REFERENCES usuario (id_usuario);
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr690051 FOREIGN KEY (grupoid_grupo) REFERENCES grupo (id_grupo);
 ALTER TABLE opinion ADD CONSTRAINT FKopinion612647 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
@@ -520,3 +529,5 @@ ALTER TABLE politica ADD CONSTRAINT FKpolitica881306 FOREIGN KEY (clubid_club) R
 ALTER TABLE politica ADD CONSTRAINT FKpolitica857480 FOREIGN KEY (tipo_politicaid_tipo_politica) REFERENCES tipo_politica (id_tipo_politica);
 ALTER TABLE postulacion ADD CONSTRAINT FKpostulacio568877 FOREIGN KEY (Ventaid_venta) REFERENCES Venta (id_venta);
 ALTER TABLE funcion ADD CONSTRAINT FKfuncion135468 FOREIGN KEY (padreid_funcion) REFERENCES funcion (id_funcion);
+ALTER TABLE evento ADD CONSTRAINT FKevento600923 FOREIGN KEY (estado_eventoid_estado_evento) REFERENCES estado_evento (id_estado_evento);
+ALTER TABLE motivo_cancelacion ADD CONSTRAINT FKmotivo_can874505 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);

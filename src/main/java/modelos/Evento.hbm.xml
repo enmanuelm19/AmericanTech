@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Evento" table="evento" schema="public" optimistic-lock="version">
         <id name="idEvento" type="int">
             <column name="id_evento" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
+        <many-to-one name="estadoEvento" class="modelos.EstadoEvento" fetch="select">
+            <column name="estado_eventoid_estado_evento" not-null="true" />
+        </many-to-one>
         <property name="descripcion" type="string">
             <column name="descripcion" length="150" not-null="true" />
         </property>
         <property name="visitasEsperadas" type="short">
             <column name="visitas_esperadas" not-null="true" />
-        </property>
-        <property name="condicionEstado" type="string">
-            <column name="condicion_estado" length="9" not-null="true" />
         </property>
         <property name="fechaInicio" type="date">
             <column name="fecha_inicio" length="13" not-null="true" />
@@ -49,6 +49,12 @@
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaEvento" />
+        </set>
+        <set name="motivoCancelacions" table="motivo_cancelacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="eventoid_evento" not-null="true" />
+            </key>
+            <one-to-many class="modelos.MotivoCancelacion" />
         </set>
         <set name="visitaEventos" table="visita_evento" inverse="true" lazy="true" fetch="select">
             <key>

@@ -3,16 +3,16 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelos.ActividadEvento" table="actividad_evento" schema="public" optimistic-lock="version">
-        <id name="idActividadEvento" type="int">
-            <column name="id_actividad_evento" />
+    <class name="modelos.MotivoCancelacion" table="motivo_cancelacion" schema="public" optimistic-lock="version">
+        <id name="idMotivoCancelacion" type="int">
+            <column name="id_motivo_cancelacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="actividad" class="modelos.Actividad" fetch="select">
-            <column name="actividadid_actividad" not-null="true" />
-        </many-to-one>
         <many-to-one name="evento" class="modelos.Evento" fetch="select">
             <column name="eventoid_evento" not-null="true" />
         </many-to-one>
+        <property name="descipcion" type="string">
+            <column name="descipcion" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

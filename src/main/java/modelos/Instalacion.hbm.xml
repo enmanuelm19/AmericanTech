@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14/02/2016 02:21:09 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Instalacion" table="instalacion" schema="public" optimistic-lock="version">
         <id name="idInstalacion" type="int">
             <column name="id_instalacion" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="tipoInstalacion" class="modelos.TipoInstalacion" fetch="select">
             <column name="tipo_instalacionid_tipo_instalacion" not-null="true" />
