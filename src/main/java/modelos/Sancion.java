@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 14/02/2016 02:21:08 PM by Hibernate Tools 4.3.1
+// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -13,7 +13,6 @@ public class Sancion implements java.io.Serializable {
 	private MotivoSancion motivoSancion;
 	private Socio socio;
 	private String descripcion;
-	private Short exoneradoidExonerado;
 	private Date fechaInic;
 	private Date fechaFin;
 	private Float monto;
@@ -31,13 +30,11 @@ public class Sancion implements java.io.Serializable {
 	}
 
 	public Sancion(int idSancion, MotivoSancion motivoSancion, Socio socio,
-			String descripcion, Short exoneradoidExonerado, Date fechaInic,
-			Date fechaFin, Float monto) {
+			String descripcion, Date fechaInic, Date fechaFin, Float monto) {
 		this.idSancion = idSancion;
 		this.motivoSancion = motivoSancion;
 		this.socio = socio;
 		this.descripcion = descripcion;
-		this.exoneradoidExonerado = exoneradoidExonerado;
 		this.fechaInic = fechaInic;
 		this.fechaFin = fechaFin;
 		this.monto = monto;
@@ -73,14 +70,6 @@ public class Sancion implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public Short getExoneradoidExonerado() {
-		return this.exoneradoidExonerado;
-	}
-
-	public void setExoneradoidExonerado(Short exoneradoidExonerado) {
-		this.exoneradoidExonerado = exoneradoidExonerado;
 	}
 
 	public Date getFechaInic() {

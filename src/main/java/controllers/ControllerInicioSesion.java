@@ -1,8 +1,8 @@
 package controllers;
 
 
-
-
+import modelos.Persona;
+import modelos.TipoSugerencia;
 import modelos.Usuario;
 
 import org.zkoss.zk.ui.Component;
@@ -14,6 +14,8 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
+import Dao.PersonaDao;
+import Dao.TipoSugerenciaDao;
 import Dao.UsuarioDao;
 
 public class ControllerInicioSesion extends SelectorComposer<Component>{

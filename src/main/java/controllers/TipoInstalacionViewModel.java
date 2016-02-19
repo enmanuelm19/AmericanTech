@@ -1,163 +1,120 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
-import service.TipoInstalacionService;
-import models.TipoEvento;
-import models.TipoInstalacion;
-
+import java.util.Map;
 import org.zkoss.bind.BindUtils;
-import org.zkoss.bind.ValidationContext;
-import org.zkoss.bind.Validator;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.GlobalCommand;
+import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.bind.validator.AbstractValidator;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+import Dao.TipoInstalacionDao;
+import modelos.TipoInstalacion;
 
 public class TipoInstalacionViewModel {
 	
-	TipoInstalacionService service = new TipoInstalacionService();
-	private TipoInstalacion seleccionado = new TipoInstalacion();
-	private boolean editar = false;
-	private TipoInstalacion tipoI = new TipoInstalacion();
-	private List<TipoInstalacion> tiposAll = new ArrayList<TipoInstalacion>();
-	
-	
-	public TipoInstalacionViewModel() {
-		try{
-			tiposAll=service.getTipoInstalacion();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+	private List<TipoInstalacion> tiposAll;
+	private TipoInstalacionDao tipoDao;
+	private String descFiltro;
+	private String idFiltro;
+
+	@Init
+	public void init() throws Exception {
+		
+		tiposAll = new ArrayList<TipoInstalacion>();
+		tipoDao = new TipoInstalacionDao();
+		tiposAll = tipoDao.obtenerTodos();
 	}
-	
-	@Command
-	public void cerrarModal(@BindingParam("win") Window win){
-		win.detach();
-	}
-	
-	@Command
-	public void showModal(){
-		this.tipoI= new TipoInstalacion();
-		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarTipoInstalacion.zul", null,null);
-     	window.doModal();
-	}
-	
-	public boolean getActivarEdicion(){
-		return this.editar;
-	}
-	
-	public List<TipoInstalacion> getAllTipoInstalacion(){
+
+	public ListModelList<TipoInstalacion> getAllTipoInstalacion() {
+
 		return new ListModelList<TipoInstalacion>(tiposAll);
 	}
-	
-	public String getCantRegistros(){
-		return getAllTipoInstalacion().size()+" items en la lista";
+
+	public String getCantRegistros() {
+		return tiposAll.size() + " items en la lista";
 	}
-	
-	public TipoInstalacion getTipoI(){
-		return tipoI;
+
+	public String getDescFiltro() {
+		if(descFiltro==null)
+			return "";
+		return descFiltro;
 	}
-	
-	public void setTipoI(TipoInstalacion tipoI){
-		this.tipoI = tipoI;
+
+	public void setDescFiltro(String descFiltro) {
+		this.descFiltro = descFiltro==null?"":descFiltro.trim();
 	}
-	
-	/****************************AGREGAR*************************/
-	@Command
-	public void agregarTipoInstalacion(@BindingParam("win") Window win){
-		if(tipoI.getDescripcion() != null && !tipoI.getDescripcion().equalsIgnoreCase("")){
-			service.agregarTipoInstalacion(this.tipoI);
-			BindUtils.postGlobalCommand(null, null, "refresh", null);
-			win.detach();
-		}
+
+	public String getIdFiltro() {
+		if(idFiltro==null)
+			return "";
+		return idFiltro;
 	}
-	
-	@GlobalCommand
-	@NotifyChange({"allTipoInstalacion", "cantRegistros"})
-	public void refresh(){
-		tiposAll=service.getTipoInstalacion();
-	}
-	
-	
-	/****************************EDICI�N*************************/
-	@Command
-	public void seleccionEdicion(@BindingParam("Tipo") TipoInstalacion tipo){
-		this.seleccionado= tipo;
-		BindUtils.postGlobalCommand(null,null,"mode",null);
-		Window window = (Window)Executions.createComponents("configuracion/categoria/registrarTipoInstalacion.zul", null,null);
-		window.doModal();
-	}
-	
-	@GlobalCommand
-	@NotifyChange({"tipoI"})
-	public void mode(){
-		this.tipoI=this.seleccionado;
-	}
-	
-	public TipoInstalacion getSeleccionEdicion(){
-		return seleccionado;
-	}
-	
-	@Command
-	@NotifyChange({"activarEdicion"})
-	public void cancelarEdicion(){
-		this.editar=false;
-		this.seleccionado=new TipoInstalacion();
+
+	public void setIdFiltro(String idFiltro) {
+		this.idFiltro = idFiltro==null?"":idFiltro.trim();
 	}
 
 	@Command
-	@NotifyChange({"allTipoInstalacion","activarEdicion"})
-	public void guardarEdicion(@BindingParam("Tipo") TipoInstalacion tipo){
-		this.editar=false;
+	public void showModal(@BindingParam("Tipo") TipoInstalacion tipo) {
+		Map<String, Object> args = new HashMap<String, Object>();
+		args.put("TipoInstalacion", tipo);
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoInstalacion.zul",
+				null, args);
+		window.doModal();
 	}
-	
-	/*****************************ELIMINAR REGISTRO*****************************/
-	
+
 	@Command
-	@NotifyChange({"allTipoInstalacion", "cantRegistros"})
-	public void eliminarTipo(@BindingParam("Tipo") TipoInstalacion tipo){
-		tipo.setEstatus("E");
-		service.updateTipoInstalacion(tipo);
-		tiposAll=service.getTipoInstalacion();
+	@NotifyChange({ "allTipoInstalacion", "cantRegistros" })
+	public void eliminar(@BindingParam("Tipo") final TipoInstalacion tipo) {
+
+		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "Confirmar",
+				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+					public void onEvent(Event evt) throws InterruptedException {
+						if (evt.getName().equals("onOK")) {
+							try {
+								tipoDao.eliminarTipoInstalacion(tipo);
+								tiposAll = tipoDao.obtenerTodos();
+								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+										Messagebox.INFORMATION);
+								BindUtils.postGlobalCommand(null, null, "refreshTipoInstalacion", null);
+							} catch (Exception e) {
+								Messagebox.show(e.getMessage(), tipo.getDescripcion() + " No se pudo eliminar",
+										Messagebox.OK, Messagebox.ERROR);
+							}
+						}
+					}
+				});
 	}
-	
-	/**********************************FILTRO**********************************/
+
 	@Command
-	@NotifyChange({"allTipoInstalacion", "cantRegistros"})
-	public void filtroTipoDesc(){
-		List<TipoInstalacion> tipo = new ArrayList<TipoInstalacion>();
-		String desc = tipoI.getDescFiltro().toLowerCase();	
-		for(Iterator<TipoInstalacion> i = service.getTipoInstalacion().iterator(); i.hasNext();){
+	@NotifyChange({ "allTipoInstalacion", "cantRegistros" })
+	public void filtro() throws Exception {
+		List<TipoInstalacion> tip = new ArrayList<TipoInstalacion>();
+		String desc = getDescFiltro().toLowerCase();
+		String id = getIdFiltro().toLowerCase();
+
+		for (Iterator<TipoInstalacion> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
 			TipoInstalacion tmp = i.next();
-			if(tmp.getDescripcion().toLowerCase().contains(desc)){
-				tipo.add(tmp);
+			if (tmp.getDescripcion().toLowerCase().contains(desc)
+					&& String.valueOf(tmp.getIdTipoInstalacion()).toLowerCase().contains(id)) {
+				tip.add(tmp);
 			}
 		}
-		tiposAll = tipo;
+		tiposAll = tip;
 	}
-	
-	@Command
-	@NotifyChange({"allTipoInstalacion", "cantRegistros"})
-	public void filtroTipoId(){
-		List<TipoInstalacion> tipo = new ArrayList<TipoInstalacion>();
-		String id = tipoI.getIdFiltro();
-		for(Iterator<TipoInstalacion> i = service.getTipoInstalacion().iterator(); i.hasNext();){
-			TipoInstalacion tmp = i.next();
-			int newint = Integer.valueOf(id);
-			if(tmp.getId()== newint){
-				tipo.add(tmp);
-			}
-		}
-		tiposAll = tipo;
+
+	@GlobalCommand
+	@NotifyChange({ "allTipoInstalacion", "cantRegistros" })
+	public void refreshTipoInstalacion() throws Exception {
+		tiposAll = tipoDao.obtenerTodos();
 	}
-	
-	
 }
