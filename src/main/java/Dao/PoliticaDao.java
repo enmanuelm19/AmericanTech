@@ -12,6 +12,10 @@ import org.hibernate.criterion.Restrictions;
 
 import confi.Sesion;
 
+/**
+ * creado por José Francisco Morón
+ */
+
 public class PoliticaDao {
 	
 private Sesion sesionPostgres;
