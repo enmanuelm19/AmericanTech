@@ -41,7 +41,7 @@ public class SesionViewModel {
 				"recuperarContrasenna.zul", null, null);
 		window.doModal();
 	}
-
+ 
 	@Command
 	public void ingresar() throws Exception {
 		if(usuario.getValue().equalsIgnoreCase("")){
