@@ -10,11 +10,11 @@
 
 <zk xmlns:n="native" class='fondo-ingreso'>
 
-	<div width="100%" height="100%" align="center"
+	<div width="100%" height="100%" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.SesionViewModel')" 
 		style="background: url('../../assets/portal/img/bannerAmericaIngreso.png') no-repeat !important;
   background-size: 100% 100%;"
 		class='lock-screen'>
-		<div class="lock-wrapper" apply="controllers.ControllerInicioSesion"
+		<div class="lock-wrapper" 
 			style="  margin: 13% 0% 0% 30% !important; position:fixed" >
 			<div class="lock-box text-center">
 				<div class="lock-name" style="padding: 8px 8px;">
@@ -27,12 +27,12 @@
 				<div class="lock-pwd"
 					style="  padding: 0px 0 0 75px;">
 					<div class="form-group">
-						<textbox id="pass" type="password"
+						<textbox id="password" type="password"
 							placeholder="Contraseña"
 							sclass="form-control lock-input"
 							style=" border-color: white;  margin-top: 9px;" />
 							
-						<button id="loguear" sclass="btn btn-lock" 
+						<button id="loguear" sclass="btn btn-lock" onClick="@command('ingresar')"
 							style="color:#1FB5AD !important;border:0px;padding-top: 7px;margin-top:-1px"
 							iconSclass="fa fa-arrow-right" type="submit">
 						</button>
@@ -44,9 +44,9 @@
 		
 		</div>
 		
-		<div class="registration" style="bottom:30px;right:30px; color:#FFFFFF;" apply="controllers.ControllerInicioSesion">
+		<div class="registration" style="bottom:30px;right:30px; color:#FFFFFF;" >
 			<label style="color:#FFFFFF;font-size: 2em;  font-weight:bold;">¿Olvidaste tu</label> 
-				<a  id="linkRecuperarContrasenna" class="" style="color:#07F7EA; font-size: 2em;  font-weight:bold;" >
+				<a  id="linkRecuperarContrasenna" class="" style="color:#07F7EA; font-size: 2em;  font-weight:bold;" onClick="@command('showModal')">
 					Contraseña?
 				</a>
 			</div>
