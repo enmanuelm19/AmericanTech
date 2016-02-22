@@ -41,7 +41,7 @@ public class RegistrarMotivoPostulacionViewModel {
 		return motivoPostulacion;
 	}
 
-	public void setMotivoSancion(MotivoPostulacion motivoPostulacion) {
+	public void setMotivoPostulacion(MotivoPostulacion motivoPostulacion) {
 		this.motivoPostulacion = motivoPostulacion;
 	}
 
