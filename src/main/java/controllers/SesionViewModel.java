@@ -55,6 +55,7 @@ public class SesionViewModel implements Initiator {
 				"recuperarContrasenna.zul", null, null);
 		window.doModal();
 	}
+	
  
 	public Usuario chequearCredenciales() throws Exception{
 		String usu = usuario.getValue();
