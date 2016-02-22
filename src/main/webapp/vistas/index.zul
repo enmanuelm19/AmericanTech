@@ -11,7 +11,7 @@
 
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
-
+<?init class="controllers.SesionViewModel" ?>
 <zk xmlns:n="native">
 	<include src="layouts/navbar.zul" />
 	<div id="main">
