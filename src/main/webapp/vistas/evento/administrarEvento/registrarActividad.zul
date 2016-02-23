@@ -19,76 +19,82 @@
 				</div>
 				<space bar="False" spacing="10%" />
 
+
 				<grid width="" fixedLayout="true">
 
 					<rows class="">
 
+						<!-- 	<row class="col-md-12">
+							<div>
+							Nombre de la actividad
+							<n:br></n:br>
+							<textbox type="text" width="85%"
+							tabindex="10" constraint="no empty" />
+							
+							</div>
+							<div>
+							Tipo de actividad
+							<n:br></n:br>
+							<combobox width="85%">
+							<comboitem label="Deportiva" />
+							<comboitem label="Cultural" />
+							<comboitem label="Musical" />
+							</combobox>
+							
+							</div>
+							
+							
+							</row> -->
+
+						<!--  <row class="col-md-12">
+							<div>
+							Fecha inicio
+							<n:br></n:br>
+							<datebox id="DateFchInicio" width="85%"
+							cols="12" format="short " onCreate="self.value = new Date()" />
+							</div>
+							
+							<div>
+							Fecha fin
+							<n:br></n:br>
+							<datebox id="DateFchCierre" cols="12"
+							format="short " width="85%" onCreate="self.value = new Date()" />
+							</div>
+							</row>
+							<row class="col-md-12">
+							<div>
+							Hora inicio
+							<n:br></n:br>
+							<timebox id="TimeHorInicio" cols="12"
+							format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+							<div>
+							Hora cierre
+							<n:br></n:br>
+							<timebox id="TimeHorCierre" cols="12"
+							format="short" onCreate="self.value = new Date()" width="85%" />
+							</div>
+							
+							</row>-->
 						<row class="col-md-12">
-							<div>
-								Nombre de la actividad
-								<n:br></n:br>
-								<textbox type="text" width="85%"
-									tabindex="10" constraint="no empty" />
-
-							</div>
-							<div>
-								Tipo de actividad
-								<n:br></n:br>
-								<combobox width="85%">
-									<comboitem label="Deportiva" />
-									<comboitem label="Cultural" />
-									<comboitem label="Musical" />
-								</combobox>
-
-							</div>
-
-
-						</row>
-
-						<row class="col-md-12">
-							<div>
-								Fecha inicio
-								<n:br></n:br>
-								<datebox id="DateFchInicio" width="85%"
-									cols="12" format="short " onCreate="self.value = new Date()" />
-							</div>
-
-							<div>
-								Fecha fin
-								<n:br></n:br>
-								<datebox id="DateFchCierre" cols="12"
-									format="short " width="85%" onCreate="self.value = new Date()" />
-							</div>
-						</row>
-						<row class="col-md-12">
-							<div>
-								Hora inicio
-								<n:br></n:br>
-								<timebox id="TimeHorInicio" cols="12"
-									format="short" onCreate="self.value = new Date()" width="85%" />
-							</div>
-							<div>
-								Hora cierre
-								<n:br></n:br>
-								<timebox id="TimeHorCierre" cols="12"
-									format="short" onCreate="self.value = new Date()" width="85%" />
-							</div>
-
-						</row>
-						<row class="col-md-12">
 
 
 							<div>
-								Descripción de la actividad
+								Descripción de la tarea
 								<n:br></n:br>
 								<textbox type="text" rows="5"
-									width="85%" tabindex="10" constraint="no empty" />
+									width="100%" tabindex="10" constraint="no empty" />
 							</div>
-							<div>
-								Finalizada?
-								<n:br></n:br>
-								<checkbox id="l1" label=" " />
 
+
+						</row>
+						<row class="col-md-12">
+
+							<div>
+
+
+								<checkbox id="l1" label=" " />
+								Actividad Finalizada?
 							</div>
 
 						</row>
