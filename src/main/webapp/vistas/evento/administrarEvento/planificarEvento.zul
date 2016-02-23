@@ -69,8 +69,8 @@
 										</auxheader>
 										<auxheader colspan="9">
 
-											</auxheader>
-										</auxhead>
+										</auxheader>
+									</auxhead>
 
 									<columns>
 										<column width="4%"></column>
@@ -89,15 +89,13 @@
 										<column width="10%">
 											Hr. Fin
 										</column>
-										<column width="10%">
-											Instalación
+										<column width="15%">
+											Instalaciónes
 										</column>
-										<column width="10%">
-											Tipo evento
+										<column width="15%">
+											Peferencias
 										</column>
-										<column width="10%">
-											Visitas
-										</column>
+
 										<column width="10%">
 											Acciones
 										</column>
@@ -121,29 +119,16 @@
 													<columns>
 														<column
 															width="">
+															Descripcion
+															de la
 															Actividad
 														</column>
-														<column
-															width="">
-															Hora
-														</column>
-														<column
-															width="">
-															Fecha
-														</column>
+
 														<column
 															width="">
 															Estado
 														</column>
-														<column
-															width="15%">
-															Descripcion
-														</column>
-														<column
-															width="">
-															Tipo
-															actividad
-														</column>
+
 														<column
 															width="">
 															Acciones
@@ -153,39 +138,11 @@
 													<rows>
 														<row>
 															<label
-																value="Juego de softbol" />
-															<label
-																value="08:00AM-05:00PM" />
-															<label
-																value="03/03/2016-03/03/2016" />
-															<label
-																value="Finalizado" />
-															<label
-																value="C.A.America vs Italo" />
-															<label
-																value="Deportiva" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-pencil blue"
-																	tooltiptext="Modificar" />
-																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o red"
-																	tooltiptext="Eliminar" />
-															</div>
-														</row>
-														<row>
-															<label
-																value="Juego de Tennis" />
-															<label
-																value="08:00AM-05:00PM" />
-															<label
-																value="03/03/2016-03/03/2016" />
+																value="Buscar Pelotas para juego de beisbol" />
+
 															<label
 																value="No Finalizado" />
-															<label
-																value="C.A.America vs Italo" />
-															<label
-																value="Deportiva" />
+
 															<div>
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
@@ -197,17 +154,11 @@
 														</row>
 														<row>
 															<label
-																value="Juego de Bolas criollas" />
+																value="Agendar a los equipos" />
+
 															<label
-																value="08:00AM-05:00PM" />
-															<label
-																value="03/03/2016-03/03/2016" />
-															<label
-																value="Finalizado" />
-															<label
-																value="Italo vs Canario" />
-															<label
-																value="Deportiva" />
+																value="No Finalizado" />
+
 															<div>
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
@@ -219,17 +170,27 @@
 														</row>
 														<row>
 															<label
-																value="Juego de softbol" />
+																value="Buscar arbitros" />
+
 															<label
-																value="08:00AM-05:00PM" />
+																value="No Finalizado" />
+
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
 															<label
-																value="03/03/2016-03/03/2016" />
+																value="Limpiar piscina" />
+
 															<label
 																value=" No Finalizado" />
-															<label
-																value="C.A.America vs Italo" />
-															<label
-																value="Deportiva" />
+
 															<div>
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
@@ -249,9 +210,10 @@
 											<label value="12/12/1920" />
 											<label value="12:00" />
 											<label value="12:00" />
-											<label value="Cancha softbol" />
+											<label
+												value="Cancha softbol, piscina" />
 											<label value="Deportivo" />
-											<label value="100" />
+
 											<div>
 												<button
 													iconSclass="z-icon-plus blue " sclass="btn-link"
@@ -280,29 +242,16 @@
 													<columns>
 														<column
 															width="">
+															Descripcion
+															de la
 															Actividad
 														</column>
-														<column
-															width="">
-															Hora
-														</column>
-														<column
-															width="">
-															Fecha
-														</column>
+
 														<column
 															width="">
 															Estado
 														</column>
-														<column
-															width="15%">
-															Descripcion
-														</column>
-														<column
-															width="">
-															Tipo
-															actividad
-														</column>
+
 														<column
 															width="">
 															Acciones
@@ -312,17 +261,11 @@
 													<rows>
 														<row>
 															<label
-																value="Juego de softbol" />
-															<label
-																value="08:00AM-05:00PM" />
-															<label
-																value="03/03/2016-03/03/2016" />
+																value="Buscar Pelotas para juego de beisbol" />
+
 															<label
 																value="Finalizado" />
-															<label
-																value="C.A.America vs Italo" />
-															<label
-																value="Deportiva" />
+
 															<div>
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
@@ -334,17 +277,11 @@
 														</row>
 														<row>
 															<label
-																value="Juego de Tennis" />
-															<label
-																value="08:00AM-05:00PM" />
-															<label
-																value="03/03/2016-03/03/2016" />
+																value="Agendar a los equipos" />
+
 															<label
 																value="No Finalizado" />
-															<label
-																value="C.A.America vs Italo" />
-															<label
-																value="Deportiva" />
+
 															<div>
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
@@ -356,17 +293,27 @@
 														</row>
 														<row>
 															<label
-																value="Juego de Bolas criollas" />
+																value="Buscar arbitros" />
+
 															<label
-																value="08:00AM-05:00PM" />
+																value="No Finalizado" />
+
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" />
+																<button
+																	sclass="btn-link" iconSclass="z-icon-trash-o red"
+																	tooltiptext="Eliminar" />
+															</div>
+														</row>
+														<row>
 															<label
-																value="03/03/2016-03/03/2016" />
+																value="Limpiar piscina" />
+
 															<label
 																value="Finalizado" />
-															<label
-																value="Italo vs Canario" />
-															<label
-																value="Deportiva" />
+
 															<div>
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
@@ -376,28 +323,7 @@
 																	tooltiptext="Eliminar" />
 															</div>
 														</row>
-														<row>
-															<label
-																value="Juego de softbol" />
-															<label
-																value="08:00AM-05:00PM" />
-															<label
-																value="03/03/2016-03/03/2016" />
-															<label
-																value=" No Finalizado" />
-															<label
-																value="C.A.America vs Italo" />
-															<label
-																value="Deportiva" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-pencil blue"
-																	tooltiptext="Modificar" />
-																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o red"
-																	tooltiptext="Eliminar" />
-															</div>
-														</row>
+
 													</rows>
 												</grid>
 											</detail>
@@ -407,9 +333,10 @@
 											<label value="12/12/1920" />
 											<label value="12:00" />
 											<label value="12:00" />
-											<label value="Cancha softbol" />
+											<label
+												value="Cancha softbol, piscina" />
 											<label value="Deportivo" />
-											<label value="100" />
+
 											<div>
 												<button
 													iconSclass="z-icon-plus blue " sclass='btn-link'

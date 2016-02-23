@@ -14,7 +14,7 @@ public class ControllerCancelarEvento extends SelectorComposer<Component> {
 		
 	 @Listen("onClick = #btnEstadoEvento")
 	 public void mostrarAfiliado(){
-		 Window window = (Window)Executions.createComponents("evento/administrarEvento/cancelar.zul", null, null);
+		 Window window = (Window)Executions.createComponents("evento/administrarEvento/finalizarEvento.zul", null, null);
 		 window.doModal();
 
 	 }

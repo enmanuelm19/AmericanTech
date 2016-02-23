@@ -23,29 +23,29 @@
 
 					<rows class="">
 
-						<row class="col-md-12">
+						<!-- <row class="col-md-12">
 							<div>
-								Tipo de evento
-								<n:br></n:br>
-								<combobox width="85%">
-									<comboitem label="Publico" />
-									<comboitem label="Privado" />
-								</combobox>
-
+							Tipo de evento
+							<n:br></n:br>
+							<combobox width="85%">
+							<comboitem label="Publico" />
+							<comboitem label="Privado" />
+							</combobox>
+							
 							</div>
-
+							
 							<div>
-								Instalación
-								<n:br></n:br>
-								<combobox width="85%">
-									<comboitem label="Caney de Rafa" />
-									<comboitem label="Chevecita" />
-									<comboitem label="Salon Principal" />
-									<comboitem label="Piscina" />
-								</combobox>
-
+							Instalación
+							<n:br></n:br>
+							<combobox width="85%">
+							<comboitem label="Caney de Rafa" />
+							<comboitem label="Chevecita" />
+							<comboitem label="Salon Principal" />
+							<comboitem label="Piscina" />
+							</combobox>
+							
 							</div>
-						</row>
+							</row>-->
 
 						<row class="col-md-12">
 							<div>
@@ -78,20 +78,20 @@
 
 						</row>
 						<row class="col-md-12">
-							<div>
-							
+							<!-- <div>
+								
 								Tipo de Evento
 								<n:br></n:br>
 								<combobox width="85%">
-									<comboitem label="Deportivo" />
-									<comboitem label="Cultural" />
-									<comboitem label="Social" />
-									<comboitem label="Recreativa" />
+								<comboitem label="Deportivo" />
+								<comboitem label="Cultural" />
+								<comboitem label="Social" />
+								<comboitem label="Recreativa" />
 								</combobox>
-
-							
-							
-								Cantidad esperada de visitas
+								
+							-->
+							<div>
+								Nombre del evento
 								<n:br></n:br>
 								<textbox type="text" width="85%"
 									tabindex="10" constraint="no empty" />
@@ -108,6 +108,182 @@
 
 					</rows>
 				</grid>
+				<n:br></n:br>
+				<div align="left" class="linea-two"></div>
+				<n:br></n:br>
+				<div class="row">
+					<div class="col-md-6">
+						<div align="left">
+							Seleccione las preferencias relacionadas con
+							el evento:
+							<n:br></n:br>
+							<combobox width="80%">
+								<comboitem label="Deportivo" />
+								<comboitem label="Cultural" />
+							</combobox>
+							<button sclass="btn-link"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar preferencia" />
+
+						</div>
+						<n:br></n:br>
+						<grid id="gridPreferencias"
+							emptyMessage="No se encuentran solicitudes registradas"
+							mold="paging" pageSize="10">
+
+							<columns>
+
+
+								<column hflex="">Preferencia</column>
+
+								<column hflex="">Acciones</column>
+							</columns>
+
+							<rows>
+								<row>
+									<label value="Deportivo" />
+
+
+
+									<div>
+
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id="btnCancelar"
+											tooltiptext="Eliminar" />
+									</div>
+								</row>
+							</rows>
+
+							<foot>
+								<footer span="5" class="footer_right"
+									label="0 items en la lista" />
+							</foot>
+						</grid>
+
+					</div>
+
+					<div class="col-md-6">
+						<div align="left">
+							Seleccione la instalacion/es donde desea
+							realizar el evento:
+							<n:br></n:br>
+							<combobox width="80%">
+								<comboitem label="Caney de Rafa" />
+								<comboitem label="Caney de chevecita" />
+								<comboitem label="Salón principal" />
+							</combobox>
+							<button sclass="btn-link"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar instalacion" />
+
+						</div>
+						<n:br></n:br>
+						<grid id="gridInstalaciones"
+							emptyMessage="No se encuentran solicitudes registradas"
+							mold="paging" pageSize="10">
+
+							<columns>
+
+
+								<column hflex="">Instalaciones</column>
+
+								<column hflex="">Acciones</column>
+							</columns>
+
+							<rows>
+								<row>
+									<label value="Caney de Rafa" />
+
+
+
+									<div>
+
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+									</div>
+								</row>
+							</rows>
+
+							<foot>
+								<footer span="5" class="footer_right"
+									label="0 items en la lista" />
+							</foot>
+						</grid>
+					</div>
+				</div>
+				<n:br></n:br>
+
+				<n:br></n:br>
+				<div align="left" class="linea-two"></div>
+				<n:br></n:br>
+				<div class="">
+
+					<div class="col-md-12">
+						<div class="row" align="left">
+							<div class="col-md-6">
+								Seleccione el indicador
+								<n:br></n:br>
+								<combobox width="85%">
+									<comboitem
+										label="Cantidad de invitados" />
+									<comboitem
+										label="Cantidad de dinero recaudado" />
+								</combobox>
+
+							</div>
+							<div class="col-md-6">
+								Cant esperada (indicador)
+								<n:br></n:br>
+								<textbox type="text" width="80%"
+									tabindex="10" constraint="no empty" />
+								<button sclass="btn-link"
+									iconSclass="z-icon-plus blue" id=""
+									tooltiptext="Agregar Indicador" />
+							</div>
+						</div>
+						<n:br></n:br>
+						<grid id=""
+							emptyMessage="No se encuentran solicitudes registradas"
+							mold="paging" pageSize="10">
+
+							<columns>
+
+
+								<column hflex="">Indicador</column>
+								<column hflex="">Cant esperada</column>
+								<column hflex="">Acciones</column>
+							</columns>
+
+							<rows>
+								<row>
+									<label value="Cant de invidados" />
+									<label value="300" />
+
+
+									<div>
+
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+									</div>
+								</row>
+							</rows>
+
+							<foot>
+								<footer span="5" class="footer_right"
+									label="0 items en la lista" />
+							</foot>
+						</grid>
+
+					</div>
+
+
+				</div>
+				<n:br></n:br>
+				<n:br></n:br>
+
+
+
+
 				<space spacing="35%" />
 				<div>
 
