@@ -240,18 +240,114 @@
 								<!-- AQUI TERMINA GRUPO BASICOS -->
 
 								<separator spacing="30px"></separator>
-
-								<div class="contenido">
-									<div align="left">
-										<div class='encabezado'>
-											Opiniones
-										</div>
-										<div class='linea-two'></div>
+								<div align="left">
+									<div class="encabezado">
+										Intereses
 									</div>
-									<separator spacing="20px" />
+									<div align="left"
+										class="linea-two">
 
+									</div>
+								</div>
+
+								<hbox align="center" pack="center"
+									width="100%"><!-- GRUPO INTERESES -->
 									<grid
-										emptyMessage="No hay opiniones" mold="paging" pageSize="10">
+										emptyMessage="No se encuentran reglas registradas"
+										mold="paging" pageSize="5">
+
+
+										<columns>
+											<column hflex="3">
+												Tipo Preferencia
+											</column>
+											<column hflex="3">
+												Preferencia
+											</column>
+
+
+										</columns>
+										<rows>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+											<row>
+												<label value="Deporte" />
+												<label value="Futbol" />
+
+											</row>
+										</rows>
+										<foot>
+											<footer span="3"
+												class="footer_right" label="3 items en la lista" />
+										</foot>
+									</grid>
+
+
+
+								</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
+
+
+								<separator spacing="30px"></separator>
+								<div align="left">
+									<div class="encabezado">
+										Opiniones
+									</div>
+									<div align="left"
+										class="linea-two">
+
+									</div>
+								</div>
+								
+									<grid
+										emptyMessage="No hay opiniones" mold="paging" pageSize="5">
 										<auxhead
 											sclass="category-center">
 											<auxheader colspan="1">
@@ -261,11 +357,14 @@
 													width="85%" placeholder="Buscar" />
 											</auxheader>
 
-											<auxheader colspan="3" />
+											<auxheader colspan="4" />
 										</auxhead>
 										<columns>
 											<column hflex="2">
-												Socio
+												1er Nombre Socio
+											</column>
+											<column hflex="2">
+												1er Apellido Socio
 											</column>
 											<column hflex="2">
 												Opinión
@@ -278,6 +377,7 @@
 										<rows>
 											<row>
 												<label value="Miguel" />
+												<label value="Perez" />
 												<label
 													value="Mala Persona" />
 												<label value="3" />
@@ -286,104 +386,93 @@
 											</row>
 											<row>
 												<label value="Miguel" />
+												<label value="Perez" />
 												<label
 													value="Mala Persona" />
 												<label value="3" />
 												<label
 													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
+											<row>
+												<label value="Miguel" />
+												<label value="Perez" />
+												<label
+													value="Mala Persona" />
+												<label value="3" />
+												<label
+													value="12/12/2012" />
+											</row>
 
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
 
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
 										</rows>
 									</grid>
-								</div>
-
-
-
+								
+								
 								<hlayout>
-									<div>
-										<button
-											iconSclass="z-icon-floppy-o" class='boton-guardar'
-											label="Guardar" />
-									</div>
+									
 									<div>
 										<button
 											iconSclass="z-icon-times-circle" class='boton-cancelar'
