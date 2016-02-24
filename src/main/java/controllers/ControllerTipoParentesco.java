@@ -23,4 +23,4 @@ public class ControllerTipoParentesco extends SelectorComposer<Component> {
 	        window.doModal();
 	    }
 
-}
+} 
