@@ -30,10 +30,6 @@
 					<div class="input-group">
 						<image src="/assets/portal/img/img1.jpg"
 							class='img-responsive col-md-offset-1' />
-						<separator spacing="30px"></separator>
-						<fileupload label="Examinar"
-							iconSclass="z-icon-folder-open"
-							class='boton-guardar col-md-offset-4' />
 					</div>
 				</div>
 
@@ -109,8 +105,7 @@
 										class="col-md-6" readonly="true" type="email"
 										value="hdhdhdh@jdhdh.com">
 									</textbox>
-									<button class="col-md-2 btn-link"
-										iconSclass="z-icon-pencil blue" />
+
 								</div>
 							</row>
 							<row>
@@ -120,8 +115,7 @@
 									<textbox constraint="no empty"
 										class="col-md-6" readonly="true" value="04135689256">
 									</textbox>
-									<button class="col-md-2 btn-link"
-										iconSclass="z-icon-pencil blue" />
+
 								</div>
 							</row>
 							<row>
@@ -158,8 +152,7 @@
 										class="col-md-6" readonly="true" cols="45" rows="2"
 										type="text"
 										value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
-									<button class="col-md-2 btn-link"
-										iconSclass="z-icon-pencil blue" />
+
 								</div>
 							</row>
 						</rows>
@@ -187,27 +180,6 @@
 
 				<grid emptyMessage="No se encuentran reglas registradas"
 					mold="paging" pageSize="10">
-					<auxhead sclass="category-center">
-						<auxheader colspan="1">
-							<combobox width="100%" class="col-md-12"
-								value="Tipo Preferencias">
-								<comboitem label="Deporte" />
-								<comboitem label="Cultura" />
-								<comboitem label="Social" />
-							</combobox>
-						</auxheader>
-						<auxheader colspan="1">
-							<combobox width="100%" class="col-md-12"
-								value="Preferencias">
-								<comboitem label="futbol" />
-								<comboitem label="beisbol" />
-								<comboitem label="basket" />
-								<comboitem label="softball" />
-							</combobox>
-						</auxheader>
-						<auxheader colspan="1"></auxheader>
-					</auxhead>
-
 					<columns>
 						<column hflex="3">Tipo Preferencia</column>
 						<column hflex="3">Preferencia</column>
@@ -267,12 +239,6 @@
 			<hbox width="100%" align="center" pack="center">
 
 				<separator spacing="5%"></separator>
-
-
-				<button iconSclass="z-icon-edit" class='boton-guardar'
-					label="Guardar" />
-
-				<space bar="False" spacing="5%" />
 
 				<button iconSclass="z-icon-times-circle"
 					class='boton-cancelar' label="Cancelar " />

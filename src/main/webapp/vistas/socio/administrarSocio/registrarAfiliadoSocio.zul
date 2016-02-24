@@ -12,14 +12,15 @@
 
 
 <zk xmlns:n="native">
-	<window title=" " closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		 width="70%">
-	<hlayout spacing="0" apply="controllers.SocioController">
+	<window title=" " closable="true" border="none"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		width="70%">
+		<hlayout spacing="0" apply="controllers.SocioController">
 
 
 
-		<vlayout spacing="0" hflex="1">
-			
+			<vlayout spacing="0" hflex="1">
+
 				<div sclass="page-header" align="left">
 					<label value="Registrar Afiliado" />
 				</div>
@@ -29,7 +30,7 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div  width="100%">
+						<div width="100%">
 
 							<div align="left">
 								<div class="encabezado">
@@ -188,99 +189,114 @@
 											width="100%" />
 									</div>
 								</div>
-
 							</div>
+							<div align="left">
+								<div class="encabezado">Intereses</div>
+								<div align="left" class="linea-two">
 
-							<div class="col-md-12"
-								style="margin-top: 67%;" align="left"><!-- GRUPO INTERESES -->
-
-								<div align="left">
-									<div class="encabezado">
-										Intereses
-									</div>
-									<div align="left"
-										class="linea-two">
-
-									</div>
 								</div>
+							</div>
+							<hbox align="center" pack="center"
+								width="100%"><!-- GRUPO INTERESES -->
+								<grid
+									emptyMessage="No se encuentran reglas registradas"
+									mold="paging" pageSize="10">
+									<auxhead sclass="category-center">
+										<auxheader colspan="1">
+											<combobox width="100%"
+												class="col-md-12" value="Tipo Preferencias">
+												<comboitem
+													label="Deporte" />
+												<comboitem
+													label="Cultura" />
+												<comboitem
+													label="Social" />
+											</combobox>
+										</auxheader>
+										<auxheader colspan="1">
+											<combobox width="100%"
+												class="col-md-12" value="Preferencias">
+												<comboitem
+													label="futbol" />
+												<comboitem
+													label="beisbol" />
+												<comboitem
+													label="basket" />
+												<comboitem
+													label="softball" />
+											</combobox>
+										</auxheader>
+										<auxheader colspan="1">
+										</auxheader>
+									</auxhead>
 
-								<hbox width="100%"
-									style="margin-top: 31px">
+									<columns>
+										<column hflex="3">
+											Tipo Preferencia
+										</column>
+										<column hflex="3">
+											Preferencia
+										</column>
+
+										<column>Acciones</column>
+									</columns>
+									<rows>
+										<row>
+											<label value="Deporte" />
+											<label value="Futbol" />
+
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													tooltiptext="Eliminar" />
+											</div>
+										</row>
+										<row>
+											<label value="Deporte" />
+											<label value="beisbol" />
+
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													tooltiptext="Eliminar" />
+											</div>
+										</row>
+										<row>
+											<label value="Deporte" />
+											<label value="Basket" />
+
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													tooltiptext="Eliminar" />
+											</div>
+										</row>
+										<row>
+											<label value="Deporte" />
+											<label value="Softball" />
+
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													tooltiptext="Eliminar" />
+											</div>
+										</row>
 
 
-									<vbox>
-										<label>Deportes</label>
-										<checkbox id="l1" label="Futbol"
-											onCheck="doChecked()" />
-										<checkbox id="l2"
-											label="Beisbol" onCheck="doChecked()" />
-										<checkbox id="l3" label="Basket"
-											onCheck="doChecked()" />
-										<checkbox id="l4"
-											label="Softball" onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Cultura</label>
-										<checkbox id=""
-											label="Ping Pong" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Bolas Criollas" onCheck="doChecked()" />
-										<checkbox id="" label="Natacion"
-											onCheck="doChecked()" />
-										<checkbox id="" label="Domino"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Social</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
 
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Academico</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
+									</rows>
+									<foot>
+										<footer span="3"
+											class="footer_right" label="3 items en la lista" />
+									</foot>
+								</grid>
 
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<separator></separator>
-									<separator></separator>
-									<vbox>
-										<label>Otros</label>
-										<checkbox id="" label="Bailar"
-											onCheck="doChecked()" />
 
-										<checkbox id=""
-											label="Tocar Cuatro" onCheck="doChecked()" />
-										<checkbox id=""
-											label="Escuchar musica" onCheck="doChecked()" />
-										<checkbox id="" label="Teatro"
-											onCheck="doChecked()" />
-									</vbox>
-									<button sclass="btn-link"
-										iconSclass="z-icon-pencil blue"
-										tooltiptext="Editar Intereses" />
-								</hbox>
-							</div><!-- AQUI TERMINA GRUPO INTERESES -->
+
+							</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
+
+
+
 
 							<separator></separator>
 							<separator></separator>
@@ -301,8 +317,8 @@
 					</div>
 				</div>
 
-		
-		</vlayout>
-	</hlayout>
+
+			</vlayout>
+		</hlayout>
 	</window>
 </zk>
