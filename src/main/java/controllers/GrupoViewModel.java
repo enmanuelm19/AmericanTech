@@ -6,6 +6,7 @@ import java.util.List;
 
 import models.Funcion;
 import models.Grupo;
+import service.FuncionService;
 
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -15,7 +16,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
-public class ControllerGrupo {
+public class GrupoViewModel {
 	private Grupo grupo = new Grupo();
 	private static List<Grupo> gruposAll=new ArrayList<Grupo>(); //Coleccion que tiene que ser estatica.. esta se va a usar como referencia en el filtro
 
@@ -73,11 +74,7 @@ public class ControllerGrupo {
 	 @Command
 	 @NotifyChange({"funcionAll","verFunciones"} )
 	 public void funcionesGrupo(@BindingParam("Grupo") Grupo g){
-		 funcionAll.add(new Funcion(1, "nose", "dd"));
-		 funcionAll.add(new Funcion(2, "noseerrqq", "dd"));
-		 funcionAll.add(new Funcion(3, "noserree", "dd"));
-		 funcionAll.add(new Funcion(4, "noseww", "dd"));
-		 funcionAll.add(new Funcion(5, "nosesss", "dd"));
+		 funcionAll = FuncionService.getFunciones();
 		 verFunciones=true;
 	 }
 	public boolean getVerFunciones(){

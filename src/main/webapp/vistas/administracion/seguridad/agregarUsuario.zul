@@ -38,32 +38,20 @@
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3"> Usuario </label>
-									<textbox constraint="no empty" class="col-md-9">
-									</textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-3"> Grupo </label>
-									<combobox>
-										<comboitem label="Seleccione ..."> </comboitem>
-										<comboitem label="Secretaria"></comboitem>
-										<comboitem label="Vigilante"></comboitem>
-										<comboitem label="Administrador"> </comboitem>
-									</combobox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-3"> Correo electronico </label>
-									<textbox type="email" class="col-md-9" constraint="no empty"> </textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-3"> Nombre </label>
+									<label class="col-md-3"> Nombres </label>
 									<textbox class="col-md-9" constraint="no empty"> </textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3"> 	Apellido </label>
+									<textbox class="col-md-9" constraint="no empty"> </textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3"> Nacimiento </label>
+									<datebox id="DateFchInicio" cols="12" format="short " onCreate="self.value = new Date()" />
 								</div>
 							</row>
 							<row>
@@ -75,11 +63,11 @@
 										<comboitem label="Mujer"></comboitem>
 									</combobox>
 								</div>
-							</row>							
+							</row>
 							<row>
 								<div>
-									<label class="col-md-3"> 	Apellido </label>
-									<textbox class="col-md-9" constraint="no empty"> </textbox>
+									<label class="col-md-3"> Correo electronico </label>
+									<textbox type="email" class="col-md-9" constraint="no empty"> </textbox>
 								</div>
 							</row>
 							<row>
@@ -95,18 +83,19 @@
 									</label>
 									<textbox class="col-md-4" constraint="no empty"> </textbox>
 								</div>
-							</row>							
+							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Direccion </label>
 									<textbox class="col-md-9" constraint="no empty">
 									</textbox>
 								</div>
-							</row>							
+							</row>
 							<row>
 								<div>
-									<label class="col-md-3"> Nacimiento </label>
-									<datebox id="DateFchInicio" cols="12" format="short " onCreate="self.value = new Date()" />
+									<label class="col-md-3"> Usuario </label>
+									<textbox constraint="no empty" class="col-md-9">
+									</textbox>
 								</div>
 							</row>
 							<row>
@@ -132,7 +121,51 @@
 									<label class="col-md-3"> Respuesta Secreta </label>
 									<textbox class="col-md-9" constraint="no empty" type="password"> </textbox>
 								</div>
-							</row>														
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3"> Grupo </label>
+									<combobox>
+										<comboitem label="Seleccione ..."> </comboitem>
+										<comboitem label="Secretaria"></comboitem>
+										<comboitem label="Vigilante"></comboitem>
+										<comboitem label="Administrador"> </comboitem>
+									</combobox>
+									<button sclass="btn-link"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar grupo" />
+								</div>
+							</row>
+							<row>
+								<div>
+									<grid id="gridInstalaciones"
+							emptyMessage="No se encuentran solicitudes registradas"
+							mold="paging" pageSize="10">
+							<columns>
+								<column hflex="">Grupos</column>
+								<column hflex="">Acciones</column>
+							</columns>
+							<rows>
+								<row>
+									<label value="Junta directiva" />
+									<div>
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+									</div>
+								</row>
+								<row>
+									<label value="Secretaria"></label>
+									<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+								</row>
+							</rows>
+							<foot>
+								<footer span="5" class="footer_right"
+									label="2 items en la lista" />
+							</foot>
+						</grid>
+								</div>
+							</row>													
 						</rows>
 					</grid>
 				</div>
