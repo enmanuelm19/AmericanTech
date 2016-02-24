@@ -4,202 +4,202 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<window title="Registrar Instalacion" width="60%" style="iconSclass=z-icon-cogs;" closable="true"
+	<window title="Registrar Instalacion" width="60%"
+		style="iconSclass=z-icon-cogs;" closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
-	<caption iconSclass="z-icon-cogs"/>
-			<div class='contenedor' align="center">
-				<div width="95%">
+		<caption iconSclass="z-icon-cogs" />
+			<separator spacing="30px" />
+		<div class='contenedor' align="center">
+			<div width="95%">
 				<div width="100%">
 					<div align="left">
 						<div class='encabezado'>Datos Básicos</div>
 						<div class='linea-two'></div>
 					</div>
-					<separator spacing="2%" />
+					<separator spacing="30px" />
 					<div class='row'>
 
 						<div class='col-md-2'>
-							<grid id="galery" width="100%"
+							<grid id="galery" class='col-md-12'
 								sclass="galeria" mold="paging" pageSize="3">
 								<columns>
-									<column width="100%" align="center" />
+									<column class='col-md-12' align="center" />
 								</columns>
 								<rows>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img1.jpg" class='im col-md-12' />
 									</row>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img1.jpg" class='im col-md-12' />
 									</row>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img1.jpg" class='im col-md-12' />
 									</row>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img2.jpg" class='im col-md-8' />
 									</row>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img1.jpg" class='im col-md-8' />
 									</row>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img1.jpg" class='im col-md-8' />
 									</row>
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" width="60%" class='im' />
+											src="/assets/portal/img/img1.jpg" class='im col-md-8' />
 									</row>
 								</rows>
 							</grid>
 						</div>
 
-						<div align="right" class='col-md-3'>
+						<div align="right" class='col-md-4'>
 
 							<image src="/assets/portal/img/img2.jpg"
-								width="100%" />
+								class='col-md-12' />
 							<separator />
 							<div>
 								<fileupload
-									iconSclass="z-icon-folder-open" class='boton-guardar'
-									label="Examinar" />
+									iconSclass="z-icon-folder-open"
+									class='boton-guardar col-md-6 col-md-offset-3' label="Examinar" />
 
 							</div>
 						</div>
 
-						<div class='col-md-4' align="left">
-							<vbox>
-								Descripción
-								<textbox width="150%"
-									constraint="no empty" />
-							</vbox>
-							<separator />
-							<vbox>
-								Tipo de Instalación
-								<hbox>
-									<combobox width="110%"
-										value="Seleccione Una Opcion">
-										<comboitem label="Caney" />
-										<comboitem label="SalÃ³n" />
-									</combobox>
-									<button
-										iconSclass="z-icon-plus blue" class='btn-link'
-										tooltiptext="Agregar" />
-								</hbox>
-							</vbox>
-							<separator />
-							<vbox>
-								Capacidad de Personas
-								<spinner
-									constraint="no empty, no negative, no zero" width="60%" />
-							</vbox>
-							<separator />
-							<vbox>
-								Costo Bs.
-								<doublebox constraint="no empty" />
-							</vbox>
-							<separator spacing="10%" />
+						<div class='col-md-6' align="left">
+							<grid>
+								<rows>
+									<row class="col-md-12">
+										<div>
+											<label class="col-md-4">
+												Descripción
+											</label>
+											<textbox id="txtDescripcion"
+												constraint="no empty" class="col-md-4">
+											</textbox>
+										</div>
+									</row>
+									<row>
+
+										<div>
+											<label class="col-md-4" id="lblTipoInstalacion">
+												Tipo Instalación
+											</label>
+											<combobox id="cmbTipoInstalacion"
+												value="Seleccione una opción"  class="col-md-4" >
+												<comboitem
+													label="Caney" />
+												<comboitem
+													label="Salón" />
+											</combobox>
+											<button id="btnAgregar" 
+												iconSclass="z-icon-plus blue" class='btn-link col-md-4'
+												tooltiptext="Agregar" />
+										</div>
+									</row>
+									<row>
+										<div>
+											<label class="col-md-4" id="lblCapacidad">
+												Capacidad
+											</label>
+											<spinner
+												id="spnCantidad" constraint="no empty, no negative, no zero"
+												class="col-md-8" />
+										</div>
+									</row>
+									<row>
+										<div>
+											<label class="col-md-4">
+												Costo Alquiler
+											</label>
+											<doublebox
+												constraint="no empty" class="col-md-4" />
+										</div>
+									</row>
+								</rows>
+							</grid>
+
 						</div>
 					</div>
 				</div>
-				<separator spacing="3%" />
-				<div width="100%">
+				<separator spacing="30px" />
+					<div width="100%">
 					<div align="left">
 						<div class='encabezado'>Recursos</div>
 					</div>
 					<div class='linea-two' />
-					<separator spacing="2%"/>
+				
 					<div class='row' align="center">
-						
-						<div class='col-md-3 col-md-offset-1' align="center">
-							<separator/>
-							<div align="left">
-								<div>Recursos Disponibles</div>
-							</div>
-							<div class='linea-two'/>
-						
-							<listbox width="100%"
-								mold="paging" pageSize="15">
-								<listhead><listheader align="center"></listheader> </listhead>
-								<listitem>
-									<listcell label="Sillas" />
-								</listitem>
-								<listitem>
-									<listcell label="Mesas" />
-								</listitem>
-								<listitem>
-									<listcell
-										label="Bocinas" />
-								</listitem>
-								<listitem>
-									<listcell label="Manteles" />
-								</listitem>
-								<listitem>
-									<listcell label="Bombillos" />
-								</listitem>
-								<listitem>
-									<listcell
-										label="Parrillera" />
-								</listitem>
 
-							</listbox>
+						<div class='col-md-12' align="center">
+							<separator spacing="30px"></separator>
+							<grid>
+								<rows>
+									<row>
+										<div>
+											<label class="col-md-2" id="lblRecursos">
+												Disponibles
+											</label>
+											<combobox id="cmbRecursos"
+												value="Seleccione una opción"  class="col-md-3" >
+												<comboitem
+													label="Sillas" />
+												<comboitem
+													label="Mesas" />
+											</combobox>
+											
+											<label class="col-md-1" id="lblCantidad">
+												Cantidad
+											</label>
+											<spinner
+												id="spnCantidadRecursos" constraint="no empty, no negative, no zero"
+												class="col-md-2" />
+											<button id="btnAgregarRecurso" 
+												iconSclass="z-icon-plus blue" class='btn-link col-md-2'
+												tooltiptext="Agregar" />
+												
+										</div>
+									</row>
+								</rows>
+							</grid>
+								
 						</div>
-						<separator />
-						<div class='col-md-2'>
-							<vlayout>
-							<separator spacing="80%"/>
-								<div>
-									<button iconSclass="z-icon-plus"
-										class='btn-primary' />
-								</div>
-								<div>
-									<button
-										iconSclass="z-icon-arrow-right"
-										class='btn-primary' />
-								</div>
-
-								<div>
-									<button
-										iconSclass="z-icon-arrow-left"
-										class='btn-primary' />
-								</div>
-							</vlayout>
-						</div>
-
-						<div class='col-md-5'>
-							<div align="left">
-								<div>Recursos Asignados</div>
-							</div>
-							<div class='linea-two'/>
+						<separator spacing="30px" />
 						
-							<listbox width="100%" mold="paging" pageSize="15">
+
+						<div class='col-md-12'>
+							<div class='linea-two' />
+							<separator spacing="30px" />
+							<listbox mold="paging"
+								pageSize="15" multiple="true" class='col-md-8'>
 								<listhead sizable="true">
-									<listheader align="center"
-										label="" />
-									<listheader align="center"
+									<listheader label="Recursos" />
+									<listheader 
 										label="Cantidad" />
 								</listhead>
 								<listitem>
 									<listcell label="Parrillera" />
-									<listcell><spinner constraint="no empty, no negative, no zero"/> </listcell>
+									<listcell label="1" />
 								</listitem>
 								<listitem>
 									<listcell label="Manteles" />
-									<listcell><spinner constraint="no empty, no negative, no zero"/> </listcell>
+									<listcell label="8" />
 								</listitem>
 								<listitem>
 									<listcell label="Mesas" />
-									<listcell><spinner constraint="no empty, no negative, no zero"/> </listcell>
+									<listcell label="8" />
 								</listitem>
 
 							</listbox>
 						</div>
-						<separator spacing="2%" />
 					</div>
 				</div>
-				<separator spacing="5%" />
+				<separator spacing="30px" />
 				<div>
 					<button class='boton-guardar'
 						iconSclass="z-icon-floppy-o" label="Registrar" />
@@ -209,10 +209,10 @@
 				</div>
 				<separator />
 			</div>
-				<separator />
-				<separator />
-				<separator />
-			</div>
+			<separator />
+			<separator />
+			<separator />
+		</div>
 	</window>
 	<style>
 		.galeria .z-paging { border:none; background: none; margin:0 4%;
