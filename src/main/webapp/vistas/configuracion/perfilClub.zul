@@ -159,9 +159,14 @@
 														label="Instagram">
 													</comboitem>
 												</combobox>
+												<button	iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar" />
 											</div>
 										</row>
-
+										<row>
+											<div>										
+												
+											</div>
+										</row>
 									</rows>
 								</grid>
 							</div>
@@ -181,21 +186,23 @@
 								</listbox>
 							</div>
 						</div>
+						
+						<separator spacing="20px"></separator>
 
+						<div class="row col-md-12">
+							<button class="boton-guardar col-md-3 col-md-offset-2"
+								label="Guardar" type="button" iconSclass="z-icon-floppy-o">
+							</button>
+							<button class="boton-cancelar col-md-3 col-md-offset-2"
+								iconSclass="z-icon-times" type="button" label="Cancelar">
+							</button>
+						</div>
 					</div>
-
+					
 				</div>
-
+				
 			</div>
-					<separator spacing="20px"></separator>
-			<div class="row col-md-12">
-				<button class="boton-guardar col-md-3 col-md-offset-2"
-					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
-				</button>
-				<button class="boton-cancelar col-md-3 col-md-offset-2"
-					iconSclass="z-icon-times" type="button" label="Cancelar">
-				</button>
-			</div>
+	
 		</div>
 	</vlayout>
 
