@@ -399,16 +399,25 @@
 														sclass="z-grid z-column-content">
 
 														<column
-															width="30%" label="numero carnet"
+															width="10%" label="Carnet"
 															iconSclass="z-icon-caret-right blue" align="center" />
 														<column
-															width="30%" label="nombre"
+															width="15%" label="1er nombre"
+															iconSclass="z-icon-caret-right blue" align="center" />
+															<column
+															width="15%" label="2do nombre"
+															iconSclass="z-icon-caret-right blue" align="center" />
+															<column
+															width="15%" label="1er apellido"
+															iconSclass="z-icon-caret-right blue" align="center" />
+															<column
+															width="15%" label="2do Apellido"
 															iconSclass="z-icon-caret-right blue" align="center" />
 														<column
-															width="25%" label="parentesco"
+															width="15%" label="parentesco"
 															iconSclass="z-icon-caret-right blue" align="center" />
 														<column
-															width="15%" align="center" label="Ver" />
+															width="10%" align="center" label="Ver" />
 
 													</columns>
 													<rows>
@@ -418,6 +427,12 @@
 																value="12345" />
 															<label
 																value="laura" />
+																<label
+																value="Maria" />
+																<label
+																value="Diaz" />
+																<label
+																value="perez" />
 															<label
 																value="Esposa" />
 															<div>
@@ -432,12 +447,20 @@
 															<label
 																value="12345" />
 															<label
-																value="miguel" />
+																value="laura" />
+																<label
+																value="Maria" />
+																<label
+																value="Diaz" />
+																<label
+																value="perez" />
 															<label
-																value="hijo" />
-															<button
-																sclass="btn-link" iconSclass="z-icon-search blue"
-																tooltiptext="Ver" />
+																value="Esposa" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-search blue"
+																	tooltiptext="Ver"/>
+															</div>
 
 														</row>
 														<row>
@@ -445,14 +468,67 @@
 															<label
 																value="12345" />
 															<label
-																value="maria" />
+																value="laura" />
+																<label
+																value="Maria" />
+																<label
+																value="Diaz" />
+																<label
+																value="perez" />
 															<label
-																value="hija" />
-															<button
-																sclass="btn-link" iconSclass="z-icon-search blue"
-																tooltiptext="Ver" />
+																value="Esposa" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-search blue"
+																	tooltiptext="Ver"/>
+															</div>
 
 														</row>
+														
+														<row>
+
+															<label
+																value="12345" />
+															<label
+																value="laura" />
+																<label
+																value="Maria" />
+																<label
+																value="Diaz" />
+																<label
+																value="perez" />
+															<label
+																value="Esposa" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-search blue"
+																	tooltiptext="Ver"/>
+															</div>
+
+														</row>
+														<row>
+
+															<label
+																value="12345" />
+															<label
+																value="laura" />
+																<label
+																value="Maria" />
+																<label
+																value="Diaz" />
+																<label
+																value="perez" />
+															<label
+																value="Esposa" />
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-search blue"
+																	tooltiptext="Ver"/>
+															</div>
+
+														</row>
+														
+
 													</rows>
 												</grid>
 											</panelchildren>
