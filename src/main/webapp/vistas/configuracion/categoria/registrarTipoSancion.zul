@@ -5,13 +5,10 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window id="winRegistrarMS"
-		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar motivo sancion':'Registrar motivo sancion')"
-		closable="true" border="none"
+	<window style="iconSclass=z-icon-cogs; height:auto;"
+		title=" Registrar Tipo de Sanción" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.RegistrarMotivoSancionViewModel')">
+		height="50%" width="40%">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">
@@ -22,33 +19,40 @@
 					<div align="left" class="linea-two"
 						style="margin-bottom: 6%" />
 				</div>
-				<grid>
-					<rows>
-						<row>
-							<div class="row col-md-12">
-								<div class="col-md-4">Descripción</div>
-								<div class="col-md-8">
-									<textbox type="text" rows="4"
-										value="@bind(vm.motivoSancion.descripcion)" width="100%"
-										constraint="no empty" />
+				<div class="row">
+					<grid>
+						<rows>
+							<row>
+								<div>
+									<label class="col-md-2">Tipo</label>
+									<textbox type="text" value=""
+										constraint="no empty" class="col-md-4" />
 								</div>
-							</div>
-						</row>
-					</rows>
-				</grid>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-2">
+										Descripción
+									</label>
+									<textbox type="text" rows="4"
+										value="" constraint="no empty" class="col-md-10" />
+								</div>
+							</row>
+
+						</rows>
+					</grid>
+				</div>
 				<div align="center" style="margin-top: 7%;">
 					<hbox>
 						<div>
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
-								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar', win=winRegistrarMS)" />
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar" />
 						</div>
 						<div>
 							<button id="cancelarBtn"
 								iconSclass="z-icon-times-circle" class='boton-cancelar'
-								style="margin-bottom: 6%" label="Cancelar"
-								onClick="@command('cerrarModal', win=winRegistrarMS)" />
+								style="margin-bottom: 6%" label="Cancelar" />
 						</div>
 					</hbox>
 				</div>
