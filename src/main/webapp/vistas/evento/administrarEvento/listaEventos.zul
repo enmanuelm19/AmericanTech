@@ -21,7 +21,7 @@
 					<space />
 					<div class='form-pricing' align="left" width="90%"
 						style="margin-bottom: 20px">
-						<div apply="controllers.ControladorModalAbrir"
+						<div apply="controllers.ControllerEvento"
 							xmlns:w='client' align="right">
 							<button id="btnRegistrarEvento"
 								label="Registrar Evento" iconSclass="z-icon-plus"
@@ -72,19 +72,16 @@
 											<auxheader colspan="1" />
 											<auxheader colspan="1" />
 											<auxheader colspan="1" />
-											<auxheader colspan="9">
+											<auxheader colspan="10">
 
 											</auxheader>
 										</auxhead>
 
 										<columns>
-											<column width="8%">
-												Código
-											</column>
+											<column width="4%"></column>
 											<column width="12%">
 												Socio
 											</column>
-
 											<column width="10%">
 												Fecha inicio
 											</column>
@@ -96,25 +93,91 @@
 											</column>
 											<column width="10%">
 												Hora
-											</column>
+											</column>		
 											<column width="10%">
-												Invitados
+												Preferencias
 											</column>
-											<column width="10%">
-												Tipo
+											<column width="15%">
+												Instalaciones
 											</column>
-
-											<column width="10%">
-												Instalación
+											<column width="15%">
+												Estado
 											</column>
-											<column width="10%">
+											<column width="15%">
 												Cancelar
 											</column>
 										</columns>
 
 										<rows>
+										
 											<row>
-												<label value="001" />
+											
+											
+											<detail open="false"
+												fulfill="onOpen">
+												<grid
+													emptyMessage="No se encuentran actividades registradas"
+													mold="paging" pageSize="5">
+													<auxhead
+														sclass="category-center">
+
+														<auxheader
+															colspan="2" />
+
+													</auxhead>
+
+													<columns>
+														<column
+															width="">
+															Indicador
+														</column>
+														<column
+															width="">
+															Valor Esperado
+														</column>
+														<column
+															width="">
+															Valor Real
+														</column>
+														<column
+															width="">
+															Variacion
+														</column>
+														<column
+															width="">
+															Acciones
+														</column>
+
+													</columns>
+													<rows>
+														<row>
+															<label
+																value="Cantidad Esperada de invitados" />
+															<label
+																value="500" />
+															<label
+																value="400" />
+															<label
+																value="100" />
+														
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Modificar" id="btnEstadoEvento" />
+																
+															</div>
+														</row>
+												
+
+													</rows>
+												</grid>
+											</detail>
+											
+											
+											
+											
+											
+												
 												<label
 													value="jose Peña" />
 												<label
@@ -126,44 +189,21 @@
 
 												<label
 													value="8:00AM-05:00PM" />
-												<label value="100" />
-												<label value="Publico" />
+												
+												<label value="Deportivo" />
+												<label value="Salon Principal" />
 												<label
-													value="Salon principal" />
-												<div>
-													<button
-														iconSclass="z-icon-times-circle red " class='btn-link'
-														tooltiptext="Cancelar Evento" id="" />
-
-												</div>
+													value="Terminado" />
+											  <div>
+														<button sclass="btn-link"
+															iconSclass="z-icon-pencil blue"  id="btnEditarEvento"
+															tooltiptext="Aprobar" />
+														<button sclass="btn-link"
+															iconSclass="z-icon-times-circle red" id="btnCancelar"
+															tooltiptext="Eliminar" />
+													</div>
 											</row>
-											<row>
-												<label value="002" />
-												<label
-													value="Juan Lopez" />
-												<label
-													value="12/12/1920" />
-												<label
-													value="12/12/1920" />
-												<label
-													value="Semana Deportiva" />
-
-												<label
-													value="8:00AM-05:00PM" />
-												<label value="100" />
-												<label
-													value="Deportivo" />
-												<label
-													value="Salon principal" />
-												<div>
-													<button
-														iconSclass="z-icon-times-circle red " class='btn-link'
-														tooltiptext="Cancelar Evento" id="" />
-												</div>
-											</row>
-
-
-
+							
 										</rows>
 									</grid>
 

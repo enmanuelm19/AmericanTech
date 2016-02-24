@@ -1,0 +1,107 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<window border="none" title="Finalizar evento"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="50%" height="auto"
+		style="iconSclass=z-icon-puzzle-piece;">
+		<caption iconSclass="z-icon-calendar" />
+
+
+		<div class='contenido'>
+
+
+			<div align="center">
+
+
+				<div align="left">
+					<div class="encabezado">
+						Actualización de indicadores
+					</div>
+					<div align="left" class="linea-two"></div>
+				</div>
+				<space bar="False" spacing="20%" />
+
+				<n:br></n:br>
+				<grid width="100%">
+					<rows class="col-md-12">
+						<row class="col-md-12">
+
+							<grid
+								emptyMessage="No se encuentran tipos de sugerencias registrados"
+								mold="paging" pageSize="10">
+
+
+								<columns>
+									<column width="">Indicador</column>
+									<column width="">
+										Cant Esperada
+									</column>
+
+									<column width="">Valor real</column>
+									<column width="">Variacion</column>
+
+									<column width="">
+										Editar Valores
+									</column>
+								</columns>
+
+								<rows>
+									<row>
+										<label value="Cant de Socios" />
+										<label value="100" />
+										<textbox type="text" width="50%"
+											tabindex="10" constraint="" />
+										<label value="" />
+
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" id="" tooltiptext="Aprobar" />
+
+										</div>
+									</row>
+
+									<row>
+										<label
+											value="Cant de invitados" />
+										<label value="500" />
+										<textbox type="text" width="50%"
+											tabindex="10" constraint="" />
+										<label value="" />
+
+										<div>
+											<button sclass="btn-link"
+												iconSclass="z-icon-pencil blue" id="" tooltiptext="Aprobar" />
+
+										</div>
+									</row>
+
+								</rows>
+							</grid>
+
+
+						</row>
+
+						<row class="col-md-11 col-centered"></row>
+
+					</rows>
+				</grid>
+				<n:br></n:br>
+				<space spacing="35%" />
+				<div>
+
+					<button iconSclass="z-icon-floppy-o"
+						class='boton-guardar' label="Registrar" />
+					<space spacing="10%" />
+					<button iconSclass="z-icon-times"
+						class='boton-cancelar' label="Cancelar" />
+				</div>
+				<space spacing="15%" />
+			</div>
+		</div>
+	</window>
+</zk>

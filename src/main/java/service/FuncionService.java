@@ -58,10 +58,10 @@ public class FuncionService {
 		funcion.add(new Funcion(46, "Reservacion", "instalacion/misReservaciones.zul", "z-icon-angle-double-right", 3, ""));
 		funcion.add(new Funcion(47, "Alquileres", "instalacion/administrarAlquileres.zul", "z-icon-angle-double-right", 3, ""));
 		funcion.add(new Funcion(48, "Mis alquileres", "instalacion/misAlquileres.zul", "z-icon-angle-double-right", 3, ""));
-		funcion.add(new Funcion(49, "Eventualidades", "instalacion/registrarEventualidadInst.zul", "z-icon-angle-double-right", 3, ""));
+		funcion.add(new Funcion(49, "Eventualidades", "instalacion/registrarEventualidadInst.zul", "z-icon-angle-double-right", 2, ""));  
 		funcion.add(new Funcion(50, "Solicitudes evento", "evento/solicitudesEvento.zul", "z-icon-angle-double-right", 4, ""));
-		funcion.add(new Funcion(51, "Eventualidades", "instalacion/registrarEventualidadInst.zul", "z-icon-angle-double-right", 4, ""));
-		funcion.add(new Funcion(52, "Lista eventos", "evento/solicitudesEvento.zul", "z-icon-angle-double-right", 12, ""));
+		funcion.add(new Funcion(51, "Lista de solicitudes", "evento/administrarEvento/listaSolicitudes.zul", "z-icon-angle-double-right", 12, ""));
+		funcion.add(new Funcion(52, "Lista eventos", "evento/administrarEvento/listaEventos.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(53, "Planificar evento", "evento/administrarEvento/planificarEvento.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(54, "Ejecutar evento", "evento/administrarEvento/ejecutarEvento.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(55, "Opiniones postulacion", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 13, ""));
@@ -75,6 +75,8 @@ public class FuncionService {
 		funcion.add(new Funcion(63, "Grupos", "administracion/seguridad/mostrarGrupos.zul", "z-icon-angle-double-right", 16, ""));
 		funcion.add(new Funcion(64, "Funciones", "administracion/seguridad/administrarFunciones.zul", "z-icon-angle-double-right", 16, ""));
 		funcion.add(new Funcion(65, "Postulados", "postulado/postulado.zul", "z-icon-angle-double-right", 7, ""));
+		funcion.add(new Funcion(66, "Parentesco", "configuracion/categoria/parentesco.zul", "z-icon-angle-double-right", 8, ""));
+		funcion.add(new Funcion(67, "Finalizar evento", "evento/administrarEvento/cancelarEvento.zul", "z-icon-angle-double-right", 12, ""));
 	}
 	
 	public static List<Funcion> getFunciones(){

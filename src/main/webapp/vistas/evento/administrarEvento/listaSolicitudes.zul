@@ -56,7 +56,7 @@
 											width="80%" placeholder="Buscar" />
 									</auxheader>
 
-									<auxheader colspan="8">
+									<auxheader colspan="7">
 
 									</auxheader>
 								</auxhead>
@@ -67,7 +67,7 @@
 										Fecha Inicio
 									</column>
 									<column hflex="2">Fecha Fin</column>
-									<column hflex="2">Tipo</column>
+									<column hflex="2">Preferencias</column>
 									<column hflex="2">
 										Instalación
 									</column>
@@ -75,7 +75,7 @@
 										Hora Inicio
 									</column>
 									<column hflex="2">Hora Fin</column>
-									<column hflex="2">Invitados</column>
+									
 									<column hflex="2">
 										Descripcion
 									</column>
@@ -89,12 +89,12 @@
 										<label value="Juan Perez" />
 										<label value="10/01/2016" />
 										<label value="10/01/2016" />
-										<label value="Privado" />
+										<label value="Deportivo" />
 										<label value="Chevecita" />
 										<label value="08:00AM" />
 										<label value="10:00PM" />
 
-										<label value="10" />
+										
 										<label
 											value="sdsdsd dsdsdsdsdsd" />
 

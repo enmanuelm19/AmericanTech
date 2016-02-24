@@ -55,11 +55,13 @@ public class SesionViewModel implements Initiator {
 				"recuperarContrasenna.zul", null, null);
 		window.doModal();
 	}
+	
  
 	public Usuario chequearCredenciales() throws Exception{
 		String usu = usuario.getValue();
 		String clave = pass.getValue();
 		user = userDao.obtenerUsuario(usu, clave);
+		System.out.println("usuario: "+ usu + " clave: " + clave + " Usuario en bd: " + user.getUsername()+ " " + user.getContrasenna());
 		return user;
 	}
 	
@@ -96,7 +98,7 @@ public class SesionViewModel implements Initiator {
 		Session session = Sessions.getCurrent();
 		usuarioSesion = (Usuario) session.getAttribute("Usuario");
 	
-		if(usuario == null){
+		if(usuarioSesion == null){
 			Messagebox.show("No esta autorizado para ingresar", null, 0, Messagebox.ERROR);
 			Executions.sendRedirect("/vistas/layouts/ingreso.zul");
 		}
