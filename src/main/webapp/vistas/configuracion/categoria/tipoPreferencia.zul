@@ -53,15 +53,18 @@
 										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											width="85%" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="1" />
+									<auxheader colspan="4" />
 								</auxhead>
 
 								<columns>
-									<column hflex="2">Codigo</column>
-									<column hflex="2">
+									<column hflex="25%">Codigo</column>
+									<column hflex="25%">
 										Tipo Preferencia
 									</column>
-									<column width="20%"
+									<column hflex="25%">
+										Color de la preferencia
+									</column>
+									<column width="25%"
 										align="center">
 										Acciones
 									</column>
@@ -73,6 +76,8 @@
 									<row>
 										<label value="@load(each.idTipoPreferencia)" />
 										<label value="@load(each.descripcion)" />
+										
+										<div style="width: 20px; height:20px; background-color:${each.color}"></div>
 										<div>
 											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('showModal', Tipo=each)"/>
 											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', Tipo=each)"/>

@@ -35,7 +35,7 @@ public class PreferenciaViewModel {
 		preferenciaDao = new PreferenciaDao();
 		preferenciaAll = preferenciaDao.obtenerTodos();
 		
-		System.out.println("policia "+preferenciaAll.get(0).getTipoPreferencia().getDescripcion());
+		//System.out.println("policia "+preferenciaAll.get(0).getTipoPreferencia().getDescripcion());
 	}
 
 	public ListModelList<Preferencia> getAllPreferencia() {
