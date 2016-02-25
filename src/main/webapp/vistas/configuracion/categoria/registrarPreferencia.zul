@@ -1,0 +1,76 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<window id="winP"
+		title="@load(vm.editable?'Editar preferencia':'Registrar preferencia')"
+		style="iconSclass=z-icon-cogs;"
+		action="show:slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" height="60%" width="40%"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarPreferenciaViewModel')">
+		<caption iconSclass="z-icon-cogs" />
+
+		<div class="contenedor" align="center">
+			<div align="left" width="90%">
+				<div align="left">
+					<div class="encabezado" style="margin-top: 4%">
+						Datos Básicos
+					</div>
+					<div align="left" class="linea-two"
+						style="margin-bottom: 6%" />
+				</div>
+				<grid>
+					<rows>
+						<row>
+							<div class="row col-md-12">
+								<label class="col-md-3">Tipo</label>
+								<combobox
+									model="@load(vm.allTipoPreferencia)" width="40%"
+									class="col-md-8"
+									selectedItem="@bind(vm.preferencia.tipoPreferencia)"
+									value="@bind(vm.preferencia.tipoPreferencia.descripcion)">
+									<template name="model">
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
+									</template>
+								</combobox>
+							</div>
+						</row>
+						<row>
+							<div class="row col-md-12">
+
+								<label class="col-md-3">
+									Descripción
+								</label>
+								<textbox class="col-md-8" type="text"
+									rows="4" value="@bind(vm.preferencia.descripcion)" width="100%"
+									constraint="no empty" />
+							</div>
+						</row>
+					</rows>
+				</grid>
+				<div align="center" style="margin-top: 7%;">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar'
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
+								onClick="@command('guardar', win=winP)" />
+						</div>
+						<div>
+							<button id="cancelarBtn"
+								iconSclass="z-icon-times-circle" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar"
+								onClick="@command('cerrarModal', win=winP)" />
+						</div>
+					</hbox>
+				</div>
+			</div>
+		</div>
+
+	</window>
+</zk>
