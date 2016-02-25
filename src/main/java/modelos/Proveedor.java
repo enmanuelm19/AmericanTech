@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +15,7 @@ public class Proveedor implements java.io.Serializable {
 	private String direccion;
 	private String telefono;
 	private String correo;
+	private boolean activo;
 	private Set<ProveedorActividad> proveedorActividads = new HashSet<ProveedorActividad>(
 			0);
 
@@ -22,22 +23,24 @@ public class Proveedor implements java.io.Serializable {
 	}
 
 	public Proveedor(int idProveedor, String nombre, String direccion,
-			String telefono, String correo) {
+			String telefono, String correo, boolean activo) {
 		this.idProveedor = idProveedor;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.activo = activo;
 	}
 
 	public Proveedor(int idProveedor, String nombre, String direccion,
-			String telefono, String correo,
+			String telefono, String correo, boolean activo,
 			Set<ProveedorActividad> proveedorActividads) {
 		this.idProveedor = idProveedor;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.activo = activo;
 		this.proveedorActividads = proveedorActividads;
 	}
 
@@ -79,6 +82,14 @@ public class Proveedor implements java.io.Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<ProveedorActividad> getProveedorActividads() {

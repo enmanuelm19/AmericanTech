@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,20 +12,23 @@ public class Cargo implements java.io.Serializable {
 
 	private int idCargo;
 	private String descripcion;
+	private boolean activo;
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 
 	public Cargo() {
 	}
 
-	public Cargo(int idCargo, String descripcion) {
+	public Cargo(int idCargo, String descripcion, boolean activo) {
 		this.idCargo = idCargo;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
-	public Cargo(int idCargo, String descripcion,
+	public Cargo(int idCargo, String descripcion, boolean activo,
 			Set<MiembroJunta> miembroJuntas) {
 		this.idCargo = idCargo;
 		this.descripcion = descripcion;
+		this.activo = activo;
 		this.miembroJuntas = miembroJuntas;
 	}
 
@@ -43,6 +46,14 @@ public class Cargo implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<MiembroJunta> getMiembroJuntas() {

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 12:54:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="idUsuario" type="int">
@@ -12,19 +12,22 @@
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
         <property name="contrasenna" type="string">
-            <column name="contrasenna" length="9" not-null="true" />
+            <column name="contrasenna" length="20" not-null="true" />
         </property>
         <property name="username" type="string">
-            <column name="username" length="30" not-null="true" />
+            <column name="username" length="60" not-null="true" />
         </property>
         <property name="pregunta" type="string">
-            <column name="pregunta" length="30" not-null="true" />
+            <column name="pregunta" length="60" not-null="true" />
         </property>
         <property name="respuesta" type="string">
-            <column name="respuesta" length="30" not-null="true" />
+            <column name="respuesta" length="60" not-null="true" />
         </property>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="usuarioGrupos" table="usuario_grupo" inverse="true" lazy="true" fetch="select">
             <key>

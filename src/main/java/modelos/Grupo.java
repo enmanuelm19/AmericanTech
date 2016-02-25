@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,21 +12,24 @@ public class Grupo implements java.io.Serializable {
 
 	private int idGrupo;
 	private String descripcion;
+	private boolean activo;
 	private Set<UsuarioGrupo> usuarioGrupos = new HashSet<UsuarioGrupo>(0);
 	private Set<FuncionGrupo> funcionGrupos = new HashSet<FuncionGrupo>(0);
 
 	public Grupo() {
 	}
 
-	public Grupo(int idGrupo, String descripcion) {
+	public Grupo(int idGrupo, String descripcion, boolean activo) {
 		this.idGrupo = idGrupo;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
-	public Grupo(int idGrupo, String descripcion,
+	public Grupo(int idGrupo, String descripcion, boolean activo,
 			Set<UsuarioGrupo> usuarioGrupos, Set<FuncionGrupo> funcionGrupos) {
 		this.idGrupo = idGrupo;
 		this.descripcion = descripcion;
+		this.activo = activo;
 		this.usuarioGrupos = usuarioGrupos;
 		this.funcionGrupos = funcionGrupos;
 	}
@@ -45,6 +48,14 @@ public class Grupo implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<UsuarioGrupo> getUsuarioGrupos() {

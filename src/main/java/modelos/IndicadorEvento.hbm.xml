@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/02/2016 12:54:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.IndicadorEvento" table="indicador_evento" schema="public" optimistic-lock="version">
+        <id name="idIndicadorEvento" type="int">
+            <column name="id_indicador_evento" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="evento" class="modelos.Evento" fetch="select">
+            <column name="eventoid_evento" not-null="true" />
+        </many-to-one>
+        <many-to-one name="indicador" class="modelos.Indicador" fetch="select">
+            <column name="indicadorid_indicador" not-null="true" />
+        </many-to-one>
+        <property name="valorEsperado" type="short">
+            <column name="valor_esperado" not-null="true" />
+        </property>
+        <property name="valorReal" type="java.lang.Short">
+            <column name="valor_real" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

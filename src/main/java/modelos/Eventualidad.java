@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -10,30 +10,40 @@ import java.util.Date;
 public class Eventualidad implements java.io.Serializable {
 
 	private int idEventualidad;
-	private Evento evento;
 	private Instalacion instalacion;
 	private Persona persona;
+	private Sancion sancion;
+	private TipoEventualidad tipoEventualidad;
 	private String descripcion;
 	private Date fecha;
+	private boolean activo;
 
 	public Eventualidad() {
 	}
 
-	public Eventualidad(int idEventualidad, String descripcion, Date fecha) {
+	public Eventualidad(int idEventualidad, Persona persona,
+			TipoEventualidad tipoEventualidad, String descripcion, Date fecha,
+			boolean activo) {
 		this.idEventualidad = idEventualidad;
+		this.persona = persona;
+		this.tipoEventualidad = tipoEventualidad;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
+		this.activo = activo;
 	}
 
-	public Eventualidad(int idEventualidad, Evento evento,
-			Instalacion instalacion, Persona persona, String descripcion,
-			Date fecha) {
+	public Eventualidad(int idEventualidad, Instalacion instalacion,
+			Persona persona, Sancion sancion,
+			TipoEventualidad tipoEventualidad, String descripcion, Date fecha,
+			boolean activo) {
 		this.idEventualidad = idEventualidad;
-		this.evento = evento;
 		this.instalacion = instalacion;
 		this.persona = persona;
+		this.sancion = sancion;
+		this.tipoEventualidad = tipoEventualidad;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
+		this.activo = activo;
 	}
 
 	public int getIdEventualidad() {
@@ -42,14 +52,6 @@ public class Eventualidad implements java.io.Serializable {
 
 	public void setIdEventualidad(int idEventualidad) {
 		this.idEventualidad = idEventualidad;
-	}
-
-	public Evento getEvento() {
-		return this.evento;
-	}
-
-	public void setEvento(Evento evento) {
-		this.evento = evento;
 	}
 
 	public Instalacion getInstalacion() {
@@ -68,6 +70,22 @@ public class Eventualidad implements java.io.Serializable {
 		this.persona = persona;
 	}
 
+	public Sancion getSancion() {
+		return this.sancion;
+	}
+
+	public void setSancion(Sancion sancion) {
+		this.sancion = sancion;
+	}
+
+	public TipoEventualidad getTipoEventualidad() {
+		return this.tipoEventualidad;
+	}
+
+	public void setTipoEventualidad(TipoEventualidad tipoEventualidad) {
+		this.tipoEventualidad = tipoEventualidad;
+	}
+
 	public String getDescripcion() {
 		return this.descripcion;
 	}
@@ -82,6 +100,14 @@ public class Eventualidad implements java.io.Serializable {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 }

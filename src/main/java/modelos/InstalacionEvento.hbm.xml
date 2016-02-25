@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/02/2016 12:54:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.InstalacionEvento" table="instalacion_evento" schema="public" optimistic-lock="version">
+        <id name="idActividadInstalacion" type="int">
+            <column name="id_actividad_instalacion" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="evento" class="modelos.Evento" fetch="select">
+            <column name="eventoid_evento" not-null="true" />
+        </many-to-one>
+        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select">
+            <column name="instalacionid_instalacion" not-null="true" />
+        </many-to-one>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="13" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="13" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

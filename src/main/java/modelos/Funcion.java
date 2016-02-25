@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,37 +11,34 @@ import java.util.Set;
 public class Funcion implements java.io.Serializable {
 
 	private int idFuncion;
-	private Funcion funcion;
 	private String nombre;
 	private String pagina;
-	private int iconUri;
+	private String iconUri;
 	private String clase;
-	private Set<Funcion> funcions = new HashSet<Funcion>(0);
+	private boolean activo;
 	private Set<FuncionGrupo> funcionGrupos = new HashSet<FuncionGrupo>(0);
 
 	public Funcion() {
 	}
 
-	public Funcion(int idFuncion, Funcion funcion, String nombre,
-			String pagina, int iconUri, String clase) {
+	public Funcion(int idFuncion, String nombre, String pagina, String iconUri,
+			String clase, boolean activo) {
 		this.idFuncion = idFuncion;
-		this.funcion = funcion;
 		this.nombre = nombre;
 		this.pagina = pagina;
 		this.iconUri = iconUri;
 		this.clase = clase;
+		this.activo = activo;
 	}
 
-	public Funcion(int idFuncion, Funcion funcion, String nombre,
-			String pagina, int iconUri, String clase, Set<Funcion> funcions,
-			Set<FuncionGrupo> funcionGrupos) {
+	public Funcion(int idFuncion, String nombre, String pagina, String iconUri,
+			String clase, boolean activo, Set<FuncionGrupo> funcionGrupos) {
 		this.idFuncion = idFuncion;
-		this.funcion = funcion;
 		this.nombre = nombre;
 		this.pagina = pagina;
 		this.iconUri = iconUri;
 		this.clase = clase;
-		this.funcions = funcions;
+		this.activo = activo;
 		this.funcionGrupos = funcionGrupos;
 	}
 
@@ -51,14 +48,6 @@ public class Funcion implements java.io.Serializable {
 
 	public void setIdFuncion(int idFuncion) {
 		this.idFuncion = idFuncion;
-	}
-
-	public Funcion getFuncion() {
-		return this.funcion;
-	}
-
-	public void setFuncion(Funcion funcion) {
-		this.funcion = funcion;
 	}
 
 	public String getNombre() {
@@ -77,11 +66,11 @@ public class Funcion implements java.io.Serializable {
 		this.pagina = pagina;
 	}
 
-	public int getIconUri() {
+	public String getIconUri() {
 		return this.iconUri;
 	}
 
-	public void setIconUri(int iconUri) {
+	public void setIconUri(String iconUri) {
 		this.iconUri = iconUri;
 	}
 
@@ -93,12 +82,12 @@ public class Funcion implements java.io.Serializable {
 		this.clase = clase;
 	}
 
-	public Set<Funcion> getFuncions() {
-		return this.funcions;
+	public boolean isActivo() {
+		return this.activo;
 	}
 
-	public void setFuncions(Set<Funcion> funcions) {
-		this.funcions = funcions;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<FuncionGrupo> getFuncionGrupos() {

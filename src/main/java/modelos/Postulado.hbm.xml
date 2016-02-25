@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 12:54:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Postulado" table="postulado" schema="public" optimistic-lock="version">
         <id name="idPostulado" type="int">
@@ -11,6 +11,9 @@
         <many-to-one name="persona" class="modelos.Persona" fetch="select">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
         <set name="postulacions" table="postulacion" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="postuladoid_postulado" not-null="true" />

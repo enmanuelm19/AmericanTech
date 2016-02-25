@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -13,16 +13,18 @@ public class Empleado implements java.io.Serializable {
 	private Persona persona;
 	private TipoEmpleado tipoEmpleado;
 	private Date fechaContratado;
+	private boolean activo;
 
 	public Empleado() {
 	}
 
 	public Empleado(int idEmpleado, Persona persona, TipoEmpleado tipoEmpleado,
-			Date fechaContratado) {
+			Date fechaContratado, boolean activo) {
 		this.idEmpleado = idEmpleado;
 		this.persona = persona;
 		this.tipoEmpleado = tipoEmpleado;
 		this.fechaContratado = fechaContratado;
+		this.activo = activo;
 	}
 
 	public int getIdEmpleado() {
@@ -55,6 +57,14 @@ public class Empleado implements java.io.Serializable {
 
 	public void setFechaContratado(Date fechaContratado) {
 		this.fechaContratado = fechaContratado;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 }

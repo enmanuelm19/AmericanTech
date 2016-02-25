@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +15,7 @@ public class Patrocinante implements java.io.Serializable {
 	private String direccion;
 	private short telefono;
 	private short correo;
+	private boolean activo;
 	private Set<PartocinanteEvento> partocinanteEventos = new HashSet<PartocinanteEvento>(
 			0);
 
@@ -22,22 +23,24 @@ public class Patrocinante implements java.io.Serializable {
 	}
 
 	public Patrocinante(int idPatrocinante, String nombre, String direccion,
-			short telefono, short correo) {
+			short telefono, short correo, boolean activo) {
 		this.idPatrocinante = idPatrocinante;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.activo = activo;
 	}
 
 	public Patrocinante(int idPatrocinante, String nombre, String direccion,
-			short telefono, short correo,
+			short telefono, short correo, boolean activo,
 			Set<PartocinanteEvento> partocinanteEventos) {
 		this.idPatrocinante = idPatrocinante;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.activo = activo;
 		this.partocinanteEventos = partocinanteEventos;
 	}
 
@@ -79,6 +82,14 @@ public class Patrocinante implements java.io.Serializable {
 
 	public void setCorreo(short correo) {
 		this.correo = correo;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<PartocinanteEvento> getPartocinanteEventos() {

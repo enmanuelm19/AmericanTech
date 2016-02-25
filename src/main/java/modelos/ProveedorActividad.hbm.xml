@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 12:54:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.ProveedorActividad" table="proveedor_actividad" schema="public" optimistic-lock="version">
         <id name="idProveedorActividad" type="int">
@@ -16,6 +16,9 @@
         </many-to-one>
         <property name="detalle" type="string">
             <column name="detalle" length="150" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

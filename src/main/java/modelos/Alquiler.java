@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -12,40 +12,37 @@ import java.util.Set;
 public class Alquiler implements java.io.Serializable {
 
 	private int idAlquiler;
-	private Archivo archivo;
 	private Reservacion reservacion;
 	private Date fecha;
-	private Date hora;
-	private short nroTransaccion;
+	private String nroTransaccion;
 	private float monto;
-	private Set<InvitadoAlquiler> invitadoAlquilers = new HashSet<InvitadoAlquiler>(
+	private boolean activo;
+	private Set<ArchivoAlquiler> archivoAlquilers = new HashSet<ArchivoAlquiler>(
 			0);
 
 	public Alquiler() {
 	}
 
-	public Alquiler(int idAlquiler, Archivo archivo, Reservacion reservacion,
-			Date fecha, Date hora, short nroTransaccion, float monto) {
+	public Alquiler(int idAlquiler, Reservacion reservacion, Date fecha,
+			String nroTransaccion, float monto, boolean activo) {
 		this.idAlquiler = idAlquiler;
-		this.archivo = archivo;
 		this.reservacion = reservacion;
 		this.fecha = fecha;
-		this.hora = hora;
 		this.nroTransaccion = nroTransaccion;
 		this.monto = monto;
+		this.activo = activo;
 	}
 
-	public Alquiler(int idAlquiler, Archivo archivo, Reservacion reservacion,
-			Date fecha, Date hora, short nroTransaccion, float monto,
-			Set<InvitadoAlquiler> invitadoAlquilers) {
+	public Alquiler(int idAlquiler, Reservacion reservacion, Date fecha,
+			String nroTransaccion, float monto, boolean activo,
+			Set<ArchivoAlquiler> archivoAlquilers) {
 		this.idAlquiler = idAlquiler;
-		this.archivo = archivo;
 		this.reservacion = reservacion;
 		this.fecha = fecha;
-		this.hora = hora;
 		this.nroTransaccion = nroTransaccion;
 		this.monto = monto;
-		this.invitadoAlquilers = invitadoAlquilers;
+		this.activo = activo;
+		this.archivoAlquilers = archivoAlquilers;
 	}
 
 	public int getIdAlquiler() {
@@ -54,14 +51,6 @@ public class Alquiler implements java.io.Serializable {
 
 	public void setIdAlquiler(int idAlquiler) {
 		this.idAlquiler = idAlquiler;
-	}
-
-	public Archivo getArchivo() {
-		return this.archivo;
-	}
-
-	public void setArchivo(Archivo archivo) {
-		this.archivo = archivo;
 	}
 
 	public Reservacion getReservacion() {
@@ -80,19 +69,11 @@ public class Alquiler implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
-	public Date getHora() {
-		return this.hora;
-	}
-
-	public void setHora(Date hora) {
-		this.hora = hora;
-	}
-
-	public short getNroTransaccion() {
+	public String getNroTransaccion() {
 		return this.nroTransaccion;
 	}
 
-	public void setNroTransaccion(short nroTransaccion) {
+	public void setNroTransaccion(String nroTransaccion) {
 		this.nroTransaccion = nroTransaccion;
 	}
 
@@ -104,12 +85,20 @@ public class Alquiler implements java.io.Serializable {
 		this.monto = monto;
 	}
 
-	public Set<InvitadoAlquiler> getInvitadoAlquilers() {
-		return this.invitadoAlquilers;
+	public boolean isActivo() {
+		return this.activo;
 	}
 
-	public void setInvitadoAlquilers(Set<InvitadoAlquiler> invitadoAlquilers) {
-		this.invitadoAlquilers = invitadoAlquilers;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public Set<ArchivoAlquiler> getArchivoAlquilers() {
+		return this.archivoAlquilers;
+	}
+
+	public void setArchivoAlquilers(Set<ArchivoAlquiler> archivoAlquilers) {
+		this.archivoAlquilers = archivoAlquilers;
 	}
 
 }

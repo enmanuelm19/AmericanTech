@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,8 +16,7 @@ public class Reservacion implements java.io.Serializable {
 	private Socio socio;
 	private Date fechaInicio;
 	private short fechaFin;
-	private Date horaInic;
-	private Date horaFin;
+	private boolean activo;
 	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
 			0);
@@ -26,26 +25,24 @@ public class Reservacion implements java.io.Serializable {
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, short fechaFin, Date horaInic, Date horaFin) {
+			Date fechaInicio, short fechaFin, boolean activo) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
 		this.socio = socio;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.horaInic = horaInic;
-		this.horaFin = horaFin;
+		this.activo = activo;
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, short fechaFin, Date horaInic, Date horaFin,
+			Date fechaInicio, short fechaFin, boolean activo,
 			Set<Alquiler> alquilers, Set<CalendarioFecha> calendarioFechas) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
 		this.socio = socio;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.horaInic = horaInic;
-		this.horaFin = horaFin;
+		this.activo = activo;
 		this.alquilers = alquilers;
 		this.calendarioFechas = calendarioFechas;
 	}
@@ -90,20 +87,12 @@ public class Reservacion implements java.io.Serializable {
 		this.fechaFin = fechaFin;
 	}
 
-	public Date getHoraInic() {
-		return this.horaInic;
+	public boolean isActivo() {
+		return this.activo;
 	}
 
-	public void setHoraInic(Date horaInic) {
-		this.horaInic = horaInic;
-	}
-
-	public Date getHoraFin() {
-		return this.horaFin;
-	}
-
-	public void setHoraFin(Date horaFin) {
-		this.horaFin = horaFin;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Alquiler> getAlquilers() {

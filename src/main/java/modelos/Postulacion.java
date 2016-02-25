@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ public class Postulacion implements java.io.Serializable {
 	private short carnetPadrino1;
 	private short carnetPadrino2;
 	private boolean aprobado;
-	private Date hora;
+	private boolean activo;
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
 
@@ -28,7 +28,7 @@ public class Postulacion implements java.io.Serializable {
 
 	public Postulacion(int idPostulacion, MotivoPostulacion motivoPostulacion,
 			Postulado postulado, Venta venta, Date fecha, short carnetPadrino1,
-			short carnetPadrino2, boolean aprobado, Date hora) {
+			short carnetPadrino2, boolean aprobado, boolean activo) {
 		this.idPostulacion = idPostulacion;
 		this.motivoPostulacion = motivoPostulacion;
 		this.postulado = postulado;
@@ -37,12 +37,12 @@ public class Postulacion implements java.io.Serializable {
 		this.carnetPadrino1 = carnetPadrino1;
 		this.carnetPadrino2 = carnetPadrino2;
 		this.aprobado = aprobado;
-		this.hora = hora;
+		this.activo = activo;
 	}
 
 	public Postulacion(int idPostulacion, MotivoPostulacion motivoPostulacion,
 			Postulado postulado, Venta venta, Date fecha, short carnetPadrino1,
-			short carnetPadrino2, boolean aprobado, Date hora,
+			short carnetPadrino2, boolean aprobado, boolean activo,
 			Set<Socio> socios, Set<Opinion> opinions) {
 		this.idPostulacion = idPostulacion;
 		this.motivoPostulacion = motivoPostulacion;
@@ -52,7 +52,7 @@ public class Postulacion implements java.io.Serializable {
 		this.carnetPadrino1 = carnetPadrino1;
 		this.carnetPadrino2 = carnetPadrino2;
 		this.aprobado = aprobado;
-		this.hora = hora;
+		this.activo = activo;
 		this.socios = socios;
 		this.opinions = opinions;
 	}
@@ -121,12 +121,12 @@ public class Postulacion implements java.io.Serializable {
 		this.aprobado = aprobado;
 	}
 
-	public Date getHora() {
-		return this.hora;
+	public boolean isActivo() {
+		return this.activo;
 	}
 
-	public void setHora(Date hora) {
-		this.hora = hora;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Socio> getSocios() {

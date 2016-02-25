@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,39 +11,38 @@ import java.util.Set;
 public class Actividad implements java.io.Serializable {
 
 	private int idActividad;
+	private Evento evento;
 	private TipoActividad tipoActividad;
 	private String descripcion;
 	private String condicion;
+	private boolean activo;
 	private Set<ProveedorActividad> proveedorActividads = new HashSet<ProveedorActividad>(
-			0);
-	private Set<ActividadInstalacion> actividadInstalacions = new HashSet<ActividadInstalacion>(
-			0);
-	private Set<ActividadEvento> actividadEventos = new HashSet<ActividadEvento>(
 			0);
 
 	public Actividad() {
 	}
 
-	public Actividad(int idActividad, TipoActividad tipoActividad,
-			String descripcion, String condicion) {
+	public Actividad(int idActividad, Evento evento,
+			TipoActividad tipoActividad, String descripcion, String condicion,
+			boolean activo) {
 		this.idActividad = idActividad;
+		this.evento = evento;
 		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
 		this.condicion = condicion;
+		this.activo = activo;
 	}
 
-	public Actividad(int idActividad, TipoActividad tipoActividad,
-			String descripcion, String condicion,
-			Set<ProveedorActividad> proveedorActividads,
-			Set<ActividadInstalacion> actividadInstalacions,
-			Set<ActividadEvento> actividadEventos) {
+	public Actividad(int idActividad, Evento evento,
+			TipoActividad tipoActividad, String descripcion, String condicion,
+			boolean activo, Set<ProveedorActividad> proveedorActividads) {
 		this.idActividad = idActividad;
+		this.evento = evento;
 		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
 		this.condicion = condicion;
+		this.activo = activo;
 		this.proveedorActividads = proveedorActividads;
-		this.actividadInstalacions = actividadInstalacions;
-		this.actividadEventos = actividadEventos;
 	}
 
 	public int getIdActividad() {
@@ -52,6 +51,14 @@ public class Actividad implements java.io.Serializable {
 
 	public void setIdActividad(int idActividad) {
 		this.idActividad = idActividad;
+	}
+
+	public Evento getEvento() {
+		return this.evento;
+	}
+
+	public void setEvento(Evento evento) {
+		this.evento = evento;
 	}
 
 	public TipoActividad getTipoActividad() {
@@ -78,6 +85,14 @@ public class Actividad implements java.io.Serializable {
 		this.condicion = condicion;
 	}
 
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Set<ProveedorActividad> getProveedorActividads() {
 		return this.proveedorActividads;
 	}
@@ -85,23 +100,6 @@ public class Actividad implements java.io.Serializable {
 	public void setProveedorActividads(
 			Set<ProveedorActividad> proveedorActividads) {
 		this.proveedorActividads = proveedorActividads;
-	}
-
-	public Set<ActividadInstalacion> getActividadInstalacions() {
-		return this.actividadInstalacions;
-	}
-
-	public void setActividadInstalacions(
-			Set<ActividadInstalacion> actividadInstalacions) {
-		this.actividadInstalacions = actividadInstalacions;
-	}
-
-	public Set<ActividadEvento> getActividadEventos() {
-		return this.actividadEventos;
-	}
-
-	public void setActividadEventos(Set<ActividadEvento> actividadEventos) {
-		this.actividadEventos = actividadEventos;
 	}
 
 }

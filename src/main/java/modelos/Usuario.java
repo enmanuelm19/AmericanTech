@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,6 +18,7 @@ public class Usuario implements java.io.Serializable {
 	private String pregunta;
 	private String respuesta;
 	private Date fecha;
+	private boolean activo;
 	private Set<UsuarioGrupo> usuarioGrupos = new HashSet<UsuarioGrupo>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
 	private Set<Sugerencia> sugerencias = new HashSet<Sugerencia>(0);
@@ -26,7 +27,8 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(int idUsuario, Persona persona, String contrasenna,
-			String username, String pregunta, String respuesta, Date fecha) {
+			String username, String pregunta, String respuesta, Date fecha,
+			boolean activo) {
 		this.idUsuario = idUsuario;
 		this.persona = persona;
 		this.contrasenna = contrasenna;
@@ -34,12 +36,13 @@ public class Usuario implements java.io.Serializable {
 		this.pregunta = pregunta;
 		this.respuesta = respuesta;
 		this.fecha = fecha;
+		this.activo = activo;
 	}
 
 	public Usuario(int idUsuario, Persona persona, String contrasenna,
 			String username, String pregunta, String respuesta, Date fecha,
-			Set<UsuarioGrupo> usuarioGrupos, Set<Opinion> opinions,
-			Set<Sugerencia> sugerencias) {
+			boolean activo, Set<UsuarioGrupo> usuarioGrupos,
+			Set<Opinion> opinions, Set<Sugerencia> sugerencias) {
 		this.idUsuario = idUsuario;
 		this.persona = persona;
 		this.contrasenna = contrasenna;
@@ -47,6 +50,7 @@ public class Usuario implements java.io.Serializable {
 		this.pregunta = pregunta;
 		this.respuesta = respuesta;
 		this.fecha = fecha;
+		this.activo = activo;
 		this.usuarioGrupos = usuarioGrupos;
 		this.opinions = opinions;
 		this.sugerencias = sugerencias;
@@ -106,6 +110,14 @@ public class Usuario implements java.io.Serializable {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<UsuarioGrupo> getUsuarioGrupos() {

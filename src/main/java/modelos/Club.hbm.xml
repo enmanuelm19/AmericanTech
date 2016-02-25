@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 12:54:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
         <id name="idClub" type="int">
@@ -12,13 +12,13 @@
             <column name="logo" not-null="true" />
         </many-to-one>
         <property name="rif" type="string">
-            <column name="rif" length="14" not-null="true" />
+            <column name="rif" length="20" not-null="true" />
         </property>
         <property name="nombre" type="string">
-            <column name="nombre" length="30" not-null="true" />
+            <column name="nombre" length="60" not-null="true" />
         </property>
         <property name="direccion" type="string">
-            <column name="direccion" length="30" not-null="true" />
+            <column name="direccion" length="60" not-null="true" />
         </property>
         <property name="telefono" type="string">
             <column name="telefono" length="12" not-null="true" />
@@ -33,22 +33,19 @@
             <column name="telf_alternativo" length="12" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="35" not-null="true" />
+            <column name="correo" length="75" not-null="true" />
         </property>
         <property name="eslogan" type="string">
             <column name="eslogan" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="activo" />
         </property>
         <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Foto" />
-        </set>
-        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="clubid_club" not-null="true" />
-            </key>
-            <one-to-many class="modelos.Politica" />
         </set>
         <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="true" fetch="select">
             <key>

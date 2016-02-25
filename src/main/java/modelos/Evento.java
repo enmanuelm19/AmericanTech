@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,71 +13,69 @@ public class Evento implements java.io.Serializable {
 
 	private int idEvento;
 	private EstadoEvento estadoEvento;
+	private String nombre;
 	private String descripcion;
-	private short visitasEsperadas;
 	private Date fechaInicio;
 	private Date fechaFin;
-	private Date horaInicio;
-	private Date horaFin;
 	private boolean publico;
-	private Set<Eventualidad> eventualidads = new HashSet<Eventualidad>(0);
+	private boolean activo;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
 			0);
 	private Set<MotivoCancelacion> motivoCancelacions = new HashSet<MotivoCancelacion>(
 			0);
-	private Set<VisitaEvento> visitaEventos = new HashSet<VisitaEvento>(0);
+	private Set<Actividad> actividads = new HashSet<Actividad>(0);
 	private Set<PartocinanteEvento> partocinanteEventos = new HashSet<PartocinanteEvento>(
 			0);
-	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
+	private Set<InstalacionEvento> instalacionEventos = new HashSet<InstalacionEvento>(
 			0);
-	private Set<ActividadEvento> actividadEventos = new HashSet<ActividadEvento>(
+	private Set<IndicadorEvento> indicadorEventos = new HashSet<IndicadorEvento>(
+			0);
+	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
 			0);
 
 	public Evento() {
 	}
 
-	public Evento(int idEvento, EstadoEvento estadoEvento, String descripcion,
-			short visitasEsperadas, Date fechaInicio, Date fechaFin,
-			Date horaInicio, Date horaFin, boolean publico) {
+	public Evento(int idEvento, EstadoEvento estadoEvento, String nombre,
+			String descripcion, Date fechaInicio, Date fechaFin,
+			boolean publico, boolean activo) {
 		this.idEvento = idEvento;
 		this.estadoEvento = estadoEvento;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.visitasEsperadas = visitasEsperadas;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
 		this.publico = publico;
+		this.activo = activo;
 	}
 
-	public Evento(int idEvento, EstadoEvento estadoEvento, String descripcion,
-			short visitasEsperadas, Date fechaInicio, Date fechaFin,
-			Date horaInicio, Date horaFin, boolean publico,
-			Set<Eventualidad> eventualidads, Set<Noticia> noticias,
+	public Evento(int idEvento, EstadoEvento estadoEvento, String nombre,
+			String descripcion, Date fechaInicio, Date fechaFin,
+			boolean publico, boolean activo, Set<Noticia> noticias,
 			Set<PreferenciaEvento> preferenciaEventos,
 			Set<MotivoCancelacion> motivoCancelacions,
-			Set<VisitaEvento> visitaEventos,
+			Set<Actividad> actividads,
 			Set<PartocinanteEvento> partocinanteEventos,
-			Set<CalendarioFecha> calendarioFechas,
-			Set<ActividadEvento> actividadEventos) {
+			Set<InstalacionEvento> instalacionEventos,
+			Set<IndicadorEvento> indicadorEventos,
+			Set<CalendarioFecha> calendarioFechas) {
 		this.idEvento = idEvento;
 		this.estadoEvento = estadoEvento;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.visitasEsperadas = visitasEsperadas;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
 		this.publico = publico;
-		this.eventualidads = eventualidads;
+		this.activo = activo;
 		this.noticias = noticias;
 		this.preferenciaEventos = preferenciaEventos;
 		this.motivoCancelacions = motivoCancelacions;
-		this.visitaEventos = visitaEventos;
+		this.actividads = actividads;
 		this.partocinanteEventos = partocinanteEventos;
+		this.instalacionEventos = instalacionEventos;
+		this.indicadorEventos = indicadorEventos;
 		this.calendarioFechas = calendarioFechas;
-		this.actividadEventos = actividadEventos;
 	}
 
 	public int getIdEvento() {
@@ -96,20 +94,20 @@ public class Evento implements java.io.Serializable {
 		this.estadoEvento = estadoEvento;
 	}
 
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public String getDescripcion() {
 		return this.descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public short getVisitasEsperadas() {
-		return this.visitasEsperadas;
-	}
-
-	public void setVisitasEsperadas(short visitasEsperadas) {
-		this.visitasEsperadas = visitasEsperadas;
 	}
 
 	public Date getFechaInicio() {
@@ -128,22 +126,6 @@ public class Evento implements java.io.Serializable {
 		this.fechaFin = fechaFin;
 	}
 
-	public Date getHoraInicio() {
-		return this.horaInicio;
-	}
-
-	public void setHoraInicio(Date horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public Date getHoraFin() {
-		return this.horaFin;
-	}
-
-	public void setHoraFin(Date horaFin) {
-		this.horaFin = horaFin;
-	}
-
 	public boolean isPublico() {
 		return this.publico;
 	}
@@ -152,12 +134,12 @@ public class Evento implements java.io.Serializable {
 		this.publico = publico;
 	}
 
-	public Set<Eventualidad> getEventualidads() {
-		return this.eventualidads;
+	public boolean isActivo() {
+		return this.activo;
 	}
 
-	public void setEventualidads(Set<Eventualidad> eventualidads) {
-		this.eventualidads = eventualidads;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Noticia> getNoticias() {
@@ -184,12 +166,12 @@ public class Evento implements java.io.Serializable {
 		this.motivoCancelacions = motivoCancelacions;
 	}
 
-	public Set<VisitaEvento> getVisitaEventos() {
-		return this.visitaEventos;
+	public Set<Actividad> getActividads() {
+		return this.actividads;
 	}
 
-	public void setVisitaEventos(Set<VisitaEvento> visitaEventos) {
-		this.visitaEventos = visitaEventos;
+	public void setActividads(Set<Actividad> actividads) {
+		this.actividads = actividads;
 	}
 
 	public Set<PartocinanteEvento> getPartocinanteEventos() {
@@ -201,20 +183,28 @@ public class Evento implements java.io.Serializable {
 		this.partocinanteEventos = partocinanteEventos;
 	}
 
+	public Set<InstalacionEvento> getInstalacionEventos() {
+		return this.instalacionEventos;
+	}
+
+	public void setInstalacionEventos(Set<InstalacionEvento> instalacionEventos) {
+		this.instalacionEventos = instalacionEventos;
+	}
+
+	public Set<IndicadorEvento> getIndicadorEventos() {
+		return this.indicadorEventos;
+	}
+
+	public void setIndicadorEventos(Set<IndicadorEvento> indicadorEventos) {
+		this.indicadorEventos = indicadorEventos;
+	}
+
 	public Set<CalendarioFecha> getCalendarioFechas() {
 		return this.calendarioFechas;
 	}
 
 	public void setCalendarioFechas(Set<CalendarioFecha> calendarioFechas) {
 		this.calendarioFechas = calendarioFechas;
-	}
-
-	public Set<ActividadEvento> getActividadEventos() {
-		return this.actividadEventos;
-	}
-
-	public void setActividadEventos(Set<ActividadEvento> actividadEventos) {
-		this.actividadEventos = actividadEventos;
 	}
 
 }

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,20 +13,23 @@ public class Hora implements java.io.Serializable {
 
 	private int idHora;
 	private Date valorHorario;
+	private boolean activo;
 	private Set<CalendarioHora> calendarioHoras = new HashSet<CalendarioHora>(0);
 
 	public Hora() {
 	}
 
-	public Hora(int idHora, Date valorHorario) {
+	public Hora(int idHora, Date valorHorario, boolean activo) {
 		this.idHora = idHora;
 		this.valorHorario = valorHorario;
+		this.activo = activo;
 	}
 
-	public Hora(int idHora, Date valorHorario,
+	public Hora(int idHora, Date valorHorario, boolean activo,
 			Set<CalendarioHora> calendarioHoras) {
 		this.idHora = idHora;
 		this.valorHorario = valorHorario;
+		this.activo = activo;
 		this.calendarioHoras = calendarioHoras;
 	}
 
@@ -44,6 +47,14 @@ public class Hora implements java.io.Serializable {
 
 	public void setValorHorario(Date valorHorario) {
 		this.valorHorario = valorHorario;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<CalendarioHora> getCalendarioHoras() {

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,33 +13,41 @@ public class Preferencia implements java.io.Serializable {
 	private int idPreferencia;
 	private TipoPreferencia tipoPreferencia;
 	private String descripcion;
+	private boolean activo;
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
 			0);
 	private Set<PreferenciaPersona> preferenciaPersonas = new HashSet<PreferenciaPersona>(
 			0);
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
 			0);
+	private Set<PreferenciaSolicitud> preferenciaSolicituds = new HashSet<PreferenciaSolicitud>(
+			0);
 
 	public Preferencia() {
 	}
 
 	public Preferencia(int idPreferencia, TipoPreferencia tipoPreferencia,
-			String descripcion) {
+			String descripcion, boolean activo) {
 		this.idPreferencia = idPreferencia;
 		this.tipoPreferencia = tipoPreferencia;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
 	public Preferencia(int idPreferencia, TipoPreferencia tipoPreferencia,
-			String descripcion, Set<PreferenciaEvento> preferenciaEventos,
+			String descripcion, boolean activo,
+			Set<PreferenciaEvento> preferenciaEventos,
 			Set<PreferenciaPersona> preferenciaPersonas,
-			Set<NoticiaPreferencia> noticiaPreferencias) {
+			Set<NoticiaPreferencia> noticiaPreferencias,
+			Set<PreferenciaSolicitud> preferenciaSolicituds) {
 		this.idPreferencia = idPreferencia;
 		this.tipoPreferencia = tipoPreferencia;
 		this.descripcion = descripcion;
+		this.activo = activo;
 		this.preferenciaEventos = preferenciaEventos;
 		this.preferenciaPersonas = preferenciaPersonas;
 		this.noticiaPreferencias = noticiaPreferencias;
+		this.preferenciaSolicituds = preferenciaSolicituds;
 	}
 
 	public int getIdPreferencia() {
@@ -66,6 +74,14 @@ public class Preferencia implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Set<PreferenciaEvento> getPreferenciaEventos() {
 		return this.preferenciaEventos;
 	}
@@ -90,6 +106,15 @@ public class Preferencia implements java.io.Serializable {
 	public void setNoticiaPreferencias(
 			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.noticiaPreferencias = noticiaPreferencias;
+	}
+
+	public Set<PreferenciaSolicitud> getPreferenciaSolicituds() {
+		return this.preferenciaSolicituds;
+	}
+
+	public void setPreferenciaSolicituds(
+			Set<PreferenciaSolicitud> preferenciaSolicituds) {
+		this.preferenciaSolicituds = preferenciaSolicituds;
 	}
 
 }

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 12:54:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -21,7 +21,7 @@ public class Noticia implements java.io.Serializable {
 	private boolean publico;
 	private String enlace;
 	private Date fechaCreacion;
-	private Date hora;
+	private boolean activo;
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
 			0);
 
@@ -29,20 +29,20 @@ public class Noticia implements java.io.Serializable {
 	}
 
 	public Noticia(int idNoticia, String descripcion, boolean condicion,
-			Date caducidad, boolean publico, Date fechaCreacion, Date hora) {
+			Date caducidad, boolean publico, Date fechaCreacion, boolean activo) {
 		this.idNoticia = idNoticia;
 		this.descripcion = descripcion;
 		this.condicion = condicion;
 		this.caducidad = caducidad;
 		this.publico = publico;
 		this.fechaCreacion = fechaCreacion;
-		this.hora = hora;
+		this.activo = activo;
 	}
 
 	public Noticia(int idNoticia, Archivo archivo, Evento evento,
 			String titulo, String descripcion, boolean condicion,
 			Date caducidad, boolean publico, String enlace, Date fechaCreacion,
-			Date hora, Set<NoticiaPreferencia> noticiaPreferencias) {
+			boolean activo, Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.idNoticia = idNoticia;
 		this.archivo = archivo;
 		this.evento = evento;
@@ -53,7 +53,7 @@ public class Noticia implements java.io.Serializable {
 		this.publico = publico;
 		this.enlace = enlace;
 		this.fechaCreacion = fechaCreacion;
-		this.hora = hora;
+		this.activo = activo;
 		this.noticiaPreferencias = noticiaPreferencias;
 	}
 
@@ -137,12 +137,12 @@ public class Noticia implements java.io.Serializable {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Date getHora() {
-		return this.hora;
+	public boolean isActivo() {
+		return this.activo;
 	}
 
-	public void setHora(Date hora) {
-		this.hora = hora;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<NoticiaPreferencia> getNoticiaPreferencias() {
