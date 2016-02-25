@@ -27,7 +27,7 @@ public class FuncionService {
 		funcion.add(new Funcion(16, "Seguridad", "", "z-icon-angle-double-right", 6, ""));
 		funcion.add(new Funcion(17, "Perfil del Club", "configuracion/perfilClub.zul", "z-icon-angle-double-right", 1, ""));
 		funcion.add(new Funcion(18, "Junta Directiva", "configuracion/juntaDirectiva.zul", "z-icon-angle-double-right", 1, ""));
-		funcion.add(new Funcion(19, "Preferencias", "configuracion/preferencia.zul", "z-icon-angle-double-right", 8, ""));
+		funcion.add(new Funcion(19, "Preferencias", "configuracion/categoria/preferencia.zul", "z-icon-angle-double-right", 8, ""));
 		funcion.add(new Funcion(20, "Instalaciones", "configuracion/gestionarInstalaciones.zul", "z-icon-angle-double-right", 1, ""));
 		funcion.add(new Funcion(21, "Proveedores", "configuracion/proveedores.zul", "z-icon-angle-double-right", 1, ""));
 		funcion.add(new Funcion(22, "Patrocinantes", "configuracion/patrocinantes.zul", "z-icon-angle-double-right", 1, ""));
