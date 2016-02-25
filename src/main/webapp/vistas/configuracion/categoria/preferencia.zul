@@ -1,0 +1,119 @@
+<?page title="Dashboard - ZK Admin"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native" class='contenedor'>
+	<div>
+		<hlayout spacing="0">
+
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-cogs" />
+						<a label="Configuracion" href="#" />
+						<label value="Preferencias" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+
+					<div sclass="page-header" align="left">
+						<label value="Preferencias" />
+					</div>
+
+					<space />
+					<space />
+					<div class='form-pricing' align="left" width="70%"
+						apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PreferenciaViewModel')" style="margin-bottom: 20px">
+						<div
+							xmlns:w='client' align="right">
+							<button id="btnPreferenciasRegistrar"
+								label="Agregar Nuevo" iconSclass="z-icon-plus"
+								class='boton-guardar' onClick="@command('showModal')"/>
+						</div>
+
+						<separator spacing="10px" />
+
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Lista Preferencias
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<separator spacing="30px" />
+
+							<grid model="@load(vm.allPreferencia)"
+								emptyMessage="No se encuentran preferencias registrados"
+								mold="paging" pageSize="10" align="left">
+								<auxhead sclass="category-center">
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true" value="@bind(vm.idFiltro)"
+											onChange="@command('filtro')"
+											width="85%" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true" value="@bind(vm.tipoPrefrenciaFiltro)"
+											onChange="@command('filtro')"
+											width="85%" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true" value="@bind(vm.descFiltro)"
+											onChange="@command('filtro')"
+											width="85%" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="1" />
+								</auxhead>
+								<columns>
+									<column hflex="2">Codigo</column>
+									<column hflex="2">
+										Tipo Preferencia
+									</column>
+									<column hflex="2">
+										Descripcion
+									</column>
+									<column>Acciones</column>
+								</columns>
+
+								<rows>
+									<template name="model">
+
+										<row>
+											<label
+												value="@load(each.idPreferencia)" />
+											<label
+												value="@load(each.tipoPreferencia.descripcion)" />
+											<label
+												value="@load(each.descripcion)" />
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-pencil blue"
+													tooltiptext="Editar"
+													onClick="@command('showModal', preferencia=each)" />
+												<button
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													tooltiptext="Eliminar"
+													onClick="@command('eliminar', preferencia=each)" />
+											</div>
+										</row>
+
+									</template>
+								</rows>
+								<foot>
+									<footer span="4"
+										class="footer_right" label="@load(vm.cantRegistros)" />
+								</foot>
+							</grid>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>
