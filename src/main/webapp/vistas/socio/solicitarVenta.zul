@@ -32,25 +32,27 @@
 			<div class='linea-two'></div>
 			</div>
 			<separator spacing="20px"/>
-			<grid>
-				<columns>
-							<column hflex="2"># Acción </column>
-							<column hflex="2">Solicitar Venta</column>
-							
-							
-				</columns>
-			
-				<rows>
-					<row>
-						<label value="002" />
-						<button label="Vender" class='boton-guardar' />
-					</row>
-					<row>
-						<label value="003" />
-						<button label="Vender" class='boton-guardar' />
-					</row>
-				</rows>
-			</grid>
+			<listbox id="box"
+											multiple="true" checkmark="true">
+											<listhead>
+												<listheader
+													label="Solicitar Venta" />
+												<listheader label="# Acción" />
+											</listhead>
+											<listitem>
+												<listcell label="" />
+												<listcell
+													label="0001" />
+											</listitem>
+											<listitem>
+												<listcell label="" />
+												<listcell label="0002" />
+											</listitem>
+											<listitem>
+												<listcell label="" />
+												<listcell label="0003" />
+											</listitem>										
+										</listbox>
 		
 		</div>
 			<separator spacing="20px"/>		
