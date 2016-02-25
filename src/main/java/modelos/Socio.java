@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,40 +14,37 @@ public class Socio implements java.io.Serializable {
 	private Persona persona;
 	private Postulacion postulacion;
 	private String nroCarnet;
+	private boolean activo;
 	private Set<Sancion> sancions = new HashSet<Sancion>(0);
-	private Set<Visita> visitas = new HashSet<Visita>(0);
 	private Set<Accion> accions = new HashSet<Accion>(0);
 	private Set<Desvinculacion> desvinculacions = new HashSet<Desvinculacion>(0);
 	private Set<Reservacion> reservacions = new HashSet<Reservacion>(0);
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
-	private Set<SolicitudEvento> solicitudEventos = new HashSet<SolicitudEvento>(
-			0);
 
 	public Socio() {
 	}
 
-	public Socio(int idSocio, Persona persona, String nroCarnet) {
+	public Socio(int idSocio, Persona persona, String nroCarnet, boolean activo) {
 		this.idSocio = idSocio;
 		this.persona = persona;
 		this.nroCarnet = nroCarnet;
+		this.activo = activo;
 	}
 
 	public Socio(int idSocio, Persona persona, Postulacion postulacion,
-			String nroCarnet, Set<Sancion> sancions, Set<Visita> visitas,
+			String nroCarnet, boolean activo, Set<Sancion> sancions,
 			Set<Accion> accions, Set<Desvinculacion> desvinculacions,
-			Set<Reservacion> reservacions, Set<Afiliado> afiliados,
-			Set<SolicitudEvento> solicitudEventos) {
+			Set<Reservacion> reservacions, Set<Afiliado> afiliados) {
 		this.idSocio = idSocio;
 		this.persona = persona;
 		this.postulacion = postulacion;
 		this.nroCarnet = nroCarnet;
+		this.activo = activo;
 		this.sancions = sancions;
-		this.visitas = visitas;
 		this.accions = accions;
 		this.desvinculacions = desvinculacions;
 		this.reservacions = reservacions;
 		this.afiliados = afiliados;
-		this.solicitudEventos = solicitudEventos;
 	}
 
 	public int getIdSocio() {
@@ -82,20 +79,20 @@ public class Socio implements java.io.Serializable {
 		this.nroCarnet = nroCarnet;
 	}
 
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Set<Sancion> getSancions() {
 		return this.sancions;
 	}
 
 	public void setSancions(Set<Sancion> sancions) {
 		this.sancions = sancions;
-	}
-
-	public Set<Visita> getVisitas() {
-		return this.visitas;
-	}
-
-	public void setVisitas(Set<Visita> visitas) {
-		this.visitas = visitas;
 	}
 
 	public Set<Accion> getAccions() {
@@ -128,14 +125,6 @@ public class Socio implements java.io.Serializable {
 
 	public void setAfiliados(Set<Afiliado> afiliados) {
 		this.afiliados = afiliados;
-	}
-
-	public Set<SolicitudEvento> getSolicitudEventos() {
-		return this.solicitudEventos;
-	}
-
-	public void setSolicitudEventos(Set<SolicitudEvento> solicitudEventos) {
-		this.solicitudEventos = solicitudEventos;
 	}
 
 }

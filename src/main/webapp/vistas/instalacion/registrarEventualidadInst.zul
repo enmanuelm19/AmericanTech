@@ -24,8 +24,8 @@
 						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="580px"
-							height="650px">
+						<div class='form-pricing' width="80%"
+							height="100%">
 
 							<div class='encabezado'>Datos del Socio</div>
 							<div class='linea-two'></div>
@@ -48,14 +48,17 @@
 	                             				<hlayout>
 		                             				<div>
 		                             					<div>
-		                             						Número de Carnet
+		                             						Número de Carnet:
 		                             					</div>
 			                             				<div>
-			                             					Cédula
+			                             					Cédula:
 		                             					</div>
 			                             				<div>
-			                             					Nombre
-		                             					</div>                             									                                                				
+			                             					Nombre:
+		                             					</div> 
+		                             					<div>
+			                             					Apellido:
+		                             					</div>                            									                                                				
 		                             				</div>
 													<div>
 			                             				<div>
@@ -69,6 +72,9 @@
 			                             				</div>
 			                             				<div>
 			                             					<textbox type="text" value="" width="140px" />                             									                                                				
+			                             				</div>
+			                             				<div>
+			                             					<textbox type="text" value="" width="140px" />                             									                                                				
 			                             				</div>	                             							                             																		
 													</div>
 	                             				</hlayout>                             				                             					
@@ -76,13 +82,13 @@
 							           </div> 
 									</hlayout>			                  		
 								</div>
-								<separator spacing="10px" />
+								<separator spacing="10%" />
 						    </row>
 						    
 						
 							
 						
-						<row class="col-md-8 col-left"> 
+						<row class="col-md-10 col-left"> 
 			           <div>
 										<listbox id="box"
 											multiple="true" checkmark="true">
@@ -131,14 +137,14 @@
 								<vlayout>
 								<hlayout>
 								<div width="100px">
-								<label value="Instalación:" />
+								<label value="Tipo de Eventualidad:" />
 								</div>	
 								<div>		
-								<combobox width="200px"> 
-						   		 <comboitem label="Caney Churuguara"/>
-						   		 <comboitem label="Piscina"/>
-						   		 <comboitem label="Campo de futbol"/>
-						   		 <comboitem label="Caney Cardenal"/>
+								<combobox width="auto"> 
+						   		 <comboitem label="Pelea"/>
+						   		 <comboitem label="Daño de Instalacion"/>
+						   		 <comboitem label="Acto Inmoral"/>
+						   		 
 								 </combobox>
 								</div>
 								</hlayout>
@@ -162,9 +168,9 @@
 								</vlayout>
 								</row>
 								<row>
-            <separator spacing="15px"></separator>
+            <separator spacing="8%"></separator>
 			 </row>
-								<row class="col-md-4 col-md-offset-3">
+			<row class="col-md-8 col-md-offset-4">
 			<hlayout>
 			                 
               	<div >

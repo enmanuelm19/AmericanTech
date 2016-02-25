@@ -1,7 +1,7 @@
 <!-- Trabajado por Hector Gil 08/02/16-->
 <zk>
 	<window title="Agregar Sancion" border="normal" width="40%"
-		height="60%" position="center,center" closable="true"
+		height="auto" position="center,center" closable="true"
 		action="show: slideDown;hide: slideUp">
 		<caption iconSclass="z-icon-user" />
 		<hlayout spacing="0">

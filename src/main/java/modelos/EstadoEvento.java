@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,19 +12,23 @@ public class EstadoEvento implements java.io.Serializable {
 
 	private int idEstadoEvento;
 	private String nombre;
+	private boolean activo;
 	private Set<Evento> eventos = new HashSet<Evento>(0);
 
 	public EstadoEvento() {
 	}
 
-	public EstadoEvento(int idEstadoEvento, String nombre) {
+	public EstadoEvento(int idEstadoEvento, String nombre, boolean activo) {
 		this.idEstadoEvento = idEstadoEvento;
 		this.nombre = nombre;
+		this.activo = activo;
 	}
 
-	public EstadoEvento(int idEstadoEvento, String nombre, Set<Evento> eventos) {
+	public EstadoEvento(int idEstadoEvento, String nombre, boolean activo,
+			Set<Evento> eventos) {
 		this.idEstadoEvento = idEstadoEvento;
 		this.nombre = nombre;
+		this.activo = activo;
 		this.eventos = eventos;
 	}
 
@@ -42,6 +46,14 @@ public class EstadoEvento implements java.io.Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Evento> getEventos() {

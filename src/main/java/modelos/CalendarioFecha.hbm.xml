@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.CalendarioFecha" table="calendario_fecha" schema="public" optimistic-lock="version">
         <id name="idCalendarioFecha" type="int">
@@ -15,16 +15,13 @@
             <column name="reservacionid_reservacion" />
         </many-to-one>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="40" not-null="true" />
-        </property>
-        <property name="horaInic" type="time">
-            <column name="hora_inic" length="15" not-null="true" />
-        </property>
-        <property name="horaFin" type="time">
-            <column name="hora_fin" length="15" not-null="true" />
+            <column name="descripcion" length="80" not-null="true" />
         </property>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="calendarioHoras" table="calendario_hora" inverse="true" lazy="true" fetch="select">
             <key>

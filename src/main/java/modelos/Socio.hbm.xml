@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Socio" table="socio" schema="public" optimistic-lock="version">
         <id name="idSocio" type="int">
@@ -15,19 +15,16 @@
             <column name="postulacionid_postulacion" />
         </many-to-one>
         <property name="nroCarnet" type="string">
-            <column name="nro_carnet" length="10" not-null="true" />
+            <column name="nro_carnet" length="20" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="sancions" table="sancion" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="socioid_socio" />
             </key>
             <one-to-many class="modelos.Sancion" />
-        </set>
-        <set name="visitas" table="visita" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="socioid_socio" />
-            </key>
-            <one-to-many class="modelos.Visita" />
         </set>
         <set name="accions" table="accion" inverse="true" lazy="true" fetch="select">
             <key>
@@ -52,12 +49,6 @@
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Afiliado" />
-        </set>
-        <set name="solicitudEventos" table="solicitud_evento" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="socioid_socio" not-null="true" />
-            </key>
-            <one-to-many class="modelos.SolicitudEvento" />
         </set>
     </class>
 </hibernate-mapping>

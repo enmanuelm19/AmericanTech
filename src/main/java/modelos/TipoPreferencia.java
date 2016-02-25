@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,21 +13,25 @@ public class TipoPreferencia implements java.io.Serializable {
 	private int idTipoPreferencia;
 	private String descripcion;
 	private String color;
+	private boolean activo;
 	private Set<Preferencia> preferencias = new HashSet<Preferencia>(0);
 
 	public TipoPreferencia() {
 	}
 
-	public TipoPreferencia(int idTipoPreferencia, String descripcion) {
+	public TipoPreferencia(int idTipoPreferencia, String descripcion,
+			boolean activo) {
 		this.idTipoPreferencia = idTipoPreferencia;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
 	public TipoPreferencia(int idTipoPreferencia, String descripcion,
-			String color, Set<Preferencia> preferencias) {
+			String color, boolean activo, Set<Preferencia> preferencias) {
 		this.idTipoPreferencia = idTipoPreferencia;
 		this.descripcion = descripcion;
 		this.color = color;
+		this.activo = activo;
 		this.preferencias = preferencias;
 	}
 
@@ -53,6 +57,14 @@ public class TipoPreferencia implements java.io.Serializable {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Preferencia> getPreferencias() {

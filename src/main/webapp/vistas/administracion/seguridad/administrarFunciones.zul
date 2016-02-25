@@ -1,5 +1,5 @@
 <zk>
-	<div class="contenedor">
+	<div class="contenedor" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.FuncionViewModel')">
 		<hlayout spacing="0">
 
 			<vlayout spacing="0" hflex="1">
@@ -22,61 +22,18 @@
 							</div>
 							<div class='linea-two' />
 						</div>
-						<grid mold="paging" pageSize="10"
+						<grid mold="paging" pageSize="10" model="@load(vm.funciones)"
 							emptyMessage="Ningun Registro Encontrado">
 							<columns class="z-grid z-column-content ">
 								<column label="Descripción"
 									align="center" />
 							</columns>
 							<rows>
-									<row>
-										<label
-											value="Funcion 1" />
-									</row>
-									<row>
-										<label
-											value="Funcion 2" />
-									</row>
-									<row>
-										<label
-											value="Funcion 3" />
-									</row>
-									<row>
-										<label
-											value="Funcion 4" />
-									</row>
-									<row>
-										<label
-											value="Funcion 5" />
-									</row>
-									<row>
-										<label
-											value="Funcion 6" />
-									</row>
-									<row>
-										<label
-											value="Funcion 7" />
-									</row>
-									<row>
-										<label
-											value="Funcion 8" />
-									</row>
-									<row>
-										<label
-											value="Funcion 9" />
-									</row>
-									<row>
-										<label
-											value="Funcion 10" />
-									</row>
-									<row>
-										<label
-											value="Funcion 11" />
-									</row>
-									<row>
-										<label
-											value="Funcion 12" />
-									</row>
+							<template name="model">
+								<row>
+									<label value="@load(each.nombre)"></label>
+								</row>
+							</template>
 							</rows>
 
 						</grid>

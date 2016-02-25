@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.TipoActividad" table="tipo_actividad" schema="public" optimistic-lock="version">
         <id name="idTipoActividad" type="int">
@@ -10,6 +10,9 @@
         </id>
         <property name="descripcion" type="string">
             <column name="descripcion" length="20" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select">
             <key>

@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Foto;
 import modelos.Instalacion;
 import confi.Sesion;
 
@@ -102,4 +103,21 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
+	//Metodo para obtener que tipo de instalacion pertenece la instalacion. duda
+
+			public List<Instalacion> obtenerTipoinstalacion( int id) throws Exception {            
+					      
+				List<Instalacion> datos = new ArrayList<Instalacion>();  
+				Session em = sesionPostgres.getSessionFactory().openSession();   	
+				 try {  	
+				   datos =  (List<Instalacion>) em.createCriteria(Instalacion.class).add(Restrictions.eq("tipo_instalacionid_tipo_instalacion", id)).list();             
+					  } catch (Exception e) {             
+				 
+				throw new Exception(e.getMessage(),e.getCause());
+				     } finally {  
+				      em.close();  
+					 } 
+						       
+				   return datos; 
+				}
 }

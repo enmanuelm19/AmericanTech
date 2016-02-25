@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,21 +12,26 @@ public class TipoAfiliado implements java.io.Serializable {
 
 	private int idTipoAfiliado;
 	private String descripcion;
+	private boolean activo;
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
+	private Set<Politica> politicas = new HashSet<Politica>(0);
 
 	public TipoAfiliado() {
 	}
 
-	public TipoAfiliado(int idTipoAfiliado, String descripcion) {
+	public TipoAfiliado(int idTipoAfiliado, String descripcion, boolean activo) {
 		this.idTipoAfiliado = idTipoAfiliado;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
-	public TipoAfiliado(int idTipoAfiliado, String descripcion,
-			Set<Afiliado> afiliados) {
+	public TipoAfiliado(int idTipoAfiliado, String descripcion, boolean activo,
+			Set<Afiliado> afiliados, Set<Politica> politicas) {
 		this.idTipoAfiliado = idTipoAfiliado;
 		this.descripcion = descripcion;
+		this.activo = activo;
 		this.afiliados = afiliados;
+		this.politicas = politicas;
 	}
 
 	public int getIdTipoAfiliado() {
@@ -45,12 +50,28 @@ public class TipoAfiliado implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Set<Afiliado> getAfiliados() {
 		return this.afiliados;
 	}
 
 	public void setAfiliados(Set<Afiliado> afiliados) {
 		this.afiliados = afiliados;
+	}
+
+	public Set<Politica> getPoliticas() {
+		return this.politicas;
+	}
+
+	public void setPoliticas(Set<Politica> politicas) {
+		this.politicas = politicas;
 	}
 
 }

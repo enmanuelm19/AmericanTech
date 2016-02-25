@@ -96,7 +96,7 @@
 											Instalaciones
 										</column>
 										<column width="10%">
-											Preferencias
+											Categorias
 										</column>
 
 										<column width="16%">
@@ -126,6 +126,20 @@
 															de la
 															Actividad
 														</column>
+														<column
+															width="">
+															Fecha tope
+														</column>
+														<column
+															width="">
+															Cant
+															Solicitada
+														</column>
+														<column
+															width="">
+															Cant
+															obtenida
+														</column>
 
 
 														<column
@@ -138,41 +152,30 @@
 														<row>
 															<label
 																value="Buscar Arbitros" />
-
-															<div>
-																SI
-
-															</div>
-
-														</row>
-														<row>
 															<label
-																value="Limpiar la piscina" />
-
-															<div>
-																SI
-
-															</div>
-
-														</row>
-														<row>
+																value="10/02/2016" />
 															<label
-																value="Agendar a los equipos del torneo" />
+																value="5" />
+															<label
+																value="4" />
 
-															<div>
-																SI
-
-															</div>
+															<label
+																value="SI" />
 
 														</row>
+
 														<row>
 															<label
 																value="Buscar pelotas para el torneo" />
+															<label
+																value="10/02/2016" />
+															<label
+																value="5" />
+															<label
+																value="4" />
 
-															<div>
-																SI
-
-															</div>
+															<label
+																value="SI" />
 
 														</row>
 
@@ -198,7 +201,7 @@
 											</div>
 										</row>
 										<row>
-											<detail open="false"
+												<detail open="false"
 												fulfill="onOpen">
 												<grid
 													emptyMessage="No se encuentran actividades registradas"
@@ -218,6 +221,20 @@
 															de la
 															Actividad
 														</column>
+														<column
+															width="">
+															Fecha tope
+														</column>
+														<column
+															width="">
+															Cant
+															Solicitada
+														</column>
+														<column
+															width="">
+															Cant
+															obtenida
+														</column>
 
 
 														<column
@@ -230,41 +247,30 @@
 														<row>
 															<label
 																value="Buscar Arbitros" />
-
-															<div>
-																SI
-
-															</div>
-
-														</row>
-														<row>
 															<label
-																value="Limpiar la piscina" />
-
-															<div>
-																SI
-
-															</div>
-
-														</row>
-														<row>
+																value="10/02/2016" />
 															<label
-																value="Agendar a los equipos del torneo" />
+																value="5" />
+															<label
+																value="4" />
 
-															<div>
-																SI
-
-															</div>
+															<label
+																value="SI" />
 
 														</row>
+
 														<row>
 															<label
 																value="Buscar pelotas para el torneo" />
+															<label
+																value="10/02/2016" />
+															<label
+																value="5" />
+															<label
+																value="4" />
 
-															<div>
-																SI
-
-															</div>
+															<label
+																value="SI" />
 
 														</row>
 

@@ -1,36 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Alquiler" table="alquiler" schema="public" optimistic-lock="version">
         <id name="idAlquiler" type="int">
             <column name="id_alquiler" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
-            <column name="lista_proveedores" not-null="true" />
-        </many-to-one>
         <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select">
             <column name="reservacionid_reservacion" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
         </property>
-        <property name="hora" type="time">
-            <column name="hora" length="15" not-null="true" />
-        </property>
-        <property name="nroTransaccion" type="short">
-            <column name="nro_transaccion" not-null="true" />
+        <property name="nroTransaccion" type="string">
+            <column name="nro_transaccion" length="30" not-null="true" />
         </property>
         <property name="monto" type="float">
             <column name="monto" precision="8" scale="8" not-null="true" />
         </property>
-        <set name="invitadoAlquilers" table="invitado_alquiler" inverse="true" lazy="true" fetch="select">
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="alquilerid_alquiler" not-null="true" />
             </key>
-            <one-to-many class="modelos.InvitadoAlquiler" />
+            <one-to-many class="modelos.ArchivoAlquiler" />
         </set>
     </class>
 </hibernate-mapping>

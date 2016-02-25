@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.TipoArchivo" table="tipo_archivo" schema="public" optimistic-lock="version">
+        <id name="idTipoArchivo" type="int">
+            <column name="id_tipo_archivo" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="80" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipo_archivoid_tipo_archivo" not-null="true" />
+            </key>
+            <one-to-many class="modelos.ArchivoAlquiler" />
+        </set>
+    </class>
+</hibernate-mapping>

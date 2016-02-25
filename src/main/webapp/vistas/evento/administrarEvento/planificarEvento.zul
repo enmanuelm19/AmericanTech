@@ -90,10 +90,10 @@
 											Hr. Fin
 										</column>
 										<column width="15%">
-											Instalaciónes
+											Instalaciones
 										</column>
 										<column width="15%">
-											Peferencias
+											Categorias
 										</column>
 
 										<column width="10%">
@@ -118,12 +118,24 @@
 
 													<columns>
 														<column
-															width="">
+															width="30%">
 															Descripcion
 															de la
 															Actividad
 														</column>
 
+														<column
+															width="">
+															Fecha tope
+														</column>
+														<column
+															width="">
+															Cant Solicitada
+														</column>
+														<column
+															width="">
+															Cant obtenida
+														</column>
 														<column
 															width="">
 															Estado
@@ -139,6 +151,12 @@
 														<row>
 															<label
 																value="Buscar Pelotas para juego de beisbol" />
+																<label
+																value="10/02/2016" />
+																<label
+																value="5" />
+																<label
+																value="4" />
 
 															<label
 																value="No Finalizado" />
@@ -152,25 +170,16 @@
 																	tooltiptext="Eliminar" />
 															</div>
 														</row>
-														<row>
-															<label
-																value="Agendar a los equipos" />
-
-															<label
-																value="No Finalizado" />
-
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-pencil blue"
-																	tooltiptext="Modificar" />
-																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o red"
-																	tooltiptext="Eliminar" />
-															</div>
-														</row>
+													
 														<row>
 															<label
 																value="Buscar arbitros" />
+																<label
+																value="10/02/2016" />
+																<label
+																value="5" />
+																<label
+																value="4" />
 
 															<label
 																value="No Finalizado" />
@@ -184,22 +193,7 @@
 																	tooltiptext="Eliminar" />
 															</div>
 														</row>
-														<row>
-															<label
-																value="Limpiar piscina" />
-
-															<label
-																value=" No Finalizado" />
-
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-pencil blue"
-																	tooltiptext="Modificar" />
-																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o red"
-																	tooltiptext="Eliminar" />
-															</div>
-														</row>
+													
 
 													</rows>
 												</grid>
@@ -241,12 +235,24 @@
 
 													<columns>
 														<column
-															width="">
+															width="30%">
 															Descripcion
 															de la
 															Actividad
 														</column>
 
+														<column
+															width="">
+															Fecha tope
+														</column>
+														<column
+															width="">
+															Cant Solicitada
+														</column>
+														<column
+															width="">
+															Cant obtenida
+														</column>
 														<column
 															width="">
 															Estado
@@ -262,22 +268,12 @@
 														<row>
 															<label
 																value="Buscar Pelotas para juego de beisbol" />
-
-															<label
-																value="Finalizado" />
-
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-pencil blue"
-																	tooltiptext="Modificar" />
-																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o red"
-																	tooltiptext="Eliminar" />
-															</div>
-														</row>
-														<row>
-															<label
-																value="Agendar a los equipos" />
+																<label
+																value="10/02/2016" />
+																<label
+																value="5" />
+																<label
+																value="4" />
 
 															<label
 																value="No Finalizado" />
@@ -291,9 +287,16 @@
 																	tooltiptext="Eliminar" />
 															</div>
 														</row>
+													
 														<row>
 															<label
 																value="Buscar arbitros" />
+																<label
+																value="10/02/2016" />
+																<label
+																value="5" />
+																<label
+																value="4" />
 
 															<label
 																value="No Finalizado" />
@@ -307,22 +310,7 @@
 																	tooltiptext="Eliminar" />
 															</div>
 														</row>
-														<row>
-															<label
-																value="Limpiar piscina" />
-
-															<label
-																value="Finalizado" />
-
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-pencil blue"
-																	tooltiptext="Modificar" />
-																<button
-																	sclass="btn-link" iconSclass="z-icon-trash-o red"
-																	tooltiptext="Eliminar" />
-															</div>
-														</row>
+													
 
 													</rows>
 												</grid>

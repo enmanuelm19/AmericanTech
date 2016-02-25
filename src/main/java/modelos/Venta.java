@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,27 +16,31 @@ public class Venta implements java.io.Serializable {
 	private MotivoVenta motivoVenta;
 	private Date fecha;
 	private float monto;
+	private boolean activo;
 	private Set<Postulacion> postulacions = new HashSet<Postulacion>(0);
 
 	public Venta() {
 	}
 
 	public Venta(int idVenta, Accion accion, MotivoVenta motivoVenta,
-			Date fecha, float monto) {
+			Date fecha, float monto, boolean activo) {
 		this.idVenta = idVenta;
 		this.accion = accion;
 		this.motivoVenta = motivoVenta;
 		this.fecha = fecha;
 		this.monto = monto;
+		this.activo = activo;
 	}
 
 	public Venta(int idVenta, Accion accion, MotivoVenta motivoVenta,
-			Date fecha, float monto, Set<Postulacion> postulacions) {
+			Date fecha, float monto, boolean activo,
+			Set<Postulacion> postulacions) {
 		this.idVenta = idVenta;
 		this.accion = accion;
 		this.motivoVenta = motivoVenta;
 		this.fecha = fecha;
 		this.monto = monto;
+		this.activo = activo;
 		this.postulacions = postulacions;
 	}
 
@@ -78,6 +82,14 @@ public class Venta implements java.io.Serializable {
 
 	public void setMonto(float monto) {
 		this.monto = monto;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Postulacion> getPostulacions() {
