@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -34,8 +33,6 @@ public class PreferenciaViewModel {
 		preferenciaAll = new ArrayList<Preferencia>();
 		preferenciaDao = new PreferenciaDao();
 		preferenciaAll = preferenciaDao.obtenerTodos();
-		
-		//System.out.println("policia "+preferenciaAll.get(0).getTipoPreferencia().getDescripcion());
 	}
 
 	public ListModelList<Preferencia> getAllPreferencia() {
