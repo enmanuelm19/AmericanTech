@@ -93,7 +93,7 @@
 											Instalaciones
 										</column>
 										<column width="15%">
-											Preferencias
+											Categorias
 										</column>
 
 										<column width="10%">
@@ -123,6 +123,20 @@
 															de la
 															Actividad
 														</column>
+														<column
+															width="">
+															Fecha tope
+														</column>
+														<column
+															width="">
+															Cant
+															Solicitada
+														</column>
+														<column
+															width="">
+															Cant
+															obtenida
+														</column>
 
 
 														<column
@@ -135,26 +149,12 @@
 														<row>
 															<label
 																value="Buscar Arbitros" />
-
-															<div>
-																<checkbox />
-
-															</div>
-
-														</row>
-														<row>
 															<label
-																value="Limpiar la piscina" />
-
-															<div>
-																<checkbox />
-
-															</div>
-
-														</row>
-														<row>
+																value="10/02/2016" />
 															<label
-																value="Agendar a los equipos del torneo" />
+																value="5" />
+															<label
+																value="4" />
 
 															<div>
 																<checkbox />
@@ -162,9 +162,16 @@
 															</div>
 
 														</row>
+
 														<row>
 															<label
 																value="Buscar pelotas para el torneo" />
+															<label
+																value="10/02/2016" />
+															<label
+																value="5" />
+															<label
+																value="4" />
 
 															<div>
 																<checkbox />
@@ -209,6 +216,20 @@
 															de la
 															Actividad
 														</column>
+														<column
+															width="">
+															Fecha tope
+														</column>
+														<column
+															width="">
+															Cant
+															Solicitada
+														</column>
+														<column
+															width="">
+															Cant
+															obtenida
+														</column>
 
 
 														<column
@@ -221,26 +242,12 @@
 														<row>
 															<label
 																value="Buscar Arbitros" />
-
-															<div>
-																<checkbox />
-
-															</div>
-
-														</row>
-														<row>
 															<label
-																value="Limpiar la piscina" />
-
-															<div>
-																<checkbox />
-
-															</div>
-
-														</row>
-														<row>
+																value="10/02/2016" />
 															<label
-																value="Agendar a los equipos del torneo" />
+																value="5" />
+															<label
+																value="4" />
 
 															<div>
 																<checkbox />
@@ -248,9 +255,16 @@
 															</div>
 
 														</row>
+
 														<row>
 															<label
 																value="Buscar pelotas para el torneo" />
+															<label
+																value="10/02/2016" />
+															<label
+																value="5" />
+															<label
+																value="4" />
 
 															<div>
 																<checkbox />

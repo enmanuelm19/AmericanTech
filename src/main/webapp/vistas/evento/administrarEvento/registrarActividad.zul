@@ -2,7 +2,7 @@
 
 	<window border="none" title="Agregar Actividad"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="auto"
+		closable="true" width="40%" height="auto"
 		style="iconSclass= z-icon-calendar;">
 		<caption iconSclass="z-icon-calendar" />
 
@@ -24,62 +24,23 @@
 
 					<rows class="">
 
-						<!-- 	<row class="col-md-12">
-							<div>
-							Nombre de la actividad
-							<n:br></n:br>
-							<textbox type="text" width="85%"
-							tabindex="10" constraint="no empty" />
-							
-							</div>
-							<div>
-							Tipo de actividad
-							<n:br></n:br>
-							<combobox width="85%">
-							<comboitem label="Deportiva" />
-							<comboitem label="Cultural" />
-							<comboitem label="Musical" />
-							</combobox>
-							
-							</div>
-							
-							
-							</row> -->
+						<row class="col-md-12">
+							<div class="col-md-6">
+								Fecha Tope de la actividad
+								<n:br></n:br>
+								<datebox id="DateFchInicio" width="100%"
+									cols="12" format="short " onCreate="self.value = new Date()" />
 
-						<!--  <row class="col-md-12">
-							<div>
-							Fecha inicio
-							<n:br></n:br>
-							<datebox id="DateFchInicio" width="85%"
-							cols="12" format="short " onCreate="self.value = new Date()" />
 							</div>
-							
-							<div>
-							Fecha fin
-							<n:br></n:br>
-							<datebox id="DateFchCierre" cols="12"
-							format="short " width="85%" onCreate="self.value = new Date()" />
-							</div>
-							</row>
-							<row class="col-md-12">
-							<div>
-							Hora inicio
-							<n:br></n:br>
-							<timebox id="TimeHorInicio" cols="12"
-							format="short" onCreate="self.value = new Date()" width="85%" />
-							</div>
-							<div>
-							Hora cierre
-							<n:br></n:br>
-							<timebox id="TimeHorCierre" cols="12"
-							format="short" onCreate="self.value = new Date()" width="85%" />
-							</div>
-							
-							</row>-->
+
+
+
+						</row>
+
 						<row class="col-md-12">
 
 
-							<div>
+							<div class="col-md-12">
 								Descripción de la tarea
 								<n:br></n:br>
 								<textbox type="text" rows="5"
@@ -88,19 +49,30 @@
 
 
 						</row>
-						<row class="col-md-12">
-
+						<row>
 							<div>
+								<div class="col-md-6">
+									Cantidad solicitada
+									<n:br></n:br>
 
+									<textbox type="text" width="100%"
+										constraint="no empty" />
+								</div>
+								<div class="col-md-6">
+									Cantidad obtenida
+									<n:br></n:br>
 
-								<checkbox id="l1" label=" " />
-								Actividad Finalizada?
+									<textbox type="text" width="100%"
+										constraint="no empty" />
+								</div>
+
 							</div>
-
 						</row>
 
 
 					</rows>
+
+
 				</grid>
 				<space spacing="35%" />
 				<div>
