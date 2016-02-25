@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Eventualidad;
 import modelos.Noticia;
 import confi.Sesion;
 
@@ -101,4 +102,21 @@ private Sesion sesionPostgres;
            
             return datos; 
         }
+  //Metodo para obtener noticias de "x" evento
+
+  	public List<Noticia> obtenerNoticiasevento( int id) throws Exception {            
+  			      
+  		List<Noticia> datos = new ArrayList<Noticia>();  
+  		Session em = sesionPostgres.getSessionFactory().openSession();   	
+  		 try {  	
+  		   datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("eventoid_evento", id)).list();             
+  			  } catch (Exception e) {             
+  		 
+  		throw new Exception(e.getMessage(),e.getCause());
+  		     } finally {  
+  		      em.close();  
+  			 } 
+  				       
+  		   return datos; 
+  		}
 }
