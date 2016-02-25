@@ -78,18 +78,8 @@
 
 						</row>
 						<row class="col-md-12">
-							<!-- <div>
-								
-								Tipo de Evento
-								<n:br></n:br>
-								<combobox width="85%">
-								<comboitem label="Deportivo" />
-								<comboitem label="Cultural" />
-								<comboitem label="Social" />
-								<comboitem label="Recreativa" />
-								</combobox>
-								
-							-->
+							
+							
 							<div>
 								Nombre del evento
 								<n:br></n:br>
@@ -114,16 +104,18 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div align="left">
-							Seleccione las preferencias relacionadas con
+							Seleccione las Categorías relacionadas con
 							el evento:
 							<n:br></n:br>
-							<combobox width="80%">
+							<combobox width="100%">
 								<comboitem label="Deportivo" />
 								<comboitem label="Cultural" />
+								<comboitem label="Social" />
+								<comboitem label="Mixto" />
 							</combobox>
-							<button sclass="btn-link"
+							<!-- <button sclass="btn-link"
 								iconSclass="z-icon-plus blue" id=""
-								tooltiptext="Agregar preferencia" />
+								tooltiptext="Agregar preferencia" />-->
 
 						</div>
 						<n:br></n:br>
@@ -133,22 +125,34 @@
 
 							<columns>
 
-
-								<column hflex="">Preferencia</column>
+								
+								<column hflex="">Sub Categorias</column>
 
 								<column hflex="">Acciones</column>
 							</columns>
 
 							<rows>
 								<row>
-									<label value="Deportivo" />
-
-
-
 									<div>
-
+										<checkbox/>
+									
+									<label value=" Futbol" />
+									</div>
+									<div>
 										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id="btnCancelar"
+											iconSclass="z-icon-trash-o red" id=""
+											tooltiptext="Eliminar" />
+									</div>
+								</row>
+									<row>
+									<div>
+										<checkbox/>
+									
+									<label value="Beisbol" />
+									</div>
+									<div>
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id=""
 											tooltiptext="Eliminar" />
 									</div>
 								</row>
@@ -193,6 +197,17 @@
 							<rows>
 								<row>
 									<label value="Caney de Rafa" />
+
+
+
+									<div>
+
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+									</div>
+								</row>
+								<row>
+									<label value="Caney Chevechita" />
 
 
 
