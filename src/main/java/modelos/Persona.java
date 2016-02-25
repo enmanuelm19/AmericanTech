@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,13 +22,13 @@ public class Persona implements java.io.Serializable {
 	private String telefono;
 	private String telefonoFijo;
 	private String direccion;
+	private boolean activo;
 	private Set<Empleado> empleados = new HashSet<Empleado>(0);
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
 	private Set<RedPersona> redPersonas = new HashSet<RedPersona>(0);
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Eventualidad> eventualidads = new HashSet<Eventualidad>(0);
-	private Set<Invitado> invitados = new HashSet<Invitado>(0);
 	private Set<Postulado> postulados = new HashSet<Postulado>(0);
 	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
 	private Set<PreferenciaPersona> preferenciaPersonas = new HashSet<PreferenciaPersona>(
@@ -37,22 +37,23 @@ public class Persona implements java.io.Serializable {
 	public Persona() {
 	}
 
-	public Persona(int idPersona, String nombre, String apellido, String sexo) {
+	public Persona(int idPersona, String nombre, String apellido, String sexo,
+			boolean activo) {
 		this.idPersona = idPersona;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.sexo = sexo;
+		this.activo = activo;
 	}
 
 	public Persona(int idPersona, Archivo archivo, String identificacion,
 			String nombre, String apellido, Date fechaNac, String sexo,
 			String correo, String telefono, String telefonoFijo,
-			String direccion, Set<Empleado> empleados,
+			String direccion, boolean activo, Set<Empleado> empleados,
 			Set<MiembroJunta> miembroJuntas, Set<Afiliado> afiliados,
 			Set<RedPersona> redPersonas, Set<Socio> socios,
-			Set<Eventualidad> eventualidads, Set<Invitado> invitados,
-			Set<Postulado> postulados, Set<Usuario> usuarios,
-			Set<PreferenciaPersona> preferenciaPersonas) {
+			Set<Eventualidad> eventualidads, Set<Postulado> postulados,
+			Set<Usuario> usuarios, Set<PreferenciaPersona> preferenciaPersonas) {
 		this.idPersona = idPersona;
 		this.archivo = archivo;
 		this.identificacion = identificacion;
@@ -64,13 +65,13 @@ public class Persona implements java.io.Serializable {
 		this.telefono = telefono;
 		this.telefonoFijo = telefonoFijo;
 		this.direccion = direccion;
+		this.activo = activo;
 		this.empleados = empleados;
 		this.miembroJuntas = miembroJuntas;
 		this.afiliados = afiliados;
 		this.redPersonas = redPersonas;
 		this.socios = socios;
 		this.eventualidads = eventualidads;
-		this.invitados = invitados;
 		this.postulados = postulados;
 		this.usuarios = usuarios;
 		this.preferenciaPersonas = preferenciaPersonas;
@@ -164,6 +165,14 @@ public class Persona implements java.io.Serializable {
 		this.direccion = direccion;
 	}
 
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Set<Empleado> getEmpleados() {
 		return this.empleados;
 	}
@@ -210,14 +219,6 @@ public class Persona implements java.io.Serializable {
 
 	public void setEventualidads(Set<Eventualidad> eventualidads) {
 		this.eventualidads = eventualidads;
-	}
-
-	public Set<Invitado> getInvitados() {
-		return this.invitados;
-	}
-
-	public void setInvitados(Set<Invitado> invitados) {
-		this.invitados = invitados;
 	}
 
 	public Set<Postulado> getPostulados() {

@@ -102,5 +102,58 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
+	//Metodo para obtener las Eventualidad de una persona "x"
+
+		public List<Eventualidad> obtenerEventualidadUsuario( int id) throws Exception {            
+		      
+			   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
+			   Session em = sesionPostgres.getSessionFactory().openSession();   	
+		        try {  	
+			    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("personaid_persona", id)).list();             
+		        } catch (Exception e) {             
+		       
+		         throw new Exception(e.getMessage(),e.getCause());
+		        } finally {  
+		          em.close();  
+		        } 
+		       
+		        return datos; 
+			}
+		
+		//Metodo para obtener las Eventualidad de "x" evento
+
+			public List<Eventualidad> obtenerEventualidadPostulacion( int id) throws Exception {            
+			      
+				   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
+				   Session em = sesionPostgres.getSessionFactory().openSession();   	
+			        try {  	
+				    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("eventoid_evento", id)).list();             
+			        } catch (Exception e) {             
+			       
+			         throw new Exception(e.getMessage(),e.getCause());
+			        } finally {  
+			          em.close();  
+			        } 
+			       
+			        return datos; 
+				}
+	//Metodo para obtener las Eventualidad de "x" instalacion
+
+	public List<Eventualidad> obtenerEventualidadinstalacion( int id) throws Exception {            
+			      
+		List<Eventualidad> datos = new ArrayList<Eventualidad>();  
+		Session em = sesionPostgres.getSessionFactory().openSession();   	
+		 try {  	
+		   datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("instalacionid_instalacion", id)).list();             
+			  } catch (Exception e) {             
+		 
+		throw new Exception(e.getMessage(),e.getCause());
+		     } finally {  
+		      em.close();  
+			 } 
+				       
+		   return datos; 
+		}
+		
 
 }

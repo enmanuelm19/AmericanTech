@@ -1,39 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Actividad" table="actividad" schema="public" optimistic-lock="version">
         <id name="idActividad" type="int">
             <column name="id_actividad" />
             <generator class="increment" />
         </id>
+        <many-to-one name="evento" class="modelos.Evento" fetch="select">
+            <column name="eventoid_evento" not-null="true" />
+        </many-to-one>
         <many-to-one name="tipoActividad" class="modelos.TipoActividad" fetch="select">
             <column name="tipo_actividadid_tipo_actividad" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="40" not-null="true" />
+            <column name="descripcion" length="80" not-null="true" />
         </property>
         <property name="condicion" type="string">
             <column name="condicion" length="9" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="proveedorActividads" table="proveedor_actividad" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="actividadid_actividad" not-null="true" />
             </key>
             <one-to-many class="modelos.ProveedorActividad" />
-        </set>
-        <set name="actividadInstalacions" table="actividad_instalacion" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="actividadid_actividad" not-null="true" />
-            </key>
-            <one-to-many class="modelos.ActividadInstalacion" />
-        </set>
-        <set name="actividadEventos" table="actividad_evento" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="actividadid_actividad" not-null="true" />
-            </key>
-            <one-to-many class="modelos.ActividadEvento" />
         </set>
     </class>
 </hibernate-mapping>

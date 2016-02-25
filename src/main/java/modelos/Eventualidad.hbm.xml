@@ -1,27 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Eventualidad" table="eventualidad" schema="public" optimistic-lock="version">
         <id name="idEventualidad" type="int">
             <column name="id_eventualidad" />
             <generator class="increment" />
         </id>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select">
-            <column name="eventoid_evento" />
-        </many-to-one>
         <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select">
             <column name="instalacionid_instalacion" />
         </many-to-one>
         <many-to-one name="persona" class="modelos.Persona" fetch="select">
-            <column name="personaid_persona" />
+            <column name="personaid_persona" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sancion" class="modelos.Sancion" fetch="select">
+            <column name="sancionid_sancion" />
+        </many-to-one>
+        <many-to-one name="tipoEventualidad" class="modelos.TipoEventualidad" fetch="select">
+            <column name="tipo_eventualidadid_tipo_eventualidad" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
             <column name="descripcion" length="9" not-null="true" />
         </property>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

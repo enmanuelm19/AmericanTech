@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,33 +15,30 @@ public class CalendarioFecha implements java.io.Serializable {
 	private Evento evento;
 	private Reservacion reservacion;
 	private String descripcion;
-	private Date horaInic;
-	private Date horaFin;
 	private Date fecha;
+	private boolean activo;
 	private Set<CalendarioHora> calendarioHoras = new HashSet<CalendarioHora>(0);
 
 	public CalendarioFecha() {
 	}
 
 	public CalendarioFecha(int idCalendarioFecha, String descripcion,
-			Date horaInic, Date horaFin, Date fecha) {
+			Date fecha, boolean activo) {
 		this.idCalendarioFecha = idCalendarioFecha;
 		this.descripcion = descripcion;
-		this.horaInic = horaInic;
-		this.horaFin = horaFin;
 		this.fecha = fecha;
+		this.activo = activo;
 	}
 
 	public CalendarioFecha(int idCalendarioFecha, Evento evento,
-			Reservacion reservacion, String descripcion, Date horaInic,
-			Date horaFin, Date fecha, Set<CalendarioHora> calendarioHoras) {
+			Reservacion reservacion, String descripcion, Date fecha,
+			boolean activo, Set<CalendarioHora> calendarioHoras) {
 		this.idCalendarioFecha = idCalendarioFecha;
 		this.evento = evento;
 		this.reservacion = reservacion;
 		this.descripcion = descripcion;
-		this.horaInic = horaInic;
-		this.horaFin = horaFin;
 		this.fecha = fecha;
+		this.activo = activo;
 		this.calendarioHoras = calendarioHoras;
 	}
 
@@ -77,28 +74,20 @@ public class CalendarioFecha implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Date getHoraInic() {
-		return this.horaInic;
-	}
-
-	public void setHoraInic(Date horaInic) {
-		this.horaInic = horaInic;
-	}
-
-	public Date getHoraFin() {
-		return this.horaFin;
-	}
-
-	public void setHoraFin(Date horaFin) {
-		this.horaFin = horaFin;
-	}
-
 	public Date getFecha() {
 		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<CalendarioHora> getCalendarioHoras() {

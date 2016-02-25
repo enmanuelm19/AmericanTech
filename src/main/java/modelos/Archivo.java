@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,31 +14,36 @@ public class Archivo implements java.io.Serializable {
 	private String url;
 	private String nombre;
 	private String extension;
+	private boolean activo;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
-	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<Club> clubs = new HashSet<Club>(0);
+	private Set<ArchivoAlquiler> archivoAlquilers = new HashSet<ArchivoAlquiler>(
+			0);
 	private Set<Persona> personas = new HashSet<Persona>(0);
 
 	public Archivo() {
 	}
 
-	public Archivo(int idArchivo, String url, String nombre, String extension) {
+	public Archivo(int idArchivo, String url, String nombre, String extension,
+			boolean activo) {
 		this.idArchivo = idArchivo;
 		this.url = url;
 		this.nombre = nombre;
 		this.extension = extension;
+		this.activo = activo;
 	}
 
 	public Archivo(int idArchivo, String url, String nombre, String extension,
-			Set<Noticia> noticias, Set<Alquiler> alquilers, Set<Club> clubs,
-			Set<Persona> personas) {
+			boolean activo, Set<Noticia> noticias, Set<Club> clubs,
+			Set<ArchivoAlquiler> archivoAlquilers, Set<Persona> personas) {
 		this.idArchivo = idArchivo;
 		this.url = url;
 		this.nombre = nombre;
 		this.extension = extension;
+		this.activo = activo;
 		this.noticias = noticias;
-		this.alquilers = alquilers;
 		this.clubs = clubs;
+		this.archivoAlquilers = archivoAlquilers;
 		this.personas = personas;
 	}
 
@@ -74,6 +79,14 @@ public class Archivo implements java.io.Serializable {
 		this.extension = extension;
 	}
 
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	public Set<Noticia> getNoticias() {
 		return this.noticias;
 	}
@@ -82,20 +95,20 @@ public class Archivo implements java.io.Serializable {
 		this.noticias = noticias;
 	}
 
-	public Set<Alquiler> getAlquilers() {
-		return this.alquilers;
-	}
-
-	public void setAlquilers(Set<Alquiler> alquilers) {
-		this.alquilers = alquilers;
-	}
-
 	public Set<Club> getClubs() {
 		return this.clubs;
 	}
 
 	public void setClubs(Set<Club> clubs) {
 		this.clubs = clubs;
+	}
+
+	public Set<ArchivoAlquiler> getArchivoAlquilers() {
+		return this.archivoAlquilers;
+	}
+
+	public void setArchivoAlquilers(Set<ArchivoAlquiler> archivoAlquilers) {
+		this.archivoAlquilers = archivoAlquilers;
 	}
 
 	public Set<Persona> getPersonas() {
