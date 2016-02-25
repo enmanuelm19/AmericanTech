@@ -17,7 +17,7 @@
 <zk xmlns:n="native" >
 
 	<window border="none" title="Registrar Accion" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
-	width="45%" height="55%" style="iconSclass=z-icon-puzzle-piece;">
+	width="45%" height="auto" style="iconSclass=z-icon-puzzle-piece;">
 		<caption iconSclass="home-icon z-icon-user"/>
  
 			

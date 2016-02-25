@@ -66,7 +66,7 @@
 			<grid>
 			<rows class="col-md-12">
 			     			    
-			                 <row class="col-md-11">
+			                 <!-- <row class="col-md-11">
 			              
 			                  	  <div width="80px">
 			              		   	# Acción
@@ -75,20 +75,28 @@
 			              		   <textbox type="text" value="" width="200px" />
 			                      </div>
 			                      		                      
-			                  </row>
+			                  </row>-->
 			                  
-			                   <row class="col-md-11">
-			              		  <div width="80px"> Motivo Venta </div>
+			                   <row class="col-md-12">
+			              		 
+			              		  
+			              		  
+							<div class="col-md-12">
+								 Motivo Venta 
+								<n:br></n:br>
+								<textbox type="text" rows="5"
+									width="100%" tabindex="10" constraint="no empty" />
+							</div>
 			              		   
 			              
-			             	      <div>
+			             	      <!-- <div>
 							   		 <listbox width="200px" height="25px" selectedItem="@bind(vm.dateFormat)"
 									                            mold="select" tabindex="7">
 									                            <listitem label="Motivo 01" value="" />
 									                             <listitem label="Motico 02" value="" />
 								     </listbox>     	
 								     <separator spacing="15px"></separator>	
-		    					 </div>
+		    					 </div> -->
 			                  </row>    
 			                       
 			         
