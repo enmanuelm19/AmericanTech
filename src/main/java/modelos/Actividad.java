@@ -1,7 +1,8 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,9 @@ public class Actividad implements java.io.Serializable {
 	private TipoActividad tipoActividad;
 	private String descripcion;
 	private String condicion;
+	private Date fechaTope;
+	private Integer valorEsperado;
+	private Integer valorReal;
 	private boolean activo;
 	private Set<ProveedorActividad> proveedorActividads = new HashSet<ProveedorActividad>(
 			0);
@@ -24,23 +28,28 @@ public class Actividad implements java.io.Serializable {
 
 	public Actividad(int idActividad, Evento evento,
 			TipoActividad tipoActividad, String descripcion, String condicion,
-			boolean activo) {
+			Date fechaTope, boolean activo) {
 		this.idActividad = idActividad;
 		this.evento = evento;
 		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
 		this.condicion = condicion;
+		this.fechaTope = fechaTope;
 		this.activo = activo;
 	}
 
 	public Actividad(int idActividad, Evento evento,
 			TipoActividad tipoActividad, String descripcion, String condicion,
+			Date fechaTope, Integer valorEsperado, Integer valorReal,
 			boolean activo, Set<ProveedorActividad> proveedorActividads) {
 		this.idActividad = idActividad;
 		this.evento = evento;
 		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
 		this.condicion = condicion;
+		this.fechaTope = fechaTope;
+		this.valorEsperado = valorEsperado;
+		this.valorReal = valorReal;
 		this.activo = activo;
 		this.proveedorActividads = proveedorActividads;
 	}
@@ -83,6 +92,30 @@ public class Actividad implements java.io.Serializable {
 
 	public void setCondicion(String condicion) {
 		this.condicion = condicion;
+	}
+
+	public Date getFechaTope() {
+		return this.fechaTope;
+	}
+
+	public void setFechaTope(Date fechaTope) {
+		this.fechaTope = fechaTope;
+	}
+
+	public Integer getValorEsperado() {
+		return this.valorEsperado;
+	}
+
+	public void setValorEsperado(Integer valorEsperado) {
+		this.valorEsperado = valorEsperado;
+	}
+
+	public Integer getValorReal() {
+		return this.valorReal;
+	}
+
+	public void setValorReal(Integer valorReal) {
+		this.valorReal = valorReal;
 	}
 
 	public boolean isActivo() {

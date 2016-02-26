@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Sugerencia" table="sugerencia" schema="public" optimistic-lock="version">
         <id name="idSugerencia" type="int">
             <column name="id_sugerencia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="clienteExterno" class="modelos.ClienteExterno" fetch="select">
+        <many-to-one name="clienteExterno" class="modelos.ClienteExterno" fetch="select" lazy="false">
             <column name="cliente_externoid_cliente" />
         </many-to-one>
-        <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select">
+        <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select" lazy="false">
             <column name="tipo_sugerenciaid_tipo_sugerencia" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="modelos.Usuario" fetch="select">
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false">
             <column name="usuarioid_usuario" />
         </many-to-one>
         <property name="descripcion" type="string">

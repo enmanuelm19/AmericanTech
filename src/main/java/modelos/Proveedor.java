@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +11,7 @@ import java.util.Set;
 public class Proveedor implements java.io.Serializable {
 
 	private int idProveedor;
+	private String rifIdentificador;
 	private String nombre;
 	private String direccion;
 	private String telefono;
@@ -22,20 +23,21 @@ public class Proveedor implements java.io.Serializable {
 	public Proveedor() {
 	}
 
-	public Proveedor(int idProveedor, String nombre, String direccion,
-			String telefono, String correo, boolean activo) {
+	public Proveedor(int idProveedor, String rifIdentificador, String nombre,
+			String direccion, String telefono, boolean activo) {
 		this.idProveedor = idProveedor;
+		this.rifIdentificador = rifIdentificador;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.correo = correo;
 		this.activo = activo;
 	}
 
-	public Proveedor(int idProveedor, String nombre, String direccion,
-			String telefono, String correo, boolean activo,
+	public Proveedor(int idProveedor, String rifIdentificador, String nombre,
+			String direccion, String telefono, String correo, boolean activo,
 			Set<ProveedorActividad> proveedorActividads) {
 		this.idProveedor = idProveedor;
+		this.rifIdentificador = rifIdentificador;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
@@ -50,6 +52,14 @@ public class Proveedor implements java.io.Serializable {
 
 	public void setIdProveedor(int idProveedor) {
 		this.idProveedor = idProveedor;
+	}
+
+	public String getRifIdentificador() {
+		return this.rifIdentificador;
+	}
+
+	public void setRifIdentificador(String rifIdentificador) {
+		this.rifIdentificador = rifIdentificador;
 	}
 
 	public String getNombre() {
