@@ -10,15 +10,15 @@ CREATE TABLE usuario (
   PRIMARY KEY (id_usuario));
 CREATE TABLE club (
   id_club           SERIAL NOT NULL, 
-  rif              varchar(20) NOT NULL, 
+  rif              varchar(40) NOT NULL, 
   nombre           varchar(60) NOT NULL, 
-  direccion        varchar(60) NOT NULL, 
-  telefono         varchar(12) NOT NULL, 
+  direccion        varchar(150) NOT NULL, 
+  telefono         varchar(20) NOT NULL, 
   mision           varchar(250) NOT NULL, 
   vision           varchar(250) NOT NULL, 
   logo             int2 NOT NULL, 
-  telf_alternativo varchar(12) NOT NULL, 
-  correo           varchar(75) NOT NULL, 
+  telf_alternativo varchar(20) NOT NULL, 
+  correo           varchar(90) NOT NULL, 
   eslogan          varchar(255), 
   activo           bool, 
   PRIMARY KEY (id_club));
@@ -36,8 +36,8 @@ CREATE TABLE grupo (
 CREATE TABLE persona (
   id_persona      SERIAL NOT NULL, 
   identificacion varchar(20), 
-  nombre         varchar(30) NOT NULL, 
-  apellido       varchar(30) NOT NULL, 
+  nombre         varchar(60) NOT NULL, 
+  apellido       varchar(60) NOT NULL, 
   foto           int2, 
   fecha_nac      date, 
   sexo           varchar(1) NOT NULL, 
@@ -60,7 +60,7 @@ CREATE TABLE sancion (
 CREATE TABLE socio (
   id_socio                   SERIAL NOT NULL, 
   postulacionid_postulacion int2, 
-  nro_carnet                varchar(20) NOT NULL, 
+  nro_carnet                varchar(40) NOT NULL, 
   personaid_persona         int2 NOT NULL, 
   activo                    bool NOT NULL, 
   PRIMARY KEY (id_socio));
@@ -96,7 +96,7 @@ CREATE TABLE opinion (
 CREATE TABLE eventualidad (
   id_eventualidad                        SERIAL NOT NULL, 
   instalacionid_instalacion             int2, 
-  descripcion                           varchar(9) NOT NULL, 
+  descripcion                           varchar(255) NOT NULL, 
   fecha                                 date NOT NULL, 
   sancionid_sancion                     int2, 
   personaid_persona                     int2 NOT NULL, 
@@ -105,16 +105,16 @@ CREATE TABLE eventualidad (
   PRIMARY KEY (id_eventualidad));
 CREATE TABLE instalacion (
   id_instalacion                       SERIAL NOT NULL, 
+  nombre                              varchar(180) NOT NULL, 
   descripcion                         varchar(255) NOT NULL, 
   capacidad                           int2 NOT NULL, 
   precio_alquiler                     float4 NOT NULL, 
   tipo_instalacionid_tipo_instalacion int2 NOT NULL, 
   activo                              bool NOT NULL, 
-  nombre                              varchar(180) NOT NULL, 
   PRIMARY KEY (id_instalacion));
 CREATE TABLE noticia (
   id_noticia       SERIAL NOT NULL, 
-  titulo          varchar(70), 
+  titulo          varchar(90), 
   descripcion     varchar(255) NOT NULL, 
   eventoid_evento int2, 
   foto            int2, 
@@ -146,18 +146,22 @@ CREATE TABLE evento (
 CREATE TABLE actividad (
   id_actividad                     SERIAL NOT NULL, 
   descripcion                     varchar(80) NOT NULL, 
-  condicion                       varchar(9) NOT NULL, 
+  condicion                       varchar(20) NOT NULL, 
   tipo_actividadid_tipo_actividad int2 NOT NULL, 
   eventoid_evento                 int2 NOT NULL, 
+  fecha_tope                      date NOT NULL, 
+  valor_esperado                  int4, 
+  valor_real                      int4, 
   activo                          bool NOT NULL, 
   PRIMARY KEY (id_actividad));
 CREATE TABLE patrocinante (
-  id_patrocinante  SERIAL NOT NULL, 
-  nombre          varchar(80) NOT NULL, 
-  direccion       varchar(150) NOT NULL, 
-  telefono        int2 NOT NULL, 
-  correo          int2 NOT NULL, 
-  activo          bool NOT NULL, 
+  id_patrocinante    SERIAL NOT NULL, 
+  nombre            varchar(80) NOT NULL, 
+  direccion         varchar(150) NOT NULL, 
+  telefono          varchar(20) NOT NULL, 
+  correo            varchar(90), 
+  activo            bool NOT NULL, 
+  rif_identificador varchar(50) NOT NULL, 
   PRIMARY KEY (id_patrocinante));
 CREATE TABLE partocinante_evento (
   id_patrocinante_evento       SERIAL NOT NULL, 
@@ -166,12 +170,13 @@ CREATE TABLE partocinante_evento (
   activo                      bool NOT NULL, 
   PRIMARY KEY (id_patrocinante_evento));
 CREATE TABLE proveedor (
-  id_proveedor  SERIAL NOT NULL, 
-  nombre       varchar(30) NOT NULL, 
-  direccion    varchar(150) NOT NULL, 
-  telefono     varchar(12) NOT NULL, 
-  correo       varchar(50) NOT NULL, 
-  activo       bool NOT NULL, 
+  id_proveedor       SERIAL NOT NULL, 
+  rif_identificador varchar(50) NOT NULL, 
+  nombre            varchar(30) NOT NULL, 
+  direccion         varchar(150) NOT NULL, 
+  telefono          varchar(20) NOT NULL, 
+  correo            varchar(90), 
+  activo            bool NOT NULL, 
   PRIMARY KEY (id_proveedor));
 CREATE TABLE proveedor_actividad (
   id_proveedor_actividad  SERIAL NOT NULL, 
@@ -206,14 +211,14 @@ CREATE TABLE afiliado (
   id_afilado                     SERIAL NOT NULL, 
   tipo_afiliadoid_tipo_afiliado int2 NOT NULL, 
   socioid_socio                 int2 NOT NULL, 
-  nro_carnet                    varchar(20) NOT NULL, 
+  nro_carnet                    varchar(40) NOT NULL, 
   personaid_persona             int2 NOT NULL, 
   activo                        bool NOT NULL, 
   PRIMARY KEY (id_afilado));
 CREATE TABLE cliente_externo (
   id_cliente  SERIAL NOT NULL, 
-  nombre     varchar(30) NOT NULL, 
-  apellido   varchar(30) NOT NULL, 
+  nombre     varchar(60) NOT NULL, 
+  apellido   varchar(60) NOT NULL, 
   correo     varchar(80) NOT NULL, 
   activo     bool NOT NULL, 
   PRIMARY KEY (id_cliente));
@@ -233,7 +238,7 @@ CREATE TABLE desvinculacion (
   accionid_accion                               int2 NOT NULL, 
   socioid_socio                                 int2 NOT NULL, 
   fecha                                         date NOT NULL, 
-  motivo                                        varchar(200) NOT NULL, 
+  motivo                                        varchar(200), 
   motivo_desvinculacionid_motivo_desvinculacion int2 NOT NULL, 
   activo                                        bool NOT NULL, 
   PRIMARY KEY (id_desvinculacion));
@@ -261,7 +266,7 @@ CREATE TABLE instalacion_evento (
   PRIMARY KEY (id_actividad_instalacion));
 CREATE TABLE recurso (
   id_recurso   SERIAL NOT NULL, 
-  descripcion varchar(40) NOT NULL, 
+  descripcion varchar(120) NOT NULL, 
   activo      bool NOT NULL, 
   PRIMARY KEY (id_recurso));
 CREATE TABLE sugerencia (
@@ -277,14 +282,14 @@ CREATE TABLE recurso_instalacion (
   id_recurso_instalacion     SERIAL NOT NULL, 
   instalacionid_instalacion int2 NOT NULL, 
   recursoid_recurso         int2 NOT NULL, 
-  cantidad                  int2 NOT NULL, 
+  cantidad                  int4 NOT NULL, 
   activo                    bool NOT NULL, 
   PRIMARY KEY (id_recurso_instalacion));
 CREATE TABLE alquiler (
   id_alquiler                SERIAL NOT NULL, 
   reservacionid_reservacion int2 NOT NULL, 
   fecha                     date NOT NULL, 
-  nro_transaccion           varchar(30) NOT NULL, 
+  nro_transaccion           varchar(40) NOT NULL, 
   monto                     float4 NOT NULL, 
   activo                    bool NOT NULL, 
   PRIMARY KEY (id_alquiler));
@@ -295,7 +300,7 @@ CREATE TABLE politica (
   cantidad_invitados            int4, 
   tipo_politicaid_tipo_politica int2 NOT NULL, 
   tipo_afiliadoid_tipo_afiliado int2 NOT NULL, 
-  atributo                      varchar(30) NOT NULL, 
+  atributo                      varchar(90) NOT NULL, 
   activo                        bool NOT NULL, 
   PRIMARY KEY (id_politica));
 CREATE TABLE junta_directiva (
@@ -314,7 +319,7 @@ CREATE TABLE miembro_junta (
   PRIMARY KEY (id_junta_miembro));
 CREATE TABLE cargo (
   id_cargo     SERIAL NOT NULL, 
-  descripcion varchar(90) NOT NULL, 
+  descripcion varchar(120) NOT NULL, 
   activo      bool NOT NULL, 
   PRIMARY KEY (id_cargo));
 CREATE TABLE tipo_sugerencia (
@@ -352,12 +357,13 @@ CREATE TABLE noticia_preferencia (
   PRIMARY KEY (id_noticia_preferencia));
 CREATE TABLE motivo_sancion (
   id_motivo_sancion  SERIAL NOT NULL, 
+  motivo            varchar(120) NOT NULL, 
   descripcion       varchar(100) NOT NULL, 
   activo            bool NOT NULL, 
   PRIMARY KEY (id_motivo_sancion));
 CREATE TABLE motivo_desvinculacion (
   id_motivo_desvinculacion  SERIAL NOT NULL, 
-  descripcion              varchar(30) NOT NULL, 
+  descripcion              varchar(200) NOT NULL, 
   activo                   bool NOT NULL, 
   PRIMARY KEY (id_motivo_desvinculacion));
 CREATE TABLE foto (
@@ -372,7 +378,7 @@ CREATE TABLE foto (
   PRIMARY KEY (id_foto));
 CREATE TABLE tipo_afiliado (
   id_tipo_afiliado  SERIAL NOT NULL, 
-  descripcion      varchar(60) NOT NULL, 
+  descripcion      varchar(90) NOT NULL, 
   activo           bool NOT NULL, 
   PRIMARY KEY (id_tipo_afiliado));
 CREATE TABLE preferencia_evento (
@@ -383,7 +389,7 @@ CREATE TABLE preferencia_evento (
   PRIMARY KEY (id_preferencia_evento));
 CREATE TABLE red_social (
   id_red_social  SERIAL NOT NULL, 
-  descripcion   varchar(60) NOT NULL, 
+  descripcion   varchar(120) NOT NULL, 
   activo        bool NOT NULL, 
   PRIMARY KEY (id_red_social));
 CREATE TABLE red_club (
@@ -402,7 +408,7 @@ CREATE TABLE red_persona (
   PRIMARY KEY (id_red_persona));
 CREATE TABLE tipo_empleado (
   id_tipo_empleado  SERIAL NOT NULL, 
-  descripcion      varchar(20) NOT NULL, 
+  descripcion      varchar(120) NOT NULL, 
   activo           bool NOT NULL, 
   PRIMARY KEY (id_tipo_empleado));
 CREATE TABLE empleado (
@@ -414,12 +420,12 @@ CREATE TABLE empleado (
   PRIMARY KEY (id_empleado));
 CREATE TABLE motivo_postulacion (
   id_motivo_postulacion  SERIAL NOT NULL, 
-  descripcion           varchar(80) NOT NULL, 
+  descripcion           varchar(120) NOT NULL, 
   activo                bool NOT NULL, 
   PRIMARY KEY (id_motivo_postulacion));
 CREATE TABLE motivo_venta (
   id_motivo_venta  SERIAL NOT NULL, 
-  descripcion     varchar(80) NOT NULL, 
+  descripcion     varchar(120) NOT NULL, 
   activo          bool NOT NULL, 
   PRIMARY KEY (id_motivo_venta));
 CREATE TABLE tipo_instalacion (
@@ -436,7 +442,7 @@ CREATE TABLE archivo (
   PRIMARY KEY (id_archivo));
 CREATE TABLE tipo_politica (
   id_tipo_politica  SERIAL NOT NULL, 
-  descripcion      varchar(60), 
+  descripcion      varchar(90), 
   activo           bool NOT NULL, 
   PRIMARY KEY (id_tipo_politica));
 CREATE TABLE estado_evento (
@@ -457,8 +463,8 @@ CREATE TABLE indicador (
   PRIMARY KEY (id_indicador));
 CREATE TABLE indicador_evento (
   id_indicador_evento    SERIAL NOT NULL, 
-  valor_esperado        int2 NOT NULL, 
-  valor_real            int2, 
+  valor_esperado        int4 NOT NULL, 
+  valor_real            int4, 
   indicadorid_indicador int2 NOT NULL, 
   eventoid_evento       int2 NOT NULL, 
   activo                bool NOT NULL, 
@@ -477,12 +483,12 @@ CREATE TABLE preferencia_solicitud (
   PRIMARY KEY (id_preferencia_solicitud));
 CREATE TABLE tipo_eventualidad (
   id_tipo_eventualidad  SERIAL NOT NULL, 
-  descripcion          varchar(50) NOT NULL, 
+  descripcion          varchar(90) NOT NULL, 
   activo               bool NOT NULL, 
   PRIMARY KEY (id_tipo_eventualidad));
 CREATE TABLE estado_accion (
   id_estado_accion  SERIAL NOT NULL, 
-  nombre           varchar(80) NOT NULL, 
+  nombre           varchar(120) NOT NULL, 
   activo           bool NOT NULL, 
   PRIMARY KEY (id_estado_accion));
 CREATE TABLE archivo_alquiler (

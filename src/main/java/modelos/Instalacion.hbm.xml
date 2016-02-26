@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Instalacion" table="instalacion" schema="public" optimistic-lock="version">
         <id name="idInstalacion" type="int">
             <column name="id_instalacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tipoInstalacion" class="modelos.TipoInstalacion" fetch="select">
+        <many-to-one name="tipoInstalacion" class="modelos.TipoInstalacion" fetch="select" lazy="false">
             <column name="tipo_instalacionid_tipo_instalacion" not-null="true" />
         </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="180" not-null="true" />
+        </property>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />
         </property>
@@ -22,9 +25,6 @@
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
-        </property>
-        <property name="nombre" type="string">
-            <column name="nombre" length="180" not-null="true" />
         </property>
         <set name="reservacions" table="reservacion" inverse="true" lazy="true" fetch="select">
             <key>

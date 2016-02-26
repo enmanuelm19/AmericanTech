@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.UsuarioGrupo" table="usuario_grupo" schema="public" optimistic-lock="version">
         <id name="idUsuarioGrupo" type="int">
             <column name="id_usuario_grupo" />
             <generator class="increment" />
         </id>
-        <many-to-one name="grupo" class="modelos.Grupo" fetch="select">
+        <many-to-one name="grupo" class="modelos.Grupo" fetch="select" lazy="false">
             <column name="grupoid_grupo" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="modelos.Usuario" fetch="select">
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false">
             <column name="usuarioid_usuario" not-null="true" />
         </many-to-one>
         <property name="activo" type="boolean">

@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Persona" table="persona" schema="public" optimistic-lock="version">
         <id name="idPersona" type="int">
             <column name="id_persona" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
             <column name="foto" />
         </many-to-one>
         <property name="identificacion" type="string">
             <column name="identificacion" length="20" />
         </property>
         <property name="nombre" type="string">
-            <column name="nombre" length="30" not-null="true" />
+            <column name="nombre" length="60" not-null="true" />
         </property>
         <property name="apellido" type="string">
-            <column name="apellido" length="30" not-null="true" />
+            <column name="apellido" length="60" not-null="true" />
         </property>
         <property name="fechaNac" type="date">
             <column name="fecha_nac" length="13" />

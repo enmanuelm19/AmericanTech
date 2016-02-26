@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,11 +12,11 @@ public class Instalacion implements java.io.Serializable {
 
 	private int idInstalacion;
 	private TipoInstalacion tipoInstalacion;
+	private String nombre;
 	private String descripcion;
 	private short capacidad;
 	private float precioAlquiler;
 	private boolean activo;
-	private String nombre;
 	private Set<Reservacion> reservacions = new HashSet<Reservacion>(0);
 	private Set<InstalacionEvento> instalacionEventos = new HashSet<InstalacionEvento>(
 			0);
@@ -29,30 +29,31 @@ public class Instalacion implements java.io.Serializable {
 	}
 
 	public Instalacion(int idInstalacion, TipoInstalacion tipoInstalacion,
-			String descripcion, short capacidad, float precioAlquiler,
-			boolean activo, String nombre) {
+			String nombre, String descripcion, short capacidad,
+			float precioAlquiler, boolean activo) {
 		this.idInstalacion = idInstalacion;
 		this.tipoInstalacion = tipoInstalacion;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.capacidad = capacidad;
 		this.precioAlquiler = precioAlquiler;
 		this.activo = activo;
-		this.nombre = nombre;
 	}
 
 	public Instalacion(int idInstalacion, TipoInstalacion tipoInstalacion,
-			String descripcion, short capacidad, float precioAlquiler,
-			boolean activo, String nombre, Set<Reservacion> reservacions,
+			String nombre, String descripcion, short capacidad,
+			float precioAlquiler, boolean activo,
+			Set<Reservacion> reservacions,
 			Set<InstalacionEvento> instalacionEventos, Set<Foto> fotos,
 			Set<Eventualidad> eventualidads,
 			Set<RecursoInstalacion> recursoInstalacions) {
 		this.idInstalacion = idInstalacion;
 		this.tipoInstalacion = tipoInstalacion;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.capacidad = capacidad;
 		this.precioAlquiler = precioAlquiler;
 		this.activo = activo;
-		this.nombre = nombre;
 		this.reservacions = reservacions;
 		this.instalacionEventos = instalacionEventos;
 		this.fotos = fotos;
@@ -74,6 +75,14 @@ public class Instalacion implements java.io.Serializable {
 
 	public void setTipoInstalacion(TipoInstalacion tipoInstalacion) {
 		this.tipoInstalacion = tipoInstalacion;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getDescripcion() {
@@ -106,14 +115,6 @@ public class Instalacion implements java.io.Serializable {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
-	}
-
-	public String getNombre() {
-		return this.nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public Set<Reservacion> getReservacions() {
