@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,21 +11,28 @@ import java.util.Set;
 public class MotivoSancion implements java.io.Serializable {
 
 	private int idMotivoSancion;
+	private String motivo;
 	private String descripcion;
+	private boolean activo;
 	private Set<Sancion> sancions = new HashSet<Sancion>(0);
 
 	public MotivoSancion() {
 	}
 
-	public MotivoSancion(int idMotivoSancion, String descripcion) {
+	public MotivoSancion(int idMotivoSancion, String motivo,
+			String descripcion, boolean activo) {
 		this.idMotivoSancion = idMotivoSancion;
+		this.motivo = motivo;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
-	public MotivoSancion(int idMotivoSancion, String descripcion,
-			Set<Sancion> sancions) {
+	public MotivoSancion(int idMotivoSancion, String motivo,
+			String descripcion, boolean activo, Set<Sancion> sancions) {
 		this.idMotivoSancion = idMotivoSancion;
+		this.motivo = motivo;
 		this.descripcion = descripcion;
+		this.activo = activo;
 		this.sancions = sancions;
 	}
 
@@ -37,12 +44,28 @@ public class MotivoSancion implements java.io.Serializable {
 		this.idMotivoSancion = idMotivoSancion;
 	}
 
+	public String getMotivo() {
+		return this.motivo;
+	}
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
+	}
+
 	public String getDescripcion() {
 		return this.descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Sancion> getSancions() {

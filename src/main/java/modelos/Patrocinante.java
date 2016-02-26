@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +13,10 @@ public class Patrocinante implements java.io.Serializable {
 	private int idPatrocinante;
 	private String nombre;
 	private String direccion;
-	private short telefono;
-	private short correo;
+	private String telefono;
+	private String correo;
+	private boolean activo;
+	private String rifIdentificador;
 	private Set<PartocinanteEvento> partocinanteEventos = new HashSet<PartocinanteEvento>(
 			0);
 
@@ -22,22 +24,25 @@ public class Patrocinante implements java.io.Serializable {
 	}
 
 	public Patrocinante(int idPatrocinante, String nombre, String direccion,
-			short telefono, short correo) {
+			String telefono, boolean activo, String rifIdentificador) {
 		this.idPatrocinante = idPatrocinante;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.correo = correo;
+		this.activo = activo;
+		this.rifIdentificador = rifIdentificador;
 	}
 
 	public Patrocinante(int idPatrocinante, String nombre, String direccion,
-			short telefono, short correo,
-			Set<PartocinanteEvento> partocinanteEventos) {
+			String telefono, String correo, boolean activo,
+			String rifIdentificador, Set<PartocinanteEvento> partocinanteEventos) {
 		this.idPatrocinante = idPatrocinante;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.activo = activo;
+		this.rifIdentificador = rifIdentificador;
 		this.partocinanteEventos = partocinanteEventos;
 	}
 
@@ -65,20 +70,36 @@ public class Patrocinante implements java.io.Serializable {
 		this.direccion = direccion;
 	}
 
-	public short getTelefono() {
+	public String getTelefono() {
 		return this.telefono;
 	}
 
-	public void setTelefono(short telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	public short getCorreo() {
+	public String getCorreo() {
 		return this.correo;
 	}
 
-	public void setCorreo(short correo) {
+	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public String getRifIdentificador() {
+		return this.rifIdentificador;
+	}
+
+	public void setRifIdentificador(String rifIdentificador) {
+		this.rifIdentificador = rifIdentificador;
 	}
 
 	public Set<PartocinanteEvento> getPartocinanteEventos() {

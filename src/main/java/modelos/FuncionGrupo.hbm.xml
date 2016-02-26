@@ -1,18 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.FuncionGrupo" table="funcion_grupo" schema="public" optimistic-lock="version">
         <id name="idFuncionGrupo" type="int">
             <column name="id_funcion_grupo" />
             <generator class="increment" />
         </id>
-        <many-to-one name="funcion" class="modelos.Funcion" fetch="select">
+        <many-to-one name="funcion" class="modelos.Funcion" fetch="select" lazy="false">
             <column name="funcionid_funcion" not-null="true" />
         </many-to-one>
-        <many-to-one name="grupo" class="modelos.Grupo" fetch="select">
+        <many-to-one name="grupo" class="modelos.Grupo" fetch="select" lazy="false">
             <column name="grupoid_grupo" not-null="true" />
         </many-to-one>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

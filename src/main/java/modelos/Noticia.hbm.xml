@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Noticia" table="noticia" schema="public" optimistic-lock="version">
         <id name="idNoticia" type="int">
             <column name="id_noticia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
             <column name="foto" />
         </many-to-one>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" />
         </many-to-one>
         <property name="titulo" type="string">
-            <column name="titulo" length="50" />
+            <column name="titulo" length="90" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />
@@ -35,8 +35,8 @@
         <property name="fechaCreacion" type="date">
             <column name="fecha_creacion" length="13" not-null="true" />
         </property>
-        <property name="hora" type="time">
-            <column name="hora" length="15" not-null="true" />
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="true" fetch="select">
             <key>

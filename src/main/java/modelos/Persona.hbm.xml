@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Persona" table="persona" schema="public" optimistic-lock="version">
         <id name="idPersona" type="int">
             <column name="id_persona" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
             <column name="foto" />
         </many-to-one>
         <property name="identificacion" type="string">
-            <column name="identificacion" length="12" />
+            <column name="identificacion" length="20" />
         </property>
         <property name="nombre" type="string">
-            <column name="nombre" length="15" not-null="true" />
+            <column name="nombre" length="60" not-null="true" />
         </property>
         <property name="apellido" type="string">
-            <column name="apellido" length="15" not-null="true" />
+            <column name="apellido" length="60" not-null="true" />
         </property>
         <property name="fechaNac" type="date">
             <column name="fecha_nac" length="13" />
@@ -27,7 +27,7 @@
             <column name="sexo" length="1" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="45" />
+            <column name="correo" length="80" />
         </property>
         <property name="telefono" type="string">
             <column name="telefono" length="12" />
@@ -36,7 +36,10 @@
             <column name="telefono_fijo" length="12" />
         </property>
         <property name="direccion" type="string">
-            <column name="direccion" length="80" />
+            <column name="direccion" length="120" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
             <key>
@@ -70,15 +73,9 @@
         </set>
         <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="personaid_persona" />
-            </key>
-            <one-to-many class="modelos.Eventualidad" />
-        </set>
-        <set name="invitados" table="invitado" inverse="true" lazy="true" fetch="select">
-            <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
-            <one-to-many class="modelos.Invitado" />
+            <one-to-many class="modelos.Eventualidad" />
         </set>
         <set name="postulados" table="postulado" inverse="true" lazy="true" fetch="select">
             <key>

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,20 +12,23 @@ public class Postulado implements java.io.Serializable {
 
 	private int idPostulado;
 	private Persona persona;
+	private boolean activo;
 	private Set<Postulacion> postulacions = new HashSet<Postulacion>(0);
 
 	public Postulado() {
 	}
 
-	public Postulado(int idPostulado, Persona persona) {
+	public Postulado(int idPostulado, Persona persona, boolean activo) {
 		this.idPostulado = idPostulado;
 		this.persona = persona;
+		this.activo = activo;
 	}
 
-	public Postulado(int idPostulado, Persona persona,
+	public Postulado(int idPostulado, Persona persona, boolean activo,
 			Set<Postulacion> postulacions) {
 		this.idPostulado = idPostulado;
 		this.persona = persona;
+		this.activo = activo;
 		this.postulacions = postulacions;
 	}
 
@@ -43,6 +46,14 @@ public class Postulado implements java.io.Serializable {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Postulacion> getPostulacions() {

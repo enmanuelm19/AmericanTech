@@ -53,20 +53,20 @@ public class OpinionDao {
 	
 	public void eliminarOpinion(Opinion dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }  
    }
 	
 	public void actualizarOpinion(Opinion dato) throws Exception{
@@ -91,7 +91,7 @@ public class OpinionDao {
 		   List<Opinion> datos = new ArrayList<Opinion>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<Opinion>) em.createCriteria(Opinion.class).list();             
+		    datos =  (List<Opinion>) em.createCriteria(Opinion.class).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -101,6 +101,7 @@ public class OpinionDao {
 	       
 	        return datos; 
 		}
+
 		
 	//Metodo para obtener las opiniones de un usuario
 

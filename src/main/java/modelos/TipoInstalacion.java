@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,20 +12,24 @@ public class TipoInstalacion implements java.io.Serializable {
 
 	private int idTipoInstalacion;
 	private String descripcion;
+	private boolean activo;
 	private Set<Instalacion> instalacions = new HashSet<Instalacion>(0);
 
 	public TipoInstalacion() {
 	}
 
-	public TipoInstalacion(int idTipoInstalacion, String descripcion) {
+	public TipoInstalacion(int idTipoInstalacion, String descripcion,
+			boolean activo) {
 		this.idTipoInstalacion = idTipoInstalacion;
 		this.descripcion = descripcion;
+		this.activo = activo;
 	}
 
 	public TipoInstalacion(int idTipoInstalacion, String descripcion,
-			Set<Instalacion> instalacions) {
+			boolean activo, Set<Instalacion> instalacions) {
 		this.idTipoInstalacion = idTipoInstalacion;
 		this.descripcion = descripcion;
+		this.activo = activo;
 		this.instalacions = instalacions;
 	}
 
@@ -43,6 +47,14 @@ public class TipoInstalacion implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Instalacion> getInstalacions() {

@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Postulacion" table="postulacion" schema="public" optimistic-lock="version">
         <id name="idPostulacion" type="int">
             <column name="id_postulacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="motivoPostulacion" class="modelos.MotivoPostulacion" fetch="select">
+        <many-to-one name="motivoPostulacion" class="modelos.MotivoPostulacion" fetch="select" lazy="false">
             <column name="motivo_postulacionid_motivo_postulacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulado" class="modelos.Postulado" fetch="select">
+        <many-to-one name="postulado" class="modelos.Postulado" fetch="select" lazy="false">
             <column name="postuladoid_postulado" not-null="true" />
         </many-to-one>
-        <many-to-one name="venta" class="modelos.Venta" fetch="select">
+        <many-to-one name="venta" class="modelos.Venta" fetch="select" lazy="false">
             <column name="ventaid_venta" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">
@@ -29,8 +29,8 @@
         <property name="aprobado" type="boolean">
             <column name="aprobado" not-null="true" />
         </property>
-        <property name="hora" type="time">
-            <column name="hora" length="15" not-null="true" />
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="socios" table="socio" inverse="true" lazy="true" fetch="select">
             <key>

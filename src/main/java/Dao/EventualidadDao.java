@@ -54,20 +54,20 @@ private Sesion sesionPostgres;
 	
 	public void eliminarEventualidad(Eventualidad dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         } 
    }
 	
 	public void actualizarEventualidad(Eventualidad dato) throws Exception{
@@ -92,7 +92,7 @@ private Sesion sesionPostgres;
 		   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).list();             
+		    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -102,5 +102,63 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
+	
+
+	
+	//Metodo para obtener las Eventualidad de una persona "x"
+
+		public List<Eventualidad> obtenerEventualidadUsuario( int id) throws Exception {            
+		      
+			   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
+			   Session em = sesionPostgres.getSessionFactory().openSession();   	
+		        try {  	
+			    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("personaid_persona", id)).list();             
+		        } catch (Exception e) {             
+		       
+		         throw new Exception(e.getMessage(),e.getCause());
+		        } finally {  
+		          em.close();  
+		        } 
+		       
+		        return datos; 
+			}
+		
+		//Metodo para obtener las Eventualidad de "x" evento
+
+			public List<Eventualidad> obtenerEventualidadPostulacion( int id) throws Exception {            
+			      
+				   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
+				   Session em = sesionPostgres.getSessionFactory().openSession();   	
+			        try {  	
+				    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("eventoid_evento", id)).list();             
+			        } catch (Exception e) {             
+			       
+			         throw new Exception(e.getMessage(),e.getCause());
+			        } finally {  
+			          em.close();  
+			        } 
+			       
+			        return datos; 
+				}
+	//Metodo para obtener las Eventualidad de "x" instalacion
+
+	public List<Eventualidad> obtenerEventualidadinstalacion( int id) throws Exception {            
+			      
+		List<Eventualidad> datos = new ArrayList<Eventualidad>();  
+		Session em = sesionPostgres.getSessionFactory().openSession();   	
+		 try {  	
+		   datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("instalacionid_instalacion", id)).list();             
+			  } catch (Exception e) {             
+		 
+		throw new Exception(e.getMessage(),e.getCause());
+		     } finally {  
+		      em.close();  
+			 } 
+				       
+		   return datos; 
+		}
+		
+	
+	
 
 }

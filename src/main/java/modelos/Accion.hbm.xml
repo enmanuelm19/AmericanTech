@@ -1,21 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Accion" table="accion" schema="public" optimistic-lock="version">
         <id name="idAccion" type="int">
             <column name="id_accion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="estadoAccion" class="modelos.EstadoAccion" fetch="select">
+        <many-to-one name="estadoAccion" class="modelos.EstadoAccion" fetch="select" lazy="false">
             <column name="estado_accionid_estado_accion" not-null="true" />
         </many-to-one>
-        <many-to-one name="socio" class="modelos.Socio" fetch="select">
+        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
+        <property name="nroAccion" type="string">
+            <column name="nro_accion" length="50" not-null="true" />
+        </property>
         <property name="valor" type="float">
             <column name="valor" precision="8" scale="8" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
             <key>
@@ -28,6 +34,12 @@
                 <column name="accionid_accion" not-null="true" />
             </key>
             <one-to-many class="modelos.Desvinculacion" />
+        </set>
+        <set name="solicitudVentas" table="solicitud_venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="accionid_accion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.SolicitudVenta" />
         </set>
     </class>
 </hibernate-mapping>

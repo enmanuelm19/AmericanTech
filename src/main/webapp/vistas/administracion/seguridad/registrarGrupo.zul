@@ -42,6 +42,7 @@
 					</rows>
 				</grid>
 			</div>
+			<separator spacing="30px"/>
 			<!-- INICIO DIV GRID DE FUNCIONES-->
 			<!-- GRID DE FUNCIONES-->
 			<div class="row">
@@ -51,33 +52,78 @@
 					</div>
 					<div class="linea-two" />
 				</div>
-				<grid mold="paging" pageSize="10">
-					<columns class="z-grid z-column-content">
-						<column label="Descripción" align="center" />
-						<column label="Activar" align="center"
-							width="30%" />
-					</columns>
-					<rows>
-						<row>
-							<label value="Modificar Perfil" />
-							<checkbox />
-						</row>
-						<row>
-							<label
-								value="Registrar Solicitud Reservacion" />
-							<checkbox />
-						</row>
-						<row>
-							<label
-								value="Publicar Informacion en Cartelera" />
-							<checkbox />
-						</row>
-						<row>
-							<label value="Revisar Sugerencias" />
-							<checkbox />
-						</row>
-					</rows>
-				</grid><!-- FIN GRID DE FUNCIONES-->
+				<separator spacing="30px" />
+				<div class="row">
+					<grid
+											emptyMessage="No se encuentran reglas registradas"
+											mold="paging" pageSize="10">
+											<auxhead
+												sclass="category-center">
+												<auxheader
+													colspan="1">
+													<combobox
+														width="100%" class="col-md-12"
+														value="Funciones">
+														<comboitem
+															label="Perfil del Club" />
+														<comboitem
+															label="Junta Directiva" />
+														<comboitem
+															label="Proveedores" />
+													</combobox>
+												</auxheader>
+												<auxheader
+													colspan="1">
+													<button sclass="btn-link"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar funcion al grupo" />
+												</auxheader>
+											</auxhead>
+
+											<columns>
+												<column hflex="3">
+													Funcion
+												</column>
+												<column>
+													Acciones
+												</column>
+											</columns>
+											<rows>
+												<row>
+													<label
+														value="Perfil del club" />
+													<div>
+														<button
+															sclass="btn-link" iconSclass="z-icon-trash-o red"
+															tooltiptext="Eliminar" />
+													</div>
+												</row>
+												<row>
+													<label
+														value="Junta directiva" />
+													<div>
+														<button
+															sclass="btn-link" iconSclass="z-icon-trash-o red"
+															tooltiptext="Eliminar" />
+													</div>
+												</row>
+												<row>
+													<label
+														value="Proveedores" />
+													<div>
+														<button
+															sclass="btn-link" iconSclass="z-icon-trash-o red"
+															tooltiptext="Eliminar" />
+													</div>
+												</row>
+											</rows>
+											<foot>
+												<footer span="3"
+													class="footer_right" label="3 items en la lista" />
+											</foot>
+										</grid>
+				</div>
+				<!-- FIN GRID DE FUNCIONES-->
 			</div><!--FIN DIV GRID DE FUNCIONES-->
 
 			<div class="row">

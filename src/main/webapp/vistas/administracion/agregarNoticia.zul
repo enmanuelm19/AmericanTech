@@ -17,7 +17,7 @@
 <zk xmlns:n="native" >
 
 	<window border="none" title="Registrar Noticia" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
-	width="48%" height="70%" style="iconSclass=z-icon-puzzle-piece;">
+	width="48%" height="auto" style="iconSclass=z-icon-puzzle-piece;">
 		<caption iconSclass="z-icon-puzzle-piece"/>
  
 			
@@ -95,7 +95,7 @@
 									<row class="col-md-12">
 										
 										<div>
-											<label value="Contenido" class="col-md-12"/>
+											<label value="Descripción" class="col-md-12"/>
 											<textbox id="txtDescripcion" readonly="false" cols="45" rows="2" type="text" value="" width="100%" />
 										</div>
 									</row>
@@ -106,7 +106,7 @@
 			       
 			        <div>
 						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
-						<space spacing="10%" />
+						<space spacing="5%" />
 						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
 			        </div><separator spacing="5%"/>
 				</div>

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,25 +15,28 @@ public class JuntaDirectiva implements java.io.Serializable {
 	private Club club;
 	private Date fechaInic;
 	private Date fechaFin;
+	private boolean activo;
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 
 	public JuntaDirectiva() {
 	}
 
 	public JuntaDirectiva(int idJuntaDirectiva, Club club, Date fechaInic,
-			Date fechaFin) {
+			Date fechaFin, boolean activo) {
 		this.idJuntaDirectiva = idJuntaDirectiva;
 		this.club = club;
 		this.fechaInic = fechaInic;
 		this.fechaFin = fechaFin;
+		this.activo = activo;
 	}
 
 	public JuntaDirectiva(int idJuntaDirectiva, Club club, Date fechaInic,
-			Date fechaFin, Set<MiembroJunta> miembroJuntas) {
+			Date fechaFin, boolean activo, Set<MiembroJunta> miembroJuntas) {
 		this.idJuntaDirectiva = idJuntaDirectiva;
 		this.club = club;
 		this.fechaInic = fechaInic;
 		this.fechaFin = fechaFin;
+		this.activo = activo;
 		this.miembroJuntas = miembroJuntas;
 	}
 
@@ -67,6 +70,14 @@ public class JuntaDirectiva implements java.io.Serializable {
 
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<MiembroJunta> getMiembroJuntas() {

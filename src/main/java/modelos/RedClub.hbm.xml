@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.RedClub" table="red_club" schema="public" optimistic-lock="version">
         <id name="idRedClub" type="int">
             <column name="id_red_club" />
             <generator class="increment" />
         </id>
-        <many-to-one name="club" class="modelos.Club" fetch="select">
+        <many-to-one name="club" class="modelos.Club" fetch="select" lazy="false">
             <column name="clubid_club" not-null="true" />
         </many-to-one>
-        <many-to-one name="redSocial" class="modelos.RedSocial" fetch="select">
+        <many-to-one name="redSocial" class="modelos.RedSocial" fetch="select" lazy="false">
             <column name="red_socialid_red_social" />
         </many-to-one>
         <property name="enlace" type="string">
             <column name="enlace" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

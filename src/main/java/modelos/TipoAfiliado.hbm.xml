@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.TipoAfiliado" table="tipo_afiliado" schema="public" optimistic-lock="version">
         <id name="idTipoAfiliado" type="int">
@@ -9,13 +9,22 @@
             <generator class="increment" />
         </id>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="30" not-null="true" />
+            <column name="descripcion" length="90" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="afiliados" table="afiliado" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="tipo_afiliadoid_tipo_afiliado" not-null="true" />
             </key>
             <one-to-many class="modelos.Afiliado" />
+        </set>
+        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipo_afiliadoid_tipo_afiliado" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Politica" />
         </set>
     </class>
 </hibernate-mapping>

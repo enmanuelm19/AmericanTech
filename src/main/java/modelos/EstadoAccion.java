@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,21 +11,24 @@ import java.util.Set;
 public class EstadoAccion implements java.io.Serializable {
 
 	private int idEstadoAccion;
-	private String descripcion;
+	private String nombre;
+	private boolean activo;
 	private Set<Accion> accions = new HashSet<Accion>(0);
 
 	public EstadoAccion() {
 	}
 
-	public EstadoAccion(int idEstadoAccion, String descripcion) {
+	public EstadoAccion(int idEstadoAccion, String nombre, boolean activo) {
 		this.idEstadoAccion = idEstadoAccion;
-		this.descripcion = descripcion;
+		this.nombre = nombre;
+		this.activo = activo;
 	}
 
-	public EstadoAccion(int idEstadoAccion, String descripcion,
+	public EstadoAccion(int idEstadoAccion, String nombre, boolean activo,
 			Set<Accion> accions) {
 		this.idEstadoAccion = idEstadoAccion;
-		this.descripcion = descripcion;
+		this.nombre = nombre;
+		this.activo = activo;
 		this.accions = accions;
 	}
 
@@ -37,12 +40,20 @@ public class EstadoAccion implements java.io.Serializable {
 		this.idEstadoAccion = idEstadoAccion;
 	}
 
-	public String getDescripcion() {
-		return this.descripcion;
+	public String getNombre() {
+		return this.nombre;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Accion> getAccions() {

@@ -21,11 +21,12 @@ private Sesion sesionPostgres;
 	
 	public void agregarClienteExterno(ClienteExterno dato) throws Exception{
 		@SuppressWarnings("static-access")
-		Session em = sesionPostgres.getSessionFactory().openSession();  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.save( dato);   
+        	 dato.setActivo(false);
+              em.update(dato);   
               tx.commit();  
          } catch (Exception e) {  
              tx.rollback();            
@@ -38,20 +39,20 @@ private Sesion sesionPostgres;
 	
 	public void eliminarClienteExterno(ClienteExterno dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }   
    }
 	
 	public void actualizarClienteExterno(ClienteExterno dato) throws Exception{
@@ -76,7 +77,7 @@ private Sesion sesionPostgres;
 	   List<ClienteExterno> datos = new ArrayList<ClienteExterno>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<ClienteExterno>) em.createCriteria(ClienteExterno.class).list();             
+	    datos =  (List<ClienteExterno>) em.createCriteria(ClienteExterno.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -87,6 +88,7 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 	
+
 	
 	
 }

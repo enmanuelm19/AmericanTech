@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Empleado" table="empleado" schema="public" optimistic-lock="version">
         <id name="idEmpleado" type="int">
             <column name="id_empleado" />
             <generator class="increment" />
         </id>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoEmpleado" class="modelos.TipoEmpleado" fetch="select">
+        <many-to-one name="tipoEmpleado" class="modelos.TipoEmpleado" fetch="select" lazy="false">
             <column name="tipo_empleadoid_tipo_empleado" not-null="true" />
         </many-to-one>
         <property name="fechaContratado" type="date">
             <column name="fecha_contratado" length="13" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

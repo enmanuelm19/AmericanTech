@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,25 +14,28 @@ public class ClienteExterno implements java.io.Serializable {
 	private String nombre;
 	private String apellido;
 	private String correo;
+	private boolean activo;
 	private Set<Sugerencia> sugerencias = new HashSet<Sugerencia>(0);
 
 	public ClienteExterno() {
 	}
 
 	public ClienteExterno(int idCliente, String nombre, String apellido,
-			String correo) {
+			String correo, boolean activo) {
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
+		this.activo = activo;
 	}
 
 	public ClienteExterno(int idCliente, String nombre, String apellido,
-			String correo, Set<Sugerencia> sugerencias) {
+			String correo, boolean activo, Set<Sugerencia> sugerencias) {
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
+		this.activo = activo;
 		this.sugerencias = sugerencias;
 	}
 
@@ -66,6 +69,14 @@ public class ClienteExterno implements java.io.Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Sugerencia> getSugerencias() {

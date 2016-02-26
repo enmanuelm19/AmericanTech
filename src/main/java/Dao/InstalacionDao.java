@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Foto;
 import modelos.Instalacion;
 import confi.Sesion;
 
@@ -54,20 +55,20 @@ private Sesion sesionPostgres;
 	
 	public void eliminarInstalacion(Instalacion dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         } 
    }
 	
 	public void actualizarInstalacion(Instalacion dato) throws Exception{
@@ -92,7 +93,7 @@ private Sesion sesionPostgres;
 		   List<Instalacion> datos = new ArrayList<Instalacion>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<Instalacion>) em.createCriteria(Instalacion.class).list();             
+		    datos =  (List<Instalacion>) em.createCriteria(Instalacion.class).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -102,4 +103,23 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
+	
+	
+	//Metodo para obtener que tipo de instalacion pertenece la instalacion. duda
+
+			public List<Instalacion> obtenerTipoinstalacion( int id) throws Exception {            
+					      
+				List<Instalacion> datos = new ArrayList<Instalacion>();  
+				Session em = sesionPostgres.getSessionFactory().openSession();   	
+				 try {  	
+				   datos =  (List<Instalacion>) em.createCriteria(Instalacion.class).add(Restrictions.eq("tipo_instalacionid_tipo_instalacion", id)).list();             
+					  } catch (Exception e) {             
+				 
+				throw new Exception(e.getMessage(),e.getCause());
+				     } finally {  
+				      em.close();  
+					 } 
+						       
+				   return datos; 
+				}
 }

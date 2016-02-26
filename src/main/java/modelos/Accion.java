@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 18/02/2016 10:39:38 PM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,29 +13,39 @@ public class Accion implements java.io.Serializable {
 	private int idAccion;
 	private EstadoAccion estadoAccion;
 	private Socio socio;
+	private String nroAccion;
 	private float valor;
+	private boolean activo;
 	private Set<Venta> ventas = new HashSet<Venta>(0);
 	private Set<Desvinculacion> desvinculacions = new HashSet<Desvinculacion>(0);
+	private Set<SolicitudVenta> solicitudVentas = new HashSet<SolicitudVenta>(0);
 
 	public Accion() {
 	}
 
 	public Accion(int idAccion, EstadoAccion estadoAccion, Socio socio,
-			float valor) {
+			String nroAccion, float valor, boolean activo) {
 		this.idAccion = idAccion;
 		this.estadoAccion = estadoAccion;
 		this.socio = socio;
+		this.nroAccion = nroAccion;
 		this.valor = valor;
+		this.activo = activo;
 	}
 
 	public Accion(int idAccion, EstadoAccion estadoAccion, Socio socio,
-			float valor, Set<Venta> ventas, Set<Desvinculacion> desvinculacions) {
+			String nroAccion, float valor, boolean activo, Set<Venta> ventas,
+			Set<Desvinculacion> desvinculacions,
+			Set<SolicitudVenta> solicitudVentas) {
 		this.idAccion = idAccion;
 		this.estadoAccion = estadoAccion;
 		this.socio = socio;
+		this.nroAccion = nroAccion;
 		this.valor = valor;
+		this.activo = activo;
 		this.ventas = ventas;
 		this.desvinculacions = desvinculacions;
+		this.solicitudVentas = solicitudVentas;
 	}
 
 	public int getIdAccion() {
@@ -62,12 +72,28 @@ public class Accion implements java.io.Serializable {
 		this.socio = socio;
 	}
 
+	public String getNroAccion() {
+		return this.nroAccion;
+	}
+
+	public void setNroAccion(String nroAccion) {
+		this.nroAccion = nroAccion;
+	}
+
 	public float getValor() {
 		return this.valor;
 	}
 
 	public void setValor(float valor) {
 		this.valor = valor;
+	}
+
+	public boolean isActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public Set<Venta> getVentas() {
@@ -84,6 +110,14 @@ public class Accion implements java.io.Serializable {
 
 	public void setDesvinculacions(Set<Desvinculacion> desvinculacions) {
 		this.desvinculacions = desvinculacions;
+	}
+
+	public Set<SolicitudVenta> getSolicitudVentas() {
+		return this.solicitudVentas;
+	}
+
+	public void setSolicitudVentas(Set<SolicitudVenta> solicitudVentas) {
+		this.solicitudVentas = solicitudVentas;
 	}
 
 }
