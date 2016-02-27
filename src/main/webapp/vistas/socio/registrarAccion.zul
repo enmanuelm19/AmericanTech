@@ -16,11 +16,11 @@
 
 <zk xmlns:n="native" >
 
-	<window border="none" title="Registrar Accion" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
-	width="45%" height="auto" style="iconSclass=z-icon-puzzle-piece;">
+	<window border="none" id="winAccion"
+		title="@load(vm.editable?'Editar AcciÃ³n':'Registrar Acción')" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
+	width="45%" height="auto" style="iconSclass=z-icon-puzzle-piece;" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.RegistrarAccionViewModel')">
 		<caption iconSclass="home-icon z-icon-user"/>
- 
-			
 			<div class='contenido'>
 				
 	  			<div align="left">
@@ -28,17 +28,14 @@
 						<div class='linea-two'></div>
 				</div>
 				 <space spacing="15%" />
-				
 				<div align="center">
 					<grid class="hola" >
-
 								<rows class="">
-
 									<row class="col-md-12">
 										<div>
 											<label value="#Accion" class="col-md-12"/>
 											<textbox type="text" class="col-md-12"
-												value="" width="100%"  constraint="no empty" />
+												value="@bind(vm.accion.nroAccion)" width="100%"  constraint="no empty" />
 											
 										</div>
 										</row >
@@ -46,10 +43,11 @@
 										
 										<div>
 											<label value="Estado Accion" class="col-md-12"/>
-											<combobox width="100%" class="col-md-12"> 
-												<comboitem label="" />
-												<comboitem label="" />
-												<comboitem label="" />
+											<combobox width="100%" class="col-md-12" model="@load(vm.estadosAll)" selectedItem="@bind(vm.accion.estadoAccion)"
+											value="@bind(vm.accion.estadoAccion.nombre)"> 
+												<template name="model">
+													<comboitem label="@bind(each.nombre)"  value="@bind(each)"/>
+												</template>
 											</combobox>
 										</div>
 										
@@ -60,24 +58,17 @@
 										<div>
 											<label value="Valor" class="col-md-12"/>
 											<textbox type="text" class="col-md-12"
-												value="" width="100%"  constraint="no empty" />
-											
+											 width="100%"  constraint="no empty" value="@bind(vm.accion.valor)"/>
 										</div>
-										
-										
 									</row >
-									
-									
-									
-			
 			            </rows>
 			        </grid>
 			       <space spacing="15%" />
 			       
 			        <div>
-						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
+						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar" onClick="@command('guardar', win=winAccion)"/>
 						<space spacing="10%" />
-						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
+						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar" onClick="@command('cerrarModal', win=winAccion)"/>
 			        </div><separator spacing="5%"/>
 				</div>
 			</div>
