@@ -3,9 +3,9 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<window border="none" title="Registrar Usuario" closable="true"
+	<window border="none" title="@load(vm.editable?'Editar Usuario':'Registrar Usuario')" closable="true" id="winRegistrarUsuario"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		class="col-md-8" style="iconSclass=z-icon-puzzle-piece;" width="60%">
+		class="col-md-8" style="iconSclass=z-icon-puzzle-piece;" width="60%" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarUsuarioViewModel')">
 		<caption iconSclass="z-icon-puzzle-piece" />
 
 		<div class="contenido form-group">
@@ -39,19 +39,19 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Nombres </label>
-									<textbox class="col-md-9" constraint="no empty"> </textbox>
+									<textbox class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.nombre)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> 	Apellido </label>
-									<textbox class="col-md-9" constraint="no empty"> </textbox>
+									<textbox class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.apellido)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Nacimiento </label>
-									<datebox id="DateFchInicio" cols="12" format="short " onCreate="self.value = new Date()" />
+									<datebox id="DateFchInicio" cols="12" format="short"  value="@bind(vm.user.persona.fechaNac)"/>
 								</div>
 							</row>
 							<row>
@@ -67,13 +67,13 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Correo electronico </label>
-									<textbox type="email" class="col-md-9" constraint="no empty"> </textbox>
+									<textbox type="email" class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.correo)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Telefono </label>
-									<textbox class="col-md-4" 	constraint="no empty"> </textbox>
+									<textbox class="col-md-4" 	constraint="no empty" value="@bind(vm.user.persona.telefono)"> </textbox>
 								</div>
 							</row>
 							<row>
@@ -81,27 +81,27 @@
 									<label class="col-md-3">
 										Telefono Fijo
 									</label>
-									<textbox class="col-md-4" constraint="no empty"> </textbox>
+									<textbox class="col-md-4" constraint="no empty" value="@bind(vm.user.persona.telefonoFijo)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Direccion </label>
-									<textbox class="col-md-9" constraint="no empty">
+									<textbox class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.direccion)">
 									</textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Usuario </label>
-									<textbox constraint="no empty" class="col-md-9">
+									<textbox constraint="no empty" class="col-md-9" value="@bind(vm.user.username)">
 									</textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Contraseña </label>
-									<textbox class="col-md-9" constraint="no empty" type="password"> </textbox>
+									<textbox class="col-md-9" constraint="no empty" type="password" value="@bind(vm.user.contrasenna)"> </textbox>
 								</div>
 							</row>
 							<row>
@@ -113,23 +113,25 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Pregunta Secreta </label>
-									<textbox class="col-md-9" constraint="no empty" type="password"> </textbox>
+									<textbox class="col-md-9" constraint="no empty" type="text" value="@bind(vm.user.pregunta)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Respuesta Secreta </label>
-									<textbox class="col-md-9" constraint="no empty" type="password"> </textbox>
+									<textbox class="col-md-9" constraint="no empty" type="text" value="@bind(vm.user.respuesta)"> </textbox>
 								</div>
+							</row>
+							<row>
+								<datebox format="short" value="@bind(vm.user.fecha)" onCreate="self.value = new Date()"></datebox>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Grupo </label>
-									<combobox>
-										<comboitem label="Seleccione ..."> </comboitem>
-										<comboitem label="Secretaria"></comboitem>
-										<comboitem label="Vigilante"></comboitem>
-										<comboitem label="Administrador"> </comboitem>
+									<combobox model="@load(vm.grupos)">
+									<template name="model">
+										<comboitem label="@load(each.descripcion)" ></comboitem>
+									</template>
 									</combobox>
 									<button sclass="btn-link"
 								iconSclass="z-icon-plus blue" id=""
@@ -138,7 +140,7 @@
 							</row>
 							<row>
 								<div>
-									<grid id="gridInstalaciones"
+									<grid id="gridGrupos"
 							emptyMessage="No se encuentran solicitudes registradas"
 							mold="paging" pageSize="10">
 							<columns>
@@ -173,10 +175,10 @@
 			</div>
 			<separator spacing="30px"></separator>
 			<div class="row col-md-12">
-				<button class="boton-guardar col-md-3 col-md-offset-2"
+				<button class="boton-guardar col-md-3 col-md-offset-2" onClick="@command('guardar', win=winRegistrarUsuario)"
 					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
 				</button>
-				<button class="boton-cancelar col-md-3 col-md-offset-2"
+				<button class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('cerrarModal', win=winRegistrarUsuario"
 					iconSclass="z-icon-times" type="button" label="Cancelar">
 				</button>
 			</div>
