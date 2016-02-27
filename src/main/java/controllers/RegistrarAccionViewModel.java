@@ -9,6 +9,7 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import modelos.Accion;
@@ -67,10 +68,12 @@ public class RegistrarAccionViewModel {
 			accion.setActivo(true);
 			if (!editable){				
 				accionDAO.agregarAccion(accion);
+				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido registrada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);
 			}
-			else
+			else{
 				accionDAO.actualizarAccion(accion);
-
+				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);		
+			}
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
 		}
