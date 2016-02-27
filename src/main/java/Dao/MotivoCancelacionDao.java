@@ -3,7 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
-import modelos.Archivo;
+import modelos.MotivoCancelacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -14,12 +14,12 @@ import org.hibernate.criterion.Restrictions;
  * creado por Tony Suarez
  */
 
-public class ArchivoDao {
+public class MotivoCancelacionDao {
 
 private Sesion sesionPostgres;
 	
 	
-	public void agregarArchivo(Archivo dato) throws Exception{
+	public void agregarAccion(MotivoCancelacion dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -36,7 +36,7 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void eliminarArchivo(Archivo dato) throws Exception{		 
+	public void eliminarAccion(MotivoCancelacion dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -51,10 +51,10 @@ private Sesion sesionPostgres;
              throw e;
          } finally {  
              em.close();  
-         }   
+         } 
    }
 	
-	public void actualizarArchivo(Archivo dato) throws Exception{
+	public void actualizarAccion(MotivoCancelacion dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -71,12 +71,12 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public List<Archivo> obtenerTodos() throws Exception {            
+	public List<MotivoCancelacion> obtenerTodos() throws Exception {            
       
-	   List<Archivo> datos = new ArrayList<Archivo>();  
+	   List<MotivoCancelacion> datos = new ArrayList<MotivoCancelacion>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Archivo>) em.createCriteria(Archivo.class).add(Restrictions.eq("activo", true)).list();             
+	    datos =  (List<MotivoCancelacion>) em.createCriteria(MotivoCancelacion.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -86,7 +86,6 @@ private Sesion sesionPostgres;
        
         return datos; 
 	}	
-	
 
 	
 	

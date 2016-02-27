@@ -70,18 +70,20 @@ public class TipoAfiliadoDao {
 	//Elimina un TipoAfiliado en especifico
 	public void eliminarTipoAfiliado(TipoAfiliado dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-        } catch (Exception e) {  
-            tx.rollback();  
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         } 
    }
 	
 	//Actualiza un Registro
@@ -108,7 +110,7 @@ public class TipoAfiliadoDao {
 	   List<TipoAfiliado> datos = new ArrayList<TipoAfiliado>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<TipoAfiliado>) em.createCriteria(TipoAfiliado.class).list();             
+	    datos =  (List<TipoAfiliado>) em.createCriteria(TipoAfiliado.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());

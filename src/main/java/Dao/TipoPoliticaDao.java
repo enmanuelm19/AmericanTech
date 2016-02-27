@@ -70,18 +70,20 @@ public class TipoPoliticaDao {
 	//Elimina un TipoPolitica en especifico
 	public void eliminarTipoPolitica(TipoPolitica dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-        } catch (Exception e) {  
-            tx.rollback();  
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         } 
    }
 	
 	//Actualiza un Registro
@@ -107,7 +109,7 @@ public class TipoPoliticaDao {
 	   List<TipoPolitica> datos = new ArrayList<TipoPolitica>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<TipoPolitica>) em.createCriteria(TipoPolitica.class).list();             
+	    datos =  (List<TipoPolitica>) em.createCriteria(TipoPolitica.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
          throw new Exception(e.getMessage(),e.getCause());
         } finally {  

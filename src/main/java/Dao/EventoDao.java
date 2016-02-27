@@ -38,20 +38,20 @@ private Sesion sesionPostgres;
 	
 	public void eliminarEvento(Evento dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }   
    }
 	
 	public void actualizarEvento(Evento dato) throws Exception{
@@ -76,7 +76,7 @@ private Sesion sesionPostgres;
 	   List<Evento> datos = new ArrayList<Evento>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Evento>) em.createCriteria(Evento.class).list();             
+	    datos =  (List<Evento>) em.createCriteria(Evento.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -87,6 +87,8 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 	
+	
+
 	
 	
 }

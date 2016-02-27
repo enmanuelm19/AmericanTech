@@ -3,7 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
-import modelos.Archivo;
+import modelos.InstalacionEvento;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -14,12 +14,12 @@ import org.hibernate.criterion.Restrictions;
  * creado por Tony Suarez
  */
 
-public class ArchivoDao {
+public class InstalacionEventoDao {
 
 private Sesion sesionPostgres;
 	
 	
-	public void agregarArchivo(Archivo dato) throws Exception{
+	public void agregarAccion(InstalacionEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -36,7 +36,7 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void eliminarArchivo(Archivo dato) throws Exception{		 
+	public void eliminarAccion(InstalacionEvento dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -51,10 +51,10 @@ private Sesion sesionPostgres;
              throw e;
          } finally {  
              em.close();  
-         }   
+         } 
    }
 	
-	public void actualizarArchivo(Archivo dato) throws Exception{
+	public void actualizarAccion(InstalacionEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -71,12 +71,12 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public List<Archivo> obtenerTodos() throws Exception {            
+	public List<InstalacionEvento> obtenerTodos() throws Exception {            
       
-	   List<Archivo> datos = new ArrayList<Archivo>();  
+	   List<InstalacionEvento> datos = new ArrayList<InstalacionEvento>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Archivo>) em.createCriteria(Archivo.class).add(Restrictions.eq("activo", true)).list();             
+	    datos =  (List<InstalacionEvento>) em.createCriteria(InstalacionEvento.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -86,7 +86,6 @@ private Sesion sesionPostgres;
        
         return datos; 
 	}	
-	
 
 	
 	

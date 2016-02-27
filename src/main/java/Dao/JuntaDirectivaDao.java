@@ -53,21 +53,21 @@ private Sesion sesionPostgres;
 }
     
     public void eliminarJuntaDirectiva(JuntaDirectiva dato) throws Exception{        
-        @SuppressWarnings("static-access")
-        Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+    	@SuppressWarnings("static-access")
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }   
    }
     
     public void actualizarJuntaDirectiva(JuntaDirectiva dato) throws Exception{
@@ -92,7 +92,7 @@ private Sesion sesionPostgres;
            List<JuntaDirectiva> datos = new ArrayList<JuntaDirectiva>();  
            Session em = sesionPostgres.getSessionFactory().openSession();       
             try {   
-            datos =  (List<JuntaDirectiva>) em.createCriteria(JuntaDirectiva.class).list();             
+            datos =  (List<JuntaDirectiva>) em.createCriteria(JuntaDirectiva.class).add(Restrictions.eq("activo", true)).list();             
             } catch (Exception e) {             
            
              throw new Exception(e.getMessage(),e.getCause());
@@ -102,4 +102,5 @@ private Sesion sesionPostgres;
            
             return datos; 
         }
+
 }

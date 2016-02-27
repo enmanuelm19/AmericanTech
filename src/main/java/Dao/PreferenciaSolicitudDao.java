@@ -3,7 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
-import modelos.Archivo;
+import modelos.PreferenciaSolicitud;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -14,12 +14,12 @@ import org.hibernate.criterion.Restrictions;
  * creado por Tony Suarez
  */
 
-public class ArchivoDao {
+public class PreferenciaSolicitudDao {
 
 private Sesion sesionPostgres;
 	
 	
-	public void agregarArchivo(Archivo dato) throws Exception{
+	public void agregarAccion(PreferenciaSolicitud dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -36,7 +36,7 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void eliminarArchivo(Archivo dato) throws Exception{		 
+	public void eliminarAccion(PreferenciaSolicitud dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -51,10 +51,10 @@ private Sesion sesionPostgres;
              throw e;
          } finally {  
              em.close();  
-         }   
+         } 
    }
 	
-	public void actualizarArchivo(Archivo dato) throws Exception{
+	public void actualizarAccion(PreferenciaSolicitud dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -71,12 +71,12 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public List<Archivo> obtenerTodos() throws Exception {            
+	public List<PreferenciaSolicitud> obtenerTodos() throws Exception {            
       
-	   List<Archivo> datos = new ArrayList<Archivo>();  
+	   List<PreferenciaSolicitud> datos = new ArrayList<PreferenciaSolicitud>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Archivo>) em.createCriteria(Archivo.class).add(Restrictions.eq("activo", true)).list();             
+	    datos =  (List<PreferenciaSolicitud>) em.createCriteria(PreferenciaSolicitud.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -86,7 +86,6 @@ private Sesion sesionPostgres;
        
         return datos; 
 	}	
-	
 
 	
 	

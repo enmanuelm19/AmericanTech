@@ -104,18 +104,20 @@ public class SocioDao {
 	//Elimina una Socio en especifico
 	public void eliminarSocio(Socio dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-        } catch (Exception e) {  
-            tx.rollback();  
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }  
    }
 	
 	//Actualiza un Registro
@@ -142,7 +144,7 @@ public class SocioDao {
 	   List<Socio> datos = new ArrayList<Socio>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Socio>) em.createCriteria(Socio.class).list();             
+	    datos =  (List<Socio>) em.createCriteria(Socio.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
