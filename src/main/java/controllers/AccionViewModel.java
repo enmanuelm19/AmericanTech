@@ -149,5 +149,4 @@ public class AccionViewModel {
 		}
 		this.listaAcciones = tip;
 	}
-
 }
