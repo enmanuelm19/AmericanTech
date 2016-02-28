@@ -24,7 +24,7 @@
 						<div apply="controllers.ControllerEvento"
 							xmlns:w='client' align="right">
 							<button id="btnRegistrarEvento"
-								label="Registrar Evento" iconSclass="z-icon-plus"
+								label="Agregar nuevo" iconSclass="z-icon-plus"
 								class='boton-guardar' />
 						</div>
 
@@ -79,19 +79,17 @@
 
 										<columns>
 											<column width="4%"></column>
-											<column width="12%">
-												Socio
-											</column>
+										
 											<column width="10%">
 												Fecha inicio
 											</column>
 											<column width="10%">
 												Fecha fin
 											</column>
-											<column width="20%">
+											<column width="25%">
 												Descripción
 											</column>
-											<column width="10%">
+											<column width="17%">
 												Hora
 											</column>		
 											<column width="10%">
@@ -178,8 +176,6 @@
 											
 											
 												
-												<label
-													value="jose Peña" />
 												<label
 													value="12/12/1920" />
 												<label
