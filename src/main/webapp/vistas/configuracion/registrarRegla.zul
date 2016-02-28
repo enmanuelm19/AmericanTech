@@ -1,13 +1,9 @@
 <?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
-
 <!-- Load Bootstrap  -->
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
-
 <!-- Google Open Sans font -->
 <!-- Load fonts from local -->
 <?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-
 <!-- Unmark if we want to use fonts from google server
 	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 -->
@@ -15,86 +11,41 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-
 	<window border="none" title="Registrar Reglas del club"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="40%" height="85%"
+		closable="true" width="40%" height="auto"
 		style="iconSclass=z-icon-puzzle-piece;">
 		<caption iconSclass="z-icon-cogs" />
 
-
 		<div class='contenido'>
 			<radiogroup id="sv1" />
-
 			<div align="left">
 				<div class='encabezado'>Datos básicos</div>
 				<div class='linea-two'></div>
 			</div>
 			<space spacing="15%" />
-
 			<div align="center">
 				<grid>
-
 					<rows>
-
-						<row class="col-md-12">
+						<row>
 							<div>
-								La regla esta relacionada con:
-
-								<radio id="ra1" label="Visita"
-									radiogroup="sv1" style="margin-right:15px; margin-left:15px;" />
-								<radio id="ra2" label="Afiliacion"
-									radiogroup="sv1" style="margin-right:15px;" />
-							</div>
-
-						</row>
-						<row class="col-md-12">
-							<div>
-								Descripción de la regla
-								<textbox type="text" rows="5"
-									width="100%" tabindex="10" constraint="no empty" />
-							</div>
-
-						</row>
-						<row class="col-md-12">
-
-							<div>
-								Parentesco
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
+								<label class="col-md-2"> Descripción</label>
+								<textbox type="text" rows="5" tabindex="10" constraint="no empty" class="col-md-9" />
 							</div>
 						</row>
-						<row class="col-md-12">
-
+						<row>
 							<div>
-								Cant de visitas/invitados permitidos
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
+								<label class="col-md-2"> Valor </label>
+								<intbox constraint="no empty,no negative, no zero" class="col-md-2"/>
 							</div>
-
 						</row>
-						<row class="col-md-12">
-							<div>
-								Frecuencia
-								<textbox type="text" value=""
-									width="100%" tabindex="2" constraint="no empty" />
-							</div>
-
-						</row>
-
-
-
 					</rows>
-
 				</grid>
 				<space spacing="15%" />
-
 				<div>
-					<button iconSclass="z-icon-floppy-o"
-						class='boton-guardar' label="Registrar" />
+					<button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
-					<button iconSclass="z-icon-times"
-						class='boton-cancelar' label="Cancelar" />
+					<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" />
 				</div>
 				<separator spacing="5%" />
 			</div>
