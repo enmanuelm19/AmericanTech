@@ -3,7 +3,7 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<window border="none" title="@load(vm.editable?'Editar Usuario':'Registrar Usuario')" closable="true" id="winRegistrarUsuario"
+	<window border="none" title="@load(vm.editable?'Editar Usuario':'Registrar Usuario')"  id="winRegistrarUsuario"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		class="col-md-8" style="iconSclass=z-icon-puzzle-piece;" width="60%" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarUsuarioViewModel')">
 		<caption iconSclass="z-icon-puzzle-piece" />
@@ -30,22 +30,22 @@
 							<row class="col-md-12">
 								<div>
 									<label class="col-md-3"> Cedula </label>
-									<textbox constraint="no empty" class="col-md-5">
+									<textbox  class="col-md-5" value="@bind(vm.keyword)">
 									</textbox>
-									<button iconSclass="z-icon-search blue" class="col-md-2 btn-link">
+									<button iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('busqueda', win=winRegistrarUsuario)">
 									</button>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Nombres </label>
-									<textbox class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.nombre)"> </textbox>
+									<textbox class="col-md-9"  value="@bind(vm.user.persona.nombre)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> 	Apellido </label>
-									<textbox class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.apellido)"> </textbox>
+									<textbox class="col-md-9"  value="@bind(vm.user.persona.apellido)"> </textbox>
 								</div>
 							</row>
 							<row>
@@ -57,23 +57,22 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Sexo </label>
-									<combobox>
-										<comboitem label="Seleccione ..."> </comboitem>
-										<comboitem label="Hombre"></comboitem>
-										<comboitem label="Mujer"></comboitem>
-									</combobox>
+									<radiogroup>
+										<radio label="M" class="col-md-2"></radio>
+										<radio label="F" class="col-md-offset-1 col-md-2"></radio>
+									</radiogroup>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Correo electronico </label>
-									<textbox type="email" class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.correo)"> </textbox>
+									<textbox type="email" class="col-md-9"  value="@bind(vm.user.persona.correo)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Telefono </label>
-									<textbox class="col-md-4" 	constraint="no empty" value="@bind(vm.user.persona.telefono)"> </textbox>
+									<textbox class="col-md-4" 	 value="@bind(vm.user.persona.telefono)"> </textbox>
 								</div>
 							</row>
 							<row>
@@ -81,60 +80,57 @@
 									<label class="col-md-3">
 										Telefono Fijo
 									</label>
-									<textbox class="col-md-4" constraint="no empty" value="@bind(vm.user.persona.telefonoFijo)"> </textbox>
+									<textbox class="col-md-4"  value="@bind(vm.user.persona.telefonoFijo)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Direccion </label>
-									<textbox class="col-md-9" constraint="no empty" value="@bind(vm.user.persona.direccion)">
+									<textbox class="col-md-9"  value="@bind(vm.user.persona.direccion)">
 									</textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Usuario </label>
-									<textbox constraint="no empty" class="col-md-9" value="@bind(vm.user.username)">
+									<textbox  class="col-md-9" value="@bind(vm.user.username)">
 									</textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Contraseña </label>
-									<textbox class="col-md-9" constraint="no empty" type="password" value="@bind(vm.user.contrasenna)"> </textbox>
+									<textbox class="col-md-9"  type="password" value="@bind(vm.user.contrasenna)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Confirmar contraseña </label>
-									<textbox class="col-md-9" constraint="no empty" type="password"> </textbox>
+									<textbox class="col-md-9"  type="password"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Pregunta Secreta </label>
-									<textbox class="col-md-9" constraint="no empty" type="text" value="@bind(vm.user.pregunta)"> </textbox>
+									<textbox class="col-md-9"  type="text" value="@bind(vm.user.pregunta)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Respuesta Secreta </label>
-									<textbox class="col-md-9" constraint="no empty" type="text" value="@bind(vm.user.respuesta)"> </textbox>
+									<textbox class="col-md-9"  type="text" value="@bind(vm.user.respuesta)"> </textbox>
 								</div>
-							</row>
-							<row>
-								<datebox format="short" value="@bind(vm.user.fecha)" onCreate="self.value = new Date()"></datebox>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3"> Grupo </label>
-									<combobox model="@load(vm.grupos)">
+									<combobox model="@load(vm.grupos)" selectedItem="@bind(vm.grupo)"">
 									<template name="model">
 										<comboitem label="@load(each.descripcion)" ></comboitem>
 									</template>
 									</combobox>
 									<button sclass="btn-link"
-								iconSclass="z-icon-plus blue" id=""
+								iconSclass="z-icon-plus blue" onClick="@command('agregarGrupo')"
 								tooltiptext="Agregar grupo" />
 								</div>
 							</row>
@@ -142,24 +138,28 @@
 								<div>
 									<grid id="gridGrupos"
 							emptyMessage="No se encuentran solicitudes registradas"
-							mold="paging" pageSize="10">
+							mold="paging" pageSize="10" model="@load(vm.user.usuarioGrupos)">
 							<columns>
 								<column hflex="">Grupos</column>
 								<column hflex="">Acciones</column>
 							</columns>
 							<rows>
-								<row>
+							<template name="model">
+								<!--  <row>
 									<label value="Junta directiva" />
 									<div>
 										<button sclass="btn-link"
 											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
 									</div>
-								</row>
+								</row>-->
 								<row>
-									<label value="Secretaria"></label>
-									<button sclass="btn-link"
+									<label></label>
+									<div>
+										<button sclass="btn-link"
 											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+									</div>
 								</row>
+								</template>
 							</rows>
 							<foot>
 								<footer span="5" class="footer_right"
@@ -178,7 +178,7 @@
 				<button class="boton-guardar col-md-3 col-md-offset-2" onClick="@command('guardar', win=winRegistrarUsuario)"
 					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
 				</button>
-				<button class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('cerrarModal', win=winRegistrarUsuario"
+				<button class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('cerrarModal', win=winRegistrarUsuario)"
 					iconSclass="z-icon-times" type="button" label="Cancelar">
 				</button>
 			</div>

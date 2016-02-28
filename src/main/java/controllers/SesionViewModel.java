@@ -61,7 +61,6 @@ public class SesionViewModel implements Initiator {
 		String usu = usuario.getValue();
 		String clave = pass.getValue();
 		user = userDao.obtenerUsuario(usu, clave);
-		System.out.println("usuario: "+ usu + " clave: " + clave + " Usuario en bd: " + user.getUsername()+ " " + user.getContrasenna());
 		return user;
 	}
 	
@@ -82,6 +81,8 @@ public class SesionViewModel implements Initiator {
 			if(user!=null)
 			{
 				Executions.sendRedirect("/vistas/index.zul");;
+			}else{
+				Messagebox.show("Usuario o contraseña invalidos", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 	}
