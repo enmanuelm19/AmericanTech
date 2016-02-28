@@ -70,20 +70,20 @@ public class UsuarioDao {
 	
 	public void eliminarUsuario(Usuario dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }  
    }
 	
 	public void actualizarUsuario(Usuario dato) throws Exception{
@@ -108,7 +108,7 @@ public class UsuarioDao {
 	   List<Usuario> datos = new ArrayList<Usuario>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Usuario>) em.createCriteria(Usuario.class).list();             
+	    datos =  (List<Usuario>) em.createCriteria(Usuario.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());

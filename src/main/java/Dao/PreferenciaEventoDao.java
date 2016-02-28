@@ -41,7 +41,7 @@ private Sesion sesionPostgres;
 		Session sesion = sesionPostgres.getSessionFactory().openSession();  
 	    PreferenciaEvento dato = null;        
             try{
-                dato = (PreferenciaEvento ) sesion.get(PreferenciaEvento .class,  id);
+                dato = (PreferenciaEvento ) sesion.get(PreferenciaEvento.class,  id);
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -55,20 +55,20 @@ private Sesion sesionPostgres;
 	
 	public void eliminarPreferenciaEvento(PreferenciaEvento dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         } 
    }
 	
 	public void actualizarPreferenciaEvento(PreferenciaEvento dato) throws Exception{
@@ -93,7 +93,7 @@ private Sesion sesionPostgres;
 		   List<PreferenciaEvento> datos = new ArrayList<PreferenciaEvento>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<PreferenciaEvento>) em.createCriteria(PreferenciaEvento.class).list();             
+		    datos =  (List<PreferenciaEvento>) em.createCriteria(PreferenciaEvento.class).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());

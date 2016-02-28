@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Politica" table="politica" schema="public" optimistic-lock="version">
         <id name="idPolitica" type="int">
             <column name="id_politica" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tipoAfiliado" class="modelos.TipoAfiliado" fetch="select">
+        <many-to-one name="tipoAfiliado" class="modelos.TipoAfiliado" fetch="select" lazy="false">
             <column name="tipo_afiliadoid_tipo_afiliado" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoPolitica" class="modelos.TipoPolitica" fetch="select">
+        <many-to-one name="tipoPolitica" class="modelos.TipoPolitica" fetch="select" lazy="false">
             <column name="tipo_politicaid_tipo_politica" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
@@ -24,7 +24,7 @@
             <column name="cantidad_invitados" />
         </property>
         <property name="atributo" type="string">
-            <column name="atributo" length="30" not-null="true" />
+            <column name="atributo" length="90" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

@@ -52,18 +52,17 @@
 						<row>
 							<div>
 								<div class="col-md-6">
-									Cantidad solicitada
+									Cantidad planificada
 									<n:br></n:br>
 
 									<textbox type="text" width="100%"
 										constraint="no empty" />
 								</div>
 								<div class="col-md-6">
-									Cantidad obtenida
+									Finalizada?
 									<n:br></n:br>
 
-									<textbox type="text" width="100%"
-										constraint="no empty" />
+									<checkbox></checkbox>
 								</div>
 
 							</div>

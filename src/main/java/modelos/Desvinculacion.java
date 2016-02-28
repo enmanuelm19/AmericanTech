@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -18,6 +18,17 @@ public class Desvinculacion implements java.io.Serializable {
 	private boolean activo;
 
 	public Desvinculacion() {
+	}
+
+	public Desvinculacion(int idDesvinculacion, Accion accion,
+			MotivoDesvinculacion motivoDesvinculacion, Socio socio, Date fecha,
+			boolean activo) {
+		this.idDesvinculacion = idDesvinculacion;
+		this.accion = accion;
+		this.motivoDesvinculacion = motivoDesvinculacion;
+		this.socio = socio;
+		this.fecha = fecha;
+		this.activo = activo;
 	}
 
 	public Desvinculacion(int idDesvinculacion, Accion accion,

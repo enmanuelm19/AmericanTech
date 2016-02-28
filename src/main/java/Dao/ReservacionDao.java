@@ -87,20 +87,20 @@ private Sesion sesionPostgres;
 	//Elimina un Reservacion en especifico
 	public void eliminarReservacion(Reservacion dato) throws Exception{		 
 		@SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }   
    }
 	
 	//Actualiza un Registro
@@ -125,7 +125,7 @@ private Sesion sesionPostgres;
 	public List<Reservacion> obtenerTodos() throws Exception {            
       
 	   List<Reservacion> datos = new ArrayList<Reservacion>();  
-	   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	   Session em = sesionPostgres.getSessionFactory().add(Restrictions.eq("activo", true)).openSession();   	
         try {  	
 	    datos =  (List<Reservacion>) em.createCriteria(Reservacion.class).list();             
         } catch (Exception e) {             

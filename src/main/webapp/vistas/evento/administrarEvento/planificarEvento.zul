@@ -130,12 +130,9 @@
 														</column>
 														<column
 															width="">
-															Cant Solicitada
+															Cant Planificada
 														</column>
-														<column
-															width="">
-															Cant obtenida
-														</column>
+														
 														<column
 															width="">
 															Estado
@@ -155,9 +152,7 @@
 																value="10/02/2016" />
 																<label
 																value="5" />
-																<label
-																value="4" />
-
+																
 															<label
 																value="No Finalizado" />
 
@@ -178,8 +173,7 @@
 																value="10/02/2016" />
 																<label
 																value="5" />
-																<label
-																value="4" />
+																
 
 															<label
 																value="No Finalizado" />
@@ -247,12 +241,9 @@
 														</column>
 														<column
 															width="">
-															Cant Solicitada
+															Cant Planificada
 														</column>
-														<column
-															width="">
-															Cant obtenida
-														</column>
+													
 														<column
 															width="">
 															Estado

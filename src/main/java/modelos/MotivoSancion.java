@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +11,7 @@ import java.util.Set;
 public class MotivoSancion implements java.io.Serializable {
 
 	private int idMotivoSancion;
+	private String motivo;
 	private String descripcion;
 	private boolean activo;
 	private Set<Sancion> sancions = new HashSet<Sancion>(0);
@@ -18,15 +19,18 @@ public class MotivoSancion implements java.io.Serializable {
 	public MotivoSancion() {
 	}
 
-	public MotivoSancion(int idMotivoSancion, String descripcion, boolean activo) {
+	public MotivoSancion(int idMotivoSancion, String motivo,
+			String descripcion, boolean activo) {
 		this.idMotivoSancion = idMotivoSancion;
+		this.motivo = motivo;
 		this.descripcion = descripcion;
 		this.activo = activo;
 	}
 
-	public MotivoSancion(int idMotivoSancion, String descripcion,
-			boolean activo, Set<Sancion> sancions) {
+	public MotivoSancion(int idMotivoSancion, String motivo,
+			String descripcion, boolean activo, Set<Sancion> sancions) {
 		this.idMotivoSancion = idMotivoSancion;
+		this.motivo = motivo;
 		this.descripcion = descripcion;
 		this.activo = activo;
 		this.sancions = sancions;
@@ -38,6 +42,14 @@ public class MotivoSancion implements java.io.Serializable {
 
 	public void setIdMotivoSancion(int idMotivoSancion) {
 		this.idMotivoSancion = idMotivoSancion;
+	}
+
+	public String getMotivo() {
+		return this.motivo;
+	}
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
 	}
 
 	public String getDescripcion() {

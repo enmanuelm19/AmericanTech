@@ -53,21 +53,21 @@ private Sesion sesionPostgres;
 }
     
     public void eliminarNoticiaPreferencia(NoticiaPreferencia dato) throws Exception{        
-        @SuppressWarnings("static-access")
-        Session sesion = sesionPostgres.getSessionFactory().openSession();    
-        Transaction tx = null;  
-        try {  
-            tx = sesion.beginTransaction();  
-            sesion.delete(dato);  
-            tx.commit();  
-           
-        } catch (Exception e) {  
-            tx.rollback();  
-           
-            throw new Exception(e.getMessage(), e.getCause());
-        } finally {  
-            sesion.close();  
-        }  
+    	@SuppressWarnings("static-access")
+		Session em = sesionPostgres.getSessionFactory().openSession();   
+         Transaction tx = null;  
+         try {    
+        	 tx = em.beginTransaction();
+        	 dato.setActivo(false);
+              em.update(dato);   
+              tx.commit();  
+         } catch (Exception e) {  
+             tx.rollback();            
+             e.printStackTrace();
+             throw e;
+         } finally {  
+             em.close();  
+         }  
    }
     
     public void actualizarNoticiaPreferencia(NoticiaPreferencia dato) throws Exception{
@@ -92,7 +92,7 @@ private Sesion sesionPostgres;
            List<NoticiaPreferencia> datos = new ArrayList<NoticiaPreferencia>();  
            Session em = sesionPostgres.getSessionFactory().openSession();       
             try {   
-            datos =  (List<NoticiaPreferencia>) em.createCriteria(NoticiaPreferencia.class).list();             
+            datos =  (List<NoticiaPreferencia>) em.createCriteria(NoticiaPreferencia.class).add(Restrictions.eq("activo", true)).list();             
             } catch (Exception e) {             
            
              throw new Exception(e.getMessage(),e.getCause());
@@ -102,4 +102,6 @@ private Sesion sesionPostgres;
            
             return datos; 
         }
+    
+
 }
