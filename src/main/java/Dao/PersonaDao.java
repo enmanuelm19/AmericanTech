@@ -11,7 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.Session;
 
 /**
- * creado por José Francisco Morón
+ * creado por Josï¿½ Francisco Morï¿½n
  */
 
 public class PersonaDao {
@@ -69,6 +69,24 @@ private Sesion sesionPostgres;
              em.close();  
          }  
    }
+	
+	public void hardDelete(Persona dato){
+		@SuppressWarnings("static-access")
+		Session em = sesionPostgres.getSessionFactory().openSession();
+		Transaction tx = null;
+		try {
+			tx = em.beginTransaction();
+			em.delete(dato);
+			tx.commit();
+		} catch(Exception e){
+			tx.rollback();
+			e.printStackTrace();
+		}
+		finally {
+			em.close();
+		}
+				
+	}
 	
 	public void actualizarPersona(Persona dato) throws Exception{
 		@SuppressWarnings("static-access")
