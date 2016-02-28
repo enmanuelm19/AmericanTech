@@ -1,13 +1,13 @@
-package com.ucla.america.models;
+package service;
 
 import java.util.Date;
 
 import org.zkoss.calendar.impl.SimpleCalendarEvent;
  
-public class DemoCalendarEvent extends SimpleCalendarEvent {
+public class CalendarEventModel extends SimpleCalendarEvent {
     private static final long serialVersionUID = 1L;
  
-    public DemoCalendarEvent(Date beginDate, Date endDate, String headerColor, String contentColor, String content) {
+    public CalendarEventModel(Date beginDate, Date endDate, String headerColor, String contentColor, String content) {
         setHeaderColor(headerColor);
         setContentColor(contentColor);
         setContent(content);
@@ -15,7 +15,7 @@ public class DemoCalendarEvent extends SimpleCalendarEvent {
         setEndDate(endDate);
     }
  
-    public DemoCalendarEvent(Date beginDate, Date endDate, String headerColor, String contentColor, String content,
+    public CalendarEventModel(Date beginDate, Date endDate, String headerColor, String contentColor, String content,
             String title) {
         setHeaderColor(headerColor);
         setContentColor(contentColor);
@@ -25,7 +25,7 @@ public class DemoCalendarEvent extends SimpleCalendarEvent {
         setEndDate(endDate);
     }
  
-    public DemoCalendarEvent(Date beginDate, Date endDate, String headerColor, String contentColor, String content,
+    public CalendarEventModel(Date beginDate, Date endDate, String headerColor, String contentColor, String content,
             String title, boolean locked) {
         setHeaderColor(headerColor);
         setContentColor(contentColor);
@@ -36,7 +36,7 @@ public class DemoCalendarEvent extends SimpleCalendarEvent {
         setLocked(locked);
     }
      
-    public DemoCalendarEvent() {
+    public CalendarEventModel() {
         setHeaderColor("#FFFFFF");
         setContentColor("#000000");
     }

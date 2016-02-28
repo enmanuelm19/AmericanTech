@@ -1,11 +1,7 @@
-package com.ucla.america.views;
+package controllers;
 
 import java.util.Date;
 import java.util.Map;
- 
-
-
-import com.ucla.america.models.DemoCalendarEvent;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.Property;
@@ -17,16 +13,19 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.bind.validator.AbstractValidator;
 import org.zkoss.zk.ui.event.EventListener;
 
-import com.ucla.america.controllers.QueueMessage;
+
+
+import service.CalendarEventModel;
+import util.QueueMessage;
  
-public class calendarEditorViewModel {
+public class CalendarEditorViewModel {
      
-    private DemoCalendarEvent calendarEventData = new DemoCalendarEvent();
+    private CalendarEventModel calendarEventModel = new CalendarEventModel();
      
     private boolean visible = false;
  
-    public DemoCalendarEvent getCalendarEvent() {
-        return calendarEventData;
+    public CalendarEventModel getCalendarEventModel() {
+        return calendarEventModel;
     }
  
     public boolean isVisible() {
@@ -43,8 +42,8 @@ public class calendarEditorViewModel {
        /* QueueUtil.lookupQueue().subscribe(new QueueListener());*/
     }
  
-    private void startEditing(DemoCalendarEvent calendarEventData) {
-        this.calendarEventData = calendarEventData;
+    private void startEditing(CalendarEventModel calendarEventModel) {
+        this.calendarEventModel = calendarEventModel;
         visible = true;
          
         //reload entire view-model data when going to edit
@@ -93,7 +92,7 @@ public class calendarEditorViewModel {
     @Command
     @NotifyChange("visible")
     public void delete() {
-        QueueMessage message = new QueueMessage(QueueMessage.Type.DELETE, calendarEventData);
+        QueueMessage message = new QueueMessage(QueueMessage.Type.DELETE, calendarEventModel);
     /*    QueueUtil.lookupQueue().publish(message);*/
         this.visible = false;
     }
@@ -101,7 +100,7 @@ public class calendarEditorViewModel {
     @Command
     @NotifyChange("visible")
     public void ok() {
-        QueueMessage message = new QueueMessage(QueueMessage.Type.OK, calendarEventData);
+        QueueMessage message = new QueueMessage(QueueMessage.Type.OK, calendarEventModel);
         /*QueueUtil.lookupQueue().publish(message);*/
         this.visible = false;
     }
@@ -111,7 +110,7 @@ public class calendarEditorViewModel {
         public void onEvent(QueueMessage message)
                 throws Exception {
             if (QueueMessage.Type.EDIT.equals(message.getType())){
-                calendarEditorViewModel.this.startEditing((DemoCalendarEvent)message.getData());
+                CalendarEditorViewModel.this.startEditing((CalendarEventModel)message.getData());
             }
         }
     }
