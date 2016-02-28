@@ -23,29 +23,6 @@
 
 					<rows class="">
 
-						<!-- <row class="col-md-12">
-							<div>
-							Tipo de evento
-							<n:br></n:br>
-							<combobox width="85%">
-							<comboitem label="Publico" />
-							<comboitem label="Privado" />
-							</combobox>
-							
-							</div>
-							
-							<div>
-							Instalación
-							<n:br></n:br>
-							<combobox width="85%">
-							<comboitem label="Caney de Rafa" />
-							<comboitem label="Chevecita" />
-							<comboitem label="Salon Principal" />
-							<comboitem label="Piscina" />
-							</combobox>
-							
-							</div>
-							</row>-->
 
 						<row class="col-md-12">
 							<div>

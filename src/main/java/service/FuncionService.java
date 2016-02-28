@@ -62,7 +62,7 @@ public class FuncionService {
 		funcion.add(new Funcion(49, "Eventualidades", "instalacion/registrarEventualidadInst.zul", "z-icon-angle-double-right", 2, ""));  
 		//funcion.add(new Funcion(50, "Solicitudes evento", "evento/solicitudesEvento.zul", "z-icon-angle-double-right", 4, ""));
 		//funcion.add(new Funcion(51, "Lista de solicitudes", "evento/administrarEvento/listaSolicitudes.zul", "z-icon-angle-double-right", 12, ""));
-		funcion.add(new Funcion(52, "Lista eventos", "evento/administrarEvento/listaEventos.zul", "z-icon-angle-double-right", 12, ""));
+		funcion.add(new Funcion(52, "Registrar evento", "evento/administrarEvento/listaEventos.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(53, "Planificar evento", "evento/administrarEvento/planificarEvento.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(54, "Ejecutar evento", "evento/administrarEvento/ejecutarEvento.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(55, "Opiniones postulacion", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 13, ""));
