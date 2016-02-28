@@ -94,6 +94,7 @@
 									                            mold="select" tabindex="7">
 									                            <listitem label="Motivo 01" value="" />
 									                             <listitem label="Motico 02" value="" />
+									                             <listitem label="Motico 02" value="" />
 								     </listbox>     	
 								     <separator spacing="15px"></separator>	
 		    					 </div> -->
