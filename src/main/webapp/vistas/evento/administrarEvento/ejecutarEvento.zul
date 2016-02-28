@@ -118,7 +118,7 @@
 
 													<columns>
 														<column
-															width="">
+															width="25%">
 															Descripcion
 															de la
 															Actividad
@@ -130,18 +130,26 @@
 														<column
 															width="">
 															Cant
-															Solicitada
+															Planificada
 														</column>
 														<column
 															width="">
 															Cant
-															obtenida
+															Ejecutada
 														</column>
-
+														<column
+															width="">
+															Fecha
+															Realización
+														</column>
 
 														<column
 															width="">
 															Finalizada?
+														</column>
+														<column
+															width="">
+															Acciones
 														</column>
 
 													</columns>
@@ -153,11 +161,20 @@
 																value="10/02/2016" />
 															<label
 																value="5" />
-															<label
-																value="4" />
+															<textbox type="text" width="50%"
+																tabindex="10" constraint="" />
+															<textbox type="text" width="60%"
+																tabindex="10" constraint="" />
+															
 
 															<div>
 																<checkbox />
+
+															</div>
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar Valor" />
 
 															</div>
 
@@ -165,16 +182,25 @@
 
 														<row>
 															<label
-																value="Buscar pelotas para el torneo" />
+																value="Buscar Arbitros" />
 															<label
 																value="10/02/2016" />
 															<label
 																value="5" />
-															<label
-																value="4" />
+															<textbox type="text" width="50%"
+																tabindex="10" constraint="" />
+															<textbox type="text" width="60%"
+																tabindex="10" constraint="" />
+															
 
 															<div>
 																<checkbox />
+
+															</div>
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar Valor" />
 
 															</div>
 
@@ -211,7 +237,7 @@
 
 													<columns>
 														<column
-															width="">
+															width="25%">
 															Descripcion
 															de la
 															Actividad
@@ -223,18 +249,26 @@
 														<column
 															width="">
 															Cant
-															Solicitada
+															Planificada
 														</column>
 														<column
 															width="">
 															Cant
-															obtenida
+															Ejecutada
 														</column>
-
+														<column
+															width="">
+															Fecha
+															Realización
+														</column>
 
 														<column
 															width="">
 															Finalizada?
+														</column>
+														<column
+															width="">
+															Acciones
 														</column>
 
 													</columns>
@@ -246,11 +280,20 @@
 																value="10/02/2016" />
 															<label
 																value="5" />
-															<label
-																value="4" />
+															<textbox type="text" width="50%"
+																tabindex="10" constraint="" />
+															<textbox type="text" width="60%"
+																tabindex="10" constraint="" />
+															
 
 															<div>
 																<checkbox />
+
+															</div>
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar Valor" />
 
 															</div>
 
@@ -258,16 +301,27 @@
 
 														<row>
 															<label
-																value="Buscar pelotas para el torneo" />
+																value="Buscar Arbitros" />
 															<label
 																value="10/02/2016" />
 															<label
 																value="5" />
-															<label
-																value="4" />
+															<div>
+															<textbox type="text" width="50%"
+																tabindex="10" constraint="" />
+															</div>
+															<textbox type="text" width="60%"
+																tabindex="10" constraint="" />
+															
 
 															<div>
 																<checkbox />
+
+															</div>
+															<div>
+																<button
+																	sclass="btn-link" iconSclass="z-icon-pencil blue"
+																	tooltiptext="Editar Valor" />
 
 															</div>
 
@@ -309,337 +363,3 @@
 
 
 
-
-
-<!-- Responsable Hector Gil -->
-<!-- <zk xmlns:n="native">
-	<div>
-	<hlayout spacing="0">
-	<vlayout spacing="0" hflex="1">
-	<div sclass="breadcrumbs">
-	<div sclass="breadcrumb">
-	<span sclass="home-icon z-icon-calendar" />
-	<a label="Eventos" href="#" />
-	<label value="Planificar Evento" />
-	</div>
-	</div>
-	<div class='contenedor'
-	apply="controllers.ControllerVerAfiliado">
-	<div sclass="page-header">
-	<label value="Ejecutar Eventos" />
-	</div>
-	<div class='contenido ' align="center">
-	<div class="col-md-12 col-centered ">
-	<div class='form-pricing' width="100%"
-	style="margin-bottom: 20px">
-	<div align="left">
-	<div class="encabezado">
-	Lista de Eventos
-	</div>
-	<div align="left" class="linea-two" />
-	</div>
-	<separator spacing="20px" />
-	
-	<grid
-	emptyMessage="No se encuentran eventos registrados"
-	mold="paging" pageSize="10">
-	
-	
-	<auxhead sclass="category-center">
-	
-	<auxheader colspan="1" />
-	
-	<auxheader colspan="1">
-	<image
-	src="../assets/img/funnel.png" />
-	<textbox instant="true"
-	width="85px" placeholder="Buscar" />
-	</auxheader>
-	<auxheader colspan="1">
-	<image
-	src="../assets/img/funnel.png" />
-	<datebox readonly="true"
-	format="short" onCreate="self.value = new Date()"
-	width="85px" tabindex="7" />
-	</auxheader>
-	<auxheader colspan="1">
-	<image
-	src="../assets/img/funnel.png" />
-	<datebox readonly="true"
-	format="short" onCreate="self.value = new Date()"
-	width="85px" tabindex="7" />
-	</auxheader>
-	<auxheader colspan="2" />
-	<auxheader colspan="1">
-	<image
-	src="../assets/img/funnel.png" />
-	<combobox instant="true"
-	width="85px" placeholder="Buscar">
-	<comboitem
-	label="espera" />
-	<comboitem
-	label="iniciada" />
-	<comboitem
-	label="culminada" />
-	<comboitem
-	label="cancelada" />
-	</combobox>
-	
-	</auxheader>
-	<auxheader colspan="1" />
-	
-	</auxhead>
-	
-	<columns>
-	<column width="4%"></column>
-	<column width="16%">
-	Descripción
-	</column>
-	<column width="16%">
-	Fecha de inicio
-	</column>
-	<column width="16%">
-	Fecha de fin
-	</column>
-	<column width="10%">
-	Hr. Inicio
-	</column>
-	<column width="9%">
-	Hr. Fin
-	</column>
-	<column width="16%">
-	Condición
-	</column>
-	<column width="8%">
-	Visitas
-	</column>
-	</columns>
-	
-	<rows>
-	<row>
-	<detail open="false"
-	fulfill="onOpen">
-	<grid
-	emptyMessage="No se encuentran eventos registrados"
-	mold="paging" pageSize="5">
-	<auxhead
-	sclass="category-center">
-	
-	<auxheader
-	colspan="1" />
-	
-	
-	<auxheader
-	colspan="1" />
-	</auxhead>
-	
-	<columns>
-	<column
-	width="10%" align="center">
-	<checkbox
-	id="checkActividadTodas" />
-	Todas
-	</column>
-	<column
-	width="60%">
-	Actividad
-	</column>
-	<column
-	width="25%">
-	Tipo
-	Actividad
-	</column>
-	
-	</columns>
-	<rows>
-	<row>
-	<checkbox
-	id="checkActividad" />
-	
-	<label
-	value="Decoración" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox
-	id="checkActividad1" />
-	
-	<label
-	value="Contratar Sonido" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox
-	id="checkActividad2" />
-	<label
-	value="Mantenimiento del Salon" />
-	<label
-	value="Mantenimiento" />
-	
-	</row>
-	<row>
-	<checkbox
-	id="checkActividad3" />
-	<label
-	value="Instalar mesas" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox
-	id="checkActividad4" />
-	<label
-	value="Contratar Animadores" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox
-	id="checkActividad5" />
-	<label
-	value="Refrigerios" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	</rows>
-	</grid>
-	</detail>
-	<label
-	value="Semana Deportiva" />
-	<label value="12/12/1920" />
-	<label value="12/12/1920" />
-	<label value="12:00" />
-	<label value="12:00" />
-	<vbox align="center">
-	<label
-	id="progress_label" value="10%">
-	</label>
-	<progressmeter
-	id="curr_met" value="10" width="90px" />
-	</vbox>
-	<label value="100" />
-	
-	</row>
-	<row>
-	<detail open="false"
-	fulfill="onOpen">
-	<grid
-	emptyMessage="No se encuentran eventos registrados"
-	mold="paging" pageSize="5">
-	<auxhead
-	sclass="category-center">
-	
-	<auxheader
-	colspan="1" />
-	
-	
-	<auxheader
-	colspan="1" />
-	</auxhead>
-	
-	<columns>
-	<column
-	width="10%" align="center">
-	<checkbox />
-	Todas
-	</column>
-	<column
-	width="60%">
-	Actividad
-	</column>
-	<column
-	width="25%">
-	Tipo
-	Actividad
-	</column>
-	
-	</columns>
-	<rows>
-	<row>
-	<checkbox />
-	
-	<label
-	value="Decoración" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox />
-	
-	<label
-	value="Contratar Sonido" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox />
-	<label
-	value="Mantenimiento del Salon" />
-	<label
-	value="Mantenimiento" />
-	
-	</row>
-	<row>
-	<checkbox />
-	<label
-	value="Instalar mesas" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox />
-	<label
-	value="Contratar Animadores" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	<row>
-	<checkbox />
-	<label
-	value="Refrigerios" />
-	<label
-	value="Logistica" />
-	
-	</row>
-	</rows>
-	</grid>
-	</detail>
-	<label
-	value="Semana Deportiva" />
-	<label value="12/12/1920" />
-	<label value="12/12/1920" />
-	<label value="12:00" />
-	<label value="12:00" />
-	<vbox align="center">
-	<label value="75%"></label>
-	<progressmeter
-	value="75" width="90px" />
-	</vbox>
-	<label value="100" />
-	
-	</row>
-	</rows>
-	</grid>
-	
-	</div>
-	</div>
-	
-	</div>
-	
-	</div>
-	
-	</vlayout>
-	</hlayout>
-	</div>
-	</zk>-->
