@@ -6,19 +6,21 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
-						<a label="Motivo Ventas" href="#" />
+						<a label="Categorias" href="#" />
+						<label value="Motivo venta" />
 					</div>
 
 				</div>
 				<div align="center">
 
-					<div sclass="page-header" align="left"
-						style="margin-bottom: 4%;">
-						<label value="Motivo Ventas" />
+					<div sclass="page-header" align="left">
+						<label value="Motivos Ventas" />
 
 					</div>
 
-
+					<space />
+					<space />
+					
 					<div class='form-pricing  col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
 						viewModel="@id('vm') @init('controllers.MotivoVentaViewModel')">
@@ -34,7 +36,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class="encabezado">
-									Lista Motivo Ventas
+									Lista Motivos Ventas
 								</div>
 								<div align="left" class="linea-two">
 

@@ -6,14 +6,14 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
-						<a label="Categoria" href="#" />
-						<label value="Motivo Postulacion" />
+						<a label="Categorias" href="#" />
+						<label value="Motivo postulacion" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Motivo Postulacion" />
+						<label value="Motivos Postulaciones" />
 					</div>
 
 					<space />
@@ -33,7 +33,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Motivos Postulacion
+									Lista Motivos Postulaciones
 								</div>
 								<div class='linea-two'></div>
 							</div>

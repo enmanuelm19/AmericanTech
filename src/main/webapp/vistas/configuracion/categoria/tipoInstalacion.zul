@@ -6,14 +6,14 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Categoria" href="#"/>
-					<label value="Tipo de Instalación"/>
+					<a label="Categorias" href="#"/>
+					<label value="Tipo instalación"/>
 				</div>
 			</div>
 			<div align="center" >
 			
 				<div sclass="page-header" align="left">
-				    <label value="Tipos de Instalaciones"/>
+				    <label value="Tipos Instalaciones"/>
 		  		</div>
 				
 				<space/><space/>
@@ -28,7 +28,7 @@
 				
 				<div class="contenido" >
 					<div align="left">
-						<div class='encabezado'>Lista Tipos de Instalaciones</div>
+						<div class='encabezado'>Lista Tipos Instalaciones</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
