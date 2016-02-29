@@ -7,17 +7,17 @@
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
 					<a label="Categoria" href="#"/>
-					<label value="Parentesco"/>
+					<label value="Tipo Afiliado"/>
 				</div>
 			</div>
 			<div align="center" >
 			
 				<div sclass="page-header" align="left">
-				    <label value="Parentesco"/>
+				    <label value="Tipo Afiliado"/>
 		  		</div>
 				
 				<space/><space/>
-				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px"	 
+				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px"	 
 					 apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoAfiliadoViewModel')">
 				<div xmlns:w='client' align="right">
 					<button id="btnRegParentesco" style="margin-bottom: -4%"  label="Agregar Nuevo" iconSclass="z-icon-plus"  
@@ -28,7 +28,7 @@
 				
 				<div class="contenido" >
 					<div align="left">
-						<div class='encabezado'>Lista Parentescos</div>
+						<div class='encabezado'>Lista Tipo Afiliado</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
