@@ -9,14 +9,16 @@
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native">
-	<window closable="true" border="none"
+	<window closable="true" border="none" id="winRegistrarGrupo"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		class="col-md-6" style="iconSclass=z-icon-puzzle-piece;"
-		title=" Registrar Grupo">
+		title="@load(vm.editable?'Editar grupo':'Registrar grupo')"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarGrupoViewModel')">
 		<caption iconSclass="z-icon-puzzle-piece" />
 
 		<div class='contenido form-group'>
-		
+
 			<div class="row">
 				<div align="left">
 					<div class='encabezado'>
@@ -33,7 +35,7 @@
 									Descripción
 								</label>
 								<textbox type="text" class="col-md-7"
-									constraint="no empty" />
+									value="@bind(vm.grupo.descripcion)" constraint="no empty" />
 								<separator spacing="10%" />
 
 							</div>
@@ -42,7 +44,7 @@
 					</rows>
 				</grid>
 			</div>
-			<separator spacing="30px"/>
+			<separator spacing="30px" />
 			<!-- INICIO DIV GRID DE FUNCIONES-->
 			<!-- GRID DE FUNCIONES-->
 			<div class="row">
@@ -54,86 +56,69 @@
 				</div>
 				<separator spacing="30px" />
 				<div class="row">
-					<grid
-											emptyMessage="No se encuentran reglas registradas"
-											mold="paging" pageSize="10">
-											<auxhead
-												sclass="category-center">
-												<auxheader
-													colspan="1">
-													<combobox
-														width="100%" class="col-md-12"
-														value="Funciones">
-														<comboitem
-															label="Perfil del Club" />
-														<comboitem
-															label="Junta Directiva" />
-														<comboitem
-															label="Proveedores" />
-													</combobox>
-												</auxheader>
-												<auxheader
-													colspan="1">
-													<button sclass="btn-link"
-								iconSclass="z-icon-plus blue" id=""
-								tooltiptext="Agregar funcion al grupo" />
-												</auxheader>
-											</auxhead>
+					<grid model="@load(vm.funciones)"
+						emptyMessage="No se encuentran reglas registradas" mold="paging"
+						pageSize="10">
+						<auxhead sclass="category-center">
+							<auxheader colspan="1">
+								<combobox width="100%" class="col-md-12" model="@load(vm.funcionesAll)" selectedItem="@bind(vm.funcionSeleccionada)"
+									value="Funciones">
+									<template name="model">
+									<comboitem label="@load(each.nombre)" value="@load(each)"/>
+									</template>
+								</combobox>
+							</auxheader>
+							<auxheader colspan="1">
+								<button sclass="btn-link"
+									iconSclass="z-icon-plus blue" id="" onClick="@command('agregarFuncion')"
+									tooltiptext="Agregar funcion al grupo" />
+							</auxheader>
+						</auxhead>
 
-											<columns>
-												<column hflex="3">
-													Funcion
-												</column>
-												<column>
-													Acciones
-												</column>
-											</columns>
-											<rows>
-												<row>
-													<label
-														value="Perfil del club" />
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Junta directiva" />
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Proveedores" />
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-											</rows>
-											<foot>
-												<footer span="3"
-													class="footer_right" label="3 items en la lista" />
-											</foot>
-										</grid>
+						<columns>
+							<column hflex="3">Funcion</column>
+							<column>Acciones</column>
+						</columns>
+						<rows>
+							<template name="model">
+								<!-- <row>
+									<label value="Perfil del club" />
+									<div>
+									<button sclass="btn-link"
+									iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+									</div>
+									</row> -->
+								<row>
+									<label
+										value="@load(each.funcion.nombre)">
+									</label>
+									<div>
+										<button sclass="btn-link"
+											onClick="@command('eliminarFuncion', Funcion=each)"
+											iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+									</div>
+								</row>
+							</template>
+						</rows>
+						<foot>
+							<footer span="1" class="footer_right"
+								label="@load(vm.cantRegistros)" />
+						</foot>
+					</grid>
 				</div>
 				<!-- FIN GRID DE FUNCIONES-->
 			</div><!--FIN DIV GRID DE FUNCIONES-->
 
 			<div class="row">
-			<separator spacing="30px"></separator>
-						<button iconSclass="z-icon-floppy-o"
-							class='boton-guardar col-md-3 col-md-offset-2' label="Guardar" />
-						<button iconSclass="z-icon-times-circle"
-							class='boton-cancelar col-md-3 col-md-offset-2' label="Cancelar" />
+				<separator spacing="30px"></separator>
+				<button iconSclass="z-icon-floppy-o"
+					class='boton-guardar col-md-3 col-md-offset-2' label="Guardar"
+					onClick="@command('guardar', win=winRegistrarGrupo)" />
+				<button iconSclass="z-icon-times-circle"
+					class='boton-cancelar col-md-3 col-md-offset-2' label="Cancelar"
+					onClick="@command('cerrarModal', win=winRegistrarGrupo)" />
 			</div>
-			
+
 		</div>
 	</window>
 </zk>
