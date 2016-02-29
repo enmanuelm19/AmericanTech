@@ -13,7 +13,6 @@ import org.zkoss.calendar.api.CalendarEvent;
 import modelos.EstadoEvento;
 import modelos.Evento;
 import modelos.Socio;
-import modelos.SolicitudEvento;
 
 public class CalendarDataService {
 
@@ -107,24 +106,21 @@ public class CalendarDataService {
 
 	public void initDataEvent() {
 		List<Socio> listaSocio = new ArrayList<Socio>();
-		Socio socio = new Socio(1, null, "ab12");
-		short cont = 0;
-		List<SolicitudEvento> solicitudEventos = new ArrayList<SolicitudEvento>();
-		SolicitudEvento solicitudEvento = new SolicitudEvento(1, socio, new Date(), "Entrega Final de Proyecto",
-				new Date(2015, 3, 6), new Date(2014, 4, 6), null, null, true);
+		Socio socio = new Socio(1, null, "ab12",true);
+		short cont = 0;		
 		List<Evento> eventos = new ArrayList<Evento>();
-		Evento evento1 = new Evento(1, new EstadoEvento(1, "Activo"), "Torneo de Futbol", cont,
-				new Date(116, 2, 1, 2, 00), new Date(116, 2, 6, 5, 00), null, null, true);
-		Evento evento2 = new Evento(2, new EstadoEvento(1, "Activo"), "Aqua Terapia", cont, new Date(116, 3, 12, 2, 00),
-				new Date(116, 3, 12, 5, 00), null, null, true);
-		Evento evento3 = new Evento(3, new EstadoEvento(1, "Activo"), "Dia de las Madres", cont,
-				new Date(116, 5, 15, 2, 00), new Date(116, 5, 15, 5, 00), null, null, true);
-		Evento evento4 = new Evento(4, new EstadoEvento(1, "Activo"), "Dia de los Padres", cont,
-				new Date(116, 6, 19, 2, 00), new Date(116, 6, 19, 5, 00), null, null, true);
-		Evento evento5 = new Evento(5, new EstadoEvento(1, "Activo"), "Dia del Niño", cont, new Date(116, 7, 24, 2, 00),
-				new Date(116, 7, 24, 5, 00), null, null, true);
-		Evento evento6 = new Evento(6, new EstadoEvento(1, "Activo"), "Plan Vacacional", cont,
-				new Date(116, 8, 1, 2, 00), new Date(116, 8, 30, 5, 00), null, null, true);
+		Evento evento1 = new Evento(1, new EstadoEvento(1, "Activo",true), "Torneo de Futbol", "Torneo de Futbol",
+				new Date(116, 2, 1, 2, 00), new Date(116, 2, 6, 5, 00), true, true);
+		Evento evento2 = new Evento(2, new EstadoEvento(1, "Activo",true), "Aqua Terapia", "Aqua Terapia", new Date(116, 3, 12, 2, 00),
+				new Date(116, 3, 12, 5, 00), true, true);
+		Evento evento3 = new Evento(3, new EstadoEvento(1, "Activo",true), "Dia de las Madres", "Dia de las Madres",
+				new Date(116, 5, 15, 2, 00), new Date(116, 5, 15, 5, 00), true, true);
+		Evento evento4 = new Evento(4, new EstadoEvento(1, "Activo",true), "Dia de los Padres", "Dia de los Padres",
+				new Date(116, 6, 19, 2, 00), new Date(116, 6, 19, 5, 00), true, true);
+		Evento evento5 = new Evento(5, new EstadoEvento(1, "Activo",true), "Dia del Niño",  "Dia del Niño", new Date(116, 7, 24, 2, 00),
+				new Date(116, 7, 24, 5, 00), true, true);
+		Evento evento6 = new Evento(6, new EstadoEvento(1, "Activo",true), "Plan Vacacional", "Plan Vacacional",
+				new Date(116, 8, 1, 2, 00), new Date(116, 8, 30, 5, 00), true, true);
 		eventos.add(evento1);
 		eventos.add(evento2);
 		eventos.add(evento3);
