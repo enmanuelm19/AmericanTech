@@ -1,43 +1,59 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import models.Funcion;
-import models.Grupo;
 import service.FuncionService;
 
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
+import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
+import Dao.GrupoDao;
+import Dao.UsuarioDao;
+import modelos.Grupo;
+import modelos.Usuario;
 
 public class GrupoViewModel {
 	private Grupo grupo = new Grupo();
-	private static List<Grupo> gruposAll=new ArrayList<Grupo>(); //Coleccion que tiene que ser estatica.. esta se va a usar como referencia en el filtro
-
-	private List<Grupo> grupoTodos=gruposAll;//Coleccion con que se llenara la grid
-	private List<Funcion> funcionAll=new ArrayList<Funcion>();
+	private List<Grupo> grupos;
+	private GrupoDao grupoDao;
+	private List<Funcion> funcionAll;
 	private boolean verFunciones=false;
+	private String descFiltro;
 	
-	static {
-    	gruposAll.add(new Grupo(1,"Administracion"));
-    	gruposAll.add(new Grupo(2,"Secretaria"));
-    	gruposAll.add(new Grupo(3,"Socios"));
-    	gruposAll.add(new Grupo(4,"Empleados"));
-    	gruposAll.add(new Grupo(5,"Junta Directiva"));
-    	gruposAll.add(new Grupo(6,"Presidencia"));
-    	gruposAll.add(new Grupo(7,"VicePresidencia"));
-    	gruposAll.add(new Grupo(8,"Gerencia"));
-    }
-    
+	@Init
+	public void init() throws Exception{
+		grupos = new ArrayList<Grupo>();
+		grupoDao = new GrupoDao();
+		grupos = grupoDao.obtenerTodos();
+	}
+	
+	public String getDescFiltro() {
+		if(descFiltro==null)
+			return "";
+		return descFiltro;
+	}
+
+	public void setDescFiltro(String descFiltro) {
+		this.descFiltro = descFiltro==null?"":descFiltro.trim();
+	}
+
 	//Metodo que se llama para llenar la grid
     public ListModelList<Grupo> getGruposAll() {
-		return new ListModelList<Grupo>(grupoTodos);
+		return new ListModelList<Grupo>(grupos);
 	}
     public ListModelList<Funcion> getFuncionAll(){
     	return new ListModelList<Funcion>(funcionAll);
@@ -46,38 +62,59 @@ public class GrupoViewModel {
     	return grupo;
     }
     
-	 @Command
-	 public void showModal(Event e) {
-		 Window window = (Window)Executions.createComponents("administracion/seguridad/registrarGrupo.zul", null, null);
-	     	window.doModal();
-	 }
-	 	
-	 @Command
-	 @NotifyChange("gruposAll")//Notificar que hay cambios en el metodo getGruposAll()
-	 public void filtroGrupo() {
-		 grupoTodos=getGruposFiltros(grupo);
-	 }
-	 
-	 //Metodo que se Llama en el campo filtro..
-	 public List<Grupo> getGruposFiltros(Grupo g){
-		 List<Grupo> grup = new ArrayList<Grupo>();
-		String desc = g.getDescFiltro().toLowerCase();//asignar las letras escritas en el campo filtro
-		for (Iterator<Grupo> i = gruposAll.iterator(); i.hasNext();) {
-			Grupo tmp = i.next();
-			if (tmp.getDescripcion().toLowerCase().contains(desc)) {//comparo si en el campo descripcion estan las letras que tipee.
-				grup.add(tmp);
-			}
-		}
-			return grup; 
-	 }
-	 
-	 @Command
-	 @NotifyChange({"funcionAll","verFunciones"} )
-	 public void funcionesGrupo(@BindingParam("Grupo") Grupo g){
-		 funcionAll = FuncionService.getFunciones();
-		 verFunciones=true;
-	 }
-	public boolean getVerFunciones(){
-		return verFunciones;
+	public String getCantRegistros(){
+		return grupos.size() + " items en la lista";
 	}
+	 
+	 @Command
+		@NotifyChange({ "gruposAll", "cantRegistros" })
+		public void filtro() throws Exception {
+			List<Grupo> tip = new ArrayList<Grupo>();
+			String desc = getDescFiltro().toLowerCase();
+			for (Iterator<Grupo> i = grupoDao.obtenerTodos().iterator(); i.hasNext();) {
+				Grupo tmp = i.next();
+				if (tmp.getDescripcion().toLowerCase().contains(desc)) {
+					tip.add(tmp);
+				}
+			}
+			grupos = tip;
+		}
+	 
+		@Command
+		public void showModal(@BindingParam("Grupo") Grupo grupo) {
+			Map<String, Object> args = new HashMap<String, Object>();
+			args.put("Grupo", grupo);
+			Window window = (Window) Executions.createComponents("administracion/seguridad/registrarGrupo.zul",
+					null, args);
+			window.doModal();
+		}
+		
+		@Command
+		@NotifyChange({ "gruposAll", "cantRegistros" })
+		public void eliminar(@BindingParam("Grupo") final Grupo grupo) {
+
+			Messagebox.show("Estas seguro de eliminar " + grupo.getDescripcion(), "Confirmar",
+					Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+						public void onEvent(Event evt) throws InterruptedException {
+							if (evt.getName().equals("onOK")) {
+								try {
+									grupoDao.eliminarGrupo(grupo);
+									grupos = grupoDao.obtenerTodos();
+									Messagebox.show(grupo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+											Messagebox.INFORMATION);
+									BindUtils.postGlobalCommand(null, null, "refreshGrupos", null);
+								} catch (Exception e) {
+									Messagebox.show(e.getMessage(), grupo.getDescripcion() + " No se pudo eliminar",
+											Messagebox.OK, Messagebox.ERROR);
+								}
+							}
+						}
+					});
+		}
+		
+		@GlobalCommand
+		@NotifyChange({ "gruposAll", "cantRegistros" })
+		public void refreshGrupos() throws Exception {
+			grupos = grupoDao.obtenerTodos();
+		}
 }
