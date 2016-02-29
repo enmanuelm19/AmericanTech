@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div class="contenedor" style="background-color: white;">
+	<div class="contenedor" style="background-color: white;" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.GrupoViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -16,9 +17,7 @@
 					</div>
 					<space></space>
 					<div class='form-pricing' width="90%"
-						style="margin-bottom: 20px" align="left"
-						apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.GrupoViewModel')">
+						style="margin-bottom: 20px" align="left">
 						<!-- INICIO DIV GRID DE GRUPOS-->
 
 						<div align="right">
@@ -42,8 +41,8 @@
 									<auxheader align="left"
 										colspan="3">
 										<textbox width="50%"
-											instant="true" value="@bind(vm.grupo.descFiltro)"
-											onChange="@command('filtroGrupo')" />
+											instant="true" value="@bind(vm.descFiltro)"
+											onChange="@command('filtro')" />
 										<image src="../assets/img/funnel.png" />
 
 									</auxheader>
@@ -62,14 +61,10 @@
 												value="@load(each.descripcion)" />
 											<div>
 												<button
-													sclass="btn-link" iconSclass="z-icon-list blue"
-													tooltiptext="Ver Funciones"
-													onClick="@command('funcionesGrupo', Grupo=each)" />
-												<button
-													sclass="btn-link" iconSclass="z-icon-pencil blue"
+													sclass="btn-link" iconSclass="z-icon-pencil blue" onClick="@command('showModal', Grupo=each)"
 													tooltiptext="Editar" />
 												<button
-													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													sclass="btn-link" iconSclass="z-icon-trash-o red" onClick="@command('eliminar', Grupo=each)"
 													tooltiptext="Eliminar" />
 
 
@@ -77,26 +72,16 @@
 										</row>
 									</template>
 								</rows>
+								<foot>
+									<footer span="4"
+										class="footer_right" label="@load(vm.cantRegistros)">
+									</footer>
+								</foot>
 							</grid>
 						</div><!-- FIN GRID DE GRUPOS-->
 						<separator spacing="20px" />
 						<!--FIN DIV GRID DE GRUPOS-->
-						<separator spacing="2%" />
 
-						<div style="padding:5%" class="contenido">
-								<div align="center" 
-									visible="@load(vm.verFunciones)">
-									<div align="left">
-										<div class='encabezado'>
-											<label value="Funciones" />
-										</div>
-										<div class='linea-two'></div>
-									</div>
-									<div>
-										<include src="/vistas/content/mostrarFunciones.zul" />
-									</div>
-								</div>
-						</div>
 					</div>
 				</div>
 			</vlayout>
