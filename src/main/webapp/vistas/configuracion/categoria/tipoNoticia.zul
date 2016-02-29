@@ -16,8 +16,7 @@
 					</div>
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="90%" 
-						style="margin-bottom: 20px">
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px">
 						<div apply="controllers.ControllerTipoNoticia" xmlns:w='client'
 							align="right">
 							<button id="btnRegTipoNoticia"
