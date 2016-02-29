@@ -98,7 +98,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
         CalendarEventModel data = (CalendarEventModel)event.getCalendarEvent();
          
         if(data == null) {
-        	System.out.println("null"); 
+        	System.out.println("null1"); 
             data = new CalendarEventModel();
             data.setHeaderColor("#3366ff");
             data.setContentColor("#6699ff");
