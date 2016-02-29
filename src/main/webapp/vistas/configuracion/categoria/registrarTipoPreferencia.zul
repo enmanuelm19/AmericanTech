@@ -11,6 +11,7 @@
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarTipoPreferenciaViewModel')">
+		 <caption iconSclass="z-icon-cogs"/>
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">
 				<div align="left">

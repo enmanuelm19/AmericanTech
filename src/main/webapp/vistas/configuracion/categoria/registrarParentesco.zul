@@ -1,7 +1,7 @@
 <zk xmlns:n="native">
 	<window id="winRegistrarTipoI"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title=" Registrar Parentesco" closable="true" border="none"
+		title=" Registrar Tipo Afiliado" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%">
 		<caption iconSclass="z-icon-cogs" />
@@ -20,8 +20,8 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-4">Descripción</div>
-								<div class="col-md-8">
+								<div class="col-md-2">Descripción</div>
+								<div class="col-md-10">
 									<textbox type="text" rows="4"
 										width="100%" value="@bind(vm.tipoAfiliado.descripcion)"
 										constraint="no empty" />

@@ -20,7 +20,7 @@
 		title="@load(vm.editable?'Editar patrocinante':'Registrar patrocinante')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="80%" width="50%" apply="org.zkoss.bind.BindComposer"
+		height="55%" width="40%" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarPatrocinanteViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 
@@ -98,7 +98,7 @@
 				</div>
 
 			</div>
-			<separator spacing="20px"></separator>
+			
 			<div align="center" style="margin-top: 7%;">
 				<hbox>
 					<div>
