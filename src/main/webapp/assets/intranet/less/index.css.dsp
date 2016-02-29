@@ -2802,10 +2802,10 @@ body {
 }
 .page-header {
   margin: 0 0 12px;
-  border-bottom: 1px dotted #E2E2E2;
+  border-bottom: 1px none #E2E2E2;
   padding-bottom: 16px;
   padding-top: 7px;
-  background-color:#FFFFFF;
+  background-color:#334388;
   margin-bottom:25px;
 }
 .page-header .z-label {
@@ -2813,7 +2813,7 @@ body {
   margin: 0 8px;
   font-size: 24px;
   font-weight: normal;
-  color: #2B7DBC;
+  color: #FFFFFF;
   font-variant: small-caps;
 }
 .page-header .subtitle {

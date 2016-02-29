@@ -25,113 +25,79 @@
 
 	<window border="none" title="Registrar Opinión"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="55%"
+		closable="true" width="40%" height="50%"
 		style="iconSclass=z-icon-user;">
 		<caption iconSclass="z-icon-user" />
-
-
-		<div class='contenido'>
-
-			<div align="left">
-				<div class='encabezado'>Datos básicos</div>
-				<div class='linea-two'></div>
-			</div>
-			<separator spacing="30px" />
-			<div align="center">
-				<grid width="580px">
-
-					<rows class="col-md-12">
-						<row class="col-md-12">
-							<div>
-								<hlayout>
+		<div class="contenedor" align="center">
+			<div align="left" width="90%">
+				<div align="left">
+					<div class="encabezado" style="margin-top: 4%">Datos Básicos</div>
+					<div class='linea-two' style="margin-bottom: 6%"></div>
+				</div>
+					<grid >
+						<rows >
+							<row>
+								<div class="row col-md-12">
+									<div class="col-md-3">Descripción</div>
 									<div>
-										<div>
-											<label id="lblDescripcion"
-												width="50%" value="Descripción" />
+										<combobox >
+											<comboitem label="En general, recomendado"> </comboitem>
+											<comboitem label="En general, no recomendado"></comboitem>
+											<comboitem label="No recomendado, problemas con el alcohol"></comboitem>
+										</combobox>
+									</div>									
+								</div>
+								
+							</row>
+							
+							<row >
+								<div class="col-md-12">
+									<div>
+										<div class="col-md-3">
+											Clasificacion
 										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-
-									<div>
-										<div>
-											<textbox id="txtDescripcion"
-												type="text" cols="6" rows="6" width="35em" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-
-									</div>
-								</hlayout>
-							</div>
-
-						</row>
-						<row class="col-md-12">
-							<div>
-								<hlayout>
-									<div>
-										<div>
-											<label id="lblClasificacion"
-												width="50%" value="Clasificación" />
-										</div>
-										<separator spacing="5px">
-										</separator>
-									</div>
-
-									<div>
 										<div class="ec-stars-wrapper">
-
 											<a href="#">
-												<span
-													class="glyphicon glyphicon-star">
+												<span class="glyphicon glyphicon-star">
 												</span>
 											</a>
 											<a href="#">
-												<span
-													class="glyphicon glyphicon-star">
+												<span class="glyphicon glyphicon-star">
 												</span>
 											</a>
 											<a href="#">
-												<span
-													class="glyphicon glyphicon-star">
+												<span class="glyphicon glyphicon-star">
 												</span>
 											</a>
 											<a href="#">
-												<span
-													class="glyphicon glyphicon-star">
+												<span class="glyphicon glyphicon-star">
 												</span>
 											</a>
 											<a href="#">
-												<span
-													class="glyphicon glyphicon-star">
+												<span class="glyphicon glyphicon-star">
 												</span>
 											</a>
 										</div>
-
 									</div>
-								</hlayout>
-							</div>
-
-						</row>
-						<row class="col-md-3 col-md-offset-3">
-							<separator spacing="15px"></separator>
-							<hlayout>
-								<div>
-									<button id="btnGuardar"
-										iconSclass="z-icon-envelope" class='boton-guardar'
-										label="Enviar" />
 								</div>
-								<space bar="False" spacing="5%" />
-								<div>
-									<button id="btnCancelar"
-										iconSclass="z-icon-times-circle" class='boton-cancelar'
-										label="Cancelar" />
-								</div>
-							</hlayout>
-						</row>
-					</rows>
-				</grid>
-			</div>
+							</row>
+						</rows>
+					</grid>
+				<div align="center" style="margin-top: 4%;">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar'
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar" />
+						</div>
+						<div>
+							<button id="cancelarBtn"
+								iconSclass="z-icon-times-circle" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar" />
+						</div>
+					</hbox>
+				</div>
+		</div>
 		</div>
 	</window>
 </zk>
