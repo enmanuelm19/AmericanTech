@@ -7,13 +7,13 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categoria" href="#" />
-						<label value="Tipo de Recurso" />
+						<label value="Recursos" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Tipo de Recursos" />
+						<label value="Recursos" />
 					</div>
 
 					<space />
@@ -27,11 +27,13 @@
 								iconSclass="z-icon-plus" class='boton-guardar'
 								onClick="@command('showModal')" />
 						</div>
+						
+						<separator spacing="10px" />
 
 						<div class="contenido">
 							<div align="left">
 								<div sclass="encabezado">
-									<label value="Lista de Recursos" />
+									<label value="Lista Recursos" />
 								</div>
 								<div class='linea-two'></div>
 

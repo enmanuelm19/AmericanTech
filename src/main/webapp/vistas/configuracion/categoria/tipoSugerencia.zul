@@ -10,14 +10,14 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Categoria" href="#" />
-					<label value="Tipos de Sugerencias" />
+					<a label="Categorias" href="#" />
+					<label value="Tipo sugerencia" />
 				</div>
 			</div>
 			<div class="contenedor" align="center" height="auto">
 
 				<div sclass="page-header" align="left">
-					<label value="Tipos de Sugerencias" />
+					<label value="Tipos Sugerencias" />
 				</div>
 
 				<space />
@@ -35,7 +35,7 @@
 					<div class="contenido">
 						<div align="left">
 							<div class='encabezado'>
-								Lista Tipos de Sugerencias
+								Lista Tipos Sugerencias
 							</div>
 							<div class='linea-two'></div>
 						</div>

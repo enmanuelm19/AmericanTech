@@ -6,51 +6,53 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
-						<a label="Categoria" href="#" />
-						<label value="Tipo de Sanción" />
+						<a label="Categorias" href="#" />
+						<label value="Motivo desvinculación" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Tipos de Sanciones" />
+						<label value="Motivos Desvinculaciones" />
 					</div>
 
 					<space />
 					<space />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.MotivoSancionViewModel')">
+						viewModel="@id('vm') @init('controllers.MotivoDesvinculacionViewModel')">
 						<div xmlns:w='client' align="right">
-							<button id="btnRegTipoSancion"
-								style="margin-bottom: -4%" label="Agregar Nuevo"
-								iconSclass="z-icon-plus" class='boton-guardar'
+							<button id="btnRegTipoDesvinculacion"
+								label="Agregar Nuevo" iconSclass="z-icon-plus"
+								style="margin-bottom: -4%" class='boton-guardar'
 								onClick="@command('showModal')" />
 						</div>
 
+						<separator spacing="10px" />
+
 						<div class="contenido">
 							<div align="left">
-								<div sclass="encabezado">
-									<label
-										value="Lista Tipos de Saciones" />
+								<div align="left">
+									<div class='encabezado'>
+										Lista Motivos Desvinculaciones
+									</div>
+									<div class='linea-two'></div>
 								</div>
-								<div class='linea-two'></div>
-
 							</div>
 							<separator spacing="20px" />
 							<grid
-								emptyMessage="No se encuentran tipo de sanciones registradas"
-								mold="paging" pageSize="10" id="gridMotivoSancion"
-								model="@load(vm.allMotivoSancion)">
+								emptyMessage="No se encuentran tipos de desvinculaciones registrados"
+								mold="paging" pageSize="10" id="gridMotivoDesvinculacion"
+								model="@load(vm.allMotivoDesvinculacion)">
 								<auxhead sclass="category-center">
-									<auxheader>
+									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
 											width="85%" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')" placeholder="Buscar" />
 									</auxheader>
-									<auxheader>
+									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
@@ -60,22 +62,19 @@
 									<auxheader colspan="1" />
 								</auxhead>
 								<columns>
-									<column hflex="2">Codigo</column>
-									<column hflex="2">
-										Tipo Sancion
-									</column>
+									<column>Codigo</column>
+									<column>Tipo Desvinculacion</column>
 									<column width="20%"
 										align="center">
 										Acciones
 									</column>
 								</columns>
 								<rows>
-
 									<template name="model">
 
 										<row>
 											<label
-												value="@load(each.idMotivoSancion)" />
+												value="@load(each.idMotivoDesvinculacion)" />
 											<label
 												value="@load(each.descripcion)" />
 											<div>
@@ -91,10 +90,9 @@
 										</row>
 
 									</template>
-
 								</rows>
 								<foot>
-									<footer span="6"
+									<footer span="3"
 										class="footer_right" label="@load(vm.cantRegistros)" />
 								</foot>
 							</grid>
