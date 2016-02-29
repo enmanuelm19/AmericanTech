@@ -17,7 +17,7 @@
  					<label value="Administrar Alquileres"/>
  				</div>
  			
- 				<div class='form-pricing'  width="95%">
+ 				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'  width="95%">
  					<div align="left">
 		  						<div class='encabezado'>
 		  							<label value="Reservaciones"/>
@@ -27,14 +27,15 @@
 		  					<div>
  						<grid mold="paging" pageSize="8">
  							<columns menupopup="auto">
- 								<column label="Numero de Reservacion" align="center" sort="auto" width="15%"/>
- 								<column label="Intalación" align="center" width="20%"/>
- 								<column label="Socio" align="center"/>
- 								<column label="Fecha Inicio" align="center"/>
- 								<column label="Fecha Fin" align="center"/> 								
- 								<column label="Hora Inicio" align="center"/>
- 								<column label="Hora Fin" align="center"/> 								
- 								<column label="Acciones" align="center" width="15%"/>
+ 								<column label="Numero de Reservacion" align="center" sort="auto" hflex="6"/>
+ 								<column label="Intalación" align="center" hflex="4"/>
+ 								<column label="Socio" align="center" hflex="4"/>
+ 								<column label="Fecha Inicio" align="center" hflex="4"/>
+ 								<column label="Fecha Fin" align="center" hflex="4"/> 								
+ 								<column label="Hora Inicio" align="center" hflex="4"/>
+ 								<column label="Hora Fin" align="center" hflex="4"/> 	
+ 								<column label="Boucher" align="center" hflex="4"/>  															
+ 								<column label="Acciones" align="center" hflex="4"/>
  							</columns>
  							<rows>
  								<row>
@@ -45,6 +46,7 @@
  									<label value="28-02-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
+ 									<textbox constraint="no empty" class="col-md-12"> </textbox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -58,6 +60,7 @@
  									<label value="01-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
+ 									<textbox constraint="no empty" class="col-md-12"> </textbox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -71,6 +74,7 @@
  									<label value="02-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
+ 									<textbox constraint="no empty" class="col-md-12"> </textbox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -84,6 +88,7 @@
  									<label value="03-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
+ 									<textbox constraint="no empty" class="col-md-12"> </textbox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -97,6 +102,7 @@
  									<label value="05-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
+ 									<textbox constraint="no empty" class="col-md-12"> </textbox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -122,6 +128,7 @@
  								<column label="Socio" align="center"/>
  								<column label="Fecha Aprobacion" align="center"/>
  								<column label="Hora Aprobacion" align="center"/>
+ 								<column label="Boucher" align="center"/>
  								<column label="Monto Bs" align="center"/>
  							</columns>
  							<rows>
@@ -131,15 +138,16 @@
  									<label value="Fidel Aliaga"/>
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
+									<label value="25504354"/>
 									<label value="90000"/>
  								</row>
  								<row>
  									<label value="0002"/>
  									<label value="0002"/>
- 									
  									<label value="Pedro Perez"/>
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
+									<label value="25594305"/>
 									<label value="90000"/>
  								</row>
  								<row>
@@ -148,6 +156,7 @@
  									<label value="Juan Perez"/>
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
+									<label value="25572381"/>
 									<label value="90000"/>
  								</row>
  								<row>
@@ -156,6 +165,7 @@
  									<label value="Manuel Hernadez"/>
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
+									<label value="25593472"/>
 									<label value="90000"/>
  								</row>
  								<row>
@@ -164,6 +174,7 @@
  									<label value="Jose Rivero"/>
  									<label value="25-01-2016"/>
 									<label value="12:00"/>
+									<label value="25507343"/>
 									<label value="90000"/>
  								</row>
  							</rows>

@@ -16,8 +16,7 @@
 					<separator spacing="1%" />
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="78%">
-						<separator spacing="1%" /> 
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
@@ -40,7 +39,7 @@
 									<column hflex="4">Hora</column>
 									<column hflex="3">Monto</column>
 									<column hflex="3">Capacidad</column>
-									<column hflex="2">Acciones</column>
+									<column hflex="3">Acciones</column>
 								</columns>
 								<rows>
 									<row>
@@ -51,6 +50,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -61,6 +61,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -71,6 +72,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -81,6 +83,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -91,6 +94,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -101,6 +105,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -111,6 +116,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -121,6 +127,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -131,6 +138,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -141,6 +149,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -151,6 +160,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									<row>
@@ -161,6 +171,7 @@
 										<label value="80 personas" />
 										<div>
 											<button sclass="btn-link" 	iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>	
 										</div>
 									</row>
 									
