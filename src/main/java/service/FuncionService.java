@@ -78,6 +78,7 @@ public class FuncionService {
 		funcion.add(new Funcion(65, "Postulados", "postulado/postulado.zul", "z-icon-angle-double-right", 7, ""));
 		
 		funcion.add(new Funcion(67, "Finalizar evento", "evento/administrarEvento/finalizacionEvento.zul", "z-icon-angle-double-right", 12, ""));
+		funcion.add(new Funcion(68, "Registrar Portal", "configuracion/categoria/administracionPortal.zul", "z-icon-angle-double-right", 8, ""));
 	}
 	
 	public static List<Funcion> getFunciones(){

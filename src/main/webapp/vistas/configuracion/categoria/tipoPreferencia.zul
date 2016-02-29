@@ -17,7 +17,7 @@
 					</div>
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
 						viewModel="@id('vm') @init('controllers.TipoPreferenciaViewModel')">
 						<div xmlns:w='client' align="right">
@@ -53,21 +53,14 @@
 										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											width="85%" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="4" />
+									<auxheader colspan="2" />
 								</auxhead>
 
 								<columns>
 									<column hflex="25%">Codigo</column>
-									<column hflex="25%">
-										Tipo Preferencia
-									</column>
-									<column hflex="25%">
-										Color de la preferencia
-									</column>
-									<column width="25%"
-										align="center">
-										Acciones
-									</column>
+									<column hflex="25%">Tipo Preferencia</column>
+									<column hflex="25%">Color de la preferencia</column>
+									<column width="25%" align="center">Acciones</column>
 								</columns>
 
 								<rows>

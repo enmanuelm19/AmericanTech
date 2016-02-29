@@ -21,10 +21,10 @@
 			     	<rows>
 			     	<row>
 			     	<div class="row col-md-12">
-			     		<div class="col-md-4">
+			     		<div class="col-md-2">
 			     			Descripción
 			     		</div>
-			     		<div class="col-md-8">
+			     		<div class="col-md-10">
 			     		 <textbox type="text" rows="4" value="@bind(vm.tipoSugerencia.descripcion)" width="100%" constraint="no empty" />
 			     		</div>
 			     	</div>	

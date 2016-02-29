@@ -23,7 +23,7 @@
 
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="70%"
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PreferenciaViewModel')" style="margin-bottom: 20px">
 						<div
 							xmlns:w='client' align="right">

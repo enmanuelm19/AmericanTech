@@ -15,110 +15,82 @@
 			</div>
 			<separator spacing="3%" />
 			<div class='contenido'>
-				<div class="col-md-8 col-centered "
+				<div class="col-md-10 col-centered "
 					form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-					<div class='form-pricing' width="105%"
-						height="100%">
+					<div class='form-pricing' width="auto"
+						height="auto">
 						<separator spacing="2%" />
-						<div class='encabezado'>Datos Del Club</div>
-						<div class='linea-two'></div>
-						<separator spacing="30px" />
-						<div class="row">
-							<div class="col-md-4">
-								<div class="input-group">
-									<image
-										src="/assets/intranet/avatars/americaBordeBlanco.png"
-										class='img-responsive col-md-offset-9' width="60%" />
-									<fileupload label="Examinar"
-										iconSclass="z-icon-folder-open"
-										class='boton-guardar col-md-offset-7' />
-								</div>
-							</div>
-							<div class="col-md-8">
-								<grid>
-									<rows>
-										<row class="col-md-12">
-											<div>
-												<label
-													class="col-md-3">
-													RIF
-												</label>
-												<textbox id="txtRif"
-													constraint="no empty" class="col-md-4">
-												</textbox>
-											</div>
-										</row>
-										<row>
-											<div>
-												<label
-													class="col-md-3">
-													Nombre
-												</label>
-												<textbox
-													constraint="no empty" class="col-md-9">
-												</textbox>
-											</div>
-										</row>
-										<row>
-											<div>
-												<label
-													class="col-md-3">
-													Dirección
-												</label>
-												<textbox
-													id="txtDireccion" rows="5" cols="30" class="col-md-9"
-													constraint="no empty">
-												</textbox>
-											</div>
-										</row>
-										<row>
-											<div>
-												<label
-													class="col-md-3">
-													Teléfono
-												</label>
-												<textbox
-													id="txtTelefono" class="col-md-6" constraint="no empty">
-												</textbox>
-											</div>
-										</row>
-									</rows>
-								</grid>
-							</div>
-
-						</div>
-
-						<separator spacing="15px" />
 						<div class='encabezado'>
-							Perfil Organizacional
+							Nuestros socios
 						</div>
-						<div class='linea-two'></div>
+						<div class='linea-two'>
+						</div>
 						<separator spacing="30px" />
-
-						<div class="row">
+						<div class="row col-md-offset-1">
 							<div class="col-md-12">
-								<div class="col-md-6">
-									<label class="col-md-2">
-										Misión
-									</label>
-									<textbox id="txtMision" rows="5" cols="30"
-										class="col-md-10" constraint="no empty">
-									</textbox>
+								<div class="col-md-3">
+									<div class="input-group">
+										<image
+											src="/assets/portal/img/img2.png"
+											class='img-responsive col-md-offset-0' />
+										<separator spacing="5px" />
+										<fileupload label="Examinar"
+											iconSclass="z-icon-folder-open"
+											class='boton-guardar col-md-offset-2' />
+									</div>
 								</div>
-
-								<div class="col-md-6">
-									<label class="col-md-2">
-										Visión
-									</label>
-									<textbox id="txtVision" rows="5"
-										cols="30" class="col-md-10" constraint="no empty">
+								<div class="col-md-9">
+									<textbox constraint="no empty"
+										rows="12" cols="90">
 									</textbox>
 								</div>
 							</div>
-
 						</div>
+						<separator spacing="30px" />
+						<div class='encabezado'>
+							Nuestras instalaciones
+						</div>
+						<div class='linea-two'>
+						</div>
+						<separator spacing="30px" />
+						<div class="row col-md-offset-1">
+							<separator spacing="5px" />
+							<div class="col-md-12">
+								<div class="col-md-3">
+									<div class="input-group">
+										<image src="/assets/portal/img/imagen1.png" class='img-responsive'/>
+										<separator spacing="10px" />
+										<fileupload label="Examinar" iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-2' />
+									</div>
+								</div>
+								<div class="col-md-9">
+									<textbox constraint="no empty" rows="12" cols="90"></textbox>
+								</div>
+							</div>
+						</div>
+						
+						<separator spacing="30px" />
+						<div class='encabezado'>Nuestros eventos</div>
+						<div class='linea-two'></div>
+						<separator spacing="30px" />
+						<div class="row">
+
+							<div class="col-md-12 col-md-offset-1">
+								<div class="col-md-3">
+									<div class="input-group">
+										<image src="/assets/portal/img/img3.png" class='img-responsive'/>
+										<separator spacing="5px"/>
+										<fileupload label="Examinar" iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-2' />
+									</div>
+								</div>
+								<div class="col-md-9">
+									<textbox constraint="no empty" rows="12" cols="90"></textbox>
+								</div>
+							</div>
+						</div>
+
 						<separator spacing="15px" />
 						<div class='encabezado'>Redes Sociales</div>
 						<div class='linea-two'></div>
@@ -130,81 +102,56 @@
 									<rows>
 										<row>
 											<div>
-												<label
-													class="col-md-3">
-													Enlace
-												</label>
-												<textbox id="txtEnlace"
-													class="col-md-6" constraint="no empty">
-												</textbox>
+												<label class="col-md-3"> Enlace</label>
+												<textbox id="txtEnlace" class="col-md-6" constraint="no empty"></textbox>
 											</div>
 										</row>
 										<row>
 											<div>
-												<label
-													class="col-md-3">
-													Red Social
-												</label>
-												<combobox>
-													<comboitem
-														label="Seleccione una Red Social">
-													</comboitem>
-													<comboitem
-														label="Facebook">
-													</comboitem>
-													<comboitem
-														label="Twitter">
-													</comboitem>
-													<comboitem
-														label="Instagram">
-													</comboitem>
+												<label class="col-md-3">Red Social</label>
+												<combobox placeholder="Seleccione una Red Social">
+													<comboitem label="Facebook"></comboitem>
+													<comboitem label="Twitter"></comboitem>
+													<comboitem label="Instagram"></comboitem>
 												</combobox>
-												<button	iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar" />
+												<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar" />
 											</div>
 										</row>
 										<row>
-											<div>										
-												
+											<div>
+
 											</div>
 										</row>
 									</rows>
 								</grid>
 							</div>
 							<div class="col-md-6">
-
 								<listbox>
 									<listhead>
-										<listheader width="50%"
-											align="center" label="Red Social" />
-										<listheader width="50%"
-											align="center" label="Enlace" />
-
+										<listheader width="50%" align="center" label="Red Social" />
+										<listheader width="50%" align="center" label="Enlace" />
 									</listhead>
-
 									<listitem label="Twitter" />
 									<listitem label="AmericanTech" />
 								</listbox>
 							</div>
 						</div>
-						
+
 						<separator spacing="20px"></separator>
 
 						<div class="row col-md-12">
-							<button class="boton-guardar col-md-3 col-md-offset-2"
-								label="Guardar" type="button" iconSclass="z-icon-floppy-o">
+							<button
+								class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
+								type="button" iconSclass="z-icon-floppy-o">
 							</button>
-							<button class="boton-cancelar col-md-3 col-md-offset-2"
+							<button
+								class="boton-cancelar col-md-3 col-md-offset-2"
 								iconSclass="z-icon-times" type="button" label="Cancelar">
 							</button>
 						</div>
 					</div>
-					
 				</div>
-				
 			</div>
-	
 		</div>
 	</vlayout>
-
-
 </div>
