@@ -6,6 +6,7 @@ import java.util.List;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
+import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -16,8 +17,11 @@ import org.zkoss.zkmax.zul.Nav;
 import org.zkoss.zkmax.zul.Navbar;
 import org.zkoss.zkmax.zul.Navitem;
 import org.zkoss.zul.Div;
-import models.Funcion;
-import service.FuncionService;
+
+import Dao.FuncionDao;
+import Dao.TipoSugerenciaDao;
+import modelos.Funcion;
+import modelos.TipoSugerencia;
 
 public class NavegacionViewModel{
 
@@ -29,9 +33,19 @@ public class NavegacionViewModel{
 	private Div contenido;
 
 	private Div contenedor;
-
-	private List<Funcion> funciones = FuncionService.getFunciones();
-
+	
+	
+	private FuncionDao funcionDao;
+	private List<Funcion> funciones;
+	
+	@Init
+	public void init() throws Exception {
+		
+		funciones = new ArrayList<Funcion>();
+		funcionDao = new FuncionDao();
+		funciones = funcionDao.obtenerTodos();
+	}
+	
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
 		Selectors.wireComponents(view, this, false);
@@ -51,13 +65,13 @@ public class NavegacionViewModel{
 			Nav root = new Nav();
 			root.setLabel(f.getNombre());
 			root.setIconSclass(f.getIconUri());
-			root.setId(String.valueOf(f.getId()));
+			root.setId(String.valueOf(f.getIdFuncion()));
 			navbar.appendChild(root);
 
 			//Creo los hijos de las raices que a su vez son padres
 			for(Funcion fc : padres){
 
-				if(fc.getId_padre() == f.getId()){
+				if(fc.getPadreidFuncion() == f.getIdFuncion()){
 					Nav child = new Nav();
 					child.setLabel(fc.getNombre());
 					child.setIconSclass(fc.getIconUri());
@@ -65,11 +79,11 @@ public class NavegacionViewModel{
 
 					//Creo los hijos de los padres
 					for(Funcion nieto : nietos){
-						if(nieto.getId_padre() == fc.getId()){
+						if(nieto.getPadreidFuncion() == fc.getIdFuncion()){
 							final Navitem itemNieto = new Navitem();
 							itemNieto.setLabel(nieto.getNombre());
 							itemNieto.setIconSclass(nieto.getIconUri());
-							itemNieto.setId(String.valueOf(nieto.getId()));
+							itemNieto.setId(String.valueOf(nieto.getIdFuncion()));
 							itemNieto.addEventListener("onClick", new EventListener(){
 								public void onEvent(Event arg0) throws Exception{
 									navegar(itemNieto);
@@ -84,11 +98,11 @@ public class NavegacionViewModel{
 			}
 			//Coloco los items directos de la raiz
 			for(Funcion hijo : hijos){
-				if(hijo.getId_padre() == f.getId()){
+				if(hijo.getPadreidFuncion() == f.getIdFuncion()){
 					final Navitem item = new Navitem();
 					item.setLabel(hijo.getNombre());
 					item.setIconSclass(hijo.getIconUri());
-					item.setId(String.valueOf(hijo.getId()));
+					item.setId(String.valueOf(hijo.getIdFuncion()));
 					item.addEventListener("onClick", new EventListener(){
 						public void onEvent(Event arg0) throws Exception{
 							navegar(item);
@@ -107,7 +121,7 @@ public class NavegacionViewModel{
 		//Recorro el arreglo de padres y busco sus respectivos hijos
 		for(Funcion padre : padres){
 			for(Funcion f : funciones){
-				if(f.getId_padre() == padre.getId()){
+				if(f.getPadreidFuncion() == padre.getIdFuncion()){
 					nietos.add(f);
 				}
 			}
@@ -122,7 +136,7 @@ public class NavegacionViewModel{
 		//Recorro el arreglo de raices y pregunto quienes son sus hijos
 		for(Funcion f : raices){
 			for(Funcion fc : funciones){
-				if(fc.getId_padre() == f.getId()){
+				if(fc.getPadreidFuncion() == f.getIdFuncion()){
 					hijos.add(fc);
 				}
 			}
@@ -132,7 +146,7 @@ public class NavegacionViewModel{
 		for(Funcion padre : padres){
 			for(int i = 0; i<hijos.size(); i++){
 				Funcion hijo = hijos.get(i);
-				if(hijo.getId() == padre.getId()){
+				if(hijo.getIdFuncion() == padre.getIdFuncion()){
 					hijos.remove(i);
 				}
 			}
@@ -148,10 +162,10 @@ public class NavegacionViewModel{
 		//Recorro el arreglo de raices y pregunto cuales son sus hijos
 		for(Funcion raiz : raices){
 			for(Funcion f : funciones){
-				if(raiz.getId() == f.getId_padre()){
+				if(raiz.getIdFuncion() == f.getPadreidFuncion()){
 					//recorro el arreglo de funciones y pregunto si el hijo de la raiz tiene hijos
 					for(Funcion fc : funciones){
-						if(fc.getId_padre() == f.getId()){
+						if(fc.getPadreidFuncion() == f.getIdFuncion()){
 							padres.add(f);
 							break;
 						}
@@ -167,7 +181,7 @@ public class NavegacionViewModel{
 		List<Funcion> raices = new ArrayList<Funcion>();
 		//Recorro el arreglo y pregunto si no tiene padres cada funcion
 		for (Funcion fc : funciones ) {
-			if (fc.getId_padre() == 0) {
+			if (fc.getPadreidFuncion() == 0) {
 				raices.add(fc);
 			}
 		}
@@ -178,7 +192,7 @@ public class NavegacionViewModel{
 	//Metodo que verifica que opcion se ha marcado
 	public void navegar(Component comp){
 		for(Funcion fc : funciones) {
-			if(comp.getId().equalsIgnoreCase(String.valueOf(fc.getId()))){
+			if(comp.getId().equalsIgnoreCase(String.valueOf(fc.getIdFuncion()))){
 				cambiarPantalla(fc);
 				break;
 			}
