@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.MotivoVenta" table="motivo_venta" schema="public" optimistic-lock="version">
         <id name="idMotivoVenta" type="int">
@@ -14,11 +14,11 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+        <set name="solicitudVentas" table="solicitud_venta" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="motivo_ventaid_motivo_venta" not-null="true" />
             </key>
-            <one-to-many class="modelos.Venta" />
+            <one-to-many class="modelos.SolicitudVenta" />
         </set>
     </class>
 </hibernate-mapping>

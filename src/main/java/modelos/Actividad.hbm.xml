@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Actividad" table="actividad" schema="public" optimistic-lock="version">
         <id name="idActividad" type="int">
@@ -21,7 +21,10 @@
             <column name="condicion" length="20" not-null="true" />
         </property>
         <property name="fechaTope" type="date">
-            <column name="fecha_tope" length="13" not-null="true" />
+            <column name="fecha_tope" length="13" />
+        </property>
+        <property name="fechaRealizacion" type="date">
+            <column name="fecha_realizacion" length="13" />
         </property>
         <property name="valorEsperado" type="java.lang.Integer">
             <column name="valor_esperado" />
@@ -32,11 +35,5 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="proveedorActividads" table="proveedor_actividad" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="actividadid_actividad" not-null="true" />
-            </key>
-            <one-to-many class="modelos.ProveedorActividad" />
-        </set>
     </class>
 </hibernate-mapping>

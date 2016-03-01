@@ -5,13 +5,16 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="hibernate.c3p0.idle_test_period">0</property>
+        <property name="hibernate.c3p0.max_size">15</property>
+        <property name="hibernate.c3p0.min_size">1</property>
+        <property name="hibernate.c3p0.timeout">0</property>
         <property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.password">postgres</property>
-        <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/America</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">true</property>
@@ -20,11 +23,9 @@
         <mapping resource="modelos/Politica.hbm.xml" />
         <mapping resource="modelos/TipoInstalacion.hbm.xml" />
         <mapping resource="modelos/MotivoPostulacion.hbm.xml" />
-        <mapping resource="modelos/Patrocinante.hbm.xml" />
         <mapping resource="modelos/Desvinculacion.hbm.xml" />
         <mapping resource="modelos/Sugerencia.hbm.xml" />
         <mapping resource="modelos/ArchivoAlquiler.hbm.xml" />
-        <mapping resource="modelos/ProveedorActividad.hbm.xml" />
         <mapping resource="modelos/Evento.hbm.xml" />
         <mapping resource="modelos/Archivo.hbm.xml" />
         <mapping resource="modelos/EstadoEvento.hbm.xml" />
@@ -37,7 +38,7 @@
         <mapping resource="modelos/Eventualidad.hbm.xml" />
         <mapping resource="modelos/Hora.hbm.xml" />
         <mapping resource="modelos/TipoArchivo.hbm.xml" />
-        <mapping resource="modelos/PreferenciaSolicitud.hbm.xml" />
+        <mapping resource="modelos/Portal.hbm.xml" />
         <mapping resource="modelos/Recurso.hbm.xml" />
         <mapping resource="modelos/Sancion.hbm.xml" />
         <mapping resource="modelos/Venta.hbm.xml" />
@@ -46,6 +47,7 @@
         <mapping resource="modelos/RedClub.hbm.xml" />
         <mapping resource="modelos/TipoSugerencia.hbm.xml" />
         <mapping resource="modelos/MotivoDesvinculacion.hbm.xml" />
+        <mapping resource="modelos/ArchivoPortal.hbm.xml" />
         <mapping resource="modelos/Socio.hbm.xml" />
         <mapping resource="modelos/Persona.hbm.xml" />
         <mapping resource="modelos/TipoEmpleado.hbm.xml" />
@@ -54,8 +56,6 @@
         <mapping resource="modelos/Noticia.hbm.xml" />
         <mapping resource="modelos/NoticiaPreferencia.hbm.xml" />
         <mapping resource="modelos/ClienteExterno.hbm.xml" />
-        <mapping resource="modelos/Proveedor.hbm.xml" />
-        <mapping resource="modelos/TipoPolitica.hbm.xml" />
         <mapping resource="modelos/Opinion.hbm.xml" />
         <mapping resource="modelos/PreferenciaEvento.hbm.xml" />
         <mapping resource="modelos/RecursoInstalacion.hbm.xml" />
@@ -63,6 +63,7 @@
         <mapping resource="modelos/Accion.hbm.xml" />
         <mapping resource="modelos/Cargo.hbm.xml" />
         <mapping resource="modelos/Reservacion.hbm.xml" />
+        <mapping resource="modelos/UnidadMedida.hbm.xml" />
         <mapping resource="modelos/Postulacion.hbm.xml" />
         <mapping resource="modelos/Instalacion.hbm.xml" />
         <mapping resource="modelos/Usuario.hbm.xml" />
@@ -73,7 +74,7 @@
         <mapping resource="modelos/Afiliado.hbm.xml" />
         <mapping resource="modelos/FuncionGrupo.hbm.xml" />
         <mapping resource="modelos/RedPersona.hbm.xml" />
-        <mapping resource="modelos/PartocinanteEvento.hbm.xml" />
+        <mapping resource="modelos/TipoNoticia.hbm.xml" />
         <mapping resource="modelos/IndicadorEvento.hbm.xml" />
         <mapping resource="modelos/UsuarioGrupo.hbm.xml" />
         <mapping resource="modelos/JuntaDirectiva.hbm.xml" />

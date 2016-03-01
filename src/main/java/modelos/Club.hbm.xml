@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
         <id name="idClub" type="int">
@@ -38,14 +38,20 @@
         <property name="eslogan" type="string">
             <column name="eslogan" />
         </property>
-        <property name="activo" type="java.lang.Boolean">
-            <column name="activo" />
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Foto" />
+        </set>
+        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clubid_club" />
+            </key>
+            <one-to-many class="modelos.Politica" />
         </set>
         <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="true" fetch="select">
             <key>

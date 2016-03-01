@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +12,8 @@ public class MotivoVenta implements java.io.Serializable {
 
 	private int idMotivoVenta;
 	private String descripcion;
-	private boolean activo;
-	private Set<Venta> ventas = new HashSet<Venta>(0);
+	private boolean activo = true;
+	private Set<SolicitudVenta> solicitudVentas = new HashSet<SolicitudVenta>(0);
 
 	public MotivoVenta() {
 	}
@@ -25,11 +25,11 @@ public class MotivoVenta implements java.io.Serializable {
 	}
 
 	public MotivoVenta(int idMotivoVenta, String descripcion, boolean activo,
-			Set<Venta> ventas) {
+			Set<SolicitudVenta> solicitudVentas) {
 		this.idMotivoVenta = idMotivoVenta;
 		this.descripcion = descripcion;
 		this.activo = activo;
-		this.ventas = ventas;
+		this.solicitudVentas = solicitudVentas;
 	}
 
 	public int getIdMotivoVenta() {
@@ -56,12 +56,12 @@ public class MotivoVenta implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Set<Venta> getVentas() {
-		return this.ventas;
+	public Set<SolicitudVenta> getSolicitudVentas() {
+		return this.solicitudVentas;
 	}
 
-	public void setVentas(Set<Venta> ventas) {
-		this.ventas = ventas;
+	public void setSolicitudVentas(Set<SolicitudVenta> solicitudVentas) {
+		this.solicitudVentas = solicitudVentas;
 	}
 
 }

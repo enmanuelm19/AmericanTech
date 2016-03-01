@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,9 +12,8 @@ public class TipoAfiliado implements java.io.Serializable {
 
 	private int idTipoAfiliado;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
-	private Set<Politica> politicas = new HashSet<Politica>(0);
 
 	public TipoAfiliado() {
 	}
@@ -26,12 +25,11 @@ public class TipoAfiliado implements java.io.Serializable {
 	}
 
 	public TipoAfiliado(int idTipoAfiliado, String descripcion, boolean activo,
-			Set<Afiliado> afiliados, Set<Politica> politicas) {
+			Set<Afiliado> afiliados) {
 		this.idTipoAfiliado = idTipoAfiliado;
 		this.descripcion = descripcion;
 		this.activo = activo;
 		this.afiliados = afiliados;
-		this.politicas = politicas;
 	}
 
 	public int getIdTipoAfiliado() {
@@ -64,14 +62,6 @@ public class TipoAfiliado implements java.io.Serializable {
 
 	public void setAfiliados(Set<Afiliado> afiliados) {
 		this.afiliados = afiliados;
-	}
-
-	public Set<Politica> getPoliticas() {
-		return this.politicas;
-	}
-
-	public void setPoliticas(Set<Politica> politicas) {
-		this.politicas = politicas;
 	}
 
 }

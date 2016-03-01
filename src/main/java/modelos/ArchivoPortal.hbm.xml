@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.ArchivoPortal" table="archivo_portal" schema="public" optimistic-lock="version">
+        <id name="idArchivoPortal" type="int">
+            <column name="id_archivo_portal" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
+            <column name="archivoid_archivo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="portal" class="modelos.Portal" fetch="select" lazy="false">
+            <column name="portalid_portal" not-null="true" />
+        </many-to-one>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

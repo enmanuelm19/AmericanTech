@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -14,45 +14,45 @@ public class Noticia implements java.io.Serializable {
 	private int idNoticia;
 	private Archivo archivo;
 	private Evento evento;
+	private TipoNoticia tipoNoticia;
 	private String titulo;
 	private String descripcion;
-	private boolean condicion;
+	private Date fechaCreacion;
 	private Date caducidad;
 	private boolean publico;
 	private String enlace;
-	private Date fechaCreacion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
 			0);
 
 	public Noticia() {
 	}
 
-	public Noticia(int idNoticia, String descripcion, boolean condicion,
-			Date caducidad, boolean publico, Date fechaCreacion, boolean activo) {
+	public Noticia(int idNoticia, TipoNoticia tipoNoticia, String descripcion,
+			Date fechaCreacion, Date caducidad, boolean publico, boolean activo) {
 		this.idNoticia = idNoticia;
+		this.tipoNoticia = tipoNoticia;
 		this.descripcion = descripcion;
-		this.condicion = condicion;
+		this.fechaCreacion = fechaCreacion;
 		this.caducidad = caducidad;
 		this.publico = publico;
-		this.fechaCreacion = fechaCreacion;
 		this.activo = activo;
 	}
 
 	public Noticia(int idNoticia, Archivo archivo, Evento evento,
-			String titulo, String descripcion, boolean condicion,
-			Date caducidad, boolean publico, String enlace, Date fechaCreacion,
+			TipoNoticia tipoNoticia, String titulo, String descripcion,
+			Date fechaCreacion, Date caducidad, boolean publico, String enlace,
 			boolean activo, Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.idNoticia = idNoticia;
 		this.archivo = archivo;
 		this.evento = evento;
+		this.tipoNoticia = tipoNoticia;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
-		this.condicion = condicion;
+		this.fechaCreacion = fechaCreacion;
 		this.caducidad = caducidad;
 		this.publico = publico;
 		this.enlace = enlace;
-		this.fechaCreacion = fechaCreacion;
 		this.activo = activo;
 		this.noticiaPreferencias = noticiaPreferencias;
 	}
@@ -81,6 +81,14 @@ public class Noticia implements java.io.Serializable {
 		this.evento = evento;
 	}
 
+	public TipoNoticia getTipoNoticia() {
+		return this.tipoNoticia;
+	}
+
+	public void setTipoNoticia(TipoNoticia tipoNoticia) {
+		this.tipoNoticia = tipoNoticia;
+	}
+
 	public String getTitulo() {
 		return this.titulo;
 	}
@@ -97,12 +105,12 @@ public class Noticia implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public boolean isCondicion() {
-		return this.condicion;
+	public Date getFechaCreacion() {
+		return this.fechaCreacion;
 	}
 
-	public void setCondicion(boolean condicion) {
-		this.condicion = condicion;
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	public Date getCaducidad() {
@@ -127,14 +135,6 @@ public class Noticia implements java.io.Serializable {
 
 	public void setEnlace(String enlace) {
 		this.enlace = enlace;
-	}
-
-	public Date getFechaCreacion() {
-		return this.fechaCreacion;
-	}
-
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
 	}
 
 	public boolean isActivo() {
