@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.TipoActividadDao;
@@ -52,19 +53,27 @@ public class RegistrarTipoActividadViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (tipoActividad.getDescripcion() != null && !tipoActividad.getDescripcion().equalsIgnoreCase("") )
-		{
-			if (!editable)
-				tipoDao.agregarTipoActividad(tipoActividad);
 
-			else tipoDao.actualizarTipoActividad(tipoActividad);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshTipoActividad",null);
+		if (tipoActividad.getDescripcion() != null
+				&& !tipoActividad.getDescripcion().equalsIgnoreCase("")) {
+			if (tipoDao
+					.obtenerTipoDescripcion(tipoActividad.getDescripcion()) == null) {
+				if (!editable)
+					tipoDao.agregarTipoActividad(tipoActividad);
+
+				else
+					tipoDao.actualizarTipoActividad(tipoActividad);
+
+				win.detach();
+				BindUtils.postGlobalCommand(null, null,
+						"refreshTipoActividad", null);
+			} else {
+				Messagebox.show("tipo de actividad con la descripcion "
+						+ tipoActividad.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
-		
-		
+
 	}
 }
 
