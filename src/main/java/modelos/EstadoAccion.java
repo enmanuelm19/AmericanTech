@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class EstadoAccion implements java.io.Serializable {
 
 	private int idEstadoAccion;
 	private String nombre;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Accion> accions = new HashSet<Accion>(0);
 
 	public EstadoAccion() {

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.TipoNoticia" table="tipo_noticia" schema="public" optimistic-lock="version">
+        <id name="idTipoNoticia" type="int">
+            <column name="id_tipo_noticia" />
+            <generator class="increment" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="200" not-null="true" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="100" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipo_noticiaid_tipo_noticia" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Noticia" />
+        </set>
+    </class>
+</hibernate-mapping>

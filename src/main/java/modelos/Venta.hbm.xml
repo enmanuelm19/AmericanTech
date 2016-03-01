@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Venta" table="venta" schema="public" optimistic-lock="version">
         <id name="idVenta" type="int">
@@ -10,9 +10,6 @@
         </id>
         <many-to-one name="accion" class="modelos.Accion" fetch="select" lazy="false">
             <column name="accionid_accion" not-null="true" />
-        </many-to-one>
-        <many-to-one name="motivoVenta" class="modelos.MotivoVenta" fetch="select" lazy="false">
-            <column name="motivo_ventaid_motivo_venta" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
@@ -25,7 +22,7 @@
         </property>
         <set name="postulacions" table="postulacion" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ventaid_venta" not-null="true" />
+                <column name="ventaid_venta" />
             </key>
             <one-to-many class="modelos.Postulacion" />
         </set>

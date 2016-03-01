@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2016 11:27:57 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Evento" table="evento" schema="public" optimistic-lock="version">
         <id name="idEvento" type="int">
@@ -52,12 +52,6 @@
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.Actividad" />
-        </set>
-        <set name="partocinanteEventos" table="partocinante_evento" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="eventoid_evento" not-null="true" />
-            </key>
-            <one-to-many class="modelos.PartocinanteEvento" />
         </set>
         <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="true" fetch="select">
             <key>

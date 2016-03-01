@@ -125,9 +125,9 @@ private Sesion sesionPostgres;
 	public List<Reservacion> obtenerTodos() throws Exception {            
       
 	   List<Reservacion> datos = new ArrayList<Reservacion>();  
-	   Session em = sesionPostgres.getSessionFactory().add(Restrictions.eq("activo", true)).openSession();   	
+	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Reservacion>) em.createCriteria(Reservacion.class).list();             
+	    datos =  (List<Reservacion>) em.createCriteria(Reservacion.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());

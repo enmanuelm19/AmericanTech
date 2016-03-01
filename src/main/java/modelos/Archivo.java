@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +14,9 @@ public class Archivo implements java.io.Serializable {
 	private String url;
 	private String nombre;
 	private String extension;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
+	private Set<ArchivoPortal> archivoPortals = new HashSet<ArchivoPortal>(0);
 	private Set<Club> clubs = new HashSet<Club>(0);
 	private Set<ArchivoAlquiler> archivoAlquilers = new HashSet<ArchivoAlquiler>(
 			0);
@@ -34,7 +35,8 @@ public class Archivo implements java.io.Serializable {
 	}
 
 	public Archivo(int idArchivo, String url, String nombre, String extension,
-			boolean activo, Set<Noticia> noticias, Set<Club> clubs,
+			boolean activo, Set<Noticia> noticias,
+			Set<ArchivoPortal> archivoPortals, Set<Club> clubs,
 			Set<ArchivoAlquiler> archivoAlquilers, Set<Persona> personas) {
 		this.idArchivo = idArchivo;
 		this.url = url;
@@ -42,6 +44,7 @@ public class Archivo implements java.io.Serializable {
 		this.extension = extension;
 		this.activo = activo;
 		this.noticias = noticias;
+		this.archivoPortals = archivoPortals;
 		this.clubs = clubs;
 		this.archivoAlquilers = archivoAlquilers;
 		this.personas = personas;
@@ -93,6 +96,14 @@ public class Archivo implements java.io.Serializable {
 
 	public void setNoticias(Set<Noticia> noticias) {
 		this.noticias = noticias;
+	}
+
+	public Set<ArchivoPortal> getArchivoPortals() {
+		return this.archivoPortals;
+	}
+
+	public void setArchivoPortals(Set<ArchivoPortal> archivoPortals) {
+		this.archivoPortals = archivoPortals;
 	}
 
 	public Set<Club> getClubs() {

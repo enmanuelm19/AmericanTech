@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class TipoEventualidad implements java.io.Serializable {
 
 	private int idTipoEventualidad;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Eventualidad> eventualidads = new HashSet<Eventualidad>(0);
 
 	public TipoEventualidad() {

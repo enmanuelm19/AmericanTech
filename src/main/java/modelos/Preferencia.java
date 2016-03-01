@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,14 +13,12 @@ public class Preferencia implements java.io.Serializable {
 	private int idPreferencia;
 	private TipoPreferencia tipoPreferencia;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
 			0);
 	private Set<PreferenciaPersona> preferenciaPersonas = new HashSet<PreferenciaPersona>(
 			0);
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
-			0);
-	private Set<PreferenciaSolicitud> preferenciaSolicituds = new HashSet<PreferenciaSolicitud>(
 			0);
 
 	public Preferencia() {
@@ -38,8 +36,7 @@ public class Preferencia implements java.io.Serializable {
 			String descripcion, boolean activo,
 			Set<PreferenciaEvento> preferenciaEventos,
 			Set<PreferenciaPersona> preferenciaPersonas,
-			Set<NoticiaPreferencia> noticiaPreferencias,
-			Set<PreferenciaSolicitud> preferenciaSolicituds) {
+			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.idPreferencia = idPreferencia;
 		this.tipoPreferencia = tipoPreferencia;
 		this.descripcion = descripcion;
@@ -47,7 +44,6 @@ public class Preferencia implements java.io.Serializable {
 		this.preferenciaEventos = preferenciaEventos;
 		this.preferenciaPersonas = preferenciaPersonas;
 		this.noticiaPreferencias = noticiaPreferencias;
-		this.preferenciaSolicituds = preferenciaSolicituds;
 	}
 
 	public int getIdPreferencia() {
@@ -106,15 +102,6 @@ public class Preferencia implements java.io.Serializable {
 	public void setNoticiaPreferencias(
 			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.noticiaPreferencias = noticiaPreferencias;
-	}
-
-	public Set<PreferenciaSolicitud> getPreferenciaSolicituds() {
-		return this.preferenciaSolicituds;
-	}
-
-	public void setPreferenciaSolicituds(
-			Set<PreferenciaSolicitud> preferenciaSolicituds) {
-		this.preferenciaSolicituds = preferenciaSolicituds;
 	}
 
 }
