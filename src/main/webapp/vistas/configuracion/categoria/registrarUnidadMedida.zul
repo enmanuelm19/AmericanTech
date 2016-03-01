@@ -1,0 +1,52 @@
+<zk xmlns:n="native">
+	<window id="winRegistrarUnidadMedida"
+		style="iconSclass=z-icon-cogs; height:auto;"
+		title=" Registrar Unidad Medida" closable="true" border="none"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		height="50%" width="40%">
+		<caption iconSclass="z-icon-cogs" />
+		<div class="contenedor" align="center"
+			apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('controllers.RegistrarTipoAfiliadoViewModel')">
+			<div align="left" width="90%">
+				<div align="left">
+					<div class="encabezado" style="margin-top: 4%">
+						Datos Básicos
+					</div>
+					<div align="left" class="linea-two"
+						style="margin-bottom: 6%" />
+				</div>
+				<grid>
+					<rows>
+						<row>
+							<div class="row col-md-12">
+								<div class="col-md-2">Descripción</div>
+								<div class="col-md-10">
+									<textbox type="text" rows="4"
+										width="100%" value="@bind(vm.tipoAfiliado.descripcion)"
+										constraint="no empty" />
+								</div>
+							</div>
+						</row>
+					</rows>
+				</grid>
+				<div align="center" style="margin-top: 7%;">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar'
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
+								onClick="@command('guardar', win=winRegistrarTipoI)"/>
+						</div>
+						<div>
+							<button id="cancelarBtn"
+								iconSclass="z-icon-times-circle" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar"
+								onClick="@command('cerrarModal', win=winRegistrarTipoI)"/>
+						</div>
+					</hbox>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

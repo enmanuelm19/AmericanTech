@@ -21,12 +21,12 @@ public class FuncionService {
 		funcion.add(new Funcion(10, "Administrar Socio", "", "z-icon-angle-double-right", 2, ""));
 		funcion.add(new Funcion(11, "Danos tu opinion", "", "z-icon-angle-double-right", 2, ""));
 		funcion.add(new Funcion(12, "Administrar Evento", "", "z-icon-angle-double-right", 4, ""));
-		funcion.add(new Funcion(13, "Socio", "", "z-icon-angle-double-right", 5, ""));
-		funcion.add(new Funcion(14, "Instalacion", "", "z-icon-angle-double-right", 5, ""));
-		funcion.add(new Funcion(15, "Evento", "", "z-icon-angle-double-right", 5, ""));
+		//funcion.add(new Funcion(13, "Socio", "", "z-icon-angle-double-right", 5, ""));
+		//funcion.add(new Funcion(14, "Instalacion", "", "z-icon-angle-double-right", 5, ""));
+		//funcion.add(new Funcion(15, "Evento", "", "z-icon-angle-double-right", 5, ""));
 		funcion.add(new Funcion(16, "Seguridad", "", "z-icon-angle-double-right", 6, ""));
 		funcion.add(new Funcion(17, "Perfil del Club", "configuracion/perfilClub.zul", "z-icon-angle-double-right", 1, ""));
-		funcion.add(new Funcion(68, "Administrar Portal", "configuracion/administracionPortal.zul", "z-icon-angle-double-right", 1, ""));
+		funcion.add(new Funcion(80, "Administrar Portal", "configuracion/administracionPortal.zul", "z-icon-angle-double-right", 1, ""));
 		funcion.add(new Funcion(18, "Junta Directiva", "configuracion/juntaDirectiva.zul", "z-icon-angle-double-right", 1, ""));
 		funcion.add(new Funcion(20, "Instalaciones", "configuracion/gestionarInstalaciones.zul", "z-icon-angle-double-right", 1, ""));
 		funcion.add(new Funcion(21, "Proveedores", "configuracion/proveedores.zul", "z-icon-angle-double-right", 1, ""));
@@ -66,10 +66,10 @@ public class FuncionService {
 		funcion.add(new Funcion(52, "Registrar evento", "evento/administrarEvento/listaEventos.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(53, "Planificar evento", "evento/administrarEvento/planificarEvento.zul", "z-icon-angle-double-right", 12, ""));
 		funcion.add(new Funcion(54, "Ejecutar evento", "evento/administrarEvento/ejecutarEvento.zul", "z-icon-angle-double-right", 12, ""));
-		funcion.add(new Funcion(55, "Opiniones postulacion", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 13, ""));
-		funcion.add(new Funcion(56, "Sugerencias", "consultas/sugerencia.zul", "z-icon-angle-double-right", 13, ""));
-		funcion.add(new Funcion(57, "Usuario", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 14, ""));
-		funcion.add(new Funcion(58, "Usuario", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 15, ""));
+		//funcion.add(new Funcion(55, "Opiniones postulacion", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 13, ""));
+		//funcion.add(new Funcion(56, "Sugerencias", "consultas/sugerencia.zul", "z-icon-angle-double-right", 13, ""));
+		//funcion.add(new Funcion(57, "Usuario", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 14, ""));
+		//funcion.add(new Funcion(58, "Usuario", "administracion/seguridad/usuarioGeneral.zul", "z-icon-angle-double-right", 15, ""));
 		funcion.add(new Funcion(59, "Adjuntar empleados", "administracion/adjuntarEmpleados.zul", "z-icon-angle-double-right", 6, ""));
 		funcion.add(new Funcion(60, "Cartelera", "administracion/cartelera.zul", "z-icon-angle-double-right", 6, ""));
 		funcion.add(new Funcion(61, "Backup BD", "", "z-icon-angle-double-right", 6, ""));
@@ -77,9 +77,22 @@ public class FuncionService {
 		funcion.add(new Funcion(63, "Grupos", "administracion/seguridad/mostrarGrupos.zul", "z-icon-angle-double-right", 16, ""));
 		funcion.add(new Funcion(64, "Funciones", "administracion/seguridad/administrarFunciones.zul", "z-icon-angle-double-right", 16, ""));
 		funcion.add(new Funcion(65, "Postulados", "postulado/postulado.zul", "z-icon-angle-double-right", 7, ""));
-		
 		funcion.add(new Funcion(67, "Finalizar evento", "evento/administrarEvento/finalizacionEvento.zul", "z-icon-angle-double-right", 12, ""));
+		funcion.add(new Funcion(68, "Estructurado", "", "z-icon-angle-double-right", 5, ""));
+		funcion.add(new Funcion(69, "No estructurado", "", "z-icon-angle-double-right", 5, ""));
+		funcion.add(new Funcion(70, "Estadisticos", "", "z-icon-angle-double-right", 5, ""));
+		funcion.add(new Funcion(71, "Socio", "", "z-icon-angle-double-right", 68, ""));
+		funcion.add(new Funcion(72, "Instalacion", "", "z-icon-angle-double-right", 68, ""));
+		funcion.add(new Funcion(73, "Evento", "", "z-icon-angle-double-right", 68, ""));
+		funcion.add(new Funcion(74, "Socio", "", "z-icon-angle-double-right", 69, ""));
+		funcion.add(new Funcion(75, "Instalacion", "", "z-icon-angle-double-right", 69, ""));
+		funcion.add(new Funcion(76, "Evento", "", "z-icon-angle-double-right", 69, ""));
+		funcion.add(new Funcion(77, "Socio", "", "z-icon-angle-double-right", 70, ""));
+		funcion.add(new Funcion(78, "Instalacion", "", "z-icon-angle-double-right", 70, ""));
+		funcion.add(new Funcion(79, "Evento", "", "z-icon-angle-double-right", 70, ""));
+		funcion.add(new Funcion(81, "Unidad Medida", "configuracion/categoria/unidadMedida.zul", "z-icon-angle-double-right", 8, ""));
 	}
+	
 	
 	public static List<Funcion> getFunciones(){
 		return funcion;
