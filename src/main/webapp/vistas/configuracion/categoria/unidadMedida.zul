@@ -7,20 +7,20 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categorias" href="#" />
-						<label value="Unidad Medida" />
+						<label value="Unidad medida" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Unidad Medida" />
+						<label value="Unidades Medidas" />
 					</div>
 
 					<space />
 					<space />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.MotivoDesvinculacionViewModel')">
+						viewModel="@id('vm') @init('controllers.UnidadMedidaViewModel')">
 						<div xmlns:w='client' align="right">
 							<button id="btnRegistrarUnidadM"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
@@ -34,7 +34,7 @@
 							<div align="left">
 								<div align="left">
 									<div class='encabezado'>
-										Lista Unidad Medida
+										Lista Unidades Medidas
 									</div>
 									<div class='linea-two'></div>
 								</div>
@@ -43,7 +43,7 @@
 							<grid
 								emptyMessage="No se encuentran unidades de medida registrados"
 								mold="paging" pageSize="10" id="gridUnidadesMedida"
-								model="@load(vm.allMotivoDesvinculacion)">
+								model="@load(vm.allUnidadMedida)">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
@@ -74,18 +74,18 @@
 
 										<row>
 											<label
-												value="@load(each.idMotivoDesvinculacion)" />
+												value="@load(each.idUnidadMedida)" />
 											<label
-												value="@load(each.descripcion)" />
+												value="@load(each.nombre)" />
 											<div>
 												<button
 													sclass="btn-link" iconSclass="z-icon-pencil blue"
 													tooltiptext="Editar"
-													onClick="@command('showModal', Tipo=each)" />
+													onClick="@command('showModal', unidadM=each)" />
 												<button
 													sclass="btn-link" iconSclass="z-icon-trash-o red"
 													tooltiptext="Eliminar"
-													onClick="@command('eliminar', Tipo=each)" />
+													onClick="@command('eliminar', unidadM=each)" />
 											</div>
 										</row>
 
