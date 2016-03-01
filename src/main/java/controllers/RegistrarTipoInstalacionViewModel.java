@@ -7,10 +7,10 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.TipoInstalacionDao;
-
 
 public class RegistrarTipoInstalacionViewModel {
 
@@ -53,19 +53,25 @@ public class RegistrarTipoInstalacionViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (tipoInstalacion.getDescripcion() != null && !tipoInstalacion.getDescripcion().equalsIgnoreCase("") )
-		{
-			if (!editable)
-				tipoDao.agregarTipoInstalacion(tipoInstalacion);
 
-			else tipoDao.actualizarTipoInstalacion(tipoInstalacion);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshTipoInstalacion",null);
+		if (tipoInstalacion.getDescripcion() != null
+				&& !tipoInstalacion.getDescripcion().equalsIgnoreCase("")) {
+			if (tipoDao
+					.obtenerTipoDescripcion(tipoInstalacion.getDescripcion()) == null) {
+				if (!editable)
+					tipoDao.agregarTipoInstalacion(tipoInstalacion);
+
+				else
+					tipoDao.actualizarTipoInstalacion(tipoInstalacion);
+
+				win.detach();
+				BindUtils.postGlobalCommand(null, null,
+						"refreshTipoInstalacion", null);
+			} else {
+				Messagebox.show("tipo de instalacion con la descripcion "
+						+ tipoInstalacion.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
-		
-		
 	}
 }
-
