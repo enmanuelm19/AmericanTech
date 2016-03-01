@@ -11,7 +11,7 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
-						<a label="Configuracion" href="#" />
+						<a label="Categorias" href="#" />
 						<label value="Preferencias" />
 					</div>
 				</div>
@@ -24,10 +24,10 @@
 					<space />
 					<space />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
-						apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PreferenciaViewModel')" style="margin-bottom: 20px">
+						apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PreferenciaViewModel')">
 						<div
 							xmlns:w='client' align="right">
-							<button id="btnPreferenciasRegistrar"
+							<button id="btnPreferenciasRegistrar" style="margin-bottom: -4%"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
 								class='boton-guardar' onClick="@command('showModal')"/>
 						</div>
@@ -41,7 +41,7 @@
 								</div>
 								<div class='linea-two'></div>
 							</div>
-							<separator spacing="30px" />
+							<separator spacing="20px" />
 
 							<grid model="@load(vm.allPreferencia)"
 								emptyMessage="No se encuentran preferencias registrados"

@@ -6,14 +6,14 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
-						<a label="Categoria" href="#" />
-						<label value="Tipos de Preferencias" />
+						<a label="Categorias" href="#" />
+						<label value="Tipo preferencia" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Tipos de Preferencias" />
+						<label value="Tipos Preferencias" />
 					</div>
 					<space />
 					<space />
@@ -31,7 +31,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Tipos de Preferencias
+									Lista Tipos Preferencias
 								</div>
 								<div class='linea-two'></div>
 							</div>

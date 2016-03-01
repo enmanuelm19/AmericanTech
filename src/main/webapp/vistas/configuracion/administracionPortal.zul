@@ -43,7 +43,7 @@
 								</div>
 								<div class="col-md-9">
 									<textbox constraint="no empty"
-										rows="12" cols="90">
+										rows="12" cols="40">
 									</textbox>
 								</div>
 							</div>
@@ -66,7 +66,7 @@
 									</div>
 								</div>
 								<div class="col-md-9">
-									<textbox constraint="no empty" rows="12" cols="90"></textbox>
+									<textbox constraint="no empty" rows="12" cols="40"></textbox>
 								</div>
 							</div>
 						</div>
@@ -86,7 +86,7 @@
 									</div>
 								</div>
 								<div class="col-md-9">
-									<textbox constraint="no empty" rows="12" cols="90"></textbox>
+									<textbox constraint="no empty" rows="12" cols="40"></textbox>
 								</div>
 							</div>
 						</div>

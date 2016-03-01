@@ -6,14 +6,14 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Categoria" href="#"/>
-					<label value="Tipo Afiliado"/>
+					<a label="Categorias" href="#"/>
+					<label value="Tipo afiliado"/>
 				</div>
 			</div>
 			<div align="center" >
 			
 				<div sclass="page-header" align="left">
-				    <label value="Tipo Afiliado"/>
+				    <label value="Tipos Afiliados"/>
 		  		</div>
 				
 				<space/><space/>
@@ -28,7 +28,7 @@
 				
 				<div class="contenido" >
 					<div align="left">
-						<div class='encabezado'>Lista Tipo Afiliado</div>
+						<div class='encabezado'>Lista Tipos Afiliados</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
