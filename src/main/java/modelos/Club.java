@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,8 +21,9 @@ public class Club implements java.io.Serializable {
 	private String telfAlternativo;
 	private String correo;
 	private String eslogan;
-	private Boolean activo;
+	private boolean activo = true;
 	private Set<Foto> fotos = new HashSet<Foto>(0);
+	private Set<Politica> politicas = new HashSet<Politica>(0);
 	private Set<JuntaDirectiva> juntaDirectivas = new HashSet<JuntaDirectiva>(0);
 	private Set<RedClub> redClubs = new HashSet<RedClub>(0);
 
@@ -31,7 +32,7 @@ public class Club implements java.io.Serializable {
 
 	public Club(int idClub, Archivo archivo, String rif, String nombre,
 			String direccion, String telefono, String mision, String vision,
-			String telfAlternativo, String correo) {
+			String telfAlternativo, String correo, boolean activo) {
 		this.idClub = idClub;
 		this.archivo = archivo;
 		this.rif = rif;
@@ -42,12 +43,13 @@ public class Club implements java.io.Serializable {
 		this.vision = vision;
 		this.telfAlternativo = telfAlternativo;
 		this.correo = correo;
+		this.activo = activo;
 	}
 
 	public Club(int idClub, Archivo archivo, String rif, String nombre,
 			String direccion, String telefono, String mision, String vision,
 			String telfAlternativo, String correo, String eslogan,
-			Boolean activo, Set<Foto> fotos,
+			boolean activo, Set<Foto> fotos, Set<Politica> politicas,
 			Set<JuntaDirectiva> juntaDirectivas, Set<RedClub> redClubs) {
 		this.idClub = idClub;
 		this.archivo = archivo;
@@ -62,6 +64,7 @@ public class Club implements java.io.Serializable {
 		this.eslogan = eslogan;
 		this.activo = activo;
 		this.fotos = fotos;
+		this.politicas = politicas;
 		this.juntaDirectivas = juntaDirectivas;
 		this.redClubs = redClubs;
 	}
@@ -154,11 +157,11 @@ public class Club implements java.io.Serializable {
 		this.eslogan = eslogan;
 	}
 
-	public Boolean getActivo() {
+	public boolean isActivo() {
 		return this.activo;
 	}
 
-	public void setActivo(Boolean activo) {
+	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
 
@@ -168,6 +171,14 @@ public class Club implements java.io.Serializable {
 
 	public void setFotos(Set<Foto> fotos) {
 		this.fotos = fotos;
+	}
+
+	public Set<Politica> getPoliticas() {
+		return this.politicas;
+	}
+
+	public void setPoliticas(Set<Politica> politicas) {
+		this.politicas = politicas;
 	}
 
 	public Set<JuntaDirectiva> getJuntaDirectivas() {

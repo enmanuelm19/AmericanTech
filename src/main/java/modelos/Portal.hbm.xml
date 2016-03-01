@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Portal" table="portal" schema="public" optimistic-lock="version">
+        <id name="idPortal" type="int">
+            <column name="id_portal" />
+            <generator class="increment" />
+        </id>
+        <property name="instalacion" type="string">
+            <column name="instalacion" />
+        </property>
+        <property name="socio" type="string">
+            <column name="socio" />
+        </property>
+        <property name="evento" type="string">
+            <column name="evento" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="archivoPortals" table="archivo_portal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="portalid_portal" not-null="true" />
+            </key>
+            <one-to-many class="modelos.ArchivoPortal" />
+        </set>
+    </class>
+</hibernate-mapping>

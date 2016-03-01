@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,7 +16,7 @@ public class Reservacion implements java.io.Serializable {
 	private Socio socio;
 	private Date fechaInicio;
 	private short fechaFin;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
 			0);

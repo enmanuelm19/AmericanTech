@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 26/02/2016 11:27:56 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,8 @@ public class Funcion implements java.io.Serializable {
 	private String pagina;
 	private String iconUri;
 	private String clase;
-	private boolean activo;
+	private Integer padreidFuncion;
+	private boolean activo = true;
 	private Set<FuncionGrupo> funcionGrupos = new HashSet<FuncionGrupo>(0);
 
 	public Funcion() {
@@ -32,12 +33,14 @@ public class Funcion implements java.io.Serializable {
 	}
 
 	public Funcion(int idFuncion, String nombre, String pagina, String iconUri,
-			String clase, boolean activo, Set<FuncionGrupo> funcionGrupos) {
+			String clase, Integer padreidFuncion, boolean activo,
+			Set<FuncionGrupo> funcionGrupos) {
 		this.idFuncion = idFuncion;
 		this.nombre = nombre;
 		this.pagina = pagina;
 		this.iconUri = iconUri;
 		this.clase = clase;
+		this.padreidFuncion = padreidFuncion;
 		this.activo = activo;
 		this.funcionGrupos = funcionGrupos;
 	}
@@ -80,6 +83,14 @@ public class Funcion implements java.io.Serializable {
 
 	public void setClase(String clase) {
 		this.clase = clase;
+	}
+
+	public Integer getPadreidFuncion() {
+		return this.padreidFuncion;
+	}
+
+	public void setPadreidFuncion(Integer padreidFuncion) {
+		this.padreidFuncion = padreidFuncion;
 	}
 
 	public boolean isActivo() {

@@ -14,7 +14,7 @@ import org.hibernate.criterion.Restrictions;
  * creado por Tony Suarez
  */
 
-public class IndicadorrDao {
+public class IndicadorDao {
 
 private Sesion sesionPostgres;
 	
