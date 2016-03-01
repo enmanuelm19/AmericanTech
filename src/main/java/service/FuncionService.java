@@ -90,6 +90,7 @@ public class FuncionService {
 		funcion.add(new Funcion(77, "Socio", "", "z-icon-angle-double-right", 70, ""));
 		funcion.add(new Funcion(78, "Instalacion", "", "z-icon-angle-double-right", 70, ""));
 		funcion.add(new Funcion(79, "Evento", "", "z-icon-angle-double-right", 70, ""));
+		funcion.add(new Funcion(81, "Unidad Medida", "configuracion/categoria/unidadMedida.zul", "z-icon-angle-double-right", 8, ""));
 	}
 	
 	
