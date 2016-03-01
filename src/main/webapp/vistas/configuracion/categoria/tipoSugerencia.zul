@@ -10,19 +10,19 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Categoria" href="#" />
-					<label value="Tipos de Sugerencias" />
+					<a label="Categorias" href="#" />
+					<label value="Tipo sugerencia" />
 				</div>
 			</div>
 			<div class="contenedor" align="center" height="auto">
 
 				<div sclass="page-header" align="left">
-					<label value="Tipos de Sugerencias" />
+					<label value="Tipos Sugerencias" />
 				</div>
 
 				<space />
 				<space />
-				<div class='form-pricing' align="left" width="70%" style="margin-bottom: 20px"
+				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px"
 				apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoSugerenciaViewModel')">
 					<div xmlns:w='client' align="right">
 						<button id="btnRegTipoSugerencia" label="Agregar Nuevo" iconSclass="z-icon-plus" style="margin-bottom: -4%"
@@ -35,7 +35,7 @@
 					<div class="contenido">
 						<div align="left">
 							<div class='encabezado'>
-								Lista Tipos de Sugerencias
+								Lista Tipos Sugerencias
 							</div>
 							<div class='linea-two'></div>
 						</div>

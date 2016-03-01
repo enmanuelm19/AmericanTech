@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ public class Sugerencia implements java.io.Serializable {
 	private Usuario usuario;
 	private String descripcion;
 	private Date fecha;
-	private boolean activo;
+	private boolean activo = true;
 
 	public Sugerencia() {
 	}

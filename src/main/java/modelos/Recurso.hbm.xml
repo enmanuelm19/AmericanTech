@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Recurso" table="recurso" schema="public" optimistic-lock="version">
         <id name="idRecurso" type="int">
@@ -9,7 +9,7 @@
             <generator class="increment" />
         </id>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="40" not-null="true" />
+            <column name="descripcion" length="120" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

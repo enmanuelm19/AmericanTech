@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
         <id name="idClub" type="int">
             <column name="id_club" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
             <column name="logo" not-null="true" />
         </many-to-one>
         <property name="rif" type="string">
-            <column name="rif" length="20" not-null="true" />
+            <column name="rif" length="40" not-null="true" />
         </property>
         <property name="nombre" type="string">
             <column name="nombre" length="60" not-null="true" />
         </property>
         <property name="direccion" type="string">
-            <column name="direccion" length="60" not-null="true" />
+            <column name="direccion" length="150" not-null="true" />
         </property>
         <property name="telefono" type="string">
-            <column name="telefono" length="12" not-null="true" />
+            <column name="telefono" length="20" not-null="true" />
         </property>
         <property name="mision" type="string">
             <column name="mision" length="250" not-null="true" />
@@ -30,22 +30,28 @@
             <column name="vision" length="250" not-null="true" />
         </property>
         <property name="telfAlternativo" type="string">
-            <column name="telf_alternativo" length="12" not-null="true" />
+            <column name="telf_alternativo" length="20" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="75" not-null="true" />
+            <column name="correo" length="90" not-null="true" />
         </property>
         <property name="eslogan" type="string">
             <column name="eslogan" />
         </property>
-        <property name="activo" type="java.lang.Boolean">
-            <column name="activo" />
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
         </property>
         <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Foto" />
+        </set>
+        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clubid_club" />
+            </key>
+            <one-to-many class="modelos.Politica" />
         </set>
         <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="true" fetch="select">
             <key>

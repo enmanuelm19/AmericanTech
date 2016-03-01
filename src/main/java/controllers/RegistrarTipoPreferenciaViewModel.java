@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import Dao.TipoPreferenciaDao;
 
@@ -55,6 +56,7 @@ public class RegistrarTipoPreferenciaViewModel {
 		
 		if (tipoPreferencia.getDescripcion() != null && !tipoPreferencia.getDescripcion().equalsIgnoreCase("") )
 		{
+			if(tipoDao.obtenerTipoDescripcion(tipoPreferencia.getDescripcion())==null){
 			if (!editable)
 				tipoDao.agregarTipoPreferencia(tipoPreferencia);
 
@@ -62,6 +64,11 @@ public class RegistrarTipoPreferenciaViewModel {
 				
 			win.detach();
 			BindUtils.postGlobalCommand(null,null,"refreshTipoPreferencia",null);
+			}
+			else{
+				Messagebox.show("tipo de preferencia con la descripcion " + tipoPreferencia.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
 		
 		

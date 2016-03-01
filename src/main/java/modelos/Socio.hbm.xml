@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Socio" table="socio" schema="public" optimistic-lock="version">
         <id name="idSocio" type="int">
             <column name="id_socio" />
             <generator class="increment" />
         </id>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select">
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
             <column name="postulacionid_postulacion" />
         </many-to-one>
         <property name="nroCarnet" type="string">
-            <column name="nro_carnet" length="20" not-null="true" />
+            <column name="nro_carnet" length="40" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
@@ -28,7 +28,7 @@
         </set>
         <set name="accions" table="accion" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="socioid_socio" not-null="true" />
+                <column name="socioid_socio" />
             </key>
             <one-to-many class="modelos.Accion" />
         </set>

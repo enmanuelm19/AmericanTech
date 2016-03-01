@@ -1,0 +1,157 @@
+<div xmlns:n="native" class='contenedor'>
+
+	<vlayout spacing="0" hflex="1">
+		<div sclass="breadcrumbs">
+			<div sclass="breadcrumb">
+				<span sclass="home-icon z-icon-cogs" />
+				<a label="Configuración" href="#" />
+				<label value="Datos Portal" />
+			</div>
+		</div>
+		<div class='contenedor'>
+			<div sclass="page-header">
+				<separator spacing="3%" />
+				<label value="Administración" />
+			</div>
+			<separator spacing="3%" />
+			<div class='contenido'>
+				<div class="col-md-10 col-centered "
+					form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
+   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+					<div class='form-pricing' width="auto"
+						height="auto">
+						<separator spacing="2%" />
+						<div class='encabezado'>
+							Nuestros socios
+						</div>
+						<div class='linea-two'>
+						</div>
+						<separator spacing="30px" />
+						<div class="row col-md-offset-1">
+							<div class="col-md-12">
+								<div class="col-md-3">
+									<div class="input-group">
+										<image
+											src="/assets/portal/img/img2.png"
+											class='img-responsive col-md-offset-0' />
+										<separator spacing="5px" />
+										<fileupload label="Examinar"
+											iconSclass="z-icon-folder-open"
+											class='boton-guardar col-md-offset-2' />
+									</div>
+								</div>
+								<div class="col-md-9">
+									<textbox constraint="no empty"
+										rows="12" cols="40">
+									</textbox>
+								</div>
+							</div>
+						</div>
+						<separator spacing="30px" />
+						<div class='encabezado'>
+							Nuestras instalaciones
+						</div>
+						<div class='linea-two'>
+						</div>
+						<separator spacing="30px" />
+						<div class="row col-md-offset-1">
+							<separator spacing="5px" />
+							<div class="col-md-12">
+								<div class="col-md-3">
+									<div class="input-group">
+										<image src="/assets/portal/img/imagen1.png" class='img-responsive'/>
+										<separator spacing="10px" />
+										<fileupload label="Examinar" iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-2' />
+									</div>
+								</div>
+								<div class="col-md-9">
+									<textbox constraint="no empty" rows="12" cols="40"></textbox>
+								</div>
+							</div>
+						</div>
+						
+						<separator spacing="30px" />
+						<div class='encabezado'>Nuestros eventos</div>
+						<div class='linea-two'></div>
+						<separator spacing="30px" />
+						<div class="row">
+
+							<div class="col-md-12 col-md-offset-1">
+								<div class="col-md-3">
+									<div class="input-group">
+										<image src="/assets/portal/img/img3.png" class='img-responsive'/>
+										<separator spacing="5px"/>
+										<fileupload label="Examinar" iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-2' />
+									</div>
+								</div>
+								<div class="col-md-9">
+									<textbox constraint="no empty" rows="12" cols="40"></textbox>
+								</div>
+							</div>
+						</div>
+
+						<separator spacing="15px" />
+						<div class='encabezado'>Redes Sociales</div>
+						<div class='linea-two'></div>
+						<separator spacing="30px" />
+						<div class="row">
+
+							<div class="col-md-6">
+								<grid>
+									<rows>
+										<row>
+											<div>
+												<label class="col-md-3"> Enlace</label>
+												<textbox id="txtEnlace" class="col-md-6" constraint="no empty"></textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label class="col-md-3">Red Social</label>
+												<combobox placeholder="Seleccione una Red Social">
+													<comboitem label="Facebook"></comboitem>
+													<comboitem label="Twitter"></comboitem>
+													<comboitem label="Instagram"></comboitem>
+												</combobox>
+												<button iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar" />
+											</div>
+										</row>
+										<row>
+											<div>
+
+											</div>
+										</row>
+									</rows>
+								</grid>
+							</div>
+							<div class="col-md-6">
+								<listbox>
+									<listhead>
+										<listheader width="50%" align="center" label="Red Social" />
+										<listheader width="50%" align="center" label="Enlace" />
+									</listhead>
+									<listitem label="Twitter" />
+									<listitem label="AmericanTech" />
+								</listbox>
+							</div>
+						</div>
+
+						<separator spacing="20px"></separator>
+
+						<div class="row col-md-12">
+							<button
+								class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
+								type="button" iconSclass="z-icon-floppy-o">
+							</button>
+							<button
+								class="boton-cancelar col-md-3 col-md-offset-2"
+								iconSclass="z-icon-times" type="button" label="Cancelar">
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</vlayout>
+</div>

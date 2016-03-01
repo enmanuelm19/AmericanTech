@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.ArchivoAlquiler" table="archivo_alquiler" schema="public" optimistic-lock="version">
         <id name="idArchivoAlquiler" type="int">
             <column name="id_archivo_alquiler" />
             <generator class="increment" />
         </id>
-        <many-to-one name="alquiler" class="modelos.Alquiler" fetch="select">
+        <many-to-one name="alquiler" class="modelos.Alquiler" fetch="select" lazy="false">
             <column name="alquilerid_alquiler" not-null="true" />
         </many-to-one>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
             <column name="archivoid_archivo" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoArchivo" class="modelos.TipoArchivo" fetch="select">
+        <many-to-one name="tipoArchivo" class="modelos.TipoArchivo" fetch="select" lazy="false">
             <column name="tipo_archivoid_tipo_archivo" not-null="true" />
         </many-to-one>
         <property name="activo" type="boolean">

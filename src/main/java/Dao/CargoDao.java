@@ -21,11 +21,12 @@ private Sesion sesionPostgres;
 	
 	public void agregarCargo(Cargo dato) throws Exception{
 		@SuppressWarnings("static-access")
-		Session em = sesionPostgres.getSessionFactory().openSession();  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.save( dato);   
+        	 dato.setActivo(false);
+              em.update(dato);   
               tx.commit();  
          } catch (Exception e) {  
              tx.rollback();            
@@ -76,7 +77,7 @@ private Sesion sesionPostgres;
 	   List<Cargo> datos = new ArrayList<Cargo>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<Cargo>) em.createCriteria(Cargo.class).list();             
+	    datos =  (List<Cargo>) em.createCriteria(Cargo.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -86,6 +87,7 @@ private Sesion sesionPostgres;
        
         return datos; 
 	}	
+	
 	
 	
 	

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,15 +18,13 @@ public class Evento implements java.io.Serializable {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private boolean publico;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
 			0);
 	private Set<MotivoCancelacion> motivoCancelacions = new HashSet<MotivoCancelacion>(
 			0);
 	private Set<Actividad> actividads = new HashSet<Actividad>(0);
-	private Set<PartocinanteEvento> partocinanteEventos = new HashSet<PartocinanteEvento>(
-			0);
 	private Set<InstalacionEvento> instalacionEventos = new HashSet<InstalacionEvento>(
 			0);
 	private Set<IndicadorEvento> indicadorEventos = new HashSet<IndicadorEvento>(
@@ -56,7 +54,6 @@ public class Evento implements java.io.Serializable {
 			Set<PreferenciaEvento> preferenciaEventos,
 			Set<MotivoCancelacion> motivoCancelacions,
 			Set<Actividad> actividads,
-			Set<PartocinanteEvento> partocinanteEventos,
 			Set<InstalacionEvento> instalacionEventos,
 			Set<IndicadorEvento> indicadorEventos,
 			Set<CalendarioFecha> calendarioFechas) {
@@ -72,7 +69,6 @@ public class Evento implements java.io.Serializable {
 		this.preferenciaEventos = preferenciaEventos;
 		this.motivoCancelacions = motivoCancelacions;
 		this.actividads = actividads;
-		this.partocinanteEventos = partocinanteEventos;
 		this.instalacionEventos = instalacionEventos;
 		this.indicadorEventos = indicadorEventos;
 		this.calendarioFechas = calendarioFechas;
@@ -172,15 +168,6 @@ public class Evento implements java.io.Serializable {
 
 	public void setActividads(Set<Actividad> actividads) {
 		this.actividads = actividads;
-	}
-
-	public Set<PartocinanteEvento> getPartocinanteEventos() {
-		return this.partocinanteEventos;
-	}
-
-	public void setPartocinanteEventos(
-			Set<PartocinanteEvento> partocinanteEventos) {
-		this.partocinanteEventos = partocinanteEventos;
 	}
 
 	public Set<InstalacionEvento> getInstalacionEventos() {

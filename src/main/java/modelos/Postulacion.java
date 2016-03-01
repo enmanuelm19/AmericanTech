@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ public class Postulacion implements java.io.Serializable {
 	private short carnetPadrino1;
 	private short carnetPadrino2;
 	private boolean aprobado;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
 
@@ -27,12 +27,11 @@ public class Postulacion implements java.io.Serializable {
 	}
 
 	public Postulacion(int idPostulacion, MotivoPostulacion motivoPostulacion,
-			Postulado postulado, Venta venta, Date fecha, short carnetPadrino1,
+			Postulado postulado, Date fecha, short carnetPadrino1,
 			short carnetPadrino2, boolean aprobado, boolean activo) {
 		this.idPostulacion = idPostulacion;
 		this.motivoPostulacion = motivoPostulacion;
 		this.postulado = postulado;
-		this.venta = venta;
 		this.fecha = fecha;
 		this.carnetPadrino1 = carnetPadrino1;
 		this.carnetPadrino2 = carnetPadrino2;

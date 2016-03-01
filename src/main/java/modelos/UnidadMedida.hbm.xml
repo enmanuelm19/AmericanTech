@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.UnidadMedida" table="unidad_medida" schema="public" optimistic-lock="version">
+        <id name="idUnidadMedida" type="int">
+            <column name="id_unidad_medida" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="unidad_medidaid_unidad_medida" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Politica" />
+        </set>
+    </class>
+</hibernate-mapping>

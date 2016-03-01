@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.MotivoSancion" table="motivo_sancion" schema="public" optimistic-lock="version">
         <id name="idMotivoSancion" type="int">
             <column name="id_motivo_sancion" />
             <generator class="increment" />
         </id>
+        <property name="motivo" type="string">
+            <column name="motivo" length="120" not-null="true" />
+        </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="100" not-null="true" />
         </property>

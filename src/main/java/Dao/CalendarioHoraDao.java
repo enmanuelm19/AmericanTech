@@ -21,11 +21,12 @@ private Sesion sesionPostgres;
 	
 	public void agregarCalendarioHora(CalendarioHora dato) throws Exception{
 		@SuppressWarnings("static-access")
-		Session em = sesionPostgres.getSessionFactory().openSession();  
+		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.save( dato);   
+        	 dato.setActivo(false);
+              em.update(dato);   
               tx.commit();  
          } catch (Exception e) {  
              tx.rollback();            
@@ -33,7 +34,7 @@ private Sesion sesionPostgres;
              throw e;
          } finally {  
              em.close();  
-         } 
+         }  
 	}
 	
 	public void eliminarCalendarioHora(CalendarioHora dato) throws Exception{		 
@@ -76,7 +77,7 @@ private Sesion sesionPostgres;
 	   List<CalendarioHora> datos = new ArrayList<CalendarioHora>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<CalendarioHora>) em.createCriteria(CalendarioHora.class).list();             
+	    datos =  (List<CalendarioHora>) em.createCriteria(CalendarioHora.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());

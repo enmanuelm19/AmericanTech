@@ -1,0 +1,109 @@
+<?page title="AmericanTech" contentType="text/html" charset="UTF-8"?>
+<zk xmlns:n="native">
+	<div class="contenedor">
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-cogs" />
+						<a label="Categorias" href="#" />
+						<label value="Motivo sanción" />
+					</div>
+				</div>
+				<div align="center">
+
+					<div sclass="page-header" align="left">
+						<label value="Motivos Sanciones" />
+					</div>
+
+					<space />
+					<space />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.MotivoSancionViewModel')">
+						<div xmlns:w='client' align="right">
+							<button id="btnRegTipoSancion"
+								style="margin-bottom: -4%" label="Agregar Nuevo"
+								iconSclass="z-icon-plus" class='boton-guardar'
+								onClick="@command('showModal')" />
+						</div>
+						
+						<separator spacing="10px" />
+
+						<div class="contenido">
+							<div align="left">
+								<div sclass="encabezado">
+									<label
+										value="Lista Motivos Saciones" />
+								</div>
+								<div class='linea-two'></div>
+
+							</div>
+							<separator spacing="20px" />
+							<grid
+								emptyMessage="No se encuentran tipo de sanciones registradas"
+								mold="paging" pageSize="10" id="gridMotivoSancion"
+								model="@load(vm.allMotivoSancion)">
+								<auxhead sclass="category-center">
+									<auxheader>
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true"
+											width="85%" value="@bind(vm.idFiltro)"
+											onChange="@command('filtro')" placeholder="Buscar" />
+									</auxheader>
+									<auxheader>
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true"
+											width="85%" value="@bind(vm.descFiltro)"
+											onChange="@command('filtro')" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="1" />
+								</auxhead>
+								<columns>
+									<column hflex="2">Codigo</column>
+									<column hflex="2">
+										Tipo Sancion
+									</column>
+									<column width="20%"
+										align="center">
+										Acciones
+									</column>
+								</columns>
+								<rows>
+
+									<template name="model">
+
+										<row>
+											<label
+												value="@load(each.idMotivoSancion)" />
+											<label
+												value="@load(each.descripcion)" />
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-pencil blue"
+													tooltiptext="Editar"
+													onClick="@command('showModal', Tipo=each)" />
+												<button
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
+													tooltiptext="Eliminar"
+													onClick="@command('eliminar', Tipo=each)" />
+											</div>
+										</row>
+
+									</template>
+
+								</rows>
+								<foot>
+									<footer span="6"
+										class="footer_right" label="@load(vm.cantRegistros)" />
+								</foot>
+							</grid>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

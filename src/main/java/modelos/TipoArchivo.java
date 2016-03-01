@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class TipoArchivo implements java.io.Serializable {
 
 	private int idTipoArchivo;
 	private String nombre;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<ArchivoAlquiler> archivoAlquilers = new HashSet<ArchivoAlquiler>(
 			0);
 

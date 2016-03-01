@@ -1,27 +1,30 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Noticia" table="noticia" schema="public" optimistic-lock="version">
         <id name="idNoticia" type="int">
             <column name="id_noticia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
             <column name="foto" />
         </many-to-one>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" />
         </many-to-one>
+        <many-to-one name="tipoNoticia" class="modelos.TipoNoticia" fetch="select" lazy="false">
+            <column name="tipo_noticiaid_tipo_noticia" not-null="true" />
+        </many-to-one>
         <property name="titulo" type="string">
-            <column name="titulo" length="70" />
+            <column name="titulo" length="90" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />
         </property>
-        <property name="condicion" type="boolean">
-            <column name="condicion" not-null="true" />
+        <property name="fechaCreacion" type="date">
+            <column name="fecha_creacion" length="13" not-null="true" />
         </property>
         <property name="caducidad" type="date">
             <column name="caducidad" length="13" not-null="true" />
@@ -31,9 +34,6 @@
         </property>
         <property name="enlace" type="string">
             <column name="enlace" />
-        </property>
-        <property name="fechaCreacion" type="date">
-            <column name="fecha_creacion" length="13" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

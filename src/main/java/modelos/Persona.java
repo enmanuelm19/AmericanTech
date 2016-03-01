@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ public class Persona implements java.io.Serializable {
 	private String telefono;
 	private String telefonoFijo;
 	private String direccion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Empleado> empleados = new HashSet<Empleado>(0);
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);

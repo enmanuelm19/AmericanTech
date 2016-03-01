@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,7 @@ public class Accion implements java.io.Serializable {
 	private Socio socio;
 	private String nroAccion;
 	private float valor;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Venta> ventas = new HashSet<Venta>(0);
 	private Set<Desvinculacion> desvinculacions = new HashSet<Desvinculacion>(0);
 	private Set<SolicitudVenta> solicitudVentas = new HashSet<SolicitudVenta>(0);
@@ -23,11 +23,10 @@ public class Accion implements java.io.Serializable {
 	public Accion() {
 	}
 
-	public Accion(int idAccion, EstadoAccion estadoAccion, Socio socio,
-			String nroAccion, float valor, boolean activo) {
+	public Accion(int idAccion, EstadoAccion estadoAccion, String nroAccion,
+			float valor, boolean activo) {
 		this.idAccion = idAccion;
 		this.estadoAccion = estadoAccion;
-		this.socio = socio;
 		this.nroAccion = nroAccion;
 		this.valor = valor;
 		this.activo = activo;

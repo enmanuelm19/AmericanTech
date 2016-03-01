@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class MotivoDesvinculacion implements java.io.Serializable {
 
 	private int idMotivoDesvinculacion;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Desvinculacion> desvinculacions = new HashSet<Desvinculacion>(0);
 
 	public MotivoDesvinculacion() {

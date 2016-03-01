@@ -1,18 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.SolicitudVenta" table="solicitud_venta" schema="public" optimistic-lock="version">
         <id name="idSolicitudVenta" type="int">
             <column name="id_solicitud_venta" />
             <generator class="increment" />
         </id>
-        <many-to-one name="accion" class="modelos.Accion" fetch="select">
+        <many-to-one name="accion" class="modelos.Accion" fetch="select" lazy="false">
             <column name="accionid_accion" not-null="true" />
         </many-to-one>
+        <many-to-one name="motivoVenta" class="modelos.MotivoVenta" fetch="select" lazy="false">
+            <column name="motivo_ventaid_motivo_venta" not-null="true" />
+        </many-to-one>
         <property name="motivo" type="string">
-            <column name="motivo" length="200" not-null="true" />
+            <column name="motivo" length="200" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.ClienteExterno" table="cliente_externo" schema="public" optimistic-lock="version">
         <id name="idCliente" type="int">
@@ -9,10 +9,10 @@
             <generator class="increment" />
         </id>
         <property name="nombre" type="string">
-            <column name="nombre" length="30" not-null="true" />
+            <column name="nombre" length="60" not-null="true" />
         </property>
         <property name="apellido" type="string">
-            <column name="apellido" length="30" not-null="true" />
+            <column name="apellido" length="60" not-null="true" />
         </property>
         <property name="correo" type="string">
             <column name="correo" length="80" not-null="true" />

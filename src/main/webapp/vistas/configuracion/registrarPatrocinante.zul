@@ -15,10 +15,13 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window border="none" title="Registrar Patrocinantes"
+	<window id="winRegistrarP"
+		style="iconSclass=z-icon-cogs; height:auto;"
+		title="@load(vm.editable?'Editar patrocinante':'Registrar patrocinante')"
+		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		class="col-md-8" height="60%" closable="true" width="48%"
-		style="iconSclass=home-icon z-icon-cogs">
+		height="55%" width="40%" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarPatrocinanteViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 
 
@@ -34,24 +37,23 @@
 					<grid>
 
 						<rows>
-								<row>
+							<row>
 								<div>
-								<label class="col-md-3">RIF</label>
-								<textbox constraint="no empty"
-								class="col-md-3">
-								</textbox>
-								<button
-								iconSclass="z-icon-search blue" class="col-md-2 btn-link">
-								</button>
+									<label class="col-md-3">RIF</label>
+									<textbox
+										value="@bind(vm.patrocinante.idPatrocinante)"
+										constraint="no empty" class="col-md-3">
+									</textbox>
 								</div>
-								</row> 
+							</row>
 
 							<row>
 								<div>
 									<label class="col-md-3">
 										Nombre
 									</label>
-									<textbox constraint="no empty"
+									<textbox
+										value="@bind(vm.patrocinante.nombre)" constraint="no empty"
 										class="col-md-9">
 									</textbox>
 								</div>
@@ -61,7 +63,8 @@
 									<label class="col-md-3">
 										Email
 									</label>
-									<textbox type="email"
+									<textbox
+										value="@bind(vm.patrocinante.correo)" type="email"
 										class="col-md-9" constraint="no empty">
 									</textbox>
 								</div>
@@ -71,7 +74,8 @@
 									<label class="col-md-3">
 										Teléfono
 									</label>
-									<textbox class="col-md-3"
+									<textbox
+										value="@bind(vm.patrocinante.telefono)" class="col-md-3"
 										constraint="no empty">
 									</textbox>
 								</div>
@@ -81,8 +85,9 @@
 									<label class="col-md-3">
 										Dirección
 									</label>
-									<textbox id="txtMision" rows="5"
-										cols="30" class="col-md-9" constraint="no empty">
+									<textbox
+										value="@bind(vm.patrocinante.direccion)" rows="5" cols="30"
+										class="col-md-9" constraint="no empty">
 									</textbox>
 								</div>
 							</row>
@@ -93,14 +98,22 @@
 				</div>
 
 			</div>
-			<separator spacing="20px"></separator>
-			<div class="row col-md-12">
-				<button class="boton-guardar col-md-3 col-md-offset-2"
-					label="Guardar" type="button" iconSclass="z-icon-floppy-o">
-				</button>
-				<button class="boton-cancelar col-md-3 col-md-offset-2"
-					iconSclass="z-icon-times" type="button" label="Cancelar">
-				</button>
+			
+			<div align="center" style="margin-top: 7%;">
+				<hbox>
+					<div>
+						<button iconSclass="z-icon-floppy-o"
+							class='boton-guardar'
+							style="margin-bottom: 400px; margin-right:5px" label="Guardar"
+							onClick="@command('guardar', win=winRegistrarP)" />
+					</div>
+					<div>
+						<button id="cancelarBtn"
+							iconSclass="z-icon-times-circle" class='boton-cancelar'
+							style="margin-bottom: 6%" label="Cancelar"
+							onClick="@command('cerrarModal', win=winRegistrarP)" />
+					</div>
+				</hbox>
 			</div>
 		</div>
 	</window>

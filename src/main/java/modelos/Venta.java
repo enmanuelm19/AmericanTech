@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,31 +13,27 @@ public class Venta implements java.io.Serializable {
 
 	private int idVenta;
 	private Accion accion;
-	private MotivoVenta motivoVenta;
 	private Date fecha;
 	private float monto;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Postulacion> postulacions = new HashSet<Postulacion>(0);
 
 	public Venta() {
 	}
 
-	public Venta(int idVenta, Accion accion, MotivoVenta motivoVenta,
-			Date fecha, float monto, boolean activo) {
+	public Venta(int idVenta, Accion accion, Date fecha, float monto,
+			boolean activo) {
 		this.idVenta = idVenta;
 		this.accion = accion;
-		this.motivoVenta = motivoVenta;
 		this.fecha = fecha;
 		this.monto = monto;
 		this.activo = activo;
 	}
 
-	public Venta(int idVenta, Accion accion, MotivoVenta motivoVenta,
-			Date fecha, float monto, boolean activo,
-			Set<Postulacion> postulacions) {
+	public Venta(int idVenta, Accion accion, Date fecha, float monto,
+			boolean activo, Set<Postulacion> postulacions) {
 		this.idVenta = idVenta;
 		this.accion = accion;
-		this.motivoVenta = motivoVenta;
 		this.fecha = fecha;
 		this.monto = monto;
 		this.activo = activo;
@@ -58,14 +54,6 @@ public class Venta implements java.io.Serializable {
 
 	public void setAccion(Accion accion) {
 		this.accion = accion;
-	}
-
-	public MotivoVenta getMotivoVenta() {
-		return this.motivoVenta;
-	}
-
-	public void setMotivoVenta(MotivoVenta motivoVenta) {
-		this.motivoVenta = motivoVenta;
 	}
 
 	public Date getFecha() {

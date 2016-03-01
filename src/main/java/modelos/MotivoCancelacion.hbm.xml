@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.MotivoCancelacion" table="motivo_cancelacion" schema="public" optimistic-lock="version">
         <id name="idMotivoCancelacion" type="int">
             <column name="id_motivo_cancelacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" not-null="true" />
         </many-to-one>
         <property name="descipcion" type="string">

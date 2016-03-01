@@ -7,18 +7,18 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categoria" href="#" />
-						<label value="Tipo de Recurso" />
+						<label value="Recursos" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Tipo de Recursos" />
+						<label value="Recursos" />
 					</div>
 
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing  col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
 						viewModel="@id('vm') @init('controllers.RecursoViewModel')">
 						<div xmlns:w='client' align="right">
@@ -27,11 +27,13 @@
 								iconSclass="z-icon-plus" class='boton-guardar'
 								onClick="@command('showModal')" />
 						</div>
+						
+						<separator spacing="10px" />
 
 						<div class="contenido">
 							<div align="left">
 								<div sclass="encabezado">
-									<label value="Lista de Recursos" />
+									<label value="Lista Recursos" />
 								</div>
 								<div class='linea-two'></div>
 

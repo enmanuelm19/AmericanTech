@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 25/02/2016 01:23:37 AM by Hibernate Tools 4.3.1
+// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ public class JuntaDirectiva implements java.io.Serializable {
 	private Club club;
 	private Date fechaInic;
 	private Date fechaFin;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 
 	public JuntaDirectiva() {

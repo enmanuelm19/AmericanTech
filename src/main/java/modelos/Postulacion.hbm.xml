@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/02/2016 01:23:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Postulacion" table="postulacion" schema="public" optimistic-lock="version">
         <id name="idPostulacion" type="int">
             <column name="id_postulacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="motivoPostulacion" class="modelos.MotivoPostulacion" fetch="select">
+        <many-to-one name="motivoPostulacion" class="modelos.MotivoPostulacion" fetch="select" lazy="false">
             <column name="motivo_postulacionid_motivo_postulacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulado" class="modelos.Postulado" fetch="select">
+        <many-to-one name="postulado" class="modelos.Postulado" fetch="select" lazy="false">
             <column name="postuladoid_postulado" not-null="true" />
         </many-to-one>
-        <many-to-one name="venta" class="modelos.Venta" fetch="select">
-            <column name="ventaid_venta" not-null="true" />
+        <many-to-one name="venta" class="modelos.Venta" fetch="select" lazy="false">
+            <column name="ventaid_venta" />
         </many-to-one>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
