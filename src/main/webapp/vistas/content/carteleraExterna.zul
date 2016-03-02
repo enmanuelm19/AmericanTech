@@ -2,13 +2,14 @@
 
 
 <zk xmlns:n="native">
-<panel border="none" class="col-md-12" collapsible="true" sclass="transparent">
-<caption iconSclass="z-icon-bullhorn orange" label="Noticias"/>
-  <panelchildren>
-  <separator></separator>  <separator></separator>
-<n:div class="container" align="center">
+
+<n:div class="" align="left">
 		<n:div class="row">
-			<n:div class="[  col-xs-12 col-sm-offset-1 col-sm-9 ]">
+			
+			
+			
+			
+				<n:div class="col-xs-8">
 				<n:ul class="event-list">
 					<n:li>
 						<n:time datetime="2014-07-20">
@@ -80,15 +81,36 @@
 							<n:p class="desc"> Inscribe tu equipo para toneo que comenzará a partir del </n:p>
 						</n:div>
 					</n:li>
+						<n:li>
+						<n:time datetime="2014-07-31 1600">
+							<n:span class="day">20</n:span>
+							<n:span class="month">FEB</n:span>
+							<n:span class="year">2015</n:span>
+							<n:span class="time">4:00 PM</n:span>
+						</n:time>
+						<n:img alt="Sottball" src="../assets/portal/img/softballP.jpg" />
+						<n:div class="info">
+							<n:h2 class="title">INSCRIPCIONES ABIERTAS PARA TONEO DE SOFTBALL, INSCRIBE TU EQUIPO!</n:h2>
+							<n:p class="desc"> Inscribe tu equipo para toneo que comenzará a partir del </n:p>
+						</n:div>
+					</n:li>
 				
 					
 					
 				</n:ul>
 			</n:div>
+			
+			<!-- Time line de twitter -->
+			<n:div class="col-xs-4">
+			 <n:a class="twitter-timeline" href="https://twitter.com/CAAAMERICA" data-widget-id="704846698791768065">Tweets por el @CAAAMERICA.</n:a>
+  
+			</n:div>
+			
+			
+			
 		</n:div>
 	</n:div>
-</panelchildren>
-</panel>
+
 
 </zk>
 
