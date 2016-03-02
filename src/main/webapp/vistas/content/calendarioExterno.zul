@@ -1,0 +1,51 @@
+<div class="contenedor">
+	<panel border="none" width="100%"  sclass="transparent">
+		
+		<panelchildren>
+			<div apply="com.ucla.america.controllers.CalendarController"
+				align="center" width="100%" height="700px">
+				<!-- Control Menu -->
+				<hlayout sclass="z-valign-middle">
+					<button id="today" label="Today" class='btn-cal' />
+					<button id="prev"
+						iconSclass="z-icon-arrow-circle-o-left" class='btn-cal' />
+					<button id="next"
+						iconSclass="z-icon-arrow-circle-o-right" class='btn-cal' />
+
+					<separator />
+					<button id="pageDay" label="Día" width="100%"
+						class='btn-cal' />
+					<button id="pageWeek" label="Semana" width="100%"
+						class='btn-cal' />
+					<button id="pageMonth" label="Mes" width="100%"
+						class='btn-cal' />
+					<separator width="50px" />
+					Buscar por:
+					<textbox id="filter" />
+					<button id="applyFilter" label="Buscar"
+						class='btn-cal' width="100%" />
+					<button id="resetFilter" label="Atras"
+						class='btn-cal' width="100%" />
+				</hlayout>
+				<separator bar="true" height="30px" />
+
+
+				<calendars id="calendars" firstDayOfWeek="Sunday"
+					timeZone="Main=GMT+0" mold="month" width="90%" height="70%" />
+
+			</div>
+		</panelchildren>
+	</panel>
+
+	<!-- Create/Update Event Popup -->
+
+
+	<!-- Server+Client Fusion - Mouse Scroll Handling -->
+	<script type="text/javascript"
+		src="../../assets/intranet/js/jquery.mousewheel.min.js" />
+	<script type="text/javascript"
+		src="../../assets/intranet/js/scroll.js" />
+</div>
+
+
+
