@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.MotivoDesvinculacionDao;
@@ -15,18 +16,19 @@ public class RegistrarMotivoDesvinculacionViewModel {
 
 	private MotivoDesvinculacion motivoDesvinculacion;
 	private boolean editable;
-	private MotivoDesvinculacionDao tipoDao;
+	private MotivoDesvinculacionDao motivoDao;
 
 	@Init
-	public void init(@ExecutionArgParam("MotivoDesvinculacion") MotivoDesvinculacion tipo) {
-		if (tipo == null) {
+	public void init(
+			@ExecutionArgParam("MotivoDesvinculacion") MotivoDesvinculacion motivo) {
+		if (motivo == null) {
 			this.motivoDesvinculacion = new MotivoDesvinculacion();
 			this.editable = false;
 		} else {
-			this.motivoDesvinculacion= tipo;
+			this.motivoDesvinculacion = motivo;
 			this.editable = true;
 		}
-		tipoDao = new MotivoDesvinculacionDao();
+		motivoDao = new MotivoDesvinculacionDao();
 	}
 
 	public boolean isEditable() {
@@ -41,7 +43,8 @@ public class RegistrarMotivoDesvinculacionViewModel {
 		return motivoDesvinculacion;
 	}
 
-	public void setMotivoDesvinculacion(MotivoDesvinculacion motivoDesvinculacion) {
+	public void setMotivoDesvinculacion(
+			MotivoDesvinculacion motivoDesvinculacion) {
 		this.motivoDesvinculacion = motivoDesvinculacion;
 	}
 
@@ -52,20 +55,34 @@ public class RegistrarMotivoDesvinculacionViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (motivoDesvinculacion.getDescripcion() != null && !motivoDesvinculacion.getDescripcion().equalsIgnoreCase("") )
-		{
-			if (!editable)
-				tipoDao.agregarMotivoDesvinculacion(motivoDesvinculacion);
 
-			else tipoDao.actualizarMotivoDesvinculacion(motivoDesvinculacion);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshMotivoDesvinculacion",null);
+		if (motivoDesvinculacion.getDescripcion() != null
+				&& !motivoDesvinculacion.getDescripcion().equalsIgnoreCase("")) {
+			if (motivoDao.obtenerMotivoDesvinculacion(motivoDesvinculacion
+					.getDescripcion()) == null) {
+				if (!editable) {
+					motivoDao.agregarMotivoDesvinculacion(motivoDesvinculacion);
+					Messagebox.show("El motivo de desvinculacion "
+							+ motivoDesvinculacion.getDescripcion()
+							+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
+					motivoDao
+							.actualizarMotivoDesvinculacion(motivoDesvinculacion);
+					Messagebox.show("El motivo de desvinculacion "
+							+ motivoDesvinculacion.getDescripcion()
+							+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+				win.detach();
+				BindUtils.postGlobalCommand(null, null,
+						"refreshMotivoDesvinculacion", null);
+			} else {
+				Messagebox.show("motivo desvinculacion con la descripcion "
+						+ motivoDesvinculacion.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
-		
-		
+
 	}
 }
-
-

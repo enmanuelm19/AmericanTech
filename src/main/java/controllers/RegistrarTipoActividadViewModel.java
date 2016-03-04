@@ -56,17 +56,25 @@ public class RegistrarTipoActividadViewModel {
 
 		if (tipoActividad.getDescripcion() != null
 				&& !tipoActividad.getDescripcion().equalsIgnoreCase("")) {
-			if (tipoDao
-					.obtenerTipoDescripcion(tipoActividad.getDescripcion()) == null) {
-				if (!editable)
+			if (tipoDao.obtenerTipoDescripcion(tipoActividad.getDescripcion()) == null) {
+				if (!editable) {
 					tipoDao.agregarTipoActividad(tipoActividad);
-
-				else
+					Messagebox.show(
+							"El tipo de actividad "
+									+ tipoActividad.getDescripcion()
+									+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
 					tipoDao.actualizarTipoActividad(tipoActividad);
-
+					Messagebox.show(
+							"El tipo de actividad "
+									+ tipoActividad.getDescripcion()
+									+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
 				win.detach();
-				BindUtils.postGlobalCommand(null, null,
-						"refreshTipoActividad", null);
+				BindUtils.postGlobalCommand(null, null, "refreshTipoActividad",
+						null);
 			} else {
 				Messagebox.show("tipo de actividad con la descripcion "
 						+ tipoActividad.getDescripcion() + " ya existe",
@@ -76,4 +84,3 @@ public class RegistrarTipoActividadViewModel {
 
 	}
 }
-

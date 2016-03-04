@@ -51,24 +51,33 @@ public class RegistrarUnidadMedidaViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (unidadMedida.getNombre() != null && !unidadMedida.getNombre().equalsIgnoreCase("") )
-		{
-			if(unidadDao.obtenerUnidadNombre(unidadMedida.getNombre())==null){
-			if (!editable)
-				unidadDao.agregarUnidadMedida(unidadMedida);
 
-			else unidadDao.actualizarUnidadMedida(unidadMedida);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshUnidadMedida",null);
-			}
-			else{
-				Messagebox.show("Unidad medida con el nombre " + unidadMedida.getNombre() + " ya existe",
+		if (unidadMedida.getNombre() != null
+				&& !unidadMedida.getNombre().equalsIgnoreCase("")) {
+			if (unidadDao.obtenerUnidadMedida(unidadMedida.getNombre()) == null) {
+				if (!editable) {
+					unidadDao.agregarUnidadMedida(unidadMedida);
+					Messagebox.show(
+							"La unidad de medida " + unidadMedida.getNombre()
+									+ " ha sido registrada exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
+					unidadDao.actualizarUnidadMedida(unidadMedida);
+					Messagebox.show(
+							"La unidad de medida " + unidadMedida.getNombre()
+									+ " ha sido actualizada exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+				win.detach();
+				BindUtils.postGlobalCommand(null, null, "refreshUnidadMedida",
+						null);
+			} else {
+				Messagebox.show(
+						"Unidad medida con el nombre "
+								+ unidadMedida.getNombre() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
-		
-		
+
 	}
 }

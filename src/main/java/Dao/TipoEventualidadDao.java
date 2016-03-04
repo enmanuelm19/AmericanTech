@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.TipoEventualidad;
+import modelos.TipoEventualidad;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -19,7 +20,7 @@ public class TipoEventualidadDao {
 private Sesion sesionPostgres;
 	
 	
-	public void agregarAccion(TipoEventualidad dato) throws Exception{
+	public void agregarTipoEventualidad(TipoEventualidad dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -36,7 +37,41 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void eliminarAccion(TipoEventualidad dato) throws Exception{		 
+	//Obtiene un TipoEventualidad especifico
+		public TipoEventualidad obtenerTipoEventualidad(int id) throws Exception{		 
+		    @SuppressWarnings("static-access")
+		    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+		    TipoEventualidad dato = null;        
+	            try{
+	                dato = (TipoEventualidad) sesion.get(TipoEventualidad.class,  id);
+	            } catch (Exception e) {  
+	            e.printStackTrace();
+	            throw new Exception(e.getMessage(),e.getCause());
+	            }  finally {  
+	                sesion.close();  
+	            }  
+		    return dato;
+		}
+		
+		//Obtener un tipo de eventualidad mediante la descripcion
+		public TipoEventualidad obtenerTipoEventualidad(String descrip) throws Exception{		 
+		    @SuppressWarnings("static-access")
+		    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+		    TipoEventualidad dato = null;        
+	            try{
+	                dato = (TipoEventualidad) sesion.createCriteria(TipoEventualidad.class)
+	                		.add(Restrictions.eq("descripcion", descrip)).uniqueResult();
+	            } catch (Exception e) {  
+	            e.printStackTrace();
+	            throw new Exception(e.getMessage(),e.getCause());
+	            }  finally {  
+	                sesion.close();  
+	            }  
+		    return dato;
+		
+		}
+	
+	public void eliminarTipoEventualidad(TipoEventualidad dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -54,7 +89,7 @@ private Sesion sesionPostgres;
          } 
    }
 	
-	public void actualizarAccion(TipoEventualidad dato) throws Exception{
+	public void actualizarTipoEventualidad(TipoEventualidad dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  

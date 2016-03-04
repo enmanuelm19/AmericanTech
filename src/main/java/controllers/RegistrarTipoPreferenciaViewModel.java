@@ -11,7 +11,6 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import Dao.TipoPreferenciaDao;
 
-
 public class RegistrarTipoPreferenciaViewModel {
 
 	private TipoPreferencia tipoPreferencia;
@@ -53,25 +52,35 @@ public class RegistrarTipoPreferenciaViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (tipoPreferencia.getDescripcion() != null && !tipoPreferencia.getDescripcion().equalsIgnoreCase("") )
-		{
-			if(tipoDao.obtenerTipoDescripcion(tipoPreferencia.getDescripcion())==null){
-			if (!editable)
-				tipoDao.agregarTipoPreferencia(tipoPreferencia);
 
-			else tipoDao.actualizarTipoPreferencia(tipoPreferencia);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshTipoPreferencia",null);
-			}
-			else{
-				Messagebox.show("tipo de preferencia con la descripcion " + tipoPreferencia.getDescripcion() + " ya existe",
+		if (tipoPreferencia.getDescripcion() != null
+				&& !tipoPreferencia.getDescripcion().equalsIgnoreCase("")) {
+			if (tipoDao
+					.obtenerTipoDescripcion(tipoPreferencia.getDescripcion()) == null) {
+				if (!editable) {
+					tipoDao.agregarTipoPreferencia(tipoPreferencia);
+					Messagebox.show(
+							"El tipo de sugerencia "
+									+ tipoPreferencia.getDescripcion()
+									+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
+					tipoDao.actualizarTipoPreferencia(tipoPreferencia);
+					Messagebox.show(
+							"El tipo de preferencia "
+									+ tipoPreferencia.getDescripcion()
+									+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+				win.detach();
+				BindUtils.postGlobalCommand(null, null,
+						"refreshTipoPreferencia", null);
+			} else {
+				Messagebox.show("tipo de preferencia con la descripcion "
+						+ tipoPreferencia.getDescripcion() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
-		
-		
+
 	}
 }
-
