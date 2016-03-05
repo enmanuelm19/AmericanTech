@@ -1,16 +1,13 @@
-package controllers;
+package com.ucla.america.controllers;
 
 import java.util.Calendar;
 
 
 import java.util.TimeZone;
 
-import service.CalendarDataService;
-import service.CalendarEventModel;
-import service.CalendarModel;
-
-import util.QueueMessage;
-import util.QueueUtil;
+import com.ucla.america.models.DemoCalendarData;
+import com.ucla.america.models.DemoCalendarEvent;
+import com.ucla.america.models.DemoCalendarModel;
 
 import org.zkoss.calendar.Calendars;
 import org.zkoss.calendar.event.CalendarsEvent;
@@ -23,7 +20,7 @@ import org.zkoss.zkmax.ui.select.annotation.Subscribe;
 import org.zkoss.zul.Textbox;
  
  
-public class CalendarViewModel extends SelectorComposer<Component> {
+public class CalendarController extends SelectorComposer<Component> {
  
     private static final long serialVersionUID = 1L;
  
@@ -32,7 +29,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
     @Wire
     private Textbox filter;
      
-    private CalendarModel calendarModel;
+    private DemoCalendarModel calendarModel;
      
     //the in editing calendar ui event
     private CalendarsEvent calendarsEvent = null;
@@ -40,7 +37,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        calendarModel = new CalendarModel(new CalendarDataService().getCalendarEvents());
+        calendarModel = new DemoCalendarModel(new DemoCalendarData().getCalendarEvents());
         calendars.setModel(this.calendarModel);
     }
      
@@ -92,21 +89,20 @@ public class CalendarViewModel extends SelectorComposer<Component> {
     @Listen("onEventCreate = #calendars; onEventEdit = #calendars")
     public void createEvent(CalendarsEvent event) {
         calendarsEvent = event;
+         
         //to display a shadow when editing
         calendarsEvent.stopClearGhost();
-        System.out.println("Te Amo"); 
-        CalendarEventModel data = (CalendarEventModel)event.getCalendarEvent();
+         
+        DemoCalendarEvent data = (DemoCalendarEvent)event.getCalendarEvent();
          
         if(data == null) {
-        	System.out.println("null"); 
-            data = new CalendarEventModel();
+            data = new DemoCalendarEvent();
             data.setHeaderColor("#3366ff");
             data.setContentColor("#6699ff");
             data.setBeginDate(event.getBeginDate());
             data.setEndDate(event.getEndDate());
         } else {
-        	System.out.println("no null"); 
-            data = (CalendarEventModel) event.getCalendarEvent();
+            data = (DemoCalendarEvent) event.getCalendarEvent();
         }
         //notify the editor
         QueueUtil.lookupQueue().publish(
@@ -116,7 +112,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
     //listen to the calendar-update of event data, usually send when user drag the event data 
     @Listen("onEventUpdate = #calendars")
     public void updateEvent(CalendarsEvent event) {
-    	CalendarEventModel data = (CalendarEventModel) event.getCalendarEvent();
+        DemoCalendarEvent data = (DemoCalendarEvent) event.getCalendarEvent();
         data.setBeginDate(event.getBeginDate());
         data.setEndDate(event.getEndDate());
         calendarModel.update(data);
@@ -131,16 +127,16 @@ public class CalendarViewModel extends SelectorComposer<Component> {
         QueueMessage message = (QueueMessage)event;
         switch(message.getType()){
         case DELETE:
-            calendarModel.remove((CalendarEventModel)message.getData());
+            calendarModel.remove((DemoCalendarEvent)message.getData());
             //clear the shadow of the event after editing
             calendarsEvent.clearGhost(); 
             calendarsEvent = null;
             break;
         case OK:
-            if (calendarModel.indexOf((CalendarEventModel)message.getData()) >= 0) {
-                calendarModel.update((CalendarEventModel)message.getData());
+            if (calendarModel.indexOf((DemoCalendarEvent)message.getData()) >= 0) {
+                calendarModel.update((DemoCalendarEvent)message.getData());
             } else {
-                calendarModel.add((CalendarEventModel)message.getData());
+                calendarModel.add((DemoCalendarEvent)message.getData());
             }
         case CANCEL:
             //clear the shadow of the event after editing

@@ -1,4 +1,4 @@
-package service;
+package com.ucla.america.models;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -9,12 +9,12 @@ import org.zkoss.calendar.api.CalendarEvent;
 import org.zkoss.calendar.api.RenderContext;
 import org.zkoss.calendar.impl.SimpleCalendarModel;
  
-public class CalendarModel extends SimpleCalendarModel {
+public class DemoCalendarModel extends SimpleCalendarModel {
     private static final long serialVersionUID = 1L;
      
     private String filterText = "";
  
-    public CalendarModel(List<CalendarEvent> calendarEvents) {
+    public DemoCalendarModel(List<CalendarEvent> calendarEvents) {
         super(calendarEvents);
     }
  
