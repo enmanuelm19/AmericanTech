@@ -7,12 +7,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.zkoss.calendar.api.CalendarEvent;
-
 import modelos.EstadoEvento;
 import modelos.Evento;
 import modelos.Socio;
+import viewModel.CalendarioEvent;
 
 public class CalendarDataService {
 
@@ -128,7 +127,7 @@ public class CalendarDataService {
 		eventos.add(evento5);
 		eventos.add(evento6);
 		for (Evento evento : eventos) {			
-			calendarEvents.add(new CalendarEventModel(evento.getFechaInicio(), evento.getFechaFin(), "#9c0c0c",
+			calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#9c0c0c",
 					"#f74f4f",evento.getIdEvento()+ "__" + evento.getDescripcion()));
 		}
 	}
