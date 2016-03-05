@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Preferencia;
+import modelos.Preferencia;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import confi.Sesion;
 
 /**
- * creado por José Francisco Morón
+ * creado por Josï¿½ Francisco Morï¿½n
  */
 
 public class PreferenciaDao {
@@ -52,6 +53,22 @@ private Sesion sesionPostgres;
            
 	    return dato;
 }
+	
+	public Preferencia obtenerPreferencia(String descrip) throws Exception{		 
+	    @SuppressWarnings("static-access")
+	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+	    Preferencia dato = null;        
+            try{
+                dato = (Preferencia) sesion.createCriteria(Preferencia.class)
+                		.add(Restrictions.eq("descripcion", descrip)).uniqueResult();
+            } catch (Exception e) {  
+            e.printStackTrace();
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }  
+	    return dato;
+	}
 	
 	public void eliminarPreferencia(Preferencia dato) throws Exception{		 
 		@SuppressWarnings("static-access")

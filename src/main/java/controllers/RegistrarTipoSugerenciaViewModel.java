@@ -56,12 +56,21 @@ public class RegistrarTipoSugerenciaViewModel {
 		if (tipoSugerencia.getDescripcion() != null
 				&& !tipoSugerencia.getDescripcion().equalsIgnoreCase("")) {
 			if (tipoDao.obtenerTipoDescripcion(tipoSugerencia.getDescripcion()) == null) {
-				if (!editable)
+				if (!editable) {
 					tipoDao.agregarTipoSugerencia(tipoSugerencia);
-
-				else
+					Messagebox.show(
+							"El tipo de sugerencia "
+									+ tipoSugerencia.getDescripcion()
+									+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
 					tipoDao.actualizarTipoSugerencia(tipoSugerencia);
-
+					Messagebox.show(
+							"El tipo de sugerencia "
+									+ tipoSugerencia.getDescripcion()
+									+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoSugerencia", null);

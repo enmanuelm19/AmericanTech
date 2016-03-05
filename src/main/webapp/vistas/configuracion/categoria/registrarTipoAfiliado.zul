@@ -1,13 +1,18 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk xmlns:n="native">
-	<window id="winRegistrarTipoI"
+	<window id="winRegistrarTA"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title=" Registrar Tipo Afiliado" closable="true" border="none"
+		title="@load(vm.editable?'Editar tipo afiliado':'Registrar tipo afiliado')"
+		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%">
+		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarTipoAfiliadoViewModel')">
 		<caption iconSclass="z-icon-cogs" />
-		<div class="contenedor" align="center"
-			apply="org.zkoss.bind.BindComposer"
-			viewModel="@id('vm') @init('controllers.RegistrarTipoAfiliadoViewModel')">
+		<div class="contenedor" align="center">
 			<div align="left" width="90%">
 				<div align="left">
 					<div class="encabezado" style="margin-top: 4%">
@@ -23,8 +28,8 @@
 								<div class="col-md-2">Descripción</div>
 								<div class="col-md-10">
 									<textbox type="text" rows="4"
-										width="100%" value="@bind(vm.tipoAfiliado.descripcion)"
-										constraint="no empty" />
+										value="@bind(vm.tipoAfiliado.descripcion)"
+										width="100%" constraint="no empty" />
 								</div>
 							</div>
 						</row>
@@ -36,13 +41,13 @@
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
 								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar', win=winRegistrarTipoI)"/>
+								onClick="@command('guardar', win=winRegistrarTA)" />
 						</div>
 						<div>
 							<button id="cancelarBtn"
 								iconSclass="z-icon-times-circle" class='boton-cancelar'
 								style="margin-bottom: 6%" label="Cancelar"
-								onClick="@command('cerrarModal', win=winRegistrarTipoI)"/>
+								onClick="@command('cerrarModal', win=winRegistrarTA)" />
 						</div>
 					</hbox>
 				</div>
