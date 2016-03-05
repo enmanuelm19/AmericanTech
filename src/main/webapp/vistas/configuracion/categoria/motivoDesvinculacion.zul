@@ -63,7 +63,7 @@
 								</auxhead>
 								<columns>
 									<column>Codigo</column>
-									<column>Tipo Desvinculacion</column>
+									<column>Motivo Desvinculacion</column>
 									<column width="20%"
 										align="center">
 										Acciones

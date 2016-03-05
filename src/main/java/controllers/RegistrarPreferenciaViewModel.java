@@ -8,23 +8,25 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
 import Dao.PreferenciaDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Preferencia;
 import modelos.TipoPreferencia;
 
 public class RegistrarPreferenciaViewModel {
-	
+
 	private Preferencia preferencia;
 	private boolean editable;
 	private PreferenciaDao preferenciaDao;
 	private List<TipoPreferencia> allTipoPreferencia;
 	private TipoPreferenciaDao tipoPreferenciaDao;
-	
 
 	@Init
-	public void init(@ExecutionArgParam("preferencia") Preferencia preferencia) throws Exception {
+	public void init(@ExecutionArgParam("preferencia") Preferencia preferencia)
+			throws Exception {
 		if (preferencia == null) {
 			this.preferencia = new Preferencia();
 			this.editable = false;
@@ -36,12 +38,11 @@ public class RegistrarPreferenciaViewModel {
 		tipoPreferenciaDao = new TipoPreferenciaDao();
 		allTipoPreferencia = tipoPreferenciaDao.obtenerTodos();
 	}
-	
+
 	public ListModelList<TipoPreferencia> getAllTipoPreferencia() {
 
 		return new ListModelList<TipoPreferencia>(allTipoPreferencia);
 	}
-
 
 	public boolean isEditable() {
 		return editable;
@@ -67,19 +68,30 @@ public class RegistrarPreferenciaViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 
-		if (preferencia.getDescripcion() != null && !preferencia.getDescripcion().equalsIgnoreCase("")) {
-			if (!editable){
-				
-				System.out.println(" preferencia a guardar "+preferencia.getDescripcion());
-				
-				preferenciaDao.agregarPreferencia(preferencia);}
-
-			else
+		if (preferencia.getDescripcion() != null
+				&& !preferencia.getDescripcion().equalsIgnoreCase("")) {
+			if (preferenciaDao.obtenerPreferencia(preferencia.getDescripcion()) == null) {
+			if (!editable) {
+				preferenciaDao.agregarPreferencia(preferencia);
+				Messagebox.show(
+						"La preferencia " + preferencia.getDescripcion()
+								+ " ha sido registrada exitosamente", "",
+						Messagebox.OK, Messagebox.INFORMATION);
+			} else {
 				preferenciaDao.actualizarPreferencia(preferencia);
-
+				Messagebox.show(
+						"La preferencia " + preferencia.getDescripcion()
+								+ " ha sido actualizada exitosamente", "",
+						Messagebox.OK, Messagebox.INFORMATION);
+			}
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
-		}
+			}else {
+				Messagebox.show("Preferencia con la descripcion "
+						+ preferencia.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
+			}
 
-	}
+		}
 }

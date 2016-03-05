@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.MotivoPostulacionDao;
@@ -15,18 +16,19 @@ public class RegistrarMotivoPostulacionViewModel {
 
 	private MotivoPostulacion motivoPostulacion;
 	private boolean editable;
-	private MotivoPostulacionDao tipoDao;
+	private MotivoPostulacionDao motivoDao;
 
 	@Init
-	public void init(@ExecutionArgParam("MotivoPostulacion") MotivoPostulacion tipo) {
-		if (tipo == null) {
+	public void init(
+			@ExecutionArgParam("MotivoPostulacion") MotivoPostulacion motivo) {
+		if (motivo == null) {
 			this.motivoPostulacion = new MotivoPostulacion();
 			this.editable = false;
 		} else {
-			this.motivoPostulacion= tipo;
+			this.motivoPostulacion = motivo;
 			this.editable = true;
 		}
-		tipoDao = new MotivoPostulacionDao();
+		motivoDao = new MotivoPostulacionDao();
 	}
 
 	public boolean isEditable() {
@@ -52,19 +54,34 @@ public class RegistrarMotivoPostulacionViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (motivoPostulacion.getDescripcion() != null && !motivoPostulacion.getDescripcion().equalsIgnoreCase("") )
-		{
-			if (!editable)
-				tipoDao.agregarMotivoPostulacion(motivoPostulacion);
 
-			else tipoDao.actualizarMotivoPostulacion(motivoPostulacion);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshMotivoPostulacion",null);
+		if (motivoPostulacion.getDescripcion() != null
+				&& !motivoPostulacion.getDescripcion().equalsIgnoreCase("")) {
+			if (motivoDao.obtenerMotivoPostulacion(motivoPostulacion
+					.getDescripcion()) == null) {
+				if (!editable) {
+					motivoDao.agregarMotivoPostulacion(motivoPostulacion);
+					Messagebox.show("El motivo de postulacion "
+							+ motivoPostulacion.getDescripcion()
+							+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
+					motivoDao.actualizarMotivoPostulacion(motivoPostulacion);
+					Messagebox.show("El motivo de postulacion "
+							+ motivoPostulacion.getDescripcion()
+							+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+
+				win.detach();
+				BindUtils.postGlobalCommand(null, null,
+						"refreshMotivoPostulacion", null);
+			} else {
+				Messagebox.show("motivo postulacion con la descripcion "
+						+ motivoPostulacion.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
-		
-		
+
 	}
 }
-

@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.RecursoDao;
@@ -15,18 +16,18 @@ public class RegistrarRecursoViewModel {
 
 	private Recurso recurso;
 	private boolean editable;
-	private RecursoDao tipoDao;
+	private RecursoDao recursoDao;
 
 	@Init
-	public void init(@ExecutionArgParam("Recurso") Recurso tipo) {
-		if (tipo == null) {
+	public void init(@ExecutionArgParam("Recurso") Recurso recurso) {
+		if (recurso == null) {
 			this.recurso = new Recurso();
 			this.editable = false;
 		} else {
-			this.recurso = tipo;
+			this.recurso = recurso;
 			this.editable = true;
 		}
-		tipoDao = new RecursoDao();
+		recursoDao = new RecursoDao();
 	}
 
 	public boolean isEditable() {
@@ -52,19 +53,30 @@ public class RegistrarRecursoViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (recurso.getDescripcion() != null && !recurso.getDescripcion().equalsIgnoreCase("") )
-		{
-			if (!editable)
-				tipoDao.agregarRecurso(recurso);
 
-			else tipoDao.actualizarRecurso(recurso);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshRecurso",null);
+		if (recurso.getDescripcion() != null
+				&& !recurso.getDescripcion().equalsIgnoreCase("")) {
+			if (recursoDao.obtenerRecurso(recurso.getDescripcion()) == null) {
+				if (!editable) {
+					recursoDao.agregarRecurso(recurso);
+					Messagebox.show("El recurso " + recurso.getDescripcion()
+							+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
+					recursoDao.actualizarRecurso(recurso);
+					Messagebox.show("El recurso " + recurso.getDescripcion()
+							+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+				win.detach();
+				BindUtils.postGlobalCommand(null, null, "refreshRecurso", null);
+			} else {
+				Messagebox.show(
+						"recurso con la descripcion "
+								+ recurso.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
-		
-		
+
 	}
 }
-

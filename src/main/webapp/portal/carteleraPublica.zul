@@ -1,47 +1,72 @@
+<window title="" width="100%" class="col-md-12">
+	<zk xmlns:n="native">
+		<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+		<?link href="../assets/portal/css/index-portal.css.dsp" rel="stylesheet" type="text/css"?>
+		<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+		<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+		<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
+		<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
+		<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
+		<include src="header.html" />
 
-<window title=""  width="100%" class="col-md-12">
-<zk xmlns:n="native">
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href="../assets/portal/css/index-portal.css.dsp" rel="stylesheet" type="text/css"?>
-<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
-<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
-<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
-<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
-<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
-<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
-<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
-<include src="header.html" />
 
+		<image id="image" src="../assets/portal/img/bannerCartelera.png"
+			width="100%" />
 
-<image id="image" src="../assets/portal/img/bannerCartelera.png" width="100%" />
-
- <div  align="center" >
- <label style="font-family: 'Lato', sans-serif; font-size:2em;">
-Información </label><n:br></n:br> <n:br></n:br>
-<label style="font-family: 'Lato', sans-serif; font-size:1.3em;"> 
-Noticias, Eventos e Información para todo público.
- </label><n:br></n:br> <n:br></n:br><n:br></n:br>
-
- <div width="80%">
- 
-  <include src="../vistas/content/carteleraExterna.zul" />
-  <n:br></n:br> <n:br></n:br> <n:br></n:br>
-   <label style="font-family: 'Lato', sans-serif; font-size:2em;">
-Eventos</label><n:br></n:br> <n:br></n:br>  <n:br></n:br>
-  
-  <include src="../vistas/content/calendario.zul" />
- </div>
- </div>
+		<div align="center">
+			<label
+				style="font-family: 'Lato', sans-serif; font-size:2em;">
+				Información
+			</label>
+			<n:br></n:br>
+			<n:br></n:br>
+			<label
+				style="font-family: 'Lato', sans-serif; font-size:1.3em;">
+				Noticias, Eventos e Información para todo público.
+			</label>
+			<n:br></n:br>
+			<n:br></n:br>
+			<n:br></n:br>
+			<n:br></n:br>
 
 
 
- 
 
-<include src="footer.html" />
-    </zk>
+
+			<div width="80%">
+
+				<include src="../vistas/content/carteleraExterna.zul" />
+				<n:br></n:br>
+				<n:br></n:br>
+				<n:br></n:br>
+				<label
+					style="font-family: 'Lato', sans-serif; font-size:2em;">
+					Eventos
+				</label>
+				<n:br></n:br>
+				<n:br></n:br>
+				<n:br></n:br>
+				<n:br></n:br>
+
+				<include src="../vistas/content/calendarioExterno.zul" />
+			</div>
+		</div>
+
+
+
+
+		<script>
+			!function(d,s,id){var
+			js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+		</script>
+		<include src="footer.html" />
+	</zk>
 </window>
+
