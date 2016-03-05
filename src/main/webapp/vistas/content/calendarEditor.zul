@@ -1,8 +1,8 @@
 <div apply="org.zkoss.bind.BindComposer"
-    viewModel="@id('vm') @init('views.calendarEditorViewModel')"
+    viewModel="@id('vm') @init('controllers.CalendarEditorViewModel')"
     validationMessages="@id('vmsgs')">
     <window title="Create Calendar Event" border="normal" width="400px"
-        form="@id('fx') @load(vm.calendarEvent) @save(vm.calendarEvent, before='ok') @validator(vm.dateValidator)"
+        form="@id('fx') @load(vm.calendarEventModel) @save(vm.calendarEventModel, before='ok') @validator(vm.dateValidator)"
         allDay="@ref(vm.isAllDay(fx.beginDate,fx.endDate))"
         mode="popup" visible="@load(vm.visible)" position="center,center" >
         <vlayout hflex="1">

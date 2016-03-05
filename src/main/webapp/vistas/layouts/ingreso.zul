@@ -23,7 +23,7 @@
 						class="form-control lock-input" />
 				</div>
 				<image id="image"
-					src="../../assets/portal/img/logo3.png" />
+					src="../../assets/portal/img/american-tech-logo.png" />
 				<div class="lock-pwd"
 					style="  padding: 0px 0 0 75px;">
 					<div class="form-group">
