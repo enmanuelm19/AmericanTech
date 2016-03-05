@@ -46,7 +46,7 @@ private Sesion sesionPostgres;
 	}
 	
 	//Obtener una unidad de medida por el nombre
-	public UnidadMedida obtenerUnidadNombre(String nombre) throws Exception{		 
+	public UnidadMedida obtenerUnidadMedida(String nombre) throws Exception{		 
 	    @SuppressWarnings("static-access")
 	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
 	    UnidadMedida dato = null;        

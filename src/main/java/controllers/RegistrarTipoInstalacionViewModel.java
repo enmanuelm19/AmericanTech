@@ -58,12 +58,21 @@ public class RegistrarTipoInstalacionViewModel {
 				&& !tipoInstalacion.getDescripcion().equalsIgnoreCase("")) {
 			if (tipoDao
 					.obtenerTipoDescripcion(tipoInstalacion.getDescripcion()) == null) {
-				if (!editable)
+				if (!editable) {
 					tipoDao.agregarTipoInstalacion(tipoInstalacion);
-
-				else
+					Messagebox.show(
+							"El tipo de instalacion "
+									+ tipoInstalacion.getDescripcion()
+									+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
 					tipoDao.actualizarTipoInstalacion(tipoInstalacion);
-
+					Messagebox.show(
+							"El tipo de instalacion "
+									+ tipoInstalacion.getDescripcion()
+									+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoInstalacion", null);

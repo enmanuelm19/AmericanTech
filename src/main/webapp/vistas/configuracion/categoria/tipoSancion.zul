@@ -7,51 +7,52 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categorias" href="#" />
-						<label value="Motivo postulacion" />
+						<label value="Tipo sanción" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Motivos Postulaciones" />
+						<label value="Tipos Sanciones" />
 					</div>
 
 					<space />
 					<space />
-					<div class='form-pricing  col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.MotivoPostulacionViewModel')">
+						viewModel="@id('vm') @init('controllers.TipoSancionViewModel')">
 						<div xmlns:w='client' align="right">
-							<button id="btnRegMotivoPostulacion"
-								label="Agregar Nuevo" iconSclass="z-icon-plus"
-								style="margin-bottom: -4%" class='boton-guardar'
+							<button id="btnRegTipoSancion"
+								style="margin-bottom: -4%" label="Agregar Nuevo"
+								iconSclass="z-icon-plus" class='boton-guardar'
 								onClick="@command('showModal')" />
 						</div>
-
+						
 						<separator spacing="10px" />
 
 						<div class="contenido">
 							<div align="left">
-								<div class='encabezado'>
-									Lista Motivos Postulaciones
+								<div sclass="encabezado">
+									<label
+										value="Lista Tipos Saciones" />
 								</div>
 								<div class='linea-two'></div>
+
 							</div>
 							<separator spacing="20px" />
-
 							<grid
-								emptyMessage="No se encuentran motivos postulacion registrados"
-								mold="paging" pageSize="10" id="gridMotivoPostulacion"
-								model="@load(vm.allMotivoPostulacion)">
+								emptyMessage="No se encuentran tipos de sanciones registradas"
+								mold="paging" pageSize="10" id="gridMotivoSancion"
+								model="@load(vm.allMotivoSancion)">
 								<auxhead sclass="category-center">
-									<auxheader colspan="1">
+									<auxheader>
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
 											width="85%" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="1">
+									<auxheader>
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
@@ -60,22 +61,28 @@
 									</auxheader>
 									<auxheader colspan="1" />
 								</auxhead>
-
 								<columns>
 									<column hflex="2">Codigo</column>
-									<column hflex="2">Motivo Postulacion</column>
+									<column hflex="2">
+										Tipo Sancion
+									</column>
+									<column hflex="2">
+										Descripcion
+									</column>
 									<column width="20%"
 										align="center">
 										Acciones
 									</column>
 								</columns>
-
 								<rows>
+
 									<template name="model">
 
 										<row>
 											<label
-												value="@load(each.idMotivoPostulacion)" />
+												value="@load(each.idMotivoSancion)" />
+												<label
+												value="@load(each.motivo)" />
 											<label
 												value="@load(each.descripcion)" />
 											<div>
@@ -91,14 +98,13 @@
 										</row>
 
 									</template>
-								</rows>
 
+								</rows>
 								<foot>
-									<footer span="1"
+									<footer span="6"
 										class="footer_right" label="@load(vm.cantRegistros)" />
 								</foot>
 							</grid>
-
 						</div>
 					</div>
 				</div>
