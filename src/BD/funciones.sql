@@ -65,4 +65,6 @@ VALUES  (1, 'Configuracion', ' ', 'z-icon-cogs', ' ', 0, true),
 	(64, 'Instalacion', ' ', 'z-icon-angle-double-right', ' ', 14, true),
 	(65, 'Evento', ' ', 'z-icon-angle-double-right', ' ', 14, true),
 	(66, 'Unidad medida', 'configuracion/categoria/unidadMedida.zul', 'z-icon-angle-double-right', ' ', 8, true);
+        (67, 'Tipo eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, true);
+        (68, 'Indicador', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, true);
 	
