@@ -20,7 +20,7 @@
 				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px"	 
 					 apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.TipoAfiliadoViewModel')">
 				<div xmlns:w='client' align="right">
-					<button id="btnRegParentesco" style="margin-bottom: -4%"  label="Agregar Nuevo" iconSclass="z-icon-plus"  
+					<button id="btnRegTipoAfiliado" style="margin-bottom: -4%"  label="Agregar Nuevo" iconSclass="z-icon-plus"  
 							class='boton-guardar' onClick="@command('showModal')"/>
 				</div>
 			
@@ -33,7 +33,7 @@
 					</div>
 					<separator spacing="20px"/>
 					
-					<grid id="gridTipoAfiliado" model="@load(vm.allTipoAfiliado)" emptyMessage="No se encuentran tipos de instalciones registrados" mold="paging"
+					<grid id="gridTipoAfiliado" model="@load(vm.allTipoAfiliado)" emptyMessage="No se encuentran tipos de afiliados registrados" mold="paging"
 							pageSize="10" >
 						<auxhead sclass="category-center">
             				<auxheader colspan="1">
