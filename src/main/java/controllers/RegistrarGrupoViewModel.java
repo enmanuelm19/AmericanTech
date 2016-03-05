@@ -108,6 +108,13 @@ public class RegistrarGrupoViewModel {
 	}
 
 	public List<FuncionGrupo> getFunciones() {
+		List<FuncionGrupo> tmp =  new ArrayList<FuncionGrupo>();
+		for(FuncionGrupo f: funciones){
+			if(f.isActivo()){
+				tmp.add(f);
+			}
+		}
+		funciones = tmp;
 		return funciones;
 	}
 

@@ -1,7 +1,5 @@
-<?page title="Dashboard - ZK Admin"?>
-
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
+<?page title="American Tech" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="../assets/img/at-favicon.png" ?>
 
 <?link href="../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 

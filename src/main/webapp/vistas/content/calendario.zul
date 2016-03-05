@@ -3,7 +3,7 @@
 		collapsible="true" sclass="transparent">
 		<caption iconSclass="z-icon-calendar orange" label="Calendario" />
 		<panelchildren>
-			<div apply="com.ucla.america.controllers.CalendarController"
+			<div apply="controllers.CalendarViewModel"
 				align="center" width="100%" height="700px">
 				<!-- Control Menu -->
 				<hlayout sclass="z-valign-middle">

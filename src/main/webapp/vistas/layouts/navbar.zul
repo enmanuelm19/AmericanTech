@@ -1,30 +1,40 @@
-<div sclass="navbar" apply="application.NavbarComposer" width="100%">
+<div sclass="navbar" style="padding-left:0px"
+	apply="application.NavbarComposer" width="100%">
 	<!-- Brand Logo -->
-	
-	 <image tooltiptext="Avatar" width="9%"  src="/assets/img/AmericanTechP.png" sclass="pull-left  msg-photo"/>
-	
+	<div sclass="nav-user pull-left" style="width: 190px;border-right: 1px solid #cccccc;
+   		 height: 100%;background: #FFF;position: absolute;">
+		<image tooltiptext="Avatar" width="65%" style="margin-left: 27px;"
+			src="/assets/img/american-tech.png" sclass="pull-left  msg-photo" />
+	</div>
 	<!-- Navbar -->
 	<hlayout sclass="nav-user pull-right" spacing="0">
-		
-		<a id="anoti" iconSclass="z-icon-bell" popup="notipp, position=after_end, type=toggle"  sclass="blue">
-			<label value="8" sclass="badge badge-info"/>
+
+		<a id="anoti" iconSclass="z-icon-bell"
+			popup="notipp, position=after_end, type=toggle" sclass="blue">
+			<label value="8" sclass="badge badge-info" />
 		</a>
-		 <a id="amsg" iconSclass="z-icon-comment" popup="msgpp, position=after_end, type=toggle" sclass="green">
-			<label value="5" sclass="badge badge-success"/>
+		<a id="amsg" iconSclass="z-icon-comment"
+			popup="msgpp, position=after_end, type=toggle" sclass="green">
+			<label value="5" sclass="badge badge-success" />
 		</a>
-		
-		<a id="post" iconSclass="z-icon-user" popup="postpp, position=after_end, type=toggle" style="background-color: #F05B5B;">
-			<label value="3" sclass="badge badge-important"/>
+
+		<a id="post" iconSclass="z-icon-user"
+			popup="postpp, position=after_end, type=toggle"
+			style="background-color: #F05B5B;">
+			<label value="3" sclass="badge badge-important" />
 		</a>
-	   
+
 		<!-- User menu -->
 		<menubar sclass="user-menu light-blue">
-			<menu tooltiptext="John's Avatar" label="Bienvenido, nombre" image="/assets/intranet/avatars/avatar.png">
+			<menu tooltiptext="John's Avatar" label="Bienvenido, nombre"
+				image="/assets/intranet/avatars/avatar.png">
 				<menupopup>
-					
-					<menuitem label="Perfil" iconSclass="z-icon-user" href="america/vistas/socio/miPerfil.zul"/>
-					<menuseparator/>
-					<menuitem label="Salir" href="layouts/ingreso.zul" iconSclass="z-icon-off"/>
+
+					<menuitem label="Perfil" iconSclass="z-icon-user"
+						href="america/vistas/socio/miPerfil.zul" />
+					<menuseparator />
+					<menuitem label="Salir" href="layouts/ingreso.zul"
+						iconSclass="z-icon-off" />
 				</menupopup>
 			</menu>
 		</menubar>
@@ -32,93 +42,130 @@
 	<!-- Popups of navbar -->
 
 	<popup id="notipp" sclass="menu menu-pink" width="240px">
-			<a label="Notificaciones" sclass="header" iconSclass="z-icon-exclamation-triangle"/>
-			<vlayout spacing="0">
-				<a iconSclass="btn btn-xs no-hover btn-pink z-icon-money" href="#">
-					<label>3 nuevas solicitudes</label>
-					
-				</a>
-				<a iconSclass="btn btn-xs no-hover btn-primary z-icon-user" href="#">
-					<label>1 nueva postulacion</label>
-				</a>
-				<a iconSclass="btn btn-xs no-hover btn-success z-icon-comment" href="#">
-					<label>Nuevos comentarios</label>
-				
-				</a>
-				
-				<a label="Ver todas las notificaciones" href="#"><span class="z-icon-arrow-right"/></a>
+		<a label="Notificaciones" sclass="header"
+			iconSclass="z-icon-exclamation-triangle" />
+		<vlayout spacing="0">
+			<a iconSclass="btn btn-xs no-hover btn-pink z-icon-money"
+				href="#">
+				<label>3 nuevas solicitudes</label>
+
+			</a>
+			<a iconSclass="btn btn-xs no-hover btn-primary z-icon-user"
+				href="#">
+				<label>1 nueva postulacion</label>
+			</a>
+			<a
+				iconSclass="btn btn-xs no-hover btn-success z-icon-comment"
+				href="#">
+				<label>Nuevos comentarios</label>
+
+			</a>
+
+			<a label="Ver todas las notificaciones" href="#">
+				<span class="z-icon-arrow-right" />
+			</a>
 		</vlayout>
 	</popup>
 	<popup id="msgpp" sclass="menu" width="240px">
-		<a label="3 Sugerencias" sclass="header" iconSclass="z-icon-envelope-o"/>
+		<a label="3 Sugerencias" sclass="header"
+			iconSclass="z-icon-envelope-o" />
 		<vlayout spacing="0">
 			<a href="#">
-				<image tooltiptext="Alex's Avatar" src="/assets/intranet/avatars/avatar.png" sclass="msg-photo"/>
+				<image tooltiptext="Alex's Avatar"
+					src="/assets/intranet/avatars/avatar.png" sclass="msg-photo" />
 				<span sclass="msg-body">
 					<span sclass="msg-title">
-						<label value="Alex:" sclass="blue"/>
+						<label value="Alex:" sclass="blue" />
 						El campo de softboll se encuentra poco iluminado
 					</span>
-					<span sclass="msg-time"><span class="z-icon-clock-o"/>Hace un momento</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						Hace un momento
+					</span>
 				</span>
 			</a>
 			<a href="#">
-				<image tooltiptext="Susan's Avatar" src="/assets/intranet/avatars/avatar3.png" sclass="msg-photo"/>
+				<image tooltiptext="Susan's Avatar"
+					src="/assets/intranet/avatars/avatar3.png" sclass="msg-photo" />
 				<span class="msg-body">
 					<span class="msg-title">
-						<label value="Susan:" sclass="blue"/>
+						<label value="Susan:" sclass="blue" />
 						Excelente el evento del día de las madres
 					</span>
-					<span sclass="msg-time"><span class="z-icon-clock-o"/>20 minutes ago</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						20 minutes ago
+					</span>
 				</span>
 			</a>
 			<a href="#">
-				<image tooltiptext="Bob's Avatar" src="/assets/intranet/avatars/avatar4.png" sclass="msg-photo"/>
+				<image tooltiptext="Bob's Avatar"
+					src="/assets/intranet/avatars/avatar4.png" sclass="msg-photo" />
 				<span class="msg-body">
 					<span class="msg-title">
-						<label value="Bob:" sclass="blue"/>
+						<label value="Bob:" sclass="blue" />
 						Excelente el servicio de la barra del caney
 					</span>
-					<span sclass="msg-time"><span class="z-icon-clock-o"/>3:15 pm</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						3:15 pm
+					</span>
 				</span>
 			</a>
-			<a label="See all messages" href="#"><span class="z-icon-arrow-right"/></a>
+			<a label="See all messages" href="#">
+				<span class="z-icon-arrow-right" />
+			</a>
 		</vlayout>
 	</popup>
 	<popup id="postpp" sclass="menu" width="240px">
-		<a label="3 Postulaciones" sclass="header" iconSclass="z-icon-envelope-o"/>
+		<a label="3 Postulaciones" sclass="header"
+			iconSclass="z-icon-envelope-o" />
 		<vlayout spacing="0">
 			<a href="#">
-				<image tooltiptext="Alex's Avatar" src="/assets/intranet/avatars/avatar.png" sclass="msg-photo"/>
+				<image tooltiptext="Alex's Avatar"
+					src="/assets/intranet/avatars/avatar.png" sclass="msg-photo" />
 				<span sclass="msg-body">
 					<span sclass="msg-title">
-						<label value="Nuevo:" sclass="blue"/>
-						Carlos Rodriguez 
+						<label value="Nuevo:" sclass="blue" />
+						Carlos Rodriguez
 					</span>
-					<span sclass="msg-time"><span class="z-icon-clock-o"/>Hace un momento</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						Hace un momento
+					</span>
 				</span>
 			</a>
 			<a href="#">
-				<image tooltiptext="Susan's Avatar" src="/assets/intranet/avatars/avatar3.png" sclass="msg-photo"/>
+				<image tooltiptext="Susan's Avatar"
+					src="/assets/intranet/avatars/avatar3.png" sclass="msg-photo" />
 				<span class="msg-body">
 					<span class="msg-title">
-						<label value="Nuevo:" sclass="blue"/>
+						<label value="Nuevo:" sclass="blue" />
 						Susana Lobo
 					</span>
-					<span sclass="msg-time"><span class="z-icon-clock-o"/>20 minutes ago</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						20 minutes ago
+					</span>
 				</span>
 			</a>
 			<a href="#">
-				<image tooltiptext="Bob's Avatar" src="/assets/intranet/avatars/avatar4.png" sclass="msg-photo"/>
+				<image tooltiptext="Bob's Avatar"
+					src="/assets/intranet/avatars/avatar4.png" sclass="msg-photo" />
 				<span class="msg-body">
 					<span class="msg-title">
-						<label value="Nuevo:" sclass="blue"/>
+						<label value="Nuevo:" sclass="blue" />
 						Bob Zambrano
 					</span>
-					<span sclass="msg-time"><span class="z-icon-clock-o"/>3:15 pm</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						3:15 pm
+					</span>
 				</span>
 			</a>
-			<a label="Ver todas" href="#"><span class="z-icon-arrow-right"/></a>
+			<a label="Ver todas" href="#">
+				<span class="z-icon-arrow-right" />
+			</a>
 		</vlayout>
 	</popup>
 </div>
