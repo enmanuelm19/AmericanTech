@@ -57,8 +57,7 @@ public class RegistrarTipoAfiliadoViewModel {
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
-				BindUtils.postGlobalCommand(null, null, "refreshTipoAfiliado",
-						null);
+				BindUtils.postGlobalCommand(null, null, "refreshTipoAfiliado",null);
 			} else {
 				Messagebox.show("tipo de afiliado con la descripción"
 						+ tipoAfiliado.getDescripcion() + " ya existe",
@@ -82,5 +81,6 @@ public class RegistrarTipoAfiliadoViewModel {
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}
-
+	
+	
 }
