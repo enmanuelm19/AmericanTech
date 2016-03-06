@@ -85,11 +85,21 @@ private Sesion sesionPostgres;
         } 
        
         return datos; 
-	}	
+	}
 	
+	public Club obtenerClub(int id) throws Exception {            
+	      
+		   Club datos = new Club();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Club) em.get(Club.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	        return datos; 
+	}
 
-		
-	
-	
-	
 }

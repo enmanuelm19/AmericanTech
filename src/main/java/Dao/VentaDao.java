@@ -4,6 +4,7 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Accion;
 import modelos.Venta;
 
 import org.hibernate.Session;
@@ -34,31 +35,13 @@ public class VentaDao {
 	}
 
 	//Obtiene una lista con todas las ventas que se han realizado de una misma accion
-	public List<Venta> obtenerVentasAccion(int idAccion)throws Exception{
+	public List<Venta> obtenerVentasAccion(Accion dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<Venta> datos = new ArrayList<Venta>();        
             try{
                 datos = (List<Venta>) sesion.createCriteria(Venta.class)
-                		.add(Restrictions.eq("accionid_accion",idAccion)).list();
-            } catch (Exception e) {  
-            e.printStackTrace();
-           
-            throw new Exception(e.getMessage(),e.getCause());
-            }  finally {  
-                sesion.close();  
-            }       
-	    return datos;	
-	}
-	
-	//Obtiene una lista con todas las ventas que se han realisado en funcion de un motivo especifico
-	public List<Venta> obtenerVentasMotivo(int idMotivo)throws Exception{
-	    @SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();   
-	    List<Venta> datos = new ArrayList<Venta>();        
-            try{
-                datos = (List<Venta>) sesion.createCriteria(Venta.class)
-                		.add(Restrictions.eq("motivo_ventaid_motivo_venta",idMotivo)).list();
+                		.add(Restrictions.eq("accion",dato)).add(Restrictions.eq("activo",true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            

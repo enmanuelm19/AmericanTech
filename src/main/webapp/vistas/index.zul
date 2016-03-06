@@ -1,13 +1,11 @@
-<?page title="Dashboard - ZK Admin"?>
-
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
+<?page title="American Tech" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="../assets/img/at-favicon.png" ?>
 
 <?link href="../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 
 
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
@@ -15,30 +13,34 @@
 <zk xmlns:n="native">
 	<include src="layouts/navbar.zul" />
 	<div id="main">
-		<hlayout spacing="0" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
-			<div id="sidebar" sclass="sidebar" >
-	<!-- Navigation List -->
-	<div> 
-	<navbar id="navbar" sclass="nav-list" orient="vertical">
-		<navitem label="Inicio" iconSclass="z-icon-home" selected="true" href="/america/vistas/index.zul"/>
-	</navbar>
-	</div>  
-	<!-- Toggler -->
-	<div sclass="sidebar-collapse">
-		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
-	</div>
-	<!-- Tooptip for Calender Navitem -->
-	<popup id="calpp" zclass="tooltip" sclass="right tooltip-error cal">
-		<span zclass="tooltip-arrow"/>
-		<label zclass="tooltip-inner" value="2 Important Event"/>
-	</popup>
-</div>
+		<hlayout spacing="0" apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
+			<div id="sidebar" sclass="sidebar">
+				<!-- Navigation List -->
+				<div>
+					<navbar id="navbar" sclass="nav-list"
+						orient="vertical">
+						<navitem label="Inicio" iconSclass="z-icon-home"
+							selected="true" href="/america/vistas/index.zul" />
+					</navbar>
+				</div>
+				<!-- Toggler -->
+				<div sclass="sidebar-collapse">
+					<a id="toggler"
+						iconSclass="z-icon-angle-double-left" />
+				</div>
+				<!-- Tooptip for Calender Navitem -->
+				<popup id="calpp" zclass="tooltip"
+					sclass="right tooltip-error cal">
+					<span zclass="tooltip-arrow" />
+					<label zclass="tooltip-inner"
+						value="2 Important Event" />
+				</popup>
+			</div>
 			<div id="contenido" hflex="1">
 				<include src="layouts/breadcrumbs.zul" />
 				<include src="layouts/page.zul" />
 			</div>
 		</hlayout>
 	</div>
-
-
 </zk>

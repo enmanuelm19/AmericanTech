@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.CalendarioFecha;
+import modelos.Evento;
+import modelos.Reservacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -85,10 +87,58 @@ private Sesion sesionPostgres;
         } 
        
         return datos; 
-	}	
+	}
 	
+	//devuelve un registro en el calendario por evento
+	public CalendarioFecha obtenerPorEvento(Evento evento) throws Exception {            
+	      
+		   CalendarioFecha datos = new CalendarioFecha();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (CalendarioFecha) em.createCriteria(CalendarioFecha.class).add(Restrictions.eq("evento", evento))
+		    		.add(Restrictions.eq("activo", true)).uniqueResult();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
+	//devuelve un registro en el calendario por reservacion
+	public CalendarioFecha obtenerPorEvento(Reservacion reservacion) throws Exception {            
+	      
+		   CalendarioFecha datos = new CalendarioFecha();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (CalendarioFecha) em.createCriteria(CalendarioFecha.class).add(Restrictions.eq("reservacion", reservacion))
+		    		.add(Restrictions.eq("activo", true)).uniqueResult();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
-	
-	
+	//devuelve un registro en el calendario por su id
+	public CalendarioFecha obtenerPorEvento(int id) throws Exception {            
+	      
+		   CalendarioFecha datos = new CalendarioFecha();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (CalendarioFecha) em.get(CalendarioFecha.class, id);            
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 }

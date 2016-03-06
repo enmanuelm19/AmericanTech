@@ -1,24 +1,22 @@
 package Dao;
 
-import java.util.List;
+import modelos.Portal;
 import java.util.ArrayList;
 
-import modelos.Hora;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import confi.Sesion;
 
 import org.hibernate.Transaction;
-import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.Session;
 
-/**
- * creado por Rosmary Fuentes
- */
-
-public class HoraDao {
+public class PortalDao {
 
 private Sesion sesionPostgres;
 	
-	public void agregarHora(Hora dato) throws Exception{
+	public void agregarPortal(Portal dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -35,12 +33,12 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public Hora obtenerHora(int id) throws Exception{		 
+	public Portal obtenerPortal(int id) throws Exception{		 
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();  
-	    Hora dato = null;        
+	    Portal dato = null;        
             try{
-                dato = (Hora ) sesion.get(Hora .class,  id);
+                dato = (Portal ) sesion.get(Portal .class,  id);
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -52,7 +50,7 @@ private Sesion sesionPostgres;
 	    return dato;
 }
 	
-	public void eliminarHora(Hora dato) throws Exception{		 
+	public void eliminarPortal(Portal dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -67,10 +65,28 @@ private Sesion sesionPostgres;
              throw e;
          } finally {  
              em.close();  
-         }   
+         }  
    }
 	
-	public void actualizarHora(Hora dato) throws Exception{
+	public void hardDelete(Portal dato){
+		@SuppressWarnings("static-access")
+		Session em = sesionPostgres.getSessionFactory().openSession();
+		Transaction tx = null;
+		try {
+			tx = em.beginTransaction();
+			em.delete(dato);
+			tx.commit();
+		} catch(Exception e){
+			tx.rollback();
+			e.printStackTrace();
+		}
+		finally {
+			em.close();
+		}
+				
+	}
+	
+	public void actualizarPortal(Portal dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -86,21 +102,4 @@ private Sesion sesionPostgres;
              em.close();  
          } 
 	}
-
-	public List<Hora> obtenerTodos() throws Exception {            
-	      
-		   List<Hora> datos = new ArrayList<Hora>();  
-		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-	        try {  	
-		    datos =  (List<Hora>) em.createCriteria(Hora.class).add(Restrictions.eq("activo", true)).list();             
-	        } catch (Exception e) {             
-	       
-	         throw new Exception(e.getMessage(),e.getCause());
-	        } finally {  
-	          em.close();  
-	        } 
-	       
-	        return datos; 
-		}
-	
 }

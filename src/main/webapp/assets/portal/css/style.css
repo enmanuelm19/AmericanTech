@@ -286,13 +286,10 @@ body {
 	-webkit-transition: -webkit-transform 1s;
 }
 .dc_zoom_css span.roll_css6 {
-	-o-transition-duration: 1s;
-	-moz-transition-duration: 1s;
-	-webkit-transition: -webkit-transform 1s;
+	
 	height: 100%;
 	opacity: 0;
-	position: absolute;
-	width: 100%;
+	
 }
 .dc_zoom_css span.roll_css6 img:hover {
 	opacity:1;

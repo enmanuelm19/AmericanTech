@@ -57,7 +57,7 @@ public class TipoAfiliadoDao {
 	    TipoAfiliado dato = null;        
             try{
                 dato = (TipoAfiliado) sesion.createCriteria(TipoAfiliado.class)
-                		.add(Restrictions.eq("descripcion", descrip)).uniqueResult();
+                		.add(Restrictions.eq("descripcion", descrip)).add(Restrictions.eq("activo", null)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());

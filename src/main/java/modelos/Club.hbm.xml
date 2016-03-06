@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
         <id name="idClub" type="int">
@@ -18,16 +18,16 @@
             <column name="nombre" length="60" not-null="true" />
         </property>
         <property name="direccion" type="string">
-            <column name="direccion" length="150" not-null="true" />
+            <column name="direccion" length="250" not-null="true" />
         </property>
         <property name="telefono" type="string">
             <column name="telefono" length="20" not-null="true" />
         </property>
         <property name="mision" type="string">
-            <column name="mision" length="250" not-null="true" />
+            <column name="mision" not-null="true" />
         </property>
         <property name="vision" type="string">
-            <column name="vision" length="250" not-null="true" />
+            <column name="vision" not-null="true" />
         </property>
         <property name="telfAlternativo" type="string">
             <column name="telf_alternativo" length="20" not-null="true" />
