@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.EstadoEvento;
 import modelos.Evento;
 import confi.Sesion;
 
@@ -85,10 +86,38 @@ private Sesion sesionPostgres;
         } 
        
         return datos; 
-	}	
+	}
 	
+	public List<Evento> obtenerPorEstado(EstadoEvento estadoEvento) throws Exception {            
+	      
+		   List<Evento> datos = new ArrayList<Evento>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<Evento>) em.createCriteria(Evento.class).add(Restrictions.eq("estadoEvento", estadoEvento))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
-
-	
-	
+	public Evento obtenerEvento(int id) throws Exception {            
+	      
+		   Evento datos = new Evento();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Evento) em.get(Evento.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 }

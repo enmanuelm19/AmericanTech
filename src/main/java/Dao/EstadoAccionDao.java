@@ -103,7 +103,37 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 	
+	public EstadoAccion obtenerEstadoAccion(int id) throws Exception {            
+	      
+		   EstadoAccion datos = new EstadoAccion();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (EstadoAccion) em.get(EstadoAccion.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
-	
+	public EstadoAccion obtenerEstadoAccion(String nombre) throws Exception {            
+	      
+		   EstadoAccion datos = new EstadoAccion();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (EstadoAccion) em.createCriteria(EstadoAccion.class).add(Restrictions.eq("nombre", nombre))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
 }

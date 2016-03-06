@@ -68,7 +68,7 @@ public class TipoAfiliadoViewModel {
 	public void showModal(@BindingParam("Tipo") TipoAfiliado tipo) {
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("TipoAfiliado", tipo);
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarParentesco.zul",
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoAfiliado.zul",
 				null, args);
 		window.doModal();
 	}

@@ -46,13 +46,13 @@ private Sesion sesionPostgres;
 	}
 	
 	//Obtener una unidad de medida por el nombre
-	public UnidadMedida obtenerUnidadNombre(String nombre) throws Exception{		 
+	public UnidadMedida obtenerUnidadMedida(String nombre) throws Exception{		 
 	    @SuppressWarnings("static-access")
 	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
 	    UnidadMedida dato = null;        
             try{
                 dato = (UnidadMedida) sesion.createCriteria(UnidadMedida.class)
-                		.add(Restrictions.eq("nombre", nombre)).uniqueResult();
+                		.add(Restrictions.eq("nombre", nombre)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());

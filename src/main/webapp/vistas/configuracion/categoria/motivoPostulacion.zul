@@ -63,7 +63,7 @@
 
 								<columns>
 									<column hflex="2">Codigo</column>
-									<column hflex="2">Motivo</column>
+									<column hflex="2">Motivo Postulacion</column>
 									<column width="20%"
 										align="center">
 										Acciones

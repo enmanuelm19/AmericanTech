@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.MotivoVentaDao;
@@ -15,18 +16,18 @@ public class RegistrarMotivoVentaViewModel {
 
 	private MotivoVenta motivoVenta;
 	private boolean editable;
-	private MotivoVentaDao tipoDao;
+	private MotivoVentaDao motivoDao;
 
 	@Init
-	public void init(@ExecutionArgParam("MotivoVenta") MotivoVenta tipo) {
-		if (tipo == null) {
+	public void init(@ExecutionArgParam("MotivoVenta") MotivoVenta motivo) {
+		if (motivo == null) {
 			this.motivoVenta = new MotivoVenta();
 			this.editable = false;
 		} else {
-			this.motivoVenta = tipo;
+			this.motivoVenta = motivo;
 			this.editable = true;
 		}
-		tipoDao = new MotivoVentaDao();
+		motivoDao = new MotivoVentaDao();
 	}
 
 	public boolean isEditable() {
@@ -42,7 +43,7 @@ public class RegistrarMotivoVentaViewModel {
 	}
 
 	public void setMotivoVenta(MotivoVenta motivoVenta) {
-		this.motivoVenta= motivoVenta;
+		this.motivoVenta = motivoVenta;
 	}
 
 	@Command
@@ -52,18 +53,35 @@ public class RegistrarMotivoVentaViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		
-		if (motivoVenta.getDescripcion() != null && !motivoVenta.getDescripcion().equalsIgnoreCase("") )
-		{
-			if (!editable)
-				tipoDao.agregarMotivoVenta(motivoVenta);
 
-			else tipoDao.actualizarMotivoVenta(motivoVenta);
-				
-			win.detach();
-			BindUtils.postGlobalCommand(null,null,"refreshMotivoVenta",null);
+		if (motivoVenta.getDescripcion() != null
+				&& !motivoVenta.getDescripcion().equalsIgnoreCase("")) {
+			if (motivoDao.obtenerMotivoVenta(motivoVenta.getDescripcion()) == null) {
+				if (!editable) {
+					motivoDao.agregarMotivoVenta(motivoVenta);
+					Messagebox.show(
+							"El motivo de venta "
+									+ motivoVenta.getDescripcion()
+									+ " ha sido registrado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				} else {
+					motivoDao.actualizarMotivoVenta(motivoVenta);
+					Messagebox.show(
+							"El motivo de venta "
+									+ motivoVenta.getDescripcion()
+									+ " ha sido actualizado exitosamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+
+				win.detach();
+				BindUtils.postGlobalCommand(null, null, "refreshMotivoVenta",
+						null);
+			} else {
+				Messagebox.show("motivo venta con la descripcion "
+						+ motivoVenta.getDescripcion() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 		}
-		
-		
+
 	}
 }

@@ -57,7 +57,7 @@ public class TipoPreferenciaDao {
 	    TipoPreferencia dato = null;        
             try{
                 dato = (TipoPreferencia) sesion.createCriteria(TipoPreferencia.class)
-                		.add(Restrictions.eq("descripcion", descrip)).uniqueResult();
+                		.add(Restrictions.eq("descripcion", descrip)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());

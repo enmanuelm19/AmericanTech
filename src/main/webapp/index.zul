@@ -10,6 +10,7 @@
 <n:meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <n:link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'/>
 
+<n:link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <n:link rel="stylesheet" type="text/css" href="assets/portal/css/imgeffect.css" />
 <n:link href="assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="assets/portal/js/jquery.min.js"></script>
@@ -108,7 +109,7 @@
 								<n:li><n:a href="#about" class="scroll">¿Quiénes somos?</n:a></n:li>
 								   <n:li><n:a  href="#contact"  class="scroll">Contacto</n:a></n:li>
 								     <n:li><n:a  href="/america/portal/instalaciones.zul" >Instalaciones</n:a></n:li>
-								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Cartelera</n:a></n:li>
+								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Informate</n:a></n:li>
 								   <n:li><n:a  href="/america/portal/postulacion.zul" >Postulación</n:a></n:li>
 								   <n:li><n:a  href="/america/vistas/layouts/ingreso.zul" >Ingreso</n:a></n:li>
 								 <n:div class="clear"> </n:div>
@@ -142,9 +143,7 @@
 		<n:div class="about-grids">
 			<n:div class="grid">
 				<n:div class="dc_zoom_css">
-				<n:span class="roll_css6">
-				
-				</n:span>
+			
 				<n:img class="post-person" src="assets/portal/img/imagen1.png"/>
 				</n:div>
 				<n:div class="desc">
@@ -152,30 +151,28 @@
 					<n:p></n:p>
 					<n:p>El Centro Atlético América cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas.  Además cuenta con un salón de Fiestas y dos Caneis para el disfrute de sus socios e invitados</n:p>
 		
-			<n:a href="portal/instalaciones.zul" class="boton-Formulario" type="button"   > Ver instalaciones</n:a></n:div>
+			<n:a href="portal/instalaciones.zul" class="boton-Formulario"  > Ver instalaciones</n:a></n:div>
 		
 			</n:div>
 			<n:div class="grid">
 				<n:div class="dc_zoom_css">
-				<n:span class="roll_css6">
 				
-				</n:span>
+				
+				
 				<n:img class="post-person" src="assets/portal/img/img2.png"/>
 				</n:div>
 				<n:div class="desc">
 					<n:h3>Nuestros socios</n:h3>
 					<n:p></n:p>
 					<n:p>Nuestros socios se caracterizan por su familiaridad y buen comportamiento, ayudando así a mantener las tradiciones de club.  ¿Quieres ser un socio del Centro Atlético América? </n:p>
-				<n:a href="portal/postulacion.zul" class="boton-Formulario" type="button"   >Postulate</n:a>
+				<n:a style=" z-index: 1;" href="portal/postulacion.zul" class="boton-Formulario" type="button"   >Postulate</n:a>
 				
 				
 				</n:div>
 			</n:div>
 			<n:div class="grid">
-				<n:div class="dc_zoom_css">
-				<n:span class="roll_css6">
+				<n:div class="">
 				
-				</n:span>
 				<n:img class="post-person" src="assets/portal/img/img3.png"/>
 				</n:div>
 				<n:div class="desc">
@@ -193,24 +190,51 @@
 <n:div class="cartelera" id="cartelera">
 	<n:div class="wrap ">
 	<n:h2>Más de nosotros</n:h2><n:br></n:br>
-	<n:label style="font-family: 'Lato', sans-serif; font-style: bold; font-size:1.15em; color:#FFFFFF;">Misión</n:label><n:br></n:br>
-	<n:label style="font-family: 'Lato', sans-serif; font-style: italic; font-size:1.1em; color:#FFFFFF;">“Brindar y promover el disfrute de sus socios y
+	
+	
+<n:div class="row">
+  <n:div class="col-sm-6 col-md-6">
+    <n:div class="">
+      <n:img src="assets/portal/img/mision.png" alt="..." width="20%"/>
+      
+        <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
+        <n:div>
+        <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Brindar y promover el disfrute de sus socios y
 
 familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la 
 
-unión familiar y consolidando el legado de sus fundadores.”</n:label><n:br></n:br><n:br></n:br>
-<n:label style="font-family: 'Lato', sans-serif; font-style: bold; font-size:1.15em; color:#FFFFFF;">Visión</n:label><n:br></n:br>
-	<n:label style="font-family: 'Lato', sans-serif; font-style: italic; font-size:1.1em; color:#FFFFFF;">“Constituirnos como la institución social por excelencia
+unión familiar y consolidando el legado de sus fundadores.”</n:p>
+        </n:div>
+     
+    </n:div>
+  </n:div>
+  <n:div class="col-sm-6 col-md-6">
+    <n:div class="">
+      <n:img src="assets/portal/img/vision.png" alt="..." width="20%"/>
+      
+         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
+        <n:div>
+        <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Constituirnos como la institución social por excelencia
 
 dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de 
 
 sus afiliados y sus familiares e impulsar la transformación consolidando un ambiente cada día 
 
-más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:label><n:br></n:br><n:br></n:br>
+más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p>
+        </n:div>
+     
+    </n:div>
+  </n:div>
+    
+</n:div>
 	
-	<n:video width="600" height="520" >
-  <n:source src="assets/portal/img/video.mp4" type="video/mp4"/>
-	</n:video>
+			
+	
+	<n:br></n:br><n:br></n:br><n:br></n:br>
+
+ <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Nuestra Historia</n:h3>
+	
+	<include src="portal/video.html" />
 								
 									
 		</n:div>

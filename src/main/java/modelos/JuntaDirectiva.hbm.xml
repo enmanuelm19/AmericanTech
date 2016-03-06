@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.JuntaDirectiva" table="junta_directiva" schema="public" optimistic-lock="version">
         <id name="idJuntaDirectiva" type="int">
             <column name="id_junta_directiva" />
             <generator class="increment" />
         </id>
-        <many-to-one name="club" class="modelos.Club" fetch="select" lazy="false">
+        <many-to-one name="club" class="modelos.Club" fetch="select">
             <column name="clubid_club" not-null="true" />
         </many-to-one>
         <property name="fechaInic" type="date">

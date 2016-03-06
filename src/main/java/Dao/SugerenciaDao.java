@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Sugerencia;
+import modelos.TipoSugerencia;
+import modelos.Usuario;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -34,13 +36,13 @@ public class SugerenciaDao {
 	}
 	
 	// Obtiene una lista con las Sugerencias que sean del mismo tipo.
-	public List<Sugerencia> obtenerSugerenciasTipo(int idTipo)throws Exception{
+	public List<Sugerencia> obtenerSugerenciasTipo(TipoSugerencia dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<Sugerencia> datos = new ArrayList<Sugerencia>();        
             try{
                 datos = (List<Sugerencia>) sesion.createCriteria(Sugerencia.class)
-                		.add(Restrictions.eq("tipo_sugerenciaid_tipo_sugerencia", idTipo)).list();
+                		.add(Restrictions.eq("tipoSugerencia", dato)).add(Restrictions.eq("activo", true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());
@@ -51,13 +53,13 @@ public class SugerenciaDao {
 	}
 	
 	//Obtiene una lista con todas las Sugerencias que ha hecho un usuario del sistema
-	public List<Sugerencia> obtenerSugerenciasUsuario(int idUsuario)throws Exception{
+	public List<Sugerencia> obtenerSugerenciasUsuario(Usuario dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<Sugerencia> datos = new ArrayList<Sugerencia>();        
             try{
                 datos = (List<Sugerencia>) sesion.createCriteria(Sugerencia.class)
-                		.add(Restrictions.eq("usuarioid_usuario", idUsuario)).list();
+                		.add(Restrictions.eq("usuario", dato)).add(Restrictions.eq("activo", true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());

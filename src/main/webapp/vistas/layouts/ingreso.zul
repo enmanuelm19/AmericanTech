@@ -7,6 +7,7 @@
 <?link href="/assets/intranet/css/bootstrap.min.css" rel="stylesheet" type="text/css"?>
 <?link href="/assets/intranet/css/bootstrap-reset.css" rel="stylesheet" type="text/css"?>
 <?link href="/assets/intranet/css/font-awesome.css" rel="stylesheet" type="text/css"?>
+<?link rel="shortcut icon" type="image/x-icon" href="/assets/img/at-favicon.png" ?>
 
 <zk xmlns:n="native" class='fondo-ingreso'>
 
@@ -23,7 +24,7 @@
 						class="form-control lock-input" />
 				</div>
 				<image id="image"
-					src="../../assets/portal/img/logo3.png" />
+					src="../../assets/portal/img/american-tech-logo.png" />
 				<div class="lock-pwd"
 					style="  padding: 0px 0 0 75px;">
 					<div class="form-group">

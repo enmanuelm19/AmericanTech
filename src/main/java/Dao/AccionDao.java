@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import modelos.Accion;
 import modelos.EstadoAccion;
-import modelos.Persona;
-import modelos.Preferencia;
+
+import modelos.Socio;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -105,4 +105,57 @@ private Sesion sesionPostgres;
        
         return datos; 
 	}
+	
+	public Accion obtenerAccion(int id) throws Exception {            
+	      
+		   Accion dato = new Accion();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    dato =  (Accion) em.get(Accion.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return dato;
+	}
+	
+	//devuelve las acciones relacionadas a un estado de la accion.
+	public List<Accion> obtenerPorEstado(EstadoAccion estado) throws Exception {            
+	      
+		   List<Accion> datos = new ArrayList<Accion>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<Accion>) em.createCriteria(Accion.class).add(Restrictions.eq("estadoAccion", estado))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
+	//devuelve las acciones relacionadas a un socio.	
+	public List<Accion> obtenerPorSocio(Socio socio) throws Exception {            
+	      
+		   List<Accion> datos = new ArrayList<Accion>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<Accion>) em.createCriteria(Accion.class).add(Restrictions.eq("socio", socio))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
 }

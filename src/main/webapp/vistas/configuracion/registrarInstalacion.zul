@@ -4,7 +4,7 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<window title="Registrar Instalacion" width="60%"
+	<window title="Registrar Instalacion" width="60%" height="auto"
 		style="iconSclass=z-icon-cogs;" closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<caption iconSclass="z-icon-cogs" />
@@ -60,20 +60,29 @@
 
 						<div align="right" class='col-md-4'>
 
-							<image src="/assets/portal/img/img2.jpg"
+							<image src="/assets/portal/img/img1.jpg"
 								class='col-md-12' />
 							<separator />
 							<div>
 								<fileupload
 									iconSclass="z-icon-folder-open"
 									class='boton-guardar col-md-6 col-md-offset-3' label="Examinar" />
-
 							</div>
 						</div>
 
 						<div class='col-md-6' align="left">
 							<grid>
 								<rows>
+									<row class="col-md-12">
+										<div>
+											<label class="col-md-4">
+												Nombre
+											</label>
+											<textbox id="txtNombre"
+												constraint="no empty" class="col-md-4">
+											</textbox>
+										</div>
+									</row>
 									<row class="col-md-12">
 										<div>
 											<label class="col-md-4">
@@ -121,6 +130,16 @@
 												constraint="no empty" class="col-md-4" />
 										</div>
 									</row>
+									<row>
+										<div>
+											<label class="col-md-4">
+												Alquilable
+											</label>
+											<checkbox id="CheckAlquilableSi" label="Si" onCheck="doChecked()" class="col-md-2" />
+        									<checkbox id="CheckAlquilableNo" label="No" onCheck="doChecked()" class="col-md-2"/>
+										</div>
+										
+									</row>
 								</rows>
 							</grid>
 
@@ -136,13 +155,13 @@
 				
 					<div class='row' align="center">
 
-						<div class='col-md-12' align="center">
+						<div class='col-md-6' align="center">
 							<separator spacing="30px"></separator>
-							<grid>
+							<grid emptyMessage="No se existen recursos" mold="paging" pageSize="4">
 								<rows>
 									<row>
 										<div>
-											<label class="col-md-2" id="lblRecursos">
+											<label class="col-md-3" id="lblRecursos">
 												Disponibles
 											</label>
 											<combobox id="cmbRecursos"
@@ -152,17 +171,19 @@
 												<comboitem
 													label="Mesas" />
 											</combobox>
-											
-											<label class="col-md-1" id="lblCantidad">
+										</div>
+									</row>
+										<row>
+										<div>									
+											<label class="col-md-3" id="lblCantidad">
 												Cantidad
 											</label>
 											<spinner
 												id="spnCantidadRecursos" constraint="no empty, no negative, no zero"
-												class="col-md-2" />
+												class="col-md-4" />
 											<button id="btnAgregarRecurso" 
 												iconSclass="z-icon-plus blue" class='btn-link col-md-2'
 												tooltiptext="Agregar" />
-												
 										</div>
 									</row>
 								</rows>
@@ -170,11 +191,8 @@
 								
 						</div>
 						<separator spacing="30px" />
-						
 
-						<div class='col-md-12'>
-							<div class='linea-two' />
-							<separator spacing="30px" />
+						<div class='col-md-6'>
 							<listbox mold="paging"
 								pageSize="15" multiple="true" class='col-md-8'>
 								<listhead sizable="true">
@@ -203,15 +221,11 @@
 				<div>
 					<button class='boton-guardar'
 						iconSclass="z-icon-floppy-o" label="Registrar" />
-					<space spacing="10%" />
+					<space spacing="5%" />
 					<button class='boton-cancelar'
 						iconSclass="z-icon-times-circle" label="Cancelar" />
 				</div>
-				<separator />
 			</div>
-			<separator />
-			<separator />
-			<separator />
 		</div>
 	</window>
 	<style>
@@ -231,6 +245,5 @@
 		}
 
 		}
-
 	</style>
 </zk>
