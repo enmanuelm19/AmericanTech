@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Actividad" table="actividad" schema="public" optimistic-lock="version">
         <id name="idActividad" type="int">
@@ -15,16 +15,16 @@
             <column name="tipo_actividadid_tipo_actividad" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="80" not-null="true" />
+            <column name="descripcion" length="150" not-null="true" />
         </property>
-        <property name="condicion" type="string">
-            <column name="condicion" length="20" not-null="true" />
+        <property name="finalizada" type="boolean">
+            <column name="finalizada" not-null="true" />
         </property>
-        <property name="fechaTope" type="date">
-            <column name="fecha_tope" length="13" />
+        <property name="fechaTope" type="timestamp">
+            <column name="fecha_tope" length="29" />
         </property>
-        <property name="fechaRealizacion" type="date">
-            <column name="fecha_realizacion" length="13" />
+        <property name="fechaRealizacion" type="timestamp">
+            <column name="fecha_realizacion" length="29" />
         </property>
         <property name="valorEsperado" type="java.lang.Integer">
             <column name="valor_esperado" />

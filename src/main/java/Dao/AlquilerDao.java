@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Alquiler;
+import modelos.Reservacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -85,7 +86,40 @@ private Sesion sesionPostgres;
         } 
        
         return datos; 
-	}	
+	}
+	
+	public Alquiler obtenerAlquiler(int id) throws Exception {            
+	      
+		   Alquiler datos = new Alquiler();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Alquiler) em.get(Alquiler.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
+	public Alquiler obtenerPorReservacion(Reservacion reservacion) throws Exception {            
+	      
+		   Alquiler datos = new Alquiler();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Alquiler) em.createCriteria(Alquiler.class).add(Restrictions.eq("reservacion", reservacion))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 
 	
 	

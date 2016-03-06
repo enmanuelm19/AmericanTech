@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Instalacion" table="instalacion" schema="public" optimistic-lock="version">
         <id name="idInstalacion" type="int">
@@ -22,6 +22,9 @@
         </property>
         <property name="precioAlquiler" type="float">
             <column name="precio_alquiler" precision="8" scale="8" not-null="true" />
+        </property>
+        <property name="alquilable" type="boolean">
+            <column name="alquilable" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
@@ -50,7 +53,7 @@
             </key>
             <one-to-many class="modelos.Eventualidad" />
         </set>
-        <set name="recursoInstalacions" table="recurso_instalacion" inverse="true" lazy="true" fetch="select">
+        <set name="recursoInstalacions" table="recurso_instalacion" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="instalacionid_instalacion" not-null="true" />
             </key>
