@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ public class Opinion implements java.io.Serializable {
 
 	private int idOpinion;
 	private Postulacion postulacion;
+	private TipoOpnion tipoOpnion;
 	private Usuario usuario;
 	private String descripcion;
 	private Date fecha;
@@ -20,10 +21,12 @@ public class Opinion implements java.io.Serializable {
 	public Opinion() {
 	}
 
-	public Opinion(int idOpinion, Postulacion postulacion, Usuario usuario,
-			String descripcion, Date fecha, short calificacion, boolean activo) {
+	public Opinion(int idOpinion, Postulacion postulacion,
+			TipoOpnion tipoOpnion, Usuario usuario, String descripcion,
+			Date fecha, short calificacion, boolean activo) {
 		this.idOpinion = idOpinion;
 		this.postulacion = postulacion;
+		this.tipoOpnion = tipoOpnion;
 		this.usuario = usuario;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
@@ -45,6 +48,14 @@ public class Opinion implements java.io.Serializable {
 
 	public void setPostulacion(Postulacion postulacion) {
 		this.postulacion = postulacion;
+	}
+
+	public TipoOpnion getTipoOpnion() {
+		return this.tipoOpnion;
+	}
+
+	public void setTipoOpnion(TipoOpnion tipoOpnion) {
+		this.tipoOpnion = tipoOpnion;
 	}
 
 	public Usuario getUsuario() {

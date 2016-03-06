@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -14,21 +14,21 @@ public class Postulacion implements java.io.Serializable {
 	private int idPostulacion;
 	private MotivoPostulacion motivoPostulacion;
 	private Postulado postulado;
-	private Venta venta;
 	private Date fecha;
-	private short carnetPadrino1;
-	private short carnetPadrino2;
+	private String carnetPadrino1;
+	private String carnetPadrino2;
 	private boolean aprobado;
 	private boolean activo = true;
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
+	private Set<Venta> ventas = new HashSet<Venta>(0);
 
 	public Postulacion() {
 	}
 
 	public Postulacion(int idPostulacion, MotivoPostulacion motivoPostulacion,
-			Postulado postulado, Date fecha, short carnetPadrino1,
-			short carnetPadrino2, boolean aprobado, boolean activo) {
+			Postulado postulado, Date fecha, String carnetPadrino1,
+			String carnetPadrino2, boolean aprobado, boolean activo) {
 		this.idPostulacion = idPostulacion;
 		this.motivoPostulacion = motivoPostulacion;
 		this.postulado = postulado;
@@ -40,13 +40,12 @@ public class Postulacion implements java.io.Serializable {
 	}
 
 	public Postulacion(int idPostulacion, MotivoPostulacion motivoPostulacion,
-			Postulado postulado, Venta venta, Date fecha, short carnetPadrino1,
-			short carnetPadrino2, boolean aprobado, boolean activo,
-			Set<Socio> socios, Set<Opinion> opinions) {
+			Postulado postulado, Date fecha, String carnetPadrino1,
+			String carnetPadrino2, boolean aprobado, boolean activo,
+			Set<Socio> socios, Set<Opinion> opinions, Set<Venta> ventas) {
 		this.idPostulacion = idPostulacion;
 		this.motivoPostulacion = motivoPostulacion;
 		this.postulado = postulado;
-		this.venta = venta;
 		this.fecha = fecha;
 		this.carnetPadrino1 = carnetPadrino1;
 		this.carnetPadrino2 = carnetPadrino2;
@@ -54,6 +53,7 @@ public class Postulacion implements java.io.Serializable {
 		this.activo = activo;
 		this.socios = socios;
 		this.opinions = opinions;
+		this.ventas = ventas;
 	}
 
 	public int getIdPostulacion() {
@@ -80,14 +80,6 @@ public class Postulacion implements java.io.Serializable {
 		this.postulado = postulado;
 	}
 
-	public Venta getVenta() {
-		return this.venta;
-	}
-
-	public void setVenta(Venta venta) {
-		this.venta = venta;
-	}
-
 	public Date getFecha() {
 		return this.fecha;
 	}
@@ -96,19 +88,19 @@ public class Postulacion implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
-	public short getCarnetPadrino1() {
+	public String getCarnetPadrino1() {
 		return this.carnetPadrino1;
 	}
 
-	public void setCarnetPadrino1(short carnetPadrino1) {
+	public void setCarnetPadrino1(String carnetPadrino1) {
 		this.carnetPadrino1 = carnetPadrino1;
 	}
 
-	public short getCarnetPadrino2() {
+	public String getCarnetPadrino2() {
 		return this.carnetPadrino2;
 	}
 
-	public void setCarnetPadrino2(short carnetPadrino2) {
+	public void setCarnetPadrino2(String carnetPadrino2) {
 		this.carnetPadrino2 = carnetPadrino2;
 	}
 
@@ -142,6 +134,14 @@ public class Postulacion implements java.io.Serializable {
 
 	public void setOpinions(Set<Opinion> opinions) {
 		this.opinions = opinions;
+	}
+
+	public Set<Venta> getVentas() {
+		return this.ventas;
+	}
+
+	public void setVentas(Set<Venta> ventas) {
+		this.ventas = ventas;
 	}
 
 }
