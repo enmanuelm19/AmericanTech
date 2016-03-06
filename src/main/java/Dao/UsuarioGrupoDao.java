@@ -4,6 +4,8 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Grupo;
+import modelos.Usuario;
 import modelos.UsuarioGrupo;
 
 import org.hibernate.Session;
@@ -33,13 +35,13 @@ public class UsuarioGrupoDao {
          } 
 	}
 	// Obtiene los grupos al que pertenece un Usuario
-	public List<UsuarioGrupo> obtenerGruposUsuario(int idPersona)throws Exception{
+	public List<UsuarioGrupo> obtenerGruposUsuario(Usuario dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
-	    List<UsuarioGrupo> dato = new ArrayList<UsuarioGrupo>();        
+	    List<UsuarioGrupo> datos = new ArrayList<UsuarioGrupo>();        
             try{
-                dato = (List<UsuarioGrupo>) sesion.createCriteria(UsuarioGrupo.class)
-                		.add(Restrictions.eq("usuarioid_usuario",idPersona)).list();
+                datos = (List<UsuarioGrupo>) sesion.createCriteria(UsuarioGrupo.class)
+                		.add(Restrictions.eq("usuario",dato)).add(Restrictions.eq("activo",true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -47,16 +49,16 @@ public class UsuarioGrupoDao {
             }  finally {  
                 sesion.close();  
             }       
-	    return dato;	
+	    return datos;	
 	}
 	//Obtiene una lista con todos los Usuarios que pertenecen a un grupo especifico
-	public List<UsuarioGrupo> obtenerUsuariosGrupo(int idGrupo)throws Exception{
+	public List<UsuarioGrupo> obtenerUsuariosGrupo(Grupo datos)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<UsuarioGrupo> dato = new ArrayList<UsuarioGrupo>();        
             try{
                 dato = (List<UsuarioGrupo>) sesion.createCriteria(UsuarioGrupo.class)
-                		.add(Restrictions.eq("grupoid_grupo",idGrupo)).list();
+                		.add(Restrictions.eq("grupo",datos)).add(Restrictions.eq("activo",true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            
