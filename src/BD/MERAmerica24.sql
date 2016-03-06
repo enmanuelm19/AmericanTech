@@ -12,14 +12,14 @@ CREATE TABLE club (
   id_club           SERIAL NOT NULL, 
   rif              varchar(40) NOT NULL, 
   nombre           varchar(60) NOT NULL, 
-  direccion        varchar(150) NOT NULL, 
+  direccion        varchar(250) NOT NULL, 
   telefono         varchar(20) NOT NULL, 
-  mision           varchar(250) NOT NULL, 
-  vision           varchar(250) NOT NULL, 
+  mision           text NOT NULL, 
+  vision           text NOT NULL, 
   logo             int2 NOT NULL, 
   telf_alternativo varchar(20) NOT NULL, 
   correo           varchar(90) NOT NULL, 
-  eslogan          varchar(255), 
+  eslogan          text, 
   activo           bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_club));
 CREATE TABLE usuario_grupo (
@@ -48,14 +48,15 @@ CREATE TABLE persona (
   activo         bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_persona));
 CREATE TABLE sancion (
-  id_sancion                SERIAL NOT NULL, 
-  descripcion              varchar(200) NOT NULL, 
-  socioid_socio            int2, 
-  fecha_inic               date NOT NULL, 
-  fecha_fin                date NOT NULL, 
-  monto                    float4, 
-  tipo_sanciontipo_sancion int2 NOT NULL, 
-  activo                   bool DEFAULT 'true' NOT NULL, 
+  id_sancion                   SERIAL NOT NULL, 
+  descripcion                 varchar(200) NOT NULL, 
+  socioid_socio               int2, 
+  fecha_inic                  date, 
+  fecha_fin                   date, 
+  monto                       float4, 
+  eventualidadid_eventualidad int2, 
+  tipo_sancionid_tipo_sancion int2 NOT NULL, 
+  activo                      bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_sancion));
 CREATE TABLE socio (
   id_socio                   SERIAL NOT NULL, 
@@ -76,29 +77,28 @@ CREATE TABLE postulacion (
   id_postulacion                           SERIAL NOT NULL, 
   Postuladoid_postulado                   int2 NOT NULL, 
   fecha                                   date NOT NULL, 
-  carnet_padrino1                         int2 NOT NULL, 
-  carnet_padrino2                         int2 NOT NULL, 
+  carnet_padrino1                         varchar(40) NOT NULL, 
+  carnet_padrino2                         varchar(40) NOT NULL, 
   motivo_postulacionid_motivo_postulacion int2 NOT NULL, 
-  Ventaid_venta                           int2, 
   aprobado                                bool NOT NULL, 
   activo                                  bool DEFAULT 'true' NOT NULL, 
   CONSTRAINT carnet_padrino1 
     PRIMARY KEY (id_postulacion));
 CREATE TABLE opinion (
-  id_opinion                 SERIAL NOT NULL, 
-  postulacionid_postulacion int2 NOT NULL, 
-  descripcion               varchar(255) NOT NULL, 
-  usuarioid_usuario         int2 NOT NULL, 
-  fecha                     date NOT NULL, 
-  calificacion              int2 NOT NULL, 
-  activo                    bool DEFAULT 'true' NOT NULL, 
+  id_opinion                   SERIAL NOT NULL, 
+  postulacionid_postulacion   int2 NOT NULL, 
+  descripcion                 text NOT NULL, 
+  usuarioid_usuario           int2 NOT NULL, 
+  fecha                       timestamp NOT NULL, 
+  calificacion                int2 NOT NULL, 
+  tipo_opnionid_tipo_opninion int2 NOT NULL, 
+  activo                      bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_opinion));
 CREATE TABLE eventualidad (
   id_eventualidad                        SERIAL NOT NULL, 
   instalacionid_instalacion             int2, 
-  descripcion                           varchar(255) NOT NULL, 
-  fecha                                 date NOT NULL, 
-  sancionid_sancion                     int2, 
+  descripcion                           text NOT NULL, 
+  fecha                                 timestamp NOT NULL, 
   personaid_persona                     int2 NOT NULL, 
   tipo_eventualidadid_tipo_eventualidad int2 NOT NULL, 
   activo                                bool DEFAULT 'true' NOT NULL, 
@@ -106,16 +106,17 @@ CREATE TABLE eventualidad (
 CREATE TABLE instalacion (
   id_instalacion                       SERIAL NOT NULL, 
   nombre                              varchar(180) NOT NULL, 
-  descripcion                         varchar(255) NOT NULL, 
+  descripcion                         text NOT NULL, 
   capacidad                           int2 NOT NULL, 
   precio_alquiler                     float4 NOT NULL, 
+  alquilable                          bool DEFAULT 'true' NOT NULL, 
   tipo_instalacionid_tipo_instalacion int2 NOT NULL, 
   activo                              bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_instalacion));
 CREATE TABLE noticia (
   id_noticia                   SERIAL NOT NULL, 
   titulo                      varchar(90), 
-  descripcion                 varchar(255) NOT NULL, 
+  descripcion                 text NOT NULL, 
   eventoid_evento             int2, 
   foto                        int2, 
   tipo_noticiaid_tipo_noticia int2 NOT NULL, 
@@ -127,30 +128,30 @@ CREATE TABLE noticia (
   PRIMARY KEY (id_noticia));
 CREATE TABLE calendario_fecha (
   id_calendario_fecha        SERIAL NOT NULL, 
-  descripcion               varchar(120) NOT NULL, 
+  descripcion               text NOT NULL, 
   fecha                     date NOT NULL, 
-  reservacionid_reservacion int2, 
   eventoid_evento           int2, 
+  reservacionid_reservacion int2, 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_calendario_fecha));
 CREATE TABLE evento (
   id_evento                      SERIAL NOT NULL, 
   nombre                        varchar(200) NOT NULL, 
-  descripcion                   varchar(150) NOT NULL, 
-  fecha_inicio                  date NOT NULL, 
-  fecha_fin                     date NOT NULL, 
+  descripcion                   text NOT NULL, 
+  fecha_inicio                  timestamp NOT NULL, 
+  fecha_fin                     timestamp NOT NULL, 
   publico                       bool NOT NULL, 
   estado_eventoid_estado_evento int2 NOT NULL, 
   activo                        bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_evento));
 CREATE TABLE actividad (
   id_actividad                     SERIAL NOT NULL, 
-  descripcion                     varchar(80) NOT NULL, 
-  condicion                       varchar(20) NOT NULL, 
+  descripcion                     varchar(150) NOT NULL, 
+  finalizada                      bool NOT NULL, 
   tipo_actividadid_tipo_actividad int2 NOT NULL, 
   eventoid_evento                 int2 NOT NULL, 
-  fecha_tope                      date, 
-  fecha_realizacion               date, 
+  fecha_tope                      timestamp, 
+  fecha_realizacion               timestamp, 
   valor_esperado                  int4, 
   valor_real                      int4, 
   activo                          bool DEFAULT 'true' NOT NULL, 
@@ -174,8 +175,8 @@ CREATE TABLE reservacion (
   id_reservacion             SERIAL NOT NULL, 
   instalacionid_instalacion int2 NOT NULL, 
   socioid_socio             int2 NOT NULL, 
-  fecha_inicio              date NOT NULL, 
-  fecha_fin                 int2 NOT NULL, 
+  fecha_inicio              timestamp NOT NULL, 
+  fecha_fin                 timestamp NOT NULL, 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_reservacion));
 CREATE TABLE afiliado (
@@ -183,6 +184,7 @@ CREATE TABLE afiliado (
   tipo_afiliadoid_tipo_afiliado int2 NOT NULL, 
   socioid_socio                 int2 NOT NULL, 
   nro_carnet                    varchar(40) NOT NULL, 
+  subfijo                       varchar(40) NOT NULL, 
   personaid_persona             int2 NOT NULL, 
   activo                        bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_afilado));
@@ -209,16 +211,17 @@ CREATE TABLE desvinculacion (
   accionid_accion                               int2 NOT NULL, 
   socioid_socio                                 int2 NOT NULL, 
   fecha                                         date NOT NULL, 
-  motivo                                        varchar(200), 
+  motivo                                        text, 
   motivo_desvinculacionid_motivo_desvinculacion int2 NOT NULL, 
   activo                                        bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_desvinculacion));
 CREATE TABLE Venta (
-  id_venta         SERIAL NOT NULL, 
-  accionid_accion int2 NOT NULL, 
-  fecha           date NOT NULL, 
-  monto           float4 NOT NULL, 
-  activo          bool DEFAULT 'true' NOT NULL, 
+  id_venta                   SERIAL NOT NULL, 
+  accionid_accion           int2 NOT NULL, 
+  postulacionid_postulacion int2 NOT NULL, 
+  fecha                     date NOT NULL, 
+  monto                     float4 NOT NULL, 
+  activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_venta));
 CREATE TABLE preferencia_persona (
   id_preferencia_persona     SERIAL NOT NULL, 
@@ -230,8 +233,6 @@ CREATE TABLE instalacion_evento (
   id_actividad_instalacion   SERIAL NOT NULL, 
   instalacionid_instalacion int2 NOT NULL, 
   eventoid_evento           int2 NOT NULL, 
-  fecha_fin                 date NOT NULL, 
-  fecha_inicio              date NOT NULL, 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_actividad_instalacion));
 CREATE TABLE recurso (
@@ -241,8 +242,8 @@ CREATE TABLE recurso (
   PRIMARY KEY (id_recurso));
 CREATE TABLE sugerencia (
   id_sugerencia                      SERIAL NOT NULL, 
-  descripcion                       varchar(255) NOT NULL, 
-  fecha                             date NOT NULL, 
+  descripcion                       text NOT NULL, 
+  fecha                             timestamp NOT NULL, 
   usuarioid_usuario                 int2, 
   cliente_externoid_cliente         int2, 
   tipo_sugerenciaid_tipo_sugerencia int2 NOT NULL, 
@@ -258,8 +259,8 @@ CREATE TABLE recurso_instalacion (
 CREATE TABLE alquiler (
   id_alquiler                SERIAL NOT NULL, 
   reservacionid_reservacion int2 NOT NULL, 
+  tipo_pagoid_tipo_pago     int2 NOT NULL, 
   fecha                     date NOT NULL, 
-  nro_transaccion           varchar(40) NOT NULL, 
   monto                     float4 NOT NULL, 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_alquiler));
@@ -301,17 +302,6 @@ CREATE TABLE tipo_preferencia (
   color               varchar(12), 
   activo              bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_tipo_preferencia));
-CREATE TABLE calendario_hora (
-  id_calendario_hora                   SERIAL NOT NULL, 
-  horaid_hora                         int2 NOT NULL, 
-  calendario_fechaid_calendario_fecha int2 NOT NULL, 
-  activo                              bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_calendario_hora));
-CREATE TABLE hora (
-  id_hora        SERIAL NOT NULL, 
-  valor_horario time NOT NULL, 
-  activo        bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_hora));
 CREATE TABLE tipo_actividad (
   id_tipo_actividad  SERIAL NOT NULL, 
   descripcion       varchar(20) NOT NULL, 
@@ -323,12 +313,6 @@ CREATE TABLE noticia_preferencia (
   noticiaid_noticia         int2 NOT NULL, 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_noticia_preferencia));
-CREATE TABLE motivo_sancion (
-  id_motivo_sancion  SERIAL NOT NULL, 
-  motivo            varchar(120) NOT NULL, 
-  descripcion       varchar(100) NOT NULL, 
-  activo            bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_motivo_sancion));
 CREATE TABLE motivo_desvinculacion (
   id_motivo_desvinculacion  SERIAL NOT NULL, 
   descripcion              varchar(200) NOT NULL, 
@@ -435,7 +419,7 @@ CREATE TABLE indicador_evento (
 CREATE TABLE solicitud_venta (
   id_solicitud_venta           SERIAL NOT NULL, 
   accionid_accion             int2 NOT NULL, 
-  motivo                      varchar(200), 
+  motivo                      text, 
   fecha                       date NOT NULL, 
   motivo_ventaid_motivo_venta int2 NOT NULL, 
   activo                      bool DEFAULT 'true' NOT NULL, 
@@ -486,6 +470,21 @@ CREATE TABLE archivo_portal (
   portalid_portal   int2 NOT NULL, 
   activo            bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_archivo_portal));
+CREATE TABLE tipo_pago (
+  id_tipo_pago  SERIAL NOT NULL, 
+  descripcion  varchar(100) NOT NULL, 
+  activo       bool NOT NULL, 
+  PRIMARY KEY (id_tipo_pago));
+CREATE TABLE tipo_opnion (
+  id_tipo_opninion  SERIAL NOT NULL, 
+  descripcion      varchar(50) NOT NULL, 
+  activo           bool DEFAULT 'true' NOT NULL, 
+  PRIMARY KEY (id_tipo_opninion));
+CREATE TABLE tipo_sancion (
+  id_tipo_sancion  SERIAL NOT NULL, 
+  descripcion     varchar(80) NOT NULL, 
+  activo          bool DEFAULT 'true' NOT NULL, 
+  PRIMARY KEY (id_tipo_sancion));
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr55454 FOREIGN KEY (usuarioid_usuario) REFERENCES usuario (id_usuario);
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr690051 FOREIGN KEY (grupoid_grupo) REFERENCES grupo (id_grupo);
 ALTER TABLE opinion ADD CONSTRAINT FKopinion612647 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
@@ -517,16 +516,11 @@ ALTER TABLE socio ADD CONSTRAINT FKsocio256923 FOREIGN KEY (postulacionid_postul
 ALTER TABLE junta_directiva ADD CONSTRAINT FKjunta_dire372831 FOREIGN KEY (clubid_club) REFERENCES club (id_club);
 ALTER TABLE miembro_junta ADD CONSTRAINT FKmiembro_ju484923 FOREIGN KEY (junta_directivaid_junta_directiva) REFERENCES junta_directiva (id_junta_directiva);
 ALTER TABLE miembro_junta ADD CONSTRAINT FKmiembro_ju155866 FOREIGN KEY (cargoid_cargo) REFERENCES cargo (id_cargo);
-ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario334586 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
-ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario317419 FOREIGN KEY (reservacionid_reservacion) REFERENCES reservacion (id_reservacion);
 ALTER TABLE preferencia_persona ADD CONSTRAINT FKpreferenci734891 FOREIGN KEY (preferenciaid_preferencia) REFERENCES preferencia (id_preferencia);
 ALTER TABLE Postulado ADD CONSTRAINT FKPostulado961751 FOREIGN KEY (personaid_persona) REFERENCES persona (id_persona);
 ALTER TABLE sugerencia ADD CONSTRAINT FKsugerencia963242 FOREIGN KEY (tipo_sugerenciaid_tipo_sugerencia) REFERENCES tipo_sugerencia (id_tipo_sugerencia);
 ALTER TABLE preferencia ADD CONSTRAINT FKpreferenci914864 FOREIGN KEY (tipo_preferenciaid_tipo_preferencia) REFERENCES tipo_preferencia (id_tipo_preferencia);
-ALTER TABLE calendario_hora ADD CONSTRAINT FKcalendario739729 FOREIGN KEY (horaid_hora) REFERENCES hora (id_hora);
 ALTER TABLE actividad ADD CONSTRAINT FKactividad480912 FOREIGN KEY (tipo_actividadid_tipo_actividad) REFERENCES tipo_actividad (id_tipo_actividad);
-ALTER TABLE calendario_hora ADD CONSTRAINT FKcalendario730879 FOREIGN KEY (calendario_fechaid_calendario_fecha) REFERENCES calendario_fecha (id_calendario_fecha);
-ALTER TABLE sancion ADD CONSTRAINT FKsancion754008 FOREIGN KEY (tipo_sanciontipo_sancion) REFERENCES motivo_sancion (id_motivo_sancion);
 ALTER TABLE desvinculacion ADD CONSTRAINT FKdesvincula942861 FOREIGN KEY (motivo_desvinculacionid_motivo_desvinculacion) REFERENCES motivo_desvinculacion (id_motivo_desvinculacion);
 ALTER TABLE foto ADD CONSTRAINT FKfoto999055 FOREIGN KEY (instalacionid_instalacion) REFERENCES instalacion (id_instalacion);
 ALTER TABLE afiliado ADD CONSTRAINT FKafiliado278652 FOREIGN KEY (tipo_afiliadoid_tipo_afiliado) REFERENCES tipo_afiliado (id_tipo_afiliado);
@@ -547,14 +541,12 @@ ALTER TABLE foto ADD CONSTRAINT FKfoto370704 FOREIGN KEY (clubid_club) REFERENCE
 ALTER TABLE persona ADD CONSTRAINT FKpersona828994 FOREIGN KEY (foto) REFERENCES archivo (id_archivo);
 ALTER TABLE noticia ADD CONSTRAINT FKnoticia350899 FOREIGN KEY (foto) REFERENCES archivo (id_archivo);
 ALTER TABLE club ADD CONSTRAINT FKclub505885 FOREIGN KEY (logo) REFERENCES archivo (id_archivo);
-ALTER TABLE postulacion ADD CONSTRAINT FKpostulacio568877 FOREIGN KEY (Ventaid_venta) REFERENCES Venta (id_venta);
 ALTER TABLE evento ADD CONSTRAINT FKevento600923 FOREIGN KEY (estado_eventoid_estado_evento) REFERENCES estado_evento (id_estado_evento);
 ALTER TABLE motivo_cancelacion ADD CONSTRAINT FKmotivo_can874505 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE actividad ADD CONSTRAINT FKactividad322003 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE indicador_evento ADD CONSTRAINT FKindicador_457606 FOREIGN KEY (indicadorid_indicador) REFERENCES indicador (id_indicador);
 ALTER TABLE indicador_evento ADD CONSTRAINT FKindicador_952117 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE instalacion_evento ADD CONSTRAINT FKinstalacio726736 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
-ALTER TABLE eventualidad ADD CONSTRAINT FKeventualid666497 FOREIGN KEY (sancionid_sancion) REFERENCES sancion (id_sancion);
 ALTER TABLE eventualidad ADD CONSTRAINT FKeventualid316997 FOREIGN KEY (personaid_persona) REFERENCES persona (id_persona);
 ALTER TABLE solicitud_venta ADD CONSTRAINT FKsolicitud_549112 FOREIGN KEY (accionid_accion) REFERENCES accion (id_accion);
 ALTER TABLE eventualidad ADD CONSTRAINT FKeventualid821934 FOREIGN KEY (tipo_eventualidadid_tipo_eventualidad) REFERENCES tipo_eventualidad (id_tipo_eventualidad);
@@ -568,3 +560,10 @@ ALTER TABLE politica ADD CONSTRAINT FKpolitica365279 FOREIGN KEY (unidad_medidai
 ALTER TABLE archivo_portal ADD CONSTRAINT FKarchivo_po792557 FOREIGN KEY (archivoid_archivo) REFERENCES archivo (id_archivo);
 ALTER TABLE archivo_portal ADD CONSTRAINT FKarchivo_po110627 FOREIGN KEY (portalid_portal) REFERENCES portal (id_portal);
 ALTER TABLE solicitud_venta ADD CONSTRAINT FKsolicitud_857177 FOREIGN KEY (motivo_ventaid_motivo_venta) REFERENCES motivo_venta (id_motivo_venta);
+ALTER TABLE sancion ADD CONSTRAINT FKsancion982820 FOREIGN KEY (eventualidadid_eventualidad) REFERENCES eventualidad (id_eventualidad);
+ALTER TABLE alquiler ADD CONSTRAINT FKalquiler655186 FOREIGN KEY (tipo_pagoid_tipo_pago) REFERENCES tipo_pago (id_tipo_pago);
+ALTER TABLE opinion ADD CONSTRAINT FKopinion153903 FOREIGN KEY (tipo_opnionid_tipo_opninion) REFERENCES tipo_opnion (id_tipo_opninion);
+ALTER TABLE sancion ADD CONSTRAINT FKsancion525894 FOREIGN KEY (tipo_sancionid_tipo_sancion) REFERENCES tipo_sancion (id_tipo_sancion);
+ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario334586 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
+ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario317419 FOREIGN KEY (reservacionid_reservacion) REFERENCES reservacion (id_reservacion);
+ALTER TABLE Venta ADD CONSTRAINT FKVenta326071 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);

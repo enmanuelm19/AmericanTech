@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ public class Reservacion implements java.io.Serializable {
 	private Instalacion instalacion;
 	private Socio socio;
 	private Date fechaInicio;
-	private short fechaFin;
+	private Date fechaFin;
 	private boolean activo = true;
 	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
@@ -25,7 +25,7 @@ public class Reservacion implements java.io.Serializable {
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, short fechaFin, boolean activo) {
+			Date fechaInicio, Date fechaFin, boolean activo) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
 		this.socio = socio;
@@ -35,7 +35,7 @@ public class Reservacion implements java.io.Serializable {
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, short fechaFin, boolean activo,
+			Date fechaInicio, Date fechaFin, boolean activo,
 			Set<Alquiler> alquilers, Set<CalendarioFecha> calendarioFechas) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
@@ -79,11 +79,11 @@ public class Reservacion implements java.io.Serializable {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public short getFechaFin() {
+	public Date getFechaFin() {
 		return this.fechaFin;
 	}
 
-	public void setFechaFin(short fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Evento" table="evento" schema="public" optimistic-lock="version">
         <id name="idEvento" type="int">
@@ -15,13 +15,13 @@
             <column name="nombre" length="200" not-null="true" />
         </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="150" not-null="true" />
+            <column name="descripcion" not-null="true" />
         </property>
-        <property name="fechaInicio" type="date">
-            <column name="fecha_inicio" length="13" not-null="true" />
+        <property name="fechaInicio" type="timestamp">
+            <column name="fecha_inicio" length="29" not-null="true" />
         </property>
-        <property name="fechaFin" type="date">
-            <column name="fecha_fin" length="13" not-null="true" />
+        <property name="fechaFin" type="timestamp">
+            <column name="fecha_fin" length="29" not-null="true" />
         </property>
         <property name="publico" type="boolean">
             <column name="publico" not-null="true" />
@@ -35,7 +35,7 @@
             </key>
             <one-to-many class="modelos.Noticia" />
         </set>
-        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="true" fetch="select">
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
@@ -53,19 +53,19 @@
             </key>
             <one-to-many class="modelos.Actividad" />
         </set>
-        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="true" fetch="select">
+        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.InstalacionEvento" />
         </set>
-        <set name="indicadorEventos" table="indicador_evento" inverse="true" lazy="true" fetch="select">
+        <set name="indicadorEventos" table="indicador_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.IndicadorEvento" />
         </set>
-        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="true" fetch="select">
+        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" />
             </key>

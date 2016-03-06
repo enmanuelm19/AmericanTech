@@ -19,13 +19,13 @@
 			</div>
 
 
-			<div align="right">
+			<!-- <div align="right">
 				<button iconSclass="z-icon-plus blue " sclass="btn-link"
 					tooltiptext="Agregar Afiliado" width="10%" />
-			</div>
+			</div> -->
 			<hbox width="100%"><!-- Inicio GRUPO afilaido -->
 
-
+				<separator spacing="20px"/>
 				<panel border="none" collapsible="true"
 					sclass="transparent">
 
@@ -35,15 +35,11 @@
 
 								<column width="10%" label="Carnet"
 									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="1er nombre"
+								<column width="15%" label="Nombre"
 									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="2do nombre"
+								<column width="15%" label="Apellido"
 									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="1er apellido"
-									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="2do Apellido"
-									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="parentesco"
+								<column width="15%" label="Parentesco"
 									iconSclass="z-icon-caret-right blue" align="center" />
 								<column width="10%" align="center"
 									label="Ver" />
@@ -51,37 +47,24 @@
 							</columns>
 							<rows>
 								<row>
-
-									<label value="12345" />
-									<label value="laura" />
-									<label value="Maria" />
+									<label value="12345-1" />
+									<label value="Laura" />
 									<label value="Diaz" />
-									<label value="perez" />
 									<label value="Esposa" />
 									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-search blue" tooltiptext="Ver"
-											id="btnVerAfiliado" />
+										<button sclass="btn-link"  iconSclass="z-icon-search blue" tooltiptext="Ver" id="btnVerAfiliado" />
 									</div>
-
 								</row>
 								<row>
 
-									<label value="12345" />
-									<label value="laura" />
-									<label value="Maria" />
+									<label value="12345-2" />
+									<label value="María" />
 									<label value="Diaz" />
-									<label value="perez" />
 									<label value="Esposa" />
 									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-search blue" tooltiptext="Ver" />
+										<button sclass="btn-link" iconSclass="z-icon-search blue" tooltiptext="Ver" />
 									</div>
-
 								</row>
-
-
-
 							</rows>
 						</grid>
 					</panelchildren>
@@ -142,18 +125,9 @@
 									<label class="col-md-4"
 										value="Primer Nombre" />
 									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="Jesus">
+										class="col-md-6" readonly="true">
 									</textbox>
 
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Segundo Nombre" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="Jesus">
-									</textbox>
 								</div>
 							</row>
 							<row>
@@ -161,19 +135,7 @@
 									<label class="col-md-4"
 										value="Primer Apellido" />
 									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="Jesus">
-									</textbox>
-
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Segundo Apellido" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="Jesus">
-									</textbox>
-
+										class="col-md-6" readonly="true" />
 								</div>
 							</row>
 							<row>
@@ -181,9 +143,8 @@
 									<label class="col-md-4"
 										value="Correo" />
 									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" type="email"
-										value="hdhdhdh@jdhdh.com">
-									</textbox>
+										class="col-md-6" readonly="true" type="email"/>
+									
 									<button class="col-md-2 btn-link"
 										iconSclass="z-icon-pencil blue" />
 								</div>
@@ -193,8 +154,7 @@
 									<label class="col-md-4"
 										value="Telefono" />
 									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="04135689256">
-									</textbox>
+										class="col-md-6" readonly="true"/>
 									<button class="col-md-2 btn-link"
 										iconSclass="z-icon-pencil blue" />
 								</div>
@@ -204,17 +164,16 @@
 									<label class="col-md-4"
 										value="Nacimiento" />
 									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="10/01/70">
-									</textbox>
+										class="col-md-6" readonly="true"/>
+									
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-4"
 										value="Edad" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="33">
-									</textbox>
+									<intbox constraint="no empty,no negative,no zero"
+										class="col-md-6" readonly="true"/>
 								</div>
 							</row>
 							<row>
@@ -227,14 +186,9 @@
 							</row>
 							<row>
 								<div>
-									<label class="col-md-4"
-										value="Direccion" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" cols="45" rows="2"
-										type="text"
-										value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
-									<button class="col-md-2 btn-link"
-										iconSclass="z-icon-pencil blue" />
+									<label class="col-md-4" value="Direccion" />
+									<textbox constraint="no empty" class="col-md-6" readonly="true" cols="45" rows="2" type="text"/>
+									<button class="col-md-2 btn-link" iconSclass="z-icon-pencil blue" />
 								</div>
 							</row>
 						</rows>
