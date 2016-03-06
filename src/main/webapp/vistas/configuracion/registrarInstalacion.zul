@@ -60,7 +60,7 @@
 
 						<div align="right" class='col-md-4'>
 
-							<image src="/assets/portal/img/img2.jpg"
+							<image src="/assets/portal/img/img1.jpg"
 								class='col-md-12' />
 							<separator />
 							<div>
@@ -120,6 +120,16 @@
 											<doublebox
 												constraint="no empty" class="col-md-4" />
 										</div>
+									</row>
+									<row>
+										<div>
+											<label class="col-md-4">
+												Alquilable
+											</label>
+											<checkbox id="CheckAlquilableSi" label="Si" onCheck="doChecked()" class="col-md-2" />
+        									<checkbox id="CheckAlquilableNo" label="No" onCheck="doChecked()" class="col-md-2"/>
+										</div>
+										
 									</row>
 								</rows>
 							</grid>

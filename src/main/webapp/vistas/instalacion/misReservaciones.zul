@@ -36,18 +36,19 @@
             				 <auxheader colspan="5" />
 						</auxhead>
 						<columns>
-							<column hflex="3">Instalacion</column>
-							<column hflex="3"> Fecha </column>
-							<column hflex="3"> Hora</column>
-							<column hflex="3"> Hora fin</column>
-							<column hflex="3">Acciones </column>
+							<column hflex="2">Instalacion</column>
+							<column hflex="2"> Fecha </column>
+							<column hflex="4"> Hora</column>
+							<column hflex="3">Precio </column>
+							<column width="2">Acciones </column>
+							
 						</columns>
 						<rows>
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
+						          <label value="12:00 PM - 3:00PM"/>
+						          <label value="1500Bs"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
@@ -56,8 +57,8 @@
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
+						            <label value="12:00 PM - 3:00PM"/>
+						          <label value="1500Bs"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
@@ -66,8 +67,8 @@
 							<row>
 						          <label value="Caney de Rafa"/>
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
+						            <label value="12:00 PM - 3:00PM"/>
+						          <label value="1500Bs"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
@@ -76,8 +77,8 @@
 							<row>
 						          <label value="Caney de Rafa"/> 
 						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
+						           <label value="12:00 PM - 3:00PM"/>
+						          <label value="1500Bs"/>
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
