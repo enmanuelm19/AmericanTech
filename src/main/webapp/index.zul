@@ -1,4 +1,3 @@
-
 <?page title="Centro Atletico America" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native">
 
@@ -187,33 +186,33 @@
 	</n:div>
 </n:div>
 
-<n:div class="cartelera" id="cartelera">
-	<n:div class="wrap ">
+<div class="cartelera" id="cartelera" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+	<div class="wrap " >
 	<n:h2>Más de nosotros</n:h2><n:br></n:br>
 	
 	
-<n:div class="row">
-  <n:div class="col-sm-6 col-md-6">
-    <n:div class="">
+<div class="row" >
+
+ 
+
+  <div class="col-sm-6 col-md-6">
+    <div class="">
       <n:img src="assets/portal/img/mision.png" alt="..." width="20%"/>
-      
-        <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-        <n:div>
-        <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Brindar y promover el disfrute de sus socios y
-
-familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la 
-
-unión familiar y consolidando el legado de sus fundadores.”</n:p>
-        </n:div>
      
-    </n:div>
-  </n:div>
-  <n:div class="col-sm-6 col-md-6">
-    <n:div class="">
+        <n:h3 style=" margin-top: 10px; margin-bottom: 15px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
+        <div class="col-sm-12 col-md-12">
+        <include src="portal/test.zul" />
+        </div>
+    
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="">
       <n:img src="assets/portal/img/vision.png" alt="..." width="20%"/>
       
          <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-        <n:div>
+        <div>
         <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Constituirnos como la institución social por excelencia
 
 dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de 
@@ -221,13 +220,12 @@ dedicada a consolidar valores sociales, culturales y deportivos que permitan el 
 sus afiliados y sus familiares e impulsar la transformación consolidando un ambiente cada día 
 
 más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p>
-        </n:div>
+        </div>
      
-    </n:div>
-  </n:div>
-    
-</n:div>
-	
+    </div>
+  </div>
+  
+</div>
 			
 	
 	<n:br></n:br><n:br></n:br><n:br></n:br>
@@ -237,8 +235,8 @@ más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p
 	<include src="portal/video.html" />
 								
 									
-		</n:div>
-	</n:div>
+		</div>
+	</div>
 
 
 <div class="contact" id="contact">
