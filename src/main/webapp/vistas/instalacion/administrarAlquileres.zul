@@ -34,7 +34,7 @@
  								<column label="Fecha Fin" align="center" hflex="4"/> 								
  								<column label="Hora Inicio" align="center" hflex="4"/>
  								<column label="Hora Fin" align="center" hflex="4"/> 	
- 								<column label="Boucher" align="center" hflex="4"/>  															
+ 								<column label="Tipo Pago" align="center" hflex="4"/>  															
  								<column label="Acciones" align="center" hflex="4"/>
  							</columns>
  							<rows>
@@ -46,7 +46,8 @@
  									<label value="28-02-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
- 									<textbox constraint="no empty" class="col-md-12"> </textbox>
+ 									<combobox constraint="no empty" width="100%"></combobox>
+ 									
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -60,7 +61,7 @@
  									<label value="01-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
- 									<textbox constraint="no empty" class="col-md-12"> </textbox>
+ 									<combobox constraint="no empty" width="100%"></combobox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -74,7 +75,7 @@
  									<label value="02-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
- 									<textbox constraint="no empty" class="col-md-12"> </textbox>
+ 									<combobox constraint="no empty" width="100%"></combobox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -88,7 +89,7 @@
  									<label value="03-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
- 									<textbox constraint="no empty" class="col-md-12"> </textbox>
+ 									<combobox constraint="no empty" width="100%"></combobox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
@@ -102,7 +103,7 @@
  									<label value="05-03-2016"/> 									
  									<label value="11:00"/>
  									<label value="14:00"/>
- 									<textbox constraint="no empty" class="col-md-12"> </textbox>
+ 									<combobox constraint="no empty" width="100%"></combobox>
  									<div>
  										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
  										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>

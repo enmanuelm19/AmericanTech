@@ -1,204 +1,240 @@
 <zk xmlns:n="native">
-	<div> 
-	<hlayout  spacing="0">
-		
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-			<div sclass="breadcrumb">
-			<span sclass="home-icon z-icon-user"/>
-			<a label="Socio" href="#"/>
-			<label value="Eventualidad"/>
-			</div>
-				
+	<div>
+		<hlayout spacing="0">
 
-			</div>
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-user" />
+						<a label="Socio" href="#" />
+						<label value="Eventualidad" />
+					</div>
 
-			<div class='contenedor'>
-
-				<div sclass="page-header">
-					<label value="Registrar Eventualidad" />
 
 				</div>
-				<div class='contenido'>
-					<div class="col-md-8 col-centered "
-						form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+
+				<div class='contenedor'>
+
+					<div sclass="page-header">
+						<label value="Registrar Eventualidad" />
+
+					</div>
+					<div class='contenido'>
+						<div class="col-md-10 col-centered "
+							form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-						<div class='form-pricing' width="80%"
-							height="100%">
+							<div class='form-pricing' width="80%"
+								height="100%">
 
-							<div class='encabezado'>Datos del Socio</div>
-							<div class='linea-two'></div>
-							<separator spacing="5%" />
-						
-						<grid width="690px" fixedLayout="true" >
-  
-			            	<rows class="col-md-12">
-			            		
-			                  <row class="col-md-11" >
-                             	<div>
-			                  		
-									<hlayout>
-										<div style="border:1px">
-				                  			<image sclass="myimg" width="100px" height="100px"
-	                      			    	  src="../assets/portal/img/img1.jpg" />
-	                             		</div>
-	                             		<div >
-	                             			<div>
-	                             				<hlayout>
-		                             				<div>
-		                             					<div>
-		                             						Número de Carnet:
-		                             					</div>
-			                             				<div>
-			                             					Cédula:
-		                             					</div>
-			                             				<div>
-			                             					Nombre:
-		                             					</div> 
-		                             					<div>
-			                             					Apellido:
-		                             					</div>                            									                                                				
-		                             				</div>
-													<div>
-			                             				<div>
-			                             					<textbox type="text" value="" width="140px" />                             									                                                				
-
-			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
-			                             				</div>
-			                             				<div>
-			                             					<textbox type="text" value="" width="140px" />                             									                                                				
-			                       							<button  iconSclass="z-icon-search"  class='btn-primary btn-primary'/>		                                                				
-			                             				</div>
-			                             				<div>
-			                             					<textbox type="text" value="" width="140px" />                             									                                                				
-			                             				</div>
-			                             				<div>
-			                             					<textbox type="text" value="" width="140px" />                             									                                                				
-			                             				</div>	                             							                             																		
-													</div>
-	                             				</hlayout>                             				                             					
-	                             			</div>	
-							           </div> 
-									</hlayout>			                  		
+								<div class='encabezado'>
+									Datos del Socio
 								</div>
-								<separator spacing="10%" />
-						    </row>
-						    
-						
-							
-						
-						<row class="col-md-10 col-left"> 
-			           <div>
-										<listbox id="box"
-											multiple="true" checkmark="true">
-											<listhead>
-												<listheader
-													label="Codigo Afiliado" />
-												<listheader label="Nombre de Afiliado" />
-											</listhead>
-											<listitem>
-												<listcell label="0001" />
-												<listcell
-													label="Juan Gonzalez" />
-											</listitem>
-											<listitem>
-												<listcell label="0001-1" />
-												<listcell label="Nicola Pernalete" />
-											</listitem>
-											<listitem>
-												<listcell label="0001-2" />
-												<listcell label="María Mendez" />
-											</listitem>
-											<listitem>
-												<listcell label="0001-3" />
-												<listcell label="Adda Gonzalez" />
-											</listitem>
-											
-										</listbox>
+								<div class='linea-two'></div>
+
+								<space spacing="15%" />
+
+								<div  class="row">
+									<div class="col-md-3"
+										style="border:1px">
+										<image sclass="myimg"
+											class="col-md-12" src="../assets/portal/img/img1.jpg" />
 									</div>
-							</row>
- 
-						</rows>   
+									<div class="col-md-9">
+										<grid >
+											<rows>
+												<row>
+													<div>
+														<label
+															class="col-md-5">
+															Número Carnet
+														</label>
+														<textbox type="text"
+															constraint="no empty" class="col-md-5" />
+														<button
+															sclass="btn-link" iconSclass="z-icon-search blue"
+															id="btnBuscarCarnet" class="col-md-2" />
+													</div>
+												</row>
+												<row>
+													<div>
+														<label
+															class="col-md-3">
+															Cédula
+														</label>
+														<intbox
+															constraint="no empty,no negative, no zero"
+															class="col-md-7" />
+														<button
+															sclass="btn-link" iconSclass="z-icon-search blue"
+															tooltiptext="Ver" id="btnBuscarCedula" class="col-md-2" />
+													</div>
+												</row>
+												<row>
+													<div>
+														<label
+															class="col-md-3">
+															Nombre
+														</label>
+														<textbox type="text"
+															constraint="no empty" class="col-md-7" disabled="true" />
+													</div>
+												</row>
+												<row>
+													<div>
+														<label
+															class="col-md-3">
+															Apellido
+														</label>
+														<textbox type="text"
+															constraint="no empty" class="col-md-7" disabled="true" />
+													</div>
+												</row>
+												<row>
+													<div>
+														<label
+															class="col-md-3">
+															Fecha
+														</label>
+														<datebox constraint="no empty" class="col-md-7"/>
+													</div>
+													<div>
+													
+														<label
+															class="col-md-4">
+															Hora inicio
+														</label>
+															<timebox id="TimeHorInicio" cols="12"
+															format="short" onCreate="self.value = new Date()"/>
+													</div>
+												</row>
+												<row>
+													
+												</row>
+											</rows>
+										</grid>
+									</div>
+								</div>
 
-					</grid>
-						
-							<separator spacing="10px" />
+								<space spacing="15%" />
+
+								<grid class="col-md-12"
+									fixedLayout="true">
+
+									<rows class="col-md-12">
+
+										<row>
+											<div>
+												<listbox id="box"
+													multiple="true" checkmark="true">
+													<listhead>
+														<listheader
+															label="Codigo" />
+														<listheader
+															label="Nombre" />
+																<listheader
+															label="Titular" />
+													</listhead>
+													<listitem>
+														<listcell
+															label="0001" />
+														<listcell
+															label="Juan Gonzalez" />
+													</listitem>
+													<listitem>
+														<listcell
+															label="0001-1" />
+														<listcell
+															label="Nicola Pernalete" />
+													</listitem>
+													<listitem>
+														<listcell
+															label="0001-2" />
+														<listcell
+															label="María Mendez" />
+													</listitem>
+													<listitem>
+														<listcell
+															label="0001-3" />
+														<listcell
+															label="Adda Gonzalez" />
+													</listitem>
+
+												</listbox>
+											</div>
+										</row>
+
+									</rows>
+
+								</grid>
+
+								<separator spacing="10px" />
 
 
-							<div class='encabezado'>Datos de la Eventualidad</div>
-							<div class='linea-two'></div>
+								<div class='encabezado'>
+									Datos de la Eventualidad
+								</div>
+								<div class='linea-two'></div>
 								<separator spacing="30px" />
 								<grid>
-								<rows>
-
-								
-								<row>
-								<vlayout>
-								<hlayout>
-								<div width="100px">
-								<label value="Tipo de Eventualidad:" />
-								</div>	
-								<div>		
-								<combobox width="auto"> 
-						   		 <comboitem label="Pelea"/>
-						   		 <comboitem label="Daño de Instalacion"/>
-						   		 <comboitem label="Acto Inmoral"/>
-						   		 
-								 </combobox>
-								</div>
-								</hlayout>
-								</vlayout>
-								</row>
-								
-								<row>
-								
-								<vlayout>
-								<hlayout>
-								<div width="100px">
-								
-							
-								
-								<label value="Descripción:" />
-											</div>	
+									<rows>
+										<row>
 											<div>
-											<textbox rows="4" cols="50"/>
+												<label class="col-md-2"
+													value="Tipo Eventualidad" />
+												<combobox
+													class="col-md-6" width="auto">
+													<comboitem
+														label="Pelea" />
+													<comboitem
+														label="Daño de Instalacion" />
+													<comboitem
+														label="Acto Inmoral" />
+
+												</combobox>
 											</div>
-								</hlayout>
-								</vlayout>
-								</row>
-								<row>
-            <separator spacing="8%"></separator>
-			 </row>
-			<row class="col-md-8 col-md-offset-4">
-			<hlayout>
-			                 
-              	<div >
-               	<button   iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Guardar"/>
-                </div>
-                <div >
-                <button  iconSclass="z-icon-times-circle" class='boton-cancelar' label="Cancelar" />
-				</div>
-            </hlayout>
-			             		
-			</row>
-								
-								</rows>
+										</row>
+
+										<row>
+											<div>
+												<label
+													value="Descripción" class="col-md-2" />
+												<textbox rows="4"
+													cols="50" class="col-md-6" />
+											</div>
+										</row>
+										<row>
+											<separator spacing="8%"></separator>
+										</row>
+										<row
+											class="col-md-8 col-md-offset-4">
+											<hlayout>
+
+												<div>
+													<button
+														iconSclass="z-icon-floppy-o" class='boton-guardar'
+														label="Guardar" />
+												</div>
+												<div>
+													<button
+														iconSclass="z-icon-times-circle" class='boton-cancelar'
+														label="Cancelar" />
+												</div>
+											</hlayout>
+
+										</row>
+
+									</rows>
 								</grid>
-				
-
-				
-
+							</div>
 						</div>
 
 					</div>
 
 				</div>
 
-			</div>
+			</vlayout>
 
-		</vlayout>
-
-	</hlayout>
-</div>
+		</hlayout>
+	</div>
 </zk>
