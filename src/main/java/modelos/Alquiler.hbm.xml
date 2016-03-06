@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Alquiler" table="alquiler" schema="public" optimistic-lock="version">
         <id name="idAlquiler" type="int">
@@ -11,11 +11,11 @@
         <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select" lazy="false">
             <column name="reservacionid_reservacion" not-null="true" />
         </many-to-one>
+        <many-to-one name="tipoPago" class="modelos.TipoPago" fetch="select" lazy="false">
+            <column name="tipo_pagoid_tipo_pago" not-null="true" />
+        </many-to-one>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
-        </property>
-        <property name="nroTransaccion" type="string">
-            <column name="nro_transaccion" length="40" not-null="true" />
         </property>
         <property name="monto" type="float">
             <column name="monto" precision="8" scale="8" not-null="true" />
@@ -23,7 +23,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="true" fetch="select">
+        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="alquilerid_alquiler" not-null="true" />
             </key>

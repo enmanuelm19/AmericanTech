@@ -87,7 +87,21 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 	
-
+	//obtiene un archivo mediante su id
+	public Archivo obtenerArchivo(int id) throws Exception {            
+	      
+		   Archivo datos = new Archivo();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Archivo) em.get(Archivo.class, id);             
+	        } catch (Exception e) {             
+	        	
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	        return datos; 
+	}
 	
 	
 	

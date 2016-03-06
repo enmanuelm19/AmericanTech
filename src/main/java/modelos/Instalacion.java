@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +16,7 @@ public class Instalacion implements java.io.Serializable {
 	private String descripcion;
 	private short capacidad;
 	private float precioAlquiler;
+	private boolean alquilable;
 	private boolean activo = true;
 	private Set<Reservacion> reservacions = new HashSet<Reservacion>(0);
 	private Set<InstalacionEvento> instalacionEventos = new HashSet<InstalacionEvento>(
@@ -30,19 +31,20 @@ public class Instalacion implements java.io.Serializable {
 
 	public Instalacion(int idInstalacion, TipoInstalacion tipoInstalacion,
 			String nombre, String descripcion, short capacidad,
-			float precioAlquiler, boolean activo) {
+			float precioAlquiler, boolean alquilable, boolean activo) {
 		this.idInstalacion = idInstalacion;
 		this.tipoInstalacion = tipoInstalacion;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.capacidad = capacidad;
 		this.precioAlquiler = precioAlquiler;
+		this.alquilable = alquilable;
 		this.activo = activo;
 	}
 
 	public Instalacion(int idInstalacion, TipoInstalacion tipoInstalacion,
 			String nombre, String descripcion, short capacidad,
-			float precioAlquiler, boolean activo,
+			float precioAlquiler, boolean alquilable, boolean activo,
 			Set<Reservacion> reservacions,
 			Set<InstalacionEvento> instalacionEventos, Set<Foto> fotos,
 			Set<Eventualidad> eventualidads,
@@ -53,6 +55,7 @@ public class Instalacion implements java.io.Serializable {
 		this.descripcion = descripcion;
 		this.capacidad = capacidad;
 		this.precioAlquiler = precioAlquiler;
+		this.alquilable = alquilable;
 		this.activo = activo;
 		this.reservacions = reservacions;
 		this.instalacionEventos = instalacionEventos;
@@ -107,6 +110,14 @@ public class Instalacion implements java.io.Serializable {
 
 	public void setPrecioAlquiler(float precioAlquiler) {
 		this.precioAlquiler = precioAlquiler;
+	}
+
+	public boolean isAlquilable() {
+		return this.alquilable;
+	}
+
+	public void setAlquilable(boolean alquilable) {
+		this.alquilable = alquilable;
 	}
 
 	public boolean isActivo() {

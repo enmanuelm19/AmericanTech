@@ -1,27 +1,30 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Sancion" table="sancion" schema="public" optimistic-lock="version">
         <id name="idSancion" type="int">
             <column name="id_sancion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="motivoSancion" class="modelos.MotivoSancion" fetch="select" lazy="false">
-            <column name="tipo_sanciontipo_sancion" not-null="true" />
+        <many-to-one name="eventualidad" class="modelos.Eventualidad" fetch="select" lazy="false">
+            <column name="eventualidadid_eventualidad" />
         </many-to-one>
         <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
             <column name="socioid_socio" />
+        </many-to-one>
+        <many-to-one name="tipoSancion" class="modelos.TipoSancion" fetch="select" lazy="false">
+            <column name="tipo_sancionid_tipo_sancion" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
             <column name="descripcion" length="200" not-null="true" />
         </property>
         <property name="fechaInic" type="date">
-            <column name="fecha_inic" length="13" not-null="true" />
+            <column name="fecha_inic" length="13" />
         </property>
         <property name="fechaFin" type="date">
-            <column name="fecha_fin" length="13" not-null="true" />
+            <column name="fecha_fin" length="13" />
         </property>
         <property name="monto" type="java.lang.Float">
             <column name="monto" precision="8" scale="8" />
@@ -29,11 +32,5 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="sancionid_sancion" />
-            </key>
-            <one-to-many class="modelos.Eventualidad" />
-        </set>
     </class>
 </hibernate-mapping>

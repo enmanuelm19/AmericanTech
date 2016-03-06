@@ -3,22 +3,22 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelos.TipoSugerencia" table="tipo_sugerencia" schema="public" optimistic-lock="version">
-        <id name="idTipoSugerencia" type="int">
-            <column name="id_tipo_sugerencia" />
+    <class name="modelos.TipoOpnion" table="tipo_opnion" schema="public" optimistic-lock="version">
+        <id name="idTipoOpninion" type="int">
+            <column name="id_tipo_opninion" />
             <generator class="increment" />
         </id>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="30" not-null="true" />
+            <column name="descripcion" length="50" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sugerencias" table="sugerencia" inverse="true" lazy="true" fetch="select">
+        <set name="opinions" table="opinion" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="tipo_sugerenciaid_tipo_sugerencia" not-null="true" />
+                <column name="tipo_opnionid_tipo_opninion" not-null="true" />
             </key>
-            <one-to-many class="modelos.Sugerencia" />
+            <one-to-many class="modelos.Opinion" />
         </set>
     </class>
 </hibernate-mapping>
