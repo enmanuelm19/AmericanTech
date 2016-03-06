@@ -4,4 +4,4 @@
 		(3, 'Afiliado', true),
 		(4, 'Seguridad', true),
 		(5, 'Comunicador', true),
-		(6, 'Dios', true);
+		(6, 'Vigilancia', true);

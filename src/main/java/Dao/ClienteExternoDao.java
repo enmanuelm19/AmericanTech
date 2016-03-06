@@ -88,6 +88,22 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 	
+	public ClienteExterno obtenerCliente(int id) throws Exception {            
+	      
+		   ClienteExterno datos = new ClienteExterno();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (ClienteExterno) em.get(ClienteExterno.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}	
+	
 
 	
 	

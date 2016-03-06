@@ -88,7 +88,38 @@ public void agregarCargo(Cargo dato) throws Exception{
         return datos; 
 	}	
 	
+	//devuelve un cargo mediante su id
+	public Cargo obtenerCargo(int id) throws Exception {            
+	      
+		   Cargo datos = new Cargo();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Cargo) em.get(Cargo.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
-	
-	
+	//devuelve un cargo mediante su descripcion
+	public Cargo obtenerCargo(String descripcion) throws Exception {            
+	      
+		   Cargo datos = new Cargo();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (Cargo) em.createCriteria(Cargo.class).add(Restrictions.eq("descripcion", descripcion))
+		    		.add(Restrictions.eq("activo", true));             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 }

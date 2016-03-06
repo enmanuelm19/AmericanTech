@@ -1,25 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelos.MotivoSancion" table="motivo_sancion" schema="public" optimistic-lock="version">
-        <id name="idMotivoSancion" type="int">
-            <column name="id_motivo_sancion" />
+    <class name="modelos.TipoSancion" table="tipo_sancion" schema="public" optimistic-lock="version">
+        <id name="idTipoSancion" type="int">
+            <column name="id_tipo_sancion" />
             <generator class="increment" />
         </id>
-        <property name="motivo" type="string">
-            <column name="motivo" length="120" not-null="true" />
-        </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="100" not-null="true" />
+            <column name="descripcion" length="80" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
         <set name="sancions" table="sancion" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="tipo_sanciontipo_sancion" not-null="true" />
+                <column name="tipo_sancionid_tipo_sancion" not-null="true" />
             </key>
             <one-to-many class="modelos.Sancion" />
         </set>
