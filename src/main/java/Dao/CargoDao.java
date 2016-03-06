@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Cargo;
+import modelos.Desvinculacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -19,23 +20,22 @@ public class CargoDao {
 private Sesion sesionPostgres;
 	
 	
-	public void agregarCargo(Cargo dato) throws Exception{
-		@SuppressWarnings("static-access")
-		Session em = sesionPostgres.getSessionFactory().openSession();   
-         Transaction tx = null;  
-         try {    
-        	 tx = em.beginTransaction();
-        	 dato.setActivo(false);
-              em.update(dato);   
-              tx.commit();  
-         } catch (Exception e) {  
-             tx.rollback();            
-             e.printStackTrace();
-             throw e;
-         } finally {  
-             em.close();  
-         } 
-	}
+public void agregarCargo(Cargo dato) throws Exception{
+	@SuppressWarnings("static-access")
+	Session em = sesionPostgres.getSessionFactory().openSession();  
+     Transaction tx = null;  
+     try {    
+    	 tx = em.beginTransaction();
+          em.save( dato);   
+          tx.commit();  
+     } catch (Exception e) {  
+         tx.rollback();            
+         e.printStackTrace();
+         throw e;
+     } finally {  
+         em.close();  
+     } 
+}
 	
 	public void eliminarCargo(Cargo dato) throws Exception{		 
 		@SuppressWarnings("static-access")

@@ -108,7 +108,7 @@
 								<n:li><n:a href="#about" class="scroll">¿Quiénes somos?</n:a></n:li>
 								   <n:li><n:a  href="#contact"  class="scroll">Contacto</n:a></n:li>
 								     <n:li><n:a  href="/america/portal/instalaciones.zul" >Instalaciones</n:a></n:li>
-								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Cartelera</n:a></n:li>
+								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Informate</n:a></n:li>
 								   <n:li><n:a  href="/america/portal/postulacion.zul" >Postulación</n:a></n:li>
 								   <n:li><n:a  href="/america/vistas/layouts/ingreso.zul" >Ingreso</n:a></n:li>
 								 <n:div class="clear"> </n:div>
