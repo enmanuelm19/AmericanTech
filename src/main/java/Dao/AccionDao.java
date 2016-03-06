@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Accion;
+import modelos.EstadoAccion;
+import modelos.Persona;
+import modelos.Preferencia;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -71,6 +74,22 @@ private Sesion sesionPostgres;
          } 
 	}
 	
+	public List<Accion> obtenerPorTipo(EstadoAccion estado) throws Exception {            
+	      
+		   List<Accion> datos = new ArrayList<Accion>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<Accion>) em.createCriteria(Accion.class).add(Restrictions.eq("estadoAccion", estado)).list();            
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
 	public List<Accion> obtenerTodos() throws Exception {            
       
 	   List<Accion> datos = new ArrayList<Accion>();  
@@ -85,9 +104,5 @@ private Sesion sesionPostgres;
         } 
        
         return datos; 
-	}	
-
-	
-	
-	
+	}
 }

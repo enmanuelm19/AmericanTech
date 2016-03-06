@@ -16,7 +16,7 @@ public class PreferenciaPersona implements java.io.Serializable {
 	}
 
 	public PreferenciaPersona(int idPreferenciaPersona, Persona persona,
-			Preferencia preferencia, boolean activo) {
+		Preferencia preferencia, boolean activo) {
 		this.idPreferenciaPersona = idPreferenciaPersona;
 		this.persona = persona;
 		this.preferencia = preferencia;

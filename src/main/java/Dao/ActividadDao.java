@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Actividad;
+import modelos.Preferencia;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -86,7 +87,5 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
-	
-	
 	
 }

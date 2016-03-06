@@ -17,6 +17,7 @@ public class SocioDao {
 	
 	// Agrega un registro a la tabla.
 	public void agregarSocio(Socio dato) throws Exception{
+		System.out.println("dsda cart-; "+dato.getNroCarnet());
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  

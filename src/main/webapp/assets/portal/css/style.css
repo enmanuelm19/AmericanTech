@@ -291,8 +291,6 @@ body {
 	-webkit-transition: -webkit-transform 1s;
 	height: 100%;
 	opacity: 0;
-	position: absolute;
-	width: 100%;
 }
 .dc_zoom_css span.roll_css6 img:hover {
 	opacity:1;

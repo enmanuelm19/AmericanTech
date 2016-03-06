@@ -26,7 +26,7 @@
             </key>
             <one-to-many class="modelos.Sancion" />
         </set>
-        <set name="accions" table="accion" inverse="true" lazy="true" fetch="select">
+        <set name="accions" table="accion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="socioid_socio" />
             </key>
