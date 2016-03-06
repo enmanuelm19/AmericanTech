@@ -168,5 +168,9 @@ public class Instalacion implements java.io.Serializable {
 			Set<RecursoInstalacion> recursoInstalacions) {
 		this.recursoInstalacions = recursoInstalacions;
 	}
+	
+	public String toString(){
+		return nombre;
+	}
 
 }
