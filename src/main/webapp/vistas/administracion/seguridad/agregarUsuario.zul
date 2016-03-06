@@ -124,7 +124,7 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Grupo </label>
-									<combobox model="@load(vm.grupos)" selectedItem="@bind(vm.grupo)"">
+									<combobox model="@load(vm.grupos)" selectedItem="@bind(vm.grupo)">
 									<template name="model">
 										<comboitem label="@load(each.descripcion)" ></comboitem>
 									</template>
@@ -138,32 +138,25 @@
 								<div>
 									<grid id="gridGrupos"
 							emptyMessage="No se encuentran solicitudes registradas"
-							mold="paging" pageSize="10" model="@load(vm.user.usuarioGrupos)">
+							mold="paging" pageSize="10" model="@load(vm.usuarioGrupo)">
 							<columns>
 								<column hflex="">Grupos</column>
 								<column hflex="">Acciones</column>
 							</columns>
 							<rows>
 							<template name="model">
-								<!--  <row>
-									<label value="Junta directiva" />
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
-									</div>
-								</row>-->
 								<row>
-									<label></label>
+									<label value="@load(each.grupo.descripcion)"></label>
 									<div>
 										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" onClick="@command('eliminarGrupos', Grupo=each)" />
 									</div>
 								</row>
 								</template>
 							</rows>
 							<foot>
 								<footer span="5" class="footer_right"
-									label="2 items en la lista" />
+									label="@load(vm.cantRegistros)" />
 							</foot>
 						</grid>
 								</div>

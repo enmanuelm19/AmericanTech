@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
@@ -9,6 +10,8 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Session;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
@@ -19,9 +22,13 @@ import org.zkoss.zkmax.zul.Navitem;
 import org.zkoss.zul.Div;
 
 import Dao.FuncionDao;
-import Dao.TipoSugerenciaDao;
 import modelos.Funcion;
-import modelos.TipoSugerencia;
+import modelos.FuncionGrupo;
+import modelos.Grupo;
+import modelos.Usuario;
+import modelos.UsuarioGrupo;
+
+import javax.servlet.http.HttpSession;
 
 public class NavegacionViewModel{
 
@@ -37,6 +44,7 @@ public class NavegacionViewModel{
 	
 	private FuncionDao funcionDao;
 	private List<Funcion> funciones;
+	private Usuario usuario;
 	
 	@Init
 	public void init() throws Exception {
@@ -44,6 +52,8 @@ public class NavegacionViewModel{
 		funciones = new ArrayList<Funcion>();
 		funcionDao = new FuncionDao();
 		funciones = funcionDao.obtenerTodos();
+		Session session = Sessions.getCurrent();
+		usuario = (Usuario) session.getAttribute("Usuario");
 	}
 	
 	@AfterCompose
@@ -54,12 +64,26 @@ public class NavegacionViewModel{
 
 
 	public void cargarMenu(){
-
+		List<Grupo> grupos = new ArrayList<Grupo>();
+		List<Funcion> funciones = new ArrayList<Funcion>();
 		List<Funcion> raices = llenarRaices();
 		List<Funcion> padres = llenarPadres(raices);
 		List<Funcion> hijos = llenarHijos(raices, padres);
 		List<Funcion> nietos = llenarNietos(padres);
-
+		
+		for(UsuarioGrupo usuarioGrupo : usuario.getUsuarioGrupos()){
+			grupos.add(usuarioGrupo.getGrupo());
+		}
+		
+		for(Grupo g : grupos){
+			for(FuncionGrupo funcionGrupo : g.getFuncionGrupos()){
+				if(funcionGrupo.isActivo()){
+					funciones.add(funcionGrupo.getFuncion());
+				}
+				
+			}
+		}
+	
 		//Creo las raices en el navbar
 		for(Funcion f : raices){
 			Nav root = new Nav();
@@ -80,16 +104,22 @@ public class NavegacionViewModel{
 					//Creo los hijos de los padres
 					for(Funcion nieto : nietos){
 						if(nieto.getPadreidFuncion() == fc.getIdFuncion()){
-							final Navitem itemNieto = new Navitem();
-							itemNieto.setLabel(nieto.getNombre());
-							itemNieto.setIconSclass(nieto.getIconUri());
-							itemNieto.setId(String.valueOf(nieto.getIdFuncion()));
-							itemNieto.addEventListener("onClick", new EventListener(){
-								public void onEvent(Event arg0) throws Exception{
-									navegar(itemNieto);
+							
+							for(Funcion fu : funciones){
+								if(nieto.getIdFuncion() == fu.getIdFuncion()){
+									final Navitem itemNieto = new Navitem();
+									itemNieto.setLabel(nieto.getNombre());
+									itemNieto.setIconSclass(nieto.getIconUri());
+									itemNieto.setId(String.valueOf(nieto.getIdFuncion()));
+									itemNieto.addEventListener("onClick", new EventListener(){
+										public void onEvent(Event arg0) throws Exception{
+											navegar(itemNieto);
+										}
+									});
+									child.appendChild(itemNieto);
 								}
-							});
-							child.appendChild(itemNieto);
+							}
+						
 						}
 					}
 
@@ -98,6 +128,27 @@ public class NavegacionViewModel{
 			}
 			//Coloco los items directos de la raiz
 			for(Funcion hijo : hijos){
+				if(hijo.getPadreidFuncion() == f.getIdFuncion()){
+					
+					for(Funcion fu : funciones){
+					
+						if(hijo.getIdFuncion() == fu.getIdFuncion()){
+							final Navitem item = new Navitem();
+							item.setLabel(hijo.getNombre());
+							item.setIconSclass(hijo.getIconUri());
+							item.setId(String.valueOf(hijo.getIdFuncion()));
+							item.addEventListener("onClick", new EventListener(){
+								public void onEvent(Event arg0) throws Exception{
+									navegar(item);
+								}
+							});
+							root.appendChild(item);
+						}
+					}
+				}
+			}
+			
+			/*for(Funcion hijo : hijos){
 				if(hijo.getPadreidFuncion() == f.getIdFuncion()){
 					final Navitem item = new Navitem();
 					item.setLabel(hijo.getNombre());
@@ -110,7 +161,7 @@ public class NavegacionViewModel{
 					});
 					root.appendChild(item);
 				}
-			}
+			}*/
 
 		}
 
