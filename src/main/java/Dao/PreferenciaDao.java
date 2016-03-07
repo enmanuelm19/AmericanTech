@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Preferencia;
+import modelos.TipoPreferencia;
 import modelos.Preferencia;
 
 import org.hibernate.Session;
@@ -123,21 +124,22 @@ private Sesion sesionPostgres;
 		
 	//Metodo para obtener las preferencias de "x" tipo de preferencia
 
-	public List<Preferencia> obtenerPreferenciasTipo( int id) throws Exception {            
-	      
-		   List<Preferencia> datos = new ArrayList<Preferencia>();  
-		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-	        try {  	
-		    datos =  (List<Preferencia>) em.createCriteria(Preferencia.class).add(Restrictions.eq("tipo_preferenciaid_tipo_preferencia", id)).list();             
-	        } catch (Exception e) {             
-	       
-	         throw new Exception(e.getMessage(),e.getCause());
-	        } finally {  
-	          em.close();  
-	        } 
-	       
-	        return datos; 
+	public List<Preferencia> obtenerPreferenciasTipo(TipoPreferencia dato) throws Exception {
+
+		List<Preferencia> datos = new ArrayList<Preferencia>();
+		Session em = sesionPostgres.getSessionFactory().openSession();
+		try {
+			datos = (List<Preferencia>) em.createCriteria(Preferencia.class)
+					.add(Restrictions.eq("tipoPreferencia", dato)).list();
+		} catch (Exception e) {
+
+			throw new Exception(e.getMessage(), e.getCause());
+		} finally {
+			em.close();
 		}
+
+		return datos;
+	}
 
 
 }
