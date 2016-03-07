@@ -29,19 +29,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="usuarioGrupos" table="usuario_grupo" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="usuarioGrupos" table="usuario_grupo" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="usuarioid_usuario" not-null="true" />
             </key>
             <one-to-many class="modelos.UsuarioGrupo" />
         </set>
-        <set name="opinions" table="opinion" inverse="true" lazy="true" fetch="select">
+        <set name="opinions" table="opinion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="usuarioid_usuario" not-null="true" />
             </key>
             <one-to-many class="modelos.Opinion" />
         </set>
-        <set name="sugerencias" table="sugerencia" inverse="true" lazy="true" fetch="select">
+        <set name="sugerencias" table="sugerencia" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="usuarioid_usuario" />
             </key>

@@ -3,6 +3,8 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Evento;
+import modelos.Instalacion;
 import modelos.InstalacionEvento;
 import confi.Sesion;
 
@@ -87,7 +89,56 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 
+	public InstalacionEvento obtenerInstalacionEvento(int id) throws Exception {            
+	      
+		   InstalacionEvento datos = new InstalacionEvento();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (InstalacionEvento) em.get(InstalacionEvento.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
+	public List<InstalacionEvento> obtenerPorEvento(Evento evento) throws Exception {            
+	      
+		   List<InstalacionEvento> datos = new ArrayList<InstalacionEvento>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<InstalacionEvento>) em.createCriteria(InstalacionEvento.class)
+		    		.add(Restrictions.eq("evento", evento))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}	
 	
+	public List<InstalacionEvento> obtenerPorInstalacion(Instalacion instalacion) throws Exception {            
+	      
+		   List<InstalacionEvento> datos = new ArrayList<InstalacionEvento>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<InstalacionEvento>) em.createCriteria(InstalacionEvento.class)
+		    		.add(Restrictions.eq("instalacion", instalacion))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}	
 	
 }
