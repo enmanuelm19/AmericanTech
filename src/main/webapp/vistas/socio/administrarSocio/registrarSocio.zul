@@ -1,209 +1,296 @@
 <!-- Responsable Hector Gil - Copiado por Wilmer Aponte -->
 
+<zk xmlns:n="native">
+	<window border="none" title="Registrar Socio " closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		width="60%">
+		<caption iconSclass="z-icon-user" />
 
-<window border="none" title="Registrar Socio " closable="true"
-	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	width="60%">
-
-
-	<div class="col-md-10 col-centered "
-		form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+		<div class="col-md-10 col-centered "
+			form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 
+			<n:br></n:br>
+			<div align="left">
+				<div class="encabezado">Datos del Socio</div>
+				<div align="left" class="linea-two">
 
-		<div align="left">
-			<div class="encabezado">Datos del Socio</div>
-			<div align="left" class="linea-two">
-
-			</div>
-		</div>
-
-		<separator spacing="30px"></separator>
-		<div class="row">
-			<separator spacing="30px"></separator>
-			<div class="col-md-3">
-				<div class="input-group">
-					<image src="/assets/portal/img/img2.jpg"
-						class='img-responsive col-md-offset-1' />
-					<separator spacing="30px"></separator>
-					<fileupload label="Examinar"
-						iconSclass="z-icon-folder-open"
-						class='boton-guardar col-md-offset-4' />
 				</div>
 			</div>
-
-			<div class="col-md-7">
-				<grid>
-					<rows>
-						<row>
-							<div>
-								<label class="col-md-4" value="Cédula" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="V18122444">
-								</textbox>
-							</div>
-						</row>
-
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Numero Carnet" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="123456">
-								</textbox>
+			<n:br></n:br>
 
 
-							</div>
-						</row>
+			<div class="row">
+				<separator spacing="30px"></separator>
+				<div class="col-md-3">
+					<div class="input-group">
+						<image src="/assets/portal/img/img2.jpg"
+							class='img-responsive col-md-offset-1' />
+						<separator spacing="30px"></separator>
+						<fileupload label="Examinar"
+							iconSclass="z-icon-folder-open"
+							class='boton-guardar col-md-offset-4' />
+					</div>
+				</div>
 
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Primer Nombre" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="David">
-								</textbox>
-
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Segundo Nombre" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="Angel">
-								</textbox>
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Primer Apellido" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="Cordero">
-								</textbox>
-
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Segundo Apellido" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="ron">
-								</textbox>
-
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4" value="Correo" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" type="email"
-									value="hdhdhdh@jdhdh.com">
-								</textbox>
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Telefono" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="04135689256">
-								</textbox>
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Nacimiento" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="10/01/70">
-								</textbox>
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4" value="Edad" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" value="33">
-								</textbox>
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4" value="Sexo" />
-								<checkbox label="Masculino" />
-								<checkbox label="Femenino" />
-							</div>
-						</row>
-						<row>
-							<div>
-								<label class="col-md-4"
-									value="Direccion" />
-								<textbox constraint="no empty"
-									class="col-md-6" readonly="true" cols="45" rows="2" type="text"
-									value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
-
-							</div>
-						</row>
-					</rows>
-				</grid>
-			</div>
-		</div>
-
-
-
-
-
-		<!-- NO LLEVA INTERESES -->
-		<div align="left">
-			<div class="encabezado">Datos de la Acción</div>
-			<div align="left" class="linea-two">
-
-			</div>
-		</div>
-
-		<hbox width="100%">
-			<panel border="none" collapsible="true"
-				sclass="transparent">
-				<panelchildren>
-					<grid sclass="domain">
-						<columns>
-							<column width="50%" label="Numero Accion"
-								iconSclass="z-icon-caret-right blue" />
-							<column width="35%" label="Valor BS"
-								iconSclass="z-icon-caret-right blue" />
-						</columns>
+				<div class="col-md-7">
+					<grid>
 						<rows>
 							<row>
-								<label value="032" />
-								<label value="60.000"
-									sclass="label label-primary arrowed" />
+								<div>
+									<label class="col-md-4"
+										value="Cédula" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="V18122444">
+									</textbox>
+								</div>
+							</row>
+
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Numero Carnet" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="123456">
+									</textbox>
+
+
+								</div>
+							</row>
+
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Primer Nombre" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="David">
+									</textbox>
+
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Segundo Nombre" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="Angel">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Primer Apellido" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="Cordero">
+									</textbox>
+
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Segundo Apellido" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="ron">
+									</textbox>
+
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Correo" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" type="email"
+										value="hdhdhdh@jdhdh.com">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Telefono" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="04135689256">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Nacimiento" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="10/01/70">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Edad" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" value="33">
+									</textbox>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Sexo" />
+									<checkbox label="Masculino" />
+									<checkbox label="Femenino" />
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-4"
+										value="Direccion" />
+									<textbox constraint="no empty"
+										class="col-md-6" readonly="true" cols="45" rows="6"
+										type="text"
+										value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
+
+								</div>
 							</row>
 						</rows>
 					</grid>
-				</panelchildren>
-			</panel>
-		</hbox>
-
-	
-		
-		<separator spacing="30px"></separator>
-		<hbox width="100%" align="center" pack="center">
-
-			<separator spacing="5%"></separator>
+				</div>
+			</div>
 
 
-			<button iconSclass="z-icon-edit" class='boton-guardar'
-				label="Guardar" />
 
-			<space bar="False" spacing="5%" />
+			<n:br></n:br>
 
-			<button iconSclass="z-icon-times-circle"
-				class='boton-cancelar' label="Cancelar " />
-		</hbox>
+			<!-- NO LLEVA INTERESES -->
+			<div align="left">
+				<div class="encabezado">Datos de la Acción</div>
+				<div align="left" class="linea-two">
 
-	</div>
-</window>
+				</div>
+			</div>
+			<n:br></n:br>
+			<hbox width="100%">
+				<panel border="none" collapsible="true"
+					sclass="transparent">
+					<panelchildren>
+						<grid sclass="domain">
+							<columns>
+								<column width="50%"
+									label="Numero Accion" iconSclass="z-icon-caret-right blue" />
+								<column width="35%" label="Valor BS"
+									iconSclass="z-icon-caret-right blue" />
+							</columns>
+							<rows>
+								<row>
+									<label value="032" />
+									<label value="60.000"
+										sclass="label label-primary arrowed" />
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+			</hbox>
+
+			<n:br></n:br>
+			<n:br></n:br>
+			<div align="left">
+				<div class="encabezado">Redes sociales del socio</div>
+				<div align="left" class="linea-two">
+
+				</div>
+			</div>
+			<n:br></n:br>
+			<n:br></n:br>
+
+			<div class="col-md-12">
+				<div class="row" align="left">
+					<div class="col-md-6">
+						Seleccione las redes sociales del socio
+						<n:br></n:br>
+						<combobox width="85%">
+							<comboitem label="Facebook" />
+							<comboitem label="Twitter" />
+							<comboitem label="Instagram" />
+						</combobox>
+
+					</div>
+					<div class="col-md-6">
+						Usuario en la red social
+						<n:br></n:br>
+						<textbox type="text" width="80%" tabindex="10"
+							constraint="no empty" />
+						<button sclass="btn-link"
+							iconSclass="z-icon-plus blue" id=""
+							tooltiptext="Agregar Indicador" />
+					</div>
+				</div>
+
+				<grid id="gridRedes"
+					emptyMessage="No se encuentran solicitudes registradas"
+					mold="paging" pageSize="10">
+
+					<columns>
+
+						<column hflex="">Red social</column>
+
+						<column hflex="">Usuario</column>
+						<column hflex="2">Acciones</column>
+					</columns>
+
+					<rows>
+						<row>
+							<div>
+
+								<label value="Facebook" />
+
+							</div>
+							<div>
+
+								<label value="david_angel" />
+
+							</div>
+
+
+							<div>
+								<button sclass="btn-link"
+									iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+							</div>
+						</row>
+
+					</rows>
+
+					<foot>
+						<footer span="5" class="footer_right"
+							label="0 items en la lista" />
+					</foot>
+				</grid>
+
+			</div>
+
+
+
+
+			<n:br></n:br>
+			<n:br></n:br>
+			<hbox width="100%" align="center" pack="center">
+
+				<separator spacing="5%"></separator>
+
+
+				<button iconSclass="z-icon-edit" class='boton-guardar'
+					label="Guardar" />
+
+				<space bar="False" spacing="5%" />
+
+				<button iconSclass="z-icon-times-circle"
+					class='boton-cancelar' label="Cancelar " />
+			</hbox>
+
+			<n:br></n:br>
+			<n:br></n:br>
+		</div>
+	</window>
+</zk>

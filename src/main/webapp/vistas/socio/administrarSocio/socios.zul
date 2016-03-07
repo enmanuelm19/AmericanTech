@@ -40,13 +40,13 @@
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
-											width="120px" placeholder="Buscar" />
+											width="80px" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
-											width="120px" placeholder="Buscar" />
+											width="80px" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="4" />
 								</auxhead>

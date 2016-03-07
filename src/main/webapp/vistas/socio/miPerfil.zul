@@ -21,7 +21,7 @@
 						<label value="Mi Perfil" />
 					</div>
 
-					<div class='contenido ' align="center"
+					<div class='contenido col-md-12 ' align="center"
 						width="100%">
 						<div class="col-md-10 col-centered "
 							form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
@@ -65,10 +65,10 @@
 												<rows>
 													<row>
 														<div>
-															<label
-																class="col-md-4" value="Cédula" />
+															<label class="col-md-4"
+																 value="Cédula" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
+																constraint="no empty" class="" readonly="true"
 																value="V18122444">
 															</textbox>
 														</div>
@@ -216,120 +216,70 @@
 
 										</div>
 									</div>
+<!-- GRUPO INTERESES -->
+										<div class="col-md-12">
+						<div align="left">
+							Seleccione las Categorías relacionadas con
+							el evento:
+							<n:br></n:br>
+							<combobox width="100%">
+								<comboitem label="Deportivo" />
+								<comboitem label="Cultural" />
+								<comboitem label="Social" />
+								<comboitem label="Mixto" />
+							</combobox>
+							<!-- <button sclass="btn-link"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar preferencia" />-->
 
-									<hbox align="center" pack="center"
-										width="100%"><!-- GRUPO INTERESES -->
-										<grid
-											emptyMessage="No se encuentran reglas registradas"
-											mold="paging" pageSize="10">
-											<auxhead
-												sclass="category-center">
-												<auxheader
-													colspan="1">
-													<combobox
-														width="100%" class="col-md-12"
-														value="Tipo Preferencias">
-														<comboitem
-															label="Deporte" />
-														<comboitem
-															label="Cultura" />
-														<comboitem
-															label="Social" />
-													</combobox>
-												</auxheader>
-												<auxheader
-													colspan="1">
-													<combobox
-														width="100%" class="col-md-12" value="Preferencias">
-														<comboitem
-															label="futbol" />
-														<comboitem
-															label="beisbol" />
-														<comboitem
-															label="basket" />
-														<comboitem
-															label="softball" />
-													</combobox>
-												</auxheader>
-												<auxheader
-													colspan="1">
-												</auxheader>
-											</auxhead>
+						</div>
+						<n:br></n:br>
+						<grid id="gridPreferencias"
+							emptyMessage="No se encuentran solicitudes registradas"
+							mold="paging" pageSize="10">
 
-											<columns>
-												<column hflex="3">
-													Tipo Preferencia
-												</column>
-												<column hflex="3">
-													Preferencia
-												</column>
+							<columns>
 
-												<column>
-													Acciones
-												</column>
-											</columns>
-											<rows>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="Futbol" />
+								<column hflex=""> Categorias</column>
+								<column hflex="">Sub Categorias</column>
 
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="beisbol" />
+								<column hflex="">Acciones</column>
+							</columns>
 
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="Basket" />
+							<rows>
+								<row>
+									<div>
+										<checkbox/>
+									<label value=" Deportiva" />
+									<label value=" Futbol" />
+									</div>
+									<div>
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id=""
+											tooltiptext="Eliminar" />
+									</div>
+								</row>
+									<row>
+									<div>
+										<checkbox/>
+									
+									<label value="Beisbol" />
+									</div>
+									<div>
+										<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" id=""
+											tooltiptext="Eliminar" />
+									</div>
+								</row>
+							</rows>
 
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="Softball" />
+							<foot>
+								<footer span="5" class="footer_right"
+									label="0 items en la lista" />
+							</foot>
+						</grid>
 
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												
-
-
-											</rows>
-											<foot>
-												<footer span="3"
-													class="footer_right" label="3 items en la lista" />
-											</foot>
-										</grid>
-
-
-
-									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
+					</div><!-- AQUI TERMINA GRUPO INTERESES -->
 									<div align="left">
 										<div class="encabezado">
 											Datos Accion
