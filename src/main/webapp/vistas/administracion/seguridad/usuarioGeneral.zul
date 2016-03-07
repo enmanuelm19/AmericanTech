@@ -77,7 +77,7 @@
 										<label value="@load(each.persona.apellido)"/>
 										<label value="@load(each.persona.correo)" />
 										<image
-											src="/assets/portal/img/img1.jpg" width="40%" />  
+											src="@load(each.persona.direccion)" width="40%" />  
 										<div>
 											<button sclass="btn-link"
 												iconSclass="z-icon-pencil blue" tooltiptext="Editar"  onClick="@command('showModal', Usuario=each)" />

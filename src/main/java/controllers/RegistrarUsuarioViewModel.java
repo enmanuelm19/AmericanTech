@@ -1,5 +1,9 @@
 package controllers;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,9 +15,15 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.image.AImage;
+import org.zkoss.util.media.Media;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.WebApps;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
+import java.nio.file.Files;
 
 import Dao.GrupoDao;
 import Dao.PersonaDao;
@@ -38,6 +48,7 @@ public class RegistrarUsuarioViewModel {
 	private List<Usuario> usuarios;
 	private String keyword;
 	private Grupo grupo;
+	private Media uploadedImage;
 	private List<UsuarioGrupo> usuarioGrupo;
 	private UsuarioGrupoDao usuarioGrupoDao;
 	
@@ -62,6 +73,12 @@ public class RegistrarUsuarioViewModel {
 		} else {
 			this.user = usuario;
 			this.editable = true;
+			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
+			File f = new File(user.getPersona().getDireccion()); 
+			if(f.exists()){
+				this.uploadedImage = new AImage(user.getPersona().getDireccion());
+			}else{
+			this.uploadedImage = new AImage(url);}
 			this.setUsuarioGrupo(new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos()));
 		}
 
@@ -112,6 +129,7 @@ public class RegistrarUsuarioViewModel {
 			}
 			else {
 				user.setFecha(new Date());
+				user.getPersona().setDireccion(subirImagen(getUploadedImage()));
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
@@ -227,5 +245,46 @@ public class RegistrarUsuarioViewModel {
 	@NotifyChange({ "usuarioGrupo", "cantRegistros" })
 	public void refreshUsuarioGrupo() throws Exception {
 		usuarioGrupo = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
+	}
+	
+	@Command
+	@NotifyChange("uploadedImage")
+	public void upload(@BindingParam("media") Media myMedia){
+		System.out.println("Entro");
+		System.out.println(myMedia.getName());
+		setUploadedImage(myMedia);
+	}
+
+	public Media getUploadedImage() {
+		return uploadedImage;
+	}
+
+	public void setUploadedImage(Media uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+	
+	public String subirImagen(Media imagen){
+		String rutaFinal = null;
+		String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
+		File imageFile = new File(ruta, imagen.getName());
+		try {
+			InputStream is = imagen.getStreamData();
+			if(!imageFile.exists()){
+				Files.copy(is, imageFile.toPath());
+				rutaFinal = getServerName()+"/assets/img/"+imagen.getName();
+				System.out.println(rutaFinal);
+			}
+		} catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return ruta + "/" + imagen.getName();
+	}
+
+	private String getServerName() {
+		String port = ( Executions.getCurrent().getServerPort() == 80 ) ? "" : (":" + Executions.getCurrent().getServerPort());
+		String url = Executions.getCurrent().getScheme() + "://" + Executions.getCurrent().getServerName() + 
+					port + Executions.getCurrent().getContextPath();
+		return url;
 	}
 }
