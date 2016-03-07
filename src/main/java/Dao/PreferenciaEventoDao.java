@@ -3,6 +3,8 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Evento;
+import modelos.Preferencia;
 import modelos.PreferenciaEvento;
 
 import org.hibernate.Session;
@@ -106,12 +108,12 @@ private Sesion sesionPostgres;
 		
 	//Metodo para obtener las preferencias de un evento
 
-	public List<PreferenciaEvento> PreferenciasEvento( int id) throws Exception {            
+	public List<PreferenciaEvento> PreferenciasEvento( Evento dato) throws Exception {            
 	      
 		   List<PreferenciaEvento> datos = new ArrayList<PreferenciaEvento>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<PreferenciaEvento>) em.createCriteria(PreferenciaEvento.class).add(Restrictions.eq("eventoid_evento", id)).list();             
+		    datos =  (List<PreferenciaEvento>) em.createCriteria(PreferenciaEvento.class).add(Restrictions.eq("evento", dato)).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -124,12 +126,12 @@ private Sesion sesionPostgres;
 	
 	//Metodo para obtener los eventos por una preferencia
 
-		public List<PreferenciaEvento> obtenerEventosPreferencia( int id) throws Exception {            
+		public List<PreferenciaEvento> obtenerEventosPreferencia( Preferencia dato) throws Exception {            
 		      
 			   List<PreferenciaEvento> datos = new ArrayList<PreferenciaEvento>();  
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
-			    datos =  (List<PreferenciaEvento>) em.createCriteria(PreferenciaEvento.class).add(Restrictions.eq("preferenciaid_preferencia", id)).list();             
+			    datos =  (List<PreferenciaEvento>) em.createCriteria(PreferenciaEvento.class).add(Restrictions.eq("preferencia", dato)).add(Restrictions.eq("activo", true)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());

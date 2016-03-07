@@ -3,7 +3,11 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Noticia;
 import modelos.NoticiaPreferencia;
+import modelos.Opinion;
+import modelos.Preferencia;
+import modelos.Usuario;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -102,6 +106,24 @@ private Sesion sesionPostgres;
            
             return datos; 
         }
+    
+	//Metodo para obtener las noticias con una misma preferencia
+
+	public List<Noticia> obtenerNoticiasMismaPreferencia( Preferencia dato) throws Exception {            
+	      
+		   List<Noticia> datos = new ArrayList<Noticia>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("preferencia", dato)).add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+		}
     
 
 }

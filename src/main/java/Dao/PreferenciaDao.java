@@ -5,6 +5,7 @@ import java.util.List;
 
 import modelos.Preferencia;
 import modelos.Preferencia;
+import modelos.TipoPreferencia;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -60,7 +61,7 @@ private Sesion sesionPostgres;
 	    Preferencia dato = null;        
             try{
                 dato = (Preferencia) sesion.createCriteria(Preferencia.class)
-                		.add(Restrictions.eq("descripcion", descrip)).uniqueResult();
+                		.add(Restrictions.eq("descripcion", descrip)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());
@@ -123,12 +124,12 @@ private Sesion sesionPostgres;
 		
 	//Metodo para obtener las preferencias de "x" tipo de preferencia
 
-	public List<Preferencia> obtenerPreferenciasTipo( int id) throws Exception {            
+	public List<Preferencia> obtenerPreferenciasTipo( TipoPreferencia dato) throws Exception {            
 	      
 		   List<Preferencia> datos = new ArrayList<Preferencia>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<Preferencia>) em.createCriteria(Preferencia.class).add(Restrictions.eq("tipo_preferenciaid_tipo_preferencia", id)).list();             
+		    datos =  (List<Preferencia>) em.createCriteria(Preferencia.class).add(Restrictions.eq("tipoPreferencia", dato)).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
