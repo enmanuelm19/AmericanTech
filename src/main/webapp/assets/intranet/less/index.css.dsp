@@ -3190,3 +3190,39 @@ div.hola table {
 .z-grid .z-column-content, .z-footer-content{
 	color: #2B7DBC;
 }
+.select label{
+	background-image: url('../../img/star_activa.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width:15px;
+	height:15px;
+	margin: 0px 3px;
+}
+.no_select label{
+	background-image: url('../../img/star_inactiva.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width:15px;
+	height:15px;
+	margin: 0px 3px;
+}
+.star input{
+	display:none;
+}
+.star label{
+	color: transparent;
+	font-size:1px;
+}
+.z-listitem-selected{
+	background: rgba(43,125,188, 0.5) !important;
+}
+-z-listbox-header, .z-listheader{
+	background: white !important;
+}
+.z-listbox-header-border{
+	border-bottom: 1px solid rgba(92, 197, 202, 0.7);
+}
+.z-listheader-content{
+	color:#2B7DBC;
+	font-weight: normal;
+}
