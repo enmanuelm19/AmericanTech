@@ -1,0 +1,151 @@
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Evento" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Evento" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Eventos
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="15%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+									<grid>
+										<rows>
+											  <row class="col-md-12 ">
+												 <div class="col-md-12" align="center">	
+									                  	<div >
+															Desde: 
+															<datebox format="@load(vm.dateFormat)" width="30%" tabindex="7" />
+														<space spacing="1%"></space>
+
+															Hasta: 
+															<datebox format="@load(vm.dateFormat)" width="30%" tabindex="7" />
+														</div>			   		
+											   	 </div>								   	 
+											  </row> 	
+										</rows>
+									</grid>
+									<space spacing="2%"></space>
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Preferencia"  ></caption>
+										<grid>
+											<rows>
+												  <row class="col-md-12">
+											   		   <div class="col-md-8" align="center">
+												   		   <label class="col-md-3">Categoria:</label>
+													       <combobox >
+																<comboitem label="Todos"> </comboitem>
+																<comboitem label="Deportivo"></comboitem>
+																<comboitem label="Cultural"></comboitem>
+														   </combobox>			   		
+							   	 						</div>								   	 
+												  </row>
+												  <row class="col-md-12">
+											   		   <div class="col-md-12" align="center">
+												   		   <label class="col-md-3"></label>
+													       <combobox class="col-md-3">
+																<comboitem label="Futbol"> </comboitem>
+																<comboitem label="Beisbol"></comboitem>
+														   </combobox>
+														   <space spacing="1%"></space>
+														   <button id=""  iconSclass="z-icon-plus" class='boton-guardar' label="Agregar" />   			   		
+							   	 						</div>							   	 
+												  </row>
+												  <row class="col-md-12" >
+														<div align="center" class="col-md-8">			                  				                  
+														    <listbox hflex="2"  vflex="true" multiple="true" rows="5" style="padding-left:40%">
+														        <listhead>
+														            <listheader label="Preferencia" width="100%"></listheader>
+														        </listhead>
+														        <!--template name="model"-->
+														            <!-- listitem>
+														                <listcell label="${each.firstName }"/>
+														                <listcell label="${each.lastName }"/>
+														                <listcell label="${each.fullName }"/>
+														                <listcell label="${each.married ? 'Y' : 'N' }"/>
+														            </listitem>-->
+															        <listitem>
+															            <listcell label="Bolas Criollas" />
+															        </listitem>
+															        <listitem>
+															            <listcell label="Softbol" />
+															        </listitem>								        
+														        <!--/template-->
+														    </listbox>   
+														</div>								   	 
+												  </row>
+											</rows>
+										</grid>
+								   	 </groupbox>
+								   	 <space spacing="1%"></space>
+									 <div align="right" xmlns:w="client" style="margin:1%">
+										<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+									 </div>								   	
+								</groupbox >
+							</div>										       							
+							<space spacing="2%" />
+				   		   	<div class="row">
+				   		   		<div class="col-md-5">
+				   		   			<label>Categoria:</label>
+				   		   			<space spacing="0.5%"></space>
+				   		   			<label>Deportiva</label>
+				   		   		</div>
+				   		   		<div class="col-md-5">
+				   		   			<label>Preferencia:</label>
+				   		   			<space spacing="0.5%"></space>
+				   		   			<label>Futbol, Bolas Criollas, Softbol</label>
+				   		   		</div>			   		   		
+				   		   		
+				   		   	</div>
+							<grid emptyMessage="No se encuentran alquileres registrados" mold="paging" pageSize="10">
+							
+								<columns>
+									<column hflex="3" align="center">Evento</column>
+									<column hflex="3" align="center">Fecha Inicio</column>
+									<column hflex="3" align="center">Fecha Fin</column>	
+								</columns>
+								<rows>
+									<row>
+										<label value="Torneo Juvenil" />	
+										<label value="04-03-2016" />
+										<label value="10-03-2016" />
+									</row>
+									<row>
+										<label value="Torneo Juvenil" />
+										<label value="15-03-2016" />
+										<label value="20-03-2016" />
+									</row>
+									<row>
+										<label value="Torneo Juvenil" />	
+										<label value="22-03-2016" />
+										<label value="27-03-2016" />
+									</row>
+								</rows>
+								<foot>
+									<footer span="7"
+										class="footer_right" label="2 items en la lista" />
+								</foot>
+							</grid>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>
