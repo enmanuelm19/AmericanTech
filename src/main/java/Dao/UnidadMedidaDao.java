@@ -52,7 +52,7 @@ private Sesion sesionPostgres;
 	    UnidadMedida dato = null;        
             try{
                 dato = (UnidadMedida) sesion.createCriteria(UnidadMedida.class)
-                		.add(Restrictions.eq("nombre", nombre)).uniqueResult();
+                		.add(Restrictions.eq("nombre", nombre)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());
