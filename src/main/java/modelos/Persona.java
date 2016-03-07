@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
+// Generated 06/03/2016 06:03:48 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -12,10 +12,10 @@ import java.util.Set;
 public class Persona implements java.io.Serializable {
 
 	private int idPersona;
-	private Archivo archivo;
 	private String identificacion;
 	private String nombre;
 	private String apellido;
+	private String foto;
 	private Date fechaNac;
 	private String sexo;
 	private String correo;
@@ -46,8 +46,8 @@ public class Persona implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Persona(int idPersona, Archivo archivo, String identificacion,
-			String nombre, String apellido, Date fechaNac, String sexo,
+	public Persona(int idPersona, String identificacion, String nombre,
+			String apellido, String foto, Date fechaNac, String sexo,
 			String correo, String telefono, String telefonoFijo,
 			String direccion, boolean activo, Set<Empleado> empleados,
 			Set<MiembroJunta> miembroJuntas, Set<Afiliado> afiliados,
@@ -55,10 +55,10 @@ public class Persona implements java.io.Serializable {
 			Set<Eventualidad> eventualidads, Set<Postulado> postulados,
 			Set<Usuario> usuarios, Set<PreferenciaPersona> preferenciaPersonas) {
 		this.idPersona = idPersona;
-		this.archivo = archivo;
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.foto = foto;
 		this.fechaNac = fechaNac;
 		this.sexo = sexo;
 		this.correo = correo;
@@ -85,14 +85,6 @@ public class Persona implements java.io.Serializable {
 		this.idPersona = idPersona;
 	}
 
-	public Archivo getArchivo() {
-		return this.archivo;
-	}
-
-	public void setArchivo(Archivo archivo) {
-		this.archivo = archivo;
-	}
-
 	public String getIdentificacion() {
 		return this.identificacion;
 	}
@@ -115,6 +107,14 @@ public class Persona implements java.io.Serializable {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+
+	public String getFoto() {
+		return this.foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public Date getFechaNac() {

@@ -23,7 +23,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="alquilerid_alquiler" not-null="true" />
             </key>

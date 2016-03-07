@@ -3,7 +3,10 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Cargo;
+import modelos.JuntaDirectiva;
 import modelos.MiembroJunta;
+import modelos.Persona;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -101,6 +104,59 @@ private Sesion sesionPostgres;
             } 
            
             return datos; 
-        }
+     }
 
+    public List<MiembroJunta> obtenerPorCargo(Cargo cargo) throws Exception {            
+        
+        List<MiembroJunta> datos = new ArrayList<MiembroJunta>();  
+        Session em = sesionPostgres.getSessionFactory().openSession();       
+         try {   
+         datos =  (List<MiembroJunta>) em.createCriteria(MiembroJunta.class)
+        		 .add(Restrictions.eq("cargo", cargo))
+        		 .add(Restrictions.eq("activo", true)).list();             
+         } catch (Exception e) {             
+        
+          throw new Exception(e.getMessage(),e.getCause());
+         } finally {  
+           em.close();  
+         } 
+        
+         return datos; 
+    }
+    
+    public List<MiembroJunta> obtenerPorJunta(JuntaDirectiva juntaDirectiva) throws Exception {            
+        
+        List<MiembroJunta> datos = new ArrayList<MiembroJunta>();  
+        Session em = sesionPostgres.getSessionFactory().openSession();       
+         try {   
+         datos =  (List<MiembroJunta>) em.createCriteria(MiembroJunta.class)
+        		 .add(Restrictions.eq("juntaDirectiva", juntaDirectiva))
+        		 .add(Restrictions.eq("activo", true)).list();             
+         } catch (Exception e) {             
+        
+          throw new Exception(e.getMessage(),e.getCause());
+         } finally {  
+           em.close();  
+         } 
+        
+         return datos; 
+    }
+    
+    public List<MiembroJunta> obtenerPorPersona(Persona persona) throws Exception {            
+        
+        List<MiembroJunta> datos = new ArrayList<MiembroJunta>();  
+        Session em = sesionPostgres.getSessionFactory().openSession();       
+         try {   
+         datos =  (List<MiembroJunta>) em.createCriteria(MiembroJunta.class)
+        		 .add(Restrictions.eq("persona", persona))
+        		 .add(Restrictions.eq("activo", true)).uniqueResult();          
+         } catch (Exception e) {             
+        
+          throw new Exception(e.getMessage(),e.getCause());
+         } finally {  
+           em.close();  
+         } 
+        
+         return datos; 
+    }
 }

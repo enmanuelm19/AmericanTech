@@ -94,7 +94,7 @@ private Sesion sesionPostgres;
 		   Accion dato = new Accion();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    dato =  (Accion) em.get(Accion.class, id);             
+		    dato =  (Accion) em.createCriteria(Accion.class).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());

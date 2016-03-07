@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Eventualidad;
+import modelos.Persona;
+import modelos.TipoEventualidad;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -101,18 +103,19 @@ private Sesion sesionPostgres;
 	        } 
 	       
 	        return datos; 
-		}
+	}
 	
 
 	
 	//Metodo para obtener las Eventualidad de una persona "x"
 
-		public List<Eventualidad> obtenerEventualidadUsuario( int id) throws Exception {            
+		public List<Eventualidad> obtenerEventualidadUsuario(Persona persona) throws Exception {            
 		      
 			   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
-			    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("personaid_persona", id)).list();             
+			    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("persona", persona))
+			    		.add(Restrictions.eq("activo", true)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());
@@ -125,12 +128,13 @@ private Sesion sesionPostgres;
 		
 		//Metodo para obtener las Eventualidad de "x" evento
 
-			public List<Eventualidad> obtenerEventualidadPostulacion( int id) throws Exception {            
+			public List<Eventualidad> obtenerPorTipo(TipoEventualidad tipoEventualidad) throws Exception {            
 			      
 				   List<Eventualidad> datos = new ArrayList<Eventualidad>();  
 				   Session em = sesionPostgres.getSessionFactory().openSession();   	
 			        try {  	
-				    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("eventoid_evento", id)).list();             
+				    datos =  (List<Eventualidad>) em.createCriteria(Eventualidad.class).add(Restrictions.eq("tipoEventualidad", tipoEventualidad))
+				    		.add(Restrictions.eq("activo", true)).list();             
 			        } catch (Exception e) {             
 			       
 			         throw new Exception(e.getMessage(),e.getCause());
@@ -156,9 +160,7 @@ private Sesion sesionPostgres;
 			 } 
 				       
 		   return datos; 
-		}
-		
-	
+	}
 	
 
 }

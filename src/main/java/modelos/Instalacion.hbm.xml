@@ -29,31 +29,31 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="reservacions" table="reservacion" inverse="true" lazy="true" fetch="select">
+        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" not-null="true" />
             </key>
             <one-to-many class="modelos.Reservacion" />
         </set>
-        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="true" fetch="select">
+        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" not-null="true" />
             </key>
             <one-to-many class="modelos.InstalacionEvento" />
         </set>
-        <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
+        <set name="fotos" table="foto" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" />
             </key>
             <one-to-many class="modelos.Foto" />
         </set>
-        <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" />
             </key>
             <one-to-many class="modelos.Eventualidad" />
         </set>
-        <set name="recursoInstalacions" table="recurso_instalacion" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="recursoInstalacions" table="recurso_instalacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="instalacionid_instalacion" not-null="true" />
             </key>

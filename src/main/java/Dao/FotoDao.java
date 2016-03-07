@@ -3,8 +3,10 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Club;
 import modelos.Eventualidad;
 import modelos.Foto;
+import modelos.Instalacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -109,12 +111,12 @@ private Sesion sesionPostgres;
 	
 	//Metodo para obtener fotos de "x" instalacion.
 
-		public List<Foto> obtenerFotoinstalacion( int id) throws Exception {            
+		public List<Foto> obtenerFotoinstalacion(Instalacion instalacion) throws Exception {            
 				      
 			List<Foto> datos = new ArrayList<Foto>();  
 			Session em = sesionPostgres.getSessionFactory().openSession();   	
 			 try {  	
-			   datos =  (List<Foto>) em.createCriteria(Foto.class).add(Restrictions.eq("instalacionid_instalacion", id)).list();             
+			   datos =  (List<Foto>) em.createCriteria(Foto.class).add(Restrictions.eq("instalacion", instalacion)).list();             
 				  } catch (Exception e) {             
 			 
 			throw new Exception(e.getMessage(),e.getCause());
@@ -126,12 +128,13 @@ private Sesion sesionPostgres;
 			}
 		//Metodo para obtener fotos del club
 
-		public List<Foto> obtenerFotoclub( int id) throws Exception {            
+		public List<Foto> obtenerPorClub(Club club) throws Exception {            
 				      
 			List<Foto> datos = new ArrayList<Foto>();  
 			Session em = sesionPostgres.getSessionFactory().openSession();   	
 			 try {  	
-			   datos =  (List<Foto>) em.createCriteria(Foto.class).add(Restrictions.eq("clubid_club", id)).list();             
+			   datos =  (List<Foto>) em.createCriteria(Foto.class).add(Restrictions.eq("club", club))
+					   .add(Restrictions.eq("activo", true)).list();             
 				  } catch (Exception e) {             
 			 
 			throw new Exception(e.getMessage(),e.getCause());

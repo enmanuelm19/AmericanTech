@@ -16,7 +16,7 @@ CREATE TABLE club (
   telefono         varchar(20) NOT NULL, 
   mision           text NOT NULL, 
   vision           text NOT NULL, 
-  logo             int2 NOT NULL, 
+  logo             text, 
   telf_alternativo varchar(20) NOT NULL, 
   correo           varchar(90) NOT NULL, 
   eslogan          text, 
@@ -38,7 +38,7 @@ CREATE TABLE persona (
   identificacion varchar(20), 
   nombre         varchar(60) NOT NULL, 
   apellido       varchar(60) NOT NULL, 
-  foto           int2, 
+  foto           text, 
   fecha_nac      date, 
   sexo           varchar(1) NOT NULL, 
   correo         varchar(80), 
@@ -118,7 +118,7 @@ CREATE TABLE noticia (
   titulo                      varchar(90), 
   descripcion                 text NOT NULL, 
   eventoid_evento             int2, 
-  foto                        int2, 
+  foto                        text, 
   tipo_noticiaid_tipo_noticia int2 NOT NULL, 
   fecha_creacion              date NOT NULL, 
   caducidad                   date NOT NULL, 
@@ -321,8 +321,6 @@ CREATE TABLE motivo_desvinculacion (
 CREATE TABLE foto (
   id_foto                    SERIAL NOT NULL, 
   url                       varchar(255) NOT NULL, 
-  nombre_foto               varchar(120) NOT NULL, 
-  extencion                 varchar(50) NOT NULL, 
   instalacionid_instalacion int2, 
   publico                   bool NOT NULL, 
   clubid_club               int2, 
@@ -458,18 +456,15 @@ CREATE TABLE unidad_medida (
   activo           bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_unidad_medida));
 CREATE TABLE portal (
-  id_portal    SERIAL NOT NULL, 
-  instalacion text, 
-  socio       text, 
-  evento      text, 
-  activo      bool DEFAULT 'true' NOT NULL, 
+  id_portal           SERIAL NOT NULL, 
+  instalacion        text, 
+  socio              text, 
+  evento             text, 
+  activo             bool DEFAULT 'true' NOT NULL, 
+  foto_socio         text, 
+  foto_instalaciones text, 
+  foto_evento        text, 
   PRIMARY KEY (id_portal));
-CREATE TABLE archivo_portal (
-  id_archivo_portal  SERIAL NOT NULL, 
-  archivoid_archivo int2 NOT NULL, 
-  portalid_portal   int2 NOT NULL, 
-  activo            bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_archivo_portal));
 CREATE TABLE tipo_pago (
   id_tipo_pago  SERIAL NOT NULL, 
   descripcion  varchar(100) NOT NULL, 
@@ -538,9 +533,6 @@ ALTER TABLE empleado ADD CONSTRAINT FKempleado895856 FOREIGN KEY (tipo_empleadoi
 ALTER TABLE postulacion ADD CONSTRAINT FKpostulacio263619 FOREIGN KEY (motivo_postulacionid_motivo_postulacion) REFERENCES motivo_postulacion (id_motivo_postulacion);
 ALTER TABLE instalacion ADD CONSTRAINT FKinstalacio183404 FOREIGN KEY (tipo_instalacionid_tipo_instalacion) REFERENCES tipo_instalacion (id_tipo_instalacion);
 ALTER TABLE foto ADD CONSTRAINT FKfoto370704 FOREIGN KEY (clubid_club) REFERENCES club (id_club);
-ALTER TABLE persona ADD CONSTRAINT FKpersona828994 FOREIGN KEY (foto) REFERENCES archivo (id_archivo);
-ALTER TABLE noticia ADD CONSTRAINT FKnoticia350899 FOREIGN KEY (foto) REFERENCES archivo (id_archivo);
-ALTER TABLE club ADD CONSTRAINT FKclub505885 FOREIGN KEY (logo) REFERENCES archivo (id_archivo);
 ALTER TABLE evento ADD CONSTRAINT FKevento600923 FOREIGN KEY (estado_eventoid_estado_evento) REFERENCES estado_evento (id_estado_evento);
 ALTER TABLE motivo_cancelacion ADD CONSTRAINT FKmotivo_can874505 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE actividad ADD CONSTRAINT FKactividad322003 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
@@ -557,8 +549,6 @@ ALTER TABLE archivo_alquiler ADD CONSTRAINT FKarchivo_al163068 FOREIGN KEY (tipo
 ALTER TABLE noticia ADD CONSTRAINT FKnoticia363644 FOREIGN KEY (tipo_noticiaid_tipo_noticia) REFERENCES tipo_noticia (id_tipo_noticia);
 ALTER TABLE politica ADD CONSTRAINT FKpolitica881306 FOREIGN KEY (clubid_club) REFERENCES club (id_club);
 ALTER TABLE politica ADD CONSTRAINT FKpolitica365279 FOREIGN KEY (unidad_medidaid_unidad_medida) REFERENCES unidad_medida (id_unidad_medida);
-ALTER TABLE archivo_portal ADD CONSTRAINT FKarchivo_po792557 FOREIGN KEY (archivoid_archivo) REFERENCES archivo (id_archivo);
-ALTER TABLE archivo_portal ADD CONSTRAINT FKarchivo_po110627 FOREIGN KEY (portalid_portal) REFERENCES portal (id_portal);
 ALTER TABLE solicitud_venta ADD CONSTRAINT FKsolicitud_857177 FOREIGN KEY (motivo_ventaid_motivo_venta) REFERENCES motivo_venta (id_motivo_venta);
 ALTER TABLE sancion ADD CONSTRAINT FKsancion982820 FOREIGN KEY (eventualidadid_eventualidad) REFERENCES eventualidad (id_eventualidad);
 ALTER TABLE alquiler ADD CONSTRAINT FKalquiler655186 FOREIGN KEY (tipo_pagoid_tipo_pago) REFERENCES tipo_pago (id_tipo_pago);

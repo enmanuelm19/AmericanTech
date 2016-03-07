@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
         <id name="idClub" type="int">
             <column name="id_club" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
-            <column name="logo" not-null="true" />
-        </many-to-one>
         <property name="rif" type="string">
             <column name="rif" length="40" not-null="true" />
         </property>
@@ -29,6 +26,9 @@
         <property name="vision" type="string">
             <column name="vision" not-null="true" />
         </property>
+        <property name="logo" type="string">
+            <column name="logo" />
+        </property>
         <property name="telfAlternativo" type="string">
             <column name="telf_alternativo" length="20" not-null="true" />
         </property>
@@ -41,25 +41,25 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
+        <set name="fotos" table="foto" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Foto" />
         </set>
-        <set name="politicas" table="politica" inverse="true" lazy="true" fetch="select">
+        <set name="politicas" table="politica" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Politica" />
         </set>
-        <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="true" fetch="select">
+        <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="clubid_club" not-null="true" />
             </key>
             <one-to-many class="modelos.JuntaDirectiva" />
         </set>
-        <set name="redClubs" table="red_club" inverse="true" lazy="true" fetch="select">
+        <set name="redClubs" table="red_club" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="clubid_club" not-null="true" />
             </key>
