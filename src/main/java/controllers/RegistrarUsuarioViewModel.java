@@ -73,11 +73,12 @@ public class RegistrarUsuarioViewModel {
 		} else {
 			this.user = usuario;
 			this.editable = true;
-			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			File f = new File(user.getPersona().getDireccion()); 
 			if(f.exists()){
+				URL url = new URL(user.getPersona().getDireccion());
 				this.uploadedImage = new AImage(user.getPersona().getDireccion());
 			}else{
+			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			this.uploadedImage = new AImage(url);}
 			this.setUsuarioGrupo(new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos()));
 		}
@@ -271,14 +272,14 @@ public class RegistrarUsuarioViewModel {
 			InputStream is = imagen.getStreamData();
 			if(!imageFile.exists()){
 				Files.copy(is, imageFile.toPath());
-				rutaFinal = getServerName()+"/assets/img/"+imagen.getName();
+				rutaFinal = getServerName()+"/uploadedImages/"+imagen.getName();
 				System.out.println(rutaFinal);
 			}
 		} catch (IOException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return ruta + "/" + imagen.getName();
+		return rutaFinal;
 	}
 
 	private String getServerName() {

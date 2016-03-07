@@ -33,7 +33,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>images</servlet-name>
-		<url-pattern>/uploadImages/*</url-pattern>
+		<url-pattern>/uploadedImages/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description>ZK loader for ZUML pages</description>
