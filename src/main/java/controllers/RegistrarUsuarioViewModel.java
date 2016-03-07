@@ -273,7 +273,6 @@ public class RegistrarUsuarioViewModel {
 			if(!imageFile.exists()){
 				Files.copy(is, imageFile.toPath());
 				rutaFinal = getServerName()+"/uploadedImages/"+imagen.getName();
-				System.out.println(rutaFinal);
 			}
 		} catch (IOException e) {
 			// TODO: handle exception
