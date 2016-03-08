@@ -1,5 +1,7 @@
 package modelos;
 
+import java.text.SimpleDateFormat;
+
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
@@ -193,5 +195,21 @@ public class Evento implements java.io.Serializable {
 	public void setCalendarioFechas(Set<CalendarioFecha> calendarioFechas) {
 		this.calendarioFechas = calendarioFechas;
 	}
+	
+	public String getHoraString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		return dateFormat.format(fechaInicio)+"-"+dateFormat.format(fechaFin);
+	}
+	
+	public String getFechaInicioString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fechaInicio);
+	}
+	
+	public String getFechaFinString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fechaFin);
+	}
+
 
 }

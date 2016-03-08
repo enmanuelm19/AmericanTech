@@ -8,11 +8,33 @@
 	<display-name>america</display-name>
 
 	<!-- //// -->
-	<!-- ZK -->
+	<!-- ZK /home/enmanuel-->
 	<listener>
 		<description>ZK listener for session cleanup</description>
 		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
 	</listener>
+	<context-param>
+		<param-name>upload.location</param-name>
+		<param-value>/home/enmanuel</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>images</servlet-name>
+		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>images</servlet-name>
+		<url-pattern>/uploadedImages/*</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<description>ZK loader for ZUML pages</description>
 		<servlet-name>zkLoader</servlet-name>

@@ -1,0 +1,180 @@
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Alquileres" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Alquileres" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Alquileres
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="2%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+								<space spacing="2%"></space>
+									<!--caption label="Alquileres"></caption-->
+									<hlayout width="100%" >
+							   		   <div >
+							   		   		<radio label="Estado de la Instalacion:" value="0" selected="true" />			   		   		
+							   		   </div>
+							   		   <div>
+							   		   		<combobox >
+												<comboitem label="Reservadas"> </comboitem>
+												<comboitem label="Alquiladas"></comboitem>
+												<!--comboitem label="Disponibles"></comboitem-->
+										   </combobox>
+							   		   </div>
+									   <space spacing ="2%"></space>   
+							   		   <div >
+							   		   		<radio label="Seleccione la Instalacion:" value="0"  />			   		   		
+							   		   </div>									    			   		
+							   		   	<div>
+							   		   		<combobox >
+												<!--comboitem label="Todos"> </comboitem-->
+												<comboitem label="Caney1"></comboitem>
+												<comboitem label="Caney2"></comboitem>
+												<comboitem label="Caney3"></comboitem>
+												<comboitem label="Piscina"></comboitem>
+										   </combobox>							   		   	
+							   		   	</div>	
+									</hlayout>
+									<space spacing="2%"></space>
+										
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Fecha"  ></caption>
+								   	 	<hlayout width="100%" style="padding:2%">
+							                  	<div>
+													Desde: 
+													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+												</div>
+												<space spacing="5%"></space>
+												<div>
+													Hasta: 
+													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+												</div>																		   	 							   	 	
+								   	 	</hlayout>
+								   	 </groupbox>
+								   	 <space spacing="2%"></space>
+								     <div align="right" xmlns:w="client">
+										<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+									 </div>							   	 
+								</groupbox >
+							</div>
+								
+							<space spacing="15%"></space>
+							<div>
+								<label>Instalacion:</label>
+								<label>Todos</label>
+							</div>							
+							<grid emptyMessage="No se encuentran alquileres registrados" mold="paging" pageSize="10">
+								<auxhead sclass="category-center"> 
+									<auxheader colspan="6" />
+								</auxhead>
+								<columns>
+									<column hflex="4" align="center">Instalacion</column>																	
+									<column hflex="4" align="center">Fecha </column>
+									<column hflex="3" align="center">Carnet Socio</column>
+									<column hflex="3" align="center">Nombre del Socio</column>
+								</columns>
+								<rows>
+									<row>
+										<label value="Caney" />		
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />	
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />	
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />	
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />	
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />	
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />	
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />		
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />		
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />		
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />		
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									<row>
+										<label value="Caney" />		
+										<label value="01-03-2016" />
+										<label value="B-6444" />
+										<label value="Pablo Sanchez" />
+									</row>
+									
+									
+								</rows>
+								<foot>
+									<footer span="7"
+										class="footer_right" label="2 items en la lista" />
+								</foot>
+							</grid>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>
