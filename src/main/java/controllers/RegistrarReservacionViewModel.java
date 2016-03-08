@@ -46,7 +46,6 @@ public class RegistrarReservacionViewModel {
 	public void init(@ExecutionArgParam("reservacion") Reservacion reservacion) {
 		if (reservacion == null) {
 			this.reservacion = new Reservacion();
-			this.instalacionSeleccionada = new Instalacion();
 			this.editable = false;
 		} else {
 			this.reservacion = reservacion;
@@ -133,7 +132,7 @@ public class RegistrarReservacionViewModel {
 
 	public boolean isCamposVacio() {
 		if (reservacion.getFechaInicio() != null && reservacion.getFechaFin() != null
-				&& reservacion.getInstalacion() != null && usuario != null)
+				&& getInstalacionSeleccionada() != null && usuario != null)
 			return false;
 		return true;
 	}
