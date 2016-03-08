@@ -1,220 +1,387 @@
-<window border="none" title="Afiliados " closable="true"
-	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-	width="65%">
+<zk xmlns:n="native">
+	<window border="none" title="Afiliados " closable="true"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		width="65%">
+		<caption iconSclass="z-icon-user" />
 
-
-	<div class="col-md-10 col-centered "
-		form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+		<div class="col-md-10 col-centered "
+			form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
    				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
    				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
 
 
-		<div width="100%" height="100%">
+			<div width="100%" height="100%">
+				<n:br></n:br>
+				<n:br></n:br>
+				<div align="left">
+					<div class="encabezado">Afiliados</div>
+					<div align="left" class="linea-two">
 
-			<div align="left">
-				<div class="encabezado">Afiliados</div>
-				<div align="left" class="linea-two">
-
+					</div>
 				</div>
-			</div>
+				<n:br></n:br>
+				<n:br></n:br>
 
 
-			<!-- <div align="right">
-				<button iconSclass="z-icon-plus blue " sclass="btn-link"
+				<!-- <div align="right">
+					<button iconSclass="z-icon-plus blue " sclass="btn-link"
 					tooltiptext="Agregar Afiliado" width="10%" />
-			</div> -->
-			<hbox width="100%"><!-- Inicio GRUPO afilaido -->
+					</div> -->
+				<grid id="gridAfiliados"
+					emptyMessage="No se encuentran solicitudes registradas"
+					mold="paging" pageSize="10">
 
-				<separator spacing="20px"/>
-				<panel border="none" collapsible="true"
-					sclass="transparent">
+					<columns>
 
-					<panelchildren>
-						<grid sclass="domain">
-							<columns sclass="z-grid z-column-content">
+						<column hflex="">Carnet</column>
+						<column hflex="">Nombre</column>
+						<column hflex="">Apellido</column>
+						<column hflex="">Parentesco</column>
+						<column hflex="">Ver</column>
 
-								<column width="10%" label="Carnet"
-									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="Nombre"
-									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="Apellido"
-									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="15%" label="Parentesco"
-									iconSclass="z-icon-caret-right blue" align="center" />
-								<column width="10%" align="center"
-									label="Ver" />
+					</columns>
 
-							</columns>
+					<rows>
+						<row>
+							<div>
+
+								<label value=" f0015-1" />
+
+							</div>
+							<div>
+
+								<label value="Ana" />
+
+							</div>
+							<div>
+								<label value=" Perez" />
+							</div>
+							<div>
+								<label value="Esposa" />
+							</div>
+							<div>
+								<button sclass="btn-link"
+									iconSclass="z-icon-search blue" id="" tooltiptext="Eliminar" />
+							</div>
+						</row>
+
+					</rows>
+
+					<foot>
+						<footer span="5" class="footer_right"
+							label="0 items en la lista" />
+					</foot>
+				</grid>
+				<!-- AQUI TERMINA GRUPO afiliados -->
+
+				<!-- GRUPO DATOS BASICOS -->
+				<n:br></n:br>
+				<n:br></n:br>
+				<n:br></n:br>
+				<div align="left">
+					<div class="encabezado">Datos Afiliado</div>
+					<div align="left" class="linea-two">
+
+					</div>
+				</div>
+
+
+				<div class="row">
+					<separator spacing="30px"></separator>
+					<div class="col-md-4">
+						<div class="input-group">
+							<image src="/assets/portal/img/img1.jpg"
+								class='img-responsive col-md-offset-1' />
+							<separator spacing="30px"></separator>
+							<fileupload label="Examinar"
+								iconSclass="z-icon-folder-open"
+								class='boton-guardar col-md-offset-4' />
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<grid>
 							<rows>
 								<row>
-									<label value="12345-1" />
-									<label value="Laura" />
-									<label value="Diaz" />
-									<label value="Esposa" />
 									<div>
-										<button sclass="btn-link"  iconSclass="z-icon-search blue" tooltiptext="Ver" id="btnVerAfiliado" />
+										<label class="col-md-4"
+											value="Cédula" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" value="V18122444">
+										</textbox>
+									</div>
+								</row>
+
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Numero Carnet" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" value="123456">
+										</textbox>
+
+
+									</div>
+								</row>
+
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Primer Nombre" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true">
+										</textbox>
+
 									</div>
 								</row>
 								<row>
-
-									<label value="12345-2" />
-									<label value="María" />
-									<label value="Diaz" />
-									<label value="Esposa" />
 									<div>
-										<button sclass="btn-link" iconSclass="z-icon-search blue" tooltiptext="Ver" />
+										<label class="col-md-4"
+											value="Primer Apellido" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" />
+									</div>
+								</row>
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Correo" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" type="email" />
+
+										<button
+											class="col-md-2 btn-link" iconSclass="z-icon-pencil blue" />
+									</div>
+								</row>
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Telefono" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" />
+										<button
+											class="col-md-2 btn-link" iconSclass="z-icon-pencil blue" />
+									</div>
+								</row>
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Nacimiento" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" />
+
+									</div>
+								</row>
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Edad" />
+										<intbox
+											constraint="no empty,no negative,no zero" class="col-md-6"
+											readonly="true" />
+									</div>
+								</row>
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Sexo" />
+										<checkbox label="Masculino" />
+										<checkbox label="Femenino" />
+									</div>
+								</row>
+								<row>
+									<div>
+										<label class="col-md-4"
+											value="Direccion" />
+										<textbox constraint="no empty"
+											class="col-md-6" readonly="true" cols="45" rows="2"
+											type="text" />
+										<button
+											class="col-md-2 btn-link" iconSclass="z-icon-pencil blue" />
 									</div>
 								</row>
 							</rows>
 						</grid>
-					</panelchildren>
-				</panel>
-
-			</hbox><!-- AQUI TERMINA GRUPO afiliados -->
-
-			<!-- GRUPO DATOS BASICOS -->
-
-			<div align="left">
-				<div class="encabezado">Datos Afiliado</div>
-				<div align="left" class="linea-two">
-
-				</div>
-			</div>
-
-
-			<div class="row">
-				<separator spacing="30px"></separator>
-				<div class="col-md-4">
-					<div class="input-group">
-						<image src="/assets/portal/img/img1.jpg"
-							class='img-responsive col-md-offset-1' />
-						<separator spacing="30px"></separator>
-						<fileupload label="Examinar"
-							iconSclass="z-icon-folder-open"
-							class='boton-guardar col-md-offset-4' />
 					</div>
 				</div>
 
-				<div class="col-md-6">
-					<grid>
+
+				<!-- AQUI TERMINA GRUPO BASICOS -->
+				<n:br></n:br>
+				<n:br></n:br>
+				<div align="left">
+					<div class="encabezado">Intereses del afiliado</div>
+					<div align="left" class="linea-two">
+
+					</div>
+				</div>
+				<n:br></n:br>
+				<n:br></n:br>
+
+				<div class="col-md-12">
+					<div align="left">
+						Seleccione los intereses del afiliado:
+						<n:br></n:br>
+						<combobox width="50%">
+							<comboitem label="Deportivo" />
+							<comboitem label="Cultural" />
+							<comboitem label="Social" />
+							<comboitem label="Mixto" />
+						</combobox>
+						<!-- <button sclass="btn-link"
+							iconSclass="z-icon-plus blue" id=""
+							tooltiptext="Agregar preferencia" />-->
+
+					</div>
+					<n:br></n:br>
+					<n:br></n:br>
+
+					<grid id="gridPreferencias"
+						emptyMessage="No se encuentran solicitudes registradas"
+						mold="paging" pageSize="10">
+
+						<columns>
+
+							<column hflex="">Sub Categorias</column>
+
+							<column hflex="2">Acciones</column>
+						</columns>
+
 						<rows>
 							<row>
 								<div>
-									<label class="col-md-4"
-										value="Cédula" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="V18122444">
-									</textbox>
-								</div>
-							</row>
-
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Numero Carnet" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="123456">
-									</textbox>
-
+									<checkbox />
+									<label value="Futbol" />
 
 								</div>
-							</row>
 
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+								</div>
+							</row>
 							<row>
 								<div>
-									<label class="col-md-4"
-										value="Primer Nombre" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true">
-									</textbox>
+									<checkbox />
+									<label value=" Beisbol" />
 
 								</div>
-							</row>
-							<row>
+
 								<div>
-									<label class="col-md-4"
-										value="Primer Apellido" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" />
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Correo" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" type="email"/>
-									
-									<button class="col-md-2 btn-link"
-										iconSclass="z-icon-pencil blue" />
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Telefono" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true"/>
-									<button class="col-md-2 btn-link"
-										iconSclass="z-icon-pencil blue" />
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Nacimiento" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true"/>
-									
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Edad" />
-									<intbox constraint="no empty,no negative,no zero"
-										class="col-md-6" readonly="true"/>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Sexo" />
-									<checkbox label="Masculino" />
-									<checkbox label="Femenino" />
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4" value="Direccion" />
-									<textbox constraint="no empty" class="col-md-6" readonly="true" cols="45" rows="2" type="text"/>
-									<button class="col-md-2 btn-link" iconSclass="z-icon-pencil blue" />
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
 								</div>
 							</row>
 						</rows>
+
+						<foot>
+							<footer span="5" class="footer_right"
+								label="0 items en la lista" />
+						</foot>
 					</grid>
+
 				</div>
+
+				<n:br></n:br>
+				<n:br></n:br>
+				<div align="left">
+					<div class="encabezado">
+						Redes sociales del afiliado
+					</div>
+					<div align="left" class="linea-two">
+
+					</div>
+				</div>
+				<n:br></n:br>
+				<n:br></n:br>
+
+				<div class="col-md-12">
+					<div class="row" align="left">
+						<div class="col-md-6">
+							Seleccione las redes sociales del afiliado
+							<n:br></n:br>
+							<combobox width="85%">
+								<comboitem label="Facebook" />
+								<comboitem label="Twitter" />
+								<comboitem label="Instagram" />
+							</combobox>
+
+						</div>
+						<div class="col-md-6">
+							Usuario en la red social
+							<n:br></n:br>
+							<textbox type="text" width="80%"
+								tabindex="10" constraint="no empty" />
+							<button sclass="btn-link"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar Indicador" />
+						</div>
+					</div>
+
+					<grid id="gridRedes"
+						emptyMessage="No se encuentran solicitudes registradas"
+						mold="paging" pageSize="10">
+
+						<columns>
+
+							<column hflex="">Red social</column>
+
+							<column hflex="">Usuario</column>
+							<column hflex="2">Acciones</column>
+						</columns>
+
+						<rows>
+							<row>
+								<div>
+
+									<label value="Facebook" />
+
+								</div>
+								<div>
+
+									<label value="Ana_suarez" />
+
+								</div>
+
+
+								<div>
+									<button sclass="btn-link"
+										iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+								</div>
+							</row>
+
+						</rows>
+
+						<foot>
+							<footer span="5" class="footer_right"
+								label="0 items en la lista" />
+						</foot>
+					</grid>
+
+				</div>
+
+
+
+
+
+				<separator spacing="30px"></separator>
+				<hbox width="100%" align="center" pack="center">
+
+					<separator spacing="5%"></separator>
+
+
+					<button iconSclass="z-icon-edit"
+						class='boton-guardar' label="Guardar" />
+
+					<space bar="False" spacing="5%" />
+
+					<button iconSclass="z-icon-times-circle"
+						class='boton-cancelar' label="Cancelar " />
+				</hbox>
+				<n:br></n:br>
+				<n:br></n:br>
 			</div>
-
-
-			<!-- AQUI TERMINA GRUPO BASICOS -->
-
-			<separator spacing="30px"></separator>
-			<hbox width="100%" align="center" pack="center">
-
-				<separator spacing="5%"></separator>
-
-
-				<button iconSclass="z-icon-edit" class='boton-guardar'
-					label="Guardar" />
-
-				<space bar="False" spacing="5%" />
-
-				<button iconSclass="z-icon-times-circle"
-					class='boton-cancelar' label="Cancelar " />
-			</hbox>
-
 		</div>
-	</div>
-</window>
+	</window>
 
+</zk>

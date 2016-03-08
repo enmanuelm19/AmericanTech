@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Evento;
 import modelos.MotivoCancelacion;
 import confi.Sesion;
 
@@ -87,7 +88,57 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 
+//	public List<MotivoCancelacion> obtenerPorEvento(Evento evento) throws Exception {            
+//	      
+//		   List<MotivoCancelacion> datos = new ArrayList<MotivoCancelacion>();  
+//		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+//	        try {  	
+//		    datos =  (List<MotivoCancelacion>) em.createCriteria(MotivoCancelacion.class)
+//		    		.add(Restrictions.eq("evento", evento))
+//		    		.add(Restrictions.eq("activo", true)).list();             
+//	        } catch (Exception e) {             
+//	       
+//	         throw new Exception(e.getMessage(),e.getCause());
+//	        } finally {  
+//	          em.close();  
+//	        } 
+//	       
+//	        return datos; 
+//	}
 	
+	public MotivoCancelacion obtenerMotivoCancelacion(int id) throws Exception {            
+	      
+			MotivoCancelacion datos = new MotivoCancelacion();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (MotivoCancelacion) em.get(MotivoCancelacion.class, id);          
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
+	public MotivoCancelacion obtenerPorDescripcion(String descripcion) throws Exception {            
+	      
+		MotivoCancelacion datos = new MotivoCancelacion();  
+	   Session em = sesionPostgres.getSessionFactory().openSession();   	
+        try {  	
+	    datos =  (MotivoCancelacion) em.createCriteria(MotivoCancelacion.class)
+	    		.add(Restrictions.eq("descripcion", descripcion))
+	    		.add(Restrictions.eq("activo", true)).list();          
+        } catch (Exception e) {             
+       
+         throw new Exception(e.getMessage(),e.getCause());
+        } finally {  
+          em.close();  
+        } 
+       
+        return datos; 
+	}
 	
 	
 }

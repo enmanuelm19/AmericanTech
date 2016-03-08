@@ -3,6 +3,8 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Persona;
+import modelos.Preferencia;
 import modelos.PreferenciaPersona;
 
 import org.hibernate.Session;
@@ -106,12 +108,12 @@ private Sesion sesionPostgres;
 		
 	//Metodo para obtener las preferencias de una persona
 
-	public List<PreferenciaPersona> obtenerPreferenciasPersona( int id) throws Exception {            
+	public List<PreferenciaPersona> obtenerPreferenciasPersona( Persona dato) throws Exception {            
 	      
 		   List<PreferenciaPersona> datos = new ArrayList<PreferenciaPersona>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<PreferenciaPersona>) em.createCriteria(PreferenciaPersona.class).add(Restrictions.eq("personaid_persona", id)).list();             
+		    datos =  (List<PreferenciaPersona>) em.createCriteria(PreferenciaPersona.class).add(Restrictions.eq("persona", dato)).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -124,12 +126,12 @@ private Sesion sesionPostgres;
 	
 	//Metodo para obtener las personas con la misma preferencia
 
-		public List<PreferenciaPersona> obtenerPersonasMismaPreferencia( int id) throws Exception {            
+		public List<PreferenciaPersona> obtenerPersonasMismaPreferencia( Preferencia dato) throws Exception {            
 		      
 			   List<PreferenciaPersona> datos = new ArrayList<PreferenciaPersona>();  
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
-			    datos =  (List<PreferenciaPersona>) em.createCriteria(PreferenciaPersona.class).add(Restrictions.eq("preferenciaid_preferencia", id)).list();             
+			    datos =  (List<PreferenciaPersona>) em.createCriteria(PreferenciaPersona.class).add(Restrictions.eq("preferencia", dato)).add(Restrictions.eq("activa", true)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());

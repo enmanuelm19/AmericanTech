@@ -14,13 +14,13 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="redPersonas" table="red_persona" inverse="true" lazy="true" fetch="select">
+        <set name="redPersonas" table="red_persona" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="red_socialid_red_social" not-null="true" />
             </key>
             <one-to-many class="modelos.RedPersona" />
         </set>
-        <set name="redClubs" table="red_club" inverse="true" lazy="true" fetch="select">
+        <set name="redClubs" table="red_club" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="red_socialid_red_social" not-null="true" />
             </key>

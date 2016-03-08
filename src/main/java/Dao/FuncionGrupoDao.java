@@ -3,7 +3,9 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Funcion;
 import modelos.FuncionGrupo;
+import modelos.Grupo;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -101,7 +103,40 @@ private Sesion sesionPostgres;
 	        } 
 	       
 	        return datos; 
-		}
+	}
 	
+	public List<FuncionGrupo> obtenerPorFuncion(Funcion funcion) throws Exception {            
+	      
+		   List<FuncionGrupo> datos = new ArrayList<FuncionGrupo>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<FuncionGrupo>) em.createCriteria(FuncionGrupo.class).add(Restrictions.eq("funcion", funcion))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
+	public List<FuncionGrupo> obtenerPorGrupo(Grupo grupo) throws Exception {            
+	      
+		   List<FuncionGrupo> datos = new ArrayList<FuncionGrupo>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<FuncionGrupo>) em.createCriteria(FuncionGrupo.class).add(Restrictions.eq("grupo", grupo))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 
 }

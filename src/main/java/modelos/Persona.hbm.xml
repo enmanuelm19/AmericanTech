@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Persona" table="persona" schema="public" optimistic-lock="version">
         <id name="idPersona" type="int">
             <column name="id_persona" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
-            <column name="foto" />
-        </many-to-one>
         <property name="identificacion" type="string">
             <column name="identificacion" length="20" />
         </property>
@@ -19,6 +16,9 @@
         </property>
         <property name="apellido" type="string">
             <column name="apellido" length="60" not-null="true" />
+        </property>
+        <property name="foto" type="string">
+            <column name="foto" />
         </property>
         <property name="fechaNac" type="date">
             <column name="fecha_nac" length="13" />
@@ -41,19 +41,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+        <set name="empleados" table="empleado" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Empleado" />
         </set>
-        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="true" fetch="select">
+        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.MiembroJunta" />
         </set>
-        <set name="afiliados" table="afiliado" inverse="true" lazy="true" fetch="select">
+        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
@@ -65,25 +65,25 @@
             </key>
             <one-to-many class="modelos.RedPersona" />
         </set>
-        <set name="socios" table="socio" inverse="true" lazy="false" fetch="select">
+        <set name="socios" table="socio" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Socio" />
         </set>
-        <set name="eventualidads" table="eventualidad" inverse="true" lazy="true" fetch="select">
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Eventualidad" />
         </set>
-        <set name="postulados" table="postulado" inverse="true" lazy="true" fetch="select">
+        <set name="postulados" table="postulado" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Postulado" />
         </set>
-        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+        <set name="usuarios" table="usuario" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>

@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
+// Generated 06/03/2016 06:03:48 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -12,11 +12,11 @@ import java.util.Set;
 public class Noticia implements java.io.Serializable {
 
 	private int idNoticia;
-	private Archivo archivo;
 	private Evento evento;
 	private TipoNoticia tipoNoticia;
 	private String titulo;
 	private String descripcion;
+	private String foto;
 	private Date fechaCreacion;
 	private Date caducidad;
 	private boolean publico;
@@ -39,16 +39,16 @@ public class Noticia implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Noticia(int idNoticia, Archivo archivo, Evento evento,
-			TipoNoticia tipoNoticia, String titulo, String descripcion,
-			Date fechaCreacion, Date caducidad, boolean publico, String enlace,
-			boolean activo, Set<NoticiaPreferencia> noticiaPreferencias) {
+	public Noticia(int idNoticia, Evento evento, TipoNoticia tipoNoticia,
+			String titulo, String descripcion, String foto, Date fechaCreacion,
+			Date caducidad, boolean publico, String enlace, boolean activo,
+			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.idNoticia = idNoticia;
-		this.archivo = archivo;
 		this.evento = evento;
 		this.tipoNoticia = tipoNoticia;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
+		this.foto = foto;
 		this.fechaCreacion = fechaCreacion;
 		this.caducidad = caducidad;
 		this.publico = publico;
@@ -63,14 +63,6 @@ public class Noticia implements java.io.Serializable {
 
 	public void setIdNoticia(int idNoticia) {
 		this.idNoticia = idNoticia;
-	}
-
-	public Archivo getArchivo() {
-		return this.archivo;
-	}
-
-	public void setArchivo(Archivo archivo) {
-		this.archivo = archivo;
 	}
 
 	public Evento getEvento() {
@@ -103,6 +95,14 @@ public class Noticia implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getFoto() {
+		return this.foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public Date getFechaCreacion() {

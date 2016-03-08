@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import modelos.Foto;
 import modelos.Instalacion;
+import modelos.TipoInstalacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -102,17 +103,19 @@ private Sesion sesionPostgres;
 	        } 
 	       
 	        return datos; 
-		}
+	}
 	
 	
 	//Metodo para obtener que tipo de instalacion pertenece la instalacion. duda
 
-			public List<Instalacion> obtenerTipoinstalacion( int id) throws Exception {            
+			public List<Instalacion> obtenerTipoinstalacion(TipoInstalacion tipoInstalacion) throws Exception {            
 					      
 				List<Instalacion> datos = new ArrayList<Instalacion>();  
 				Session em = sesionPostgres.getSessionFactory().openSession();   	
 				 try {  	
-				   datos =  (List<Instalacion>) em.createCriteria(Instalacion.class).add(Restrictions.eq("tipo_instalacionid_tipo_instalacion", id)).list();             
+				   datos =  (List<Instalacion>) em.createCriteria(Instalacion.class)
+						   .add(Restrictions.eq("tipoInstalacion", tipoInstalacion))
+						   .add(Restrictions.eq("activo", true)).list();             
 					  } catch (Exception e) {             
 				 
 				throw new Exception(e.getMessage(),e.getCause());
@@ -121,5 +124,23 @@ private Sesion sesionPostgres;
 					 } 
 						       
 				   return datos; 
-				}
+			}
+			
+			public List<Instalacion> obtenerAlquilables() throws Exception {            
+			      
+				   List<Instalacion> datos = new ArrayList<Instalacion>();  
+				   Session em = sesionPostgres.getSessionFactory().openSession();   	
+			        try {  	
+				    datos =  (List<Instalacion>) em.createCriteria(Instalacion.class)
+							   .add(Restrictions.eq("alquilable", true))
+							   .add(Restrictions.eq("activo", true)).list();              
+			        } catch (Exception e) {             
+			       
+			         throw new Exception(e.getMessage(),e.getCause());
+			        } finally {  
+			          em.close();  
+			        } 
+			       
+			        return datos; 
+			}
 }

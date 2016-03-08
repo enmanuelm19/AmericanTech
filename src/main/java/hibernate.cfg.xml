@@ -47,7 +47,6 @@
         <mapping resource="modelos/RedClub.hbm.xml" />
         <mapping resource="modelos/TipoSugerencia.hbm.xml" />
         <mapping resource="modelos/MotivoDesvinculacion.hbm.xml" />
-        <mapping resource="modelos/ArchivoPortal.hbm.xml" />
         <mapping resource="modelos/Socio.hbm.xml" />
         <mapping resource="modelos/Persona.hbm.xml" />
         <mapping resource="modelos/TipoEmpleado.hbm.xml" />
@@ -84,6 +83,7 @@
         <mapping resource="modelos/SolicitudVenta.hbm.xml" />
         <mapping resource="modelos/Indicador.hbm.xml" />
         <mapping resource="modelos/Alquiler.hbm.xml" />
+        <mapping resource="modelos/CancelacionEvento.hbm.xml" />
         <mapping resource="modelos/PreferenciaPersona.hbm.xml" />
         <mapping resource="modelos/InstalacionEvento.hbm.xml" />
         <mapping resource="modelos/RedSocial.hbm.xml" />

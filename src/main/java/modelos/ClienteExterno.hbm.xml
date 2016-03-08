@@ -20,7 +20,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sugerencias" table="sugerencia" inverse="true" lazy="true" fetch="select">
+        <set name="sugerencias" table="sugerencia" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="cliente_externoid_cliente" />
             </key>

@@ -97,7 +97,7 @@
 													<detail open="false" fulfill="onOpen">
 													
 														<grid model="@load(evento.indicadorEventos)"
-															emptyMessage="No se encuentran actividades registradas" mold="paging" pageSize="5">
+															emptyMessage="No se encuentran indicadores registrados" mold="paging" pageSize="5">
 															
 															<auxhead sclass="category-center">
 
@@ -168,7 +168,7 @@
 															 tooltiptext="Editar" onClick="@command('showModal', evento=evento)" />
 														<button
 															sclass="btn-link" iconSclass="z-icon-times red"
-														  tooltiptext="Eliminar" onClick="@command('eliminar', evento=evento)"/>
+														  tooltiptext="Cancelar" onClick="@command('cancelar', evento=evento)"/>
 													</div>
 												</row>
 											</template>

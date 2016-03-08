@@ -49,7 +49,7 @@ public class RegistrarUsuarioViewModel {
 	private String keyword;
 	private Grupo grupo;
 	private Media uploadedImage;
-	private List<UsuarioGrupo> usuarioGrupo;
+	private List<UsuarioGrupo> usuarioGrupos;
 	private UsuarioGrupoDao usuarioGrupoDao;
 	
 	@Init
@@ -70,10 +70,15 @@ public class RegistrarUsuarioViewModel {
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);
 			user.setPersona(persona);
+			usuarioGrupos = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
 		} else {
 			this.user = usuario;
 			this.editable = true;
-			String tmp = user.getPersona().getDireccion();
+			String tmp;
+			if(user.getPersona().getFoto() == null){
+			tmp = " ";
+			}else{
+			tmp = user.getPersona().getFoto();}
 			String nombre = "";
 			String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
 			int index;
@@ -85,8 +90,8 @@ public class RegistrarUsuarioViewModel {
 				}
 			}
 			File f = new File(ruta, nombre); 
-			if(f.exists()){
-				URL url = new URL(user.getPersona().getDireccion());
+			if(f.exists() && user.getPersona().getFoto()!= null){
+				URL url = new URL(user.getPersona().getFoto());
 				this.uploadedImage = new AImage(url);
 			}else{
 			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
@@ -141,7 +146,7 @@ public class RegistrarUsuarioViewModel {
 			}
 			else {
 				user.setFecha(new Date());
-				user.getPersona().setDireccion(subirImagen(getUploadedImage()));
+				user.getPersona().setFoto(subirImagen(getUploadedImage()));
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
@@ -199,22 +204,22 @@ public class RegistrarUsuarioViewModel {
 
 	public List<UsuarioGrupo> getUsuarioGrupo() {
 		List<UsuarioGrupo> tmp = new ArrayList<UsuarioGrupo>();
-		for(UsuarioGrupo u: usuarioGrupo){
+		for(UsuarioGrupo u: usuarioGrupos){
 			if(u.isActivo()){
 				tmp.add(u);
 			}
 		}
-		usuarioGrupo = tmp;
-		return usuarioGrupo;
+		usuarioGrupos = tmp;
+		return usuarioGrupos;
 	}
 
 	public void setUsuarioGrupo(List<UsuarioGrupo> usuarioGrupo) {
-		this.usuarioGrupo = usuarioGrupo;
+		this.usuarioGrupos = usuarioGrupo;
 	}
 	
 	public String getCantRegistros() {
-		if(usuarioGrupo!=null){
-		return usuarioGrupo.size() + " items en la lista";
+		if(usuarioGrupos!=null){
+		return usuarioGrupos.size() + " items en la lista";
 		}else{
 			return "No hay items en la lista";
 		}
@@ -229,7 +234,7 @@ public class RegistrarUsuarioViewModel {
 						if (evt.getName().equals("onOK")) {
 							try {
 								usuarioGrupoDao.eliminarUsuarioGrupo(grupo);
-								usuarioGrupo = usuarioGrupoDao.obtenerTodos();
+								usuarioGrupos = usuarioGrupoDao.obtenerTodos();
 								Messagebox.show(grupo.getGrupo().getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
@@ -256,14 +261,12 @@ public class RegistrarUsuarioViewModel {
 	@GlobalCommand
 	@NotifyChange({ "usuarioGrupo", "cantRegistros" })
 	public void refreshUsuarioGrupo() throws Exception {
-		usuarioGrupo = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
+		usuarioGrupos = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
 	}
 	
 	@Command
 	@NotifyChange("uploadedImage")
 	public void upload(@BindingParam("media") Media myMedia){
-		System.out.println("Entro");
-		System.out.println(myMedia.getName());
 		setUploadedImage(myMedia);
 	}
 

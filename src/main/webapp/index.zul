@@ -1,4 +1,3 @@
-
 <?page title="Centro Atletico America" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native">
 
@@ -187,47 +186,103 @@
 	</n:div>
 </n:div>
 
-<n:div class="cartelera" id="cartelera">
-	<n:div class="wrap ">
+<div class="cartelera" id="cartelera" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+	<div class="wrap " >
 	<n:h2>Más de nosotros</n:h2><n:br></n:br>
 	
 	
-<n:div class="row">
-  <n:div class="col-sm-6 col-md-6">
-    <n:div class="">
+<div class="row" >
+
+ 
+
+  <div class="col-sm-6 col-md-6">
+    <div class="">
+	
       <n:img src="assets/portal/img/mision.png" alt="..." width="20%"/>
-      
-        <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-        <n:div>
-        <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Brindar y promover el disfrute de sus socios y
-
-familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la 
-
-unión familiar y consolidando el legado de sus fundadores.”</n:p>
-        </n:div>
      
-    </n:div>
-  </n:div>
-  <n:div class="col-sm-6 col-md-6">
-    <n:div class="">
+        <n:h3 style=" margin-top: 10px; margin-bottom: 15px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
+               <div align="center ">
+         	<div
+         		class='form-pricing col-xs-2 col-sm-2 col-md-11 col-centered'
+         		align="left" style="margin-bottom: 20px"
+         		apply="org.zkoss.bind.BindComposer"
+         		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+         		<div class="contenido">
+
+         			<grid model="@load(vm.allClub)" zclass="none" >
+         				<columns>
+         					<column label="" />
+
+         				</columns>
+         				<rows zclass="none">
+         					<template name="model">
+
+         						<row zclass="none">
+         							<label
+         								style="width:50%; margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;"
+         								value="@load(each.mision)" />
+
+         						</row>
+
+         					</template>
+         				</rows>
+
+         			</grid>
+
+         		</div>
+         	</div>
+         </div>
+    
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="">
       <n:img src="assets/portal/img/vision.png" alt="..." width="20%"/>
       
-         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-        <n:div>
-        <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Constituirnos como la institución social por excelencia
+         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Visión</n:h3>
 
-dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de 
+         <div align="center ">
+         
+         	<div
+         		class='form-pricing col-xs-2 col-sm-2 col-md-11 col-centered'
+         		align="left" style="margin-bottom: 20px"
+         		apply="org.zkoss.bind.BindComposer"
+         		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+         		<div class="contenido">
 
-sus afiliados y sus familiares e impulsar la transformación consolidando un ambiente cada día 
+         			<grid model="@load(vm.allClub)" zclass="none" >
+         				<columns>
+         					<column label="" />
 
-más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p>
-        </n:div>
-     
-    </n:div>
-  </n:div>
-    
-</n:div>
-	
+         				</columns>
+         				<rows zclass="none">
+         					<template name="model">
+
+         						<row zclass="none">
+         							<label
+         								style="width:50%; margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;"
+         								value="@load(each.vision)" />
+
+         						</row>
+
+         					</template>
+         				</rows>
+
+         			</grid>
+
+         		</div>
+         	</div>
+         </div>
+
+
+
+
+
+    </div>
+  </div>
+  
+</div>
 			
 	
 	<n:br></n:br><n:br></n:br><n:br></n:br>
@@ -237,84 +292,14 @@ más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p
 	<include src="portal/video.html" />
 								
 									
-		</n:div>
-	</n:div>
-
+		</div>
+	</div>
 
 <div class="contact" id="contact">
-	<div class="wrap">
-		<n:h2>Contáctanos</n:h2><n:br></n:br>
-		<n:h4>¿Tienes alguna Sugerencia?</n:h4>
-		<div class="section group">
-			  <div class="col span_2_of_3">
-				  <div class="contact-form">
-				  	  <n:form>
-				  	   	<n:h5>Tu sugerencia esta relacionada con:</n:h5>
-	
-         
-         <radiogroup id="sv1" onCheck="" />
-                <radio id="ra1" label="Instalaciones" radiogroup="sv1" style="margin-right:15px;" />
-                <radio id="ra2" label="Eventos" radiogroup="sv1" style="margin-right:15px;"  />
-                <radio id="ra3" label="Socios" radiogroup="sv1" style="margin-right:15px;" />
-                <radio id="ra4" label="Nuestra Atención" radiogroup="sv1" style="margin-right:15px;"  />
-                <radio id="ra5" label="Sugerencia General" radiogroup="sv1"  style="margin-right:15px;" />
-          <separator />
-         <n:br></n:br>
-					    	
-					    		<textbox class="textbox" placeholder="Tu nombre" ></textbox>
-						    	<textbox  class="textbox" placeholder="Tu email" ></textbox>
-						    	<div class="clear"> </div>
-						   
-						    <div>
-						    	<textbox placeholder="Tu mensaje" rows="7" cols="7"/>
-						    </div>
-						  <div class="col-md-offset-9"><span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar"/></span></div>
-						  <div class="clear"></div>
-					    </n:form>
-				  </div>
-  				</div>
-				<div class="col span_1_of_3">
-					<div class="company_address">
-				     	<n:h5>Información</n:h5>
-						<n:ul class="list3">
-							<n:li>
-								<n:img src="assets/portal/img/location.png" alt=""/>
-								<div class="extra-wrap">
-								  <n:p>Av. Fuerzas Armadas,  </n:p>
-								  <n:p>con Calle 57,</n:p>
-								  <n:p>Concepcion, Barquisimeto.</n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-							
-							<n:li>
-								<n:img src="assets/portal/img/phone.png" alt=""/>
-								<div class="extra-wrap">
-									<n:p>0251-258 2598</n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-							<n:li>
-								<n:img src="assets/portal/img//fax2.png" alt=""/>
-								<div class="extra-wrap">
-									<n:p>0416-6343 8690</n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-							<n:li>
-								<n:img src="assets/portal/img/mail.png" alt=""/>
-								<div class="extra-wrap">
-									<n:p> <a href="mailto:info@mycompany.com"> centroAmerica@gmail.com</a></n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-						</n:ul>
-				   </div>
-				 </div>
-				 <div class="clear"></div>
-			  </div>
-			  </div>
-     	</div>
+ <include src="portal/contacto.zul"/>
+ 	</div>
+ 
+ 
      <n:div class="footer-bottom">
      	<n:div class="wrap">
         <n:div class="copy">
@@ -339,6 +324,12 @@ más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p
 						</script>
 		 <n:a href="#" id="toTop" style="display: block;"><n:span id="toTopHover" style="opacity: 1;"> </n:span></n:a>
 		 <script src="assets/portal/js/jquery.scrollTo.js"></script>
+		 <script>
+		 setTimeout(function(){
+		 	$(".none-body").css("width", "auto");
+		 }, 1000);
+		 
+		 </script>>
 		</n:div>
 	</n:div>
 </n:body>

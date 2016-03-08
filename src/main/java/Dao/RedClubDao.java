@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.RedClub;
+import modelos.RedSocial;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -105,12 +106,12 @@ private Sesion sesionPostgres;
 		}
 	//Metodo para obtener las redes sociales del club"
 
-		public List<RedClub> obtenerRedesSocialesClub( int id) throws Exception {            
+		public List<RedClub> obtenerRedesSocialesClub( RedSocial dato) throws Exception {            
 		      
 			   List<RedClub> datos = new ArrayList<RedClub>();  
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
-			    datos =  (List<RedClub>) em.createCriteria(RedClub.class).add(Restrictions.eq("clubid_club", id)).list();             
+			    datos =  (List<RedClub>) em.createCriteria(RedClub.class).add(Restrictions.eq("redSocial", dato)).add(Restrictions.eq("activo", true)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());

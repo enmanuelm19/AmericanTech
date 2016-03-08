@@ -20,7 +20,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="true" fetch="select">
+        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="junta_directivaid_junta_directiva" not-null="true" />
             </key>

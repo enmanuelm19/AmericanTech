@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Opinion;
+import modelos.Persona;
 import modelos.RedPersona;
 
 import org.hibernate.Session;
@@ -107,12 +108,12 @@ private Sesion sesionPostgres;
 	
 	//Metodo para obtener las redes sociales de una persona
 
-		public List<RedPersona> obtenerRedesSocialesPersona( int id) throws Exception {            
+		public List<RedPersona> obtenerRedesSocialesPersona( Persona dato) throws Exception {            
 		      
 			   List<RedPersona> datos = new ArrayList<RedPersona>();  
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
-			    datos =  (List<RedPersona>) em.createCriteria(RedPersona.class).add(Restrictions.eq("personaid_persona", id)).list();             
+			    datos =  (List<RedPersona>) em.createCriteria(RedPersona.class).add(Restrictions.eq("persona", dato)).add(Restrictions.eq("activo", true)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());

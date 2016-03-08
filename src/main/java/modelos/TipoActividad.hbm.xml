@@ -14,7 +14,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select">
+        <set name="actividads" table="actividad" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="tipo_actividadid_tipo_actividad" not-null="true" />
             </key>
