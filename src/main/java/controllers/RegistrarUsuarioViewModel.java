@@ -75,10 +75,10 @@ public class RegistrarUsuarioViewModel {
 			this.user = usuario;
 			this.editable = true;
 			String tmp;
-			if(user.getPersona().getDireccion() == null){
+			if(user.getPersona().getFoto() == null){
 			tmp = " ";
 			}else{
-			tmp = user.getPersona().getDireccion();}
+			tmp = user.getPersona().getFoto();}
 			String nombre = "";
 			String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
 			int index;
@@ -90,8 +90,8 @@ public class RegistrarUsuarioViewModel {
 				}
 			}
 			File f = new File(ruta, nombre); 
-			if(f.exists() && user.getPersona().getDireccion()!= null){
-				URL url = new URL(user.getPersona().getDireccion());
+			if(f.exists() && user.getPersona().getFoto()!= null){
+				URL url = new URL(user.getPersona().getFoto());
 				this.uploadedImage = new AImage(url);
 			}else{
 			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
@@ -146,7 +146,7 @@ public class RegistrarUsuarioViewModel {
 			}
 			else {
 				user.setFecha(new Date());
-				user.getPersona().setDireccion(subirImagen(getUploadedImage()));
+				user.getPersona().setFoto(subirImagen(getUploadedImage()));
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
@@ -267,8 +267,6 @@ public class RegistrarUsuarioViewModel {
 	@Command
 	@NotifyChange("uploadedImage")
 	public void upload(@BindingParam("media") Media myMedia){
-		System.out.println("Entro");
-		System.out.println(myMedia.getName());
 		setUploadedImage(myMedia);
 	}
 
