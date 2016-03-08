@@ -47,7 +47,6 @@
         <mapping resource="modelos/RedClub.hbm.xml" />
         <mapping resource="modelos/TipoSugerencia.hbm.xml" />
         <mapping resource="modelos/MotivoDesvinculacion.hbm.xml" />
-        <mapping resource="modelos/ArchivoPortal.hbm.xml" />
         <mapping resource="modelos/Socio.hbm.xml" />
         <mapping resource="modelos/Persona.hbm.xml" />
         <mapping resource="modelos/TipoEmpleado.hbm.xml" />

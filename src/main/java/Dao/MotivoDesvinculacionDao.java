@@ -65,6 +65,7 @@ public class MotivoDesvinculacionDao {
 			dato = (MotivoDesvinculacion) sesion
 					.createCriteria(MotivoDesvinculacion.class)
 					.add(Restrictions.eq("descripcion", descrip))
+					.add(Restrictions.eq("activo", true))
 					.uniqueResult();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,4 +130,5 @@ public class MotivoDesvinculacionDao {
 
 		return datos;
 	}
+
 }

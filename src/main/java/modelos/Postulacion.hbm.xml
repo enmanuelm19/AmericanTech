@@ -41,7 +41,7 @@
             </key>
             <one-to-many class="modelos.Opinion" />
         </set>
-        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+        <set name="ventas" table="venta" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="postulacionid_postulacion" not-null="true" />
             </key>

@@ -60,7 +60,7 @@ public class RecursoDao {
 		Recurso dato = null;
 		try {
 			dato = (Recurso) sesion.createCriteria(Recurso.class)
-					.add(Restrictions.eq("descripcion", descrip))
+					.add(Restrictions.eq("descripcion", descrip)).add(Restrictions.eq("activo", true))
 					.uniqueResult();
 		} catch (Exception e) {
 			e.printStackTrace();

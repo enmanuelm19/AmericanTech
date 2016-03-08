@@ -3,6 +3,7 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Recurso;
 import modelos.RecursoInstalacion;
 
 import org.hibernate.Session;
@@ -106,12 +107,12 @@ private Sesion sesionPostgres;
 		
 	//Metodo para obtener los recursos que tiene una instalacion
 
-	public List<RecursoInstalacion> obtenerRecursosInstalacion( int id) throws Exception {            
+	public List<RecursoInstalacion> obtenerRecursosInstalacion( Recurso dato) throws Exception {            
 	      
 		   List<RecursoInstalacion> datos = new ArrayList<RecursoInstalacion>();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (List<RecursoInstalacion>) em.createCriteria(RecursoInstalacion.class).add(Restrictions.eq("instalacionid_instalacion", id)).list();             
+		    datos =  (List<RecursoInstalacion>) em.createCriteria(RecursoInstalacion.class).add(Restrictions.eq("recurso", dato)).add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());

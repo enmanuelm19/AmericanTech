@@ -3,8 +3,10 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.MotivoPostulacion;
 import modelos.Opinion;
 import modelos.Postulacion;
+import modelos.Postulado;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -107,12 +109,12 @@ private Sesion sesionPostgres;
 
 	//Metodo para obtener las postulaciones con "x" motivo de postulacion
 
-		public List<Postulacion> obtenerPostulacionesMotivo( int id) throws Exception {            
+		public List<Postulacion> obtenerPostulacionesMotivo( MotivoPostulacion dato) throws Exception {            
 		      
 			   List<Postulacion> datos = new ArrayList<Postulacion>();  
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
-			    datos =  (List<Postulacion>) em.createCriteria(Postulacion.class).add(Restrictions.eq("motivo_postulacionid_motivo_postulacion", id)).list();             
+			    datos =  (List<Postulacion>) em.createCriteria(Postulacion.class).add(Restrictions.eq("motivoPostulacion", dato)).add(Restrictions.eq("activo", true)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());
@@ -125,12 +127,12 @@ private Sesion sesionPostgres;
 		
 		//Metodo para obtener las postulaciones de un postulado
 
-				public List<Postulacion> obtenerPostulacionesPostulado( int id) throws Exception {            
+				public List<Postulacion> obtenerPostulacionesPostulado( Postulado dato) throws Exception {            
 				      
 					   List<Postulacion> datos = new ArrayList<Postulacion>();  
 					   Session em = sesionPostgres.getSessionFactory().openSession();   	
 				        try {  	
-					    datos =  (List<Postulacion>) em.createCriteria(Postulacion.class).add(Restrictions.eq("Postuladoid_postulado", id)).list();             
+					    datos =  (List<Postulacion>) em.createCriteria(Postulacion.class).add(Restrictions.eq("postulado", dato)).add(Restrictions.eq("activo", true)).list();             
 				        } catch (Exception e) {             
 				       
 				         throw new Exception(e.getMessage(),e.getCause());
