@@ -29,43 +29,43 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
+        <set name="noticias" table="noticia" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="eventoid_evento" />
             </key>
             <one-to-many class="modelos.Noticia" />
         </set>
-        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaEvento" />
         </set>
-        <set name="motivoCancelacions" table="motivo_cancelacion" inverse="true" lazy="true" fetch="select">
+        <set name="motivoCancelacions" table="motivo_cancelacion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.MotivoCancelacion" />
         </set>
-        <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select">
+        <set name="actividads" table="actividad" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.Actividad" />
         </set>
-        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.InstalacionEvento" />
         </set>
-        <set name="indicadorEventos" table="indicador_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="indicadorEventos" table="indicador_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.IndicadorEvento" />
         </set>
-        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" />
             </key>

@@ -62,10 +62,9 @@
 								</columns>
 
 								<rows>
-									<row>
-										
+									<row>										
 										<label value="David Cordero" />
-										<label value="032" />
+										<label value="032"/>
 										<image
 											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
 										<div
