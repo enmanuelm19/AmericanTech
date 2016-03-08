@@ -103,5 +103,9 @@ public class Preferencia implements java.io.Serializable {
 			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.noticiaPreferencias = noticiaPreferencias;
 	}
+	
+	public String toString(){
+		return descripcion;
+	}
 
 }
