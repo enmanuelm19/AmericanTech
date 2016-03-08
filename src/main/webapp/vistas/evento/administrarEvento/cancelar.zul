@@ -5,7 +5,9 @@
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window border="none" title="Cancelar/Rechazar evento"
+	<window id="winCancelarEvento" border="none" title="Cancelar/Rechazar evento"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.CancelarEventoViewModel')"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		closable="true" width="40%" height="auto"
 		style="iconSclass=z-icon-puzzle-piece;">
@@ -31,47 +33,36 @@
 
 					<rows class="">
 
-						<!--  <row class="col-md-12">
+						<row class="col-md-12">
 							
 							<div>
-							Estado del evento
+							Motivo Cancelacion/Rechazo
 							<n:br></n:br>
-							<combobox width="100%">
-							<comboitem label="Cancelado" />
-							<comboitem label="Finalizado con exito" />
-							<comboitem label="Finalizado sin exito" />
+							<combobox model="@load(vm.allMotivoCancelacion)" selectedItem="@bind(vm.evento.cancelacionEvento.motivoCancelacion)" width="100%">
+							<template name="model">
+								<comboitem label="@load(each.descripcion)" value="@load(each)" />
+							</template>
 							</combobox>
 							</div>
-							<div>
-							Cantidad de asistentes  
-							<n:br></n:br>
-							<textbox type="text" 
-							width="100%" tabindex="10" constraint="" />
-							</div>
-							
-							
-							
-							</row>-->
+							</row>
 
 						<row class="col-md-12">
 							<div>
-								Motivo de la cancelación o rechazo
+								Descripcion
 								<n:br></n:br>
-								<textbox type="text" rows="5"
+								<textbox type="text" rows="5" value="@bind(vm.evento.cancelacionEvento.descripcion)"
 									width="100%" tabindex="10" constraint="no empty" />
 							</div>
 						</row>
-
-
 					</rows>
 				</grid>
 				<space spacing="35%" />
 				<div>
 
-					<button iconSclass="z-icon-floppy-o"
+					<button iconSclass="z-icon-floppy-o" onClick="@command('guardar',win=winCancelarEvento)"
 						class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
-					<button iconSclass="z-icon-times"
+					<button iconSclass="z-icon-times" onClick="@command('cerrarModal',win=winCancelarEvento)"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
 				<space spacing="15%" />
