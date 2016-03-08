@@ -1,209 +1,106 @@
-<zk xmlns:n="native" >
-<div>
-	<hlayout  spacing="0">
-		
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-home" />
-					<a label="Instalación" href="#"/>
-					<label value="Reservación"/>
-				</div>
-			</div>
-			<div class="contenedor" align="center" >
-				<div sclass="page-header" align="left">
-				    <label value="Mis Reservaciones"/>
-		  		</div>
-				<separator spacing="30px"/>
-				<space/><space/>
-				<div class='form-pricing' align="left" width="90%" style="margin-bottom: 20px">
-					<div align="right" apply="controllers.ControllerReservacionGeneral" xmlns:w="client">
-							<button id="btnMisReservacionesReg" iconSclass="z-icon-plus" class='boton-guardar' label="Agregar Nuevo" />
-						</div>
-				<separator spacing="0.5%px"/>
-				<div class="contenido">
-					<div align="left">
-						<div class='encabezado'>Lista de Reservaciones</div>
-						<div class='linea-two'></div>
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-home" />
+						<a label="Instalación" href="#" />
+						<label value="Reservación" />
 					</div>
-					<separator spacing="1%"/>
-					<grid emptyMessage="No se encuentran reservaciones registrados" mold="paging" pageSize="10">
-						<auxhead sclass="category-center">
-            				<auxheader colspan="1">
-            					<image src="../assets/img/funnel.png" />
-               					<textbox instant="true" width="120px" placeholder="Buscar"/>
-            				</auxheader>
-            				 <auxheader colspan="5" />
-						</auxhead>
-						<columns>
-							<column hflex="2">Instalacion</column>
-							<column hflex="2"> Fecha </column>
-							<column hflex="4"> Hora</column>
-							<column hflex="3">Precio </column>
-							<column width="2">Acciones </column>
-							
-						</columns>
-						<rows>
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM - 3:00PM"/>
-						          <label value="1500Bs"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="10/01/2015"/>
-						            <label value="12:00 PM - 3:00PM"/>
-						          <label value="1500Bs"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						            <label value="12:00 PM - 3:00PM"/>
-						          <label value="1500Bs"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="10/01/2015"/>
-						           <label value="12:00 PM - 3:00PM"/>
-						          <label value="1500Bs"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/> 
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							<row>
-						          <label value="Caney de Rafa"/>
-						          <label value="10/01/2015"/>
-						          <label value="12:00 PM"/>
-						          <label value="3:00 PM"/>
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-						</rows>
-						 <foot>
-            				<footer span="6" class="footer_right" label="15 items en la lista" />
-        				 </foot>
-					</grid>
 				</div>
-			</div>
-			</div>
-		</vlayout>
-	</hlayout>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Mis Reservaciones" />
+					</div>
+					<separator spacing="30px" />
+					<space />
+					<space />
+					<div class='form-pricing' align="left" width="90%"
+						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.ReservacionViewModel')"
+						xmlns:w="client">
+						<div align="right">
+							<button id="btnMisReservacionesReg"
+								iconSclass="z-icon-plus" class='boton-guardar'
+								label="Agregar Nuevo" onClick="@command('showModal')" />
+						</div>
+						<separator spacing="0.5%px" />
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Lista de Reservaciones
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<separator spacing="1%" />
+							<grid model="@load(vm.reservacionAll)"
+								emptyMessage="No se encuentran reservaciones registrados"
+								mold="paging" pageSize="5">
+								<auxhead sclass="category-center">
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true"
+											width="120px" value="@bind(vm.nombreFiltro)"
+											onChange="@command('filtro')" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="6" />
+								</auxhead>
+								<columns>
+									<column hflex="4">
+										Instalacion
+									</column>
+									<column hflex="3">
+										Fecha Inicio
+									</column>
+									<column hflex="3">
+										Hora Inicio
+									</column>
+									<column hflex="3">Fecha Fin</column>
+									<column hflex="3">Hora Fin</column>
+									<column hflex="3">Precio</column>
+									<column hflex="3">Acciones</column>
+
+								</columns>
+								<rows>
+									<template name="model"
+										var="reservacion">
+										<row>
+											<label
+												value="@load(reservacion.instalacion.descripcion)" />
+											<label
+												value="@load(reservacion.fechaInicioString)" />
+											<label
+												value="@load(reservacion.horaInicioString)" />
+											<label
+												value="@load(reservacion.fechaFinString)" />
+											<label
+												value="@load(reservacion.horaFinString)" />
+											<label value="0000" />
+											<div>
+												<button
+													sclass="btn-link" iconSclass="z-icon-pencil blue"
+													tooltiptext="Editar"
+													onClick="@command('showModal', reservacion=reservacion)" />
+												<button
+													sclass="btn-link" iconSclass="z-icon-times red"
+													tooltiptext="Eliminar"
+													onClick="@command('eliminar', reservacion=reservacion)" />
+											</div>
+										</row>
+									</template>
+								</rows>
+								<foot>
+									<footer span="6"
+										class="footer_right" label="@load(vm.cantRegistros)" />
+								</foot>
+							</grid>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
 	</div>
 </zk>
