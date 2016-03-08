@@ -23,13 +23,13 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="alquilers" table="alquiler" inverse="true" lazy="false" fetch="select">
+        <set name="alquilers" table="alquiler" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="reservacionid_reservacion" not-null="true" />
             </key>
             <one-to-many class="modelos.Alquiler" />
         </set>
-        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="false" fetch="select">
+        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="reservacionid_reservacion" />
             </key>

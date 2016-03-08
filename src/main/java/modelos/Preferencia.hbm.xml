@@ -17,19 +17,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select">
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaEvento" />
         </set>
-        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="false" fetch="select">
+        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaPersona" />
         </set>
-        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="false" fetch="select">
+        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>

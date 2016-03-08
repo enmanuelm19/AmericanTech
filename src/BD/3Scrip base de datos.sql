@@ -1,4 +1,4 @@
---Persona
+ï»¿--Persona
 Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20525481','Mariangel','Arrieche','05/05/91','F','mariangel@gmail.com','04120584875','02517588520','Barquisimeto',TRUE);
 Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20525489','Gipsy','Martinez','17/10/91','F','gipsy@gmail.com','04120585789','02517587878','El Cuji',TRUE);
 Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20322921','Jose','Abreu','16/02/90','M','DeadNox16@gmail.com','04120585285','02534913354','Quibor',TRUE);
@@ -56,7 +56,7 @@ insert into tipo_sugerencia (descripcion,activo) values ('Infraestructura',true)
 
 --Cliente _ Externo
 
-insert into cliente_externo (nombre,apellido,correo,activo) values ('Jose','Altuve','elpequeñogigante@gmail.com',true);
+insert into cliente_externo (nombre,apellido,correo,activo) values ('Jose','Altuve','elpequeÃ±ogigante@gmail.com',true);
 insert into cliente_externo (nombre,apellido,correo,activo) values ('Miguel','Cabrera','miggycabrera@gmail.com',true);
 insert into cliente_externo (nombre,apellido,correo,activo) values ('Edgar','Ramirez','edgarr@gmail.com',true);
 insert into cliente_externo (nombre,apellido,correo,activo) values ('Gustavo','Dudamel','directoryola@gmail.com',true);
@@ -77,7 +77,7 @@ insert into tipo_instalacion (descripcion,activo) values ('Infantil',true);
 
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,tipo_instalacionid_tipo_instalacion,activo) values ('Campo de Beisbol','espacio para la practica de beisbol',500,2000,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,tipo_instalacionid_tipo_instalacion,activo) values ('Salon de Fiesta','Espacio para fiestas y celebraciones',150,20000,2,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,tipo_instalacionid_tipo_instalacion,activo) values ('Parque Infantil','area recreacional para niños',150,2000,3,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,tipo_instalacionid_tipo_instalacion,activo) values ('Parque Infantil','area recreacional para niÃ±os',150,2000,3,true);
 
 --Tipo_Preferencia
 
@@ -193,8 +193,8 @@ insert into tipo_noticia (descripcion,color,activo) values ('Otros','naranja',tr
 
 
 --Evento
-insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,activo) values ('Torneo de Beisbol','Torneo Libre Masculino de Beisbol','10/03/2016','10/06/2016',true,2,true);
-insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,activo) values ('Torneo de Tenis','Torneo Libre Femenino de tenis','10/03/2016','10/06/2016',true,2,true);
+insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,cancelacion_eventoid_cancelacion_evento,activo) values ('Torneo de Beisbol','Torneo Libre Masculino de Beisbol','10/03/2016','10/06/2016',true,2,null,true);
+insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,cancelacion_eventoid_cancelacion_evento,activo) values ('Torneo de Tenis','Torneo Libre Femenino de tenis','10/03/2016','10/06/2016',true,2,null,true);
 
 --actividad
 insert into actividad (descripcion,finalizada,tipo_actividadid_tipo_actividad,eventoid_evento,fecha_tope,fecha_realizacion,valor_esperado,valor_real,activo) values ('mantenimiento al campo de Beisbol',false,1,1,'10/03/2016','08/03/2016',2000,2200,true);

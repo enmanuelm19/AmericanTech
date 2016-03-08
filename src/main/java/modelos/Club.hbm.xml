@@ -41,25 +41,25 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="fotos" table="foto" inverse="true" lazy="false" fetch="select">
+        <set name="fotos" table="foto" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Foto" />
         </set>
-        <set name="politicas" table="politica" inverse="true" lazy="false" fetch="select">
+        <set name="politicas" table="politica" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="clubid_club" />
             </key>
             <one-to-many class="modelos.Politica" />
         </set>
-        <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="false" fetch="select">
+        <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="clubid_club" not-null="true" />
             </key>
             <one-to-many class="modelos.JuntaDirectiva" />
         </set>
-        <set name="redClubs" table="red_club" inverse="true" lazy="false" fetch="select">
+        <set name="redClubs" table="red_club" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="clubid_club" not-null="true" />
             </key>

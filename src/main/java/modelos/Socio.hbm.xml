@@ -20,31 +20,31 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select">
+        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" />
             </key>
             <one-to-many class="modelos.Sancion" />
         </set>
-        <set name="accions" table="accion" inverse="true" lazy="false" fetch="select">
+        <set name="accions" table="accion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" />
             </key>
             <one-to-many class="modelos.Accion" />
         </set>
-        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="false" fetch="select">
+        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Desvinculacion" />
         </set>
-        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select">
+        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Reservacion" />
         </set>
-        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select">
+        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
