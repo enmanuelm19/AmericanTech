@@ -80,6 +80,7 @@ public class UsuarioViewModel{
 		usuariosAll = tip;
 	}
 	
+	
 	@Command
 	public void showModal(@BindingParam("Usuario") Usuario usuario) {
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -117,4 +118,5 @@ public class UsuarioViewModel{
 	public void refreshUsuarios() throws Exception {
 		usuariosAll = usuarioDao.obtenerTodos();
 	}
+
 }
