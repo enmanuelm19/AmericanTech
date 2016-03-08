@@ -345,10 +345,11 @@
 										<n:br></n:br>	<n:br></n:br>
 									
 									
+									
 										<div class="col-md-12">
 					<div class="row" align="left">
 						<div class="col-md-6">
-							Seleccione las redes sociales del afiliado
+							Seleccione sus redes sociales
 							<n:br></n:br>
 							<combobox width="85%">
 								<comboitem label="Facebook" />
