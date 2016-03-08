@@ -198,12 +198,41 @@
 
   <div class="col-sm-6 col-md-6">
     <div class="">
+	
       <n:img src="assets/portal/img/mision.png" alt="..." width="20%"/>
      
         <n:h3 style=" margin-top: 10px; margin-bottom: 15px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-        <div class="col-sm-12 col-md-12">
-        <include src="portal/test.zul" />
-        </div>
+               <div align="center ">
+         	<div
+         		class='form-pricing col-xs-2 col-sm-2 col-md-11 col-centered'
+         		align="left" style="margin-bottom: 20px"
+         		apply="org.zkoss.bind.BindComposer"
+         		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+         		<div class="contenido">
+
+         			<grid model="@load(vm.allClub)" zclass="none" >
+         				<columns>
+         					<column label="" />
+
+         				</columns>
+         				<rows zclass="none">
+         					<template name="model">
+
+         						<row zclass="none">
+         							<label
+         								style="width:50%; margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;"
+         								value="@load(each.mision)" />
+
+         						</row>
+
+         					</template>
+         				</rows>
+
+         			</grid>
+
+         		</div>
+         	</div>
+         </div>
     
     </div>
   </div>
@@ -211,17 +240,44 @@
     <div class="">
       <n:img src="assets/portal/img/vision.png" alt="..." width="20%"/>
       
-         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-        <div>
-        <n:p style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;">“Constituirnos como la institución social por excelencia
+         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Visión</n:h3>
 
-dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de 
+         <div align="center ">
+         	<div
+         		class='form-pricing col-xs-2 col-sm-2 col-md-11 col-centered'
+         		align="left" style="margin-bottom: 20px"
+         		apply="org.zkoss.bind.BindComposer"
+         		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+         		<div class="contenido">
 
-sus afiliados y sus familiares e impulsar la transformación consolidando un ambiente cada día 
+         			<grid model="@load(vm.allClub)" zclass="none" >
+         				<columns>
+         					<column label="" />
 
-más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p>
-        </div>
-     
+         				</columns>
+         				<rows zclass="none">
+         					<template name="model">
+
+         						<row zclass="none">
+         							<label
+         								style="width:50%; margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;"
+         								value="@load(each.vision)" />
+
+         						</row>
+
+         					</template>
+         				</rows>
+
+         			</grid>
+
+         		</div>
+         	</div>
+         </div>
+
+
+
+
+
     </div>
   </div>
   
@@ -337,6 +393,12 @@ más idóneo para el desarrollo biopsicosocial de nuestras generaciones.”</n:p
 						</script>
 		 <n:a href="#" id="toTop" style="display: block;"><n:span id="toTopHover" style="opacity: 1;"> </n:span></n:a>
 		 <script src="assets/portal/js/jquery.scrollTo.js"></script>
+		 <script>
+		 setTimeout(function(){
+		 	$(".none-body").css("width", "auto");
+		 }, 1000);
+		 
+		 </script>>
 		</n:div>
 	</n:div>
 </n:body>
