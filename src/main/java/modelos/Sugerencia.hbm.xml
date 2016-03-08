@@ -8,7 +8,7 @@
             <column name="id_sugerencia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="clienteExterno" class="modelos.ClienteExterno" fetch="select" lazy="false">
+        <many-to-one name="clienteExterno" class="modelos.ClienteExterno" cascade="save-update" fetch="select" lazy="false">
             <column name="cliente_externoid_cliente" />
         </many-to-one>
         <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select" lazy="false">
