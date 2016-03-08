@@ -61,8 +61,7 @@ public class EventoViewModel {
 	}
 	
 	@Command
-	@NotifyChange({ "allEventos", "cantRegistros" })
-	public void cacelar(@BindingParam("evento") final Evento evento) {
+	public void cancelar(@BindingParam("evento") final Evento evento) {
 
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("evento", evento);
