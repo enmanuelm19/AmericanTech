@@ -73,10 +73,21 @@ public class RegistrarUsuarioViewModel {
 		} else {
 			this.user = usuario;
 			this.editable = true;
-			File f = new File(user.getPersona().getDireccion()); 
+			String tmp = user.getPersona().getDireccion();
+			String nombre = "";
+			String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
+			int index;
+			for(int i=tmp.length()-1;i>0;i--){
+				if(tmp.charAt(i) == '/'){
+					index = i;
+					nombre = tmp.substring(index);
+					break;
+				}
+			}
+			File f = new File(ruta, nombre); 
 			if(f.exists()){
 				URL url = new URL(user.getPersona().getDireccion());
-				this.uploadedImage = new AImage(user.getPersona().getDireccion());
+				this.uploadedImage = new AImage(url);
 			}else{
 			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			this.uploadedImage = new AImage(url);}
