@@ -1,296 +1,132 @@
 <!-- Responsable Hector Gil - Copiado por Wilmer Aponte -->
 
-<zk xmlns:n="native">
-	<window border="none" title="Registrar Socio " closable="true"
-		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="60%">
-		<caption iconSclass="z-icon-user" />
 
-		<div class="col-md-10 col-centered "
-			form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+<window id="winRegistrarSocio" border="none" width="60%" title="Registrar Socio " closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<div class="col-md-12 col-centered" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarSocioViewModel')">
+		<div align="left">
+			<div class="encabezado">Datos del Socio</div>
+			<div align="left" class="linea-two"></div>
+		</div>
 
-			<n:br></n:br>
-			<div align="left">
-				<div class="encabezado">Datos del Socio</div>
-				<div align="left" class="linea-two">
-
-				</div>
-			</div>
-			<n:br></n:br>
-
-
-			<div class="row">
-				<separator spacing="30px"></separator>
-				<div class="col-md-3">
-					<div class="input-group">
-						<image src="/assets/portal/img/img2.jpg"
-							class='img-responsive col-md-offset-1' />
-						<separator spacing="30px"></separator>
-						<fileupload label="Examinar"
-							iconSclass="z-icon-folder-open"
-							class='boton-guardar col-md-offset-4' />
-					</div>
-				</div>
-
-				<div class="col-md-7">
-					<grid>
-						<rows>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Cédula" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="V18122444">
-									</textbox>
-								</div>
-							</row>
-
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Numero Carnet" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="123456">
-									</textbox>
-
-
-								</div>
-							</row>
-
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Primer Nombre" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="David">
-									</textbox>
-
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Segundo Nombre" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="Angel">
-									</textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Primer Apellido" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="Cordero">
-									</textbox>
-
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Segundo Apellido" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="ron">
-									</textbox>
-
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Correo" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" type="email"
-										value="hdhdhdh@jdhdh.com">
-									</textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Telefono" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="04135689256">
-									</textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Nacimiento" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="10/01/70">
-									</textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Edad" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" value="33">
-									</textbox>
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Sexo" />
-									<checkbox label="Masculino" />
-									<checkbox label="Femenino" />
-								</div>
-							</row>
-							<row>
-								<div>
-									<label class="col-md-4"
-										value="Direccion" />
-									<textbox constraint="no empty"
-										class="col-md-6" readonly="true" cols="45" rows="6"
-										type="text"
-										value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
-
-								</div>
-							</row>
-						</rows>
-					</grid>
+		<separator spacing="30px"></separator>
+		<div class="row">
+			<separator spacing="30px"></separator>
+			<div class="col-md-3">
+				<div class="input-group">
+					<image src="/assets/portal/img/img2.jpg" class='img-responsive col-md-offset-1' />
+					<separator spacing="30px"></separator>
+					<button label="Examinar" iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-4' upload="true,maxsize=8192" onUpload="@command('uploadFile',upload=event)" />
 				</div>
 			</div>
 
-
-
-			<n:br></n:br>
-
-			<!-- NO LLEVA INTERESES -->
-			<div align="left">
-				<div class="encabezado">Datos de la Acción</div>
-				<div align="left" class="linea-two">
-
-				</div>
-			</div>
-			<n:br></n:br>
-			<hbox width="100%">
-				<panel border="none" collapsible="true"
-					sclass="transparent">
-					<panelchildren>
-						<grid sclass="domain">
-							<columns>
-								<column width="50%"
-									label="Numero Accion" iconSclass="z-icon-caret-right blue" />
-								<column width="35%" label="Valor BS"
-									iconSclass="z-icon-caret-right blue" />
-							</columns>
-							<rows>
-								<row>
-									<label value="032" />
-									<label value="60.000"
-										sclass="label label-primary arrowed" />
-								</row>
-							</rows>
-						</grid>
-					</panelchildren>
-				</panel>
-			</hbox>
-
-			<n:br></n:br>
-			<n:br></n:br>
-			<div align="left">
-				<div class="encabezado">Redes sociales del socio</div>
-				<div align="left" class="linea-two">
-
-				</div>
-			</div>
-			<n:br></n:br>
-			<n:br></n:br>
-
-			<div class="col-md-12">
-				<div class="row" align="left">
-					<div class="col-md-6">
-						Seleccione las redes sociales del socio
-						<n:br></n:br>
-						<combobox width="85%">
-							<comboitem label="Facebook" />
-							<comboitem label="Twitter" />
-							<comboitem label="Instagram" />
-						</combobox>
-
-					</div>
-					<div class="col-md-6">
-						Usuario en la red social
-						<n:br></n:br>
-						<textbox type="text" width="80%" tabindex="10"
-							constraint="no empty" />
-						<button sclass="btn-link"
-							iconSclass="z-icon-plus blue" id=""
-							tooltiptext="Agregar Indicador" />
-					</div>
-				</div>
-
-				<grid id="gridRedes"
-					emptyMessage="No se encuentran solicitudes registradas"
-					mold="paging" pageSize="10">
-
-					<columns>
-
-						<column hflex="">Red social</column>
-
-						<column hflex="">Usuario</column>
-						<column hflex="2">Acciones</column>
-					</columns>
-
+			<div class="col-md-7 col-md-offset-1">
+				<grid>
 					<rows>
 						<row>
 							<div>
-
-								<label value="Facebook" />
-
-							</div>
-							<div>
-
-								<label value="david_angel" />
-
-							</div>
-
-
-							<div>
-								<button sclass="btn-link"
-									iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+								<label class="col-md-4" value="Cédula" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.identificacion)"/>
 							</div>
 						</row>
 
+						<row>
+							<div>
+								<label class="col-md-4" value="Número Carnet" />
+								<textbox constraint="no empty" class="col-md-6" value="@bind(vm.nroCarnet)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"	value="Nombre" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true"  value="@load(vm.postulacion.postulado.persona.nombre)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Apellido" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true"  value="@load(vm.postulacion.postulado.persona.apellido)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Correo" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true" type="email"  value="@load(vm.postulacion.postulado.persona.correo)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Telefono Domicilio" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true"  value="@load(vm.postulacion.postulado.persona.telefonoFijo)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Telefono Celular" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true"  value="@load(vm.postulacion.postulado.persona.telefono)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4"	value="Fecha Nacimiento" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.fechaNac)" />
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Edad" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.calcularEdad)"/>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Sexo" />
+								<radiogroup id="sexo" selectedItem="@load(vm.postulacion.postulado.persona.sexo)">
+									<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
+									<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
+								</radiogroup>
+							</div>
+						</row>
+						<row>
+							<div>
+								<label class="col-md-4" value="Direccion" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true" cols="60" rows="4" type="text"
+									value="@load(vm.postulacion.postulado.persona.direccion)"  />
+							</div>
+						</row>
 					</rows>
-
-					<foot>
-						<footer span="5" class="footer_right"
-							label="0 items en la lista" />
-					</foot>
 				</grid>
-
 			</div>
-
-
-
-
-			<n:br></n:br>
-			<n:br></n:br>
-			<hbox width="100%" align="center" pack="center">
-
-				<separator spacing="5%"></separator>
-
-
-				<button iconSclass="z-icon-edit" class='boton-guardar'
-					label="Guardar" />
-
-				<space bar="False" spacing="5%" />
-
-				<button iconSclass="z-icon-times-circle"
-					class='boton-cancelar' label="Cancelar " />
-			</hbox>
-
-			<n:br></n:br>
-			<n:br></n:br>
 		</div>
-	</window>
-</zk>
+		<!-- NO LLEVA INTERESES -->
+		<div align="left">
+			<div class="encabezado">Datos de la Acción</div>
+			<div align="left" class="linea-two"></div>
+		</div>
+
+		<hbox width="100%">
+			<panel border="none" collapsible="true"	sclass="transparent">
+				<panelchildren>
+					<listbox sclass="domain" model="@load(vm.accionesAll)" selectedItem="@bind(vm.seleccionada)" hflex="true" height="200px">
+					    <listhead>
+					        <listheader width="50%" label="Número Acción" iconSclass="z-icon-caret-right blue"/>
+					        <listheader width="35%" label="Valor Bs" iconSclass="z-icon-caret-right blue"/>
+					    </listhead>
+					    <template name="model" var="item">
+					        <listitem>
+					            <listcell label="@load(item.nroAccion)"/>
+					            <listcell label="@load(item.valor)" sclass="label label-primary arrowed"/>
+					        </listitem>
+					    </template>
+					</listbox>
+				</panelchildren>
+			</panel>
+		</hbox>
+		<separator spacing="30px"></separator>
+		<hbox width="100%" align="center" pack="center" style="margin-bottom:50px;">
+			<separator spacing="5%"></separator>
+			<button iconSclass="z-icon-save" class='boton-guardar' label="Guardar" onClick="@command('guardar', win=winRegistrarSocio)"/>
+			<space bar="False" spacing="5%" />
+			<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" onClick="@command('cerrarModal', win=winRegistrarSocio)"/>
+		</hbox>
+	</div>
+</window>

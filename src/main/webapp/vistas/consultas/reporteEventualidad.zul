@@ -1,0 +1,274 @@
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Eventualidad" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Eventualidad" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Eventualidad
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="15%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+									<grid>
+										<rows>
+											  <row class="col-md-12 ">
+												 <div class="col-md-8">	
+													   <label class="col-md-4">Seleccione :</label>
+												       <combobox >
+															<comboitem label="Instalaciones"> </comboitem>
+															<comboitem label="Socios"></comboitem>
+															<comboitem label="Afiliados"></comboitem>
+													   </combobox>			   		
+											   	 </div>								   	 
+											  </row>   
+											  <row class="col-md-12 ">
+												 <div class="col-md-8">
+											   		   <div >
+											   		   		<label class="col-md-4">Nro de Carnet </label>
+											   		   </div>   
+												       <textbox>
+			
+													   </textbox>			   		
+											   	 </div>								   	 
+											  </row>
+											  <row class="col-md-12 ">
+												 <div class="col-md-8">	
+													   <label class="col-md-4">Instalacion :</label>
+												       <combobox >
+															<comboitem label="Todos"> </comboitem>
+															<comboitem label="Socios"></comboitem>
+															<comboitem label="Afiliados"></comboitem>
+													   </combobox>			   		
+											   	 </div>								   	 
+											  </row> 											  	
+										</rows>
+									</grid>
+									<space spacing="2%"></space>
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Fecha"  ></caption>
+								   	 	<hlayout width="100%" style="padding:2%">
+							                  	<div>
+													Desde: 
+													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+												</div>
+												<space spacing="5%"></space>
+												<div>
+													Hasta: 
+													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+												</div>																		   	 							   	 	
+								   	 	</hlayout>
+								   	 </groupbox>
+									 <space spacing="2%"></space>
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Hora"  ></caption>
+								   	 	<hlayout width="100%" style="padding:2%">
+							                  	<div>
+													Desde: 
+													<combobox width="60%">
+														<comboitem label="12 AM"></comboitem>
+														<comboitem label="1 AM"></comboitem>
+														<comboitem label="2 AM"></comboitem>
+														<comboitem label="3 AM"></comboitem>
+														<comboitem label="4 AM"></comboitem>
+														<comboitem label="5 AM"></comboitem>
+														<comboitem label="6 AM"></comboitem>
+														<comboitem label="7 AM"></comboitem>
+														<comboitem label="8 AM"></comboitem>
+														<comboitem label="9 AM"></comboitem>
+														<comboitem label="10 AM"></comboitem>
+														<comboitem label="11 AM"></comboitem>
+														<comboitem label="12 PM"></comboitem>
+														<comboitem label="1 PM"></comboitem>
+														<comboitem label="2 PM"></comboitem>
+														<comboitem label="3 PM"></comboitem>
+														<comboitem label="4 PM"></comboitem>
+														<comboitem label="5 PM"></comboitem>
+														<comboitem label="6 PM"></comboitem>
+														<comboitem label="7 PM"></comboitem>
+														<comboitem label="8 PM"></comboitem>
+														<comboitem label="9 PM"></comboitem>
+														<comboitem label="10 PM"></comboitem>
+														<comboitem label="11 PM"></comboitem>																																							
+												   </combobox>
+												</div>
+												<space spacing="5%"></space>
+												<div>
+													Hasta: 
+													<combobox width="60%">
+														<comboitem label="12 AM"></comboitem>
+														<comboitem label="1 AM"></comboitem>
+														<comboitem label="2 AM"></comboitem>
+														<comboitem label="3 AM"></comboitem>
+														<comboitem label="4 AM"></comboitem>
+														<comboitem label="5 AM"></comboitem>
+														<comboitem label="6 AM"></comboitem>
+														<comboitem label="7 AM"></comboitem>
+														<comboitem label="8 AM"></comboitem>
+														<comboitem label="9 AM"></comboitem>
+														<comboitem label="10 AM"></comboitem>
+														<comboitem label="11 AM"></comboitem>
+														<comboitem label="12 PM"></comboitem>
+														<comboitem label="1 PM"></comboitem>
+														<comboitem label="2 PM"></comboitem>
+														<comboitem label="3 PM"></comboitem>
+														<comboitem label="4 PM"></comboitem>
+														<comboitem label="5 PM"></comboitem>
+														<comboitem label="6 PM"></comboitem>
+														<comboitem label="7 PM"></comboitem>
+														<comboitem label="8 PM"></comboitem>
+														<comboitem label="9 PM"></comboitem>
+														<comboitem label="10 PM"></comboitem>
+														<comboitem label="11 PM"></comboitem>																																							
+												   </combobox>
+												</div>																		   	 							   	 	
+								   	 	</hlayout>
+								   	 </groupbox>								   	 
+								   	 <space spacing="2%"></space>
+								     <div align="right" xmlns:w="client">
+										<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+									 </div>							   	 
+								</groupbox >
+							</div>
+							<space spacing="1%"></space>
+							<grid emptyMessage="No se encuentran alquileres registrados" mold="paging" pageSize="10">
+								<auxhead sclass="category-center"> 
+									<auxheader colspan="1">
+										<image src="../assets/img/funnel.png" />
+										<textbox instant="true" width="140px" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="6" />
+								</auxhead>
+								<columns>
+									<column hflex="4" align="center">Descripcion</column>
+									<column hflex="4" align="center">Tipo</column>																	
+									<column hflex="4" align="center">Involucrado </column>
+									<column hflex="3" align="center">Instalacion</column>
+									<column hflex="3" align="center">Fecha</column>
+									<column hflex="3" align="center">Hora</column>									
+								</columns>
+								<rows>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />			
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />		
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />		
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />		
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />		
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />	
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />		
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />			
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />			
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />			
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />
+									</row>
+									<row>
+										<label value="Daño a Mesa" />		
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									<row>
+										<label value="Daño a Mesa" />
+										<label value="Inmobiliario" />			
+										<label value="Pablo Sanchez" />
+										<label value="Salon de Usos Multiples" />
+										<label value="01-03-2016" />
+										<label value="4:20 PM" />										
+									</row>
+									
+									
+								</rows>
+								<foot>
+									<footer span="7"
+										class="footer_right" label="2 items en la lista" />
+								</foot>
+							</grid>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>
