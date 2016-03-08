@@ -59,7 +59,7 @@
 										<button sclass="btn-link" iconSclass="z-icon-list blue" onClick="@command('showModalAccionesSocios', Socio=each)"/>
 										<div align="center">
 											<button id="btnverAfiliado"	iconSclass="z-icon-list blue"
-												onClick="@command('showModalAfiliados', Socio=each)" sclass="btn-link">
+												onClick="@command('showModalAfiliados', socio=each)" sclass="btn-link">
 											</button>
 										</div>
 									</row>

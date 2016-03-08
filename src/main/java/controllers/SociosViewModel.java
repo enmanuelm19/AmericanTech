@@ -90,12 +90,13 @@ public class SociosViewModel {
 	}
 	
 	@Command
-	public void showModalAfiliados(@BindingParam("Socio") Socio socio){
+	public void showModalAfiliados(@BindingParam("socio") Socio socio){
 		Map<String, Object> args = new HashMap<String, Object>();
-    	args.put("Socio", socio);
+    	args.put("socio", socio);
 		 Window window = (Window)Executions.createComponents("socio/administrarSocio/registrarAfiliadoSocio.zul", null, args);
 		 window.doModal();
 	 }
+	
 	
 	@Command
 	public void showModalAccionesSocios(@BindingParam("Socio") Socio socio){

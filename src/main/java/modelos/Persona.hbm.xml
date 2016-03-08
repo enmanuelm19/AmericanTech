@@ -59,13 +59,13 @@
             </key>
             <one-to-many class="modelos.Afiliado" />
         </set>
-        <set name="redPersonas" table="red_persona" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="redPersonas" table="red_persona" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.RedPersona" />
         </set>
-        <set name="socios" table="socio" inverse="true" lazy="true" fetch="select">
+        <set name="socios" table="socio" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
@@ -89,7 +89,7 @@
             </key>
             <one-to-many class="modelos.Usuario" />
         </set>
-        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>

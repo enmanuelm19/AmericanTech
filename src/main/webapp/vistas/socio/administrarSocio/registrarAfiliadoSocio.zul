@@ -9,8 +9,8 @@
 
 <zk xmlns:n="native">
 	<window title="Registrar Afiliado" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="70%">
-		<hlayout spacing="0" apply="org.zkoss.bind.BindComposer">
+		width="70%" apply="org.zkoss.bind.BindComposer">
+		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div class='contenido ' align="center" width="100%" viewModel="@id('vm') @init('controllers.RegistrarAfiliadoSocioViewModel')">
 					<div class="col-md-11 col-centered">
@@ -34,17 +34,17 @@
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
-									<div class="col-md-5">Numero Carnet</div>
+									<div class="col-md-5">Número Carnet</div>
 									<div class="col-md-7">
 										<textbox readonly="true" value="123456" width="82%" />
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
-									<div class="col-md-5">Parentesco</div>
+									<div class="col-md-5">Parentescostes</div>
 									<div class="col-md-7">
-										<combobox value="@bind(vm.afiliado.tipoAfiliado.descripcion)" width="82%" model="@load(vm.tiposAfiliados)" selectedItem="@bind(vm.afiliado.tipoAfiliado)">
+										<combobox model="@load(vm.tiposAfiliados)" value="@bind(vm.afiliado.tipoAfiliado.descripcion)" width="82%" selectedItem="@bind(vm.afiliado.tipoAfiliado)">
 											<template name="model">
-												<comboitem label="@load(each.descripcion)" value="@bind(each)"/>
+												<comboitem label="@load(each.descripcion)" value="@bind(each)" />
 											</template>
 										</combobox>
 									</div>
