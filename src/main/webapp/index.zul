@@ -198,6 +198,7 @@
 
   <div class="col-sm-6 col-md-6">
     <div class="">
+	
       <n:img src="assets/portal/img/mision.png" alt="..." width="20%"/>
      
         <n:h3 style=" margin-top: 10px; margin-bottom: 15px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
