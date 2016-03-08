@@ -62,25 +62,13 @@ public class EventoViewModel {
 	
 	@Command
 	@NotifyChange({ "allEventos", "cantRegistros" })
-	public void eliminar(@BindingParam("evento") final Evento evento) {
+	public void cacelar(@BindingParam("evento") final Evento evento) {
 
-		Messagebox.show("Estas seguro de eliminar " + evento.getDescripcion(), "Confirmar",
-				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
-					public void onEvent(Event evt) throws InterruptedException {
-						if (evt.getName().equals("onOK")) {
-							try {
-								eventoDao.eliminarEvento(evento);
-								eventosAll = eventoDao.obtenerTodos();
-								Messagebox.show(evento.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
-										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
-							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), evento.getDescripcion() + " No se pudo eliminar",
-										Messagebox.OK, Messagebox.ERROR);
-							}
-						}
-					}
-				});
+		Map<String, Object> args = new HashMap<String, Object>();
+		args.put("evento", evento);
+		Window window = (Window) Executions.createComponents("evento/administrarEvento/cancelar.zul",
+				null, args);
+		window.doModal();
 	}
 	
 	@Command
