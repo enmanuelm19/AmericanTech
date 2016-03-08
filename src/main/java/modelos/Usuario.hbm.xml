@@ -35,13 +35,13 @@
             </key>
             <one-to-many class="modelos.UsuarioGrupo" />
         </set>
-        <set name="opinions" table="opinion" inverse="true" lazy="false" fetch="select">
+        <set name="opinions" table="opinion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="usuarioid_usuario" not-null="true" />
             </key>
             <one-to-many class="modelos.Opinion" />
         </set>
-        <set name="sugerencias" table="sugerencia" inverse="true" lazy="false" fetch="select">
+        <set name="sugerencias" table="sugerencia" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="usuarioid_usuario" />
             </key>

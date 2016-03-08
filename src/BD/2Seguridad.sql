@@ -1,4 +1,4 @@
-﻿--insertando personas
+--insertando personas
 INSERT INTO persona ( identificacion, nombre, apellido, sexo, correo, telefono, telefono_fijo, direccion, activo)
 	VALUES  ( '20387728', 'Enmanuel', 'Medina', 'M', 'enmanuelm19@gmail.com', '12345678', '12345678', 'Laboratorio de SI','true'),
 		('12345678', 'Dead', 'Pool', 'M', 'deadpool@correo.com', '12345678', '12345678', 'Hell','true'),

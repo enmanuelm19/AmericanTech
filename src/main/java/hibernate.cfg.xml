@@ -83,6 +83,7 @@
         <mapping resource="modelos/SolicitudVenta.hbm.xml" />
         <mapping resource="modelos/Indicador.hbm.xml" />
         <mapping resource="modelos/Alquiler.hbm.xml" />
+        <mapping resource="modelos/CancelacionEvento.hbm.xml" />
         <mapping resource="modelos/PreferenciaPersona.hbm.xml" />
         <mapping resource="modelos/InstalacionEvento.hbm.xml" />
         <mapping resource="modelos/RedSocial.hbm.xml" />

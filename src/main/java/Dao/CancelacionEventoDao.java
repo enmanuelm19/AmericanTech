@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Evento;
+import modelos.CancelacionEvento;
 import modelos.MotivoCancelacion;
 import confi.Sesion;
 
@@ -12,15 +13,15 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * creado por Tony Suarez
+ * creado por Edward Rodriguez
  */
 
-public class MotivoCancelacionDao {
+public class CancelacionEventoDao {
 
 private Sesion sesionPostgres;
 	
 	
-	public void agregarAccion(MotivoCancelacion dato) throws Exception{
+	public void agregarAccion(CancelacionEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -37,7 +38,7 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void eliminarAccion(MotivoCancelacion dato) throws Exception{		 
+	public void eliminarAccion(CancelacionEvento dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -55,7 +56,7 @@ private Sesion sesionPostgres;
          } 
    }
 	
-	public void actualizarAccion(MotivoCancelacion dato) throws Exception{
+	public void actualizarAccion(CancelacionEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -72,12 +73,12 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public List<MotivoCancelacion> obtenerTodos() throws Exception {            
+	public List<CancelacionEvento> obtenerTodos() throws Exception {            
       
-	   List<MotivoCancelacion> datos = new ArrayList<MotivoCancelacion>();  
+	   List<CancelacionEvento> datos = new ArrayList<CancelacionEvento>();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (List<MotivoCancelacion>) em.createCriteria(MotivoCancelacion.class).add(Restrictions.eq("activo", true)).list();             
+	    datos =  (List<CancelacionEvento>) em.createCriteria(CancelacionEvento.class).add(Restrictions.eq("activo", true)).list();             
         } catch (Exception e) {             
        
          throw new Exception(e.getMessage(),e.getCause());
@@ -88,30 +89,14 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 
-//	public List<MotivoCancelacion> obtenerPorEvento(Evento evento) throws Exception {            
-//	      
-//		   List<MotivoCancelacion> datos = new ArrayList<MotivoCancelacion>();  
-//		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-//	        try {  	
-//		    datos =  (List<MotivoCancelacion>) em.createCriteria(MotivoCancelacion.class)
-//		    		.add(Restrictions.eq("evento", evento))
-//		    		.add(Restrictions.eq("activo", true)).list();             
-//	        } catch (Exception e) {             
-//	       
-//	         throw new Exception(e.getMessage(),e.getCause());
-//	        } finally {  
-//	          em.close();  
-//	        } 
-//	       
-//	        return datos; 
-//	}
-	
-	public MotivoCancelacion obtenerMotivoCancelacion(int id) throws Exception {            
+	public CancelacionEvento obtenerPorEvento(Evento evento) throws Exception {            
 	      
-			MotivoCancelacion datos = new MotivoCancelacion();  
+		   CancelacionEvento datos = new CancelacionEvento();  
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
-		    datos =  (MotivoCancelacion) em.get(MotivoCancelacion.class, id);          
+		    datos =  (CancelacionEvento) em.createCriteria(CancelacionEvento.class)
+		    		.add(Restrictions.eq("evento", evento))
+		    		.add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       
 	         throw new Exception(e.getMessage(),e.getCause());
@@ -122,12 +107,28 @@ private Sesion sesionPostgres;
 	        return datos; 
 	}
 	
-	public MotivoCancelacion obtenerPorDescripcion(String descripcion) throws Exception {            
+	public CancelacionEvento obtenerMotivoCancelacion(int id) throws Exception {            
 	      
-		MotivoCancelacion datos = new MotivoCancelacion();  
+		   CancelacionEvento datos = new CancelacionEvento();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (CancelacionEvento) em.get(CancelacionEvento.class, id);          
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
+	
+	public CancelacionEvento obtenerPorDescripcion(String descripcion) throws Exception {            
+	      
+		CancelacionEvento datos = new CancelacionEvento();  
 	   Session em = sesionPostgres.getSessionFactory().openSession();   	
         try {  	
-	    datos =  (MotivoCancelacion) em.createCriteria(MotivoCancelacion.class)
+	    datos =  (CancelacionEvento) em.createCriteria(CancelacionEvento.class)
 	    		.add(Restrictions.eq("descripcion", descripcion))
 	    		.add(Restrictions.eq("activo", true)).list();          
         } catch (Exception e) {             
@@ -140,5 +141,21 @@ private Sesion sesionPostgres;
         return datos; 
 	}
 	
-	
+	public List<CancelacionEvento> obtenerPorTipo(MotivoCancelacion motivoCancelacion) throws Exception {            
+	      
+		   List<CancelacionEvento> datos = new ArrayList<CancelacionEvento>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<CancelacionEvento>) em.createCriteria(CancelacionEvento.class)
+		    		.add(Restrictions.eq("motivoCancelacion", motivoCancelacion))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 }

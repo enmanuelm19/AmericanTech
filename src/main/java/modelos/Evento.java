@@ -14,17 +14,16 @@ import java.util.Set;
 public class Evento implements java.io.Serializable {
 
 	private int idEvento;
+	private CancelacionEvento cancelacionEvento;
 	private EstadoEvento estadoEvento;
 	private String nombre;
 	private String descripcion;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private boolean publico;
-	private boolean activo = true;
+	private boolean activo;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
-			0);
-	private Set<MotivoCancelacion> motivoCancelacions = new HashSet<MotivoCancelacion>(
 			0);
 	private Set<Actividad> actividads = new HashSet<Actividad>(0);
 	private Set<InstalacionEvento> instalacionEventos = new HashSet<InstalacionEvento>(
@@ -50,16 +49,16 @@ public class Evento implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Evento(int idEvento, EstadoEvento estadoEvento, String nombre,
-			String descripcion, Date fechaInicio, Date fechaFin,
-			boolean publico, boolean activo, Set<Noticia> noticias,
-			Set<PreferenciaEvento> preferenciaEventos,
-			Set<MotivoCancelacion> motivoCancelacions,
+	public Evento(int idEvento, CancelacionEvento cancelacionEvento,
+			EstadoEvento estadoEvento, String nombre, String descripcion,
+			Date fechaInicio, Date fechaFin, boolean publico, boolean activo,
+			Set<Noticia> noticias, Set<PreferenciaEvento> preferenciaEventos,
 			Set<Actividad> actividads,
 			Set<InstalacionEvento> instalacionEventos,
 			Set<IndicadorEvento> indicadorEventos,
 			Set<CalendarioFecha> calendarioFechas) {
 		this.idEvento = idEvento;
+		this.cancelacionEvento = cancelacionEvento;
 		this.estadoEvento = estadoEvento;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -69,7 +68,6 @@ public class Evento implements java.io.Serializable {
 		this.activo = activo;
 		this.noticias = noticias;
 		this.preferenciaEventos = preferenciaEventos;
-		this.motivoCancelacions = motivoCancelacions;
 		this.actividads = actividads;
 		this.instalacionEventos = instalacionEventos;
 		this.indicadorEventos = indicadorEventos;
@@ -82,6 +80,14 @@ public class Evento implements java.io.Serializable {
 
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
+	}
+
+	public CancelacionEvento getCancelacionEvento() {
+		return this.cancelacionEvento;
+	}
+
+	public void setCancelacionEvento(CancelacionEvento cancelacionEvento) {
+		this.cancelacionEvento = cancelacionEvento;
 	}
 
 	public EstadoEvento getEstadoEvento() {
@@ -156,14 +162,6 @@ public class Evento implements java.io.Serializable {
 		this.preferenciaEventos = preferenciaEventos;
 	}
 
-	public Set<MotivoCancelacion> getMotivoCancelacions() {
-		return this.motivoCancelacions;
-	}
-
-	public void setMotivoCancelacions(Set<MotivoCancelacion> motivoCancelacions) {
-		this.motivoCancelacions = motivoCancelacions;
-	}
-
 	public Set<Actividad> getActividads() {
 		return this.actividads;
 	}
@@ -210,6 +208,5 @@ public class Evento implements java.io.Serializable {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return dateFormat.format(fechaFin);
 	}
-
 
 }

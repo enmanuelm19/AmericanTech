@@ -135,14 +135,15 @@ CREATE TABLE calendario_fecha (
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_calendario_fecha));
 CREATE TABLE evento (
-  id_evento                      SERIAL NOT NULL, 
-  nombre                        varchar(200) NOT NULL, 
-  descripcion                   text NOT NULL, 
-  fecha_inicio                  timestamp NOT NULL, 
-  fecha_fin                     timestamp NOT NULL, 
-  publico                       bool NOT NULL, 
-  estado_eventoid_estado_evento int2 NOT NULL, 
-  activo                        bool DEFAULT 'true' NOT NULL, 
+  id_evento                                SERIAL NOT NULL, 
+  nombre                                  varchar(200) NOT NULL, 
+  descripcion                             text NOT NULL, 
+  fecha_inicio                            timestamp NOT NULL, 
+  fecha_fin                               timestamp NOT NULL, 
+  publico                                 bool NOT NULL, 
+  estado_eventoid_estado_evento           int2 NOT NULL, 
+  cancelacion_eventoid_cancelacion_evento int2, 
+  activo                                  bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_evento));
 CREATE TABLE actividad (
   id_actividad                     SERIAL NOT NULL, 
@@ -395,12 +396,12 @@ CREATE TABLE estado_evento (
   nombre           varchar(40) NOT NULL, 
   activo           bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_estado_evento));
-CREATE TABLE motivo_cancelacion (
-  id_motivo_cancelacion  SERIAL NOT NULL, 
-  descipcion            varchar(255) NOT NULL, 
-  eventoid_evento       int2 NOT NULL, 
-  activo                bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_motivo_cancelacion));
+CREATE TABLE cancelacion_evento (
+  id_cancelacion_evento                    SERIAL NOT NULL, 
+  descipcion                              varchar(255) NOT NULL, 
+  motivo_cancelacionid_motivo_cancelacion int2 NOT NULL, 
+  activo                                  bool DEFAULT 'true' NOT NULL, 
+  PRIMARY KEY (id_cancelacion_evento));
 CREATE TABLE indicador (
   id_indicador  SERIAL NOT NULL, 
   descripcion  varchar(150) NOT NULL, 
@@ -480,6 +481,11 @@ CREATE TABLE tipo_sancion (
   descripcion     varchar(80) NOT NULL, 
   activo          bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_tipo_sancion));
+CREATE TABLE motivo_cancelacion (
+  id_motivo_cancelacion  SERIAL NOT NULL, 
+  descripcion           varchar(150) NOT NULL, 
+  activo                bool NOT NULL, 
+  PRIMARY KEY (id_motivo_cancelacion));
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr55454 FOREIGN KEY (usuarioid_usuario) REFERENCES usuario (id_usuario);
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr690051 FOREIGN KEY (grupoid_grupo) REFERENCES grupo (id_grupo);
 ALTER TABLE opinion ADD CONSTRAINT FKopinion612647 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
@@ -534,7 +540,6 @@ ALTER TABLE postulacion ADD CONSTRAINT FKpostulacio263619 FOREIGN KEY (motivo_po
 ALTER TABLE instalacion ADD CONSTRAINT FKinstalacio183404 FOREIGN KEY (tipo_instalacionid_tipo_instalacion) REFERENCES tipo_instalacion (id_tipo_instalacion);
 ALTER TABLE foto ADD CONSTRAINT FKfoto370704 FOREIGN KEY (clubid_club) REFERENCES club (id_club);
 ALTER TABLE evento ADD CONSTRAINT FKevento600923 FOREIGN KEY (estado_eventoid_estado_evento) REFERENCES estado_evento (id_estado_evento);
-ALTER TABLE motivo_cancelacion ADD CONSTRAINT FKmotivo_can874505 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE actividad ADD CONSTRAINT FKactividad322003 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE indicador_evento ADD CONSTRAINT FKindicador_457606 FOREIGN KEY (indicadorid_indicador) REFERENCES indicador (id_indicador);
 ALTER TABLE indicador_evento ADD CONSTRAINT FKindicador_952117 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
@@ -557,3 +562,5 @@ ALTER TABLE sancion ADD CONSTRAINT FKsancion525894 FOREIGN KEY (tipo_sancionid_t
 ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario334586 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario317419 FOREIGN KEY (reservacionid_reservacion) REFERENCES reservacion (id_reservacion);
 ALTER TABLE Venta ADD CONSTRAINT FKVenta326071 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
+ALTER TABLE cancelacion_evento ADD CONSTRAINT FKcancelacio877481 FOREIGN KEY (motivo_cancelacionid_motivo_cancelacion) REFERENCES motivo_cancelacion (id_motivo_cancelacion);
+ALTER TABLE evento ADD CONSTRAINT FKevento717938 FOREIGN KEY (cancelacion_eventoid_cancelacion_evento) REFERENCES cancelacion_evento (id_cancelacion_evento);

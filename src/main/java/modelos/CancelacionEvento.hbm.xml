@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/03/2016 04:38:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.CancelacionEvento" table="cancelacion_evento" schema="public" optimistic-lock="version">
+        <id name="idCancelacionEvento" type="int">
+            <column name="id_cancelacion_evento" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="motivoCancelacion" class="modelos.MotivoCancelacion" fetch="select" lazy="false">
+            <column name="motivo_cancelacionid_motivo_cancelacion" not-null="true" />
+        </many-to-one>
+        <property name="descipcion" type="string">
+            <column name="descipcion" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="eventos" table="evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+            <key>
+                <column name="cancelacion_eventoid_cancelacion_evento" />
+            </key>
+            <one-to-many class="modelos.Evento" />
+        </set>
+    </class>
+</hibernate-mapping>
