@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Noticia" table="noticia" schema="public" optimistic-lock="version">
         <id name="idNoticia" type="int">
             <column name="id_noticia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
-            <column name="foto" />
-        </many-to-one>
         <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" />
         </many-to-one>
@@ -22,6 +19,9 @@
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />
+        </property>
+        <property name="foto" type="string">
+            <column name="foto" />
         </property>
         <property name="fechaCreacion" type="date">
             <column name="fecha_creacion" length="13" not-null="true" />
@@ -38,7 +38,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="noticiaid_noticia" not-null="true" />
             </key>

@@ -23,19 +23,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+        <set name="ventas" table="venta" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="accionid_accion" not-null="true" />
             </key>
             <one-to-many class="modelos.Venta" />
         </set>
-        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="true" fetch="select">
+        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="accionid_accion" not-null="true" />
             </key>
             <one-to-many class="modelos.Desvinculacion" />
         </set>
-        <set name="solicitudVentas" table="solicitud_venta" inverse="true" lazy="true" fetch="select">
+        <set name="solicitudVentas" table="solicitud_venta" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="accionid_accion" not-null="true" />
             </key>

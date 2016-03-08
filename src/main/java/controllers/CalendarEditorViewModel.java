@@ -62,7 +62,6 @@ public class CalendarEditorViewModel {
 
 	public Validator getDateValidator() {
 		return new AbstractValidator() {
-			@Override
 			public void validate(ValidationContext ctx) {
 				Map<String, Property> formData = ctx.getProperties(ctx.getProperty().getValue());
 				Date beginDate = (Date) formData.get("beginDate").getValue();
@@ -105,7 +104,6 @@ public class CalendarEditorViewModel {
 	}
 
 	private class QueueListener implements EventListener<QueueMessage> {
-		@Override
 		public void onEvent(QueueMessage message) throws Exception {
 			if (QueueMessage.Type.EDIT.equals(message.getType())) {
 				CalendarEditorViewModel.this.startEditing((CalendarioEvent) message.getData());

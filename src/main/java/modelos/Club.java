@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
+// Generated 06/03/2016 06:03:48 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,13 +11,13 @@ import java.util.Set;
 public class Club implements java.io.Serializable {
 
 	private int idClub;
-	private Archivo archivo;
 	private String rif;
 	private String nombre;
 	private String direccion;
 	private String telefono;
 	private String mision;
 	private String vision;
+	private String logo;
 	private String telfAlternativo;
 	private String correo;
 	private String eslogan;
@@ -30,11 +30,10 @@ public class Club implements java.io.Serializable {
 	public Club() {
 	}
 
-	public Club(int idClub, Archivo archivo, String rif, String nombre,
-			String direccion, String telefono, String mision, String vision,
+	public Club(int idClub, String rif, String nombre, String direccion,
+			String telefono, String mision, String vision,
 			String telfAlternativo, String correo, boolean activo) {
 		this.idClub = idClub;
-		this.archivo = archivo;
 		this.rif = rif;
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -46,19 +45,19 @@ public class Club implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Club(int idClub, Archivo archivo, String rif, String nombre,
-			String direccion, String telefono, String mision, String vision,
+	public Club(int idClub, String rif, String nombre, String direccion,
+			String telefono, String mision, String vision, String logo,
 			String telfAlternativo, String correo, String eslogan,
 			boolean activo, Set<Foto> fotos, Set<Politica> politicas,
 			Set<JuntaDirectiva> juntaDirectivas, Set<RedClub> redClubs) {
 		this.idClub = idClub;
-		this.archivo = archivo;
 		this.rif = rif;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.mision = mision;
 		this.vision = vision;
+		this.logo = logo;
 		this.telfAlternativo = telfAlternativo;
 		this.correo = correo;
 		this.eslogan = eslogan;
@@ -75,14 +74,6 @@ public class Club implements java.io.Serializable {
 
 	public void setIdClub(int idClub) {
 		this.idClub = idClub;
-	}
-
-	public Archivo getArchivo() {
-		return this.archivo;
-	}
-
-	public void setArchivo(Archivo archivo) {
-		this.archivo = archivo;
 	}
 
 	public String getRif() {
@@ -131,6 +122,14 @@ public class Club implements java.io.Serializable {
 
 	public void setVision(String vision) {
 		this.vision = vision;
+	}
+
+	public String getLogo() {
+		return this.logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 	public String getTelfAlternativo() {
