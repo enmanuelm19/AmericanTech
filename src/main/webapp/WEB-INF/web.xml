@@ -15,7 +15,7 @@
 	</listener>
 	<context-param>
 		<param-name>upload.location</param-name>
-		<param-value>/home/enmanuel</param-value>
+		<param-value>${user.home}</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>images</servlet-name>
