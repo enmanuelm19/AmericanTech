@@ -1,8 +1,10 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.ContextParam;
@@ -65,11 +67,12 @@ public class NavegacionViewModel{
 
 	public void cargarMenu(){
 		List<Grupo> grupos = new ArrayList<Grupo>();
-		List<Funcion> funciones = new ArrayList<Funcion>();
+		Set<Funcion> funciones = new HashSet<Funcion>();
 		List<Funcion> raices = llenarRaices();
 		List<Funcion> padres = llenarPadres(raices);
 		List<Funcion> hijos = llenarHijos(raices, padres);
 		List<Funcion> nietos = llenarNietos(padres);
+		
 		
 		for(UsuarioGrupo usuarioGrupo : usuario.getUsuarioGrupos()){
 			grupos.add(usuarioGrupo.getGrupo());
@@ -83,7 +86,7 @@ public class NavegacionViewModel{
 				
 			}
 		}
-	
+		
 		//Creo las raices en el navbar
 		for(Funcion f : raices){
 			Nav root = new Nav();

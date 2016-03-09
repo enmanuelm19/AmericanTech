@@ -34,6 +34,7 @@ import modelos.Grupo;
 import modelos.Persona;
 import modelos.Usuario;
 import modelos.UsuarioGrupo;
+import util.ManejadorArchivo;
 
 public class RegistrarUsuarioViewModel {
 	
@@ -146,7 +147,7 @@ public class RegistrarUsuarioViewModel {
 			}
 			else {
 				user.setFecha(new Date());
-				user.getPersona().setFoto(subirImagen(getUploadedImage()));
+				user.getPersona().setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
@@ -251,10 +252,26 @@ public class RegistrarUsuarioViewModel {
 	@NotifyChange({"usuarioGrupo", "cantRegistros"})
 	public void agregarGrupo() throws Exception{
 		UsuarioGrupo usGroup = new UsuarioGrupo();
-		usGroup.setGrupo(getGrupo());
-		usGroup.setUsuario(getUser());
-		usGroup.setActivo(true);
-		usuarioGrupoDao.agregarUsuarioGrupo(usGroup);
+		boolean existe = false;
+		
+		if(getGrupo()!= null){
+			for(UsuarioGrupo ug : usuarioGrupos){
+				if(getGrupo().getIdGrupo() == ug.getGrupo().getIdGrupo()){
+					existe = true;
+				}
+			}
+			if(existe == true){
+				Messagebox.show("El grupo ya esta asignado a este usuario");
+			}else{
+			usGroup.setGrupo(getGrupo());
+			usGroup.setUsuario(getUser());
+			usGroup.setActivo(true);
+			usuarioGrupoDao.agregarUsuarioGrupo(usGroup);}
+		}else{
+			Messagebox.show("Seleccione un grupo");
+		}
+		
+
 		BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
 	}
 	
@@ -278,7 +295,7 @@ public class RegistrarUsuarioViewModel {
 		this.uploadedImage = uploadedImage;
 	}
 	
-	public String subirImagen(Media imagen){
+	/*public String subirImagen(Media imagen){
 		String rutaFinal = null;
 		String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
 		File imageFile = new File(ruta, imagen.getName());
@@ -300,5 +317,5 @@ public class RegistrarUsuarioViewModel {
 		String url = Executions.getCurrent().getScheme() + "://" + Executions.getCurrent().getServerName() + 
 					port + Executions.getCurrent().getContextPath();
 		return url;
-	}
+	}*/
 }
