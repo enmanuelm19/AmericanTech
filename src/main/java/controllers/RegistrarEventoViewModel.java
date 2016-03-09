@@ -138,18 +138,30 @@ public class RegistrarEventoViewModel {
 	}
 
 	public ListModelList<PreferenciaEvento> getPreferenciasEventos() throws Exception {
-
-		return new ListModelList<PreferenciaEvento>(listPreferenciaEvento);
+		ArrayList<PreferenciaEvento> preferenciasMostrar = new ArrayList<PreferenciaEvento>();
+		for(PreferenciaEvento preferenciaEvento: listPreferenciaEvento){
+			if(preferenciaEvento.isActivo())
+				preferenciasMostrar.add(preferenciaEvento);
+		}
+		return new ListModelList<PreferenciaEvento>(preferenciasMostrar);
 	}
 
 	public ListModelList<InstalacionEvento> getInstalacionesEventos() throws Exception {
-
-		return new ListModelList<InstalacionEvento>(listInstalacionEvento);
+		ArrayList<InstalacionEvento> instalacionesMostrar = new ArrayList<InstalacionEvento>();
+		for(InstalacionEvento instalacionEvento: listInstalacionEvento){
+			if(instalacionEvento.isActivo())
+				instalacionesMostrar.add(instalacionEvento);
+		}
+		return new ListModelList<InstalacionEvento>(instalacionesMostrar);
 	}
 
 	public ListModelList<IndicadorEvento> getIndicadoresEventos() throws Exception {
-
-		return new ListModelList<IndicadorEvento>(listIndicadorEvento);
+		ArrayList<IndicadorEvento> indicadoresMostrar = new ArrayList<IndicadorEvento>();
+		for(IndicadorEvento indicadorEvento: listIndicadorEvento){
+			if(indicadorEvento.isActivo())
+				indicadoresMostrar.add(indicadorEvento);
+		}
+		return new ListModelList<IndicadorEvento>(indicadoresMostrar);
 	}
 
 	public String getCantidadPreferencias() {
@@ -194,11 +206,11 @@ public class RegistrarEventoViewModel {
 	}
 
 	@Command
-	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones" })
+	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones", "disabled" })
 	public void agregarInstalacionesEvento() throws Exception {
 
 		InstalacionEvento instalacionEvento;
-		if (evento.getFechaInicio() != null && evento.getFechaFin() != null)
+		if (evento.getFechaInicio() != null && evento.getFechaFin() != null && evento.getFechaInicio().before(evento.getFechaFin()))
 			for (Instalacion instalacion : temporalInstalaciones) {
 				if (isDisponible(instalacion)) {
 					if (buscarInstalacion(instalacion) == null) {
@@ -215,7 +227,7 @@ public class RegistrarEventoViewModel {
 							"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		else
-			Messagebox.show("Por favor indique rango de fechas del evento", "Warning", Messagebox.OK,
+			Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "Warning", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 	}
 
@@ -274,19 +286,26 @@ public class RegistrarEventoViewModel {
 	@Command
 	@NotifyChange({ "preferenciasEventos", "cantidadPreferencias" })
 	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") PreferenciaEvento p) {
-		listPreferenciaEvento.remove(p);
+		if(this.editable)
+			p.setActivo(false);
+		else listPreferenciaEvento.remove(p);
+		
 	}
 
 	@Command
-	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones" })
+	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones" ,"disabled"})
 	public void eliminarInstalacionEvento(@BindingParam("instalacionEvento") InstalacionEvento i) {
-		listInstalacionEvento.remove(i);
+		if(this.editable)
+			i.setActivo(false);
+		else listInstalacionEvento.remove(i);
 	}
 
 	@Command
 	@NotifyChange({ "indicadoresEventos", "indicadorEvento", "cantidadIndicadores" })
 	public void eliminarIndicadorEvento(@BindingParam("indicadorEvento") IndicadorEvento in) {
-		listIndicadorEvento.remove(in);
+		if(this.editable)
+			in.setActivo(false);
+		else listIndicadorEvento.remove(in);
 	}
 
 	public Preferencia buscarPreferecia(Preferencia preferencia) {
@@ -347,5 +366,9 @@ public class RegistrarEventoViewModel {
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
+	}
+	
+	public boolean isDisabled(){
+		return this.listInstalacionEvento.size()>0;
 	}
 }

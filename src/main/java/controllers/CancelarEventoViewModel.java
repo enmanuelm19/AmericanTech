@@ -12,6 +12,8 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
+import Dao.EstadoEventoDao;
 import Dao.EventoDao;
 import Dao.MotivoCancelacionDao;
 import modelos.CancelacionEvento;
@@ -24,6 +26,7 @@ public class CancelarEventoViewModel {
 		private Evento evento;
 		private MotivoCancelacionDao motivoDao;
 		private EventoDao eventoDao;
+		private EstadoEventoDao estadoDao;
 		private MotivoCancelacion motivoCancelacion;
 		private CancelacionEvento cancelacionEvento;
 		
@@ -34,6 +37,7 @@ public class CancelarEventoViewModel {
 			eventoDao = new EventoDao();
 			motivoCancelacion = new MotivoCancelacion();
 			cancelacionEvento = new CancelacionEvento();
+			estadoDao = new EstadoEventoDao();
 		}
 		
 		public List<MotivoCancelacion> getMotivosCancelacion() throws Exception{
@@ -69,6 +73,7 @@ public class CancelarEventoViewModel {
 			if(motivoCancelacion!=null && cancelacionEvento.getDescipcion()!=null && !cancelacionEvento.getDescipcion().equals("")){
 				cancelacionEvento.setMotivoCancelacion(motivoCancelacion);
 				evento.setCancelacionEvento(cancelacionEvento);
+				evento.setEstadoEvento(estadoDao.obtenerEstadoEvento(5));
 				eventoDao.actualizarEvento(evento);
 				Messagebox.show(
 						"El evento " + evento.getNombre()

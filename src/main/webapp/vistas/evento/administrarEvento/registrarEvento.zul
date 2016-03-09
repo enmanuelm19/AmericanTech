@@ -27,14 +27,14 @@
 							<div>
 								Fecha inicio
 								<n:br></n:br>
-								<datebox id="DateFchInicio" width="85%" value="@bind(vm.evento.fechaInicio)"
+								<datebox id="DateFchInicio" width="85%" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaInicio)"
 									cols="12" format="short" />
 							</div>
 
 							<div>
 								Fecha fin
 								<n:br></n:br>
-								<datebox id="DateFchCierre" cols="12" value="@bind(vm.evento.fechaFin)"
+								<datebox id="DateFchCierre" cols="12" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaFin)"
 									format="short" width="85%" />
 							</div>
 						</row>
@@ -42,13 +42,13 @@
 							<div>
 								Hora inicio
 								<n:br></n:br>
-								<timebox cols="12" value="@bind(vm.evento.fechaInicio)"
+								<timebox cols="12" value="@bind(vm.evento.fechaInicio)" disabled="@load(vm.disabled)"
 									format="short"  width="85%" />
 							</div>
 							<div>
 								Hora cierre
 								<n:br></n:br>
-								<timebox cols="12" value="@bind(vm.evento.fechaFin)"
+								<timebox cols="12" value="@bind(vm.evento.fechaFin)" disabled="@load(vm.disabled)"
 									format="short" width="85%" />
 							</div>
 
