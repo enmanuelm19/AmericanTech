@@ -79,14 +79,12 @@
 											</button>
 										</div>
 										<div class="star">
-													<radiogroup id="rating" selectedItem="@bind(vm.estrellas)">
-														<radio  id="r1" sclass="@load(vm.star1)" label="1" value="1" radiogroup="rating"></radio>
-														<radio  id="r2" sclass="@load(vm.star2)" label="2" value="2" radiogroup="rating"></radio>
-														<radio  id="r3" sclass="@load(vm.star3)" label="3" value="3" radiogroup="rating"></radio>
-														<radio  id="r4" sclass="@load(vm.star4)" label="4" value="4" radiogroup="rating"></radio>
-														<radio  id="r5" sclass="@load(vm.star5)" label="5" value="5" radiogroup="rating"></radio>
-													</radiogroup>
-												</div>
+											<label sclass="@load(each.estrellas.star1)" value="11"/>
+											<label sclass="@load(each.estrellas.star2)" value="21"/>
+											<label sclass="@load(each.estrellas.star3)" value="31" />
+											<label sclass="@load(each.estrellas.star4)" value="41"/>
+											<label sclass="@load(each.estrellas.star5)" value="51" />
+										</div>
 										<div xmlns:w='client'
 											align="center">
 											<button	iconSclass="glyphicon glyphicon-ok blue" id="btnRegistroSoc" sclass="btn-link" 

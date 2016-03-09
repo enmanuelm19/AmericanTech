@@ -79,7 +79,7 @@
 									style="margin-top: 31px">
 									<div class="col-md-5">Nacimiento</div>
 									<div class="col-md-7">
-										<datebox width="82%" value="@bind(vm.persona.fechaNac)"/>
+										<datebox width="82%" value="@bind(vm.fechaNac)"/>
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">

@@ -131,13 +131,11 @@
 												<div>
 													<label class="col-md-4" value="Calificación Promedio" />
 													<div class="star">
-														<radiogroup id="rating" selectedItem="@bind(vm.estrellas)">
-															<radio  id="r1" sclass="@load(vm.star1)" label="1" value="1" radiogroup="rating"></radio>
-															<radio  id="r2" sclass="@load(vm.star2)" label="2" value="2" radiogroup="rating"></radio>
-															<radio  id="r3" sclass="@load(vm.star3)" label="3" value="3" radiogroup="rating"></radio>
-															<radio  id="r4" sclass="@load(vm.star4)" label="4" value="4" radiogroup="rating"></radio>
-															<radio  id="r5" sclass="@load(vm.star5)" label="5" value="5" radiogroup="rating"></radio>
-														</radiogroup>
+														<label sclass="@load(vm.postulacion.estrellas.star1)" value="11"/>
+														<label sclass="@load(vm.postulacion.estrellas.star2)" value="21"/>
+														<label sclass="@load(vm.postulacion.estrellas.star3)" value="31" />
+														<label sclass="@load(vm.postulacion.estrellas.star4)" value="41"/>
+														<label sclass="@load(vm.postulacion.estrellas.star5)" value="51" />
 													</div>
 												</div>
 											</row>
@@ -211,14 +209,20 @@
 													<label value="@load(each.usuario.persona.nombre)" />
 													<label value="@load(each.usuario.persona.apellido)" />
 													<label value="@load(each.descripcion)" />
-													<label value="2" />
+													<div class="star">
+														<label sclass="@load(each.estrellas.star1)" value="11"/>
+														<label sclass="@load(each.estrellas.star2)" value="21"/>
+														<label sclass="@load(each.estrellas.star3)" value="31" />
+														<label sclass="@load(each.estrellas.star4)" value="41"/>
+														<label sclass="@load(each.estrellas.star5)" value="51" />
+													</div>
 													<label value="@load(each.fecha)" />
 												</row>
 											</template>
 										</rows>
 									</grid>
 									<hlayout>
-										<div>
+										<div style="margin-top: 50px;  margin-bottom: 10px;">
 											<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" onClick="@command('cerrarModal', win=windOpinionSocio)"/>
 										</div>
 								</hlayout>
