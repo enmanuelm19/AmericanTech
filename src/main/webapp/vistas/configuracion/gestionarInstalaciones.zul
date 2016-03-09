@@ -22,8 +22,9 @@
 				
 				<space spacing="20%"/>
 				<space/><space/>
-				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px">
-				<div align="right" apply="controllers.ControllerRegistrarInstalaciones" xmlns:w='client' >
+				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px"
+					apply="org.zkoss.bind.BindComposer" viewModel="@id('vmis') @init('controllers.gestionarInstalacionesViewModel')">
+				<div align="right" xmlns:w='client' >
 					<button id="btnInstalacionesRegistrar" label="Agregar Nuevo" iconSclass="z-icon-plus"  class='boton-guardar' onClick="@command('showModalRegInst')"/>
 				</div>
 				
@@ -34,7 +35,8 @@
 					</div>
 					<separator spacing="1%"/>
 					
-					<grid emptyMessage="No se encuentran instalaciones registradas" mold="paging"
+					<grid model="@load(vmis.allInstalaciones)" 
+					emptyMessage="No se encuentran instalaciones registradas" mold="paging"
 							pageSize="15">
 						<auxhead sclass="category-center">
 							<auxheader colspan="1" />
@@ -53,61 +55,17 @@
 							<column hflex="2">Nombre</column>
 							<column hflex="2">Tipo Instalacion</column>
 							<column hflex="1">Capacidad </column>
-							<column hflex="1">Costo/Hora</column>
+							<column hflex="1">Costo</column>
 							<column width="15%">Acciones </column>
 						</columns>
 						
 						<rows>
+						<template name="model">
 							<row>
 								<detail open="false" fulfill="onOpen">
-                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
-										pageSize="4">
-									<columns>
-										<column>Recurso</column>
-										<column>Nombre</column>
-										<column>Cantidad</column>
-										<column width="15%">Acciones</column>
-									</columns>
-									<rows>
-										<row>
-											<label value="0001"/>
-											<label value="Pelotas" />
-											<label value="20" />
-											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-											</div>
-										</row>
-										<row>
-											<label value="0002"/>
-											<label value="Bates" />
-											<label value="8" />
-											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-											</div>
-										</row>
-									</rows>
-									<foot>
-            							<footer span="2" class="footer_right" label="2 items en la lista" />
-        							</foot>
-									</grid>
-                   				 </detail>
-							
-							
-								<label value="Cancha Softball"/>
-								<label value="Deportivo"/>
-								<label value="20"/>
-								<label value="3000 Bs" />
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
-							
-							<row>
-								<detail open="false" fulfill="onOpen">
-                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
+                    			 	<grid
+                    			 		model="@load(vmis.allRecursoInstalacion)"  
+                    			 		emptyMessage="No se encuentran alquileres registrados" mold="paging"
 										pageSize="4">
 									<columns>
 										<column>Recurso</column>
@@ -116,88 +74,41 @@
 										<column width="100px">Acciones</column>
 									</columns>
 									<rows>
-										<row>
-											<label value="0001"/>
-											<label value="Pelotas" />
-											<label value="20" />
-											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-											</div>
-										</row>
-										<row>
-											<label value="0002"/>
-											<label value="Bates" />
-											<label value="8" />
-											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-											</div>
-										</row>
+										<template name="model">
+											<row>
+												<label value="@load(each.idRecursoInstalacion)" />
+												<label value="@load(each.recurso.descripcion)" />
+												<label value="@load(each.cantidad)" />
+												<div>
+													<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
+													<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+												</div>
+											</row>
+										</template>
 									</rows>
 									<foot>
             							<footer span="2" class="footer_right" label="2 items en la lista" />
         							</foot>
 									</grid>
                    				 </detail>
-								<label value="Cancha Softball"/>
-								<label value="Deportivo"/>
-								<label value="20"/>
-								<label value="3000 Bs" />
+								<label 
+									value="@load(each.nombre)"/>
+								<label 
+									value="@load(each.tipoInstalacion.descripcion)"/>
+								<label 
+									value="@load(each.capacidad)"/>
+								<label 
+									value="@load(each.precioAlquiler)" />
 								<div>
 									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
 									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
 								</div>
 							</row>
-							
-							<row>
-								<detail open="false" fulfill="onOpen">
-                    			 	<grid emptyMessage="No se encuentran alquileres registrados" mold="paging"
-										pageSize="4">
-									<columns>
-										<column>Recurso</column>
-										<column>Nombre</column>
-										<column>Cantidad</column>
-										<column width="100px">Acciones</column>
-									</columns>
-									<rows>
-										<row>
-											<label value="0001"/>
-											<label value="Pelotas" />
-											<label value="20" />
-											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-											</div>
-										</row>
-										<row>
-											<label value="0002"/>
-											<label value="Bates" />
-											<label value="8" />
-											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-											</div>
-										</row>
-									</rows>
-									<foot>
-            							<footer span="2" class="footer_right" label="2 items en la lista" />
-        							</foot>
-									</grid>
-                   				 </detail>
-								<label value="Cancha Softball"/>
-								<label value="Deportivo"/>
-								<label value="20"/>
-								<label value="3000 Bs" />
-								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-								</div>
-							</row>
+							</template>
 							
 						</rows>
 						 <foot>
-            				<footer span="6" class="footer_right" label="3 items en la lista" />
+            				<footer span="6" class="footer_right" label="@load(vmis.cantInstalaciones)" />
         				 </foot>
 					</grid>
 				</div>
