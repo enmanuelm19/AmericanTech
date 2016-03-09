@@ -3190,21 +3190,23 @@ div.hola table {
 .z-grid .z-column-content, .z-footer-content{
 	color: #2B7DBC;
 }
-.select label{
+.select label, .star .select{
 	background-image: url('../../img/star_activa.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	width:15px;
 	height:15px;
 	margin: 0px 3px;
+	color:transparent;
 }
-.no_select label{
+.no_select label, .star .no_select{
 	background-image: url('../../img/star_inactiva.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	width:15px;
 	height:15px;
 	margin: 0px 3px;
+	color:transparent;
 }
 .star input{
 	display:none;
