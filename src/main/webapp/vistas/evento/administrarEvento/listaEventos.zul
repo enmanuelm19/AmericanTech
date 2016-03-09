@@ -166,7 +166,7 @@
 														<button
 															sclass="btn-link" iconSclass="z-icon-pencil blue"
 															 tooltiptext="Editar" onClick="@command('showModal', evento=evento)" />
-														<button
+														<button if="${evento.cancelacionEvento == null }"
 															sclass="btn-link" iconSclass="z-icon-times red"
 														  tooltiptext="Cancelar" onClick="@command('cancelar', evento=evento)"/>
 													</div>
