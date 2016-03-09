@@ -162,18 +162,14 @@ public class RegistrarGrupoViewModel {
 	}
 	
 	@Command
-	@NotifyChange({"funciones", "cantRegistros", "funcionesAll"})
 	public void agregarFuncion() throws Exception{
-		System.out.println("Entro");
-		System.out.println(funcionSeleccionada.getNombre());
 		FuncionGrupo funcGrupo = new FuncionGrupo();
 		boolean existe = false;
 		funcGrupo.setGrupo(grupo);
 		for(FuncionGrupo f : funciones){
-			if(funcionSeleccionada == f.getFuncion()){
+			if(funcionSeleccionada.getIdFuncion() == f.getFuncion().getIdFuncion()){
 				Messagebox.show("Esta funcion ya pertenece al grupo seleccionado");
 				existe = true;
-				System.out.println("Si la encontro");
 				break;
 			}
 		}

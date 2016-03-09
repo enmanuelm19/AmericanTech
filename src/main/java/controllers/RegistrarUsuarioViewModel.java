@@ -251,10 +251,26 @@ public class RegistrarUsuarioViewModel {
 	@NotifyChange({"usuarioGrupo", "cantRegistros"})
 	public void agregarGrupo() throws Exception{
 		UsuarioGrupo usGroup = new UsuarioGrupo();
-		usGroup.setGrupo(getGrupo());
-		usGroup.setUsuario(getUser());
-		usGroup.setActivo(true);
-		usuarioGrupoDao.agregarUsuarioGrupo(usGroup);
+		boolean existe = false;
+		
+		if(getGrupo()!= null){
+			for(UsuarioGrupo ug : usuarioGrupos){
+				if(getGrupo().getIdGrupo() == ug.getGrupo().getIdGrupo()){
+					existe = true;
+				}
+			}
+			if(existe == true){
+				Messagebox.show("El grupo ya esta asignado a este usuario");
+			}else{
+			usGroup.setGrupo(getGrupo());
+			usGroup.setUsuario(getUser());
+			usGroup.setActivo(true);
+			usuarioGrupoDao.agregarUsuarioGrupo(usGroup);}
+		}else{
+			Messagebox.show("Seleccione un grupo");
+		}
+		
+
 		BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
 	}
 	
