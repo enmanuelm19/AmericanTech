@@ -134,155 +134,127 @@
 </n:div>
 
 
-<n:div class="about" id="about">
-	<n:div class="wrap">
-		<n:h2>¿Quiénes somos?</n:h2><n:br></n:br>
-		
-	
-		<n:div class="about-grids">
-			<n:div class="grid">
-				<n:div class="dc_zoom_css">
-			
-				<n:img class="post-person" src="assets/portal/img/imagen1.png"/>
+	<div class="about" id="about" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+		<n:div class="wrap">
+			<n:h2>¿Quiénes somos?</n:h2>
+			<n:br></n:br>
+
+
+			<n:div class="about-grids">
+				<n:div class="grid">
+					<n:div class="dc_zoom_css">
+
+						<n:img class="post-person"
+							src="assets/portal/img/imagen1.png" />
+					</n:div>
+					<n:div class="desc"
+						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
+
+						<n:h3>Nuestros Instalaciones</n:h3>
+						<n:br></n:br>
+						<label
+							style="color: #444444; font-size: 1.02em; text-align: left; padding: 1em 1em 2em 1em; line-height: 1.9em;"
+							value="@load(vm.portal.instalacion)">
+						</label>
+						<n:br></n:br>
+					</n:div>
+
+						<n:a href="portal/instalaciones.zul"
+							class="boton-Formulario">
+							Ver instalaciones
+						</n:a>
+					
+
 				</n:div>
-				<n:div class="desc">
-					<n:h3>Nuestras instalaciones</n:h3>
-					<n:p></n:p>
-					<n:p>El Centro Atlético América cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas.  Además cuenta con un salón de Fiestas y dos Caneis para el disfrute de sus socios e invitados</n:p>
-		
-			<n:a href="portal/instalaciones.zul" class="boton-Formulario"  > Ver instalaciones</n:a></n:div>
-		
+				<div class="grid">
+					<n:div class="dc_zoom_css">
+
+
+
+						<n:img class="post-person"
+							src="assets/portal/img/img2.png" />
+					</n:div>
+					<n:div class="desc"
+						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
+
+						<n:h3>Nuestros socios</n:h3>
+						<n:br></n:br>
+						<label
+							style="color: #444444; font-size: 1.02em; text-align: left; padding: 1em 1em 2em 1em; line-height: 1.9em;"
+							value="@load(vm.portal.socio)">
+						</label>
+						<n:br></n:br>
+					</n:div>
+					<n:a style=" z-index: 1;"
+						href="portal/postulacion.zul" class="boton-Formulario"
+						type="button">
+						Postulate
+					</n:a>
+
+
+
+				</div>
+				<n:div class="grid">
+					<n:div class="">
+
+						<n:img class="post-person"
+							src="assets/portal/img/img3.png" />
+					</n:div>
+				<n:div class="desc"
+						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
+
+						<n:h3>Nuestros Eventos</n:h3>
+						<n:br></n:br>
+						<label
+							style="color: #444444; font-size: 1.02em; text-align: left; padding: 1em 1em 2em 1em; line-height: 1.9em;"
+							value="@load(vm.portal.evento)">
+						</label>
+						<n:br></n:br>
+					</n:div>
+						<n:a href="portal/carteleraPublica.zul"
+							class="boton-Formulario" type="button">
+							Ver Eventos
+						</n:a>
+					
+				</n:div>
+				<n:div class="clear"></n:div>
 			</n:div>
-			<n:div class="grid">
-				<n:div class="dc_zoom_css">
-				
-				
-				
-				<n:img class="post-person" src="assets/portal/img/img2.png"/>
-				</n:div>
-				<n:div class="desc">
-					<n:h3>Nuestros socios</n:h3>
-					<n:p></n:p>
-					<n:p>Nuestros socios se caracterizan por su familiaridad y buen comportamiento, ayudando así a mantener las tradiciones de club.  ¿Quieres ser un socio del Centro Atlético América? </n:p>
-				<n:a style=" z-index: 1;" href="portal/postulacion.zul" class="boton-Formulario" type="button"   >Postulate</n:a>
-				
-				
-				</n:div>
-			</n:div>
-			<n:div class="grid">
-				<n:div class="">
-				
-				<n:img class="post-person" src="assets/portal/img/img3.png"/>
-				</n:div>
-				<n:div class="desc">
-					<n:h3>Nuestros Eventos</n:h3>
-					<n:p></n:p>
-					<n:p>Nos interesa Motivar la interacción social a través de actividades culturales de intercambio  en busca del crecimiento humano mediante la realización de eventos. ¿Quieres participar en nuestros eventos?</n:p>
-				<n:a href="portal/carteleraPublica.zul" class="boton-Formulario" type="button"   > Ver Eventos</n:a>
-				</n:div>
-			</n:div>
-			<n:div class="clear"> </n:div>
 		</n:div>
-	</n:div>
-</n:div>
+	</div>
 
 <div class="cartelera" id="cartelera" apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
-	<div class="wrap " >
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')"> 
+	<n:div class="wrap ">
 	<n:h2>Más de nosotros</n:h2><n:br></n:br>
 	
 	
-<div class="row" >
-
- 
-
-  <div class="col-sm-6 col-md-6">
-    <div class="">
-	
+<n:div class="row">
+  <n:div class="col-sm-6 col-md-6">
+    <n:div class="">
       <n:img src="assets/portal/img/mision.png" alt="..." width="20%"/>
+      
+        <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3><n:br></n:br>
+        <n:div>
+        <label style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;" value="@load(vm.club.mision)"></label>
+        </n:div>
      
-        <n:h3 style=" margin-top: 10px; margin-bottom: 15px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Misión</n:h3>
-               <div align="center ">
-         	<div
-         		class='form-pricing col-xs-2 col-sm-2 col-md-11 col-centered'
-         		align="left" style="margin-bottom: 20px"
-         		apply="org.zkoss.bind.BindComposer"
-         		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
-         		<div class="contenido">
-
-         			<grid model="@load(vm.allClub)" zclass="none" >
-         				<columns>
-         					<column label="" />
-
-         				</columns>
-         				<rows zclass="none">
-         					<template name="model">
-
-         						<row zclass="none">
-         							<label
-         								style="width:50%; margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;"
-         								value="@load(each.mision)" />
-
-         						</row>
-
-         					</template>
-         				</rows>
-
-         			</grid>
-
-         		</div>
-         	</div>
-         </div>
-    
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-6">
-    <div class="">
+    </n:div>
+  </n:div>
+  <n:div class="col-sm-6 col-md-6">
+    <n:div class="">
       <n:img src="assets/portal/img/vision.png" alt="..." width="20%"/>
       
-         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Visión</n:h3>
-
-         <div align="center ">
-         
-         	<div
-         		class='form-pricing col-xs-2 col-sm-2 col-md-11 col-centered'
-         		align="left" style="margin-bottom: 20px"
-         		apply="org.zkoss.bind.BindComposer"
-         		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
-         		<div class="contenido">
-
-         			<grid model="@load(vm.allClub)" zclass="none" >
-         				<columns>
-         					<column label="" />
-
-         				</columns>
-         				<rows zclass="none">
-         					<template name="model">
-
-         						<row zclass="none">
-         							<label
-         								style="width:50%; margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;"
-         								value="@load(each.vision)" />
-
-         						</row>
-
-         					</template>
-         				</rows>
-
-         			</grid>
-
-         		</div>
-         	</div>
-         </div>
-
-
-
-
-
-    </div>
-  </div>
-  
-</div>
+         <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Visión</n:h3><n:br></n:br>
+        <n:div>
+ 		<label style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;" value="@load(vm.club.vision)"></label>
+        </n:div>
+     
+    </n:div>
+  </n:div>
+    
+</n:div>
+	
 			
 	
 	<n:br></n:br><n:br></n:br><n:br></n:br>
@@ -292,7 +264,7 @@
 	<include src="portal/video.html" />
 								
 									
-		</div>
+		</n:div>
 	</div>
 
 <div class="contact" id="contact">
