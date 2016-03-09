@@ -8,7 +8,7 @@
             <column name="id_evento" />
             <generator class="increment" />
         </id>
-        <many-to-one name="cancelacionEvento" class="modelos.CancelacionEvento" fetch="select" lazy="false">
+        <many-to-one name="cancelacionEvento" class="modelos.CancelacionEvento" cascade="save-update" fetch="select" lazy="false">
             <column name="cancelacion_eventoid_cancelacion_evento" />
         </many-to-one>
         <many-to-one name="estadoEvento" class="modelos.EstadoEvento" fetch="select" lazy="false">
@@ -38,7 +38,7 @@
             </key>
             <one-to-many class="modelos.Noticia" />
         </set>
-        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
@@ -50,13 +50,13 @@
             </key>
             <one-to-many class="modelos.Actividad" />
         </set>
-        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>
             <one-to-many class="modelos.InstalacionEvento" />
         </set>
-        <set name="indicadorEventos" table="indicador_evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="indicadorEventos" table="indicador_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>

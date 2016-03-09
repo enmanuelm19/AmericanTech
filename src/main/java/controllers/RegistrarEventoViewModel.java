@@ -313,11 +313,21 @@ public class RegistrarEventoViewModel {
 			this.evento.setPreferenciaEventos(this.listPreferenciaEvento);
 			this.evento.setInstalacionEventos(this.listInstalacionEvento);
 			this.evento.setEstadoEvento(estadoEDao.obtenerEstadoEvento(1));
-			if (!editable)
+			if (!editable){
 				eventoDao.agregarEvento(evento);
+				Messagebox.show(
+						"El evento " + evento.getNombre()
+								+ " ha sido registrado exitosamente", "",
+						Messagebox.OK, Messagebox.INFORMATION);
+			}
 
-			else
+			else{
 				eventoDao.actualizarEvento(evento);
+				Messagebox.show(
+						"El evento " + evento.getNombre()
+								+ " ha sido actualizado exitosamente", "",
+						Messagebox.OK, Messagebox.INFORMATION);
+			}
 
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshEventos", null);

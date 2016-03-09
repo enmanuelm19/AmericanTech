@@ -13,12 +13,9 @@
 		style="iconSclass=z-icon-puzzle-piece;">
 		<caption iconSclass="z-icon-calendar" />
 
-
 		<div class='contenido'>
 
-
 			<div align="center">
-
 
 				<div align="left">
 					<div class="encabezado">
@@ -38,7 +35,7 @@
 							<div>
 							Motivo Cancelacion/Rechazo
 							<n:br></n:br>
-							<combobox model="@load(vm.allMotivoCancelacion)" selectedItem="@bind(vm.evento.cancelacionEvento.motivoCancelacion)" width="100%">
+							<combobox model="@load(vm.motivosCancelacion)" selectedItem="@bind(vm.motivoCancelacion)" width="100%">
 							<template name="model">
 								<comboitem label="@load(each.descripcion)" value="@load(each)" />
 							</template>
@@ -50,7 +47,7 @@
 							<div>
 								Descripcion
 								<n:br></n:br>
-								<textbox type="text" rows="5" value="@bind(vm.evento.cancelacionEvento.descripcion)"
+								<textbox type="text" rows="5" value="@bind(vm.cancelacionEvento.descipcion)"
 									width="100%" tabindex="10" constraint="no empty" />
 							</div>
 						</row>
