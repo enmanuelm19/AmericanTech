@@ -1,6 +1,6 @@
 package controllers;
 
-import modelos.TipoSancion;
+import modelos.TipoPago;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -10,24 +10,24 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-import Dao.TipoSancionDao;
+import Dao.TipoPagoDao;
 
-public class RegistrarTipoSancionViewModel {
+public class RegistrarTipoPagoViewModel {
 
-	private TipoSancion tipoSancion;
+	private TipoPago tipoPago;
 	private boolean editable;
-	private TipoSancionDao tipoDao;
+	private TipoPagoDao tipoDao;
 
 	@Init
-	public void init(@ExecutionArgParam("TipoSancion") TipoSancion tipo) {
+	public void init(@ExecutionArgParam("TipoPago") TipoPago tipo) {
 		if (tipo == null) {
-			this.tipoSancion = new TipoSancion();
+			this.tipoPago = new TipoPago();
 			this.editable = false;
 		} else {
-			this.tipoSancion = tipo;
+			this.tipoPago = tipo;
 			this.editable = true;
 		}
-		tipoDao = new TipoSancionDao();
+		tipoDao = new TipoPagoDao();
 	}
 
 	public boolean isEditable() {
@@ -38,12 +38,12 @@ public class RegistrarTipoSancionViewModel {
 		this.editable = editable;
 	}
 
-	public TipoSancion getTipoSancion() {
-		return tipoSancion;
+	public TipoPago getTipoPago() {
+		return tipoPago;
 	}
 
-	public void setMotivoSancion(TipoSancion tipoSancion) {
-		this.tipoSancion = tipoSancion;
+	public void setTipoPago(TipoPago tipoPago) {
+		this.tipoPago = tipoPago;
 	}
 
 	@Command
@@ -54,34 +54,35 @@ public class RegistrarTipoSancionViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 
-		if (tipoSancion.getDescripcion() != null
-				&& !tipoSancion.getDescripcion().equalsIgnoreCase("")) {
-			if (tipoDao.obtenerTipoDescripcion(tipoSancion.getDescripcion()) == null) {
+		if (tipoPago.getDescripcion() != null
+				&& !tipoPago.getDescripcion().equalsIgnoreCase("")) {
+			if (tipoDao.obtenerTipoDescripcion(tipoPago.getDescripcion()) == null) {
 				if (!editable) {
-					tipoDao.agregarTipoSancion(tipoSancion);
+					tipoDao.agregarTipoPago(tipoPago);
 					Messagebox.show(
-							"El tipo de sancion "
-									+ tipoSancion.getDescripcion()
+							"El tipo de pago "
+									+ tipoPago.getDescripcion()
 									+ " ha sido registrado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
-					tipoDao.actualizarTipoSancion(tipoSancion);
+					tipoDao.actualizarTipoPago(tipoPago);
 					Messagebox.show(
-							"El tipo de sancion "
-									+ tipoSancion.getDescripcion()
+							"El tipo de pago "
+									+ tipoPago.getDescripcion()
 									+ " ha sido actualizado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
-
 				win.detach();
-				BindUtils.postGlobalCommand(null, null, "refreshTipoSancion",
+				BindUtils.postGlobalCommand(null, null, "refreshTipoPago",
 						null);
 			} else {
-				Messagebox.show("tipo sancion con la descripcion "
-						+ tipoSancion.getDescripcion() + " ya existe",
+				Messagebox.show("tipo de pago con la descripcion "
+						+ tipoPago.getDescripcion() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 
 	}
 }
+
+

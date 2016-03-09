@@ -7,22 +7,22 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categorias" href="#" />
-						<label value="Motivo desvinculación" />
+						<label value="Motivo cancelacion" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Motivos Desvinculaciones" />
+						<label value="Motivos Cancelaciones" />
 					</div>
 
 					<space />
 					<space />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.MotivoDesvinculacionViewModel')">
+						viewModel="@id('vm') @init('controllers.MotivoCancelacionViewModel')">
 						<div xmlns:w='client' align="right">
-							<button id="btnRegMotivoDesvinculacion"
+							<button id="btnRegmotivoCancelacion"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
 								style="margin-bottom: -4%" class='boton-guardar'
 								onClick="@command('showModal')" />
@@ -34,16 +34,16 @@
 							<div align="left">
 								<div align="left">
 									<div class='encabezado'>
-										Lista Motivos Desvinculaciones
+										Lista Motivos Cancelaciones
 									</div>
 									<div class='linea-two'></div>
 								</div>
 							</div>
 							<separator spacing="20px" />
 							<grid
-								emptyMessage="No se encuentran motivos de desvinculaciones registrados"
-								mold="paging" pageSize="10" id="gridMotivoDesvinculacion"
-								model="@load(vm.allMotivoDesvinculacion)">
+								emptyMessage="No se encuentran motivos de cancelaciones registrados"
+								mold="paging" pageSize="10" id="gridMotivoCancelacion"
+								model="@load(vm.allMotivoCancelacion)">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
@@ -63,7 +63,7 @@
 								</auxhead>
 								<columns>
 									<column>Codigo</column>
-									<column>Motivo Desvinculacion</column>
+									<column>Motivo Cancelacion</column>
 									<column width="20%"
 										align="center">
 										Acciones
@@ -74,7 +74,7 @@
 
 										<row>
 											<label
-												value="@load(each.idMotivoDesvinculacion)" />
+												value="@load(each.idMotivoCancelacion)" />
 											<label
 												value="@load(each.descripcion)" />
 											<div>

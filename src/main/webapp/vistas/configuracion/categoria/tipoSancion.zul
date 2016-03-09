@@ -42,8 +42,8 @@
 							<separator spacing="20px" />
 							<grid
 								emptyMessage="No se encuentran tipos de sanciones registradas"
-								mold="paging" pageSize="10" id="gridMotivoSancion"
-								model="@load(vm.allMotivoSancion)">
+								mold="paging" pageSize="10" id="gridTipoSancion"
+								model="@load(vm.allTipoSancion)">
 								<auxhead sclass="category-center">
 									<auxheader>
 										<image
@@ -66,9 +66,6 @@
 									<column hflex="2">
 										Tipo Sancion
 									</column>
-									<column hflex="2">
-										Descripcion
-									</column>
 									<column width="20%"
 										align="center">
 										Acciones
@@ -80,9 +77,8 @@
 
 										<row>
 											<label
-												value="@load(each.idMotivoSancion)" />
-												<label
-												value="@load(each.motivo)" />
+												value="@load(each.idTipoSancion)" />
+												
 											<label
 												value="@load(each.descripcion)" />
 											<div>

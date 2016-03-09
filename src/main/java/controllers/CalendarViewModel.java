@@ -36,7 +36,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
      
     private CalendarioModel calendarModel;
     
-    private EventoDao eventoDao;
+    private EventoDao eventoDao = new EventoDao();
      
     //the in editing calendar ui event
     private CalendarsEvent calendarsEvent = null;

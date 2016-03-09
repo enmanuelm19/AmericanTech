@@ -1,6 +1,6 @@
 package controllers;
 
-import modelos.TipoSancion;
+import modelos.TipoNoticia;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -10,24 +10,24 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-import Dao.TipoSancionDao;
+import Dao.TipoNoticiaDao;
 
-public class RegistrarTipoSancionViewModel {
+public class RegistrarTipoNoticiaViewModel {
 
-	private TipoSancion tipoSancion;
+	private TipoNoticia tipoNoticia;
 	private boolean editable;
-	private TipoSancionDao tipoDao;
+	private TipoNoticiaDao tipoDao;
 
 	@Init
-	public void init(@ExecutionArgParam("TipoSancion") TipoSancion tipo) {
+	public void init(@ExecutionArgParam("TipoNoticia") TipoNoticia tipo) {
 		if (tipo == null) {
-			this.tipoSancion = new TipoSancion();
+			this.tipoNoticia = new TipoNoticia();
 			this.editable = false;
 		} else {
-			this.tipoSancion = tipo;
+			this.tipoNoticia = tipo;
 			this.editable = true;
 		}
-		tipoDao = new TipoSancionDao();
+		tipoDao = new TipoNoticiaDao();
 	}
 
 	public boolean isEditable() {
@@ -38,12 +38,12 @@ public class RegistrarTipoSancionViewModel {
 		this.editable = editable;
 	}
 
-	public TipoSancion getTipoSancion() {
-		return tipoSancion;
+	public TipoNoticia getTipoNoticia() {
+		return tipoNoticia;
 	}
 
-	public void setMotivoSancion(TipoSancion tipoSancion) {
-		this.tipoSancion = tipoSancion;
+	public void setTipoNoticia(TipoNoticia tipoNoticia) {
+		this.tipoNoticia = tipoNoticia;
 	}
 
 	@Command
@@ -54,34 +54,35 @@ public class RegistrarTipoSancionViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 
-		if (tipoSancion.getDescripcion() != null
-				&& !tipoSancion.getDescripcion().equalsIgnoreCase("")) {
-			if (tipoDao.obtenerTipoDescripcion(tipoSancion.getDescripcion()) == null) {
+		if (tipoNoticia.getDescripcion() != null
+				&& !tipoNoticia.getDescripcion().equalsIgnoreCase("")) {
+			if (tipoDao
+					.obtenerTipoDescripcion(tipoNoticia.getDescripcion()) == null) {
 				if (!editable) {
-					tipoDao.agregarTipoSancion(tipoSancion);
+					tipoDao.agregarTipoNoticia(tipoNoticia);
 					Messagebox.show(
-							"El tipo de sancion "
-									+ tipoSancion.getDescripcion()
+							"El tipo de noticia "
+									+ tipoNoticia.getDescripcion()
 									+ " ha sido registrado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
-					tipoDao.actualizarTipoSancion(tipoSancion);
+					tipoDao.actualizarTipoNoticia(tipoNoticia);
 					Messagebox.show(
-							"El tipo de sancion "
-									+ tipoSancion.getDescripcion()
+							"El tipo de noticia "
+									+ tipoNoticia.getDescripcion()
 									+ " ha sido actualizado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
-
 				win.detach();
-				BindUtils.postGlobalCommand(null, null, "refreshTipoSancion",
-						null);
+				BindUtils.postGlobalCommand(null, null,
+						"refreshTipoNoticia", null);
 			} else {
-				Messagebox.show("tipo sancion con la descripcion "
-						+ tipoSancion.getDescripcion() + " ya existe",
+				Messagebox.show("tipo de noticia con la descripcion "
+						+ tipoNoticia.getDescripcion() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 
 	}
 }
+

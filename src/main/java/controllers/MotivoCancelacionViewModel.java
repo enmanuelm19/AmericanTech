@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import modelos.MotivoDesvinculacion;
+import modelos.MotivoCancelacion;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -20,26 +20,26 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-import Dao.MotivoDesvinculacionDao;
+import Dao.MotivoCancelacionDao;
 
-public class MotivoDesvinculacionViewModel {
+public class MotivoCancelacionViewModel {
 
-	private List<MotivoDesvinculacion> tiposAll;
-	private MotivoDesvinculacionDao tipoDao;
+	private List<MotivoCancelacion> tiposAll;
+	private MotivoCancelacionDao tipoDao;
 	private String descFiltro;
 	private String idFiltro;
 
 	@Init
 	public void init() throws Exception {
 		
-		tiposAll = new ArrayList<MotivoDesvinculacion>();
-		tipoDao = new MotivoDesvinculacionDao();
+		tiposAll = new ArrayList<MotivoCancelacion>();
+		tipoDao = new MotivoCancelacionDao();
 		tiposAll = tipoDao.obtenerTodos();
 	}
 
-	public ListModelList<MotivoDesvinculacion> getAllMotivoDesvinculacion() {
+	public ListModelList<MotivoCancelacion> getAllMotivoCancelacion() {
 
-		return new ListModelList<MotivoDesvinculacion>(tiposAll);
+		return new ListModelList<MotivoCancelacion>(tiposAll);
 	}
 
 	public String getCantRegistros() {
@@ -67,28 +67,28 @@ public class MotivoDesvinculacionViewModel {
 	}
 
 	@Command
-	public void showModal(@BindingParam("Tipo") MotivoDesvinculacion tipo) {
+	public void showModal(@BindingParam("Tipo") MotivoCancelacion tipo) {
 		Map<String, Object> args = new HashMap<String, Object>();
-		args.put("MotivoDesvinculacion", tipo);
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarMotivoDesvinculacion.zul",
+		args.put("MotivoCancelacion", tipo);
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarMotivoCancelacion.zul",
 				null, args);
 		window.doModal();
 	}
 
 	@Command
-	@NotifyChange({ "allMotivoDesvinculacion", "cantRegistros" })
-	public void eliminar(@BindingParam("Tipo") final MotivoDesvinculacion tipo) {
+	@NotifyChange({ "allMotivoCancelacion", "cantRegistros" })
+	public void eliminar(@BindingParam("Tipo") final MotivoCancelacion tipo) {
 
 		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
-								tipoDao.eliminarMotivoDesvinculacion(tipo);
+								tipoDao.eliminarMotivoCancelacion(tipo);
 								tiposAll = tipoDao.obtenerTodos();
 								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshMotivoDesvinculacion", null);
+								BindUtils.postGlobalCommand(null, null, "refreshMotivoCancelacion", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), tipo.getDescripcion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
@@ -99,16 +99,16 @@ public class MotivoDesvinculacionViewModel {
 	}
 
 	@Command
-	@NotifyChange({ "allMotivoDesvinculacion", "cantRegistros" })
+	@NotifyChange({ "allMotivoCancelacion", "cantRegistros" })
 	public void filtro() throws Exception {
-		List<MotivoDesvinculacion> tip = new ArrayList<MotivoDesvinculacion>();
+		List<MotivoCancelacion> tip = new ArrayList<MotivoCancelacion>();
 		String desc = getDescFiltro().toLowerCase();
 		String id = getIdFiltro().toLowerCase();
 
-		for (Iterator<MotivoDesvinculacion> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
-			MotivoDesvinculacion tmp = i.next();
+		for (Iterator<MotivoCancelacion> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
+			MotivoCancelacion tmp = i.next();
 			if (tmp.getDescripcion().toLowerCase().contains(desc)
-					&& String.valueOf(tmp.getIdMotivoDesvinculacion()).toLowerCase().contains(id)) {
+					&& String.valueOf(tmp.getIdMotivoCancelacion()).toLowerCase().contains(id)) {
 				tip.add(tmp);
 			}
 		}
@@ -116,11 +116,12 @@ public class MotivoDesvinculacionViewModel {
 	}
 
 	@GlobalCommand
-	@NotifyChange({ "allMotivoDesvinculacion", "cantRegistros" })
-	public void refreshMotivoDesvinculacion() throws Exception {
+	@NotifyChange({ "allMotivoCancelacion", "cantRegistros" })
+	public void refreshMotivoCancelacion() throws Exception {
 		tiposAll = tipoDao.obtenerTodos();
 	}
 }
+
 
 
 

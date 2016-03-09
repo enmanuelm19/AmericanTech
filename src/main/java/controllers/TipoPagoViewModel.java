@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import modelos.MotivoDesvinculacion;
+import modelos.TipoPago;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -20,26 +20,26 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-import Dao.MotivoDesvinculacionDao;
+import Dao.TipoPagoDao;
 
-public class MotivoDesvinculacionViewModel {
+public class TipoPagoViewModel {
 
-	private List<MotivoDesvinculacion> tiposAll;
-	private MotivoDesvinculacionDao tipoDao;
+	private List<TipoPago> tiposAll;
+	private TipoPagoDao tipoDao;
 	private String descFiltro;
 	private String idFiltro;
 
 	@Init
 	public void init() throws Exception {
 		
-		tiposAll = new ArrayList<MotivoDesvinculacion>();
-		tipoDao = new MotivoDesvinculacionDao();
+		tiposAll = new ArrayList<TipoPago>();
+		tipoDao = new TipoPagoDao();
 		tiposAll = tipoDao.obtenerTodos();
 	}
 
-	public ListModelList<MotivoDesvinculacion> getAllMotivoDesvinculacion() {
+	public ListModelList<TipoPago> getAllTipoPago() {
 
-		return new ListModelList<MotivoDesvinculacion>(tiposAll);
+		return new ListModelList<TipoPago>(tiposAll);
 	}
 
 	public String getCantRegistros() {
@@ -67,28 +67,28 @@ public class MotivoDesvinculacionViewModel {
 	}
 
 	@Command
-	public void showModal(@BindingParam("Tipo") MotivoDesvinculacion tipo) {
+	public void showModal(@BindingParam("Tipo") TipoPago tipo) {
 		Map<String, Object> args = new HashMap<String, Object>();
-		args.put("MotivoDesvinculacion", tipo);
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarMotivoDesvinculacion.zul",
+		args.put("TipoPago", tipo);
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoPago.zul",
 				null, args);
 		window.doModal();
 	}
 
 	@Command
-	@NotifyChange({ "allMotivoDesvinculacion", "cantRegistros" })
-	public void eliminar(@BindingParam("Tipo") final MotivoDesvinculacion tipo) {
+	@NotifyChange({ "allTipoPago", "cantRegistros" })
+	public void eliminar(@BindingParam("Tipo") final TipoPago tipo) {
 
 		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
-								tipoDao.eliminarMotivoDesvinculacion(tipo);
+								tipoDao.eliminarTipoPago(tipo);
 								tiposAll = tipoDao.obtenerTodos();
 								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshMotivoDesvinculacion", null);
+								BindUtils.postGlobalCommand(null, null, "refreshTipoPago", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), tipo.getDescripcion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
@@ -99,16 +99,16 @@ public class MotivoDesvinculacionViewModel {
 	}
 
 	@Command
-	@NotifyChange({ "allMotivoDesvinculacion", "cantRegistros" })
+	@NotifyChange({ "allTipoPago", "cantRegistros" })
 	public void filtro() throws Exception {
-		List<MotivoDesvinculacion> tip = new ArrayList<MotivoDesvinculacion>();
+		List<TipoPago> tip = new ArrayList<TipoPago>();
 		String desc = getDescFiltro().toLowerCase();
 		String id = getIdFiltro().toLowerCase();
 
-		for (Iterator<MotivoDesvinculacion> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
-			MotivoDesvinculacion tmp = i.next();
+		for (Iterator<TipoPago> i = tipoDao.obtenerTodos().iterator(); i.hasNext();) {
+			TipoPago tmp = i.next();
 			if (tmp.getDescripcion().toLowerCase().contains(desc)
-					&& String.valueOf(tmp.getIdMotivoDesvinculacion()).toLowerCase().contains(id)) {
+					&& String.valueOf(tmp.getIdTipoPago()).toLowerCase().contains(id)) {
 				tip.add(tmp);
 			}
 		}
@@ -116,11 +116,10 @@ public class MotivoDesvinculacionViewModel {
 	}
 
 	@GlobalCommand
-	@NotifyChange({ "allMotivoDesvinculacion", "cantRegistros" })
-	public void refreshMotivoDesvinculacion() throws Exception {
+	@NotifyChange({ "allTipoPago", "cantRegistros" })
+	public void refreshTipoPago() throws Exception {
 		tiposAll = tipoDao.obtenerTodos();
 	}
 }
-
 
 

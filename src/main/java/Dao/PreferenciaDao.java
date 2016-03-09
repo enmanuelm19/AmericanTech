@@ -16,7 +16,7 @@ public class PreferenciaDao {
 private Sesion sesionPostgres;
 	
 	
-	public void agregarTipoEventualidad(Preferencia dato) throws Exception{
+	public void agregarPreferencia(Preferencia dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -33,8 +33,8 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	//Obtiene un TipoEventualidad especifico
-		public Preferencia obtenerTipoEventualidad(int id) throws Exception{		 
+	//Obtiene una Preferencia especifica
+		public Preferencia obtenerPreferencia(int id) throws Exception{		 
 		    @SuppressWarnings("static-access")
 		    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
 		    Preferencia dato = null;        
@@ -49,8 +49,8 @@ private Sesion sesionPostgres;
 		    return dato;
 		}
 		
-		//Obtener un tipo de eventualidad mediante la descripcion
-		public Preferencia obtenerTipoEventualidad(String descrip) throws Exception{		 
+		//Obtener  preferencia mediante la descripcion
+		public Preferencia obtenerDescripcion(String descrip) throws Exception{		 
 		    @SuppressWarnings("static-access")
 		    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
 		    Preferencia dato = null;        
@@ -67,7 +67,7 @@ private Sesion sesionPostgres;
 		
 		}
 	
-	public void eliminarTipoEventualidad(Preferencia dato) throws Exception{		 
+	public void eliminarPreferencia(Preferencia dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -85,7 +85,7 @@ private Sesion sesionPostgres;
          } 
    }
 	
-	public void actualizarTipoEventualidad(Preferencia dato) throws Exception{
+	public void actualizarPreferencia(Preferencia dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
