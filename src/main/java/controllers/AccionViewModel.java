@@ -35,7 +35,9 @@ public class AccionViewModel {
 	 	private AccionDao accionDAO= new AccionDao();
 		private List<Accion> listaAcciones;
 		private String propietarioFiltro;
+		private String apellidoFiltro;
 		private String condicionFiltro;
+		private String nroAccionFiltro;
 		
 		@Init
 		public void init() throws Exception {
@@ -103,8 +105,7 @@ public class AccionViewModel {
 	public void refreshAcciones() throws Exception{
 		listaAcciones=accionDAO.obtenerTodos();
 	}
-	
-	
+
 	public String getPropietarioFiltro() {
 		if(propietarioFiltro==null)
 			return "";
@@ -124,12 +125,32 @@ public class AccionViewModel {
 	public void setCondicionFiltro(String condicionFiltro) {
 		this.condicionFiltro = condicionFiltro==null?"":condicionFiltro.trim();
 	}
+	public String getApellidoFiltro() {
+		if(apellidoFiltro==null)
+			return "";
+		return apellidoFiltro;
+	}
+
+	public void setApellidoFiltro(String apellidoFiltro) {
+		this.apellidoFiltro = apellidoFiltro==null?"":apellidoFiltro.trim();
+	}
+	public String getNroAccionFiltro() {
+		if(nroAccionFiltro==null)
+			return "";
+		return nroAccionFiltro;
+	}
+
+	public void setNroAccion(String nroAccionFiltro) {
+		this. nroAccionFiltro =  nroAccionFiltro==null?"": nroAccionFiltro.trim();
+	}
 	@Command
 	@NotifyChange({ "accionesAll", "cantidadRegistros" })
 	public void filtro() throws Exception {
 		List<Accion> tip = new ArrayList<Accion>();
 		String prop = getPropietarioFiltro().toLowerCase();
+		String apell = getApellidoFiltro().toLowerCase();
 		String condicion = getCondicionFiltro().toLowerCase();
+		String nro= getNroAccionFiltro().toLowerCase();
 		System.out.println("condicion "+condicion);
 		for (Iterator<Accion> i = accionDAO.obtenerTodos().iterator(); i.hasNext();) {
 			Accion tmp = i.next();
@@ -137,9 +158,9 @@ public class AccionViewModel {
 				System.out.println("socio "+tmp.getSocio().getIdSocio());
 				
 				if (tmp.getSocio().getPersona().getNombre().toLowerCase().contains(prop) &&
-					tmp.getSocio().getPersona().getApellido().toLowerCase().contains(prop)
-					&& tmp.getEstadoAccion().getNombre().toLowerCase().contains(condicion)) {
-				tip.add(tmp);
+					tmp.getSocio().getPersona().getApellido().toLowerCase().contains(apell)
+					&& tmp.getEstadoAccion().getNombre().toLowerCase().contains(condicion) && tmp.getNroAccion().toLowerCase().contains(nro)) {
+						tip.add(tmp);
 			}
 			} catch (NullPointerException e) {
 				if(tmp.getEstadoAccion().getNombre().toLowerCase().contains(condicion)) {
