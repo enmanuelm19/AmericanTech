@@ -77,7 +77,7 @@
 										<label value="@load(each.persona.apellido)"/>
 										<label value="@load(each.persona.correo)" />
 										<image
-											src="@load(each.persona.direccion)" width="40%" />  
+											src="@load(each.persona.foto)" width="40%" />  
 										<div>
 											<button sclass="btn-link"
 												iconSclass="z-icon-pencil blue" tooltiptext="Editar"  onClick="@command('showModal', Usuario=each)" />
@@ -85,21 +85,7 @@
 												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"  onClick="@command('eliminar', Usuario=each)"/>
 										</div>
 									</row>
-									<!-- <row>
-										<label value="fidel.alejos" />
-										<label value="Fidel" />
-										<label value="Aliaga" />
-										<label
-											value="fidel.alejos@gmail.com" />
-										<image
-											src="/assets/portal/img/img1.jpg" width="40%" />
-										<div>
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-										</div>
-									</row> -->
+							
 									</template>
 								</rows>
 								<foot>
