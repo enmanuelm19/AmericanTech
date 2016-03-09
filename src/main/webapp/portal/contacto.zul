@@ -41,7 +41,7 @@
 											value="@bind(vm.sugerencia.tipoSugerencia.descripcion)">
 											<template name="model">
 												<comboitem zclass="none"
-													style="height: 25px; margin-bottom:1px; width:100px; background-color: #e1f3f7; padding: 7px;"
+													style="height: 25px; width:100px; background-color: #FFFFFF; padding: 7px;"
 													label="@load(each.descripcion)" value="@load(each)" />
 											</template>
 										</combobox>
