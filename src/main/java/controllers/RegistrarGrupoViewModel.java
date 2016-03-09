@@ -80,8 +80,8 @@ public class RegistrarGrupoViewModel {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
-								funcionGrupoDao.eliminarFuncionGrupo(funcion);;
-								funciones = funcionGrupoDao.obtenerTodos();
+								funcionGrupoDao.eliminarFuncionGrupo(funcion);
+								//funciones = funcionGrupoDao.obtenerTodos();
 								Messagebox.show(funcion.getFuncion().getNombre() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshFuncionesGrupo", null);
@@ -162,13 +162,31 @@ public class RegistrarGrupoViewModel {
 	}
 	
 	@Command
-	@NotifyChange({"funciones", "cantRegistros"})
+	@NotifyChange({"funciones", "cantRegistros", "funcionesAll"})
 	public void agregarFuncion() throws Exception{
+		System.out.println("Entro");
+		System.out.println(funcionSeleccionada.getNombre());
 		FuncionGrupo funcGrupo = new FuncionGrupo();
+		boolean existe = false;
 		funcGrupo.setGrupo(grupo);
-		funcGrupo.setFuncion(funcionSeleccionada);
-		funcGrupo.setActivo(true);
-		funcionGrupoDao.agregarFuncionGrupo(funcGrupo);
+		for(FuncionGrupo f : funciones){
+			if(funcionSeleccionada == f.getFuncion()){
+				Messagebox.show("Esta funcion ya pertenece al grupo seleccionado");
+				existe = true;
+				System.out.println("Si la encontro");
+				break;
+			}
+		}
+		if(existe == false){
+			if (funcionSeleccionada == null) {
+				Messagebox.show("Por favor selecciones una funcion");
+			}else{
+				funcGrupo.setFuncion(funcionSeleccionada);
+				funcGrupo.setActivo(true);
+				funcionGrupoDao.agregarFuncionGrupo(funcGrupo);
+			}
+		}
+		
 		BindUtils.postGlobalCommand(null, null, "refreshFuncionesGrupo", null);
 		
 	}
