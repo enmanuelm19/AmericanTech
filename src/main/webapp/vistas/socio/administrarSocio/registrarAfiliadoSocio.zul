@@ -9,10 +9,10 @@
 
 <zk xmlns:n="native">
 	<window title="Registrar Afiliado" closable="true" border="none" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="70%" apply="org.zkoss.bind.BindComposer">
+		width="70%" id="winRegAfiliado">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
-				<div class='contenido ' align="center" width="100%" viewModel="@id('vm') @init('controllers.RegistrarAfiliadoSocioViewModel')">
+				<div class='contenido ' align="center" width="100%" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarAfiliadoViewModel')">
 					<div class="col-md-11 col-centered">
 						<div width="100%">
 							<div align="left">
@@ -40,7 +40,7 @@
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
-									<div class="col-md-5">Parentescostes</div>
+									<div class="col-md-5">Parentesco</div>
 									<div class="col-md-7">
 										<combobox model="@load(vm.tiposAfiliados)" value="@bind(vm.afiliado.tipoAfiliado.descripcion)" width="82%" selectedItem="@bind(vm.afiliado.tipoAfiliado)">
 											<template name="model">
@@ -52,40 +52,40 @@
 								<div class="col-md-12" style="margin-top: 31px">
 									<div class="col-md-5">Nombre</div>
 									<div class="col-md-7">
-										<textbox value="Jesus" width="82%" />
+										<textbox value="@bind(vm.persona.nombre)" width="82%"/>
 									</div>
 								</div>
 								<div class="col-md-12"
 									style="margin-top: 31px">
 									<div class="col-md-5">Apellido</div>
 									<div class="col-md-7">
-										<textbox value="Jesus" width="82%" />
+										<textbox value="@bind(vm.persona.apellido)" width="82%"/>
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
 									<div class="col-md-5">Correo Eléctronico</div>
 									<div class="col-md-7">
-										<textbox value="hdhdhdh@jdhdh.com" width="82%" />
+										<textbox value="@bind(vm.persona.correo)" width="82%"/>
 									</div>
 								</div>
 								<div class="col-md-12"
 									style="margin-top: 31px">
 									<div class="col-md-5">Teléfono</div>
 									<div class="col-md-7">
-										<textbox value="04135689256" width="82%" />
+										<textbox value="@bind(vm.persona.telefono)" width="82%" constraint="/^[0-9]+$/: Please enter a number" />
 									</div>
 								</div>
 								<div class="col-md-12"
 									style="margin-top: 31px">
 									<div class="col-md-5">Nacimiento</div>
 									<div class="col-md-7">
-										<datebox width="82%" />
+										<datebox width="82%" value="@bind(vm.persona.fechaNac)"/>
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
 									<div class="col-md-5">Edad</div>
 									<div class="col-md-7">
-										<textbox value="33" width="25%" readonly="true"/>
+										<textbox value="@load(vm.calcularEdad)" width="25%" readonly="true"/>
 									</div>
 								</div>
 								<div class="col-md-12"
@@ -94,7 +94,7 @@
 										<label>Sexo</label>
 									</div>
 									<div class="col-md-7">
-										<radiogroup id="sexo" selectedItem="@load(vm.postulacion.postulado.persona.sexo)">
+										<radiogroup id="sexo" selectedItem="@bind(vm.persona.sexo)">
 											<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
 											<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
 										</radiogroup>
@@ -107,9 +107,7 @@
 									</div>
 									<div class="col-md-7">
 										<textbox cols="45" rows="4"
-											type="text"
-											value="Av venezuela con Av vargas edificio greco, piso 29 apartamento C-85-D,Barquisimeto,Edo Lara"
-											width="100%" />
+											type="text"	value="@bind(vm.persona.direccion)"	width="100%" />
 									</div>
 								</div>
 							</div>
@@ -119,62 +117,42 @@
 							</div>
 							<hbox align="center" pack="center"
 								width="100%"><!-- GRUPO INTERESES -->
-								<grid emptyMessage="No se encuentran reglas registradas" mold="paging" pageSize="10">
+								<grid emptyMessage="No se encuentran reglas registradas" mold="paging" pageSize="10" model="@load(vm.preferenciasAll)">
 									<auxhead sclass="category-center">
 										<auxheader colspan="1">
-											<combobox width="100%" class="col-md-12" value="Tipo Preferencias">
-												<comboitem label="Deporte" />
-												<comboitem label="Cultura" />
-												<comboitem label="Social" />
+											<combobox class="col-md-12" model="@load(vm.tiposPreferencias)" selectedItem="@bind(vm.tipoPreferencia)">
+												<template name="model">
+													<comboitem label="@load(each.descripcion)" value="@bind(each)" />
+												</template>
 											</combobox>
 										</auxheader>
 										<auxheader colspan="1">
-											<combobox width="100%" class="col-md-12" value="Preferencias">
-												<comboitem label="futbol" />
-												<comboitem label="beisbol" />
-												<comboitem label="basket" />
-												<comboitem label="softball" />
+											<combobox width="100%" class="col-md-12" model="@load(vm.preferencias)" selectedItem="@bind(vm.preferencia)">
+												<template name="model">
+													<comboitem label="@load(each.descripcion)" value="@bind(each)" />
+												</template>
 											</combobox>
 										</auxheader>
 										<auxheader colspan="1"></auxheader>
 									</auxhead>
 									<columns>
-										<column hflex="3">Tipo Preferencia</column>
+										<column hflex="3">Categoria</column>
 										<column hflex="3">Preferencia</column>
 										<column>Acciones</column>
 									</columns>
 									<rows>
+									<template name="model">
 										<row>
-											<label value="Deporte" />
-											<label value="Futbol" />
+											<label value="@load(each.tipoPreferencia.descripcion)" />
+											<label value="@load(each.descripcion)" />
 											<div>
-												<button	sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+												<button	sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminarInteres', Interes=each)"/>
 											</div>
 										</row>
-										<row>
-											<label value="Deporte" />
-											<label value="beisbol" />
-											<div>
-												<button	sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-											</div>
-										</row>
-										<row>
-											<label value="Deporte" />
-											<label value="Basket" />
-											<div>
-												<button	sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-											</div>
-										</row>
-										<row>
-											<label value="Deporte" />
-											<label value="Softball" />
-											<div>
-												<button	sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-											</div>
-										</row>
+									</template>
 									</rows>
 									<foot>
-										<footer span="3" class="footer_right" label="3 items en la lista" />
+										<footer span="3" class="footer_right" label="@load(vm.cantidadInteres)" />
 									</foot>
 								</grid>
 							</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
@@ -183,8 +161,8 @@
 							<separator></separator>
 							<hbox width="" align="center" pack="center">
 								<separator spacing="5%"></separator>
-								<button iconSclass="z-icon-save" class='boton-guardar' label="Guardar" />
-								<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar " />
+								<button iconSclass="z-icon-save" class='boton-guardar' label="Guardar" onClick="@command('registrarAfiliado', win=winRegAfiliado)"/>
+								<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar " onClick="@command('cancelar', win=winRegAfiliado)"/>
 							</hbox>
 						</div>
 					</div>

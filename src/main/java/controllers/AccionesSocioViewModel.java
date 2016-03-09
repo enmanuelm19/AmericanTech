@@ -24,6 +24,7 @@ public class AccionesSocioViewModel {
 	private AccionDao accionDAO;
 	@Init
 	public void init(@ExecutionArgParam("Socio") Socio socio){
+		System.out.println("adaadaaa");
 		acciones=socio.getAccions();
 		accionDAO= new AccionDao();
 	}

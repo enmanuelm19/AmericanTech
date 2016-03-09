@@ -92,7 +92,7 @@ public class SociosViewModel {
 	@Command
 	public void showModalAfiliados(@BindingParam("socio") Socio socio){
 		Map<String, Object> args = new HashMap<String, Object>();
-    	args.put("socio", socio);
+    	args.put("socioss", socio);
 		 Window window = (Window)Executions.createComponents("socio/administrarSocio/registrarAfiliadoSocio.zul", null, args);
 		 window.doModal();
 	 }
