@@ -1,27 +1,29 @@
 <?page title="AmericanTech" contentType="text/html" charset="UTF-8"?>
-<zk xmlns:n="native"  >
-	<div class="contenedor" >
+<zk xmlns:n="native">
+	<div class="contenedor">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
-						<a label="Categoria" href="#" />
-						<label value="Tipos de Noticia" />
+						<a label="Categorias" href="#" />
+						<label value="Tipo noticia" />
 					</div>
 				</div>
-				<div  align="center">
+				<div align="center">
+
 					<div sclass="page-header" align="left">
-						<label value="Tipos de Noticias" />
+						<label value="Tipos Noticias" />
 					</div>
 					<space />
 					<space />
-					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" style="margin-bottom: 20px">
-						<div apply="controllers.ControllerTipoNoticia" xmlns:w='client'
-							align="right">
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.TipoNoticiaViewModel')">
+						<div xmlns:w='client' align="right">
 							<button id="btnRegTipoNoticia"
 								style="margin-bottom: -4%" label="Agregar Nuevo"
-								iconSclass="z-icon-plus" class='boton-guardar' />
+								iconSclass="z-icon-plus" class='boton-guardar' onClick="@command('showModal')"/>
 						</div>
 
 						<separator spacing="10px" />
@@ -29,110 +31,60 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Tipos de Noticias
+									Lista Tipos Noticias
 								</div>
 								<div class='linea-two'></div>
 							</div>
 							<separator spacing="20px" />
 
-							<grid
-								emptyMessage="No se encuentran tipos de Noticias registrados"
-								mold="paging" pageSize="10" >
+							<grid model="@load(vm.allTipoNoticia)"
+								emptyMessage="No se encuentran tipos de noticias registrados"
+								 mold="paging" pageSize="10">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true"
+										<textbox instant="true" value="@bind(vm.idFiltro)" onChange="@command('filtro')"
 											width="85%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true"
+										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											width="85%" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="1" />
+									<auxheader colspan="2" />
 								</auxhead>
 
 								<columns>
-									<column hflex="2">Código</column>
-									<column hflex="2">
-										Tipo Noticia
-									</column>
-									<column width="20%"
-										align="center">
-										Acciones
-									</column>
+									<column hflex="25%">Codigo</column>
+									<column hflex="25%">Tipo Noticia</column>
+									<column hflex="25%">Color de la noticia</column>
+									<column width="25%" align="center">Acciones</column>
 								</columns>
 
 								<rows>
+								<template name="model">
+								
 									<row>
-										<label value="001" />
-										<label value="Noticia1" />
+										<label value="@load(each.idTipoNoticia)" />
+										<label value="@load(each.descripcion)" />
+										
+										<div style="width: 20px; height:20px; background-color:${each.color}"></div>
 										<div>
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('showModal', Tipo=each)"/>
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', Tipo=each)"/>
 										</div>
 									</row>
-									<row>
-										<label value="002" />
-										<label value="Noticia2" />
-										<div>
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-										</div>
-									</row>
-									<row>
-										<label value="003" />
-										<label value="Noticia3" />
-										<div>
-
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-										</div>
-									</row>
-									<row>
-										<label value="004" />
-										<label value="Noticia4" />
-										<div>
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-										</div>
-									</row>
-									<row>
-										<label value="001" />
-										<label value="Noticia1" />
-										<div>
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-										</div>
-									</row>
-									<row>
-										<label value="004" />
-										<label value="Noticia4" />
-										<div>
-											<button sclass="btn-link"
-												iconSclass="z-icon-pencil blue" tooltiptext="Editar" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-										</div>
-									</row>
-								</rows>
+									
+								</template>
+							</rows>
 								<foot>
-									<footer span="6"
-										class="footer_right" label="4 items en la lista" />
+									<footer span="1"
+										class="footer_right" label="@load(vm.cantRegistros)" />
 								</foot>
 							</grid>
+
 						</div>
 					</div>
 				</div>
@@ -140,9 +92,3 @@
 		</hlayout>
 	</div>
 </zk>
-
-
-
-
-
-

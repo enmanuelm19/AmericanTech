@@ -37,7 +37,7 @@
 											label="@load(each.descripcion)" value="@load(each)" />
 									</template>
 								</combobox>
-								<colorbox class="col-md-2" disabled="true"></colorbox>
+								<colorbox class="col-md-2" value="@load(vm.preferencia.tipoPreferencia.color)" ></colorbox>
 							</div>
 						</row>
 						<row>

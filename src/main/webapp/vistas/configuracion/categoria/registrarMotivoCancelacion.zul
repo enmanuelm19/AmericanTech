@@ -3,15 +3,14 @@
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native">
-	<window id="winRegistrarTipoPa"
+	<window id="winRegistrarMcan"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar tipo pago':'Registrar tipo pago')"
+		title="@load(vm.editable?'Editar motivo cancelacion':'Registrar motivo cancelacion')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.RegistrarTipoPagoViewModel')">
+		viewModel="@id('vm') @init('controllers.RegistrarMotivoCancelacionViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">
@@ -29,8 +28,8 @@
 								<div class="col-md-2">Descripción</div>
 								<div class="col-md-10">
 									<textbox type="text" rows="4"
-										value="@bind(vm.tipoPago.descripcion)" width="100%"
-										constraint="no empty" />
+										value="@bind(vm.motivoCancelacion.descripcion)"
+										width="100%" constraint="no empty" />
 								</div>
 							</div>
 						</row>
@@ -42,13 +41,13 @@
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
 								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar', win=winRegistrarTipoPa)" />
+								onClick="@command('guardar', win=winRegistrarMcan)" />
 						</div>
 						<div>
 							<button id="cancelarBtn"
 								iconSclass="z-icon-times-circle" class='boton-cancelar'
 								style="margin-bottom: 6%" label="Cancelar"
-								onClick="@command('cerrarModal', win=winRegistrarTipoPa)" />
+								onClick="@command('cerrarModal', win=winRegistrarMcan)" />
 						</div>
 					</hbox>
 				</div>

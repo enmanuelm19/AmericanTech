@@ -1,0 +1,103 @@
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
+
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
+
+<!-- Load Bootstrap  -->
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+
+<!-- Google Open Sans font -->
+<!-- Load fonts from local -->
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+
+	<window border="none" title="Registrar Opinión"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="40%" height="50%"
+		style="iconSclass=z-icon-user;">
+		<caption iconSclass="z-icon-user" />
+		<div class="contenedor" align="center">
+			<div align="left" width="90%">
+				<div align="left">
+					<div class="encabezado" style="margin-top: 4%">Datos Básicos</div>
+					<div class='linea-two' style="margin-bottom: 6%"></div>
+				</div>
+					<grid >
+						<rows >
+							<row>
+								<div class="row col-md-12">
+									<div class="col-md-3">Descripción</div>
+									<div>
+										<combobox >
+											<comboitem label="En general, recomendado"> </comboitem>
+											<comboitem label="En general, no recomendado"></comboitem>
+											<comboitem label="No recomendado, problemas con el alcohol"></comboitem>
+										</combobox>
+									</div>									
+								</div>
+								
+							</row>
+							
+							<row >
+								<div class="col-md-12">
+									<div>
+										<div class="col-md-3">
+											Clasificacion
+										</div>
+										<div class="ec-stars-wrapper">
+											<a href="#">
+												<span class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span class="glyphicon glyphicon-star">
+												</span>
+											</a>
+											<a href="#">
+												<span class="glyphicon glyphicon-star">
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</row>
+						</rows>
+					</grid>
+				<div align="center" style="margin-top: 4%;">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar'
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar" />
+						</div>
+						<div>
+							<button id="cancelarBtn"
+								iconSclass="z-icon-times-circle" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar" />
+						</div>
+					</hbox>
+				</div>
+		</div>
+		</div>
+	</window>
+</zk>

@@ -12,7 +12,7 @@ public class MotivoCancelacion implements java.io.Serializable {
 
 	private int idMotivoCancelacion;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo=true;
 	private Set<CancelacionEvento> cancelacionEventos = new HashSet<CancelacionEvento>(
 			0);
 
