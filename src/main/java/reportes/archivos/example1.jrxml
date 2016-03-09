@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="example1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee563b5d-742e-4b16-9a5c-567d06c9c201">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="exampletable" uuid="9c4c557c-82c6-4e08-89dd-a4f66060efa2">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     *,
+     tipo_instalacion."id_tipo_instalacion" AS tipo_instalacion_id_tipo_instalacion,
+     tipo_instalacion."descripcion" AS tipo_instalacion_descripcion,
+     tipo_instalacion."activo" AS tipo_instalacion_activo
+FROM
+     "tipo_instalacion" tipo_instalacion]]>
+		</queryString>
+	</subDataset>
+	<parameter name="REPORTE_TITULO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from persona
+]]>
+	</queryString>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="identificacion" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellido" class="java.lang.String"/>
+	<field name="foto" class="java.lang.Integer"/>
+	<field name="fecha_nac" class="java.sql.Date"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="telefono_fijo" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="activo" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle" onErrorType="Icon">
+				<reportElement x="0" y="0" width="107" height="72" uuid="062917ac-8ce6-4668-a740-41a827d19a8e"/>
+				<imageExpression><![CDATA["C:\\america\\america.bmp"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="246" y="0" width="254" height="30" forecolor="#0033FF" uuid="30dca783-b43c-432a-abdc-71dc89c4e067"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Centro Atlético América]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="26" width="503" height="46" uuid="25ad5f25-8066-429f-ba70-1c18d6eadaf9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="659" y="0" width="143" height="72" uuid="5d5e4c44-636f-4625-9bd7-77d52cf8d80c"/>
+				<imageExpression><![CDATA["C:\\america\\american-tech-blanco.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="307" y="7" width="188" height="20" forecolor="#0033FF" uuid="17364c13-dc16-4e9d-99be-8c88517bc514"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORTE_TITULO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="31" y="2" width="100" height="20" uuid="4b58e5d0-aa5e-44ef-b1d1-b1d7044cab72"/>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="2" width="100" height="20" uuid="08018520-556b-4cd3-a36d-08974d646e2f"/>
+				<text><![CDATA[apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="2" width="100" height="20" uuid="b8aaa07a-bd5f-4397-bb93-05988b87de06"/>
+				<text><![CDATA[sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="2" width="100" height="20" uuid="f32c1d96-69cf-43ec-8891-0a78fea59e93"/>
+				<text><![CDATA[correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="592" y="2" width="100" height="20" uuid="22e74314-c7f8-4b38-ab48-054eb1940394"/>
+				<text><![CDATA[telefono]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="31" y="3" width="100" height="20" uuid="d6631cc5-edf8-45a0-be02-3265a1464af4"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="3" width="100" height="20" uuid="54187a07-7d8f-432f-9258-fdb42eccfede"/>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="3" width="100" height="20" uuid="6834ee5e-2c16-4676-920c-fbc46926e560"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="3" width="100" height="20" uuid="b0438e60-cda4-4f34-82a9-e78608ebffe4"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="592" y="3" width="100" height="20" uuid="aa38f7a6-77ea-478a-825d-5722ed70120a"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="290" y="7" width="210" height="20" uuid="9cddca99-ac30-4f0f-a631-69da4d2ef577"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Garantizando el bienestar del socio]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="10" y="7" width="154" height="20" uuid="c8d0e8f2-b2ee-42af-9f5e-e1d9b3a661e0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="672" y="7" width="90" height="20" uuid="09f28bb7-cb8f-47d9-b97f-a9981b4b3f9a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="7" width="40" height="20" uuid="8c21ab3b-93b5-4757-9de2-286a02d6084c"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

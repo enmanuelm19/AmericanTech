@@ -1,5 +1,5 @@
-<zk xmlns:n="native">
-	<div>
+<zk xmlns:n="native" >
+	<div apply="reportes.estructurados.ReporteAlquileres">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -70,7 +70,7 @@
 								   	 </groupbox>
 								   	 <space spacing="2%"></space>
 								     <div align="right" xmlns:w="client">
-										<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+										<button id="btnImprimir" class='boton-guardar' label="Generar" />
 									 </div>							   	 
 								</groupbox >
 							</div>
@@ -78,99 +78,9 @@
 							<space spacing="15%"></space>
 							<div>
 								<label>Instalacion:</label>
-								<label>Todos</label>
+								<label>Todos</label>	
 							</div>							
-							<grid emptyMessage="No se encuentran alquileres registrados" mold="paging" pageSize="10">
-								<auxhead sclass="category-center"> 
-									<auxheader colspan="6" />
-								</auxhead>
-								<columns>
-									<column hflex="4" align="center">Instalacion</column>																	
-									<column hflex="4" align="center">Fecha </column>
-									<column hflex="3" align="center">Carnet Socio</column>
-									<column hflex="3" align="center">Nombre del Socio</column>
-								</columns>
-								<rows>
-									<row>
-										<label value="Caney" />		
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />	
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />	
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />	
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />	
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />	
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />	
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />		
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />		
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />		
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />		
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									<row>
-										<label value="Caney" />		
-										<label value="01-03-2016" />
-										<label value="B-6444" />
-										<label value="Pablo Sanchez" />
-									</row>
-									
-									
-								</rows>
-								<foot>
-									<footer span="7"
-										class="footer_right" label="2 items en la lista" />
-								</foot>
-							</grid>
+							
 						</div>
 					</div>
 				</div>
