@@ -46,6 +46,8 @@ public class RegistrarAfiliadoViewModel {
 	private Preferencia preferencia;
 	private PreferenciaPersona preferenciaPersona;
 	private PreferenciaPersonaDao preferenciaPersonaDao;
+	private Date fechaNac;
+	
 	@Init
 	public void init(@ExecutionArgParam("socioss") Socio socioss) throws Exception{
 		this.socio= socioss;
@@ -71,6 +73,7 @@ public class RegistrarAfiliadoViewModel {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
+	
 	
 	public ListModelList<TipoAfiliado> getTiposAfiliados(){
 		return new ListModelList<TipoAfiliado>(tipoAfiliados);
@@ -102,10 +105,10 @@ public class RegistrarAfiliadoViewModel {
 		int factor=0;
 		
 		Date birthDate;
-		if(this.getPersona().getFechaNac()==null)
+		if(this.getFechaNac()==null)
 			return 0;
 		else{
-			birthDate=this.getPersona().getFechaNac();
+			birthDate=this.getFechaNac();
 			Date currentDate=new Date(); //current date
 			birth.setTime(birthDate);
 			today.setTime(currentDate);
@@ -128,7 +131,7 @@ public class RegistrarAfiliadoViewModel {
 		return preferencia;
 	}
 	
-	@NotifyChange({"preferencias","preferenciasAll","cantidadInteres"})
+	@NotifyChange({"preferencias","preferenciasAll","cantidadInteres","preferencia"})
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 		//boolean encontro=false;
@@ -151,7 +154,8 @@ public class RegistrarAfiliadoViewModel {
 		}
 		*/
 			preferenciasAll.add(preferencia);
-		}
+			preferencia= new Preferencia();
+	}
 
 	public TipoPreferencia getTipoPreferencia() {
 		return tipoPreferencia;
@@ -190,6 +194,7 @@ public class RegistrarAfiliadoViewModel {
 				}
 				else{
 					personaDao= new PersonaDao();
+					persona.setFechaNac(fechaNac);
 					personaDao.agregarPersona(persona);
 					afiliado.setNroCarnet(socio.getNroCarnet()+"-wq");
 					afiliado.setPersona(persona);
@@ -221,4 +226,13 @@ public class RegistrarAfiliadoViewModel {
 	public void cancelar(@BindingParam("win") Window win){
 		win.detach();
 	}
+
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+	@NotifyChange({"calcularEdad"})
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
+	
 }

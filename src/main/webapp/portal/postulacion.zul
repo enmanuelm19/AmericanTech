@@ -4,15 +4,15 @@
 
 	<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
 	<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
-	<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
-	<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/easing.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/fliplightbox.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.easing.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.magnific-popup.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.mixitup.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.scrollTo.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/move-top.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/efecto.js"?>
 	<include src="header.html" />
 
 	<zk xmlns:n="native">
