@@ -1,9 +1,12 @@
 package controllers;
 
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.TimeZone;
  
 import org.zkoss.calendar.Calendars;
+import org.zkoss.calendar.api.CalendarEvent;
 import org.zkoss.calendar.event.CalendarsEvent;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
@@ -13,6 +16,8 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkmax.ui.select.annotation.Subscribe;
 import org.zkoss.zul.Textbox;
 
+import Dao.EventoDao;
+import modelos.Evento;
 import service.CalendarDataService;
 import util.QueueMessage;
 import util.QueueUtil;
@@ -30,14 +35,21 @@ public class CalendarViewModel extends SelectorComposer<Component> {
     private Textbox filter;
      
     private CalendarioModel calendarModel;
+    
+    private EventoDao eventoDao;
      
     //the in editing calendar ui event
     private CalendarsEvent calendarsEvent = null;
  
     @Override
     public void doAfterCompose(Component comp) throws Exception {
+    	List<CalendarEvent> calendarEvents = new LinkedList<CalendarEvent>();
         super.doAfterCompose(comp);
-        calendarModel = new CalendarioModel(new CalendarDataService().getCalendarEvents());
+        for (Evento evento : eventoDao.obtenerTodos()) {			
+        	calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#9c0c0c",
+					"#f74f4f",evento.getIdEvento()+ "__" + evento.getDescripcion()));
+		}
+        calendarModel = new CalendarioModel(calendarEvents);
         calendars.setModel(this.calendarModel);
     }
      
