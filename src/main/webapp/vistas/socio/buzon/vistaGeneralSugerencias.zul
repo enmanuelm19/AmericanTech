@@ -17,11 +17,11 @@
 						<label value="Vista General Sugerencias" />
 					</div>
 
-					<div class='form-pricing' width="75%"
-						style="margin-bottom: 20px;">
-						<div align="right"
-							apply="controllers.ControllerSugerenciasSocio">
-							<button id="btnNuevaSugerencia"
+					<div class='form-pricing' width="75%" apply="org.zkoss.bind.BindComposer" 
+						viewModel="@id('vm') @init('controllers.SugerenciaViewModel')"
+						 style="margin-bottom: 20px;">
+						<div align="right" >
+							<button id="btnNuevaSugerencia" onClick="@command('showModal')"
 								label="Nueva Sugerencia" iconSclass="z-icon-plus"
 								class='boton-guardar' />
 						</div>
@@ -41,7 +41,7 @@
 
 							<grid
 								emptyMessage="No se encuentran reglas registradas" mold="paging"
-								pageSize="10">
+								pageSize="10" model="@load(vm.allSugerencia)">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
@@ -52,7 +52,7 @@
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true"
+										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											width="85%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="10" />
@@ -66,23 +66,25 @@
 									</column>
 								</columns>
 								<rows>
+								<template name="model">
 									<row>
 
-										<label value="16/01/2016" />
-										<label value="Eventos" />
+										<label value="@load(each.fecha)" />
+										<label value="@load(each.tipoSugerencia.descripcion)" />
 										<image
 											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
 										<div>
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
-												value="El dia jueves 25-5-15 a las 3:00pm alquile el Caney y la luz no funcionaba,considero que deben solucionar este problema"
+												value="@load(each.descripcion)"
 												width="100%" />
 										</div>
 									</row>
+									</template>
 								</rows>
 								<foot>
 									<footer span="5"
-										class="footer_right" label="3 items en la lista" />
+										class="footer_right" label="@load(vm.cantRegistros)" />
 								</foot>
 							</grid>
 						</div><!--FIN DIV GRID DE GRUPOS-->

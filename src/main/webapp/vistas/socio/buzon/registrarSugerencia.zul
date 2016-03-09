@@ -10,15 +10,13 @@
 
 <zk xmlns:n="native">
 
-	<window border="none" title="Registrar Sugerencia"
+	<window id="winRegistrarSugerencia" border="none" title="Registrar Sugerencia"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		closable="true" width="48%" height="55%"
 		style="iconSclass=z-icon-user;">
 		<caption iconSclass="z-icon-user" />
-
-
-		<div class='contenido'>
-
+		<div class='contenido' apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm') @init('controllers.RegistrarSugerenciaViewModel')">
 			<div align="left">
 				<div class='encabezado'>Datos básicos</div>
 				<div class='linea-two'></div>
@@ -31,41 +29,38 @@
 					<rows class="">
 						<row class="col-md-12">
 							<div>
-								Tipo Sugerencia   
-								<!--<combobox id="cmbTipo" width="150px">            
-									model="@load(vm.colors)" selectedItem="@bind(vm.shirtColor)" > 
-									                    
+								<label class="col-md-3">Tipo Sugerencia </label>  
+								<combobox
+									model="@load(vm.allTipoSugerencia)" class="col-md-5"
+									selectedItem="@bind(vm.sugerencia.tipoSugerencia)"
+									value="@bind(vm.sugerencia.tipoSugerencia.descripcion)">
 									<template name="model">
-										                        
-										<comboitem label="@load(each)"                             
-											image="@load(vm.getIconImage(each))" />
-										                    
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
 									</template>
-									  <comboitem label="Prueba"></comboitem>       
-								</combobox>-->
-								<combobox></combobox>
+								</combobox>
 							</div>
 
 						</row>
 						<row class="col-md-12">
 							<div>
-								Escriba aquí su sugerencia
+								Escriba aquí su sugerenciaaa
 								<textbox cols="45" rows="4"
-									readonly="false" type="text" value="" width="100%"
-									constraint="no empty" />
+									readonly="false" type="text" width="100%"
+									constraint="no empty" value="@bind(vm.sugerencia.descripcion)" />
 							</div>
 
 						</row>
-
+						
 					</rows>
 				</grid>
 				<space spacing="15%" />
 
 				<div>
-					<button iconSclass="z-icon-floppy-o"
+					<button iconSclass="z-icon-floppy-o" onClick="@command('guardar', win=winRegistrarSugerencia)"
 						class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
-					<button iconSclass="z-icon-times"
+					<button iconSclass="z-icon-times" onClick="@command('cerrarModal', win=winRegistrarSugerencia)"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
 				<separator spacing="5%" />
