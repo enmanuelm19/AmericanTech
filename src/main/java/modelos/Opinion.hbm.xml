@@ -8,13 +8,13 @@
             <column name="id_opinion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false" cascade="save-update">
             <column name="postulacionid_postulacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoOpnion" class="modelos.TipoOpnion" fetch="select" lazy="false">
+        <many-to-one name="tipoOpnion" class="modelos.TipoOpnion" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_opnionid_tipo_opninion" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false">
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false" cascade="save-update">
             <column name="usuarioid_usuario" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">

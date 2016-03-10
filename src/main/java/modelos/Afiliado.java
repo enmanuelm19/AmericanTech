@@ -1,5 +1,8 @@
 package modelos;
 
+import java.util.HashSet;
+import java.util.Set;
+
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 /**
@@ -12,22 +15,32 @@ public class Afiliado implements java.io.Serializable {
 	private Socio socio;
 	private TipoAfiliado tipoAfiliado;
 	private String nroCarnet;
-	private String subfijo;
-	private boolean activo = true;
+	private boolean activo;
+	private Set<Sancion> sancions = new HashSet<Sancion>(0);
 
 	public Afiliado() {
 	}
 
 	public Afiliado(int idAfilado, Persona persona, Socio socio,
-			TipoAfiliado tipoAfiliado, String nroCarnet, String subfijo,
-			boolean activo) {
+			TipoAfiliado tipoAfiliado, String nroCarnet, boolean activo) {
 		this.idAfilado = idAfilado;
 		this.persona = persona;
 		this.socio = socio;
 		this.tipoAfiliado = tipoAfiliado;
 		this.nroCarnet = nroCarnet;
-		this.subfijo = subfijo;
 		this.activo = activo;
+	}
+
+	public Afiliado(int idAfilado, Persona persona, Socio socio,
+			TipoAfiliado tipoAfiliado, String nroCarnet, boolean activo,
+			Set<Sancion> sancions) {
+		this.idAfilado = idAfilado;
+		this.persona = persona;
+		this.socio = socio;
+		this.tipoAfiliado = tipoAfiliado;
+		this.nroCarnet = nroCarnet;
+		this.activo = activo;
+		this.sancions = sancions;
 	}
 
 	public int getIdAfilado() {
@@ -70,20 +83,20 @@ public class Afiliado implements java.io.Serializable {
 		this.nroCarnet = nroCarnet;
 	}
 
-	public String getSubfijo() {
-		return this.subfijo;
-	}
-
-	public void setSubfijo(String subfijo) {
-		this.subfijo = subfijo;
-	}
-
 	public boolean isActivo() {
 		return this.activo;
 	}
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public Set<Sancion> getSancions() {
+		return this.sancions;
+	}
+
+	public void setSancions(Set<Sancion> sancions) {
+		this.sancions = sancions;
 	}
 
 }

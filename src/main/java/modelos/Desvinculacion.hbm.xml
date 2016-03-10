@@ -8,13 +8,13 @@
             <column name="id_desvinculacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="accion" class="modelos.Accion" fetch="select" lazy="false">
+        <many-to-one name="accion" class="modelos.Accion" fetch="select" lazy="false" cascade="save-update">
             <column name="accionid_accion" not-null="true" />
         </many-to-one>
-        <many-to-one name="motivoDesvinculacion" class="modelos.MotivoDesvinculacion" fetch="select" lazy="false">
+        <many-to-one name="motivoDesvinculacion" class="modelos.MotivoDesvinculacion" fetch="select" lazy="false" cascade="save-update">
             <column name="motivo_desvinculacionid_motivo_desvinculacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
+        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" cascade="save-update">
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">

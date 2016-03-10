@@ -8,10 +8,10 @@
             <column name="id_usuario_grupo" />
             <generator class="increment" />
         </id>
-        <many-to-one name="grupo" class="modelos.Grupo" fetch="select" lazy="false">
+        <many-to-one name="grupo" class="modelos.Grupo" fetch="select" lazy="false" cascade="save-update">
             <column name="grupoid_grupo" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false">
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false" cascade="save-update">
             <column name="usuarioid_usuario" not-null="true" />
         </many-to-one>
         <property name="activo" type="boolean">

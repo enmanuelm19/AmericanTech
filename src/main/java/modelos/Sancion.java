@@ -10,6 +10,7 @@ import java.util.Date;
 public class Sancion implements java.io.Serializable {
 
 	private int idSancion;
+	private Afiliado afiliado;
 	private Eventualidad eventualidad;
 	private Socio socio;
 	private TipoSancion tipoSancion;
@@ -17,7 +18,7 @@ public class Sancion implements java.io.Serializable {
 	private Date fechaInic;
 	private Date fechaFin;
 	private Float monto;
-	private boolean activo = true;
+	private boolean activo;
 
 	public Sancion() {
 	}
@@ -30,10 +31,11 @@ public class Sancion implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Sancion(int idSancion, Eventualidad eventualidad, Socio socio,
-			TipoSancion tipoSancion, String descripcion, Date fechaInic,
-			Date fechaFin, Float monto, boolean activo) {
+	public Sancion(int idSancion, Afiliado afiliado, Eventualidad eventualidad,
+			Socio socio, TipoSancion tipoSancion, String descripcion,
+			Date fechaInic, Date fechaFin, Float monto, boolean activo) {
 		this.idSancion = idSancion;
+		this.afiliado = afiliado;
 		this.eventualidad = eventualidad;
 		this.socio = socio;
 		this.tipoSancion = tipoSancion;
@@ -50,6 +52,14 @@ public class Sancion implements java.io.Serializable {
 
 	public void setIdSancion(int idSancion) {
 		this.idSancion = idSancion;
+	}
+
+	public Afiliado getAfiliado() {
+		return this.afiliado;
+	}
+
+	public void setAfiliado(Afiliado afiliado) {
+		this.afiliado = afiliado;
 	}
 
 	public Eventualidad getEventualidad() {

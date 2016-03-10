@@ -8,10 +8,10 @@
             <column name="id_accion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="estadoAccion" class="modelos.EstadoAccion" fetch="select" lazy="false">
+        <many-to-one name="estadoAccion" class="modelos.EstadoAccion" fetch="select" lazy="false" cascade="save-update">
             <column name="estado_accionid_estado_accion" not-null="true" />
         </many-to-one>
-        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
+        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" cascade="save-update">
             <column name="socioid_socio" />
         </many-to-one>
         <property name="nroAccion" type="string">
@@ -23,7 +23,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="ventas" table="venta" inverse="true" lazy="false" fetch="select">
+        <set name="ventas" table="venta" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="accionid_accion" not-null="true" />
             </key>

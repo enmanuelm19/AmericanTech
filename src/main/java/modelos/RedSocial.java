@@ -12,23 +12,27 @@ public class RedSocial implements java.io.Serializable {
 
 	private int idRedSocial;
 	private String descripcion;
-	private boolean activo = true;
+	private String imagen;
+	private boolean activo;
 	private Set<RedPersona> redPersonas = new HashSet<RedPersona>(0);
 	private Set<RedClub> redClubs = new HashSet<RedClub>(0);
 
 	public RedSocial() {
 	}
 
-	public RedSocial(int idRedSocial, String descripcion, boolean activo) {
+	public RedSocial(int idRedSocial, String descripcion, String imagen,
+			boolean activo) {
 		this.idRedSocial = idRedSocial;
 		this.descripcion = descripcion;
+		this.imagen = imagen;
 		this.activo = activo;
 	}
 
-	public RedSocial(int idRedSocial, String descripcion, boolean activo,
-			Set<RedPersona> redPersonas, Set<RedClub> redClubs) {
+	public RedSocial(int idRedSocial, String descripcion, String imagen,
+			boolean activo, Set<RedPersona> redPersonas, Set<RedClub> redClubs) {
 		this.idRedSocial = idRedSocial;
 		this.descripcion = descripcion;
+		this.imagen = imagen;
 		this.activo = activo;
 		this.redPersonas = redPersonas;
 		this.redClubs = redClubs;
@@ -48,6 +52,14 @@ public class RedSocial implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getImagen() {
+		return this.imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public boolean isActivo() {
