@@ -1,4 +1,4 @@
-﻿--Persona
+--Persona
 Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20525481','Mariangel','Arrieche','05/05/91','F','mariangel@gmail.com','04120584875','02517588520','Barquisimeto',TRUE);
 Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20525489','Gipsy','Martinez','17/10/91','F','gipsy@gmail.com','04120585789','02517587878','El Cuji',TRUE);
 Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20322921','Jose','Abreu','16/02/90','M','DeadNox16@gmail.com','04120585285','02534913354','Quibor',TRUE);
@@ -42,10 +42,10 @@ insert into solicitud_venta (accionid_accion,motivo,fecha,motivo_ventaid_motivo_
 
 --Red_Social
 
-insert into red_social (descripcion,activo) values ('Facebook',true);
-insert into red_social (descripcion,activo) values ('Twitter',true);
-insert into red_social (descripcion,activo) values ('SnapChat',true);
-insert into red_social (descripcion,activo) values ('Instagram',true);
+insert into red_social (descripcion,imagen,activo) values ('Facebook','No Tiene',true);
+insert into red_social (descripcion,imagen,activo) values ('Twitter','No Tiene',true);
+insert into red_social (descripcion,imagen,activo) values ('SnapChat','No Tiene',true);
+insert into red_social (descripcion,imagen,activo) values ('Instagram','No Tiene',true);
 
 --Tipo_Sugerencia
 
@@ -130,8 +130,8 @@ insert into tipo_afiliado (descripcion,activo) values ('Pareja',true);
 insert into tipo_afiliado (descripcion,activo) values ('Hijo',true);
 
 --afiliado
-insert into afiliado (tipo_afiliadoid_tipo_afiliado,socioid_socio,nro_carnet,subfijo,personaid_persona,activo) values (1,1,'B-033801','01',8,true);
-insert into afiliado (tipo_afiliadoid_tipo_afiliado,socioid_socio,nro_carnet,subfijo,personaid_persona,activo) values (2,3,'B-0340','01',9,true);
+insert into afiliado (tipo_afiliadoid_tipo_afiliado,socioid_socio,nro_carnet,personaid_persona,activo) values (1,1,'B-033801',8,true);
+insert into afiliado (tipo_afiliadoid_tipo_afiliado,socioid_socio,nro_carnet,personaid_persona,activo) values (2,3,'B-0340',9,true);
 
 --empleado
 insert into empleado (personaid_persona,tipo_empleadoid_tipo_empleado,fecha_contratado,activo) values (10,1,'02/03/2016',true);
