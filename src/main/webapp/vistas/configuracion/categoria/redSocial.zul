@@ -1,0 +1,94 @@
+<?page title="AmericanTech" contentType="text/html" charset="UTF-8"?>
+<zk xmlns:n="native">
+	<div class="contenedor">
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-cogs" />
+						<a label="Categorias" href="#" />
+						<label value="Red social" />
+					</div>
+				</div>
+				<div align="center">
+
+					<div sclass="page-header" align="left">
+						<label value="Redes Sociales" />
+					</div>
+					<space />
+					<space />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.RedSocialViewModel')">
+						<div xmlns:w='client' align="right">
+							<button id="btnRegRedSocial"
+								style="margin-bottom: -4%" label="Agregar Nuevo"
+								iconSclass="z-icon-plus" class='boton-guardar' onClick="@command('showModal')"/>
+						</div>
+
+						<separator spacing="10px" />
+
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Lista Redes Sociales
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<separator spacing="20px" />
+
+							<grid model="@load(vm.allRedSocial)"
+								emptyMessage="No se encuentran redes sociales registradas"
+								 mold="paging" pageSize="10">
+								<auxhead sclass="category-center">
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true" value="@bind(vm.idFiltro)" onChange="@command('filtro')"
+											width="85%" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
+											width="85%" placeholder="Buscar" />
+									</auxheader>
+									<auxheader colspan="2" />
+								</auxhead>
+
+								<columns>
+									<column hflex="25%">Codigo</column>
+									<column hflex="25%">Red Social</column>
+									<column hflex="25%">Icono</column>
+									<column width="25%" align="center">Acciones</column>
+								</columns>
+
+								<rows>
+								<template name="model">
+								
+									<row>
+										<label value="@load(each.idRedSocial)" />
+										<label value="@load(each.descripcion)" />
+										
+										<image src="@load(each.imagen)" width="15%" align="center" />
+										<div>
+											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('showModal', Red=each)"/>
+											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', Red=each)"/>
+										</div>
+									</row>
+									
+								</template>
+							</rows>
+								<foot>
+									<footer span="1"
+										class="footer_right" label="@load(vm.cantRegistros)" />
+								</foot>
+							</grid>
+
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

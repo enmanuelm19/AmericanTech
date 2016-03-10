@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.RedSocial;
+import modelos.RedSocial;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import confi.Sesion;
 
 /**
- * creado por José Francisco Morón
+ * creado por Josï¿½ Francisco Morï¿½n
  */
 
 public class RedSocialDao {
@@ -36,6 +37,22 @@ private Sesion sesionPostgres;
          } 
 	}
 	
+	public RedSocial obtenerDescripcion(String descrip) throws Exception{		 
+	    @SuppressWarnings("static-access")
+	    Session sesion = sesionPostgres.getSessionFactory().openSession(); 
+	    RedSocial dato = null;        
+            try{
+                dato = (RedSocial) sesion.createCriteria(RedSocial.class)
+                		.add(Restrictions.eq("descripcion", descrip)).add(Restrictions.eq("activo", true)).uniqueResult();
+            } catch (Exception e) {  
+            e.printStackTrace();
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }  
+	    return dato;
+	
+	}
 	public RedSocial obtenerRedSocial(int id) throws Exception{		 
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();  
