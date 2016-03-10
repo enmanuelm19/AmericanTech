@@ -2765,7 +2765,7 @@ a:focus {
 }
 body {
   padding: 0;
-  background-color: #e4e6e9;
+  /*background-color: #e4e6e9;*/
   min-height: 100%;
   font-family: 'Open Sans';
   font-size: 13px;
