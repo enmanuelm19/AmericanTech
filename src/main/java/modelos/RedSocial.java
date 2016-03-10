@@ -13,7 +13,7 @@ public class RedSocial implements java.io.Serializable {
 	private int idRedSocial;
 	private String descripcion;
 	private String imagen;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<RedPersona> redPersonas = new HashSet<RedPersona>(0);
 	private Set<RedClub> redClubs = new HashSet<RedClub>(0);
 
