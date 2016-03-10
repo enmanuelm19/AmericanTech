@@ -1,5 +1,6 @@
 <window title="" width="100%" class="col-md-12">
 	<zk xmlns:n="native">
+	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
 		<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 		<?link href="../assets/portal/css/index-portal.css.dsp" rel="stylesheet" type="text/css"?>
 		<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
