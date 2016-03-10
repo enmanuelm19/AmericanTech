@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.zkoss.bind.annotation.AfterCompose;
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
@@ -256,7 +257,7 @@ public class NavegacionViewModel{
 	}
 
 	//Metodo que asigna al contenedor que ha de cargar
-	private void cambiarPantalla(Funcion fc) {
+	public void cambiarPantalla(Funcion fc) {
 		if(!fc.getPagina().equalsIgnoreCase("")){
 			contenido.getChildren().clear();
 			contenedor = (Div) Executions.createComponents(fc.getPagina(), null, null);
@@ -264,5 +265,25 @@ public class NavegacionViewModel{
 		}
 	}
 
+	@Command
+	public void cerrarSesion(){
+		Session session = Sessions.getCurrent();
+		session.removeAttribute("Usuario");
+		Executions.sendRedirect("/");
+	}
+	
+	@Command
+	public void miPerfil(){
+		Funcion funcionMiPerfil = new Funcion();
+		for(Funcion f : funciones){
+			if(f.getNombre().equalsIgnoreCase("Mi perfil")){
+				funcionMiPerfil = f;
+				break;
+			}else{
+				funcionMiPerfil = funciones.get(33);
+			}
+		}
+		cambiarPantalla(funcionMiPerfil);
+	}
 
 }
