@@ -1,6 +1,7 @@
 <window title="" width="100%">
 
 	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
 
 	<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
 	<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
