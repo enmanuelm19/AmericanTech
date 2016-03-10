@@ -8,13 +8,13 @@
             <column name="id_archivo_alquiler" />
             <generator class="increment" />
         </id>
-        <many-to-one name="alquiler" class="modelos.Alquiler" fetch="select" lazy="false">
+        <many-to-one name="alquiler" class="modelos.Alquiler" fetch="select" lazy="false" cascade="save-update">
             <column name="alquilerid_alquiler" not-null="true" />
         </many-to-one>
-        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false">
+        <many-to-one name="archivo" class="modelos.Archivo" fetch="select" lazy="false" cascade="save-update">
             <column name="archivoid_archivo" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoArchivo" class="modelos.TipoArchivo" fetch="select" lazy="false">
+        <many-to-one name="tipoArchivo" class="modelos.TipoArchivo" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_archivoid_tipo_archivo" not-null="true" />
         </many-to-one>
         <property name="activo" type="boolean">

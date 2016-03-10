@@ -11,10 +11,10 @@
         <many-to-one name="clienteExterno" class="modelos.ClienteExterno" cascade="save-update" fetch="select" lazy="false">
             <column name="cliente_externoid_cliente" />
         </many-to-one>
-        <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select" lazy="false">
+        <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_sugerenciaid_tipo_sugerencia" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false">
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false" cascade="save-update">
             <column name="usuarioid_usuario" />
         </many-to-one>
         <property name="descripcion" type="string">

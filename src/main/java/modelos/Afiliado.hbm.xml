@@ -1,30 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 10/03/2016 08:42:34 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Afiliado" table="afiliado" schema="public" optimistic-lock="version">
         <id name="idAfilado" type="int">
             <column name="id_afilado" />
             <generator class="increment" />
         </id>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
+        <many-to-one name="socio" class="modelos.Socio" fetch="select">
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoAfiliado" class="modelos.TipoAfiliado" fetch="select" lazy="false">
+        <many-to-one name="tipoAfiliado" class="modelos.TipoAfiliado" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_afiliadoid_tipo_afiliado" not-null="true" />
         </many-to-one>
         <property name="nroCarnet" type="string">
             <column name="nro_carnet" length="40" not-null="true" />
         </property>
-        <property name="subfijo" type="string">
-            <column name="subfijo" length="40" not-null="true" />
-        </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
+        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select" cascade="save-update">
+            <key>
+                <column name="afiliadoid_afilado" />
+            </key>
+            <one-to-many class="modelos.Sancion" />
+        </set>
     </class>
 </hibernate-mapping>

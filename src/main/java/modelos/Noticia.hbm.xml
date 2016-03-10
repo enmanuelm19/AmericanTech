@@ -8,10 +8,10 @@
             <column name="id_noticia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false" cascade="save-update">
             <column name="eventoid_evento" />
         </many-to-one>
-        <many-to-one name="tipoNoticia" class="modelos.TipoNoticia" fetch="select" lazy="false">
+        <many-to-one name="tipoNoticia" class="modelos.TipoNoticia" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_noticiaid_tipo_noticia" not-null="true" />
         </many-to-one>
         <property name="titulo" type="string">

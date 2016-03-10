@@ -8,10 +8,10 @@
             <column name="id_noticia_preferencia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="noticia" class="modelos.Noticia" fetch="select" lazy="false">
+        <many-to-one name="noticia" class="modelos.Noticia" fetch="select" lazy="false" cascade="save-update">
             <column name="noticiaid_noticia" not-null="true" />
         </many-to-one>
-        <many-to-one name="preferencia" class="modelos.Preferencia" fetch="select" lazy="false">
+        <many-to-one name="preferencia" class="modelos.Preferencia" fetch="select" lazy="false" cascade="save-update">
             <column name="preferenciaid_preferencia" not-null="true" />
         </many-to-one>
         <property name="activo" type="boolean">

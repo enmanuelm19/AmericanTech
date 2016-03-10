@@ -11,7 +11,7 @@
         <many-to-one name="cancelacionEvento" class="modelos.CancelacionEvento" cascade="save-update" fetch="select" lazy="false">
             <column name="cancelacion_eventoid_cancelacion_evento" />
         </many-to-one>
-        <many-to-one name="estadoEvento" class="modelos.EstadoEvento" fetch="select" lazy="false">
+        <many-to-one name="estadoEvento" class="modelos.EstadoEvento" fetch="select" lazy="false" cascade="save-update">
             <column name="estado_eventoid_estado_evento" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">

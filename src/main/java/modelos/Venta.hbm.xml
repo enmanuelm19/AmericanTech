@@ -8,10 +8,10 @@
             <column name="id_venta" />
             <generator class="increment" />
         </id>
-        <many-to-one name="accion" class="modelos.Accion" fetch="select" lazy="false">
+        <many-to-one name="accion" class="modelos.Accion" fetch="select" lazy="false" cascade="save-update">
             <column name="accionid_accion" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false" cascade="save-update">
             <column name="postulacionid_postulacion" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">

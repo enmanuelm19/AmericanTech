@@ -8,10 +8,10 @@
             <column name="id_socio" />
             <generator class="increment" />
         </id>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false" cascade="save-update">
             <column name="postulacionid_postulacion" />
         </many-to-one>
         <property name="nroCarnet" type="string">

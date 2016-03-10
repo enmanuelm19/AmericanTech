@@ -51,6 +51,7 @@ CREATE TABLE sancion (
   id_sancion                   SERIAL NOT NULL, 
   descripcion                 varchar(200) NOT NULL, 
   socioid_socio               int2, 
+  afiliadoid_afilado          int2, 
   fecha_inic                  date, 
   fecha_fin                   date, 
   monto                       float4, 
@@ -185,7 +186,6 @@ CREATE TABLE afiliado (
   tipo_afiliadoid_tipo_afiliado int2 NOT NULL, 
   socioid_socio                 int2 NOT NULL, 
   nro_carnet                    varchar(40) NOT NULL, 
-  subfijo                       varchar(40) NOT NULL, 
   personaid_persona             int2 NOT NULL, 
   activo                        bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_afilado));
@@ -266,12 +266,11 @@ CREATE TABLE alquiler (
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_alquiler));
 CREATE TABLE politica (
-  id_politica                    SERIAL NOT NULL, 
-  descripcion                   varchar(255) NOT NULL, 
-  valor                         int8, 
-  clubid_club                   int2, 
-  unidad_medidaid_unidad_medida int2 NOT NULL, 
-  activo                        bool DEFAULT 'true' NOT NULL, 
+  id_politica  SERIAL NOT NULL, 
+  descripcion varchar(255) NOT NULL, 
+  valor       int8, 
+  clubid_club int2, 
+  activo      bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_politica));
 CREATE TABLE junta_directiva (
   id_junta_directiva  SERIAL NOT NULL, 
@@ -330,6 +329,7 @@ CREATE TABLE foto (
 CREATE TABLE tipo_afiliado (
   id_tipo_afiliado  SERIAL NOT NULL, 
   descripcion      varchar(90) NOT NULL, 
+  subfijo          text, 
   activo           bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_tipo_afiliado));
 CREATE TABLE preferencia_evento (
@@ -341,6 +341,7 @@ CREATE TABLE preferencia_evento (
 CREATE TABLE red_social (
   id_red_social  SERIAL NOT NULL, 
   descripcion   varchar(120) NOT NULL, 
+  imagen        text NOT NULL, 
   activo        bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_red_social));
 CREATE TABLE red_club (
@@ -451,11 +452,6 @@ CREATE TABLE tipo_noticia (
   color           varchar(100), 
   activo          bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_tipo_noticia));
-CREATE TABLE unidad_medida (
-  id_unidad_medida  SERIAL NOT NULL, 
-  nombre           varchar(255) NOT NULL, 
-  activo           bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_unidad_medida));
 CREATE TABLE portal (
   id_portal           SERIAL NOT NULL, 
   instalacion        text, 
@@ -553,7 +549,6 @@ ALTER TABLE archivo_alquiler ADD CONSTRAINT FKarchivo_al266100 FOREIGN KEY (alqu
 ALTER TABLE archivo_alquiler ADD CONSTRAINT FKarchivo_al163068 FOREIGN KEY (tipo_archivoid_tipo_archivo) REFERENCES tipo_archivo (id_tipo_archivo);
 ALTER TABLE noticia ADD CONSTRAINT FKnoticia363644 FOREIGN KEY (tipo_noticiaid_tipo_noticia) REFERENCES tipo_noticia (id_tipo_noticia);
 ALTER TABLE politica ADD CONSTRAINT FKpolitica881306 FOREIGN KEY (clubid_club) REFERENCES club (id_club);
-ALTER TABLE politica ADD CONSTRAINT FKpolitica365279 FOREIGN KEY (unidad_medidaid_unidad_medida) REFERENCES unidad_medida (id_unidad_medida);
 ALTER TABLE solicitud_venta ADD CONSTRAINT FKsolicitud_857177 FOREIGN KEY (motivo_ventaid_motivo_venta) REFERENCES motivo_venta (id_motivo_venta);
 ALTER TABLE sancion ADD CONSTRAINT FKsancion982820 FOREIGN KEY (eventualidadid_eventualidad) REFERENCES eventualidad (id_eventualidad);
 ALTER TABLE alquiler ADD CONSTRAINT FKalquiler655186 FOREIGN KEY (tipo_pagoid_tipo_pago) REFERENCES tipo_pago (id_tipo_pago);
@@ -564,3 +559,4 @@ ALTER TABLE calendario_fecha ADD CONSTRAINT FKcalendario317419 FOREIGN KEY (rese
 ALTER TABLE Venta ADD CONSTRAINT FKVenta326071 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
 ALTER TABLE cancelacion_evento ADD CONSTRAINT FKcancelacio877481 FOREIGN KEY (motivo_cancelacionid_motivo_cancelacion) REFERENCES motivo_cancelacion (id_motivo_cancelacion);
 ALTER TABLE evento ADD CONSTRAINT FKevento717938 FOREIGN KEY (cancelacion_eventoid_cancelacion_evento) REFERENCES cancelacion_evento (id_cancelacion_evento);
+ALTER TABLE sancion ADD CONSTRAINT FKsancion174634 FOREIGN KEY (afiliadoid_afilado) REFERENCES afiliado (id_afilado);

@@ -6,7 +6,7 @@
     <class name="modelos.Grupo" table="grupo" schema="public" optimistic-lock="version">
         <id name="idGrupo" type="int">
             <column name="id_grupo" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="descripcion" type="string">
             <column name="descripcion" length="100" not-null="true" />

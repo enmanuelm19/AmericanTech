@@ -8,10 +8,10 @@
             <column name="id_foto" />
             <generator class="increment" />
         </id>
-        <many-to-one name="club" class="modelos.Club" fetch="select" lazy="false">
+        <many-to-one name="club" class="modelos.Club" fetch="select" lazy="false" cascade="save-update">
             <column name="clubid_club" />
         </many-to-one>
-        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false">
+        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false" cascade="save-update">
             <column name="instalacionid_instalacion" />
         </many-to-one>
         <property name="url" type="string">

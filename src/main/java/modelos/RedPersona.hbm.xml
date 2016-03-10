@@ -8,10 +8,10 @@
             <column name="id_red_persona" />
             <generator class="increment" />
         </id>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="redSocial" class="modelos.RedSocial" fetch="select" lazy="false">
+        <many-to-one name="redSocial" class="modelos.RedSocial" fetch="select" lazy="false" cascade="save-update">
             <column name="red_socialid_red_social" not-null="true" />
         </many-to-one>
         <property name="enlace" type="string">
