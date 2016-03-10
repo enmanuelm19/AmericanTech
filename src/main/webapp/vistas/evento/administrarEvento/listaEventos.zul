@@ -163,7 +163,7 @@
 													<label
 														value="@load(evento.estadoEvento.nombre)" />
 													<div>
-														<button
+														<button if="${evento.cancelacionEvento == null }"
 															sclass="btn-link" iconSclass="z-icon-pencil blue"
 															 tooltiptext="Editar" onClick="@command('showModal', evento=evento)" />
 														<button if="${evento.cancelacionEvento == null }"

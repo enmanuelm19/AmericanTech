@@ -21,7 +21,7 @@ public class Evento implements java.io.Serializable {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private boolean publico;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
 			0);
