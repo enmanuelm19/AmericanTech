@@ -22,8 +22,12 @@ import org.zkoss.zul.Window;
 
 import modelos.Club;
 import modelos.Portal;
+import modelos.RedClub;
+import modelos.RedSocial;
 import Dao.ClubDao;
 import Dao.PortalDao;
+import Dao.RedSocialDao;
+import Dao.RedClubDao;
 
 
 public class IndexPortalViewModel {
@@ -34,6 +38,8 @@ public class IndexPortalViewModel {
 	private Portal portal;
 	private Club club;
 	private PortalDao portalDao;
+	private RedClub redSocialClub;
+	private RedClubDao redClubDao;
 
 	@Init
 	public void init() throws Exception {
@@ -41,6 +47,8 @@ public class IndexPortalViewModel {
 		clubAll = new ArrayList<Club>();
 		club = new Club();
 		portal = new Portal();
+		redSocialClub = new RedClub();
+		redClubDao = new RedClubDao();
 		clubDao = new ClubDao();
 		portalDao = new PortalDao();
 		clubAll = clubDao.obtenerTodos();

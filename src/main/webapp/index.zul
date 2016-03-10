@@ -90,6 +90,10 @@
 					});
 				});
 			</script>
+			
+			
+			
+			
 </n:head>
 
 <n:body>
@@ -133,8 +137,8 @@
 		</n:div>
 </n:div>
 
-
-	<div class="about" id="about" apply="org.zkoss.bind.BindComposer"
+    <div class="about" id="about">
+	<div  apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
 		<n:div class="wrap">
 			<n:h2>¿Quiénes somos?</n:h2>
@@ -222,6 +226,7 @@
 			</n:div>
 		</n:div>
 	</div>
+	</div>
 
 <div class="cartelera" id="cartelera" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')"> 
@@ -276,6 +281,7 @@
      	<n:div class="wrap">
         <n:div class="copy">
 		    <n:p class="copy"> 2015-2016 O'Sullivan Team. Sistemas de información </n:p>
+		 
 		</n:div>
 		<script type="text/javascript">
 							$(document).ready(function() {

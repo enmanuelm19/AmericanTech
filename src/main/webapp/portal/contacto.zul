@@ -99,17 +99,17 @@
 						</div>
 					</div>
 					<div class="col span_1_of_3">
-						<div class="company_address">
+						<div class="company_address" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
 							<n:h5>Información</n:h5>
 							<n:ul class="list3">
 								<n:li>
 									<n:img
 										src="assets/portal/img/location.png" alt="" />
 									<div class="extra-wrap">
-										<n:p>Av. Fuerzas Armadas,</n:p>
-										<n:p>con Calle 57,</n:p>
+									
 										<n:p>
-											Concepcion, Barquisimeto.
+											<label  value="@load(vm.club.direccion)"></label>
 										</n:p>
 									</div>
 									<div class="clear"></div>
@@ -119,7 +119,9 @@
 									<n:img
 										src="assets/portal/img/phone.png" alt="" />
 									<div class="extra-wrap">
-										<n:p>0251-258 2598</n:p>
+										<n:p>
+											<label  value="@load(vm.club.telefono)"></label>
+										</n:p>
 									</div>
 									<div class="clear"></div>
 								</n:li>
@@ -127,18 +129,76 @@
 									<n:img
 										src="assets/portal/img//fax2.png" alt="" />
 									<div class="extra-wrap">
-										<n:p>0416-6343 8690</n:p>
+										<n:p>
+											<label  value="@load(vm.club.telfAlternativo)"></label>
+										</n:p>
 									</div>
 									<div class="clear"></div>
 								</n:li>
 								<n:li>
+								
 									<n:img
 										src="assets/portal/img/mail.png" alt="" />
 									<div class="extra-wrap">
 										<n:p>
+											<n:p>
+											<label  value="@load(vm.club.correo)"></label>
+										</n:p>
+										</n:p>
+									</div>
+									
+								</n:li>
+							
+							</n:ul>
+						</div>
+					</div>
+					
+					<!-- -Redes sociales-->
+					<div class="col span_1_of_3" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')" >
+						<div class="company_address">
+							<n:h5>Redes sociales</n:h5>
+			
+							
+							<n:ul class="list3">
+						
+									<n:li>
+
+
+
+									<div class="grow"><n:img class="custom" src="assets/portal/img/facebook.png" alt=""  /> </div>
+									<div class="extra-wrap">
+										<n:p>
+											<a
+												href="@load(vm.club.mision)">
+													red social
+											</a>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+										<n:li>
+									<div class="grow"><n:img class="custom" src="assets/portal/img/twitter.png" alt=""  /> </div>
+									<div class="extra-wrap">
+										<n:p>
 											<a
 												href="mailto:info@mycompany.com">
-												centroAmerica@gmail.com
+													red social
+											</a>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+								
+								
+								
+									<n:li>
+									<div class="grow"><n:img class="custom" src="assets/portal/img/instagram.png" alt=""  /> </div>
+									<div class="extra-wrap">
+										<n:p>
+											<a
+												href="mailto:info@mycompany.com">
+												red social
 											</a>
 										</n:p>
 									</div>
@@ -147,6 +207,12 @@
 							</n:ul>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
 					<div class="clear"></div>
 				</div>
 			</div>
