@@ -78,8 +78,9 @@ private Sesion sesionPostgres;
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.update(dato);   
-              tx.commit();  
+              Object find=em.merge(dato);   
+              tx.commit();
+              em.delete(find);
          } catch (Exception e) {  
              tx.rollback();            
              e.printStackTrace();

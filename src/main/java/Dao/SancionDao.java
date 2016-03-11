@@ -10,6 +10,7 @@ import modelos.Socio;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.zkoss.zhtml.S;
 
 import confi.Sesion;
 
@@ -23,8 +24,9 @@ public class SancionDao {
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.save( dato);   
+              Object find=em.merge(dato);   
               tx.commit();  
+              em.delete(find);
          } catch (Exception e) {  
              tx.rollback();            
              e.printStackTrace();
@@ -110,8 +112,9 @@ public class SancionDao {
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.update(dato);   
-              tx.commit();  
+        	 Object find= em.merge(dato);
+              tx.commit();
+              em.delete(find);
          } catch (Exception e) {  
              tx.rollback();            
              e.printStackTrace();

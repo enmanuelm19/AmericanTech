@@ -57,8 +57,8 @@
 											<label value="@load(each.fechaFin)" />
 											<label value="@load(each.monto)" />
 											<div>
-												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar" />
-												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
+												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar" onClick="@command('showModalRegistroSancion', Sancion=each)"/>
+												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', Sancion=each)"/>
 											</div>
 										</row>
 									</template>
