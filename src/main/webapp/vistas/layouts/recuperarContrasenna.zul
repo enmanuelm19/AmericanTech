@@ -1,64 +1,41 @@
 <zk xmlns:n="native">
-
-	<window id="" border="none"  title="Recuperacion de contraseña"
+	<window id="" border="none" title="Recuperacion de contraseña"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		closable="true" width="35%" height="auto"
-		style="iconSclass= z-icon-calendar;" >
+		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RecuperarContrasenaViewModel')">
 		<caption iconSclass="z-icon-key" />
-
 		<div class='contenido'>
-
 			<div align="center">
-
-
 				<div align="left">
 					<div class="encabezado">Datos del Usuario</div>
 					<div align="left" class="linea-two"></div>
 				</div>
 				<space bar="False" spacing="10%" />
-
 				<grid width="100%" fixedLayout="true">
-
-					<rows >
-
-
+					<rows>
 						<row>
-							<div class="col-md-12" >
-							   Nombre de usuario o  correo
+							<div class="col-md-12">
+								Nombre de usuario
 								<n:br></n:br>
-								<textbox  type="text" width="100%" 
-									tabindex="10" constraint="no empty"  />
+								<textbox type="text" width="100%" id="usuario"
+									tabindex="10" constraint="no empty" />
 							</div>
-
-						
 						</row>
-			
-
-
 					</rows>
 				</grid>
 				<n:br></n:br>
-				
-
-				
-
-
-				
 				<n:br></n:br>
 				<n:br></n:br>
-
 				<space spacing="35%" />
 				<div align="center">
 
 					<button iconSclass="z-icon-key"
-						class='boton-guardar' label="Olvide mi contraseña"  href="preguntaSeguridad.zul"/>
+						class='boton-guardar' label="Olvide mi contraseña"
+						onClick="@command('buscarUsuario')" />
 					<space spacing="10%" />
-				
-					
-					
 				</div>
 				<space spacing="15%" />
-				</div>
 			</div>
-			</window>
+		</div>
+	</window>
 </zk>
