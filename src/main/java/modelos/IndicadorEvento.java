@@ -84,5 +84,14 @@ public class IndicadorEvento implements java.io.Serializable {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+	
+	public String getVariacion(){
+		
+		if(valorReal==null || valorReal == valorEsperado)
+			return "-";
+		else if(valorReal>valorEsperado)
+			return "+"+String.valueOf(valorReal-valorEsperado);
+		else return String.valueOf(valorReal-valorEsperado);
+	}
 
 }
