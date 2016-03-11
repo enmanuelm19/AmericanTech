@@ -1,189 +1,165 @@
 <!-- Trabajado por Hector Gil 08/02/16-->
 <zk>
-	<window title="Agregar Sancion" border="normal" width="40%"
-		height="auto" position="center,center" closable="true"
-		action="show: slideDown;hide: slideUp">
+	<window title="@load(vm.editable?'Editar Sanción':'Registrar Sanción')" border="normal" width="50%" height="auto" position="center,center" closable="true"
+		action="show: slideDown;hide: slideUp" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarSancionViewModel')" id="winRegistrarSancion">
+		
 		<caption iconSclass="z-icon-user" />
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div>
-					<div>
-						<div>
-							<div>
-								<grid width="100%"
-									fixedLayout="true">
-									<rows class="col-md-12">
-										<row>
-											<div align="left">
-												<div
-													class="encabezado">
-													Datos Socio
-												</div>
-												<div align="left"
-													class="linea-two">
-
-												</div>
-											</div>
-										</row>
-										<row class="col-md-11">
-											<div>
-
-												<hlayout>
-													<div
-														style="border:1px">
-														<image
-															sclass="myimg" width="100px" height="100px"
-															src="../assets/portal/img/img1.jpg" />
-													</div>
-													<div>
-														<div>
-															<hlayout>
-																<div>
-
-																	<div>
-																		Numero
-																		de
-																		Carnet
-																	</div>
-																	<div>
-																		Cedula
-																	</div>
-																	<div>
-																		Nombre
-																	</div>
-																	<div>
-																		Motivo
-																	</div>
-																	<div>
-																		Prohibicion Entrada
-																	</div>
-																	<div>
-																		Fecha
-																		Inicio Prohibicion 
-																	</div>
-																	<div>
-																		Fecha
-																		Final Prohibicion
-																	</div>
-																	<div>
-																		Monto
-																		Bs.
-																	</div>
-																</div>
-																<div>
-																	<div>
-																		<textbox
-																			type="text" value="" width="140px" />
-																		<button
-																			iconSclass="z-icon-search"
-																			class='btn-primary btn-primary' />
-																	</div>
-																	<div>
-																		<textbox
-																			type="text" value="" width="140px" />
-																		<button
-																			iconSclass="z-icon-search"
-																			class='btn-primary btn-primary' />
-																	</div>
-																	<div>
-																		<textbox
-																			type="text" value="" width="140px" />
-																	</div>
-																	<div>
-																		<combobox
-																			readonly="true" value="Mala Conducta" width="80%">
-																			<comboitem
-																				label="pelea" />
-																			<comboitem
-																				label="choque" />
-																			<comboitem
-																				label="danos" />
-																			<comboitem
-																				label="desorden" />
-																			<comboitem
-																				label="Morosidad" />
-																		</combobox>
-																	</div>
-																	<div>
-																		<checkbox>
-																		</checkbox>																	</div>
-																	<div>
-																		<datebox
-																			cols="12" format="short "
-																			onCreate="self.value = new Date()" />
-																	</div>
-																	<div>
-																		<datebox
-																			cols="12" format="short "
-																			onCreate="self.value = new Date()" />
-																	</div>
-																	<div>
-																		<textbox
-																			type="text" value="" width="140px" />
-																	</div>
-																</div>
-															</hlayout>
-														</div>
-													</div>
-												</hlayout>
-											</div>
-										</row>
-									</rows>
-								</grid>
-								<grid width="580px">
-									<rows class="col-md-12">
-										<row class="col-md-11">
-											<vlayout>
-
-												<div>
-													<hlayout>
-														<div>
-															Descripción
-														</div>
-														<div>
-															<div
-																align="center">
-																<textbox
-																	type="text" value="" height="70px" width="370px" />
-															</div>
-														</div>
-
-													</hlayout>
-												</div>
-											</vlayout>
-										</row>
-
-										<row
-											class="col-md-11 col-centered">
-											<div align="center">
-												<hlayout width="">
-													<separator
-														spacing="150px">
-													</separator>
-													<div>
-														<button
-															iconSclass="z-icon-floppy-o" class='boton-guardar'
-															label="Guardar" />
-													</div>
-													<separator
-														spacing="80px">
-													</separator>
-
-													<div>
-														<button
-															iconSclass="z-icon-trash-o" class='boton-cancelar'
-															label="Cancelar" />
-													</div>
-												</hlayout>
-											</div>
-										</row>
-
-									</rows>
-								</grid>
-							</div>
+					<div align="left">
+						<div class="encabezado">Datos Socio</div>
+						<div align="left" class="linea-two"></div>
+					</div>
+					<hbox class="col-md-12" style="margin-top:20px;">
+						<div style="padding-left:30px;">
+							<image sclass="myimg" width="150px" src="../assets/portal/img/img1.jpg" />
 						</div>
+						<div style="padding-left:30px;">
+							<div>
+								<hbox>
+									<div>Numero de Carnet</div>
+									<hbox style="margin-left:10px;">
+											<textbox type="text" value="@bind(vm.carnet)" width="100%" readonly="@load(!vm.enableCarnet)" />
+											<button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" disabled="@load(!vm.enableCarnet)"/>
+														
+									</hbox>					
+								</hbox>
+							</div>
+							<div style="margin-top:15px;">
+								<hbox>
+									<div>Cédula</div>
+									<hbox style="margin-left:80px;">
+										<textbox type="text" value="@bind(vm.cedula)" width="100%" readonly="@load(!vm.enableCedula)"/>
+										<button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCedula')" disabled="@load(!vm.enableCedula)"/>				
+									</hbox>					
+								</hbox>
+							</div>
+							<div style="margin-top:15px;">
+								<hbox>
+									<div>Nombre</div>					
+									<div style="margin-left:72px;">
+											<textbox type="text" value="@load(vm.persona.nombre)" width="100%" readonly="true"/>			
+									</div>					
+								</hbox>
+							</div>
+							<div style="margin-top:15px;">
+								<hbox>
+									<div>Apellido</div>
+									<div style="margin-left:73px;">
+										<textbox type="text" value="@load(vm.persona.apellido)" width="100%" readonly="true"/>
+									</div>					
+								</hbox>
+							</div>
+							<div style="margin-top:15px;">
+								<hbox>
+									<div>Motivo</div>
+									<div style="margin-left:82px;">
+											<combobox placeholder="Seleccione Motivo" value="@bind(vm.tipoSancion.descripcion)" width="90%" model="@load(vm.tiposSancions)" selectedItem="@bind(vm.tipoSancion)">
+												<template name="model">
+													<comboitem label="@load(each.descripcion)" value="@load(each)"/>
+												</template>
+											</combobox>
+									</div>					
+								</hbox>
+							</div>
+							<div style="margin-top:15px;">
+								<hbox>
+									<div>
+										<checkbox label="Suspención" checked="@bind(vm.suspencion)"/>
+									</div>
+									<div style="margin-left:25px;">
+										<checkbox label="Multa" checked="@bind(vm.multa)"/>
+									</div>					
+								</hbox>
+							</div>
+							
+						</div>
+					</hbox>
+					<div style="margin-top:15px;" visible="@load(vm.verEventualidad)">
+						<div align="left">
+							<div class="encabezado">Eventualidades</div>
+							<div align="left" class="linea-two"></div>
+						</div>
+						<panel border="none" collapsible="true"	sclass="transparent">
+							<panelchildren>
+					
+								<listbox sclass="domain" emptyMessage="No se encuentran eventualidades registradas" model="@load(vm.eventualidades)" selectedItem="@bind(vm.evetualidad)">
+								    <listhead>
+								        <listheader label="Instalación"/>
+								        <listheader label="Tipo Eventualidad"/>
+								        <listheader label="Descripción"/>
+								        <listheader label="Fecha"/>
+								    </listhead>
+								    <template name="model">
+								        <listitem>
+								            <listcell label="@load(each.instalacion.descripcion)"/>
+								            <listcell label="@load(each.tipoEventualidad.descripcion)"/>
+								            <listcell label="@load(vm.evetualidad.descripcion)"/>
+								            <listcell label="@load(vm.evetualidad.fecha)"/>
+								        </listitem>
+								    </template>
+								</listbox>
+							</panelchildren>
+						</panel>
+					</div>
+					
+					<div style="margin-top:35px;" visible="@load(vm.multa)">
+						<div align="left">
+							<div class="encabezado">Detalle Multa</div>
+							<div align="left" class="linea-two"></div>
+						</div>
+						
+						<hbox style="margin-top:10px; margin-left:30%;">
+							<div>Multa Bs</div>
+							<div style="margin-left:10px;">
+								<doublebox format="###.##" width="100%" value="@bind(vm.multabs)" constraint="no negative, no zero"/>
+							</div>					
+						</hbox>
+					</div>
+					
+					<div style="margin-top:35px;" visible="@load(vm.suspencion)">
+						<div align="left">
+							<div class="encabezado">Detalle Suspencion</div>
+							<div align="left" class="linea-two"></div>
+						</div>
+						<hbox>
+						<hbox style="margin-top:20px; margin-left:60px;">
+							<div>Inicio Suspención</div>
+							<div style="margin-left:20px;">
+								<datebox onCreate="self.value = new Date()" width="100%" value="@bind(vm.fechaInicio)"/>
+							</div>					
+						</hbox>
+						<hbox style="margin-top:20px; margin-left:30px;">
+							<div>Fin Suspención</div>
+							<div style="margin-left:10px;">
+								<datebox onCreate="self.value = new Date()" width="100%" value="@bind(vm.fechaFin)"/>
+							</div>					
+						</hbox>
+						
+						</hbox>
+					</div>
+					
+					<div style="margin-top:35px;">
+						<div align="left">
+							<div class="encabezado">Detalle Sanción</div>
+							<div align="left" class="linea-two"></div>
+						</div>
+						
+						<hbox style="margin-top:10px; margin-left:60px;">
+							<div>Descripción</div>
+							<div style="margin-left:10px;">
+								<textbox type="text" cols="80" rows="5" value="@bind(vm.sancion.descripcion)" width="70%"/>
+							</div>					
+						</hbox>
 					</div>
 				</div>
+				<div align="center" style="margin-top:50px; margin-bottom: 50px;">
+					
+												<button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Guardar" onClick="@command('guardarSancion', win=winRegistrarSancion)"/>
+												<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" />
+				</div>	
 			</vlayout>
 		</hlayout>
 	</window>
