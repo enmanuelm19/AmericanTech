@@ -96,7 +96,7 @@
 												<row>
 													<detail open="false" fulfill="onOpen">
 													
-														<grid model="@load(evento.indicadorEventos)"
+														<grid model="@load(evento.indicadorEventosActive)"
 															emptyMessage="No se encuentran indicadores registrados" mold="paging" pageSize="5">
 															
 															<auxhead sclass="category-center">
@@ -113,19 +113,15 @@
 																<column
 																	width="">
 																	Valor
-																	Esperado
+																	esperado
 																</column>
 																<column
 																	width="">
-																	Valor Real
+																	Valor real
 																</column>
 																<column
 																	width="">
 																	Variacion
-																</column>
-																<column
-																	width="">
-																	Acciones
 																</column>
 
 															</columns>
@@ -141,12 +137,6 @@
 																			value="@load(indicador.valorReal)" />
 																		<label
 																			value="@load(indicador.variacion)" />
-
-																		<div>
-																			<button
-																				sclass="btn-link" iconSclass="z-icon-pencil blue" onClick="@command('showModalIndicador',indicador=indicador)"
-																				tooltiptext="Editar" />
-																		</div>
 																	</row>
 																</template>
 															</rows>
@@ -163,10 +153,10 @@
 													<label
 														value="@load(evento.estadoEvento.nombre)" />
 													<div>
-														<button if="${evento.cancelacionEvento == null }"
+														<button visible="@load(evento.visible)"
 															sclass="btn-link" iconSclass="z-icon-pencil blue"
 															 tooltiptext="Editar" onClick="@command('showModal', evento=evento)" />
-														<button if="${evento.cancelacionEvento == null }"
+														<button visible="@load(evento.visible)"
 															sclass="btn-link" iconSclass="z-icon-times red"
 														  tooltiptext="Cancelar" onClick="@command('cancelar', evento=evento)"/>
 													</div>
