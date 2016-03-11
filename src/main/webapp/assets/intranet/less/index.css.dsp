@@ -3234,7 +3234,7 @@ div.hola table {
 	white-space: nowrap;
 	padding:3px;
 	border: 1px solid #83B5F7;
-	top: 50% !important;
+	top: 45% !important;
 	left: 45% !important;
 	align: center;
 	vertical-align: middle;
@@ -3248,7 +3248,8 @@ div.hola table {
 
 .z-loading-icon{
 	background: transparent no-repeat center;
-	background-image: url("http://localhost:8080/america/assets/img/bballpm_e0.gif"); 
-	height: 110px;
-	width: 110px;
+	background-image: url("http://localhost:8080/america/assets/img/gif-load.gif"); 
+	
+	height: 60px;
+	width: 60px;
 }

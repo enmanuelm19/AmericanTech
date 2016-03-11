@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import Dao.EventualidadDao;
 import Dao.PersonaDao;
 import Dao.SancionDao;
 import Dao.SocioDao;
@@ -36,7 +38,7 @@ public class RegistrarSancionViewModel {
 	private String carnet;
 	private String cedula="";
 	private boolean editable, multa, suspencion, enableCarnet, enableCedula, verEventualidad=false;
-	private Set<Eventualidad> evetualidades;
+	private List<Eventualidad> evetualidades;
 	private Eventualidad evetualidad;
 	private TipoSancionDao tipoSancionDao;
 	private List<TipoSancion> tiposSancions;
@@ -44,10 +46,13 @@ public class RegistrarSancionViewModel {
 	private Date fechaInicio, fechaFin;
 	private float multabs;
 	private SancionDao sancionDao;
+	private EventualidadDao eventualidadDao;
+	private Eventualidad temporalEventualidad;
 	@Init
 	public void init(@ExecutionArgParam("Sancion") Sancion sancion) throws Exception{
 		tipoSancionDao= new TipoSancionDao();
 		tiposSancions=tipoSancionDao.obtenerTodos();
+		eventualidadDao= new EventualidadDao();
 		if(sancion==null){
 			this.editable=false;
 			this.sancion= new Sancion();
@@ -57,7 +62,7 @@ public class RegistrarSancionViewModel {
 			this.socio= new Socio();
 			this.enableCarnet=true;
 			this.enableCedula=true;
-			this.evetualidades= new HashSet<Eventualidad>();
+			this.evetualidades= new ArrayList<Eventualidad>();
 			this.fechaInicio=new Date();
 			this.fechaFin= new Date();
 			this.multabs=0;
@@ -67,7 +72,25 @@ public class RegistrarSancionViewModel {
 			this.sancion=sancion;
 			this.enableCarnet=false;
 			this.enableCedula=false;
-			this.evetualidades= sancion.getSocio().getPersona().getEventualidads();
+			this.carnet=sancion.getSocio().getNroCarnet();
+			this.cedula=sancion.getSocio().getPersona().getIdentificacion();
+			this.tipoSancion=sancion.getTipoSancion();
+			this.persona=sancion.getSocio().getPersona();
+			this.socio=sancion.getSocio();
+			try {
+				this.evetualidades= eventualidadDao.obtenerEventualidadUsuario(socio.getPersona());
+				this.evetualidades.add(sancion.getEventualidad());
+				this.evetualidad=sancion.getEventualidad();
+				this.temporalEventualidad=sancion.getEventualidad();
+				this.verEventualidad=true;
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+				evetualidades= new ArrayList<Eventualidad>();
+				verEventualidad=false;
+			}
+			if(sancion.getTipoSancion().getIdTipoSancion()==1){
+				verEventualidad=false;
+			}
 			if (sancion.getMonto()==null) {
 				this.multa=false;
 				this.multabs=0;
@@ -163,7 +186,7 @@ public class RegistrarSancionViewModel {
 			}
 			else{
 				this.persona=socio.getPersona();
-				this.evetualidades= socio.getPersona().getEventualidads();
+				this.evetualidades= eventualidadDao.obtenerEventualidadUsuario(persona);
 			}
 		}
 	}
@@ -182,7 +205,7 @@ public class RegistrarSancionViewModel {
 				this.cedula="";
 			}
 			else{
-				this.evetualidades=persona.getEventualidads();
+				this.evetualidades=eventualidadDao.obtenerEventualidadUsuario(persona);
 				this.socio=this.socioDao.obtenerSocioPersona(persona);
 			}
 		}
@@ -264,8 +287,35 @@ public class RegistrarSancionViewModel {
 	}
 	
 	@Command
-	public void guardarSancion(@BindingParam("win") Window win){
+	public void guardarSancion(@BindingParam("win") Window win) throws Exception{
 		if(editable==true){
+			this.sancion.setTipoSancion(this.tipoSancion);
+			if(this.tipoSancion.getIdTipoSancion()==1){
+				if(this.sancion.getDescripcion()==""||this.sancion.getDescripcion()==null){
+					Messagebox.show("Debe ingresar la descripción de la sanción", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				}
+				else{
+					boolean validar=validacionAgregar();
+					if(validar==true){
+						System.out.println("validar: "+validar);
+						this.actualizar(win);
+					}
+				}
+			}
+			else if(this.tipoSancion.getIdTipoSancion()==2){
+				if(this.evetualidad==null){
+					Messagebox.show("Debe seleccionar una Eventualidad", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				}
+				else{
+					this.sancion.setEventualidad(this.evetualidad);
+					boolean validar=validacionAgregar();
+					if(validar==true){
+						this.actualizar(win);
+					}
+				}
+
+			}
+			
 			
 		}
 		else{
@@ -355,19 +405,54 @@ public class RegistrarSancionViewModel {
 		}
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	public void agregar(final Window win){
-		Messagebox.show("Esta seguro de aplicar sanción al Sr(a) " + this.persona.getNombre()+ " "+this.persona.getApellido(), "Confirmar",
+	public void actualizar(Window win) throws Exception{
+		sancionDao= new SancionDao();
+		eventualidadDao= new EventualidadDao();
+		if(verEventualidad==true){
+			if(this.evetualidad.equals(temporalEventualidad)){
+				this.temporalEventualidad.setActivo(true);
+				this.evetualidad.setActivo(false);
+				eventualidadDao.actualizarEventualidad(evetualidad);
+				eventualidadDao.actualizarEventualidad(temporalEventualidad);
+			}
+		}
+		else{
+			sancion.setEventualidad(null);
+			this.temporalEventualidad.setActivo(true);
+			eventualidadDao.actualizarEventualidad(temporalEventualidad);
+		}
+		sancionDao.actualizarSancion(sancion);
+		Messagebox.show("La Sancion del Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido actualizada", "", Messagebox.OK, Messagebox.INFORMATION);
+		BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
+		win.detach();
+
+	}
+	public void agregar(Window win) throws Exception{
+		sancionDao= new SancionDao();
+		eventualidadDao= new EventualidadDao();
+		if(verEventualidad==true){
+			this.evetualidad.setActivo(false);
+			eventualidadDao.actualizarEventualidad(evetualidad);
+		}
+		sancion.setActivo(true);
+		sancionDao.agregarSancion(sancion);
+		Messagebox.show("El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido sancionado", "", Messagebox.OK, Messagebox.INFORMATION);
+		BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
+		win.detach();
+
+	/*	Messagebox.show("Esta seguro de aplicar sanción al Sr(a) " + this.persona.getNombre()+ " "+this.persona.getApellido(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								sancionDao= new SancionDao();
+								eventualidadDao= new EventualidadDao();
+								if(verEventualidad==true){
+									eventualidadDao.actualizarEventualidad(evetualidad);
+								}
 								sancion.setActivo(true);
 								sancionDao.agregarSancion(sancion);
-								Messagebox.show("El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido sancionado", "", Messagebox.OK,
-										Messagebox.INFORMATION);
+								Messagebox.show("El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido sancionado", "", Messagebox.OK, Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
 								win.detach();
 							} catch (Exception e) {
@@ -376,6 +461,6 @@ public class RegistrarSancionViewModel {
 							}
 						}
 					}
-				});
+				});*/
 		}
 }

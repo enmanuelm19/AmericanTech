@@ -128,13 +128,13 @@
 						<hbox style="margin-top:20px; margin-left:60px;">
 							<div>Inicio Suspención</div>
 							<div style="margin-left:20px;">
-								<datebox onCreate="self.value = new Date()" width="100%" value="@bind(vm.fechaInicio)"/>
+								<datebox width="100%" value="@bind(vm.fechaInicio)"/>
 							</div>					
 						</hbox>
 						<hbox style="margin-top:20px; margin-left:30px;">
 							<div>Fin Suspención</div>
 							<div style="margin-left:10px;">
-								<datebox onCreate="self.value = new Date()" width="100%" value="@bind(vm.fechaFin)"/>
+								<datebox width="100%" value="@bind(vm.fechaFin)"/>
 							</div>					
 						</hbox>
 						
