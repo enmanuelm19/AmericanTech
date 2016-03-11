@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -9,7 +12,10 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.image.AImage;
+import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.WebApps;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -18,6 +24,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
+import util.ManejadorArchivo;
 import bsh.This;
 import modelos.Club;
 import modelos.RedClub;
@@ -36,7 +43,9 @@ public class RegistrarPerfilClubViewModel {
 	private RedClub redClub;
 	private RedSocial redSocial;
 	private RedSocialDao redSolcialDao;
-
+	private RedClubDao redClubDao;
+	private Media uploadedImage;
+	private boolean imagenNueva = false;
 
 	@Init
 	public void init() throws Exception {
@@ -46,6 +55,10 @@ public class RegistrarPerfilClubViewModel {
 		this.redSolcialDao = new RedSocialDao();
 		this.redClub = new RedClub();
 		this.redSocial = new RedSocial();
+		this.redClubDao = new RedClubDao();
+		
+		this.club = ClubDao.obtenerTodos().get(0);
+		
 	}
 	
 
@@ -83,7 +96,6 @@ public class RegistrarPerfilClubViewModel {
 	}
 	
 	
-	
 	public RedClub getRedClub() {
 		return redClub;
 	}
@@ -109,6 +121,9 @@ public class RegistrarPerfilClubViewModel {
 	@Command
 	public void guardar() throws Exception {
 		this.club.setActivo(true);
+		if(imagenNueva){
+			this.club.setLogo(ManejadorArchivo.subirImagen(uploadedImage));
+		}
 		if (club.getRif() == null || club.getRif().equalsIgnoreCase("")) {
 			Messagebox.show("El RIF no puede estar blanco", "Warning",
 					Messagebox.OK, Messagebox.EXCLAMATION);
@@ -132,15 +147,35 @@ public class RegistrarPerfilClubViewModel {
 										|| club.getVision().equalsIgnoreCase("")) {
 									Messagebox.show("La MISIÓN no puede estar en blanco", "Warning",
 												Messagebox.OK, Messagebox.EXCLAMATION);
-									} else {
+									} 
+									else{
 										this.club.setRedClubs(allRedClub);
-										this.ClubDao.agregarClub(club);
-										Messagebox.show("El Club  " + club.getNombre()
-												+ " ha sido registrado exitosamente", "", Messagebox.OK,
+										this.ClubDao.actualizarClub(club);;
+										Messagebox.show("El perfil del club  " + club.getNombre()
+												+ " ha sido Modificado", "", Messagebox.OK,
 												Messagebox.INFORMATION);
-										this.limpiar();
 									}
 		}
+	
+	
+	@Command
+	@NotifyChange("uploadedImage")
+	public void upload(@BindingParam("media") Media myMedia){
+		imagenNueva=true;
+		uploadedImage = myMedia;
+	}
+
+	public Media getUploadedImage() {
+		return uploadedImage;
+	}
+
+
+	public void setUploadedImage(Media uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+
+	
+
 
 	public RegistrarPerfilClubViewModel() {
 		super();

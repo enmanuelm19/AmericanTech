@@ -1,3 +1,4 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
 <div xmlns:n="native" class='contenedor'>
 
 	<vlayout spacing="0" hflex="1">
@@ -26,11 +27,12 @@
 						<separator spacing="30px" />
 						<div class="row" id="datosClub">
 							<div class="col-md-4">
-								<div class="input-group">
-									<image
-										src="/assets/intranet/avatars/americaBordeBlanco.png"
-										class='img-responsive col-md-offset-9' width="60%" />
+									<div class="input-group">
+									<image class="img-responsive col-md-offset-0"  content="@bind(vm.uploadedImage)"
+									src="@bind(vm.club.logo)" width="100%" />
 									<fileupload label="Examinar"
+										upload="true,maxsize=2000" style="margin-left: 25%"
+										onUpload="@command('upload',media=event.media)" 
 										iconSclass="z-icon-folder-open"
 										class='boton-guardar col-md-offset-7' />
 								</div>
@@ -91,10 +93,10 @@
 													class="col-md-3">
 													Teléfono
 												</label>
-												<intbox 
+												<textbox 
 													constraint="no zero, no empty" id="txtTelefono"
 													class="col-md-6" value="@bind(vm.club.telefono)" maxlength="12">
-												</intbox>
+												</textbox>
 											</div>
 										</row>
 										<row>
@@ -103,10 +105,10 @@
 													class="col-md-3">
 													Teléfono Alternativo 
 												</label>
-												<intbox
+												<textbox
 													 value="@bind(vm.club.telfAlternativo)" maxlength="12"
 													id="txtTelefonoAlternativo" class="col-md-6">
-												</intbox>
+												</textbox>
 											</div>
 										</row>
 									</rows>
