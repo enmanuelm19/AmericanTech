@@ -149,14 +149,11 @@
 			<n:div class="about-grids">
 				<n:div class="grid">
 					<n:div class="dc_zoom_css">
-
-						<n:img class="post-person"
-							src="assets/portal/img/imagen1.png" />
+                       <image  src="@bind(vm.portal.fotoInstalaciones)" class='post-person img-responsive' width="300px"  height="300px" />
 					</n:div>
 					<n:div class="desc"
 						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
-
-						<n:h3>Nuestros Instalaciones</n:h3>
+						<n:h3>Nuestras Instalaciones</n:h3>
 						<n:br></n:br>
 						<label
 							style="color: #444444; font-size: 1.02em; text-align: left; padding: 1em 1em 2em 1em; line-height: 1.9em;"
@@ -174,11 +171,7 @@
 				</n:div>
 				<div class="grid">
 					<n:div class="dc_zoom_css">
-
-
-
-						<n:img class="post-person"
-							src="assets/portal/img/img2.png" />
+						<image  src="@bind(vm.portal.fotoSocio)" class='post-person img-responsive' width="300px"  height="300px" />
 					</n:div>
 					<n:div class="desc"
 						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
@@ -202,9 +195,8 @@
 				</div>
 				<n:div class="grid">
 					<n:div class="">
-
-						<n:img class="post-person"
-							src="assets/portal/img/img3.png" />
+						<image  src="@bind(vm.portal.fotoEvento)" class='post-person img-responsive' width="300px"  height="300px" />
+				
 					</n:div>
 				<n:div class="desc"
 						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
