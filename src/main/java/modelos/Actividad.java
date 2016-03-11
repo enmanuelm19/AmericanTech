@@ -1,5 +1,7 @@
 package modelos;
 
+import java.text.SimpleDateFormat;
+
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
@@ -128,6 +130,19 @@ public class Actividad implements java.io.Serializable {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+	
+	public String getFechaTopeString() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fechaTope);
+	}
+
+	public String getEstado() {
+
+		if (this.finalizada)
+			return "Finalizada";
+		else
+			return "No finalizada";
 	}
 
 }
