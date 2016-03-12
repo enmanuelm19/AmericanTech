@@ -81,8 +81,8 @@ insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,tipo_insta
 
 --Tipo_Preferencia
 
-insert into tipo_preferencia (descripcion,color,activo) values ('Cultural','verde',true);
-insert into tipo_preferencia (descripcion,color,activo) values ('Deportiva','azul',true);
+insert into tipo_preferencia (descripcion,color,activo) values ('Cultural','#008000',true);
+insert into tipo_preferencia (descripcion,color,activo) values ('Deportiva','#0000FF',true);
 
 --Preferencia
 
@@ -186,10 +186,10 @@ insert into tipo_actividad (descripcion,activo) values ('Protocolo',true);
 
 --Tipo_noticia
 
-insert into tipo_noticia (descripcion,color,activo) values ('Evento','rojo',true);
-insert into tipo_noticia (descripcion,color,activo) values ('Acciones','amarillo',true);
-insert into tipo_noticia (descripcion,color,activo) values ('Sucesos','marron',true);
-insert into tipo_noticia (descripcion,color,activo) values ('Otros','naranja',true);
+insert into tipo_noticia (descripcion,color,activo) values ('Evento','#FF0000',true);
+insert into tipo_noticia (descripcion,color,activo) values ('Acciones','#FFFF00',true);
+insert into tipo_noticia (descripcion,color,activo) values ('Sucesos','#A52A2A',true);
+insert into tipo_noticia (descripcion,color,activo) values ('Otros','#FFA500',true);
 
 
 --Evento
