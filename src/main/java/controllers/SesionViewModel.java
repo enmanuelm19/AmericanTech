@@ -13,6 +13,7 @@ import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.Initiator;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
@@ -67,7 +68,8 @@ public class SesionViewModel implements Initiator {
 			session.setAttribute("Usuario", user);
 			if(user!=null)
 			{
-				Executions.sendRedirect("/vistas/index.zul");;
+				Clients.showBusy("");
+				Executions.sendRedirect("/vistas/index.zul");
 			}else{
 				Messagebox.show("Usuario o contraseña invalidos", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}

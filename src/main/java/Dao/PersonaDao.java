@@ -120,6 +120,21 @@ private Sesion sesionPostgres;
 	       
 	        return datos; 
 		}
-
+	public Persona obtenerPersonaCedula(String cedula)throws Exception{
+	    @SuppressWarnings("static-access")
+		Session sesion = sesionPostgres.getSessionFactory().openSession();   
+	    Persona datos = null;        
+            try{
+                datos = (Persona) sesion.createCriteria(Persona.class)
+                		.add(Restrictions.eq("identificacion", cedula)).add(Restrictions.eq("activo", true)).uniqueResult();
+            } catch (Exception e) {  
+            e.printStackTrace();
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }       
+	    return datos;	
+	}
+	
 	
 }

@@ -16,9 +16,11 @@ import org.zkoss.zul.Window;
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
 import Dao.IndicadorDao;
+import Dao.IndicadorEventoDao;
 import Dao.InstalacionDao;
 import Dao.InstalacionEventoDao;
 import Dao.PreferenciaDao;
+import Dao.PreferenciaEventoDao;
 import Dao.ReservacionDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Evento;
@@ -40,6 +42,8 @@ public class RegistrarEventoViewModel {
 	private PreferenciaDao preferenciaDao;
 	private InstalacionDao instalacionDao;
 	private IndicadorDao indicadorDao;
+	private IndicadorEventoDao indicadorEventoDao;
+	private PreferenciaEventoDao preferenciaEventoDao;
 	private EstadoEventoDao estadoEDao;
 	private ReservacionDao reservacionDao;
 	private InstalacionEventoDao instalacionEventoDao;
@@ -61,9 +65,9 @@ public class RegistrarEventoViewModel {
 			this.editable = false;
 		} else {
 			this.evento = evento;
-			listPreferenciaEvento = evento.getPreferenciaEventos();
-			listInstalacionEvento = evento.getInstalacionEventos();
-			listIndicadorEvento = evento.getIndicadorEventos();
+			listPreferenciaEvento = evento.getPreferenciaEventosActive();
+			listInstalacionEvento = evento.getInstalacionEventosActive();
+			listIndicadorEvento = evento.getIndicadorEventosActive();
 			this.editable = true;
 		}
 		eventoDao = new EventoDao();
@@ -77,6 +81,8 @@ public class RegistrarEventoViewModel {
 		temporalInstalaciones = new ArrayList<Instalacion>();
 		indicadorEvento = new IndicadorEvento();
 		instalacionEventoDao = new InstalacionEventoDao();
+		indicadorEventoDao = new IndicadorEventoDao();
+		preferenciaEventoDao = new PreferenciaEventoDao();
 
 	}
 
@@ -164,16 +170,16 @@ public class RegistrarEventoViewModel {
 		return new ListModelList<IndicadorEvento>(indicadoresMostrar);
 	}
 
-	public String getCantidadPreferencias() {
-		return listPreferenciaEvento.size() + " items en la lista";
+	public String getCantidadPreferencias() throws Exception {
+		return getPreferenciasEventos().size() + " items en la lista";
 	}
 
-	public String getCantidadInstalaciones() {
-		return listInstalacionEvento.size() + " items en la lista";
+	public String getCantidadInstalaciones() throws Exception {
+		return getInstalacionesEventos().size() + " items en la lista";
 	}
 
-	public String getCantidadIndicadores() {
-		return listIndicadorEvento.size() + " items en la lista";
+	public String getCantidadIndicadores() throws Exception {
+		return getIndicadoresEventos().size() + " items en la lista";
 	}
 
 	public ListModelList<Preferencia> getPreferenciasPorTipo() throws Exception {
@@ -285,8 +291,8 @@ public class RegistrarEventoViewModel {
 
 	@Command
 	@NotifyChange({ "preferenciasEventos", "cantidadPreferencias" })
-	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") PreferenciaEvento p) {
-		if(this.editable)
+	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") PreferenciaEvento p) throws Exception {
+		if(preferenciaEventoDao.obtenerPreferenciaEvento(p.getIdPreferenciaEvento())!=null)
 			p.setActivo(false);
 		else listPreferenciaEvento.remove(p);
 		
@@ -294,16 +300,16 @@ public class RegistrarEventoViewModel {
 
 	@Command
 	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones" ,"disabled"})
-	public void eliminarInstalacionEvento(@BindingParam("instalacionEvento") InstalacionEvento i) {
-		if(this.editable)
+	public void eliminarInstalacionEvento(@BindingParam("instalacionEvento") InstalacionEvento i) throws Exception {
+		if(instalacionEventoDao.obtenerInstalacionEvento(i.getIdActividadInstalacion())!=null)
 			i.setActivo(false);
 		else listInstalacionEvento.remove(i);
 	}
 
 	@Command
 	@NotifyChange({ "indicadoresEventos", "indicadorEvento", "cantidadIndicadores" })
-	public void eliminarIndicadorEvento(@BindingParam("indicadorEvento") IndicadorEvento in) {
-		if(this.editable)
+	public void eliminarIndicadorEvento(@BindingParam("indicadorEvento") IndicadorEvento in) throws Exception {
+		if(indicadorEventoDao.obtenerIndicadorEvento(in.getIdIndicadorEvento())!=null)
 			in.setActivo(false);
 		else listIndicadorEvento.remove(in);
 	}
@@ -357,8 +363,7 @@ public class RegistrarEventoViewModel {
 	public boolean isCamposVacio() {
 		if (evento.getNombre() != null && !evento.getNombre().equalsIgnoreCase("") && evento.getDescripcion() != null
 				&& !evento.getDescripcion().equalsIgnoreCase("") && evento.getFechaInicio() != null
-				&& evento.getFechaFin() != null && this.listIndicadorEvento.size() > 0
-				&& this.listInstalacionEvento.size() > 0 && this.listPreferenciaEvento.size() > 0)
+				&& evento.getFechaFin() != null)
 			return false;
 		return true;
 	}

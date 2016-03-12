@@ -1,39 +1,41 @@
-<?page title="Recuperar Contraseña" contentType="text/html;charset=UTF-8"?>
-<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
-<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native">
-<window title=" " closable="true" border="none"
-		 action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="70%" class="col-md-6" >
-			<div>
-				<div sclass="page-header">
-	    			<label value="Recuperar Contraseña"/>
-	  			</div>
-				<div class="form-horizontal">
-                            <n:h3 >¿Cual es el nombre de tu mascota?</n:h3>     
-                            <div class="input-group" style="margin-bottom: 25px">
-                            	<span class="input-group-addon"><n:i class="z-icon-user"></n:i></span>
-                            	<textbox type="text" class="form-control" placeholder="Usuario"></textbox>
-                            </div>
-                            <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><n:i class="glyphicon glyphicon-pencil"></n:i></span>
-                                        <textbox id="" type="text" class="form-control"  placeholder="Respuesta"/>                                        
-                                    </div>
-                                
-                            <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><n:i class="glyphicon glyphicon-envelope"></n:i></span>
-                                        <textbox id=""  class="form-control" placeholder="Email"/>
-                                    </div>        
-			       </div>
-			        
-			        <div>
-						<button  iconSclass="glyphicon glyphicon-ok"  class='btn boton-guardar col-md-3 col-md-offset-2' label="Enviar"/>
-						<button  iconSclass="glyphicon glyphicon-remove"  class='btn boton-cancelar col-md-3 col-md-offset-2' label="Cancelar"/>
-			        </div>
+	<window id="" border="none" title="Recuperacion de contraseña"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="35%" height="auto"
+		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RecuperarContrasenaViewModel')">
+		<caption iconSclass="z-icon-key" />
+		<div class='contenido'>
+			<div align="center">
+				<div align="left">
+					<div class="encabezado">Datos del Usuario</div>
+					<div align="left" class="linea-two"></div>
 				</div>
-			
-		</window>
+				<space bar="False" spacing="10%" />
+				<grid width="100%" fixedLayout="true">
+					<rows>
+						<row>
+							<div class="col-md-12">
+								Nombre de usuario
+								<n:br></n:br>
+								<textbox type="text" width="100%" id="usuario"
+									tabindex="10" constraint="no empty" />
+							</div>
+						</row>
+					</rows>
+				</grid>
+				<n:br></n:br>
+				<n:br></n:br>
+				<n:br></n:br>
+				<space spacing="35%" />
+				<div align="center">
+
+					<button iconSclass="z-icon-key"
+						class='boton-guardar' label="Olvide mi contraseña"
+						onClick="@command('buscarUsuario')" />
+					<space spacing="10%" />
+				</div>
+				<space spacing="15%" />
+			</div>
+		</div>
+	</window>
 </zk>

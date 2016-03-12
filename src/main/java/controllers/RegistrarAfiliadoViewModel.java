@@ -200,7 +200,6 @@ public class RegistrarAfiliadoViewModel {
 					afiliado.setPersona(persona);
 					afiliado.setSocio(socio);
 					afiliado.setActivo(true);
-					afiliado.setSubfijo("-yy");
 					afiliadoDao= new AfiliadoDao();
 					afiliadoDao.agregarAfiliado(afiliado);
 					preferenciaPersonaDao= new PreferenciaPersonaDao();

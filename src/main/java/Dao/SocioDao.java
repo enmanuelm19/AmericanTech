@@ -77,7 +77,7 @@ public class SocioDao {
 	    Socio datos = null;        
             try{
                 datos = (Socio) sesion.createCriteria(Socio.class)
-                		.add(Restrictions.eq("nro_carnet", NroCarnet)).add(Restrictions.eq("activo", true)).uniqueResult();
+                		.add(Restrictions.eq("nroCarnet", NroCarnet)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());

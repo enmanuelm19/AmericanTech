@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import modelos.RedSocial;
+
+
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -16,31 +20,32 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-import Dao.UnidadMedidaDao;
-import modelos.UnidadMedida;
 
-public class UnidadMedidaViewModel {
+import Dao.RedSocialDao;
 
-	private List<UnidadMedida> unidadAll;
-	private UnidadMedidaDao unidadDao;
+
+public class RedSocialViewModel {
+
+	private List<RedSocial> redesAll;
+	private RedSocialDao redDao;
 	private String descFiltro;
 	private String idFiltro;
 
 	@Init
 	public void init() throws Exception {
 		
-		unidadAll = new ArrayList<UnidadMedida>();
-		unidadDao = new UnidadMedidaDao();
-		unidadAll = unidadDao.obtenerTodos();
+		redesAll = new ArrayList<RedSocial>();
+		redDao = new RedSocialDao();
+		redesAll = redDao.obtenerTodos();
 	}
 
-	public ListModelList<UnidadMedida> getAllUnidadMedida() {
+	public ListModelList<RedSocial> getAllRedSocial() {
 
-		return new ListModelList<UnidadMedida>(unidadAll);
+		return new ListModelList<RedSocial>(redesAll);
 	}
 
 	public String getCantRegistros() {
-		return unidadAll.size() + " items en la lista";
+		return redesAll.size() + " items en la lista";
 	}
 
 	public String getDescFiltro() {
@@ -64,30 +69,30 @@ public class UnidadMedidaViewModel {
 	}
 
 	@Command
-	public void showModal(@BindingParam("unidadM") UnidadMedida unidaM) {
+	public void showModal(@BindingParam("Red") RedSocial red) {
 		Map<String, Object> args = new HashMap<String, Object>();
-		args.put("unidadM", unidaM);
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarUnidadMedida.zul",
+		args.put("RedSocial", red);
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarRedSocial.zul",
 				null, args);
 		window.doModal();
 	}
 
 	@Command
-	@NotifyChange({ "allUnidadMedida", "cantRegistros" })
-	public void eliminar(@BindingParam("unidadM") final UnidadMedida unidadM) {
+	@NotifyChange({ "allRedSocial", "cantRegistros" })
+	public void eliminar(@BindingParam("Red") final RedSocial red) {
 
-		Messagebox.show("Estas seguro de eliminar " + unidadM.getNombre(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + red.getDescripcion(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
-								unidadDao.eliminarUnidadMedida(unidadM);
-								unidadAll = unidadDao.obtenerTodos();
-								Messagebox.show(unidadM.getNombre() + " ha sido eliminado", "", Messagebox.OK,
+								redDao.eliminarRedSocial(red);
+								redesAll = redDao.obtenerTodos();
+								Messagebox.show(red.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshUnidadMedida", null);
+								BindUtils.postGlobalCommand(null, null, "refreshRedSocial", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), unidadM.getNombre() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), red.getDescripcion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}
@@ -96,25 +101,26 @@ public class UnidadMedidaViewModel {
 	}
 
 	@Command
-	@NotifyChange({ "allUnidadMedida", "cantRegistros" })
+	@NotifyChange({ "allRedSocial", "cantRegistros" })
 	public void filtro() throws Exception {
-		List<UnidadMedida> tip = new ArrayList<UnidadMedida>();
+		List<RedSocial> reds = new ArrayList<RedSocial>();
 		String desc = getDescFiltro().toLowerCase();
 		String id = getIdFiltro().toLowerCase();
 
-		for (Iterator<UnidadMedida> i = unidadDao.obtenerTodos().iterator(); i.hasNext();) {
-			UnidadMedida tmp = i.next();
-			if (tmp.getNombre().toLowerCase().contains(desc)
-					&& String.valueOf(tmp.getIdUnidadMedida()).toLowerCase().contains(id)) {
-				tip.add(tmp);
+		for (Iterator<RedSocial> i = redDao.obtenerTodos().iterator(); i.hasNext();) {
+			RedSocial tmp = i.next();
+			if (tmp.getDescripcion().toLowerCase().contains(desc)
+					&& String.valueOf(tmp.getIdRedSocial()).toLowerCase().contains(id)) {
+				reds.add(tmp);
 			}
 		}
-		unidadAll = tip;
+		redesAll = reds;
 	}
 
 	@GlobalCommand
-	@NotifyChange({ "allUnidadMedida", "cantRegistros" })
-	public void refreshUnidadMedida() throws Exception {
-		unidadAll = unidadDao.obtenerTodos();
+	@NotifyChange({ "allRedSocial", "cantRegistros" })
+	public void refreshRedSocial() throws Exception {
+		redesAll = redDao.obtenerTodos();
 	}
 }
+

@@ -44,7 +44,7 @@
             </key>
             <one-to-many class="modelos.PreferenciaEvento" />
         </set>
-        <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="actividads" table="actividad" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="eventoid_evento" not-null="true" />
             </key>

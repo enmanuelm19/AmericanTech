@@ -66,7 +66,7 @@ public class SugerenciaViewModel {
 		String desc = getDescFiltro().toLowerCase();
 		for (Iterator<Sugerencia> i = sugerenciaDao.obtenerTodos().iterator(); i.hasNext();) {
 			Sugerencia tmp = i.next();
-			if (tmp.getDescripcion().toLowerCase().contains(desc)) {
+			if (tmp.getTipoSugerencia().getDescripcion().toLowerCase().contains(desc)) {
 				tip.add(tmp);
 			}
 		}

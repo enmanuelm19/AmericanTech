@@ -153,24 +153,24 @@ public class Evento implements java.io.Serializable {
 	public void setNoticias(Set<Noticia> noticias) {
 		this.noticias = noticias;
 	}
-
-	public Set<PreferenciaEvento> getPreferenciaEventos() {
-		return this.preferenciaEventos;
+	
+	public Set<PreferenciaEvento> getPreferenciaEventos(){
+		return preferenciaEventos;
 	}
 
 	public void setPreferenciaEventos(Set<PreferenciaEvento> preferenciaEventos) {
 		this.preferenciaEventos = preferenciaEventos;
 	}
-
-	public Set<Actividad> getActividads() {
+	
+	public Set<Actividad> getActividads(){
 		return this.actividads;
 	}
 
 	public void setActividads(Set<Actividad> actividads) {
 		this.actividads = actividads;
 	}
-
-	public Set<InstalacionEvento> getInstalacionEventos() {
+	
+	public Set<InstalacionEvento> getInstalacionEventos(){
 		return this.instalacionEventos;
 	}
 
@@ -178,7 +178,7 @@ public class Evento implements java.io.Serializable {
 		this.instalacionEventos = instalacionEventos;
 	}
 
-	public Set<IndicadorEvento> getIndicadorEventos() {
+	public Set<IndicadorEvento> getIndicadorEventos(){
 		return this.indicadorEventos;
 	}
 
@@ -207,6 +207,44 @@ public class Evento implements java.io.Serializable {
 	public String getFechaFinString(){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return dateFormat.format(fechaFin);
+	}
+	
+	public boolean isVisible(){
+		if(this.estadoEvento.getIdEstadoEvento()!=5 && this.estadoEvento.getIdEstadoEvento()!=4)
+			return true;		
+		return false;
+	}
+	
+	public Set<InstalacionEvento> getInstalacionEventosActive() {
+		Set<InstalacionEvento> temp = new HashSet<InstalacionEvento>(0);
+		for(InstalacionEvento instalacionE: instalacionEventos)
+			if(instalacionE.isActivo())
+				temp.add(instalacionE);
+		return temp;
+	}
+	
+	public Set<IndicadorEvento> getIndicadorEventosActive() {
+		Set<IndicadorEvento> temp = new HashSet<IndicadorEvento>(0);
+		for(IndicadorEvento indicadorE: indicadorEventos)
+			if(indicadorE.isActivo())
+				temp.add(indicadorE);
+		return temp;
+	}
+	
+	public Set<Actividad> getActividadsActive() {
+		Set<Actividad> temp = new HashSet<Actividad>(0);
+		for(Actividad actividad: actividads)
+			if(actividad.isActivo())
+				temp.add(actividad);
+		return temp;
+	}
+	
+	public Set<PreferenciaEvento> getPreferenciaEventosActive() {
+		Set<PreferenciaEvento> temp = new HashSet<PreferenciaEvento>(0);
+		for(PreferenciaEvento preferenciaE: preferenciaEventos)
+			if(preferenciaE.isActivo())
+				temp.add(preferenciaE);
+		return temp;
 	}
 
 }
