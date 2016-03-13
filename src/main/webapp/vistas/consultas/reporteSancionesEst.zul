@@ -25,30 +25,6 @@
 							<space spacing="15%"></space>
 							<div align="center">
 								<groupbox style="margin: 1%;" width="85%" height="auto">
-									<grid>
-										<rows>
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">	
-													   <label class="col-md-4">Seleccione :</label>
-												       <combobox >
-															<comboitem label="Todos"> </comboitem>
-															<comboitem label="Socios"></comboitem>
-															<comboitem label="Afiliados"></comboitem>
-													   </combobox>			   		
-											   	 </div>								   	 
-											  </row>   
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">
-											   		   <div >
-											   		   		<checkbox label="Nro de Carnet" class="col-md-4" />
-											   		   </div>   
-												       <textbox>
-			
-													   </textbox>			   		
-											   	 </div>								   	 
-											  </row>	
-										</rows>
-									</grid>
 									<space spacing="2%"></space>
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
 								   	 	<caption label="Fecha"  ></caption>
@@ -67,8 +43,6 @@
 								   	 <space spacing="2%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
-									<space spacing="2%"></space>
 									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
 								 </div>	
 							</div>
