@@ -31,7 +31,7 @@ public class PostulantesViewModel {
 	@Init
 	public void init() throws Exception {
 		postulaciones = postDAO.obtenerTodos();
-		star1=star2=star3=star4=star5="";
+		/*star1=star2=star3=star4=star5="";
 		if(Integer.parseInt(getEstrellas())==1){
 			star1="select";
 			star2="no_select";
@@ -62,7 +62,7 @@ public class PostulantesViewModel {
 			star3="select";
 			star4="select";
 			star5="select";
-		}
+		}*/
 	}
 	
 	public ListModelList<Postulacion> getPostulacionesAll() {
@@ -131,7 +131,7 @@ public class PostulantesViewModel {
 		window.doModal();
 	}
 	
-	public String getStar1() {
+/*	public String getStar1() {
 		return star1;
 	}
 
@@ -186,7 +186,7 @@ public class PostulantesViewModel {
 	}
 	public String getEstrellas() {
 		return "1";
-	}
+	}*/
 	@GlobalCommand
 	@NotifyChange({ "postulacionesAll", "cantidadRegistros" })
 	public void refreshPostulantes() throws Exception{

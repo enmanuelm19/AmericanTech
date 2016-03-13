@@ -43,9 +43,16 @@
 													<textbox constraint="no empty" class="col-md-6" readonly="true" type="email" value="@load(vm.postulacion.postulado.persona.correo)"/>
 												</div>
 											</row>
+											
 											<row>
 												<div>
-													<label class="col-md-4" value="Teléfono" />
+													<label class="col-md-4" value="Teléfono Domicilio" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.telefonoFijo)" />
+												</div>
+											</row>
+											<row>
+												<div>
+													<label class="col-md-4" value="Teléfono Celular" />
 													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.telefono)" />
 												</div>
 											</row>
@@ -84,13 +91,13 @@
 								<!--OPINIONES  -->
 
 								<div class="col-md-6">
-									<div class="input-group">
-										<image src="/assets/portal/img/img1.jpg" class='img-responsive col-md-offset-1' />
+									<div class="input-group col-md-8 col-md-offset-1">
+										<image src="@load(vm.postulacion.postulado.persona.foto)" class='img-responsive' width="100%"/>
 										<separator spacing="30px">
 										</separator>
 
 									</div>
-									<grid>
+									<grid class="col-md-12">
 										<rows>
 												<row>
 												<div>

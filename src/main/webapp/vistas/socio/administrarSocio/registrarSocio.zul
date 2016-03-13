@@ -103,18 +103,18 @@
 			<div align="left" class="linea-two"></div>
 		</div>
 
-		<hbox width="100%">
+		<hbox>
 			<panel border="none" collapsible="true"	sclass="transparent">
 				<panelchildren>
-					<listbox sclass="domain" model="@load(vm.accionesAll)" selectedItem="@bind(vm.seleccionada)" hflex="true" height="200px">
+					<listbox sclass="domain" model="@load(vm.accionesAll)" selectedItem="@bind(vm.seleccionada)">
 					    <listhead>
-					        <listheader width="50%" label="Número Acción" iconSclass="z-icon-caret-right blue"/>
+					        <listheader width="30%" label="Número Acción" iconSclass="z-icon-caret-right blue"/>
 					        <listheader width="35%" label="Valor Bs" iconSclass="z-icon-caret-right blue"/>
 					    </listhead>
 					    <template name="model" var="item">
 					        <listitem>
 					            <listcell label="@load(item.nroAccion)"/>
-					            <listcell label="@load(item.valor)" sclass="label label-primary arrowed"/>
+					            <listcell><label value="@load(item.valor)" sclass="label label-success arrowed"></label></listcell>
 					        </listitem>
 					    </template>
 					</listbox>

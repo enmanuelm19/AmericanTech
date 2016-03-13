@@ -28,34 +28,42 @@
 							<separator spacing="30px" />
 							<grid emptyMessage="" mold="paging"	pageSize="10" model="@load(vm.sancionesAll)">
 								<auxhead sclass="category-center">
-									<auxheader colspan="9">
+									<auxheader colspan="2">
 										<image src="../assets/img/funnel.png" />
-										<textbox instant="true"	width="120px" placeholder="Buscar" />
+										<textbox instant="true"	width="120px" placeholder="Buscar" value="@bind(vm.carnetFiltro)" onChange="@command('filtro')"/>
 									</auxheader>
-									<auxheader colspan="1" />
+									<auxheader colspan="1">
+										<image src="../assets/img/funnel.png" />
+										<textbox instant="true"	width="120px" placeholder="Buscar" value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"/>
+									</auxheader>
+									<auxheader colspan="1">
+										<image src="../assets/img/funnel.png" />
+										<textbox instant="true"	width="120px" placeholder="Buscar" value="@bind(vm.tipoFiltro)" onChange="@command('filtro')"/>
+									</auxheader>
+									<auxheader colspan="5" />
 								</auxhead>
 								<columns>
 									<column width="8%" align="center">Carnet</column>
 									<column width="8%" align="center">Foto</column>
 									<column width="13%" align="center">Nombre</column>
 									<column width="15%" align="center">Motivo</column>
-									<column width="20%" align="center">Descripción</column>
+									<column width="18%" align="center">Descripción</column>
 									<column width="10%" align="center">Fecha Inicio</column>
 									<column width="10%" align="center">Fecha Final</column>
-									<column width="6%" align="center">Monto</column>
+									<column width="8%" align="center">Monto</column>
 									<column width="10%" align="center">Acciones</column>
 								</columns>
 								<rows>
 									<template name="model">
 										<row>
 											<label value="@load(each.socio.nroCarnet)" />
-											<image src="/assets/portal/img/img2.jpg" width="90%" align="center" />
+											<image src="@load(each.socio.persona.foto)" width="90%" align="center" />
 											<label value="${each.socio.persona.nombre} ${each.socio.persona.apellido}" /><!-- Nombre -->
 											<label value="@load(each.tipoSancion.descripcion)" />
 											<label value="@load(each.descripcion)" />
 											<label value="@load(each.fechaInic)" />
 											<label value="@load(each.fechaFin)" />
-											<label value="@load(each.monto)" />
+											<label class="label label-danger arrowed" value="@load(each.monto)" />
 											<div>
 												<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar" onClick="@command('showModalRegistroSancion', Sancion=each)"/>
 												<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', Sancion=each)"/>

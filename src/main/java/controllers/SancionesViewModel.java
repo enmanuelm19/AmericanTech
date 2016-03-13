@@ -1,6 +1,8 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -22,8 +24,10 @@ import Dao.SancionDao;
 
 public class SancionesViewModel {
 	private SancionDao sancionDao;
-	private Sancion sancion;
 	private List<Sancion> sanciones;
+	private String nombreFiltro;
+	private String carnetFiltro;
+	private String tipoFiltro;
 	@Init
 	public void init() throws Exception{
 		this.sancionDao= new SancionDao();
@@ -75,5 +79,55 @@ public class SancionesViewModel {
 					}
 				});
 	}
+	
+	public String getNombreFiltro() {
+		if(nombreFiltro==null)
+			return "";
+		return nombreFiltro;
+	}
+
+	public void setNombreFiltro(String nombreFiltro) {
+		this.nombreFiltro = nombreFiltro==null?"":nombreFiltro.trim();
+	}
+
+	public String getTipoFiltro() {
+		if(tipoFiltro==null)
+			return "";
+		return tipoFiltro;
+	}
+
+	public void setTipoFiltro(String tipoFiltro) {
+		this.tipoFiltro = tipoFiltro==null?"":tipoFiltro.trim();
+	}
+	public String getCarnetFiltro() {
+		if(carnetFiltro==null)
+			return "";
+		return carnetFiltro;
+	}
+
+	public void setCarnetFiltro(String carnetFiltro) {
+		this.carnetFiltro = carnetFiltro==null?"":carnetFiltro.trim();
+	}
+	
+	@Command
+	@NotifyChange({ "sancionesAll", "cantidadSanciones" })
+	public void filtro() throws Exception {
+		List<Sancion> tip = new ArrayList<Sancion>();
+		String nombre = getNombreFiltro().toLowerCase();
+		String tipo = getTipoFiltro().toLowerCase();
+		String carnet= getCarnetFiltro();
+		for (Iterator<Sancion> i = sancionDao.obtenerTodos().iterator(); i.hasNext();) {
+			Sancion tmp = i.next();
+				if ((tmp.getSocio().getPersona().getNombre().toLowerCase().contains(nombre) ||
+					tmp.getSocio().getPersona().getApellido().toLowerCase().contains(nombre))&&
+					tmp.getTipoSancion().getDescripcion().toLowerCase().contains(tipo)&&
+					tmp.getSocio().getNroCarnet().toLowerCase().contains(carnet)
+					){
+						tip.add(tmp);
+				}
+		}
+		this.sanciones = tip;
+	}
+
 	
 }

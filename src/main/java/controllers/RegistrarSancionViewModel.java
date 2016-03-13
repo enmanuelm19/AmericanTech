@@ -3,11 +3,13 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import modelos.Eventualidad;
 import modelos.Persona;
+import modelos.Postulacion;
 import modelos.Sancion;
 import modelos.Socio;
 import modelos.TipoSancion;
@@ -53,6 +55,7 @@ public class RegistrarSancionViewModel {
 		tipoSancionDao= new TipoSancionDao();
 		tiposSancions=tipoSancionDao.obtenerTodos();
 		eventualidadDao= new EventualidadDao();
+		socioDao= new SocioDao();
 		if(sancion==null){
 			this.editable=false;
 			this.sancion= new Sancion();
@@ -463,4 +466,10 @@ public class RegistrarSancionViewModel {
 					}
 				});*/
 		}
-}
+	
+	@Command
+	public void cancelar(@BindingParam("win") Window win){
+		win.detach();
+	}
+	
+	}

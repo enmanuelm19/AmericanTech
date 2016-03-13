@@ -71,6 +71,9 @@ public class RegistrarAccionViewModel {
 				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido registrada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);
 			}
 			else{
+				if(accion.getEstadoAccion().getIdEstadoAccion()==2){
+					accion.setSocio(null);
+				}
 				accionDAO.actualizarAccion(accion);
 				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);		
 			}

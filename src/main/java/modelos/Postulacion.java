@@ -161,7 +161,9 @@ public class Postulacion implements java.io.Serializable {
 			promedio+=tmp.getCalificacion();
 		}
 		prom=(int) (promedio/opinions.size());
-		
+		if(prom==0){
+			star=new StarRating("no_select", "no_select","no_select","no_select","no_select");
+		}
 		if(prom==1){
 			star=new StarRating("select", "no_select","no_select","no_select","no_select");
 		} else if(prom==2){

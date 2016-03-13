@@ -54,13 +54,13 @@
 									<auxheader colspan="4" />
 								</auxhead>
 								<columns>
-									<column hflex="2">Foto</column>
-									<column hflex="2">Nombre</column>
-									<column hflex="2">Apellido</column>
-									<column hflex="1">Fecha</column>
+									<column hflex="1" align="center">Foto</column>
+									<column hflex="2" align="center">Nombre</column>
+									<column hflex="2" align="center">Apellido</column>
+									<column hflex="2" align="center">Fecha</column>
 									<!-- Fecha Postulación -->
-									<column hflex="2" align="center">Opiniones</column>
-									<column hflex="2">Calificaciónes</column>
+									<column hflex="1" align="center">Opiniones</column>
+									<column hflex="2" align="center">Calificaciónes</column>
 									<column hflex="2" align="center">Acciones</column>
 								</columns>
 
@@ -68,7 +68,7 @@
 								<template name="model">
 									<row>
 										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
+											src="@load(each.postulado.persona.foto)" width="100%" align="center" />
 										<label value="@load(each.postulado.persona.nombre)" /><!-- 1erNombre -->
 										<label value="@load(each.postulado.persona.apellido)" /><!-- 1er Apellido -->
 										<label value="@load(each.fecha)" />
