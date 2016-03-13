@@ -15,7 +15,7 @@
 		<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
 		<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
 		<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
-		<include src="header.html" />
+		<include src="header.zul" />
 
 
 		<image id="image" src="../assets/portal/img/bannerCartelera.png"

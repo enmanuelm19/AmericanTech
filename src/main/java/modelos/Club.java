@@ -20,8 +20,9 @@ public class Club implements java.io.Serializable {
 	private String logo;
 	private String telfAlternativo;
 	private String correo;
+	private String claveCorreo;
 	private String eslogan;
-	private boolean activo = true;
+	private boolean activo;
 	private Set<Foto> fotos = new HashSet<Foto>(0);
 	private Set<Politica> politicas = new HashSet<Politica>(0);
 	private Set<JuntaDirectiva> juntaDirectivas = new HashSet<JuntaDirectiva>(0);
@@ -47,9 +48,10 @@ public class Club implements java.io.Serializable {
 
 	public Club(int idClub, String rif, String nombre, String direccion,
 			String telefono, String mision, String vision, String logo,
-			String telfAlternativo, String correo, String eslogan,
-			boolean activo, Set<Foto> fotos, Set<Politica> politicas,
-			Set<JuntaDirectiva> juntaDirectivas, Set<RedClub> redClubs) {
+			String telfAlternativo, String correo, String claveCorreo,
+			String eslogan, boolean activo, Set<Foto> fotos,
+			Set<Politica> politicas, Set<JuntaDirectiva> juntaDirectivas,
+			Set<RedClub> redClubs) {
 		this.idClub = idClub;
 		this.rif = rif;
 		this.nombre = nombre;
@@ -60,6 +62,7 @@ public class Club implements java.io.Serializable {
 		this.logo = logo;
 		this.telfAlternativo = telfAlternativo;
 		this.correo = correo;
+		this.claveCorreo = claveCorreo;
 		this.eslogan = eslogan;
 		this.activo = activo;
 		this.fotos = fotos;
@@ -146,6 +149,14 @@ public class Club implements java.io.Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public String getClaveCorreo() {
+		return this.claveCorreo;
+	}
+
+	public void setClaveCorreo(String claveCorreo) {
+		this.claveCorreo = claveCorreo;
 	}
 
 	public String getEslogan() {

@@ -19,6 +19,7 @@ CREATE TABLE club (
   logo             text, 
   telf_alternativo varchar(20) NOT NULL, 
   correo           varchar(90) NOT NULL, 
+  clave_correo     text, 
   eslogan          text, 
   activo           bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_club));

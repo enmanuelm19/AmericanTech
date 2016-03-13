@@ -14,7 +14,7 @@
 	<?script type="text/javascript" src="../../assets/portal/js/jquery.scrollTo.js"?>
 	<?script type="text/javascript" src="../../assets/portal/js/move-top.js"?>
 	<?script type="text/javascript" src="../../assets/portal/js/efecto.js"?>
-	<include src="header.html" />
+	<include src="header.zul" />
 
 	<zk xmlns:n="native">
 		<image id="image"

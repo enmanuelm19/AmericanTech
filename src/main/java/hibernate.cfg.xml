@@ -63,7 +63,6 @@
         <mapping resource="modelos/Accion.hbm.xml" />
         <mapping resource="modelos/Cargo.hbm.xml" />
         <mapping resource="modelos/Reservacion.hbm.xml" />
-        <mapping resource="modelos/UnidadMedida.hbm.xml" />
         <mapping resource="modelos/Postulacion.hbm.xml" />
         <mapping resource="modelos/Instalacion.hbm.xml" />
         <mapping resource="modelos/Usuario.hbm.xml" />

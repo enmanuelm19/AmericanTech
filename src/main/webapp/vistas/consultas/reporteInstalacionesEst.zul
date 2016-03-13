@@ -6,51 +6,27 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
 						<a label="Estructurado" href="#" />
-						<label value="Sancion" />
+						<label value="Instalacion" />
 					</div>
 				</div>
 				<div class="contenedor" align="center">
 					<div sclass="page-header" align="left">
-						<label value="Sanciones" />
+						<label value="Instalaciones" />
 					</div>
 					<separator spacing="1%" />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Sanciones
+									Instalaciones
 								</div>
 								<div class='linea-two'></div>
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
 								<groupbox style="margin: 1%;" width="85%" height="auto">
-									<grid>
-										<rows>
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">	
-													   <label class="col-md-4">Seleccione :</label>
-												       <combobox >
-															<comboitem label="Todos"> </comboitem>
-															<comboitem label="Socios"></comboitem>
-															<comboitem label="Afiliados"></comboitem>
-													   </combobox>			   		
-											   	 </div>								   	 
-											  </row>   
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">
-											   		   <div >
-											   		   		<checkbox label="Nro de Carnet" class="col-md-4" />
-											   		   </div>   
-												       <textbox>
-			
-													   </textbox>			   		
-											   	 </div>								   	 
-											  </row>	
-										</rows>
-									</grid>
 									<space spacing="2%"></space>
-								   	 <groupbox  mold="3d" width="75%" height="auto" >
+									<groupbox  mold="3d" width="75%" height="auto" >
 								   	 	<caption label="Fecha"  ></caption>
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
@@ -61,16 +37,14 @@
 												<div>
 													Hasta: 
 													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
-												</div>																		   	 							   	 	
+												</div>						   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
-								   	 <space spacing="2%"></space>						   	 
+									<space spacing="1%"></space>								 							   	
 								</groupbox >
-							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
-									<space spacing="2%"></space>
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
-								 </div>	
+							    <div align="center" xmlns:w="client" style="margin:1%">
+								   <button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+							    </div>									
 							</div>
 						</div>
 					</div>

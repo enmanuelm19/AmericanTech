@@ -40,7 +40,7 @@
 						
 						<row class="col-md-12">
 							<div>
-								Descripción del evento
+								Descripción de la actividad
 								<n:br></n:br>
 								<textbox type="text" rows="3" value="@bind(vm.actividad.descripcion)"
 									width="100%" tabindex="10" constraint="no empty" />
@@ -77,7 +77,7 @@
 							mold="paging" pageSize="5">
 
 							<columns>
-								<column width="40%" hflex="">Descripcion</column>
+								<column width="40%" hflex="">Descripcion de la actividad</column>
 								
 								<column width="15%" hflex="">Acciones</column>
 							</columns>
@@ -107,7 +107,7 @@
 					<button iconSclass="z-icon-floppy-o" onClick="@command('guardar',win=winRAct)"
 						class='boton-guardar' label="Guardar" />
 					<space spacing="10%" />
-					<button iconSclass="z-icon-times" onClick="@command('cancelar',win=winRAct)"
+					<button iconSclass="z-icon-times" onClick="@command('cerrarModal',win=winRAct)"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
 				<space spacing="15%" />
