@@ -1,0 +1,95 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+
+
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-user" />
+						<a label="Socio" href="#" />
+						<label value="Sugerencias" />
+					</div>
+				</div>
+				<div align="center" class="contenedor">
+
+					<div sclass="page-header" align="left">
+						<label value="Vista General Sugerencias" />
+					</div>
+
+					<div class='form-pricing' width="85%" apply="org.zkoss.bind.BindComposer" 
+						viewModel="@id('vm') @init('controllers.SugerenciaViewModel')"
+						 style="margin-bottom: 20px;">
+
+						<separator spacing="10%" />
+
+
+						<div align="left">
+							<div class="encabezado">Sugerencias</div>
+							<div align="left" class="linea-two" />
+						</div>
+
+						<separator spacing="20px" />
+
+						<div align="center"><!-- INICIO DIV GRID DE GRUPOS-->
+							<!-- GRID DE GRUPOS-->
+
+							<grid
+								emptyMessage="No se encuentran reglas registradas" mold="paging"
+								pageSize="10" model="@load(vm.allSugerencia)">
+						<auxhead sclass="category-center">
+
+            				<auxheader colspan="1">
+            					<image src="../../../assets/img/funnel.png"  width="13%"/>
+               					<textbox instant="true" width="85%" placeholder="Buscar" 
+               							value="@bind(vm.descFiltro)" onChange="@command('filtro')"/>
+            				</auxheader>
+            				 <auxheader colspan="1" />
+						</auxhead>
+						
+						<columns>
+							<column align="center" hflex="2">Tipo</column>
+							<column align="center" hflex="2">Fecha</column>
+							<column  hflex="2" align="center">Nombre</column>
+							<column  hflex="2" align="center">Apellido</column>
+							<column  hflex="2" align="center">Foto</column>
+							<column hflex="6" align="center">Sugerencia</column>
+						</columns>
+								<rows>
+								<template name="model">
+									<row>
+										<label value="@load(each.tipoSugerencia.descripcion)" />
+										<label value="@load(each.fecha)" />
+										<label value="@load(each.usuario.persona.nombre)" />
+										<label value="@load(each.usuario.persona.apellido)" />
+										<image
+											src="/assets/portal/img/img2.jpg" width="65%" align="center" />
+										<div>
+											<textbox cols="45" rows="3"
+												readonly="true" type="text"
+												value="@load(each.descripcion)"
+												width="100%" />
+										</div>
+										<label value="" />
+									</row>
+									</template>
+								</rows>
+								<foot>
+									<footer span="2"
+										class="footer_right" label="@load(vm.cantRegistros)" />
+								</foot>
+							</grid>
+						</div><!--FIN DIV GRID DE GRUPOS-->
+
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

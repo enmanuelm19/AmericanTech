@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -52,10 +53,12 @@ public class RegistrarPreferenciaViewModel {
 		this.editable = editable;
 	}
 
+	@NotifyChange("preferencia")
 	public Preferencia getPreferencia() {
 		return preferencia;
 	}
-
+	
+	@NotifyChange("preferencia")
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 	}
@@ -70,7 +73,7 @@ public class RegistrarPreferenciaViewModel {
 
 		if (preferencia.getDescripcion() != null
 				&& !preferencia.getDescripcion().equalsIgnoreCase("")) {
-			if (preferenciaDao.obtenerPreferencia(preferencia.getDescripcion()) == null) {
+			if (preferenciaDao.obtenerDescripcion(preferencia.getDescripcion()) == null) {
 			if (!editable) {
 				preferenciaDao.agregarPreferencia(preferencia);
 				Messagebox.show(

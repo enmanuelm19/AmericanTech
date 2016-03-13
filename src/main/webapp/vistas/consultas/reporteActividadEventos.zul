@@ -1,0 +1,77 @@
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Actividadd" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Actividad" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Actividades
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="15%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+									 <div class="col-md-12" style="margin:1%">	
+											<image src="../assets/img/funnel.png" />
+											<textbox instant="true" width="50%" placeholder="Buscar" />		   		
+								   	 </div>	
+									<space spacing="2%"></space>
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Coincidencias"  ></caption>
+										<grid>
+											<rows>
+												  <row class="col-md-12" >			                  				                  
+													    <listbox hflex="2" height="200px" vflex="true" multiple="true" rows="5">
+													        <listhead>
+													            <listheader label="Eventos" ></listheader>
+													        </listhead>
+													        <!--template name="model"-->
+													            <!-- listitem>
+													                <listcell label="${each.firstName }"/>
+													                <listcell label="${each.lastName }"/>
+													                <listcell label="${each.fullName }"/>
+													                <listcell label="${each.married ? 'Y' : 'N' }"/>
+													            </listitem>-->
+														        <listitem>
+														            <listcell label="Dia del Padre" />
+														        </listitem>
+														        <listitem>
+														            <listcell label="Evento Deportivo Juvenil" />
+														        </listitem>								        
+													        <!--/template-->
+													    </listbox>   
+												 </row>
+											</rows>
+										</grid>
+								   	 </groupbox>
+								   	 <space spacing="1%"></space>							   	
+								</groupbox >
+						        <div align="center" xmlns:w="client">
+								   <button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+								   <space spacing="2%"></space>
+								   <button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+							    </div>	
+							</div>	
+							<space spacing="2%"></space>
+							
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

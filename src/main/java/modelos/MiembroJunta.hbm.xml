@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.MiembroJunta" table="miembro_junta" schema="public" optimistic-lock="version">
         <id name="idJuntaMiembro" type="int">
             <column name="id_junta_miembro" />
             <generator class="increment" />
         </id>
-        <many-to-one name="cargo" class="modelos.Cargo" fetch="select" lazy="false">
+        <many-to-one name="cargo" class="modelos.Cargo" fetch="select" lazy="false" cascade="save-update">
             <column name="cargoid_cargo" not-null="true" />
         </many-to-one>
-        <many-to-one name="juntaDirectiva" class="modelos.JuntaDirectiva" fetch="select" lazy="false">
+        <many-to-one name="juntaDirectiva" class="modelos.JuntaDirectiva" fetch="select" lazy="false" cascade="save-update">
             <column name="junta_directivaid_junta_directiva" not-null="true" />
         </many-to-one>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
         <property name="activo" type="boolean">

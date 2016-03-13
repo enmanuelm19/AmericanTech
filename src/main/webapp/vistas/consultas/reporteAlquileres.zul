@@ -1,0 +1,86 @@
+<zk xmlns:n="native" >
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.ReporteAlquilerViewModel')">
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Alquileres" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Alquileres" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Alquileres
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="2%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+								<space spacing="2%"></space>
+									<!--caption label="Alquileres"></caption-->
+									<hlayout width="100%" >
+							   		   <div >
+							   		   		<radio label="Estado de la Instalacion:" value="0" selected="true" />			   		   		
+							   		   </div>
+							   		   <div>
+							   		   		<combobox >
+												<comboitem label="Reservadas"> </comboitem>
+												<comboitem label="Alquiladas"></comboitem>
+												<!--comboitem label="Disponibles"></comboitem-->
+										   </combobox>
+							   		   </div>
+									   <space spacing ="2%"></space>   
+							   		   <div >
+							   		   		<radio label="Seleccione la Instalacion:" value="0"  />			   		   		
+							   		   </div>									    			   		
+							   		   	<div>
+							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)" >
+												<template name="model">
+														<comboitem
+															label="@load(each.nombre)" value="@load(each)" />
+												</template>
+										   </combobox>							   		   	
+							   		   	</div>	
+									</hlayout>
+									<space spacing="2%"></space>
+										
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Fecha"  ></caption>
+								   	 	<hlayout width="100%" style="padding:2%">
+							                  	<div>
+													Desde: 
+													<datebox  width="70%" tabindex="7" />
+												</div>
+												<space spacing="5%"></space>
+												<div>
+													Hasta: 
+													<datebox  width="70%" tabindex="7" />
+												</div>																		   	 							   	 	
+								   	 	</hlayout>
+								   	 </groupbox>
+								   	 <space spacing="1%"></space>						   	 
+								</groupbox >
+							     <div align="center" xmlns:w="client">
+									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<space spacing="2%"></space>
+									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+								 </div>									
+							</div>							
+							
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

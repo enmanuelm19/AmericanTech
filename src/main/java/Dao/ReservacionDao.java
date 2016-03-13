@@ -4,7 +4,9 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Instalacion;
 import modelos.Reservacion;
+import modelos.Socio;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -33,13 +35,13 @@ private Sesion sesionPostgres;
          } 
 	}
 	// Obtiene las Reservaciones que tiene una instalacion especifica.
-	public List<Reservacion> obtenerReservacionesInstalacion(int idInstalacion)throws Exception{
+	public List<Reservacion> obtenerReservacionesInstalacion(Instalacion dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<Reservacion> datos = new ArrayList<Reservacion>();        
             try{
                 datos = (List<Reservacion>) sesion.createCriteria(Reservacion.class)
-                		.add(Restrictions.eq("instalacionid_instalacion", idInstalacion)).list();
+                		.add(Restrictions.eq("instalacion", dato)).add(Restrictions.eq("activo", true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -50,13 +52,13 @@ private Sesion sesionPostgres;
 	    return datos;	
 	}
 	//Obtiene una lista con todas las Reservaciones que ha realizado un socio
-	public List<Reservacion> obtenerReservacionesSocio(int idSocio)throws Exception{
+	public List<Reservacion> obtenerReservacionesSocio(Socio dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<Reservacion> datos = new ArrayList<Reservacion>();        
             try{
                 datos = (List<Reservacion>) sesion.createCriteria(Reservacion.class)
-                		.add(Restrictions.eq("socioid_socio",idSocio)).list();
+                		.add(Restrictions.eq("socio",dato)).add(Restrictions.eq("activo",true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            

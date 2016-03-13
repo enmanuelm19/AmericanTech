@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Archivo" table="archivo" schema="public" optimistic-lock="version">
         <id name="idArchivo" type="int">
@@ -20,35 +20,11 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="foto" />
-            </key>
-            <one-to-many class="modelos.Noticia" />
-        </set>
-        <set name="archivoPortals" table="archivo_portal" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="archivoid_archivo" not-null="true" />
-            </key>
-            <one-to-many class="modelos.ArchivoPortal" />
-        </set>
-        <set name="clubs" table="club" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="logo" not-null="true" />
-            </key>
-            <one-to-many class="modelos.Club" />
-        </set>
-        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="true" fetch="select">
+        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="archivoid_archivo" not-null="true" />
             </key>
             <one-to-many class="modelos.ArchivoAlquiler" />
-        </set>
-        <set name="personas" table="persona" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="foto" />
-            </key>
-            <one-to-many class="modelos.Persona" />
         </set>
     </class>
 </hibernate-mapping>

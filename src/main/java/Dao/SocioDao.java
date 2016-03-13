@@ -4,6 +4,8 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Persona;
+import modelos.Postulacion;
 import modelos.Socio;
 
 import org.hibernate.Session;
@@ -17,6 +19,7 @@ public class SocioDao {
 	
 	// Agrega un registro a la tabla.
 	public void agregarSocio(Socio dato) throws Exception{
+		System.out.println("dsda cart-; "+dato.getNroCarnet());
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -33,13 +36,13 @@ public class SocioDao {
          } 
 	}
 	// Obtiene a un socio mediante su postulacion.
-	public Socio obtenerSocioPostulacion(int idPostulacion)throws Exception{
+	public Socio obtenerSocioPostulacion(Postulacion dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    Socio datos = null;        
             try{
                 datos = (Socio) sesion.createCriteria(Socio.class)
-                		.add(Restrictions.eq("postulacionid_postulacion", idPostulacion)).uniqueResult();
+                		.add(Restrictions.eq("postulacion", dato)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());
@@ -50,13 +53,13 @@ public class SocioDao {
 	}
 	
 	//Obtiene un socio mediante el id de persona al que esta relacionado
-	public Socio obtenerSocioPersona(int idPersona)throws Exception{
+	public Socio obtenerSocioPersona(Persona dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    Socio datos = null;        
             try{
                 datos = (Socio) sesion.createCriteria(Socio.class)
-                		.add(Restrictions.eq("personaid_persona", idPersona)).uniqueResult();
+                		.add(Restrictions.eq("persona", dato)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -74,7 +77,7 @@ public class SocioDao {
 	    Socio datos = null;        
             try{
                 datos = (Socio) sesion.createCriteria(Socio.class)
-                		.add(Restrictions.eq("nro_carnet", NroCarnet)).uniqueResult();
+                		.add(Restrictions.eq("nroCarnet", NroCarnet)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
             throw new Exception(e.getMessage(),e.getCause());

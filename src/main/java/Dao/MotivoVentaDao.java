@@ -60,6 +60,7 @@ public class MotivoVentaDao {
 		try {
 			dato = (MotivoVenta) sesion.createCriteria(MotivoVenta.class)
 					.add(Restrictions.eq("descripcion", descrip))
+					.add(Restrictions.eq("activo", true))
 					.uniqueResult();
 		} catch (Exception e) {
 			e.printStackTrace();

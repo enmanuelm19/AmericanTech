@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,8 @@ public class TipoAfiliado implements java.io.Serializable {
 
 	private int idTipoAfiliado;
 	private String descripcion;
-	private boolean activo = true;
+	private String subfijo;
+	private boolean activo;
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
 
 	public TipoAfiliado() {
@@ -24,10 +25,11 @@ public class TipoAfiliado implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public TipoAfiliado(int idTipoAfiliado, String descripcion, boolean activo,
-			Set<Afiliado> afiliados) {
+	public TipoAfiliado(int idTipoAfiliado, String descripcion, String subfijo,
+			boolean activo, Set<Afiliado> afiliados) {
 		this.idTipoAfiliado = idTipoAfiliado;
 		this.descripcion = descripcion;
+		this.subfijo = subfijo;
 		this.activo = activo;
 		this.afiliados = afiliados;
 	}
@@ -46,6 +48,14 @@ public class TipoAfiliado implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getSubfijo() {
+		return this.subfijo;
+	}
+
+	public void setSubfijo(String subfijo) {
+		this.subfijo = subfijo;
 	}
 
 	public boolean isActivo() {

@@ -1,7 +1,3 @@
-
-<zk xmlns:n="native">
-<div>
-
 <?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
@@ -16,83 +12,222 @@
 <?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
 <?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
 
+<zk xmlns:n="native">
+	<div>
+		<window apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('controllers.RegistrarSugerenciaIndexViewModel')">
 
-<div class="contact" id="contact">
-	<div class="wrap">
-		<n:h2>Contáctanos</n:h2>
-		<n:h4>¿Tienes alguna Sugerencia?</n:h4>
-		<div class="section group">
-			  <div class="col span_2_of_3">
-				  <div class="contact-form">
-				  	  <n:form>
-				  	   	<n:h5>Tu sugerencia esta relacionada con:</n:h5>
-	
-         
-         <radiogroup id="sv1" onCheck="" />
-                <radio id="ra1" label="Instalaciones" radiogroup="sv1" style="margin-right:15px;" />
-                <radio id="ra2" label="Eventos" radiogroup="sv1" style="margin-right:15px;"  />
-                <radio id="ra3" label="Socios" radiogroup="sv1" style="margin-right:15px;" />
-                <radio id="ra4" label="Nuestra Atención" radiogroup="sv1" style="margin-right:15px;"  />
-                <radio id="ra5" label="Sugerencia General" radiogroup="sv1"  style="margin-right:15px;" />
-          <separator />
-         <n:br></n:br>
-					    	
-					    		<textbox class="textbox" placeholder="Tu nombre" ></textbox>
-						    	<textbox  class="textbox" placeholder="Tu email" ></textbox>
-						    	<div class="clear"> </div>
-						   
-						    <div>
-						    	<textbox placeholder="Tu mensaje" rows="7" cols="7"/>
-						    </div>
-						  <div class="col-md-offset-9"><span><button  iconSclass="z-icon-floppy-o" class='boton-Formulario' label="Enviar"/></span></div>
-						  <div class="clear"></div>
-					    </n:form>
-				  </div>
-  				</div>
-				<div class="col span_1_of_3">
-					<div class="company_address">
-				     	<n:h5>Información</n:h5>
-						<n:ul class="list3">
-							<n:li>
-								<n:img src="assets/portal/img/location.png" alt=""/>
-								<div class="extra-wrap">
-								  <n:p>Av. Fuerzas Armadas,  </n:p>
-								  <n:p>con Calle 57,</n:p>
-								  <n:p>Concepcion, Barquisimeto.</n:p>
+			<div class="wrap">
+				<n:h2>Contáctanos</n:h2>
+				<n:h4>¿Tienes alguna Sugerencia?</n:h4>
+				<div class="section group">
+					<div class="col span_2_of_3">
+						<div class="contact-form">
+							<n:form>
+
+								<div class="row">
+
+									<n:h5>
+										Tu sugerencia esta relacionada
+										con:
+									</n:h5>
+									<div
+										style="width:550px; margin-left: 14px; background-color: #FFFFFF ">
+										<combobox zclass="none"
+											id="combo"
+											style="margin-left: -14px; background-color: #FFFFFF"
+											model="@load(vm.allTipoSugerencia)"
+											selectedItem="@bind(vm.sugerencia.tipoSugerencia)"
+											value="@bind(vm.sugerencia.tipoSugerencia.descripcion)">
+											<template name="model">
+												<comboitem zclass="none"
+													style="height: 25px; width:100px; background-color: #FFFFFF; padding: 7px;"
+													label="@load(each.descripcion)" value="@load(each)" />
+											</template>
+										</combobox>
+
+
+									</div>
+
+
+									<div class="clear"></div>
 								</div>
-								<div class="clear"> </div>
-							</n:li>
+
+
+
+								<div>
+									<textbox class="textbox"
+										placeholder="Tu nombre"
+										value="@bind(vm.clienteExterno.nombre)"
+										constraint="no empty">
+									</textbox>
+									<textbox class="textbox"
+										placeholder="Tu apellido"
+										value="@bind(vm.clienteExterno.apellido)"
+										constraint="no empty">
+									</textbox>
+									<div class="clear"></div>
+								</div>
+
+
+								<div>
+									<textbox placeholder="Tu mensaje"
+										rows="7" cols="7" value="@bind(vm.sugerencia.descripcion)"
+										constraint="no empty" />
+									<n:br></n:br>
+								</div>
+								<div>
+									<textbox class="textbox"
+										placeholder="Tu Correo"
+										value="@bind(vm.clienteExterno.correo)"
+										constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email">
+									</textbox>
+
+									<div class="clear"></div>
+								</div>
+								<div class="col-md-offset-9">
+									<span>
+										<button
+											iconSclass="z-icon-floppy-o" class='boton-Formulario'
+											label="Enviar" onClick="@command('guardar', win=winP)" />
+									</span>
+								</div>
+								<div class="clear"></div>
+
+
+							</n:form>
+						</div>
+					</div>
+					<div class="col span_1_of_3">
+						<div class="company_address" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+							<n:h5>Información</n:h5>
+							<n:ul class="list3">
+								<n:li>
+									<n:img
+										src="assets/portal/img/location.png" alt="" />
+									<div class="extra-wrap">
+									
+										<n:p>
+											<label  value="@load(vm.club.direccion)"></label>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+
+								<n:li>
+									<n:img
+										src="assets/portal/img/phone.png" alt="" />
+									<div class="extra-wrap">
+										<n:p>
+											<label  value="@load(vm.club.telefono)"></label>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+								<n:li>
+									<n:img
+										src="assets/portal/img//fax2.png" alt="" />
+									<div class="extra-wrap">
+										<n:p>
+											<label  value="@load(vm.club.telfAlternativo)"></label>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+								<n:li>
+								
+									<n:img
+										src="assets/portal/img/mail.png" alt="" />
+									<div class="extra-wrap">
+										<n:p>
+											<n:p>
+											<label  value="@load(vm.club.correo)"></label>
+										</n:p>
+										</n:p>
+									</div>
+									
+								</n:li>
 							
-							<n:li>
-								<n:img src="assets/portal/img/phone.png" alt=""/>
-								<div class="extra-wrap">
-									<n:p>0251-258 2598</n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-							<n:li>
-								<n:img src="assets/portal/img//fax2.png" alt=""/>
-								<div class="extra-wrap">
-									<n:p>0416-6343 8690</n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-							<n:li>
-								<n:img src="assets/portal/img/mail.png" alt=""/>
-								<div class="extra-wrap">
-									<n:p> <a href="mailto:info@mycompany.com"> centroAmerica@gmail.com</a></n:p>
-								</div>
-								<div class="clear"> </div>
-							</n:li>
-						</n:ul>
-				   </div>
-				 </div>
-				 <div class="clear"></div>
-			  </div>
-			  </div>
-     	</div>
+							</n:ul>
+						</div>
+					</div>
+					
+					<!-- -Redes sociales-->
+					<div class="col span_1_of_3" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')" >
+						<div class="company_address">
+							<n:h5>Redes sociales</n:h5>
+			
+							
+							<n:ul class="list3">
+						
+									<n:li>
 
 
-    
-</div>
+
+									<div class="grow"><n:img class="custom" src="assets/portal/img/facebook.png" alt=""  /> </div>
+									<div class="extra-wrap">
+										<n:p>
+											<a
+												href="@load(vm.club.mision)">
+													red social
+											</a>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+										<n:li>
+									<div class="grow"><n:img class="custom" src="assets/portal/img/twitter.png" alt=""  /> </div>
+									<div class="extra-wrap">
+										<n:p>
+											<a
+												href="mailto:info@mycompany.com">
+													red social
+											</a>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+								
+								
+								
+									<n:li>
+									<div class="grow"><n:img class="custom" src="assets/portal/img/instagram.png" alt=""  /> </div>
+									<div class="extra-wrap">
+										<n:p>
+											<a
+												href="mailto:info@mycompany.com">
+												red social
+											</a>
+										</n:p>
+									</div>
+									<div class="clear"></div>
+								</n:li>
+							</n:ul>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+			<script>
+				setTimeout(function(){
+				$("#combo").removeClass("z-combobox-input"); }, 1000);
+
+
+
+
+
+
+
+			</script>
+
+		</window>
+	</div>
 </zk>

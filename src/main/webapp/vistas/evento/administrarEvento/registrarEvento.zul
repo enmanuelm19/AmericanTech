@@ -1,14 +1,13 @@
 <zk xmlns:n="native">
 
-	<window border="none" title="Registrar Evento"
+	<window id="winEv" border="none" title="@load(vm.editable?'Editar evento':'Registrar evento')"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="auto"
-		style="iconSclass= z-icon-calendar;">
+		closable="true" width="60%" height="auto"
+		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarEventoViewModel')">
 		<caption iconSclass="z-icon-calendar" />
 
-
 		<div class='contenido'>
-
 
 			<div align="center">
 
@@ -28,29 +27,29 @@
 							<div>
 								Fecha inicio
 								<n:br></n:br>
-								<datebox id="DateFchInicio" width="85%"
-									cols="12" format="short " onCreate="self.value = new Date()" />
+								<datebox id="DateFchInicio" width="85%" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaInicio)"
+									cols="12" format="short" />
 							</div>
 
 							<div>
 								Fecha fin
 								<n:br></n:br>
-								<datebox id="DateFchCierre" cols="12"
-									format="short " width="85%" onCreate="self.value = new Date()" />
+								<datebox id="DateFchCierre" cols="12" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaFin)"
+									format="short" width="85%" />
 							</div>
 						</row>
 						<row class="col-md-12">
 							<div>
 								Hora inicio
 								<n:br></n:br>
-								<timebox id="TimeHorInicio" cols="12"
-									format="short" onCreate="self.value = new Date()" width="85%" />
+								<timebox cols="12" value="@bind(vm.evento.fechaInicio)" disabled="@load(vm.disabled)"
+									format="short"  width="85%" />
 							</div>
 							<div>
 								Hora cierre
 								<n:br></n:br>
-								<timebox id="TimeHorCierre" cols="12"
-									format="short" onCreate="self.value = new Date()" width="85%" />
+								<timebox cols="12" value="@bind(vm.evento.fechaFin)" disabled="@load(vm.disabled)"
+									format="short" width="85%" />
 							</div>
 
 						</row>
@@ -60,14 +59,14 @@
 							<div>
 								Nombre del evento
 								<n:br></n:br>
-								<textbox type="text" width="85%"
+								<textbox type="text" width="85%" value="@bind(vm.evento.nombre)"
 									tabindex="10" constraint="no empty" />
 							</div>
 
 							<div>
 								Descripción del evento
 								<n:br></n:br>
-								<textbox type="text" rows="5"
+								<textbox type="text" rows="5" value="@bind(vm.evento.descripcion)"
 									width="85%" tabindex="10" constraint="no empty" />
 							</div>
 						</row>
@@ -81,128 +80,121 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div align="left">
-							Seleccione las Categorías relacionadas con
+							Seleccione la Categoría/as relacionadas con
 							el evento:
 							<n:br></n:br>
-							<combobox width="100%">
-								<comboitem label="Deportivo" />
-								<comboitem label="Cultural" />
-								<comboitem label="Social" />
-								<comboitem label="Mixto" />
+							<combobox model="@load(vm.allTipoPreferencia)" selectedItem="@bind(vm.tipoPreferenciaSelected)" width="80%%">
+								<template name="model">
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
+								</template>
 							</combobox>
-							<!-- <button sclass="btn-link"
-								iconSclass="z-icon-plus blue" id=""
-								tooltiptext="Agregar preferencia" />-->
-
 						</div>
 						<n:br></n:br>
-						<grid id="gridPreferencias"
-							emptyMessage="No se encuentran solicitudes registradas"
-							mold="paging" pageSize="10">
+					</div>
+
+					<div class="col-md-6">
+						<div align="left">
+							Seleccione la sub-categoria/as relacionadas con
+							el evento:
+							<n:br></n:br>
+							<chosenbox  model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%" 
+                    				emptyMessage="" creatable="true" selectedObjects="@bind(vm.temporalPreferencia)" />
+							<button sclass="btn-link" onClick="@command('agregarPreferenciasEvento')"
+								iconSclass="z-icon-plus blue" id=""
+								tooltiptext="Agregar preferencia" />
+						</div>
+					</div>
+				</div>
+				<n:br></n:br>
+				<div class="col-md-12">
+					<grid model="@load(vm.preferenciasEventos)"
+							emptyMessage="No se encuentran sub-categorias registradas"
+							mold="paging" pageSize="5">
 
 							<columns>
-
+								<column width="40%" hflex="">Categoria</column>
 								
-								<column hflex="">Sub Categorias</column>
+								<column width="40%" hflex="">Sub-categoria</column>
 
-								<column hflex="">Acciones</column>
+								<column width="20%" hflex="">Acciones</column>
 							</columns>
 
 							<rows>
+							<template name="model">
 								<row>
-									<div>
-										<checkbox/>
+								
+									<label value="@load(each.preferencia.tipoPreferencia.descripcion)" />
 									
-									<label value=" Futbol" />
-									</div>
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id=""
-											tooltiptext="Eliminar" />
-									</div>
+									<label value="@load(each.preferencia.descripcion)" />
+				
+									<button sclass="btn-link"
+											iconSclass="z-icon-trash-o red" 
+											tooltiptext="Eliminar" onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)"/>
 								</row>
-									<row>
-									<div>
-										<checkbox/>
-									
-									<label value="Beisbol" />
-									</div>
-									<div>
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id=""
-											tooltiptext="Eliminar" />
-									</div>
-								</row>
+							</template>				
 							</rows>
 
 							<foot>
 								<footer span="5" class="footer_right"
-									label="0 items en la lista" />
+									label="@load(vm.cantidadPreferencias)" />
 							</foot>
 						</grid>
-
 					</div>
+				<n:br></n:br>
 
+				<n:br></n:br>
+				<div align="left" class="linea-two"></div>
+				<n:br></n:br>
+				<div class="row">
+					
 					<div class="col-md-6">
 						<div align="left">
 							Seleccione la instalacion/es donde desea
 							realizar el evento:
 							<n:br></n:br>
-							<combobox width="80%">
-								<comboitem label="Caney de Rafa" />
-								<comboitem label="Caney de chevecita" />
-								<comboitem label="Salón principal" />
-							</combobox>
+							<chosenbox  model="@load(vm.instalaciones)" hflex="1" width="80%" 
+                    				emptyMessage="" creatable="true" selectedObjects="@bind(vm.temporalInstalaciones)" />
 							<button sclass="btn-link"
 								iconSclass="z-icon-plus blue" id=""
-								tooltiptext="Agregar instalacion" />
-
+								tooltiptext="Agregar instalacion" onClick="@command('agregarInstalacionesEvento')"/>
 						</div>
-						<n:br></n:br>
-						<grid id="gridInstalaciones"
-							emptyMessage="No se encuentran solicitudes registradas"
-							mold="paging" pageSize="10">
+					</div>
+				</div>
+				
+				<n:br></n:br>
+				<div class="col-md-12">
+					<grid  model="@load(vm.instalacionesEventos)" emptyMessage="No se encuentran instalaciones registradas"
+						  mold="paging" pageSize="10">
 
 							<columns>
+								<column width="40%" hflex="">Tipo instalacion</column>
+								
+								<column width="40%" hflex="">instalacion</column>
 
-
-								<column hflex="">Instalaciones</column>
-
-								<column hflex="">Acciones</column>
+								<column width="20%" hflex="">Acciones</column>
 							</columns>
 
 							<rows>
+							<template name="model">
 								<row>
-									<label value="Caney de Rafa" />
-
-
-
-									<div>
-
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
-									</div>
+									<label value="@load(each.instalacion.tipoInstalacion.descripcion)" />
+									
+									<label value="@load(each.instalacion.nombre)" />
+	
+									<button sclass="btn-link" onClick="@command('eliminarInstalacionEvento', instalacionEvento=each)"
+											iconSclass="z-icon-trash-o red" id=""
+											tooltiptext="Eliminar" />
 								</row>
-								<row>
-									<label value="Caney Chevechita" />
-
-
-
-									<div>
-
-										<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
-									</div>
-								</row>
+							</template>
 							</rows>
 
 							<foot>
 								<footer span="5" class="footer_right"
-									label="0 items en la lista" />
+									label="@load(vm.cantidadInstalaciones)" />
 							</foot>
 						</grid>
 					</div>
-				</div>
 				<n:br></n:br>
 
 				<n:br></n:br>
@@ -215,54 +207,52 @@
 							<div class="col-md-6">
 								Seleccione el indicador
 								<n:br></n:br>
-								<combobox width="85%">
-									<comboitem
-										label="Cantidad de invitados" />
-									<comboitem
-										label="Cantidad de dinero recaudado" />
-								</combobox>
+								<combobox model="@load(vm.allIndicadores)" selectedItem="@bind(vm.indicadorEvento.indicador)" width="85%">
+								<template name="model">
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
+								</template>
+							</combobox>
 
 							</div>
 							<div class="col-md-6">
-								Cant esperada (indicador)
+								Valor esperado del indicador
 								<n:br></n:br>
-								<textbox type="text" width="80%"
+								<intbox width="80%" value="@bind(vm.indicadorEvento.valorEsperado)"
 									tabindex="10" constraint="no empty" />
-								<button sclass="btn-link"
+								<button sclass="btn-link" onClick="@command('agregarIndicadorEvento')"
 									iconSclass="z-icon-plus blue" id=""
 									tooltiptext="Agregar Indicador" />
 							</div>
 						</div>
 						<n:br></n:br>
-						<grid id=""
-							emptyMessage="No se encuentran solicitudes registradas"
+						<grid  model="@load(vm.indicadoresEventos)"
+							emptyMessage="No se encuentran indicadores registrados"
 							mold="paging" pageSize="10">
 
 							<columns>
-
-
 								<column hflex="">Indicador</column>
-								<column hflex="">Cant esperada</column>
+								<column hflex="">Valor esperado</column>
 								<column hflex="">Acciones</column>
 							</columns>
 
 							<rows>
+								<template name="model">
 								<row>
-									<label value="Cant de invidados" />
-									<label value="300" />
-
-
+									<label value="@load(each.indicador.descripcion)" />
+									<label value="@load(each.valorEsperado)" />
 									<div>
 
-										<button sclass="btn-link"
+										<button sclass="btn-link" onClick="@command('eliminarIndicadorEvento',indicadorEvento=each)"
 											iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
 									</div>
 								</row>
+								</template>
 							</rows>
 
 							<foot>
 								<footer span="5" class="footer_right"
-									label="0 items en la lista" />
+									label="@load(vm.cantidadIndicadores)" />
 							</foot>
 						</grid>
 
@@ -273,16 +263,13 @@
 				<n:br></n:br>
 				<n:br></n:br>
 
-
-
-
 				<space spacing="35%" />
 				<div>
 
-					<button iconSclass="z-icon-floppy-o"
+					<button iconSclass="z-icon-floppy-o" onClick="@command('guardar',win=winEv)"
 						class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
-					<button iconSclass="z-icon-times"
+					<button iconSclass="z-icon-times" onClick="@command('cerrarModal',win=winEv)"
 						class='boton-cancelar' label="Cancelar" />
 				</div>
 				<space spacing="15%" />

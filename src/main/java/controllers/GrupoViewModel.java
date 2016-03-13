@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import models.Funcion;
-import service.FuncionService;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -22,9 +21,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.GrupoDao;
-import Dao.UsuarioDao;
 import modelos.Grupo;
-import modelos.Usuario;
 
 public class GrupoViewModel {
 	private Grupo grupo = new Grupo();

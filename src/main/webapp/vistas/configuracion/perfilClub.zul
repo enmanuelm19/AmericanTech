@@ -1,3 +1,4 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
 <div xmlns:n="native" class='contenedor'>
 
 	<vlayout spacing="0" hflex="1">
@@ -16,22 +17,22 @@
 			<separator spacing="3%" />
 			<div class='contenido'>
 				<div class="col-md-8 col-centered "
-					form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+					apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('vm') @init('controllers.RegistrarPerfilClubViewModel')">
 					<div class='form-pricing' width="105%"
 						height="100%">
 						<separator spacing="2%" />
 						<div class='encabezado'>Datos Del Club</div>
 						<div class='linea-two'></div>
 						<separator spacing="30px" />
-						<div class="row">
+						<div class="row" id="datosClub">
 							<div class="col-md-4">
-								<div class="input-group">
-									<image
-										src="/assets/intranet/avatars/americaBordeBlanco.png"
-										class='img-responsive col-md-offset-9' width="60%" />
+									<div class="input-group">
+									<image class="img-responsive col-md-offset-0"  content="@bind(vm.uploadedImage)"
+									src="@bind(vm.club.logo)" width="100%" />
 									<fileupload label="Examinar"
+										upload="true,maxsize=2000" style="margin-left: 25%"
+										onUpload="@command('upload',media=event.media)" 
 										iconSclass="z-icon-folder-open"
 										class='boton-guardar col-md-offset-7' />
 								</div>
@@ -45,8 +46,8 @@
 													class="col-md-3">
 													RIF
 												</label>
-												<textbox id="txtRif"
-													constraint="no empty" class="col-md-4">
+												<textbox id="txtrif" value="@bind(vm.club.rif)"
+													constraint="no empty" class="col-md-4" maxlength="12">
 												</textbox>
 											</div>
 										</row>
@@ -56,8 +57,9 @@
 													class="col-md-3">
 													Nombre
 												</label>
-												<textbox
-													constraint="no empty" class="col-md-9">
+												<textbox id="txtNombre"
+													constraint="no empty" class="col-md-9"
+													value="@bind(vm.club.nombre)" maxlength="40">
 												</textbox>
 											</div>
 										</row>
@@ -68,8 +70,20 @@
 													Dirección
 												</label>
 												<textbox
-													id="txtDireccion" rows="5" cols="30" class="col-md-9"
-													constraint="no empty">
+													id="txtDireccion" rows="5" cols="30" class="col-md-9" maxlength="250"
+													constraint="no empty" value="@bind(vm.club.direccion)">
+												</textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Correo
+												</label>
+												<textbox
+													id="txtCorreo" maxlength="50"
+													class="col-md-9" value="@bind(vm.club.correo)">
 												</textbox>
 											</div>
 										</row>
@@ -79,8 +93,21 @@
 													class="col-md-3">
 													Teléfono
 												</label>
+												<textbox 
+													constraint="no zero, no empty" id="txtTelefono"
+													class="col-md-6" value="@bind(vm.club.telefono)" maxlength="12">
+												</textbox>
+											</div>
+										</row>
+										<row>
+											<div>
+												<label
+													class="col-md-3">
+													Teléfono Alternativo 
+												</label>
 												<textbox
-													id="txtTelefono" class="col-md-6" constraint="no empty">
+													 value="@bind(vm.club.telfAlternativo)" maxlength="12"
+													id="txtTelefonoAlternativo" class="col-md-6">
 												</textbox>
 											</div>
 										</row>
@@ -96,113 +123,164 @@
 						</div>
 						<div class='linea-two'></div>
 						<separator spacing="30px" />
+						<grid>
+							<rows>
+								<row>
+									<div class="col-md-12">
 
-						<div class="row">
-							<div class="col-md-12">
-								<div class="col-md-6">
-									<label class="col-md-2">
-										Misión
-									</label>
-									<textbox id="txtMision" rows="5" cols="30"
-										class="col-md-10" constraint="no empty">
-									</textbox>
-								</div>
+										<div class="col-md-1"></div>
+										<label class="col-md-2">
+											Misión
+										</label>
+										<textbox id="txtMision" rows="5" value="@bind(vm.club.mision)"
+											cols="30" class="col-md-7" constraint="no empty" maxlength="500">
+										</textbox>
 
-								<div class="col-md-6">
-									<label class="col-md-2">
-										Visión
-									</label>
-									<textbox id="txtVision" rows="5"
-										cols="30" class="col-md-10" constraint="no empty">
-									</textbox>
-								</div>
-							</div>
+									</div>
+								</row>
+								<row>
+									<div class="col-md-12" style="margin-top: 2%">
 
-						</div>
+										<div class="col-md-1"></div>
+										<label class="col-md-2">
+											Visión
+										</label>
+										<textbox id="txtVision" rows="5" value="@bind(vm.club.vision)"
+											cols="30" class="col-md-7" constraint="no empty" maxlength="500">
+										</textbox>
+
+									</div>
+								</row>
+								<row>
+									<div class="col-md-12" style="margin-top: 2%">
+
+										<div class="col-md-1"></div>
+										<label class="col-md-2">
+											Eslogan
+										</label>
+										<textbox id="txtEslogan" value="@bind(vm.club.eslogan)" maxlength="100"
+											rows="5" cols="30" class="col-md-7" constraint="no empty">
+										</textbox>
+
+									</div>
+								</row>
+							</rows>
+						</grid>
 						<separator spacing="15px" />
 						<div class='encabezado'>Redes Sociales</div>
 						<div class='linea-two'></div>
 						<separator spacing="30px" />
-						<div class="row">
-
-							<div class="col-md-6">
-								<grid>
-									<rows>
-										<row>
-											<div>
+						<div>
+						<grid>
+						  <rows>
+							<row>
+							<div class="col-md-12">
 												<label
-													class="col-md-3">
+													class="col-md-1">
 													Enlace
 												</label>
-												<textbox id="txtEnlace"
-													class="col-md-6" constraint="no empty">
+												<textbox id="txtEnlace" style="margin-left: 30px"
+													class="col-md-3" constraint="no empty"
+													value="@bind(vm.redClub.enlace)" maxlength="100">
 												</textbox>
-											</div>
-										</row>
-										<row>
-											<div>
+											
+												<div class="col-md-1">
+												</div>
+											
 												<label
-													class="col-md-3">
+													class="col-md-2">
 													Red Social
 												</label>
-												<combobox>
-													<comboitem
-														label="Seleccione una Red Social">
-													</comboitem>
-													<comboitem
-														label="Facebook">
-													</comboitem>
-													<comboitem
-														label="Twitter">
-													</comboitem>
-													<comboitem
-														label="Instagram">
-													</comboitem>
-												</combobox>
-												<button	iconSclass="z-icon-plus blue" class='btn-link' tooltiptext="Agregar" />
-											</div>
-										</row>
-										<row>
-											<div>										
-												
-											</div>
-										</row>
-									</rows>
-								</grid>
-							</div>
-							<div class="col-md-6">
-
-								<listbox>
-									<listhead>
-										<listheader width="50%"
-											align="center" label="Red Social" />
-										<listheader width="50%"
-											align="center" label="Enlace" />
-
-									</listhead>
-
-									<listitem label="Twitter" />
-									<listitem label="AmericanTech" />
-								</listbox>
-							</div>
-						</div>
+												<combobox
+									model="@load(vm.allRedSocials)" class="col-md-3"
+									selectedItem="@bind(vm.redClub.redSocial)"
+									value="Seleccione">
+									<template name="model">
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
+									</template>
+								</combobox>
+												<button onClick="@command('agregarEnlaceRedSocial')"
+													iconSclass="z-icon-plus blue" class="col-md-2 btn-link"
+													tooltiptext="Agregar" style=" width: 10px; margin-left: 30px" />
+											
+										
+										
+							
 						
+							 </div>
+							</row>
+								<row>
+								
+									<div class="col-md-8">
+										<div class="col-md-3"></div>
+															<grid
+																model="@load(vm.allRedClubs)"
+																emptyMessage="No se encuentran indicadores registrados"
+																mold="paging" pageSize="10">
+
+																<columns>
+																	<column
+																		hflex="">
+																		Red Social
+																	</column>
+																	<column style="width: 30%"
+																		hflex="">
+																		Enlace
+																	</column>
+																	<column
+																		hflex="">
+																		Acciones
+																	</column>
+																</columns>
+
+																<rows>
+																	<template
+																		name="model">
+																		<row>
+																			<label
+																				value="@load(each.redSocial.descripcion)" />
+																			<label
+																				value="@load(each.enlace)" />
+																			<div>
+
+																				<button
+																					sclass="btn-link"
+																					onClick="@command('eliminarEnlaceRedSocial',redClub=each)"
+																					iconSclass="z-icon-trash-o red" id=""
+																					tooltiptext="Eliminar" />
+																			</div>
+																		</row>
+																	</template>
+																</rows>
+															</grid>
+												</div>
+											</row>	
+									
+								
+							</rows>
+							</grid>
+						</div>
+
 						<separator spacing="20px"></separator>
 
 						<div class="row col-md-12">
-							<button class="boton-guardar col-md-3 col-md-offset-2"
-								label="Guardar" type="button" iconSclass="z-icon-floppy-o">
+							<button
+								class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
+								type="button" iconSclass="z-icon-floppy-o"
+								onClick="@command('guardar')">
 							</button>
-							<button class="boton-cancelar col-md-3 col-md-offset-2"
+							<button
+								class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('limpiar')"
 								iconSclass="z-icon-times" type="button" label="Cancelar">
 							</button>
 						</div>
 					</div>
-					
+
 				</div>
-				
+
 			</div>
-	
+
 		</div>
 	</vlayout>
 

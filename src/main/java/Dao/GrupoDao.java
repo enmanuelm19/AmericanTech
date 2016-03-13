@@ -50,7 +50,7 @@ private Sesion sesionPostgres;
             }  
            
 	    return dato;
-}
+	}
 	
 	public void eliminarGrupo(Grupo dato) throws Exception{		 
 		@SuppressWarnings("static-access")
@@ -101,7 +101,23 @@ private Sesion sesionPostgres;
 	        } 
 	       
 	        return datos; 
-		}
+	}
 	
-	
+	public Grupo obtenerDescripcion(String descripcion) throws Exception{		 
+	    @SuppressWarnings("static-access")
+		Session sesion = sesionPostgres.getSessionFactory().openSession();  
+	    Grupo dato = null;        
+            try{
+                dato = (Grupo ) sesion.createCriteria(Grupo.class).add(Restrictions.eq("descripcion", descripcion))
+                		.add(Restrictions.eq("activo", true)).uniqueResult();
+            } catch (Exception e) {  
+            e.printStackTrace();
+           
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }  
+           
+	    return dato;
+	}
 }

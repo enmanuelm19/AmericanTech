@@ -1,6 +1,8 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+import java.text.SimpleDateFormat;
+
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -13,7 +15,7 @@ public class Actividad implements java.io.Serializable {
 	private Evento evento;
 	private TipoActividad tipoActividad;
 	private String descripcion;
-	private String condicion;
+	private boolean finalizada;
 	private Date fechaTope;
 	private Date fechaRealizacion;
 	private Integer valorEsperado;
@@ -24,25 +26,25 @@ public class Actividad implements java.io.Serializable {
 	}
 
 	public Actividad(int idActividad, Evento evento,
-			TipoActividad tipoActividad, String descripcion, String condicion,
-			boolean activo) {
+			TipoActividad tipoActividad, String descripcion,
+			boolean finalizada, boolean activo) {
 		this.idActividad = idActividad;
 		this.evento = evento;
 		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
-		this.condicion = condicion;
+		this.finalizada = finalizada;
 		this.activo = activo;
 	}
 
 	public Actividad(int idActividad, Evento evento,
-			TipoActividad tipoActividad, String descripcion, String condicion,
-			Date fechaTope, Date fechaRealizacion, Integer valorEsperado,
-			Integer valorReal, boolean activo) {
+			TipoActividad tipoActividad, String descripcion,
+			boolean finalizada, Date fechaTope, Date fechaRealizacion,
+			Integer valorEsperado, Integer valorReal, boolean activo) {
 		this.idActividad = idActividad;
 		this.evento = evento;
 		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
-		this.condicion = condicion;
+		this.finalizada = finalizada;
 		this.fechaTope = fechaTope;
 		this.fechaRealizacion = fechaRealizacion;
 		this.valorEsperado = valorEsperado;
@@ -82,12 +84,12 @@ public class Actividad implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public String getCondicion() {
-		return this.condicion;
+	public boolean isFinalizada() {
+		return this.finalizada;
 	}
 
-	public void setCondicion(String condicion) {
-		this.condicion = condicion;
+	public void setFinalizada(boolean finalizada) {
+		this.finalizada = finalizada;
 	}
 
 	public Date getFechaTope() {
@@ -128,6 +130,19 @@ public class Actividad implements java.io.Serializable {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+	
+	public String getFechaTopeString() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fechaTope);
+	}
+
+	public String getEstado() {
+
+		if (this.finalizada)
+			return "Finalizada";
+		else
+			return "No finalizada";
 	}
 
 }

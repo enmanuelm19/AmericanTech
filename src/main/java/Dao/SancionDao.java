@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Sancion;
+import modelos.Socio;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.zkoss.zhtml.S;
 
 import confi.Sesion;
 
@@ -22,8 +24,9 @@ public class SancionDao {
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.save( dato);   
+              Object find=em.merge(dato);   
               tx.commit();  
+              em.delete(find);
          } catch (Exception e) {  
              tx.rollback();            
              e.printStackTrace();
@@ -33,29 +36,29 @@ public class SancionDao {
          } 
 	}
 	// Obtiene una lista con las Sanciones que sean del mismo tipo.
-	public List<Sancion> obtenerSancionesTipo(int idTipo)throws Exception{
-	    @SuppressWarnings("static-access")
-		Session sesion = sesionPostgres.getSessionFactory().openSession();   
-	    List<Sancion> datos = new ArrayList<Sancion>();        
-            try{
-                datos = (List<Sancion>) sesion.createCriteria(Sancion.class)
-                		.add(Restrictions.eq("tipo_sanciontipo_sancion", idTipo)).list();
-            } catch (Exception e) {  
-            e.printStackTrace();
-            throw new Exception(e.getMessage(),e.getCause());
-            }  finally {  
-                sesion.close();  
-            }       
-	    return datos;	
-	}
+//	public List<Sancion> obtenerSancionesTipo(TipoSancion dato)throws Exception{
+//	    @SuppressWarnings("static-access")
+//		Session sesion = sesionPostgres.getSessionFactory().openSession();   
+//	    List<Sancion> datos = new ArrayList<Sancion>();        
+//            try{
+//                datos = (List<Sancion>) sesion.createCriteria(Sancion.class)
+//                		.add(Restrictions.eq("tipoSancion", dato)).add(Restrictions.eq("activo", true)).list();
+//            } catch (Exception e) {  
+//            e.printStackTrace();
+//            throw new Exception(e.getMessage(),e.getCause());
+//            }  finally {  
+//                sesion.close();  
+//            }       
+//	    return datos;	
+//	}
 	//Obtiene una lista con todas las Sanciones que ha sufrido un socio
-	public List<Sancion> obtenerSancionesSocio(int idSocio)throws Exception{
+	public List<Sancion> obtenerSancionesSocio(Socio dato)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    List<Sancion> datos = new ArrayList<Sancion>();        
             try{
                 datos = (List<Sancion>) sesion.createCriteria(Sancion.class)
-                		.add(Restrictions.eq("socioid_socio",idSocio)).list();
+                		.add(Restrictions.eq("socio",dato)).add(Restrictions.eq("activo",true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
            
@@ -109,8 +112,9 @@ public class SancionDao {
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.update(dato);   
-              tx.commit();  
+        	 Object find= em.merge(dato);
+              tx.commit();
+              em.delete(find);
          } catch (Exception e) {  
              tx.rollback();            
              e.printStackTrace();

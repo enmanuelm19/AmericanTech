@@ -2765,7 +2765,7 @@ a:focus {
 }
 body {
   padding: 0;
-  background-color: #e4e6e9;
+  /*background-color: #e4e6e9;*/
   min-height: 100%;
   font-family: 'Open Sans';
   font-size: 13px;
@@ -3189,4 +3189,67 @@ div.hola table {
 }
 .z-grid .z-column-content, .z-footer-content{
 	color: #2B7DBC;
+}
+.select label, .star .select{
+	background-image: url('../../img/star_activa.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width:15px;
+	height:15px;
+	margin: 0px 3px;
+	color:transparent;
+}
+.no_select label, .star .no_select{
+	background-image: url('../../img/star_inactiva.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width:15px;
+	height:15px;
+	margin: 0px 3px;
+	color:transparent;
+}
+.star input{
+	display:none;
+}
+.star label{
+	color: transparent;
+	font-size:1px;
+}
+.z-listitem-selected{
+	background: rgba(43,125,188, 0.5) !important;
+}
+-z-listbox-header, .z-listheader{
+	background: white !important;
+}
+.z-listbox-header-border{
+	border-bottom: 1px solid rgba(92, 197, 202, 0.7);
+}
+.z-listheader-content{
+	color:#2B7DBC;
+	font-weight: normal;
+}
+.z-loading{
+	background-color: #6eadff;
+	cursor: wait;
+	white-space: nowrap;
+	padding:3px;
+	border: 1px solid #83B5F7;
+	top: 45% !important;
+	left: 45% !important;
+	align: center;
+	vertical-align: middle;
+}
+
+.z-loading-indicator{
+	text-indent: 0;
+	font-size: 0;
+	color: transparent;
+}
+
+.z-loading-icon{
+	background: transparent no-repeat center;
+	background-image: url("http://localhost:8080/america/assets/img/gif-load.gif"); 
+	
+	height: 60px;
+	width: 60px;
 }

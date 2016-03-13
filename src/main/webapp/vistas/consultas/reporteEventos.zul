@@ -1,0 +1,136 @@
+<zk xmlns:n="native">
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.ReporteEventoViewModel')">
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Evento" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Evento" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Eventos
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="15%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+									<grid>
+										<rows>
+											  <row class="col-md-12 ">
+												 <div class="col-md-12" align="center">	
+									                  	<div >
+															Desde: 
+															<datebox  width="30%" tabindex="7" />
+														<space spacing="1%"></space>
+
+															Hasta: 
+															<datebox  width="30%" tabindex="7" />
+														</div>			   		
+											   	 </div>								   	 
+											  </row> 	
+										</rows>
+									</grid>
+									<space spacing="2%"></space>
+								   	 <groupbox  mold="3d" width="75%" height="auto" >
+								   	 	<caption label="Preferencia"  ></caption>
+										<grid>
+											<rows>
+												  <row class="col-md-12">
+											   		   <div class="col-md-8" align="center">
+												   		   <label class="col-md-3">Categoria:</label>
+													       <combobox model="@load(vm.tipoPreferencia)" selectedItem="@bind(vm.tipoPreferenciaSelected)" >
+																<template name="model">
+																		<comboitem
+																			label="@load(each.descripcion)" value="@load(each)" />
+																</template>
+														   </combobox>			   		
+							   	 						</div>								   	 
+												  </row>
+												  <row class="col-md-12">
+											   		   <div class="col-md-12" align="center">
+												   		   <label class="col-md-3"></label>
+												   		   <chosenbox  model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%" 
+                    											emptyMessage="" creatable="true"/>
+														   <space spacing="1%"></space>
+														<button sclass="btn-link" onClick="@command('agregarPreferenciasEvento')"
+															iconSclass="z-icon-plus blue" id=""
+															tooltiptext="Agregar preferencia" />  			   		
+							   	 						</div>							   	 
+												  </row>
+												 <!-- <row class="col-md-12" >
+														<div align="center" class="col-md-8">			                  				                  
+														      
+														</div>								   	 
+												  </row>-->
+											</rows>
+										</grid>
+										<grid
+											emptyMessage="No se encuentran reservaciones registrados"
+											mold="paging" pageSize="5" style="margin:1%">
+											<auxhead sclass="category-center">
+												<auxheader colspan="1">
+													<image
+														src="../assets/img/funnel.png" />
+													<textbox instant="true"
+														width="120px" value=""
+														onChange="" placeholder="Buscar" />
+												</auxheader>
+												<auxheader colspan="6" />
+											</auxhead>
+											<columns>
+												<column hflex="3" align="center">Categoria</column>
+												<column hflex="3" align="center">Preferencia</column>
+												<column hflex="3" align="center">Acciones</column>
+			
+											</columns>
+											<rows>
+												<template name="model"
+													var="reservacion">
+													<row>
+														<label
+															value="" />
+														<label
+															value="" />
+														<label value="0000" />
+														<div>
+															<button
+																sclass="btn-link" iconSclass="z-icon-times red"
+																tooltiptext="Eliminar"
+																onClick="" />
+														</div>
+													</row>
+												</template>
+											</rows>
+											<foot>
+												<footer span="6"
+													class="footer_right" label="" />
+											</foot>
+										</grid>
+								   	 </groupbox>
+								   	 <space spacing="1%"></space>							   	
+								</groupbox >
+							     <div align="center" xmlns:w="client">
+									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<space spacing="2%"></space>
+									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+								 </div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

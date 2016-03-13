@@ -105,22 +105,4 @@ private Sesion sesionPostgres;
 	        return datos; 
 		}
 
-	//Obtener politicas de "x" tipo
-	
-	public List<Politica> obtenerPoliticasDeXTipo( int id) throws Exception {            
-	      
-		   List<Politica> datos = new ArrayList<Politica>();  
-		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-	        try {  	
-		    datos =  (List<Politica>) em.createCriteria(Politica.class).add(Restrictions.eq("tipo_politicaid_tipo_politica", id)).list();             
-	        } catch (Exception e) {             
-	       
-	         throw new Exception(e.getMessage(),e.getCause());
-	        } finally {  
-	          em.close();  
-	        } 
-	       
-	        return datos; 
-		}
-
 }

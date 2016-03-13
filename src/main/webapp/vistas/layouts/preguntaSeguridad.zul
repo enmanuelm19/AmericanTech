@@ -1,0 +1,128 @@
+<?page title="American Tech" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="../../assets/img/at-favicon.png" ?>
+
+<?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+
+
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?init class="controllers.RecuperarContrasenaViewModel" ?>
+<zk xmlns:n="native">
+	<div
+		style="background: url('../../assets/img/bg.png') no-repeat !important;
+  background-size: 100% 100%;">
+		<div sclass="navbar" style="padding-left:0px" width="100%">
+			<!-- Brand Logo -->
+			<div sclass="navbar-brand pull-left"
+				style="width: 190px;border-right: 1px solid #cccccc;
+   		 height: 100%;background: #FFF;position: absolute;padding: 0px;">
+				<image tooltiptext="Avatar" width="66%"
+					style="margin-left: 27px;" src="/assets/img/american-tech.png"
+					sclass="pull-left  msg-photo" />
+			</div>
+			<hlayout sclass="nav-user pull-right" spacing="0">
+
+
+
+				<!-- User menu -->
+
+			</hlayout>
+
+
+
+		</div>
+		<div id="main">
+			<hlayout spacing="0">
+
+			</hlayout>
+		</div>
+	</div>
+
+	<div width="100%" height="100%" align="center" class='lock-screen'
+		style="background: url('../../assets/img/bg4.png') no-repeat !important;
+  background-size: 100% 100%;"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RecuperarContrasenaViewModel')">
+
+
+		<div class='contenido' width="40%">
+
+			<div align="center">
+
+				<n:br></n:br>
+				<n:br></n:br>
+				<div align="left">
+					<div class="encabezado">Datos del Usuario</div>
+					<div align="left" class="linea-two"></div>
+				</div>
+				<n:br></n:br>
+				<space bar="False" spacing="10%" />
+
+				<grid width="100%" fixedLayout="true">
+
+					<rows>
+
+						<row>
+							<div class="col-md-12">
+							<div class="row">
+								<label value="Pregunta secreta: " style="font-size: 2em"></label>
+								<label value="@load(vm.user.pregunta)" style="font-size: 2em"></label>
+							</div>
+							</div>
+
+
+						</row>
+
+
+						<row>
+							<div class="col-md-12">
+								<div class="row">
+								
+								<textbox type="text" width="100%" rows="5" id="respuesta"
+									tabindex="10" constraint="no empty" placeholder="Respuesta"/>
+								</div>
+							</div>
+
+
+						</row>
+
+
+
+					</rows>
+				</grid>
+				<n:br></n:br>
+
+
+
+
+
+
+				<n:br></n:br>
+				<n:br></n:br>
+
+
+				<div align="center">
+
+					<button iconSclass="z-icon-send"
+						class='boton-guardar' label="Enviar respuesta"
+						onClick="@command('enviarRespuesta')" />
+					<space spacing="10%" />
+
+
+
+				</div>
+				<space spacing="15%" />
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+</zk>

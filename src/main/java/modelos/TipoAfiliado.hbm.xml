@@ -1,15 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 10/03/2016 08:42:34 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.TipoAfiliado" table="tipo_afiliado" schema="public" optimistic-lock="version">
         <id name="idTipoAfiliado" type="int">
             <column name="id_tipo_afiliado" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <property name="descripcion" type="string">
             <column name="descripcion" length="90" not-null="true" />
+        </property>
+        <property name="subfijo" type="string">
+            <column name="subfijo" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

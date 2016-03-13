@@ -4,6 +4,7 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Persona;
 import modelos.Usuario;
 import confi.Sesion;
 
@@ -50,13 +51,13 @@ public class UsuarioDao {
 		    return dato;
 	}
 	
-	public Usuario obtenerUsuarioPersona(int idPersona)throws Exception{
+	public Usuario obtenerUsuarioPersona(Persona datos)throws Exception{
 	    @SuppressWarnings("static-access")
 		Session sesion = sesionPostgres.getSessionFactory().openSession();   
 	    Usuario dato = null;        
             try{
                 dato = (Usuario) sesion.createCriteria(Usuario.class)
-                		.add(Restrictions.eq("personaid_persona", idPersona)).uniqueResult();
+                		.add(Restrictions.eq("persona", datos)).add(Restrictions.eq("activo", true)).uniqueResult();
             } catch (Exception e) {  
             e.printStackTrace();
            

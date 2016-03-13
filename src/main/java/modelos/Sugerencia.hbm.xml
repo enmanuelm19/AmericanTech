@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Sugerencia" table="sugerencia" schema="public" optimistic-lock="version">
         <id name="idSugerencia" type="int">
             <column name="id_sugerencia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="clienteExterno" class="modelos.ClienteExterno" fetch="select" lazy="false">
+        <many-to-one name="clienteExterno" class="modelos.ClienteExterno" cascade="save-update" fetch="select" lazy="false">
             <column name="cliente_externoid_cliente" />
         </many-to-one>
-        <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select" lazy="false">
+        <many-to-one name="tipoSugerencia" class="modelos.TipoSugerencia" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_sugerenciaid_tipo_sugerencia" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false">
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select" lazy="false" cascade="save-update">
             <column name="usuarioid_usuario" />
         </many-to-one>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />
         </property>
-        <property name="fecha" type="date">
-            <column name="fecha" length="13" not-null="true" />
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

@@ -1,23 +1,16 @@
 <!-- Trabajado por Hector Gil 08/02/16-->
 <zk xmlns:n="native">
-	<window title="Opiniones" closable="true" width="70%">
+	<window title="Opiniones" closable="true" width="70%" id="windOpinionSocio" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<caption iconSclass="z-icon-user" />
-
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div class='contenedor' align="center"
-					apply="controllers.ControllerVerAfiliado">
-					<div class='contenido ' align="center"
-						width="100%">
-						<div class=" col-centered "
-							form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
+					apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.OpinionesDePostulanteViewModel')">
+					<div class='contenido ' align="center" width="100%">
+						<div class=" col-centered ">
 							<div width="100%">
 								<div align="left">
-									<div class='encabezado'>
-										Datos del Postulante
-									</div>
+									<div class='encabezado'>Datos del Postulante</div>
 									<div class='linea-two'></div>
 								</div>
 								<separator spacing="20px" />
@@ -26,130 +19,62 @@
 										<rows>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Cédula" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="V18122444">
-													</textbox>
-												</div>
-											</row>
-
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="Numero Carnet" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="123456">
-													</textbox>
-
-
-												</div>
-											</row>
-
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="Primer Nombre" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="Jesus">
-													</textbox>
-
+													<label class="col-md-4" value="Cédula" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.identificacion)" />
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Segundo Nombre" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="Jesus">
-													</textbox>
+													<label class="col-md-4" value="Nombre" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.nombre)"/>
+												</div>
+											</row>
+											
+											<row>
+												<div>
+													<label class="col-md-4" value="Apellido" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.apellido)"/>
+												</div>
+											</row>
+								
+											<row>
+												<div>
+													<label class="col-md-4" value="Correo" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" type="email" value="@load(vm.postulacion.postulado.persona.correo)"/>
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Primer Apellido" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="Jesus">
-													</textbox>
-
+													<label class="col-md-4" value="Teléfono" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.telefono)" />
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Segundo Apellido" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="Jesus">
-													</textbox>
-
+													<label class="col-md-4" value="Fecha de Nacimiento" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true"	value="@load(vm.postulacion.postulado.persona.fechaNac)"/>
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Correo" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														type="email" value="hdhdhdh@jdhdh.com">
-													</textbox>
+													<label class="col-md-4" value="Edad" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.calcularEdad)"/>
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Telefono" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="04135689256">
-													</textbox>
+													<label class="col-md-4" value="Sexo"/>
+													<radiogroup id="sexo" selectedItem="@load(vm.postulacion.postulado.persona.sexo)">
+														<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
+														<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
+														</radiogroup>
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Nacimiento" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="10/01/70">
-													</textbox>
-												</div>
-											</row>
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="Edad" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="33">
-													</textbox>
-												</div>
-											</row>
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="Sexo" />
-													<checkbox
-														label="Masculino" />
-													<checkbox
-														label="Femenino" />
-												</div>
-											</row>
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="Direccion" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														cols="45" rows="2" type="text"
-														value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
-
+													<label class="col-md-4" value="Direccion" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true"	cols="50" rows="4" type="text"
+														value="@load(vm.postulacion.postulado.persona.direccion)" />
 												</div>
 											</row>
 										</rows>
@@ -160,79 +85,60 @@
 
 								<div class="col-md-6">
 									<div class="input-group">
-										<image
-											src="/assets/portal/img/img1.jpg"
-											class='img-responsive col-md-offset-1' />
+										<image src="/assets/portal/img/img1.jpg" class='img-responsive col-md-offset-1' />
 										<separator spacing="30px">
 										</separator>
 
 									</div>
 									<grid>
 										<rows>
-											<row>
+												<row>
 												<div>
-													<label
-														class="col-md-4" value="1er Padrino" />
-													<textbox
-														class="col-md-6" readonly="true" value="Jose Herrera">
-													</textbox>
+													<label class="col-md-4" value="Carnet 1er Padrino" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true"
+														value="@load(vm.postulacion.carnetPadrino1)" />
 												</div>
 											</row>
-
+											<row>
+												<div>
+													<label class="col-md-4" value="1er Padrino" />
+													<textbox class="col-md-6" readonly="true" value="44" />
+												</div>
+											</row>
+											<row>
+												<div>
+													<label class="col-md-4" value="Carnet 2do Padrino" />
+													<textbox constraint="no empty" class="col-md-6" readonly="true"
+														value="@load(vm.postulacion.carnetPadrino2)"/>
+												</div>
+											</row>
 											<row>
 												<div>
 													<label
 														class="col-md-4" value="2do Padrino" />
 													<textbox
 														constraint="no empty" class="col-md-6" readonly="true"
-														value="Ana Montana">
-													</textbox>
-
-
-												</div>
-											</row>
-
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="#Carnet 1er Padrino" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="12345">
-													</textbox>
-
+														value="22"/>
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="#Carnet 2do Padrino" />
-													<textbox
-														constraint="no empty" class="col-md-6" readonly="true"
-														value="678910">
-													</textbox>
+													<label class="col-md-4" value="Motivo Postulacion" />
+													<textbox class="col-md-6" readonly="true" value="@load(vm.postulacion.motivoPostulacion.descripcion)"/>
 												</div>
 											</row>
 											<row>
 												<div>
-													<label
-														class="col-md-4" value="Motivo Postulacion" />
-													<textbox
-														class="col-md-6" readonly="true" value="Deportes">
-													</textbox>
-
+													<label class="col-md-4" value="Calificación Promedio" />
+													<div class="star">
+														<label sclass="@load(vm.postulacion.estrellas.star1)" value="11"/>
+														<label sclass="@load(vm.postulacion.estrellas.star2)" value="21"/>
+														<label sclass="@load(vm.postulacion.estrellas.star3)" value="31" />
+														<label sclass="@load(vm.postulacion.estrellas.star4)" value="41"/>
+														<label sclass="@load(vm.postulacion.estrellas.star5)" value="51" />
+													</div>
 												</div>
 											</row>
-											<row>
-												<div>
-													<label
-														class="col-md-4" value="Calificación Promedio" />
-													<textbox
-														class="col-md-6" readonly="true" value="3">
-													</textbox>
-												</div>
-											</row>
-
 										</rows>
 									</grid>
 								</div>
@@ -241,92 +147,28 @@
 
 								<separator spacing="30px"></separator>
 								<div align="left">
-									<div class="encabezado">
-										Intereses
-									</div>
-									<div align="left"
-										class="linea-two">
-
-									</div>
+									<div class="encabezado">Intereses</div>
+									<div align="left" class="linea-two"></div>
 								</div>
 
 								<hbox align="center" pack="center"
 									width="100%"><!-- GRUPO INTERESES -->
-									<grid
-										emptyMessage="No se encuentran reglas registradas"
-										mold="paging" pageSize="5">
-
-
+									<grid emptyMessage="No se encuentran reglas registradas" mold="paging" pageSize="5" model="@load(vm.preferenciasAll)">
 										<columns>
-											<column hflex="3">
-												Tipo Preferencia
-											</column>
-											<column hflex="3">
-												Preferencia
-											</column>
-
-
+											<column hflex="3">Tipo Preferencia</column>
+											<column hflex="3">Preferencia</column>
 										</columns>
 										<rows>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
-											<row>
-												<label value="Deporte" />
-												<label value="Futbol" />
-
-											</row>
+											<template name="model">
+												<row>
+													<label value="@load(each.tipoPreferencia.descripcion)" />
+													<label value="@load(each.tipoPreferencia.descripcion)" />
+												</row>
+											</template>
 										</rows>
 										<foot>
 											<footer span="3"
-												class="footer_right" label="3 items en la lista" />
+												class="footer_right" label="@load(vm.cantidadPreferencias)" />
 										</foot>
 									</grid>
 
@@ -337,17 +179,12 @@
 
 								<separator spacing="30px"></separator>
 								<div align="left">
-									<div class="encabezado">
-										Opiniones
-									</div>
-									<div align="left"
-										class="linea-two">
-
-									</div>
+									<div class="encabezado">Opiniones</div>
+									<div align="left" class="linea-two"></div>
 								</div>
 								
 									<grid
-										emptyMessage="No hay opiniones" mold="paging" pageSize="5">
+										emptyMessage="No hay opiniones" mold="paging" pageSize="5"  model="@load(vm.opinionesAll)">
 										<auxhead
 											sclass="category-center">
 											<auxheader colspan="1">
@@ -360,124 +197,34 @@
 											<auxheader colspan="4" />
 										</auxhead>
 										<columns>
-											<column hflex="2">
-												1er Nombre Socio
-											</column>
-											<column hflex="2">
-												1er Apellido Socio
-											</column>
-											<column hflex="2">
-												Opinión
-											</column>
-											<column>
-												calificación
-											</column>
+											<column hflex="2">Nombre Socio</column>
+											<column hflex="2">Apellido Socio</column>
+											<column hflex="2">Opinión</column>
+											<column>Calificación</column>
 											<column>Fecha</column>
 										</columns>
 										<rows>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-											<row>
-												<label value="Miguel" />
-												<label value="Perez" />
-												<label
-													value="Mala Persona" />
-												<label value="3" />
-												<label
-													value="12/12/2012" />
-											</row>
-
-
+											<template name="model">
+												<row>
+													<label value="@load(each.usuario.persona.nombre)" />
+													<label value="@load(each.usuario.persona.apellido)" />
+													<label value="@load(each.descripcion)" />
+													<div class="star">
+														<label sclass="@load(each.estrellas.star1)" value="11"/>
+														<label sclass="@load(each.estrellas.star2)" value="21"/>
+														<label sclass="@load(each.estrellas.star3)" value="31" />
+														<label sclass="@load(each.estrellas.star4)" value="41"/>
+														<label sclass="@load(each.estrellas.star5)" value="51" />
+													</div>
+													<label value="@load(each.fecha)" />
+												</row>
+											</template>
 										</rows>
 									</grid>
-								
-								
-								<hlayout>
-									
-									<div>
-										<button
-											iconSclass="z-icon-times-circle" class='boton-cancelar'
-											label="Cancelar" />
-									</div>
+									<hlayout>
+										<div style="margin-top: 50px;  margin-bottom: 10px;">
+											<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" onClick="@command('cerrarModal', win=windOpinionSocio)"/>
+										</div>
 								</hlayout>
 							</div>
 						</div>
@@ -486,4 +233,7 @@
 			</vlayout>
 		</hlayout>
 	</window>
+<script type="text/javascript">
+	
+</script>
 </zk>

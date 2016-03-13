@@ -1,44 +1,216 @@
-<?page title="Dashboard - ZK Admin"?>
-
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
+<?page title="American Tech" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" type="image/x-icon" href="../assets/img/at-favicon.png" ?>
 
 <?link href="../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 
 
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-
+<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
 <?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
 <?init class="controllers.SesionViewModel" ?>
 <zk xmlns:n="native">
-	<include src="layouts/navbar.zul" />
-	<div id="main">
-		<hlayout spacing="0" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
-			<div id="sidebar" sclass="sidebar" >
-	<!-- Navigation List -->
-	<div> 
-	<navbar id="navbar" sclass="nav-list" orient="vertical">
-		<navitem label="Inicio" iconSclass="z-icon-home" selected="true" href="/america/vistas/index.zul"/>
-	</navbar>
-	</div>  
-	<!-- Toggler -->
-	<div sclass="sidebar-collapse">
-		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
+<div apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
+	<div sclass="navbar" style="padding-left:0px"
+	 width="100%">
+	<!-- Brand Logo -->
+	<div sclass="navbar-brand pull-left" style="width: 190px;border-right: 1px solid #cccccc;
+   		 height: 100%;background: #FFF;position: absolute;padding: 0px;">
+		<image tooltiptext="Avatar" width="66%" style="margin-left: 27px;"
+			src="/assets/img/american-tech.png" sclass="pull-left  msg-photo" />
 	</div>
-	<!-- Tooptip for Calender Navitem -->
-	<popup id="calpp" zclass="tooltip" sclass="right tooltip-error cal">
-		<span zclass="tooltip-arrow"/>
-		<label zclass="tooltip-inner" value="2 Important Event"/>
+	<!-- Navbar -->
+	<hlayout sclass="nav-user pull-right" spacing="0">
+		<a id="anoti" iconSclass="z-icon-bell"
+			popup="notipp, position=after_end, type=toggle" sclass="blue">
+			<label value="8" sclass="badge badge-info" />
+		</a>
+		<a id="amsg" iconSclass="z-icon-comment"
+			popup="msgpp, position=after_end, type=toggle" sclass="green">
+			<label value="5" sclass="badge badge-success" />
+		</a>
+
+		<a id="post" iconSclass="z-icon-user"
+			popup="postpp, position=after_end, type=toggle"
+			style="background-color: #F05B5B;">
+			<label value="3" sclass="badge badge-important" />
+		</a>
+		<!-- User menu -->
+		<menubar sclass="user-menu light-blue">
+			<menu tooltiptext="John's Avatar" label="Bienvenido, nombre"
+				image="/assets/intranet/avatars/avatar.png">
+				<menupopup>
+
+					<menuitem label="Perfil" iconSclass="z-icon-user"
+						onClick="@command('miPerfil')" />
+					<menuseparator />
+					<menuitem label="Salir" onClick="@command('cerrarSesion')"
+						iconSclass="z-icon-off" />
+				</menupopup>
+			</menu>
+		</menubar>
+	</hlayout>
+	<!-- Popups of navbar -->
+
+	<popup id="notipp" sclass="menu menu-pink" width="240px">
+		<a label="Notificaciones" sclass="header"
+			iconSclass="z-icon-exclamation-triangle" />
+		<vlayout spacing="0">
+			<a iconSclass="btn btn-xs no-hover btn-pink z-icon-money"
+				href="#">
+				<label>3 nuevas solicitudes</label>
+
+			</a>
+			<a iconSclass="btn btn-xs no-hover btn-primary z-icon-user"
+				href="#">
+				<label>1 nueva postulacion</label>
+			</a>
+			<a
+				iconSclass="btn btn-xs no-hover btn-success z-icon-comment"
+				href="#">
+				<label>Nuevos comentarios</label>
+
+			</a>
+
+			<a label="Ver todas las notificaciones" href="#">
+				<span class="z-icon-arrow-right" />
+			</a>
+		</vlayout>
+	</popup>
+	<popup id="msgpp" sclass="menu" width="240px">
+		<a label="3 Sugerencias" sclass="header"
+			iconSclass="z-icon-envelope-o" />
+		<vlayout spacing="0">
+			<a href="#">
+				<image tooltiptext="Alex's Avatar"
+					src="/assets/intranet/avatars/avatar.png" sclass="msg-photo" />
+				<span sclass="msg-body">
+					<span sclass="msg-title">
+						<label value="Alex:" sclass="blue" />
+						El campo de softboll se encuentra poco iluminado
+					</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						Hace un momento
+					</span>
+				</span>
+			</a>
+			<a href="#">
+				<image tooltiptext="Susan's Avatar"
+					src="/assets/intranet/avatars/avatar3.png" sclass="msg-photo" />
+				<span class="msg-body">
+					<span class="msg-title">
+						<label value="Susan:" sclass="blue" />
+						Excelente el evento del día de las madres
+					</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						20 minutes ago
+					</span>
+				</span>
+			</a>
+			<a href="#">
+				<image tooltiptext="Bob's Avatar"
+					src="/assets/intranet/avatars/avatar4.png" sclass="msg-photo" />
+				<span class="msg-body">
+					<span class="msg-title">
+						<label value="Bob:" sclass="blue" />
+						Excelente el servicio de la barra del caney
+					</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						3:15 pm
+					</span>
+				</span>
+			</a>
+			<a label="See all messages" href="#">
+				<span class="z-icon-arrow-right" />
+			</a>
+		</vlayout>
+	</popup>
+	<popup id="postpp" sclass="menu" width="240px">
+		<a label="3 Postulaciones" sclass="header"
+			iconSclass="z-icon-envelope-o" />
+		<vlayout spacing="0">
+			<a href="#">
+				<image tooltiptext="Alex's Avatar"
+					src="/assets/intranet/avatars/avatar.png" sclass="msg-photo" />
+				<span sclass="msg-body">
+					<span sclass="msg-title">
+						<label value="Nuevo:" sclass="blue" />
+						Carlos Rodriguez
+					</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						Hace un momento
+					</span>
+				</span>
+			</a>
+			<a href="#">
+				<image tooltiptext="Susan's Avatar"
+					src="/assets/intranet/avatars/avatar3.png" sclass="msg-photo" />
+				<span class="msg-body">
+					<span class="msg-title">
+						<label value="Nuevo:" sclass="blue" />
+						Susana Lobo
+					</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						20 minutes ago
+					</span>
+				</span>
+			</a>
+			<a href="#">
+				<image tooltiptext="Bob's Avatar"
+					src="/assets/intranet/avatars/avatar4.png" sclass="msg-photo" />
+				<span class="msg-body">
+					<span class="msg-title">
+						<label value="Nuevo:" sclass="blue" />
+						Bob Zambrano
+					</span>
+					<span sclass="msg-time">
+						<span class="z-icon-clock-o" />
+						3:15 pm
+					</span>
+				</span>
+			</a>
+			<a label="Ver todas" href="#">
+				<span class="z-icon-arrow-right" />
+			</a>
+		</vlayout>
 	</popup>
 </div>
+	<div id="main">
+		<hlayout spacing="0" >
+			<div id="sidebar" sclass="sidebar">
+				<!-- Navigation List -->
+				<div>
+					<navbar id="navbar" sclass="nav-list"
+						orient="vertical">
+						<navitem label="Inicio" iconSclass="z-icon-home"
+							selected="true" href="/america/vistas/index.zul" />
+					</navbar>
+				</div>
+				<!-- Toggler -->
+				<div sclass="sidebar-collapse">
+					<a id="toggler"
+						iconSclass="z-icon-angle-double-left" />
+				</div>
+				<!-- Tooptip for Calender Navitem -->
+				<popup id="calpp" zclass="tooltip"
+					sclass="right tooltip-error cal">
+					<span zclass="tooltip-arrow" />
+					<label zclass="tooltip-inner"
+						value="2 Important Event" />
+				</popup>
+			</div>
 			<div id="contenido" hflex="1">
 				<include src="layouts/breadcrumbs.zul" />
 				<include src="layouts/page.zul" />
 			</div>
 		</hlayout>
 	</div>
-
-
+	</div>
 </zk>

@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Socio" table="socio" schema="public" optimistic-lock="version">
         <id name="idSocio" type="int">
             <column name="id_socio" />
             <generator class="increment" />
         </id>
-        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false">
+        <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false" cascade="save-update">
             <column name="postulacionid_postulacion" />
         </many-to-one>
         <property name="nroCarnet" type="string">
@@ -20,31 +20,31 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sancions" table="sancion" inverse="true" lazy="true" fetch="select">
+        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" />
             </key>
             <one-to-many class="modelos.Sancion" />
         </set>
-        <set name="accions" table="accion" inverse="true" lazy="true" fetch="select">
+        <set name="accions" table="accion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" />
             </key>
             <one-to-many class="modelos.Accion" />
         </set>
-        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="true" fetch="select">
+        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Desvinculacion" />
         </set>
-        <set name="reservacions" table="reservacion" inverse="true" lazy="true" fetch="select">
+        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Reservacion" />
         </set>
-        <set name="afiliados" table="afiliado" inverse="true" lazy="true" fetch="select">
+        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>

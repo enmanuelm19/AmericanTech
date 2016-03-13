@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Portal" table="portal" schema="public" optimistic-lock="version">
         <id name="idPortal" type="int">
@@ -20,11 +20,14 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="archivoPortals" table="archivo_portal" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="portalid_portal" not-null="true" />
-            </key>
-            <one-to-many class="modelos.ArchivoPortal" />
-        </set>
+        <property name="fotoSocio" type="string">
+            <column name="foto_socio" />
+        </property>
+        <property name="fotoInstalaciones" type="string">
+            <column name="foto_instalaciones" />
+        </property>
+        <property name="fotoEvento" type="string">
+            <column name="foto_evento" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.CalendarioFecha" table="calendario_fecha" schema="public" optimistic-lock="version">
         <id name="idCalendarioFecha" type="int">
             <column name="id_calendario_fecha" />
             <generator class="increment" />
         </id>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false" cascade="save-update">
             <column name="eventoid_evento" />
         </many-to-one>
-        <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select" lazy="false">
+        <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select" lazy="false" cascade="save-update">
             <column name="reservacionid_reservacion" />
         </many-to-one>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="120" not-null="true" />
+            <column name="descripcion" not-null="true" />
         </property>
         <property name="fecha" type="date">
             <column name="fecha" length="13" not-null="true" />
@@ -23,11 +23,5 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="calendarioHoras" table="calendario_hora" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="calendario_fechaid_calendario_fecha" not-null="true" />
-            </key>
-            <one-to-many class="modelos.CalendarioHora" />
-        </set>
     </class>
 </hibernate-mapping>

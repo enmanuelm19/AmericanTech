@@ -3,7 +3,10 @@ package Dao;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelos.Alquiler;
+import modelos.Archivo;
 import modelos.ArchivoAlquiler;
+import modelos.TipoArchivo;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -19,7 +22,7 @@ public class ArchivoAlquilerDao {
 private Sesion sesionPostgres;
 	
 	
-	public void agregarAccion(ArchivoAlquiler dato) throws Exception{
+	public void agregarArchivoAlquiler(ArchivoAlquiler dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();  
          Transaction tx = null;  
@@ -36,7 +39,7 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void eliminarAccion(ArchivoAlquiler dato) throws Exception{		 
+	public void eliminarArchivoAlquiler(ArchivoAlquiler dato) throws Exception{		 
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -54,7 +57,7 @@ private Sesion sesionPostgres;
          } 
    }
 	
-	public void actualizarAccion(ArchivoAlquiler dato) throws Exception{
+	public void actualizarArchivoAlquiler(ArchivoAlquiler dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  
@@ -85,9 +88,60 @@ private Sesion sesionPostgres;
         } 
        
         return datos; 
-	}	
-
+	}
 	
+	//devuelve los archivos que pertenecen a un alquiler especifico
 	
+	public List<ArchivoAlquiler> obtenerPorAlquiler(Alquiler alquiler) throws Exception {            
+	      
+		   List<ArchivoAlquiler> datos = new ArrayList<ArchivoAlquiler>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<ArchivoAlquiler>) em.createCriteria(ArchivoAlquiler.class).add(Restrictions.eq("alquiler", alquiler))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
+	//devuelve el archivo que pertenece a un alquiler a partir de un archivo dentro de la clase archivo
+	
+	public ArchivoAlquiler obtenerPorArchivo(Archivo archivo) throws Exception {            
+	      
+		   ArchivoAlquiler datos = new ArchivoAlquiler();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (ArchivoAlquiler) em.createCriteria(ArchivoAlquiler.class).add(Restrictions.eq("archivo", archivo))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	        return datos; 
+	}
+	
+	//devuelve los archivos por tipo de archivos tipoArchivo
+	
+	public List<ArchivoAlquiler> obtenerPorTipo(TipoArchivo tipoArchivo) throws Exception {            
+	      
+		List<ArchivoAlquiler> datos = new ArrayList<ArchivoAlquiler>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<ArchivoAlquiler>) em.createCriteria(ArchivoAlquiler.class).add(Restrictions.eq("tipoArchivo", tipoArchivo))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	        return datos; 
+	}
 }

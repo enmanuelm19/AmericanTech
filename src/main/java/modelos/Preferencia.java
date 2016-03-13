@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -102,6 +102,10 @@ public class Preferencia implements java.io.Serializable {
 	public void setNoticiaPreferencias(
 			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.noticiaPreferencias = noticiaPreferencias;
+	}
+	
+	public String toString(){
+		return descripcion;
 	}
 
 }

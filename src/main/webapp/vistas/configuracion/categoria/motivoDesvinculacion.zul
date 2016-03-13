@@ -22,7 +22,7 @@
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
 						viewModel="@id('vm') @init('controllers.MotivoDesvinculacionViewModel')">
 						<div xmlns:w='client' align="right">
-							<button id="btnRegTipoDesvinculacion"
+							<button id="btnRegMotivoDesvinculacion"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
 								style="margin-bottom: -4%" class='boton-guardar'
 								onClick="@command('showModal')" />
@@ -41,7 +41,7 @@
 							</div>
 							<separator spacing="20px" />
 							<grid
-								emptyMessage="No se encuentran tipos de desvinculaciones registrados"
+								emptyMessage="No se encuentran motivos de desvinculaciones registrados"
 								mold="paging" pageSize="10" id="gridMotivoDesvinculacion"
 								model="@load(vm.allMotivoDesvinculacion)">
 								<auxhead sclass="category-center">

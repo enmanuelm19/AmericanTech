@@ -1,5 +1,10 @@
 package controllers;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,19 +12,29 @@ import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.image.AImage;
+import org.zkoss.util.media.Media;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.WebApps;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
+import java.nio.file.Files;
 
 import Dao.GrupoDao;
 import Dao.PersonaDao;
 import Dao.UsuarioDao;
 import Dao.UsuarioGrupoDao;
+import modelos.FuncionGrupo;
 import modelos.Grupo;
 import modelos.Persona;
 import modelos.Usuario;
 import modelos.UsuarioGrupo;
+import util.ManejadorArchivo;
 
 public class RegistrarUsuarioViewModel {
 	
@@ -34,7 +49,8 @@ public class RegistrarUsuarioViewModel {
 	private List<Usuario> usuarios;
 	private String keyword;
 	private Grupo grupo;
-	private List<UsuarioGrupo> usuarioGrupo;
+	private Media uploadedImage;
+	private List<UsuarioGrupo> usuarioGrupos;
 	private UsuarioGrupoDao usuarioGrupoDao;
 	
 	@Init
@@ -55,10 +71,33 @@ public class RegistrarUsuarioViewModel {
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);
 			user.setPersona(persona);
+			usuarioGrupos = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
 		} else {
 			this.user = usuario;
 			this.editable = true;
-			System.out.println(user.getUsuarioGrupos().size());
+			String tmp;
+			if(user.getPersona().getFoto() == null){
+			tmp = " ";
+			}else{
+			tmp = user.getPersona().getFoto();}
+			String nombre = "";
+			String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
+			int index;
+			for(int i=tmp.length()-1;i>0;i--){
+				if(tmp.charAt(i) == '/'){
+					index = i;
+					nombre = tmp.substring(index);
+					break;
+				}
+			}
+			File f = new File(ruta, nombre); 
+			if(f.exists() && user.getPersona().getFoto()!= null){
+				URL url = new URL(user.getPersona().getFoto());
+				this.uploadedImage = new AImage(url);
+			}else{
+			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
+			this.uploadedImage = new AImage(url);}
+			this.setUsuarioGrupo(new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos()));
 		}
 
 	}
@@ -108,6 +147,7 @@ public class RegistrarUsuarioViewModel {
 			}
 			else {
 				user.setFecha(new Date());
+				user.getPersona().setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
@@ -162,8 +202,120 @@ public class RegistrarUsuarioViewModel {
 		this.grupo = grupo;
 	}
 	
-	@Command
-	public void agregarGrupo(){
-		
+
+	public List<UsuarioGrupo> getUsuarioGrupo() {
+		List<UsuarioGrupo> tmp = new ArrayList<UsuarioGrupo>();
+		for(UsuarioGrupo u: usuarioGrupos){
+			if(u.isActivo()){
+				tmp.add(u);
+			}
+		}
+		usuarioGrupos = tmp;
+		return usuarioGrupos;
 	}
+
+	public void setUsuarioGrupo(List<UsuarioGrupo> usuarioGrupo) {
+		this.usuarioGrupos = usuarioGrupo;
+	}
+	
+	public String getCantRegistros() {
+		if(usuarioGrupos!=null){
+		return usuarioGrupos.size() + " items en la lista";
+		}else{
+			return "No hay items en la lista";
+		}
+	}
+	
+	@Command
+	@NotifyChange({"usuarioGrupo", "cantRegistros"})
+	public void eliminarGrupos(@BindingParam("Grupo") final UsuarioGrupo grupo){
+		Messagebox.show("Estas seguro de eliminar " + grupo.getGrupo().getDescripcion()+ "del usuario", "Confirmar",
+				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+					public void onEvent(Event evt) throws InterruptedException {
+						if (evt.getName().equals("onOK")) {
+							try {
+								usuarioGrupoDao.eliminarUsuarioGrupo(grupo);
+								usuarioGrupos = usuarioGrupoDao.obtenerTodos();
+								Messagebox.show(grupo.getGrupo().getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+										Messagebox.INFORMATION);
+								BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
+							} catch (Exception e) {
+								Messagebox.show(e.getMessage(), grupo.getGrupo().getDescripcion() + " No se pudo eliminar",
+										Messagebox.OK, Messagebox.ERROR);
+							}
+						}
+					}
+				});
+	}
+	
+	@Command
+	@NotifyChange({"usuarioGrupo", "cantRegistros"})
+	public void agregarGrupo() throws Exception{
+		UsuarioGrupo usGroup = new UsuarioGrupo();
+		boolean existe = false;
+		
+		if(getGrupo()!= null){
+			for(UsuarioGrupo ug : usuarioGrupos){
+				if(getGrupo().getIdGrupo() == ug.getGrupo().getIdGrupo()){
+					existe = true;
+				}
+			}
+			if(existe == true){
+				Messagebox.show("El grupo ya esta asignado a este usuario");
+			}else{
+			usGroup.setGrupo(getGrupo());
+			usGroup.setUsuario(getUser());
+			usGroup.setActivo(true);
+			usuarioGrupoDao.agregarUsuarioGrupo(usGroup);}
+		}else{
+			Messagebox.show("Seleccione un grupo");
+		}
+		
+
+		BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
+	}
+	
+	@GlobalCommand
+	@NotifyChange({ "usuarioGrupo", "cantRegistros" })
+	public void refreshUsuarioGrupo() throws Exception {
+		usuarioGrupos = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
+	}
+	
+	@Command
+	@NotifyChange("uploadedImage")
+	public void upload(@BindingParam("media") Media myMedia){
+		setUploadedImage(myMedia);
+	}
+
+	public Media getUploadedImage() {
+		return uploadedImage;
+	}
+
+	public void setUploadedImage(Media uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+	
+	/*public String subirImagen(Media imagen){
+		String rutaFinal = null;
+		String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
+		File imageFile = new File(ruta, imagen.getName());
+		try {
+			InputStream is = imagen.getStreamData();
+			if(!imageFile.exists()){
+				Files.copy(is, imageFile.toPath());
+				rutaFinal = getServerName()+"/uploadedImages/"+imagen.getName();
+			}
+		} catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return rutaFinal;
+	}
+
+	private String getServerName() {
+		String port = ( Executions.getCurrent().getServerPort() == 80 ) ? "" : (":" + Executions.getCurrent().getServerPort());
+		String url = Executions.getCurrent().getScheme() + "://" + Executions.getCurrent().getServerName() + 
+					port + Executions.getCurrent().getContextPath();
+		return url;
+	}*/
 }

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Preferencia" table="preferencia" schema="public" optimistic-lock="version">
         <id name="idPreferencia" type="int">
             <column name="id_preferencia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tipoPreferencia" class="modelos.TipoPreferencia" fetch="select" lazy="false">
+        <many-to-one name="tipoPreferencia" class="modelos.TipoPreferencia" fetch="select" lazy="false" cascade="save-update">
             <column name="tipo_preferenciaid_tipo_preferencia" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
@@ -17,19 +17,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="true" fetch="select">
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaEvento" />
         </set>
-        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="true" fetch="select">
+        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaPersona" />
         </set>
-        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="true" fetch="select">
+        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>

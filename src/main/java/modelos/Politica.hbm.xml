@@ -1,18 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/03/2016 02:05:26 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 10/03/2016 08:42:34 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Politica" table="politica" schema="public" optimistic-lock="version">
         <id name="idPolitica" type="int">
             <column name="id_politica" />
             <generator class="increment" />
         </id>
-        <many-to-one name="club" class="modelos.Club" fetch="select" lazy="false">
+        <many-to-one name="club" class="modelos.Club" fetch="select" cascade="save-update" lazy="false">
             <column name="clubid_club" />
-        </many-to-one>
-        <many-to-one name="unidadMedida" class="modelos.UnidadMedida" fetch="select" lazy="false">
-            <column name="unidad_medidaid_unidad_medida" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
             <column name="descripcion" not-null="true" />

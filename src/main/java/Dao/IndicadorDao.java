@@ -60,7 +60,8 @@ private Sesion sesionPostgres;
 	    Indicador dato = null;        
          try{
              dato = (Indicador) sesion.createCriteria(Indicador.class)
-             		.add(Restrictions.eq("descripcion", descripcion)).uniqueResult();
+             		.add(Restrictions.eq("descripcion", descripcion))
+             		.add(Restrictions.eq("activo", true)).uniqueResult();
          } catch (Exception e) {  
          e.printStackTrace();
          throw new Exception(e.getMessage(),e.getCause());
@@ -120,4 +121,5 @@ private Sesion sesionPostgres;
      } 
      return datos; 
 	}
+
 }

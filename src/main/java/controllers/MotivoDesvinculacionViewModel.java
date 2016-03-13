@@ -70,7 +70,7 @@ public class MotivoDesvinculacionViewModel {
 	public void showModal(@BindingParam("Tipo") MotivoDesvinculacion tipo) {
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("MotivoDesvinculacion", tipo);
-		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarTipoDesvinculacion.zul",
+		Window window = (Window) Executions.createComponents("configuracion/categoria/registrarMotivoDesvinculacion.zul",
 				null, args);
 		window.doModal();
 	}

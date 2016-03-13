@@ -1,6 +1,8 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+import java.text.SimpleDateFormat;
+
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -12,6 +14,7 @@ import java.util.Set;
 public class Evento implements java.io.Serializable {
 
 	private int idEvento;
+	private CancelacionEvento cancelacionEvento;
 	private EstadoEvento estadoEvento;
 	private String nombre;
 	private String descripcion;
@@ -21,8 +24,6 @@ public class Evento implements java.io.Serializable {
 	private boolean activo = true;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
-			0);
-	private Set<MotivoCancelacion> motivoCancelacions = new HashSet<MotivoCancelacion>(
 			0);
 	private Set<Actividad> actividads = new HashSet<Actividad>(0);
 	private Set<InstalacionEvento> instalacionEventos = new HashSet<InstalacionEvento>(
@@ -48,16 +49,16 @@ public class Evento implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Evento(int idEvento, EstadoEvento estadoEvento, String nombre,
-			String descripcion, Date fechaInicio, Date fechaFin,
-			boolean publico, boolean activo, Set<Noticia> noticias,
-			Set<PreferenciaEvento> preferenciaEventos,
-			Set<MotivoCancelacion> motivoCancelacions,
+	public Evento(int idEvento, CancelacionEvento cancelacionEvento,
+			EstadoEvento estadoEvento, String nombre, String descripcion,
+			Date fechaInicio, Date fechaFin, boolean publico, boolean activo,
+			Set<Noticia> noticias, Set<PreferenciaEvento> preferenciaEventos,
 			Set<Actividad> actividads,
 			Set<InstalacionEvento> instalacionEventos,
 			Set<IndicadorEvento> indicadorEventos,
 			Set<CalendarioFecha> calendarioFechas) {
 		this.idEvento = idEvento;
+		this.cancelacionEvento = cancelacionEvento;
 		this.estadoEvento = estadoEvento;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -67,7 +68,6 @@ public class Evento implements java.io.Serializable {
 		this.activo = activo;
 		this.noticias = noticias;
 		this.preferenciaEventos = preferenciaEventos;
-		this.motivoCancelacions = motivoCancelacions;
 		this.actividads = actividads;
 		this.instalacionEventos = instalacionEventos;
 		this.indicadorEventos = indicadorEventos;
@@ -80,6 +80,14 @@ public class Evento implements java.io.Serializable {
 
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
+	}
+
+	public CancelacionEvento getCancelacionEvento() {
+		return this.cancelacionEvento;
+	}
+
+	public void setCancelacionEvento(CancelacionEvento cancelacionEvento) {
+		this.cancelacionEvento = cancelacionEvento;
 	}
 
 	public EstadoEvento getEstadoEvento() {
@@ -145,32 +153,24 @@ public class Evento implements java.io.Serializable {
 	public void setNoticias(Set<Noticia> noticias) {
 		this.noticias = noticias;
 	}
-
-	public Set<PreferenciaEvento> getPreferenciaEventos() {
-		return this.preferenciaEventos;
+	
+	public Set<PreferenciaEvento> getPreferenciaEventos(){
+		return preferenciaEventos;
 	}
 
 	public void setPreferenciaEventos(Set<PreferenciaEvento> preferenciaEventos) {
 		this.preferenciaEventos = preferenciaEventos;
 	}
-
-	public Set<MotivoCancelacion> getMotivoCancelacions() {
-		return this.motivoCancelacions;
-	}
-
-	public void setMotivoCancelacions(Set<MotivoCancelacion> motivoCancelacions) {
-		this.motivoCancelacions = motivoCancelacions;
-	}
-
-	public Set<Actividad> getActividads() {
+	
+	public Set<Actividad> getActividads(){
 		return this.actividads;
 	}
 
 	public void setActividads(Set<Actividad> actividads) {
 		this.actividads = actividads;
 	}
-
-	public Set<InstalacionEvento> getInstalacionEventos() {
+	
+	public Set<InstalacionEvento> getInstalacionEventos(){
 		return this.instalacionEventos;
 	}
 
@@ -178,7 +178,7 @@ public class Evento implements java.io.Serializable {
 		this.instalacionEventos = instalacionEventos;
 	}
 
-	public Set<IndicadorEvento> getIndicadorEventos() {
+	public Set<IndicadorEvento> getIndicadorEventos(){
 		return this.indicadorEventos;
 	}
 
@@ -192,6 +192,59 @@ public class Evento implements java.io.Serializable {
 
 	public void setCalendarioFechas(Set<CalendarioFecha> calendarioFechas) {
 		this.calendarioFechas = calendarioFechas;
+	}
+	
+	public String getHoraString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		return dateFormat.format(fechaInicio)+"-"+dateFormat.format(fechaFin);
+	}
+	
+	public String getFechaInicioString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fechaInicio);
+	}
+	
+	public String getFechaFinString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fechaFin);
+	}
+	
+	public boolean isVisible(){
+		if(this.estadoEvento.getIdEstadoEvento()!=5 && this.estadoEvento.getIdEstadoEvento()!=4)
+			return true;		
+		return false;
+	}
+	
+	public Set<InstalacionEvento> getInstalacionEventosActive() {
+		Set<InstalacionEvento> temp = new HashSet<InstalacionEvento>(0);
+		for(InstalacionEvento instalacionE: instalacionEventos)
+			if(instalacionE.isActivo())
+				temp.add(instalacionE);
+		return temp;
+	}
+	
+	public Set<IndicadorEvento> getIndicadorEventosActive() {
+		Set<IndicadorEvento> temp = new HashSet<IndicadorEvento>(0);
+		for(IndicadorEvento indicadorE: indicadorEventos)
+			if(indicadorE.isActivo())
+				temp.add(indicadorE);
+		return temp;
+	}
+	
+	public Set<Actividad> getActividadsActive() {
+		Set<Actividad> temp = new HashSet<Actividad>(0);
+		for(Actividad actividad: actividads)
+			if(actividad.isActivo())
+				temp.add(actividad);
+		return temp;
+	}
+	
+	public Set<PreferenciaEvento> getPreferenciaEventosActive() {
+		Set<PreferenciaEvento> temp = new HashSet<PreferenciaEvento>(0);
+		for(PreferenciaEvento preferenciaE: preferenciaEventos)
+			if(preferenciaE.isActivo())
+				temp.add(preferenciaE);
+		return temp;
 	}
 
 }

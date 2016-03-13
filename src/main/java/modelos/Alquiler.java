@@ -1,6 +1,6 @@
 package modelos;
 
-// Generated 01/03/2016 02:05:25 AM by Hibernate Tools 4.3.1
+// Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,8 +13,8 @@ public class Alquiler implements java.io.Serializable {
 
 	private int idAlquiler;
 	private Reservacion reservacion;
+	private TipoPago tipoPago;
 	private Date fecha;
-	private String nroTransaccion;
 	private float monto;
 	private boolean activo = true;
 	private Set<ArchivoAlquiler> archivoAlquilers = new HashSet<ArchivoAlquiler>(
@@ -23,23 +23,23 @@ public class Alquiler implements java.io.Serializable {
 	public Alquiler() {
 	}
 
-	public Alquiler(int idAlquiler, Reservacion reservacion, Date fecha,
-			String nroTransaccion, float monto, boolean activo) {
+	public Alquiler(int idAlquiler, Reservacion reservacion, TipoPago tipoPago,
+			Date fecha, float monto, boolean activo) {
 		this.idAlquiler = idAlquiler;
 		this.reservacion = reservacion;
+		this.tipoPago = tipoPago;
 		this.fecha = fecha;
-		this.nroTransaccion = nroTransaccion;
 		this.monto = monto;
 		this.activo = activo;
 	}
 
-	public Alquiler(int idAlquiler, Reservacion reservacion, Date fecha,
-			String nroTransaccion, float monto, boolean activo,
+	public Alquiler(int idAlquiler, Reservacion reservacion, TipoPago tipoPago,
+			Date fecha, float monto, boolean activo,
 			Set<ArchivoAlquiler> archivoAlquilers) {
 		this.idAlquiler = idAlquiler;
 		this.reservacion = reservacion;
+		this.tipoPago = tipoPago;
 		this.fecha = fecha;
-		this.nroTransaccion = nroTransaccion;
 		this.monto = monto;
 		this.activo = activo;
 		this.archivoAlquilers = archivoAlquilers;
@@ -61,20 +61,20 @@ public class Alquiler implements java.io.Serializable {
 		this.reservacion = reservacion;
 	}
 
+	public TipoPago getTipoPago() {
+		return this.tipoPago;
+	}
+
+	public void setTipoPago(TipoPago tipoPago) {
+		this.tipoPago = tipoPago;
+	}
+
 	public Date getFecha() {
 		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}
-
-	public String getNroTransaccion() {
-		return this.nroTransaccion;
-	}
-
-	public void setNroTransaccion(String nroTransaccion) {
-		this.nroTransaccion = nroTransaccion;
 	}
 
 	public float getMonto() {

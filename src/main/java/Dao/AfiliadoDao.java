@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Afiliado;
+import modelos.Persona;
+import modelos.TipoAfiliado;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -87,8 +89,91 @@ private Sesion sesionPostgres;
         return datos; 
 	}	
 	
+	public Afiliado obtenerAfiliado(int id) throws Exception {            
+	      
+		   Afiliado dato = new Afiliado();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    dato =  (Afiliado) em.get(Afiliado.class, id);             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return dato; 
+	}
 	
-
+	//devuelve un afiliado con un numero de carnet especifico
+	public Afiliado obtenerPorNroCarnet(String carnet) throws Exception {            
+	      
+		   Afiliado dato = new Afiliado();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    dato =  (Afiliado) em.createCriteria(Afiliado.class).add(Restrictions.eq("nroCarnet", carnet))
+		    		.add(Restrictions.eq("activo", true)).uniqueResult();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return dato; 
+	}
 	
+	//devuelve un afiliado a partir de un objeto persona
+	public Afiliado obtenerPorPersona(Persona persona) throws Exception {            
+	      
+		   Afiliado dato = new Afiliado();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    dato =  (Afiliado) em.createCriteria(Afiliado.class).add(Restrictions.eq("persona", persona))
+		    		.add(Restrictions.eq("activo", true)).uniqueResult();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return dato; 
+	}
+	
+	//obtiene todos los afiliados de cierto socio.
+	public List<Afiliado> obtenerPorSocio(Persona persona) throws Exception {            
+	      
+		   List<Afiliado> dato = new ArrayList<Afiliado>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    dato =  (List<Afiliado>) em.createCriteria(Afiliado.class).add(Restrictions.eq("persona", persona))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	        return dato; 
+	}
+	
+	//obtiene todos los afiliados de cierto tipo
+	public List<Afiliado> obtenerPorTipo(TipoAfiliado tipo) throws Exception {            
+	      
+		List<Afiliado> datos = new ArrayList<Afiliado>();  
+		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+	        try {  	
+		    datos =  (List<Afiliado>) em.createCriteria(Afiliado.class).add(Restrictions.eq("tipoAfiliado", tipo))
+		    		.add(Restrictions.eq("activo", true)).list();             
+	        } catch (Exception e) {             
+	       
+	         throw new Exception(e.getMessage(),e.getCause());
+	        } finally {  
+	          em.close();  
+	        } 
+	       
+	        return datos; 
+	}
 	
 }
