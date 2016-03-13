@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 12/03/2016 01:08:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Club" table="club" schema="public" optimistic-lock="version">
         <id name="idClub" type="int">
@@ -35,6 +35,9 @@
         <property name="correo" type="string">
             <column name="correo" length="90" not-null="true" />
         </property>
+        <property name="claveCorreo" type="string">
+            <column name="clave_correo" />
+        </property>
         <property name="eslogan" type="string">
             <column name="eslogan" />
         </property>
@@ -53,7 +56,7 @@
             </key>
             <one-to-many class="modelos.Politica" />
         </set>
-        <set name="juntaDirectivas" table="junta_directiva" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="juntaDirectivas" table="junta_directiva" inverse="false" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="clubid_club" not-null="true" />
             </key>
