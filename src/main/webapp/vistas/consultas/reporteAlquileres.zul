@@ -1,5 +1,6 @@
 <zk xmlns:n="native" >
-	<div apply="reportes.estructurados.ReporteAlquileres">
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.ReporteAlquilerViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -43,12 +44,11 @@
 							   		   		<radio label="Seleccione la Instalacion:" value="0"  />			   		   		
 							   		   </div>									    			   		
 							   		   	<div>
-							   		   		<combobox >
-												<!--comboitem label="Todos"> </comboitem-->
-												<comboitem label="Caney1"></comboitem>
-												<comboitem label="Caney2"></comboitem>
-												<comboitem label="Caney3"></comboitem>
-												<comboitem label="Piscina"></comboitem>
+							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)" >
+												<template name="model">
+														<comboitem
+															label="@load(each.nombre)" value="@load(each)" />
+												</template>
 										   </combobox>							   		   	
 							   		   	</div>	
 									</hlayout>
@@ -59,26 +59,22 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  width="70%" tabindex="7" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  width="70%" tabindex="7" />
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
-								   	 <space spacing="2%"></space>
-								     <div align="right" xmlns:w="client">
-										<button id="btnImprimir" class='boton-guardar' label="Generar" />
-									 </div>							   	 
+								   	 <space spacing="1%"></space>						   	 
 								</groupbox >
-							</div>
-								
-							<space spacing="15%"></space>
-							<div>
-								<label>Instalacion:</label>
-								<label>Todos</label>	
+							     <div align="center" xmlns:w="client">
+									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<space spacing="2%"></space>
+									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+								 </div>									
 							</div>							
 							
 						</div>

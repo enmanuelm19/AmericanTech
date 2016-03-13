@@ -102,13 +102,13 @@
 												  </row>
 												  <row class="col-md-12">
 											   		   <div class="col-md-12" align="center">
-												   		   <label class="col-md-3"></label>
+												   		   <label class="col-md-2"></label>
 													       <combobox class="col-md-3">
 																<comboitem label="Futbol"> </comboitem>
 																<comboitem label="Beisbol"></comboitem>
 														   </combobox>
 														   <space spacing="1%"></space>
-														   <button id=""  iconSclass="z-icon-plus" class='boton-guardar' label="Agregar" />   			   		
+														   <button id=""  iconSclass="z-icon-plus" class='boton-guardar col-md-3' label="Agregar" />   			   		
 							   	 						</div>							   	 
 												  </row>
 												  <row class="col-md-12" >

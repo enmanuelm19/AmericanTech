@@ -1,0 +1,102 @@
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-th-list" />
+						<a label="Estructurado" href="#" />
+						<label value="Socio" />
+					</div>
+				</div>
+				<div class="contenedor" align="center">
+					<div sclass="page-header" align="left">
+						<label value="Socios" />
+					</div>
+					<separator spacing="1%" />
+					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
+						<div class="contenido">
+							<div align="left">
+								<div class='encabezado'>
+									Socios
+								</div>
+								<div class='linea-two'></div>
+							</div>
+							<space spacing="15%"></space>
+							<div align="center">
+								<groupbox style="margin: 1%;" width="85%" height="auto">
+									<space spacing="2%"></space>
+									<grid>
+							   	 		<rows>
+							   	 			<row class="col-md-12 ">
+							   	 				<div align="left">
+								                  	<div>
+														<checkbox label="Edad"></checkbox>
+													</div>
+							   	 				</div>
+							   	 			</row>
+							   	 			<row class="col-md-12 ">
+							   	 				<div align="center">
+											   	 	<hlayout width="100%" >
+										                  	<div>
+																<label class="col-md-2">Desde:</label> 
+																<combobox width="" class="col-md-4" >
+																	<comboitem label="Caney"></comboitem>
+																	<comboitem label="Piscina"></comboitem>																																							
+															    </combobox>	
+																<label class="col-md-2">Hasta:</label> 
+																<combobox width="" class="col-md-4">
+																	<comboitem label="Caney"></comboitem>
+																	<comboitem label="Piscina"></comboitem>																																							
+															    </combobox>																	
+															</div>																		   	 							   	 	
+											   	 	</hlayout>
+							   	 				</div>
+							   	 			</row>
+							   	 			<row class="col-md-12">
+							   	 				<div >
+						                  			<checkbox label="Sexo" class="col-md-2"></checkbox>
+													<combobox width="30%" class="col-md-5">
+														<comboitem label="Caney"></comboitem>
+														<comboitem label="Piscina"></comboitem>																																							
+												   </combobox>	 	   		
+							   	 				</div>
+							   	 			</row>
+							   	 			<row class="col-md-12 ">
+							   	 				<div >
+						                  			<checkbox label="Categoria" class="col-md-2"></checkbox>
+													<combobox width="30%" class="col-md-5">
+														<comboitem label="Caney"></comboitem>
+														<comboitem label="Piscina"></comboitem>																																							
+												   </combobox>	 	   		
+							   	 				</div>
+							   	 			</row>
+							   	 			<row class="col-md-12 ">
+							   	 				<div align="left">
+							   	 				<div >
+						                  			<checkbox label="Preferencia" class="col-md-2"></checkbox>
+													<combobox width="30%" class="col-md-5">
+														<comboitem label="Caney"></comboitem>
+														<comboitem label="Piscina"></comboitem>																																							
+												   </combobox>	 	   		
+							   	 				</div>	
+							   	 				</div>
+							   	 			</row>							   	 										   	 			
+											<row class="col-md-12" >			                  				                  
+											    
+											</row>
+							   	 		</rows>
+							   	 	 </grid>
+									 <space spacing="1%"></space>									   	 
+								</groupbox >
+							    <div align="center" xmlns:w="client">
+									<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+							    </div>									
+							</div>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>

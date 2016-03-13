@@ -97,23 +97,25 @@ VALUES  (1, 'Configuracion', ' ', 'z-icon-cogs', ' ', 0, true),
 	(56, 'Finalizar evento', 'evento/administrarEvento/finalizacionEvento.zul', 'z-icon-angle-double-right', ' ', 11, true),
 	(57, 'Alquileres', 'consultas/reporteAlquileres.zul', 'z-icon-angle-double-right', ' ', 12, true),
 	(58, 'Eventos', 'consultas/reporteEventos.zul', 'z-icon-angle-double-right', ' ', 12, true),
-	(59, 'Actividades de Eventos', 'consultas/reporteActividadesEventos.zul', 'z-icon-angle-double-right', ' ', 12, true),
+	(59, 'Actividades de Eventos', 'consultas/reporteActividadEventos.zul', 'z-icon-angle-double-right', ' ', 12, true),
 	(60, 'Socios', 'consultas/reporteSocios.zul', 'z-icon-angle-double-right', ' ', 12, true),
 	(61, 'Sanciones', 'consultas/reporteSanciones.zul', 'z-icon-angle-double-right', ' ', 12, true),
 	(62, 'Eventualidades', 'consultas/reporteEventualidad.zul', 'z-icon-angle-double-right', ' ', 12, true),
-	(63, 'Socio', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(64, 'Instalacion', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(65, 'Evento', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(66, 'Socio', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(67, 'Instalacion', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(68, 'Evento', ' ', 'z-icon-angle-double-right', ' ', 14, true),
+	(63, 'Sanciones', 'consultas/reporteSancionesEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
+	(64, 'Eventualidades', 'consultas/reporteEventualidadesEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
+	(65, 'Evento', 'consultas/reporteEventoValorEsperadoRealEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
+	(66, 'Socio', 'consultas/reporteSociosEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
+-- (67, 'Instalacion', ' ', 'z-icon-angle-double-right', ' ', 14, true),
+	(68, 'Evento', 'consultas/reporteEventoValorEsperadoRealEst.zul.zul', 'z-icon-angle-double-right', ' ', 14, true),
+	(69, 'Red Social', 'configuracion/categoria/redSocial.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (70, 'Tipo eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (71, 'Indicador', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (72, 'Tipo Opinion', 'configuracion/categoria/tipoOpinion.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (73, 'Tipo Pago', 'configuracion/categoria/tipoPago.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (74, 'Tipo Noticia', 'configuracion/categoria/tipoNoticia.zul', 'z-icon-angle-double-right', ' ', 8, true),
-    (75, 'Motivo Cancelacion', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
---id 13 disponible
+    (75, 'Motivo Cancelacion', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, true),
+	(76, 'Sugerencias', 'socio/buzon/sugerenciasAdministrar.zul', 'z-icon-angle-double-right', ' ', 10, true);
+--id 13 67 disponible
 	
 -- inserta las funciones pertenecientes al grupo de socio
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 33, 1, true);
@@ -178,7 +180,7 @@ INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 6
 --insertan las funciones pertenecientes a vigilancia
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 44, 6, true);
 
-INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 67, 2, true);
+-- INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 67, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 68, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 70, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 71, 2, true);
@@ -186,3 +188,4 @@ INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 7
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 73, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 74, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 75, 2, true);
+INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 76, 2, true);
