@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.ReporteEventualidadesViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -30,10 +31,10 @@
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Seleccione :</label>
-												       <combobox >
-															<comboitem label="Instalaciones"> </comboitem>
-															<comboitem label="Socios"></comboitem>
-															<comboitem label="Afiliados"></comboitem>
+												       <combobox selectedItem="@bind(vm.tipo)">
+															<comboitem label="Instalaciones" value="1"> </comboitem>
+															<comboitem label="Socios" value="2"></comboitem>
+															<comboitem label="Afiliados" value="3"></comboitem>
 													   </combobox>			   		
 											   	 </div>								   	 
 											  </row>   
@@ -42,18 +43,17 @@
 											   		   <div >
 											   		   		<label class="col-md-4">Nro de Carnet </label>
 											   		   </div>   
-												       <textbox>
-			
-													   </textbox>			   		
+												       <textbox value="@bind(vm.socio.nroCarnet)"></textbox>			   		
 											   	 </div>								   	 
 											  </row>
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Instalacion :</label>
-												       <combobox >
-															<comboitem label="Todos"> </comboitem>
-															<comboitem label="Socios"></comboitem>
-															<comboitem label="Afiliados"></comboitem>
+												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)">
+															<template name="model">
+																	<comboitem
+																		label="@load(each.nombre)" value="@load(each)" />
+															</template>
 													   </combobox>			   		
 											   	 </div>								   	 
 											  </row> 											  	
@@ -65,12 +65,12 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  width="70%" tabindex="7" value="@bind(vm.fechaInicio)" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  width="70%" tabindex="7" value="@bind(vm.fechaFin)"/>
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
@@ -80,71 +80,23 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<combobox width="60%">
-														<comboitem label="12 AM"></comboitem>
-														<comboitem label="1 AM"></comboitem>
-														<comboitem label="2 AM"></comboitem>
-														<comboitem label="3 AM"></comboitem>
-														<comboitem label="4 AM"></comboitem>
-														<comboitem label="5 AM"></comboitem>
-														<comboitem label="6 AM"></comboitem>
-														<comboitem label="7 AM"></comboitem>
-														<comboitem label="8 AM"></comboitem>
-														<comboitem label="9 AM"></comboitem>
-														<comboitem label="10 AM"></comboitem>
-														<comboitem label="11 AM"></comboitem>
-														<comboitem label="12 PM"></comboitem>
-														<comboitem label="1 PM"></comboitem>
-														<comboitem label="2 PM"></comboitem>
-														<comboitem label="3 PM"></comboitem>
-														<comboitem label="4 PM"></comboitem>
-														<comboitem label="5 PM"></comboitem>
-														<comboitem label="6 PM"></comboitem>
-														<comboitem label="7 PM"></comboitem>
-														<comboitem label="8 PM"></comboitem>
-														<comboitem label="9 PM"></comboitem>
-														<comboitem label="10 PM"></comboitem>
-														<comboitem label="11 PM"></comboitem>																																							
-												   </combobox>
+													<timebox cols="12" value="@bind(vm.horaInicio)" 
+														format="short"  width="60%" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<combobox width="60%">
-														<comboitem label="12 AM"></comboitem>
-														<comboitem label="1 AM"></comboitem>
-														<comboitem label="2 AM"></comboitem>
-														<comboitem label="3 AM"></comboitem>
-														<comboitem label="4 AM"></comboitem>
-														<comboitem label="5 AM"></comboitem>
-														<comboitem label="6 AM"></comboitem>
-														<comboitem label="7 AM"></comboitem>
-														<comboitem label="8 AM"></comboitem>
-														<comboitem label="9 AM"></comboitem>
-														<comboitem label="10 AM"></comboitem>
-														<comboitem label="11 AM"></comboitem>
-														<comboitem label="12 PM"></comboitem>
-														<comboitem label="1 PM"></comboitem>
-														<comboitem label="2 PM"></comboitem>
-														<comboitem label="3 PM"></comboitem>
-														<comboitem label="4 PM"></comboitem>
-														<comboitem label="5 PM"></comboitem>
-														<comboitem label="6 PM"></comboitem>
-														<comboitem label="7 PM"></comboitem>
-														<comboitem label="8 PM"></comboitem>
-														<comboitem label="9 PM"></comboitem>
-														<comboitem label="10 PM"></comboitem>
-														<comboitem label="11 PM"></comboitem>																																							
-												   </combobox>
+													<timebox cols="12" value="@bind(vm.horaFin)" 
+													format="short" width="60%" />
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>								   	 
 								   	 <space spacing="2%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<button id="btnImprimirtxt" class='boton-guardar' label="Generar txt" />
 									<space spacing="2%"></space>
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+									<button id="btnImprimirpdf" class='boton-guardar' label="Generar PDF" />
 								 </div>	
 							</div>
 						</div>
