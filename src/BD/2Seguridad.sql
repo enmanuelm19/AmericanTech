@@ -107,7 +107,6 @@ VALUES  (1, 'Configuracion', ' ', 'z-icon-cogs', ' ', 0, true),
 	(66, 'Socio', ' ', 'z-icon-angle-double-right', ' ', 14, true),
 	(67, 'Instalacion', ' ', 'z-icon-angle-double-right', ' ', 14, true),
 	(68, 'Evento', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(69, 'Unidad medida', 'configuracion/categoria/unidadMedida.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (70, 'Tipo eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (71, 'Indicador', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (72, 'Tipo Opinion', 'configuracion/categoria/tipoOpinion.zul', 'z-icon-angle-double-right', ' ', 8, true),
@@ -181,7 +180,6 @@ INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 4
 
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 67, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 68, 2, true);
-INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 69, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 70, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 71, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 72, 2, true);
