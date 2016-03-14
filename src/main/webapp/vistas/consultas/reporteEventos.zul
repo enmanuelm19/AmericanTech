@@ -1,6 +1,8 @@
 <zk xmlns:n="native">
+<!--  -->
+
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.ReporteEventoViewModel')">
+		viewModel="@id('vm') @init('reportes.estructurados.ReporteEventoViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -32,11 +34,11 @@
 												 <div class="col-md-12" align="center">	
 									                  	<div >
 															Desde: 
-															<datebox  width="30%" tabindex="7" />
+															<datebox  width="30%" tabindex="7" value="@bind(vm.fechadesde)"/>
 														<space spacing="1%"></space>
 
 															Hasta: 
-															<datebox  width="30%" tabindex="7" />
+															<datebox  width="30%" tabindex="7" value="@bind(vm.fechahasta)" />
 														</div>			   		
 											   	 </div>								   	 
 											  </row> 	
@@ -61,10 +63,11 @@
 												  <row class="col-md-12">
 											   		   <div class="col-md-12" align="center">
 												   		   <label class="col-md-3"></label>
-												   		   <chosenbox  model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%" 
-                    											emptyMessage="" creatable="true"/>
+												   		   <chosenbox  model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%"
+																	emptyMessage="" creatable="true"
+																	selectedObjects="@bind(vm.temporalPreferencia)"/>
 														   <space spacing="1%"></space>
-														<button sclass="btn-link" onClick="@command('agregarPreferenciasEvento')"
+														<button sclass="btn-link" onClick="@command('agregarSeleccionPreferencia')"
 															iconSclass="z-icon-plus blue" id=""
 															tooltiptext="Agregar preferencia" />  			   		
 							   	 						</div>							   	 
@@ -76,7 +79,7 @@
 												  </row>-->
 											</rows>
 										</grid>
-										<grid model="@load(vm.preferenciasEventos)"
+										<grid model="@load(vm.preferenciaEventos)"
 											emptyMessage="No se encuentran sub-categorias registradas"
 											mold="paging" pageSize="5" style="margin:1%">
 											<auxhead sclass="category-center">
@@ -99,9 +102,9 @@
 												<template name="model">
 													<row>
 													
-														<label value="@load(each.preferencia.tipoPreferencia.descripcion)" />
+														<label value="@load(each.tipoPreferencia.descripcion)" />
 														
-														<label value="@load(each.preferencia.descripcion)" />
+														<label value="@load(each.descripcion)" />
 									
 														<button sclass="btn-link"
 																iconSclass="z-icon-trash-o red" 

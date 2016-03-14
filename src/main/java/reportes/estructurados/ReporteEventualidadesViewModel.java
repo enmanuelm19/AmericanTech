@@ -119,7 +119,6 @@ public class ReporteEventualidadesViewModel {
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
-
 	public String getCarnet() {
 		return carnet;
 	}
@@ -143,7 +142,8 @@ public class ReporteEventualidadesViewModel {
 				this.carnet="";
 			}
 			else {
-				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);		
+				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);	
+				System.out.println(tipo);
 			}
 
 		}

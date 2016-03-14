@@ -32,9 +32,9 @@
 							   		   		<radio label="Estado de la Instalacion:" value="0" selected="true" />			   		   		
 							   		   </div>
 							   		   <div>
-							   		   		<combobox selectedItem="@bind(vm.estadoinstalacion)">
-												<comboitem label="Reservadas" value="1"> </comboitem>
-												<comboitem label="Alquiladas" value="2"></comboitem>
+							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
+													<comboitem label="Alquiladas" value="1" />
+													<comboitem label="Reservadas" value="2" />
 										   </combobox>
 							   		   </div>
 									   <space spacing ="2%"></space>   
@@ -57,12 +57,12 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox  width="70%" tabindex="7" value="@bind(vm.fechadesde)" />
+													<datebox  width="70%" tabindex="7" value="@bind(vm.fechadesde)" format="short"/>
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox  width="70%" tabindex="7" value="@bind(vm.fechahasta)" />
+													<datebox  width="70%" tabindex="7" value="@bind(vm.fechahasta)" format="short"/>
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>

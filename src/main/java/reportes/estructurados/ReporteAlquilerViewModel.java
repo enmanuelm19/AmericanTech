@@ -18,6 +18,10 @@ import org.zkoss.zul.Window;
 
 
 
+
+
+
+
 import Dao.InstalacionDao;
 import modelos.Instalacion;
 import modelos.TipoInstalacion;
@@ -33,18 +37,32 @@ public class ReporteAlquilerViewModel {
 	private Date fechahasta;
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
+	//private static ArrayList<String> arrestadoInstalacion;
 
-
+	
 	@Init
 	public void init() {
 		instalacionDao = new InstalacionDao();
+	//	arrestadoInstalacion = new ArrayList<String>();		
 	}
 
+	/*static {
+		arrestadoInstalacion.add(1,"Reservadas");
+		arrestadoInstalacion.add(2, "Alquiladas");
+	}
+	
+
+	public ListModelList<String> getArrestadoInstalacion() throws Exception {
+
+		return new ListModelList<String>(arrestadoInstalacion);
+
+	}	*/
+	
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
 
 		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
 
-	}
+	}	
 	
 	@NotifyChange("tipoInstalacionSelected")
 	public TipoInstalacion getTipotipoInstalacionSelected() {
