@@ -20,7 +20,8 @@ public class Reservacion implements java.io.Serializable {
 	private Socio socio;
 	private Date fechaInicio;
 	private Date fechaFin;
-	private boolean activo = true;
+	private char condicion;
+	private boolean activo;
 	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
 			0);
@@ -39,13 +40,14 @@ public class Reservacion implements java.io.Serializable {
 	}
 
 	public Reservacion(int idReservacion, Instalacion instalacion, Socio socio,
-			Date fechaInicio, Date fechaFin, boolean activo,
+			Date fechaInicio, Date fechaFin, char condicion, boolean activo,
 			Set<Alquiler> alquilers, Set<CalendarioFecha> calendarioFechas) {
 		this.idReservacion = idReservacion;
 		this.instalacion = instalacion;
 		this.socio = socio;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+		this.condicion = condicion;
 		this.activo = activo;
 		this.alquilers = alquilers;
 		this.calendarioFechas = calendarioFechas;
@@ -91,6 +93,14 @@ public class Reservacion implements java.io.Serializable {
 		this.fechaFin = fechaFin;
 	}
 
+	public char getCondicion() {
+		return this.condicion;
+	}
+
+	public void setCondicion(char condicion) {
+		this.condicion = condicion;
+	}
+
 	public boolean isActivo() {
 		return this.activo;
 	}
@@ -115,6 +125,7 @@ public class Reservacion implements java.io.Serializable {
 		this.calendarioFechas = calendarioFechas;
 	}
 	
+	//Metodos Que no se pueden borrar 
 	public String getFechaInicioString(){
 		return Format.getDateString(fechaInicio);
 	}
