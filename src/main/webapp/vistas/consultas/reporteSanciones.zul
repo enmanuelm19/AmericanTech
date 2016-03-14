@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estructurados.ReporteSancionesViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -30,10 +31,10 @@
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Seleccione :</label>
-												       <combobox >
-															<comboitem label="Todos"> </comboitem>
-															<comboitem label="Socios"></comboitem>
-															<comboitem label="Afiliados"></comboitem>
+												       <combobox selectedItem="@bind(vm.tipo)">
+															<comboitem label="Todos" value="1"> </comboitem>
+															<comboitem label="Socios" value="2"></comboitem>
+															<comboitem label="Afiliados" value="3"></comboitem>
 													   </combobox>			   		
 											   	 </div>								   	 
 											  </row>   
@@ -42,9 +43,9 @@
 											   		   <div >
 											   		   		<checkbox label="Nro de Carnet" class="col-md-4" />
 											   		   </div>   
-												       <textbox>
-			
-													   </textbox>			   		
+												       <textbox value="@bind(vm.carnet)"></textbox>
+												       <button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" />
+														   		
 											   	 </div>								   	 
 											  </row>	
 										</rows>
@@ -55,12 +56,12 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  value="@bind(vm.fechadesde)" width="70%" tabindex="7" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox value="@bind(vm.fechahasta)"  width="70%" tabindex="7" />
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>

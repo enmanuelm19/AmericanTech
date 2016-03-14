@@ -1253,7 +1253,7 @@ webkit-box-shadow: 0 3px 5px #bbc3c9;
 
 
 /*GROW*/
-.grow img {
+.grow {
   height: 16px;
   width: 16px;
  
@@ -1264,7 +1264,7 @@ webkit-box-shadow: 0 3px 5px #bbc3c9;
           transition: all 1s ease;
 }
  
-.grow img:hover {
+.grow:hover {
   width: 32px;
   height:32px;
 }

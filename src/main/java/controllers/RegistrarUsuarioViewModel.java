@@ -147,7 +147,9 @@ public class RegistrarUsuarioViewModel {
 			}
 			else {
 				user.setFecha(new Date());
-				user.getPersona().setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
+				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
+				System.out.println(foto);
+				user.getPersona().setFoto(foto);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
