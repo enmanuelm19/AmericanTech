@@ -1,4 +1,4 @@
-package controllers;
+package reportes.estructurados;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +18,10 @@ import org.zkoss.zul.Window;
 
 
 
+
+
+
+
 import Dao.InstalacionDao;
 import modelos.Instalacion;
 import modelos.TipoInstalacion;
@@ -28,21 +32,37 @@ import modelos.TipoPreferencia;
 public class ReporteAlquilerViewModel {
 	
 
-	
+	private int estadoinstalacion;
+	private Date fechadesde;
+	private Date fechahasta;
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
+	//private static ArrayList<String> arrestadoInstalacion;
 
-
+	
 	@Init
 	public void init() {
 		instalacionDao = new InstalacionDao();
+	//	arrestadoInstalacion = new ArrayList<String>();		
 	}
 
+	/*static {
+		arrestadoInstalacion.add(1,"Reservadas");
+		arrestadoInstalacion.add(2, "Alquiladas");
+	}
+	
+
+	public ListModelList<String> getArrestadoInstalacion() throws Exception {
+
+		return new ListModelList<String>(arrestadoInstalacion);
+
+	}	*/
+	
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
 
 		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
 
-	}
+	}	
 	
 	@NotifyChange("tipoInstalacionSelected")
 	public TipoInstalacion getTipotipoInstalacionSelected() {
@@ -54,5 +74,31 @@ public class ReporteAlquilerViewModel {
 		this.tipoInstalacionSelected = tipoInstalacionSelected;
 	}
 
+	public int getEstadoinstalacion() {
+		return estadoinstalacion;
+	}
+
+	public void setEstadoinstalacion(int estadoinstalacion) {
+		this.estadoinstalacion = estadoinstalacion;
+	}
+
+	public Date getFechadesde() {
+		return fechadesde;
+	}
+
+	public void setFechadesde(Date fechadesde) {
+		this.fechadesde = fechadesde;
+	}
+
+	public Date getFechahasta() {
+		return fechahasta;
+	}
+
+	public void setFechahasta(Date fechahasta) {
+		this.fechahasta = fechahasta;
+	}
+	/*public void setFechahasta(Date fechahasta) {
+		this.fechahasta = fechahasta;
+	}*/
 
 }
