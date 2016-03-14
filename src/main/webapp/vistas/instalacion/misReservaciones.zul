@@ -78,7 +78,7 @@
 												value="@load(reservacion.fechaFinString)" />
 											<label
 												value="@load(reservacion.horaFinString)" />
-											<label value="0000" />
+											<label value="@load(reservacion.instalacion.precioAlquiler)" />
 											<div>
 												<button
 													sclass="btn-link" iconSclass="z-icon-pencil blue"

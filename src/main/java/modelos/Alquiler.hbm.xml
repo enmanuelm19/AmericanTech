@@ -11,7 +11,7 @@
         <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select" lazy="false" cascade="save-update">
             <column name="reservacionid_reservacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoPago" class="modelos.TipoPago" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoPago" class="modelos.TipoPago" fetch="select" lazy="false" >
             <column name="tipo_pagoid_tipo_pago" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">

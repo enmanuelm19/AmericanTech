@@ -1,190 +1,137 @@
-
 <zk>
-<div>
-	<hlayout spacing="0">
-		
-		
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewBean')"
+		xmlns:w="client">
+		<hlayout spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
-							<span sclass="home-icon z-icon-home"/>
-					    <a label="Instalaciones" href="#"/>
-							<label value="Administrar Alquileres"/>
+						<span sclass="home-icon z-icon-home" />
+						<a label="Instalaciones" href="#" />
+						<label value="Administrar Alquileres" />
 					</div>
- 			</div>
- 			<div class='contenedor' align="center">
- 				<div class='page-header' align="left">
- 					<label value="Administrar Alquileres"/>
- 				</div>
- 			
- 				<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'  width="95%">
- 					<div align="left">
-		  						<div class='encabezado'>
-		  							<label value="Reservaciones"/>
-		  						</div>
-		  					</div>
-		  					<div class='linea-two'></div>
-		  					<div>
- 						<grid mold="paging" pageSize="8">
- 							<columns menupopup="auto">
- 								<column label="Numero de Reservacion" align="center" sort="auto" hflex="6"/>
- 								<column label="Intalación" align="center" hflex="4"/>
- 								<column label="Socio" align="center" hflex="4"/>
- 								<column label="Fecha Inicio" align="center" hflex="4"/>
- 								<column label="Fecha Fin" align="center" hflex="4"/> 								
- 								<column label="Hora Inicio" align="center" hflex="4"/>
- 								<column label="Hora Fin" align="center" hflex="4"/> 	
- 								<column label="Tipo Pago" align="center" hflex="4"/>  															
- 								<column label="Acciones" align="center" hflex="4"/>
- 							</columns>
- 							<rows>
- 								<row>
- 									<label value="0001"/>
- 									<label value="Caney de Rafa"/>
- 									<label value="Fidel Aliaga"/>
- 									<label value="28-02-2016"/>
- 									<label value="28-02-2016"/> 									
- 									<label value="11:00"/>
- 									<label value="14:00"/>
- 									<combobox constraint="no empty" width="100%"></combobox>
- 									
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
- 									</div>
- 								</row>
- 								<row>
- 									<label value="0002"/>
- 									<label value="Caney de Rafa"/>
- 									<label value="Pedro Perez"/>
- 									<label value="01-03-2016"/>
- 									<label value="01-03-2016"/> 									
- 									<label value="11:00"/>
- 									<label value="14:00"/>
- 									<combobox constraint="no empty" width="100%"></combobox>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
- 									</div>
- 								</row>
- 								<row>
- 									<label value="0003"/>
- 									<label value="Caney de Rafa"/>
- 									<label value="Juan Perez"/>
- 									<label value="02-03-2016"/>
- 									<label value="02-03-2016"/> 									
- 									<label value="11:00"/>
- 									<label value="14:00"/>
- 									<combobox constraint="no empty" width="100%"></combobox>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
- 									</div>
- 								</row>
- 								<row>
- 									<label value="0004"/>
- 									<label value="Caney de Rafa"/>
- 									<label value="Manuel Hernadez"/>
- 									<label value="03-03-2016"/>
- 									<label value="03-03-2016"/> 									
- 									<label value="11:00"/>
- 									<label value="14:00"/>
- 									<combobox constraint="no empty" width="100%"></combobox>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
- 									</div>
- 								</row>
- 								<row>
- 									<label value="0005"/>
- 									<label value="Caney de Rafa"/>
- 									<label value="Jose Rivero"/>
- 									<label value="04-03-2016"/>
- 									<label value="05-03-2016"/> 									
- 									<label value="11:00"/>
- 									<label value="14:00"/>
- 									<combobox constraint="no empty" width="100%"></combobox>
- 									<div>
- 										<button class='btn-link' iconSclass="z-icon-check blue" tooltiptext="Aprobar"/>
- 										<button class='btn-link' iconSclass="z-icon-times red" tooltiptext="Denegar"/>
- 									</div>
- 								</row>
- 							</rows>
- 						</grid>
- 					</div>	
- 				</div>
- 				<separator spacing="5%"/>
- 				<div class="form-pricing" width="95%">
- 					<div align="left">
-		  						<div class='encabezado'>
-		  							<label value="Alquileres"/>
-		  						</div>
-		  					</div>
-		  					<div class='linea-two'></div>
-		  					<div>
- 						<grid mold="paging" pageSize="5">
- 							<columns menupopup="auto">
- 								<column label="Numero de Alquiler" align="center"/>
- 								<column label="Numero de Reservacion" align="center" sort="auto" width="15%"/>
- 								<column label="Socio" align="center"/>
- 								<column label="Fecha Aprobacion" align="center"/>
- 								<column label="Hora Aprobacion" align="center"/>
- 								<column label="Boucher" align="center"/>
- 								<column label="Monto Bs" align="center"/>
- 							</columns>
- 							<rows>
- 								<row>
- 									<label value="0001"/>
- 									<label value="0001"/>
- 									<label value="Fidel Aliaga"/>
- 									<label value="25-01-2016"/>
-									<label value="12:00"/>
-									<label value="25504354"/>
-									<label value="90000"/>
- 								</row>
- 								<row>
- 									<label value="0002"/>
- 									<label value="0002"/>
- 									<label value="Pedro Perez"/>
- 									<label value="25-01-2016"/>
-									<label value="12:00"/>
-									<label value="25594305"/>
-									<label value="90000"/>
- 								</row>
- 								<row>
- 									<label value="0003"/>
- 									<label value="0003"/>
- 									<label value="Juan Perez"/>
- 									<label value="25-01-2016"/>
-									<label value="12:00"/>
-									<label value="25572381"/>
-									<label value="90000"/>
- 								</row>
- 								<row>
- 									<label value="0004"/>
- 									<label value="0004"/>
- 									<label value="Manuel Hernadez"/>
- 									<label value="25-01-2016"/>
-									<label value="12:00"/>
-									<label value="25593472"/>
-									<label value="90000"/>
- 								</row>
- 								<row>
- 									<label value="0005"/>
- 									<label value="0005"/>
- 									<label value="Jose Rivero"/>
- 									<label value="25-01-2016"/>
-									<label value="12:00"/>
-									<label value="25507343"/>
-									<label value="90000"/>
- 								</row>
- 							</rows>
- 						</grid>
- 					</div>
- 				</div>
- 				<separator spacing="2%"/>
- 			</div>
-		</vlayout>
-	</hlayout>
+				</div>
+				<div class='contenedor' align="center">
+					<div class='page-header' align="left">
+						<label value="Administrar Alquileres" />
+					</div>
+
+					<div
+						class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
+						width="95%">
+						<div align="left">
+							<div class='encabezado'>
+								<label value="Reservaciones" />
+							</div>
+						</div>
+						<div class='linea-two'></div>
+						<div>
+							<grid mold="paging" pageSize="5"
+								model="@load(vm.reservacionAll)"
+								emptyMessage="No se encuentran reservaciones pendientes">
+								<columns menupopup="auto">
+									<column label="Nro de Reservacion"
+										align="center" sort="auto" hflex="4" />
+									<column label="Intalación"
+										align="center" hflex="6" />
+									<column label="Socio" align="center"
+										hflex="4" />
+									<column label="Fecha Inicio"
+										align="center" hflex="4" />
+									<column label="Fecha Fin"
+										align="center" hflex="4" />
+									<column label="Hora Inicio"
+										align="center" hflex="4" />
+									<column label="Hora Fin"
+										align="center" hflex="4" />
+									<column label="Acciones"
+										align="center" hflex="4" />
+								</columns>
+								<rows>
+									<template name="model"
+										var="reservacion">
+										<row>
+											<label
+												value="@load(reservacion.idReservacion)" />
+											<label
+												value="@load(reservacion.instalacion.descripcion)" />
+											<label
+												value="@load(reservacion.socio.nroCarnet)" />
+											<label
+												value="@load(reservacion.fechaInicioString)" />
+											<label
+												value="@load(reservacion.fechaFinString)" />
+											<label
+												value="@load(reservacion.horaInicioString)" />
+											<label
+												value="@load(reservacion.horaFinString)" />
+
+											<div>
+												<button class='btn-link'
+													iconSclass="z-icon-check blue" tooltiptext="Aprobar"
+													onClick="@command('showModal',reservacion = reservacion)" />
+												<button class='btn-link'
+													iconSclass="z-icon-times red" tooltiptext="Denegar"
+													onClick="@command('denegar',reservacion = reservacion)" />
+											</div>
+										</row>
+									</template>
+								</rows>
+							</grid>
+						</div>
+					</div>
+					<separator spacing="5%" />
+					<div class="form-pricing" width="95%">
+						<div align="left">
+							<div class='encabezado'>
+								<label value="Alquileres" />
+							</div>
+						</div>
+						<div class='linea-two'></div>
+						<div>
+							<grid mold="paging" pageSize="5"
+								model="@load(vm.alquilerAll)"
+								emptyMessage="No se encuentran alquileres">
+								<columns menupopup="auto">
+									<column label="Numero de Alquiler"
+										align="center" />
+									<column
+										label="Numero de Reservacion" align="center" sort="auto"
+										width="15%" />
+									<column label="Socio"
+										align="center" />
+									<column label="Fecha Aprobacion"
+										align="center" />
+									<column label="Tipo de Pago"
+										align="center" />
+									<column label="Monto Bs"
+										align="center" />
+								</columns>
+								<rows>
+									<template name="model"
+										var="alquiler">
+										<row>
+											<label
+												value="@load(alquiler.idAlquiler)" />
+											<label
+												value="@load(alquiler.reservacion.idReservacion)" />
+											<label
+												value="@load(alquiler.reservacion.socio.nroCarnet)" />
+											<label
+												value="@load(alquiler.fecha)" />
+											<label
+												value="@load(alquiler.tipoPago.descripcion)" />
+											<label
+												value="@load(alquiler.reservacion.instalacion.precioAlquiler)" />
+										</row>
+									</template>
+								</rows>
+							</grid>
+						</div>
+					</div>
+					<separator spacing="2%" />
+				</div>
+			</vlayout>
+		</hlayout>
 	</div>
 </zk>

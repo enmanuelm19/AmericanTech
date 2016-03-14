@@ -1,4 +1,4 @@
-<?page title="Registrar Visita"?>
+<?page title="Solicitud"?>
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
@@ -29,7 +29,7 @@
 								<label>Instalaciones:</label>
 								<combobox id="instalaciones"
 									model="@load(vm.temporalInstalaciones)"
-									selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
+									value="@bind(vm.instalacionSeleccionada.nombre)" selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
 									<template name="model">
 										<comboitem
 											label="@load(each.descripcion)" value="@load(each)" />
@@ -39,7 +39,7 @@
 							<div>
 								<label>Precio</label>
 								<decimalbox disabled="true"
-									width="100%">
+									width="100%" value="@load(vm.instalacionSeleccionada.precioAlquiler)">
 								</decimalbox>
 							</div>
 						</row>
@@ -78,7 +78,7 @@
 				<space spacing="15%" />
 				<div>
 					<button iconSclass="z-icon-floppy-o"
-						onClick="@command('guardar',win=winEv)" class='boton-guardar'
+						onClick="@command('guardar',win=winEv)" disabled="vm.disable" class='boton-guardar'
 						label="Registrar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
