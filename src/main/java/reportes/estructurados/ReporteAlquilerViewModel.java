@@ -1,4 +1,4 @@
-package controllers;
+package reportes.estructurados;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +28,9 @@ import modelos.TipoPreferencia;
 public class ReporteAlquilerViewModel {
 	
 
-	
+	private int estadoinstalacion;
+	private Date fechadesde;
+	private Date fechahasta;
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
 
@@ -54,5 +56,31 @@ public class ReporteAlquilerViewModel {
 		this.tipoInstalacionSelected = tipoInstalacionSelected;
 	}
 
+	public int getEstadoinstalacion() {
+		return estadoinstalacion;
+	}
+
+	public void setEstadoinstalacion(int estadoinstalacion) {
+		this.estadoinstalacion = estadoinstalacion;
+	}
+
+	public Date getFechadesde() {
+		return fechadesde;
+	}
+
+	public void setFechadesde(Date fechadesde) {
+		this.fechadesde = fechadesde;
+	}
+
+	public Date getFechahasta() {
+		return fechahasta;
+	}
+
+	public void setFechahasta(Date fechahasta) {
+		this.fechahasta = fechahasta;
+	}
+	/*public void setFechahasta(Date fechahasta) {
+		this.fechahasta = fechahasta;
+	}*/
 
 }

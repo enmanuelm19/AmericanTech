@@ -76,8 +76,8 @@
 												  </row>-->
 											</rows>
 										</grid>
-										<grid
-											emptyMessage="No se encuentran reservaciones registrados"
+										<grid model="@load(vm.preferenciasEventos)"
+											emptyMessage="No se encuentran sub-categorias registradas"
 											mold="paging" pageSize="5" style="margin:1%">
 											<auxhead sclass="category-center">
 												<auxheader colspan="1">
@@ -96,20 +96,16 @@
 			
 											</columns>
 											<rows>
-												<template name="model"
-													var="reservacion">
+												<template name="model">
 													<row>
-														<label
-															value="" />
-														<label
-															value="" />
-														<label value="0000" />
-														<div>
-															<button
-																sclass="btn-link" iconSclass="z-icon-times red"
-																tooltiptext="Eliminar"
-																onClick="" />
-														</div>
+													
+														<label value="@load(each.preferencia.tipoPreferencia.descripcion)" />
+														
+														<label value="@load(each.preferencia.descripcion)" />
+									
+														<button sclass="btn-link"
+																iconSclass="z-icon-trash-o red" 
+																tooltiptext="Eliminar" onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)"/>
 													</row>
 												</template>
 											</rows>
@@ -122,9 +118,9 @@
 								   	 <space spacing="1%"></space>							   	
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<button id="btnImprimirtxt" class='boton-guardar' label="Generar txt" />
 									<space spacing="2%"></space>
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+									<button id="btnImprimirpdf" class='boton-guardar' label="Generar PDF" />
 								 </div>	
 							</div>
 						</div>

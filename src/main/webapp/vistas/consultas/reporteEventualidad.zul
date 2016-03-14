@@ -1,6 +1,6 @@
 <zk xmlns:n="native">
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.ReporteEventualidadesViewModel')">
+		viewModel="@id('vm') @init('reportes.estructurados.ReporteEventualidadesViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -43,7 +43,8 @@
 											   		   <div >
 											   		   		<label class="col-md-4">Nro de Carnet </label>
 											   		   </div>   
-												       <textbox value="@bind(vm.socio.nroCarnet)"></textbox>			   		
+												       <textbox value="@bind(vm.carnet)"></textbox>
+												       <button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" />			   		
 											   	 </div>								   	 
 											  </row>
 											  <row class="col-md-12 ">
