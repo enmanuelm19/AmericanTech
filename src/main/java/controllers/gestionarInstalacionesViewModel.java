@@ -22,6 +22,7 @@ import Dao.InstalacionDao;
 import Dao.RecursoInstalacionDao;
 import modelos.Instalacion;
 import modelos.RecursoInstalacion;
+import modelos.TipoInstalacion;
 
 
 
@@ -36,7 +37,6 @@ public class gestionarInstalacionesViewModel {
 	private String descFiltro;
 	private String idFiltro;
 	private int id;
-	//private String tipoPrefrenciaFiltro;
 
 	@Init
 	public void init() throws Exception {
@@ -47,19 +47,19 @@ public class gestionarInstalacionesViewModel {
 		allrecursoinstalaciones = new ArrayList<RecursoInstalacion>();
 		recursoInstalacionDao = new RecursoInstalacionDao();
 		
-		allrecursoinstalaciones = recursoInstalacionDao.obtenerTodos();
+		
 		instalacionDao = new InstalacionDao();
 		allinstalaciones = instalacionDao.obtenerTodos();
-		
+		allrecursoinstalaciones = recursoInstalacionDao.obtenerTodos();
 	}
 
 	public ListModelList<Instalacion> getAllInstalaciones() {
 
 		return new ListModelList<Instalacion>(allinstalaciones);
 	}
-	public ListModelList<RecursoInstalacion> getAllRecursoInstalacion() {
-
-		return new ListModelList<RecursoInstalacion>(allrecursoinstalaciones);
+	public ListModelList<RecursoInstalacion> getAllRecursoInstalacion(Instalacion i) {
+		
+		return new ListModelList<RecursoInstalacion>(i.getRecursoInstalacions());
 	}
 	public Instalacion getInstalacion() {
 		return instalacion;
@@ -94,6 +94,15 @@ public class gestionarInstalacionesViewModel {
 	public void setIdFiltro(String idFiltro) {
 		this.idFiltro = idFiltro==null?"":idFiltro.trim();
 	}
+	
+	@Command
+	public void showModalRegInst(@BindingParam("instalacion") Instalacion instalacion) {
+		Map<String, Object> args = new HashMap<String, Object>();
+		args.put("instalacion", instalacion);
+		Window window = (Window) Executions.createComponents("configuracion/registrarInstalacion.zul",
+				null, args);
+		window.doModal();
+	}
 	/*
 	public String getTipoPrefrenciaFiltro() {
 		if(tipoPrefrenciaFiltro==null)
@@ -107,9 +116,9 @@ public class gestionarInstalacionesViewModel {
 
 	@Command
 	@NotifyChange({ "allinstalaciones", "cantInstalaciones" })
-	public void eliminar(@BindingParam("instalacion") final Instalacion instalaciones) {
+	public void eliminar(@BindingParam("instalacion") final Instalacion instalacion) {
 
-		Messagebox.show("Estas seguro de eliminar " + instalacion.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + instalacion.getNombre(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
@@ -118,7 +127,7 @@ public class gestionarInstalacionesViewModel {
 								allinstalaciones = instalacionDao.obtenerTodos();
 								Messagebox.show(instalacion.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
+								BindUtils.postGlobalCommand(null, null, "refreshInstalacion", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), instalacion.getDescripcion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
@@ -152,11 +161,7 @@ public class gestionarInstalacionesViewModel {
 		allinstalaciones =   instalacionDao.obtenerTodos();
 	}
 	
-	@Command
-    public void showModalRegInst(Event e) {
-        //create a window programmatically and use it as a modal dialog.
-        Window window = (Window)Executions.createComponents(
-                "configuracion/registrarInstalacion.zul", null, null);
-        window.doModal();
-    }
+
+
 }
+

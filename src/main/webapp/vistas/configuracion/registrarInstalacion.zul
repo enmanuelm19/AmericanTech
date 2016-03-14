@@ -15,7 +15,7 @@
 		<caption iconSclass="z-icon-cogs" />
 			<separator spacing="30px" />
 		<div class='contenedor' align="center">
-			<div width="95%">
+			<div width="850px">
 				<div width="100%">
 					<div align="left">
 						<div class='encabezado'>Datos Básicos</div>
@@ -65,13 +65,16 @@
 
 						<div align="right" class='col-md-4'>
 
-							<image src="/assets/portal/img/img1.jpg"
+							<image content="@bind(vminst.uploadedImage)"
+									src="@bind(vminst.instalacion.fotos)"
 								class='col-md-12' />
 							<separator />
 							<div>
 								<fileupload
+									onUpload="@command('upload',media=event.media)"
+									upload="true,maxsize=2000" 
 									iconSclass="z-icon-folder-open"
-									class='boton-guardar col-md-6 col-md-offset-3' label="Examinar" />
+									class='boton-guardar col-md-6 col-md-offset-3' label="Examinar"  />
 							</div>
 						</div>
 
@@ -177,8 +180,8 @@
 											
 											<combobox id="cmbRecursos" class="col-md-3"
 														model="@load(vminst.allRecurso)"
-														selectedItem="@bind(vminst.recurso)"
-														value="@bind(vminst.recurso.descripcion)" >
+														selectedItem="@bind(vminst.recursoInstalacion.recurso)"
+														 >
 												<template name="model">
 													<comboitem
 														label="@load(each.descripcion)" value="@load(each)" />
@@ -194,11 +197,11 @@
 											<spinner
 												id="spnCantidadRecursos" constraint="no empty, no negative, no zero"
 												class="col-md-4" 
-												value="@bind(vminst.cantidad)"/>
+												value="@bind(vminst.recursoInstalacion.cantidad)"/>
 											<button id="btnAgregarRecurso" 
 												iconSclass="z-icon-plus blue" class='btn-link col-md-2'
 												tooltiptext="Agregar" 
-												onClick="@command('guardarRecursoInstalacion', win=winIn)" />
+												onClick="@command('guardarRecursoInstalacion',recursoInstalacion=each)" />
 										</div>
 									</row>
 								</rows>
@@ -208,23 +211,52 @@
 						<separator spacing="30px" />
 
 						<div class='col-md-6'>
-							<listbox 
-								model="@load(vminst.allRecursoParcial)"
-								mold="paging"
-								pageSize="15" multiple="true" class='col-md-8'>
-								<listhead sizable="true">
-									<listheader label="Recursos" />
-									<listheader 
-										label="Cantidad" />
-								</listhead>
-								<template name="model">
-									<listitem>
-										<listcell label="@" />
-										<listcell label="1" />
-									</listitem>
-								</template>
+							<grid  model="@load(vminst.recursosinstalacion)"
+							emptyMessage="No se encuentran recursos registrados"
+							mold="paging" pageSize="10">
 
-							</listbox>
+							<columns>
+								<column hflex="">Recurso</column>
+								<column hflex="">Cantidad</column>
+<!-- 								<column hflex="">Accion</column> -->
+							</columns>
+
+							<rows>
+								<template name="model">
+									<row>
+										<label value="@load(each.recurso.descripcion)" />
+										<label value="@load(each.cantidad)" />
+<!-- 										<div> -->
+	
+<!-- 											<button sclass="btn-link" onClick="@command('eliminarIndicadorEvento',indicadorEvento=each)" -->
+<!-- 												iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" /> -->
+<!-- 										</div> -->
+									</row>
+								</template>
+							</rows>
+
+							<foot>
+								<footer span="5" class="footer_right"
+									label="@load(vm.cantidadIndicadores)" />
+							</foot>
+						</grid>
+<!-- 							<listbox  -->
+<!-- 								model="@load(vminst.recursosinstalacion)" -->
+<!-- 								mold="paging" -->
+<!-- 								pageSize="15" multiple="true" class='col-md-8'> -->
+<!-- 								<listhead sizable="true"> -->
+<!-- 									<listheader label="Recursos" /> -->
+<!-- 									<listheader  -->
+<!-- 										label="Cantidad" /> -->
+<!-- 								</listhead> -->
+<!-- 								<template name="model"> -->
+<!-- 									<row> -->
+<!-- 										<label value="@load(each.recurso.descripcion)" /> -->
+<!-- 										<label value="@load(each.cantidad)" /> -->
+<!-- 									</row> -->
+<!-- 								</template> -->
+
+<!-- 							</listbox> -->
 						</div>
 					</div>
 				</div>
