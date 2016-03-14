@@ -1,192 +1,198 @@
 <zk xmlns:n="native">
-	<div>
-		<hlayout spacing="0">
-			<vlayout spacing="0" hflex="1">
-				<div sclass="breadcrumbs">
-					<div sclass="breadcrumb">
-						<span sclass="home-icon z-icon-th-list" />
-						<a label="Estructurado" href="#" />
-						<label value="Evento" />
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.ReporteSocioViewModel')">
+
+
+		<div sclass="breadcrumbs">
+			<div sclass="breadcrumb">
+				<span sclass="home-icon z-icon-th-list" />
+				<a label="Estructurado" href="#" />
+				<label value="Evento" />
+			</div>
+		</div>
+		<div class="contenedor" align="center">
+			<div sclass="page-header" align="left">
+				<label value="Evento" />
+			</div>
+
+			<div
+				class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
+				align="left" width="78%">
+				<div class="contenido">
+					<div align="left">
+						<div class='encabezado'>Consulta Socio</div>
+						<div class='linea-two'></div>
 					</div>
-				</div>
-				<div class="contenedor" align="center">
-					<div sclass="page-header" align="left">
-						<label value="Evento" />
-					</div>
-					<separator spacing="1%" />
-					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
-						<div class="contenido">
-							<div align="left">
-								<div class='encabezado'>
-									Socio
-								</div>
-								<div class='linea-two'></div>
-							</div>
-							<space spacing="15%"></space>
-							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-									<grid>
-										<rows>
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">	
-													   <label class="col-md-4">Sexo :</label>
-												       <combobox >
-															<comboitem label="Masculino"></comboitem>
-															<comboitem label="Femenino"></comboitem>
-													   </combobox>			   		
-											   	 </div>								   	 
-											  </row>
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">
-										   		   	   <label class="col-md-4" >Nro de acciones:</label>
-												       <combobox >
-															<comboitem label="1"></comboitem>
-															<comboitem label="2"></comboitem>
-															<comboitem label="3 o mas"></comboitem>														
-													   </combobox>   			   		
-											   	 </div>								   	 
-											  </row>
-										</rows>
-									</grid>
-									<space spacing="2%"></space>
-									<groupbox  mold="3d" width="75%" height="auto" >
-								   	 	<caption label="Edad"  ></caption>
-								   	 	<hlayout width="100%" style="padding:2%">
-											<div>
-									   		   <label >Desde: </label>									 
-										       <combobox >
-													<comboitem label="Todos"> </comboitem>
-													<comboitem label="20"></comboitem>
-													<comboitem label="30"></comboitem>
-													<comboitem label="40"></comboitem>
-													<comboitem label="50"></comboitem>
-													<comboitem label="60"></comboitem>
-													<comboitem label="70"></comboitem>
-													<comboitem label="80"></comboitem>												
-											   </combobox>	
+
+					<div align="center">
+
+
+						<grid>
+							<rows>
+								<row class="col-md-12 ">
+									<div class="col-md-8">
+										<label class="col-md-4">
+											Sexo:
+										</label>
+										<combobox>
+											<comboitem
+												label="Masculino">
+											</comboitem>
+											<comboitem
+												label="Femenino">
+											</comboitem>
+										</combobox>
+									</div>
+								</row>
+								<row class="col-md-12 ">
+									<div class="col-md-8">
+										<label class="col-md-4">
+											Nro de acciones:
+										</label>
+										<combobox>
+											<comboitem label="1">
+											</comboitem>
+											<comboitem label="2">
+											</comboitem>
+											<comboitem
+												label="3 o mas">
+											</comboitem>
+										</combobox>
+									</div>
+								</row>
+								<row class="col-md-12 ">
+									<div class="col-md-8">
+										<label class="col-md-4">
+											Edad Desde:
+										</label>
+										<combobox>
+											<comboitem label="20">
+											</comboitem>
+										</combobox>
+									</div>
+								</row>
+								<row class="col-md-12 ">
+									<div class="col-md-8">
+										<label class="col-md-4">
+											Edad Hasta:
+										</label>
+										<combobox>
+											<comboitem label="100">
+											</comboitem>
+
+										</combobox>
+									</div>
+								</row>
+								<row>
+									<div>
+
+										<div class="col-md-6">
+											<div align="left">
+												Seleccione la
+												Categoría/as
+												relacionadas con el
+												evento:
+												<combobox
+													model="@load(vm.allTipoPreferencia)"
+													selectedItem="@bind(vm.tipoPreferenciaSelected)"
+													width="80%%">
+													<template
+														name="model">
+														<comboitem
+															label="@load(each.descripcion)" value="@load(each)" />
+													</template>
+												</combobox>
 											</div>
-											<space spacing="5%"></space>
-											<div>
-									   		   <label >Hasta: </label>
-										       <combobox >
-													<comboitem label="Todos"> </comboitem>
-													<comboitem label="20"></comboitem>
-													<comboitem label="30"></comboitem>
-													<comboitem label="40"></comboitem>
-													<comboitem label="50"></comboitem>
-													<comboitem label="60"></comboitem>
-													<comboitem label="70"></comboitem>
-													<comboitem label="80"></comboitem>
-													<comboitem label="90"></comboitem>
-													<comboitem label="100"></comboitem>
-													<comboitem label="110"></comboitem>																								
-											   </combobox>
-											</div>		
-																		   	 							   	 	
-								   	 	</hlayout>
-								   	 </groupbox>
-									<space spacing="2%"></space>
-								   	 <groupbox  mold="3d" width="75%" height="auto" >
-								   	 	<caption label="Preferencia"  ></caption>
-										<grid>
+										</div>
+										<div class="col-md-6">
+											<div align="left">
+												Seleccione la
+												sub-categoria/as
+												relacionadas con el
+												evento:
+												<chosenbox
+													model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%"
+													emptyMessage="" creatable="true"
+													selectedObjects="@bind(vm.temporalPreferencia)" />
+
+												<button
+													sclass="btn-link"
+													onClick="@command('agregarSeleccionPreferencia')"
+													iconSclass="z-icon-plus blue" id=""
+													tooltiptext="Agregar preferencia" />
+											</div>
+										</div>
+									</div>
+								</row>
+
+								<row>
+									<div class="col-md-12">
+<!-- 									model="@load(vm)" -->
+											<grid 
+											emptyMessage="No se encuentran sub-categorias registradas"
+											mold="paging" pageSize="5" model="@load(vm.preferenciaEventos)"> 
+
+											<columns>
+												<column width="40%"
+													hflex="">
+													Categoria
+												</column>
+
+												<column width="40%"
+													hflex="">
+													Sub-categoria
+												</column>
+
+												<column width="20%"
+													hflex="">
+													Acciones
+												</column>
+											</columns>
+
 											<rows>
-												  <row class="col-md-12">
-											   		   <div class="col-md-8" align="center">
-												   		   <label class="col-md-3">Categoria:</label>
-													       <combobox >
-																<comboitem label="Todos"> </comboitem>
-																<comboitem label="Deportivo"></comboitem>
-																<comboitem label="Cultural"></comboitem>
-														   </combobox>			   		
-							   	 						</div>								   	 
-												  </row>
-												  <row class="col-md-12">
-											   		   <div class="col-md-12" align="center">
-												   		   <label class="col-md-2"></label>
-													       <combobox class="col-md-3">
-																<comboitem label="Futbol"> </comboitem>
-																<comboitem label="Beisbol"></comboitem>
-														   </combobox>
-														   <space spacing="1%"></space>
-														   <button id=""  iconSclass="z-icon-plus" class='boton-guardar col-md-3' label="Agregar" />   			   		
-							   	 						</div>							   	 
-												  </row>
-												  <row class="col-md-12" >
-														<div align="center" class="col-md-8">			                  				                  
-														    <listbox hflex="2"  vflex="true" multiple="true" rows="5" style="padding-left:40%">
-														        <listhead>
-														            <listheader label="Preferencia" width="100%"></listheader>
-														        </listhead>
-														        <!--template name="model"-->
-														            <!-- listitem>
-														                <listcell label="${each.firstName }"/>
-														                <listcell label="${each.lastName }"/>
-														                <listcell label="${each.fullName }"/>
-														                <listcell label="${each.married ? 'Y' : 'N' }"/>
-														            </listitem>-->
-															        <listitem>
-															            <listcell label="Bolas Criollas" />
-															        </listitem>
-															        <listitem>
-															            <listcell label="Softbol" />
-															        </listitem>								        
-														        <!--/template-->
-														    </listbox>   
-														</div>								   	 
-												  </row>
+												<template
+													name="model">
+													<row>
+
+														<label
+															value="@load(each.tipoPreferencia.descripcion)" />
+
+														<label
+															value="@load(each.descripcion)" />
+
+														<button
+															sclass="btn-link" iconSclass="z-icon-trash-o red"
+															tooltiptext="Eliminar"
+															onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)" />
+													</row>
+												</template>
 											</rows>
+
+											<foot>
+												<footer span="5"
+													class="footer_right" />
+											</foot>
 										</grid>
-								   	 </groupbox>
-								   	 <space spacing="1%"></space>
-									 <div align="right" xmlns:w="client" style="margin:1%">
-										<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
-									 </div>								   	
-								</groupbox >
-							</div>	
-							<space spacing="2%"></space>
-							<grid emptyMessage="No se encuentran alquileres registrados" mold="paging" pageSize="10">
-							
-								<columns>
-									<column hflex="3" align="center">Nombre</column>
-									<column hflex="3" align="center">Sexo</column>
-									<column hflex="3" align="center">Edad</column>
-									<column hflex="3" align="center">Nro de Carnet</column>		
-								</columns>
-								<rows>
-									<row>
-										<label value="Juan Perez" />	
-										<label value="Masculino" />
-										<label value="34" />
-										<label value="B-1234" />
-									</row>
-									<row>
-										<label value="Alberto Suarez" />
-										<label value="Masculino" />
-										<label value="32" />
-										<label value="R-1234" />
-									</row>
-									<row>
-										<label value="Pedro Aguilar" />	
-										<label value="Masculino" />
-										<label value="40" />
-										<label value="B-5678" />
-									</row>
-									<row>
-										<label value="Anna Tovar" />	
-										<label value="Femenino" />
-										<label value="38" />
-										<label value="R-5678" />
-									</row>
-								</rows>
-								<foot>
-									<footer span="7"
-										class="footer_right" label="2 items en la lista" />
-								</foot>
-							</grid>
-						</div>
+									</div>
+								</row>
+
+							</rows>
+						</grid>
+					</div>
+
+
+					<div align="right" xmlns:w="client"
+						style="margin:1%">
+						<button id="btnGenerarPdf"
+							iconSclass="z-icon-plus" class='boton-guardar' label="Generar PDF" />
+					</div>
+					<div align="right" xmlns:w="client"
+						style="margin:1%">
+						<button id="btnGenerarTxt"
+							iconSclass="z-icon-plus" class='boton-guardar' label="Generar TXT" />
 					</div>
 				</div>
-			</vlayout>
-		</hlayout>
+			</div>
+		</div>
 	</div>
 </zk>
