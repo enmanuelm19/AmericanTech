@@ -87,7 +87,7 @@
 										</div>
 										<div xmlns:w='client'
 											align="center">
-											<button	iconSclass="glyphicon glyphicon-ok blue" id="btnRegistroSoc" sclass="btn-link" 
+											<button	iconSclass="glyphicon glyphicon-ok blue" sclass="btn-link" 
 												onClick="@command('abrirRegistroSocio', Postulacion=each)" tooltiptext="Vincular Acción"></button>
 											<button	iconSclass="z-icon-times red" sclass="btn-link" tooltiptext="Eliminar Postulación" onClick="@command('cancelarPostulacion', Postulacion=each)"/>
 										</div>

@@ -3209,7 +3209,7 @@ div.hola table {
 	margin: 0px 3px;
 	color:transparent;
 }
-.star input{
+.stars input{
 	display:none;
 }
 .star label{

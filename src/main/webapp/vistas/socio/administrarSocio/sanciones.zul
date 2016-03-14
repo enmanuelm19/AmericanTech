@@ -56,9 +56,9 @@
 								<rows>
 									<template name="model">
 										<row>
-											<label value="@load(each.socio.nroCarnet)" />
+											<label value="${each.socio.nroCarnet} ${each.afiliado.nroCarnet}" />
 											<image src="@load(each.socio.persona.foto)" width="90%" align="center" />
-											<label value="${each.socio.persona.nombre} ${each.socio.persona.apellido}" /><!-- Nombre -->
+											<label value="${each.socio.persona.nombre} ${each.socio.persona.apellido} ${each.afiliado.persona.nombre} ${each.afiliado.persona.apellido}" /><!-- Nombre -->
 											<label value="@load(each.tipoSancion.descripcion)" />
 											<label value="@load(each.descripcion)" />
 											<label value="@load(each.fechaInic)" />

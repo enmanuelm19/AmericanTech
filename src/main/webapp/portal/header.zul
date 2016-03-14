@@ -37,10 +37,10 @@
 							</n:a>
 						</n:li>
 						<n:li>
-							<n:a
-								href="/america/portal/postulacion.zul">
+							<a
+								href="/portal/postulacion.zul" visible="@load(vm.verPostulacion)">
 								Postulación
-							</n:a>
+							</a>
 						</n:li>
 						<n:li>
 							<n:a

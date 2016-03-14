@@ -1,11 +1,11 @@
 <!-- Trabajado por Hector Gil 08/02/16-->
 <zk xmlns:n="native">
-	<window title="Opiniones" closable="true" width="70%" id="windOpinionSocio" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<window title="@load(vm.verDatos?'Datos Postulante':'Opiniones')" closable="true" width="70%" id="windOpinionSocio" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.OpinionesDePostulanteViewModel')">
 		<caption iconSclass="z-icon-user" />
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
-				<div class='contenedor' align="center"
-					apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.OpinionesDePostulanteViewModel')">
+				<div class='contenedor' align="center">
 					<div class='contenido ' align="center" width="100%">
 						<div class=" col-centered ">
 							<div width="100%">
@@ -72,8 +72,8 @@
 												<div>
 													<label class="col-md-4" value="Sexo"/>
 													<radiogroup id="sexo" selectedItem="@load(vm.postulacion.postulado.persona.sexo)">
-														<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
-														<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
+														<radio id="a1" label="Masculino" value="M" radiogroup="sexo" disabled="true"></radio>
+														<radio id="a2" label="Femenino" value="F" radiogroup="sexo" disabled="true"></radio>
 														</radiogroup>
 												</div>
 											</row>
@@ -109,7 +109,7 @@
 											<row>
 												<div>
 													<label class="col-md-4" value="1er Padrino" />
-													<textbox class="col-md-6" readonly="true" value="44" />
+													<textbox class="col-md-6" readonly="true" value="@load(vm.nombrePadrino1)" />
 												</div>
 											</row>
 											<row>
@@ -125,7 +125,7 @@
 														class="col-md-4" value="2do Padrino" />
 													<textbox
 														constraint="no empty" class="col-md-6" readonly="true"
-														value="22"/>
+														value="@load(vm.nombrePadrino2)"/>
 												</div>
 											</row>
 											<row>
@@ -169,7 +169,7 @@
 											<template name="model">
 												<row>
 													<label value="@load(each.tipoPreferencia.descripcion)" />
-													<label value="@load(each.tipoPreferencia.descripcion)" />
+													<label value="@load(each.descripcion)" />
 												</row>
 											</template>
 										</rows>
@@ -185,6 +185,7 @@
 
 
 								<separator spacing="30px"></separator>
+								<div visible="@load(!vm.verDatos)">
 								<div align="left">
 									<div class="encabezado">Opiniones</div>
 									<div align="left" class="linea-two"></div>
@@ -228,6 +229,7 @@
 											</template>
 										</rows>
 									</grid>
+									</div>
 									<hlayout>
 										<div style="margin-top: 50px;  margin-bottom: 10px;">
 											<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" onClick="@command('cerrarModal', win=windOpinionSocio)"/>

@@ -1,8 +1,6 @@
 <window title="" width="100%">
-
 	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
-
 	<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
 	<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
 	<?script type="text/javascript" src="../../assets/portal/js/easing.js"?>
@@ -17,80 +15,48 @@
 	<include src="header.zul" />
 
 	<zk xmlns:n="native">
-		<image id="image"
-			src="../assets/portal/img/bannerPostulacion.png" width="100%" />
-
-
+		<image id="image" src="../assets/portal/img/bannerPostulacion.png" width="100%" />
 		<div class='contenido ' align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PostulacionPortalViewModel')">
 			<div>
 				<div class="" id="contact">
-					<n:br></n:br>
-					<n:br></n:br>
-					<label
-						style="font-family: 'Lato', sans-serif; font-size:2em;">
-						Datos personales
-					</label>
-					<n:br></n:br>
-					<n:br></n:br>
+					<n:br></n:br><n:br></n:br>
+					<label style="font-family: 'Lato', sans-serif; font-size:2em;">Datos personales</label>
+					<n:br></n:br><n:br></n:br>
 					<div class="wrap">
-
-
-
 						<div class="section group">
-
-							<div class="contact-form" width="60%"
-								align="center">
-
-
-
-								<textbox type="text" class="textbox"
-									placeholder="Tu Cedula" constraint="no empty" />
-								<textbox type="text" class="textbox"
-									placeholder="Tu nombre" constraint="no empty" value="@bind(vm.persona.nombre)"/>
+							<div class="contact-form" width="60%" align="center">
+								<textbox type="text" class="textbox" placeholder="Tu Cedula" constraint="no empty" value="@bind(vm.persona.identificacion)"/>
+								<textbox type="text" class="textbox" placeholder="Tu nombre" constraint="no empty" value="@bind(vm.persona.nombre)"/>
 								<div class="clear"></div>
-								<textbox type="text" class="textbox"
-									placeholder="Tu Apellido" constraint="no empty" value="@bind(vm.persona.apellido)"/>
-								<textbox type="text" class="textbox"
-									placeholder="Tu Dirección" constraint="no empty" value="@bind(vm.persona.direccion)"/>
+								<textbox type="text" class="textbox" placeholder="Tu Apellido" constraint="no empty" value="@bind(vm.persona.apellido)"/>
+								<textbox type="text" class="textbox" placeholder="Tu Dirección" constraint="no empty" value="@bind(vm.persona.direccion)"/>
 								<div class="clear"></div>
-								<textbox type="text" class="textbox"
-									placeholder="Tu Email"
-									constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" value="@bind(vm.persona.correo)" />
-								<textbox type="text" class="textbox"
-									placeholder="Tu Teléfono de Domicilio" value="@bind(vm.persona.telefonoFijo)"/>
+								<textbox type="text" class="textbox" placeholder="Tu Email" constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" value="@bind(vm.persona.correo)" />
+								<textbox type="text" class="textbox" placeholder="Tu Teléfono de Domicilio" value="@bind(vm.persona.telefonoFijo)"/>
 								<div class="clear"></div>
-
-								<textbox type="text" class="textbox"
-									placeholder="Tu Teléfono movil" value="@bind(vm.persona.telefono)"/>
+								<textbox type="text" class="textbox" placeholder="Tu Teléfono movil" value="@bind(vm.persona.telefono)"/>
+								
 								<div class="sexo">
-									<label
-										style="font-family:'Lato', sans-serif; font-size:1em;float: left;">
-										Sexo:
-									</label>
+									<label style="font-family:'Lato', sans-serif; font-size:1em;float: left;">Sexo:</label>
 									<n:br></n:br>
 									<radiogroup id="sv1" selectedItem="@bind(vm.persona.sexo)" style="float: left;">
-										<radio id="ra1" label="Femenino" value="F" radiogroup="sv1" style="margin-right:15px;" />
+										<radio id="ra1" label="Femenino" value="F" radiogroup="sv1" style="margin-right:35px;" />
 										<radio id="ra2" label="Masculino" value="M" radiogroup="sv1" />
 									</radiogroup>
 								</div>
 								<separator />
-
-								<div class="clear"></div>
-
 								<div>
-									<label
-										style="font-family:'Lato', sans-serif; font-size:1em;float: left; margin-top: -10px;">
+									<label style="font-family:'Lato', sans-serif; font-size:1em;float: left; margin-top: -10px;">
 										Fecha de nacimiento:
 									</label>
 									<n:br></n:br>
-
 									<datebox style="width:43%;height: 47px; margin-left: -367px; margin-top: -8px;"
-										constraint="no empty, no future: Especifica un valor válido"
-										class="textbox" placeholder="Tu fecha de nacimiento dd-mm-yyy"
+										constraint="no empty, no future: Especifica un valor válido" class="textbox" 
+										placeholder="Tu fecha de nacimiento dd-mm-yyy"
 										compact="false" buttonVisible="false" value="@bind(vm.persona.fechaNac)"/>
 								</div>
 								
-								<div>
+								<div class="imagen_postulante">
 									<image content="@bind(vm.uploadedImage)" src="/assets/portal/img/img1.jpg" width="30%"/>
 									<fileupload label="Adjunta tu fotografia" upload="true,maxsize=2000" onUpload="@command('uploadImage',media=event.media)"
 									iconSclass="z-icon-folder-open" class='boton-Formulario' />
@@ -101,78 +67,35 @@
 									<label style="font-family: 'Lato', sans-serif; font-size:2em;">
 									Cuéntanos porque quieres pertenecer a la familia del Centro Atlético America
 									</label>
-									<n:br></n:br>
-									<n:br></n:br>
-									
+									<n:br></n:br><n:br></n:br><n:br></n:br>
 									<radiogroup id="motivo" selectedItem="@bind(vm.postulacion.motivoPostulacion)" model="@load(vm.motivosAll)" style="text-align:center;">
 										<template name="model">
 											<radio label="@load(each.descripcion)" value="@load(each)" radiogroup="motivo" style="margin-right:15px;" />									
 										</template>
 									</radiogroup>
 								</div>
-								<n:br></n:br>
-								<n:br></n:br>
-								
+								<n:br></n:br><n:br></n:br>
 								<div>
-								<label
-									style="font-family: 'Lato', sans-serif; font-size:2em;">
-									Miembros del club que te apadrinan
-								</label>
-								<n:br></n:br>
-								<n:br></n:br>
-
-
-								<textbox type="text" class="textbox"
-									placeholder="Código del socio (Padrino 1)"
-									constraint="no empty" value="@bind(vm.postulacion.carnetPadrino1)"/>
-								<textbox type="text" class="textbox"
-									placeholder="Código del socio (Padrino 2)"
-									constraint="no empty" value="@bind(vm.postulacion.carnetPadrino2)" />
+									<label style="font-family: 'Lato', sans-serif; font-size:2em;">
+										Miembros del club que te apadrinan
+									</label>
+									<n:br></n:br><n:br></n:br>
+									<textbox type="text" class="textbox" placeholder="Código del socio (Padrino 1)" constraint="no empty" value="@bind(vm.postulacion.carnetPadrino1)"/>
+									<textbox type="text" class="textbox" placeholder="Código del socio (Padrino 2)" constraint="no empty" value="@bind(vm.postulacion.carnetPadrino2)" />
 								</div>
-								<div class="clear"></div>
-
-								<div class="clear"></div>
-
-
-								<label
-									style="font-family: 'Lato', sans-serif; font-size:2em;">
+								<div class="clear"></div><div class="clear"></div>
+								<label style="font-family: 'Lato', sans-serif; font-size:2em;">
 									¿Cúales son tus intereses recreacionales?
 								</label>
-								<n:br></n:br>
-								<n:br></n:br>
+								<n:br></n:br><n:br></n:br>
 
-								<chosenbox  model="@load(vm.preferencias)" width="100%" 
-                    				  creatable="true" selectedObjects="@bind(vm.persona.preferenciaPersonas)" emptyMessage="Indica tus intereses recreacionales"/>
-							
-								<separator />
-								<n:br></n:br>
+								<chosenbox  model="@load(vm.preferencias)" width="100%" creatable="true" 
+								selectedObjects="@bind(vm.temporalPreferencia)" emptyMessage="Indica tus intereses recreacionales"/><separator /><n:br></n:br>
 								<span>
-									<button iconSclass="z-icon-floppy-o"  class='boton-Formulario' label="Enviar postulación" onClick="@command('agregarPostulacion')">
-									<!--             /*<attribute name="onClick"><![CDATA[
-									Messagebox.show("Esta seguro de enviar su postulacion?", "Confirm Dialog", Messagebox.OK | Messagebox.IGNORE  | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
-									    public void onEvent(Event evt) throws InterruptedException {
-									        if (evt.getName().equals("onOK")) {
-									            alert("Su postulacion ha sido enviada con exito! será contactado lo mas pronto posible");
-									        } else if (evt.getName().equals("onIgnore")) {
-									            Messagebox.show("Ignorar?", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-									        } else {
-									            alert("Envío cancelado!");
-									        }
-									    }
-									});
-									]]></attribute> */-->
-								 </button>
+									<button iconSclass="z-icon-floppy-o"  class='boton-Formulario' label="Enviar postulación" onClick="@command('agregarPostulacion')"/>
 								</span>
 								<div class="clear"></div>
-
-
 							</div>
-
-
-        
-
-
-
 						</div>
 					</div>
 				</div>
@@ -180,7 +103,4 @@
 		</div>
 	</zk>
 	<include src="footer.html" />
-	
-
-
 </window>

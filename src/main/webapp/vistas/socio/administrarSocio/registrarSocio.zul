@@ -13,9 +13,8 @@
 			<separator spacing="30px"></separator>
 			<div class="col-md-3">
 				<div class="input-group">
-					<image src="/assets/portal/img/img2.jpg" class='img-responsive col-md-offset-1' />
+					<image src="@load(vm.postulacion.postulado.persona.foto)" class='img-responsive col-md-offset-1' />
 					<separator spacing="30px"></separator>
-					<button label="Examinar" iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-4' upload="true,maxsize=8192" onUpload="@command('uploadFile',upload=event)" />
 				</div>
 			</div>
 

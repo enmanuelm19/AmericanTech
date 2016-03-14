@@ -118,12 +118,23 @@ public class SancionesViewModel {
 		String carnet= getCarnetFiltro();
 		for (Iterator<Sancion> i = sancionDao.obtenerTodos().iterator(); i.hasNext();) {
 			Sancion tmp = i.next();
-				if ((tmp.getSocio().getPersona().getNombre().toLowerCase().contains(nombre) ||
-					tmp.getSocio().getPersona().getApellido().toLowerCase().contains(nombre))&&
-					tmp.getTipoSancion().getDescripcion().toLowerCase().contains(tipo)&&
-					tmp.getSocio().getNroCarnet().toLowerCase().contains(carnet)
-					){
-						tip.add(tmp);
+				try{
+					if ((tmp.getSocio().getPersona().getNombre().toLowerCase().contains(nombre) ||
+						tmp.getSocio().getPersona().getApellido().toLowerCase().contains(nombre))&&
+						tmp.getTipoSancion().getDescripcion().toLowerCase().contains(tipo)&&
+						tmp.getSocio().getNroCarnet().toLowerCase().contains(carnet)
+						){
+							tip.add(tmp);
+					}
+				}
+				catch(NullPointerException e){
+					if ((tmp.getAfiliado().getPersona().getNombre().toLowerCase().contains(nombre) ||
+							tmp.getAfiliado().getPersona().getApellido().toLowerCase().contains(nombre))&&
+							tmp.getTipoSancion().getDescripcion().toLowerCase().contains(tipo)&&
+							tmp.getAfiliado().getNroCarnet().toLowerCase().contains(carnet)
+							){
+								tip.add(tmp);
+						}
 				}
 		}
 		this.sanciones = tip;

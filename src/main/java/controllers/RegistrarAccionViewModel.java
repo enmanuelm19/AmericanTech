@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.zkoss.bind.BindUtils;
@@ -18,6 +19,8 @@ import modelos.Noticia;
 import modelos.Preferencia;
 import Dao.AccionDao;
 import Dao.EstadoAccionDao;
+import Dao.NoticiaDao;
+import Dao.TipoNoticiaDao;
 
 public class RegistrarAccionViewModel {
 	private AccionDao accionDAO= new AccionDao();
@@ -26,7 +29,8 @@ public class RegistrarAccionViewModel {
 	private Accion accion;
 	private boolean editable;
 	private Noticia noticia;
-
+	private TipoNoticiaDao tipoNoticiaDao;
+	private NoticiaDao noticiaDao;
 	@Init
 	public void init(@ExecutionArgParam("accion") Accion accion) throws Exception {
 		if(accion==null){
@@ -38,6 +42,9 @@ public class RegistrarAccionViewModel {
 		}
 		this.estdao= new EstadoAccionDao();
 		this.estados= estdao.obtenerTodos();
+		this.noticiaDao= new NoticiaDao();
+		this.tipoNoticiaDao= new TipoNoticiaDao();
+		
 	}
 	public ListModelList<EstadoAccion> getEstadosAll() {
 		 return new ListModelList<EstadoAccion>(estados);
@@ -77,6 +84,18 @@ public class RegistrarAccionViewModel {
 				accionDAO.actualizarAccion(accion);
 				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);		
 			}
+			if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
+				this.noticia=new Noticia();
+				this.noticia.setTitulo("Acción en Venta");
+				this.noticia.setDescripcion("¡Se a aperturado el proceso de postulación para una acción en venta!");
+				this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
+				this.noticia.setFechaCreacion(new Date());
+				this.noticia.setCaducidad(new Date());
+				this.noticia.setPublico(true);
+				this.noticia.setActivo(true);
+				this.noticiaDao.agregarNoticia(noticia);
+			}
+			
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
 		}

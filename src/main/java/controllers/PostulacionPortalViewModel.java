@@ -8,11 +8,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javassist.bytecode.stackmap.BasicBlock.Catch;
 import modelos.MotivoPostulacion;
+import modelos.Noticia;
 import modelos.Persona;
 import modelos.Postulacion;
 import modelos.Postulado;
 import modelos.Preferencia;
+import modelos.PreferenciaPersona;
 import modelos.Socio;
 
 import org.zkoss.bind.annotation.BindingParam;
@@ -23,15 +26,20 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 
+import util.ManejadorArchivo;
 import Dao.MotivoPostulacionDao;
+import Dao.NoticiaDao;
+import Dao.PersonaDao;
 import Dao.PostulacionDao;
 import Dao.PostuladoDao;
 import Dao.PreferenciaDao;
+import Dao.PreferenciaPersonaDao;
 import Dao.SocioDao;
+import Dao.TipoNoticiaDao;
 
 public class PostulacionPortalViewModel {
 	private PreferenciaDao preferenciaDao;
-	private Set<Preferencia> temporalPreferencia;
+	private List<Preferencia> temporalPreferencia;
 	private MotivoPostulacionDao motivoPostulacionDao;
 	private Persona persona;
 	private Postulacion postulacion;
@@ -44,10 +52,15 @@ public class PostulacionPortalViewModel {
 	private Date now;
 	private Socio padrino1, padrino2;
 	private SocioDao socioDao;
+	private PersonaDao personaDao;
+	private PreferenciaPersona perfePersona;
+	private PreferenciaPersonaDao prefPersonaDao;
+	private Noticia noticia;
+	private TipoNoticiaDao tipoNoticiaDao;
+	private NoticiaDao noticiaDao;
 	@Init
 	public void init() throws Exception{
 		this.preferenciaDao= new PreferenciaDao();
-		//this.temporalPreferencia = new HashSet<Preferencia>();
 		this.postulacion= new Postulacion();
 		this.postulacionDao= new PostulacionDao();
 		this.postulado= new Postulado();
@@ -58,24 +71,30 @@ public class PostulacionPortalViewModel {
 		this.padrino2=new Socio();
 		this.motivoPostulacionDao= new MotivoPostulacionDao();
 		this.preferencias= preferenciaDao.obtenerTodos();
+		this.personaDao= new PersonaDao();
+		this.prefPersonaDao= new PreferenciaPersonaDao();
+		this.perfePersona= new PreferenciaPersona();
+		this.temporalPreferencia= new ArrayList<Preferencia>();
+		this.noticiaDao= new NoticiaDao();
+		this.tipoNoticiaDao= new TipoNoticiaDao();
 		System.out.println("kdkladk");
 	}
 	public ListModelList<Preferencia> getPreferencias() {
 		return new ListModelList<Preferencia>(this.preferencias);
 	}
 	
-	public Set<Preferencia> getTemporalPreferencia() {
-
+	public List<Preferencia> getTemporalPreferencia() {
 		return temporalPreferencia;
 	}
 
-	public void setTemporalPreferencia(Set<Preferencia> temporalPreferencia) {
+	public void setTemporalPreferencia(List<Preferencia> temporalPreferencia) {
 		this.temporalPreferencia = temporalPreferencia;
 	}
 	
 	public ListModelList<MotivoPostulacion> getMotivosAll() throws Exception{
 		return new ListModelList<MotivoPostulacion>(motivoPostulacionDao.obtenerTodos());
 	}
+	
 	public Persona getPersona() {
 		return persona;
 	}
@@ -120,6 +139,7 @@ public class PostulacionPortalViewModel {
 		uploadedImage = myMedia;
 	}
 	
+
 	public Media getUploadedImage() {
 		return uploadedImage;
 	}
@@ -127,6 +147,7 @@ public class PostulacionPortalViewModel {
 	public void setUploadedImage(Media uploadedImage) {
 		this.uploadedImage = uploadedImage;
 	}
+
 	public Postulacion getPostulacion() {
 		return postulacion;
 	}
@@ -134,17 +155,10 @@ public class PostulacionPortalViewModel {
 		this.postulacion = postulacion;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Command
+	@NotifyChange({"preferencias","temporalPreferencia","persona","uploadedImage","postulacion"})
 	public void agregarPostulacion() throws Exception{
-		System.out.println(this.persona.getNombre());
-		System.out.println(this.persona.getApellido());
-		System.out.println(this.persona.getDireccion());
-		System.out.println(this.persona.getTelefono());
-		System.out.println(this.persona.getTelefonoFijo());
-		System.out.println(this.persona.getCorreo());
-		System.out.println(this.persona.getFechaNac());
-		//System.out.println(this.uploadedImage.getContentType());
-
 		if(this.persona.getNombre().equalsIgnoreCase("")||this.persona.getApellido().equalsIgnoreCase("")
 			||this.persona.getDireccion().equalsIgnoreCase("")||this.persona.getTelefono().equals("")
 			||this.persona.getTelefonoFijo().equalsIgnoreCase("")||this.persona.getCorreo().equalsIgnoreCase("")
@@ -153,28 +167,65 @@ public class PostulacionPortalViewModel {
 			||this.imagenPostulado==false){
 			Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
 		}else{
-			if(this.validarEdad()==false){
-				Messagebox.show("Debe ser mayor de edad para postularse", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			if(validarCedula()==true){
+				if(this.validarEdad()==false){
+					Messagebox.show("Debe ser mayor de edad para postularse", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				}
+				else{
+					try{
+						if(this.postulacion.getCarnetPadrino1().equalsIgnoreCase(this.postulacion.getCarnetPadrino2())){
+							Messagebox.show("Referencias de padrinos no pueden ser idénticas. Verifique sus credenciales", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+						}
+						else{
+							this.padrino1=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino1());
+							this.padrino2=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino2());
+							if(!this.padrino1.equals(null) && !this.padrino2.equals(null)){
+								this.persona.setFoto(ManejadorArchivo.subirImagen(uploadedImage));
+								this.personaDao.agregarPersona(persona);
+								this.postulado.setPersona(this.persona);
+								this.postulado.setActivo(true);
+								this.postulacion.setPostulado(postulado);
+								this.postulacion.setActivo(true);
+								this.postulacion.setFecha(new Date());
+								for(int i=0; i<this.temporalPreferencia.size(); i++){
+									this.perfePersona.setPersona(persona);
+									this.perfePersona.setPreferencia(this.temporalPreferencia.get(i));
+									this.perfePersona.setActivo(true);
+									this.prefPersonaDao.agregarPreferenciaPersona(perfePersona);
+								}
+								this.postulacionDao.agregarPostulacion(postulacion);
+								
+								/*********************NOTICIA*******************/
+								this.noticia=new Noticia();
+								this.noticia.setTitulo("Nueva Postulación");
+								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!");
+								this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(5));
+								this.noticia.setFechaCreacion(now);
+								this.noticia.setCaducidad(now);
+								this.noticia.setPublico(false);
+								this.noticia.setFoto(this.persona.getFoto());
+								this.noticia.setActivo(true);
+								this.noticiaDao.agregarNoticia(noticia);
+								this.persona=new Persona();
+								this.temporalPreferencia= new ArrayList<Preferencia>();
+								this.postulacion= new Postulacion();
+								this.postulado= new Postulado();
+								this.preferencias= preferenciaDao.obtenerTodos();
+								this.uploadedImage=null;
+								this.inicializar();
+								Messagebox.show("Pronto sera contactado por nuestro personal", "¡Solicitud Enviada!", Messagebox.OK, Messagebox.INFORMATION);
+							}
+						}
+					}
+					catch(NullPointerException e){
+						Messagebox.show("Referencias de padrinos no existentes como socios activos. Verifique sus credenciales", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+					}
+				}
 			}
 			else{
-				try{
-				this.padrino1=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino1());
-				this.padrino2=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino2());
-				System.out.println("padrino1: "+this.padrino1.getIdSocio());
-				System.out.println("padrino2: "+this.padrino2.getIdSocio());
-				
-				}
-				catch(NullPointerException e){
-					Messagebox.show("Referencias de padrinos no existentes como socios activos. Verifique sus credenciales", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
-				}
-				
+				Messagebox.show("Cédula encontrada en nuestros registros", "Aviso", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
-		/*} catch (Exception e) {
-			// TODO: handle exception
-			Messagebox.show("Debe llenar todos los campos", "try catch", Messagebox.OK, Messagebox.EXCLAMATION);
-			
-		}*/
 		
 	}
 	
@@ -192,5 +243,18 @@ public class PostulacionPortalViewModel {
 		this.postulacion.setCarnetPadrino2("");
 		this.imagenPostulado=false;
 	}
-
+	
+	public boolean validarCedula() throws Exception{
+		boolean valido=false;
+		Persona p= new Persona();
+		p=personaDao.obtenerPersonaCedula(this.persona.getIdentificacion());
+		try{
+			if(!p.equals(null))
+				valido=false;
+		}
+		catch(NullPointerException e){
+			valido= true;
+		}
+		return valido;
+	}
 }

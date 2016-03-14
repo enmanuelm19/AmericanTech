@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import modelos.Afiliado;
 import modelos.Eventualidad;
 import modelos.Persona;
 import modelos.Postulacion;
@@ -25,6 +26,7 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import Dao.AfiliadoDao;
 import Dao.EventualidadDao;
 import Dao.PersonaDao;
 import Dao.SancionDao;
@@ -39,7 +41,7 @@ public class RegistrarSancionViewModel {
 	private Socio socio;
 	private String carnet;
 	private String cedula="";
-	private boolean editable, multa, suspencion, enableCarnet, enableCedula, verEventualidad=false;
+	private boolean editable, multa, suspencion, enableCarnet, enableCedula,sancionSocio,sancionAfiliado, verEventualidad=false;
 	private List<Eventualidad> evetualidades;
 	private Eventualidad evetualidad;
 	private TipoSancionDao tipoSancionDao;
@@ -50,12 +52,16 @@ public class RegistrarSancionViewModel {
 	private SancionDao sancionDao;
 	private EventualidadDao eventualidadDao;
 	private Eventualidad temporalEventualidad;
+	private boolean eventualidadTemporal;
+	private Afiliado afiliado;
+	private AfiliadoDao afiliadoDao;
 	@Init
 	public void init(@ExecutionArgParam("Sancion") Sancion sancion) throws Exception{
 		tipoSancionDao= new TipoSancionDao();
 		tiposSancions=tipoSancionDao.obtenerTodos();
 		eventualidadDao= new EventualidadDao();
 		socioDao= new SocioDao();
+		afiliadoDao= new AfiliadoDao();
 		if(sancion==null){
 			this.editable=false;
 			this.sancion= new Sancion();
@@ -69,6 +75,8 @@ public class RegistrarSancionViewModel {
 			this.fechaInicio=new Date();
 			this.fechaFin= new Date();
 			this.multabs=0;
+			this.sancionAfiliado=false;
+			this.sancionSocio=false;
 		}
 		else{
 			this.editable=true;
@@ -79,17 +87,28 @@ public class RegistrarSancionViewModel {
 			this.cedula=sancion.getSocio().getPersona().getIdentificacion();
 			this.tipoSancion=sancion.getTipoSancion();
 			this.persona=sancion.getSocio().getPersona();
-			this.socio=sancion.getSocio();
 			try {
-				this.evetualidades= eventualidadDao.obtenerEventualidadUsuario(socio.getPersona());
+				if(!sancion.getSocio().equals(null)){
+					this.evetualidades= eventualidadDao.obtenerEventualidadUsuario(socio.getPersona());
+					this.sancionSocio=true;
+					this.sancionAfiliado=false;
+				}
+				else{
+					this.evetualidades= eventualidadDao.obtenerEventualidadUsuario(afiliado.getPersona());
+					this.sancionSocio=false;
+					this.sancionAfiliado=true;
+				}
 				this.evetualidades.add(sancion.getEventualidad());
 				this.evetualidad=sancion.getEventualidad();
 				this.temporalEventualidad=sancion.getEventualidad();
+				System.out.println("event: "+sancion.getEventualidad().getDescripcion());
 				this.verEventualidad=true;
+				this.eventualidadTemporal=true;
 			} catch (NullPointerException e) {
 				// TODO: handle exception
 				evetualidades= new ArrayList<Eventualidad>();
 				verEventualidad=false;
+				this.eventualidadTemporal=false;
 			}
 			if(sancion.getTipoSancion().getIdTipoSancion()==1){
 				verEventualidad=false;
@@ -175,7 +194,7 @@ public class RegistrarSancionViewModel {
 	}
 	
 	@Command
-	@NotifyChange({"carnet","socio","persona","eventualidades"})
+	@NotifyChange({"carnet","socio","persona","eventualidades","cedula"})
 	public void buscarCarnet() throws Exception{
 		if(carnet==""||carnet==null){
 			Messagebox.show("Campo Carnet Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
@@ -183,19 +202,34 @@ public class RegistrarSancionViewModel {
 		else{
 			this.socioDao= new SocioDao();
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
-			if(this.socio==null){
+			this.afiliado=this.afiliadoDao.obtenerPorNroCarnet(carnet);
+			if(this.socio==null && this.afiliado==null){
 				Messagebox.show("Carnet no encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.carnet="";
+		
 			}
 			else{
-				this.persona=socio.getPersona();
+				try{
+				if(!this.socio.equals(null)){
+					sancionSocio=true;
+					sancionAfiliado=false;
+					this.persona=socio.getPersona();
+				}
+				}
+				catch(NullPointerException e){
+					sancionSocio=false;
+					sancionAfiliado=true;
+					this.persona=afiliado.getPersona();
+				}
+
+				this.cedula=persona.getIdentificacion();
 				this.evetualidades= eventualidadDao.obtenerEventualidadUsuario(persona);
 			}
 		}
 	}
 	
 	@Command
-	@NotifyChange({"cedula","persona","eventualidades"})
+	@NotifyChange({"cedula","persona","eventualidades","carnet"})
 	public void buscarCedula() throws Exception{
 		if(cedula==""||cedula==null){
 			Messagebox.show("Campo Cédula Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
@@ -203,13 +237,27 @@ public class RegistrarSancionViewModel {
 		else{
 			this.personaDao= new PersonaDao();
 			this.persona=personaDao.obtenerPersonaCedula(cedula);
-			if(this.persona==null){
+			this.evetualidades=eventualidadDao.obtenerEventualidadUsuario(persona);
+			this.socio=this.socioDao.obtenerSocioPersona(persona);
+			this.afiliado=this.afiliadoDao.obtenerPorPersona(persona);
+			if(this.socio==null && this.afiliado==null){
 				Messagebox.show("Cédula no encontrada", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.cedula="";
+				this.persona=new Persona();
 			}
 			else{
-				this.evetualidades=eventualidadDao.obtenerEventualidadUsuario(persona);
-				this.socio=this.socioDao.obtenerSocioPersona(persona);
+				try{
+				if(!this.socio.equals(null)){
+					sancionSocio=true;
+					sancionAfiliado=false;
+					carnet=socio.getNroCarnet();
+				}
+				}
+				catch(NullPointerException e){
+					sancionSocio=false;
+					sancionAfiliado=true;
+					carnet=afiliado.getNroCarnet();
+				}
 			}
 		}
 	}
@@ -322,11 +370,17 @@ public class RegistrarSancionViewModel {
 			
 		}
 		else{
-			if(this.socio==null || this.persona==null){
+			if(this.persona==null){
 				Messagebox.show("Debe seleccionar a quien sancionar", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			else{
-				this.sancion.setSocio(this.socio);
+				if(sancionSocio==true){
+					this.sancion.setSocio(this.socio);
+				}
+				if(sancionAfiliado==true){
+					this.sancion.setAfiliado(afiliado);
+				}
+				
 				if(this.tipoSancion==null){
 					Messagebox.show("Debe seleccionar un motivo de sanción", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
@@ -412,7 +466,7 @@ public class RegistrarSancionViewModel {
 		sancionDao= new SancionDao();
 		eventualidadDao= new EventualidadDao();
 		if(verEventualidad==true){
-			if(this.evetualidad.equals(temporalEventualidad)){
+			if(!this.evetualidad.equals(temporalEventualidad)){
 				this.temporalEventualidad.setActivo(true);
 				this.evetualidad.setActivo(false);
 				eventualidadDao.actualizarEventualidad(evetualidad);
@@ -420,9 +474,11 @@ public class RegistrarSancionViewModel {
 			}
 		}
 		else{
-			sancion.setEventualidad(null);
-			this.temporalEventualidad.setActivo(true);
-			eventualidadDao.actualizarEventualidad(temporalEventualidad);
+			if(eventualidadTemporal==true){
+				this.temporalEventualidad.setActivo(true);
+				eventualidadDao.actualizarEventualidad(temporalEventualidad);
+				sancion.setEventualidad(null);
+			}
 		}
 		sancionDao.actualizarSancion(sancion);
 		Messagebox.show("La Sancion del Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido actualizada", "", Messagebox.OK, Messagebox.INFORMATION);
