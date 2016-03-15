@@ -2,7 +2,7 @@
 
 	<window id="winRAct" border="none" title="Agregar Actividad"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="50%" height="auto"
+		closable="true" width="40%" height="auto"
 		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarActividadViewModel')">
 		<caption iconSclass="z-icon-calendar" />
@@ -18,55 +18,70 @@
 				<space bar="False" spacing="10%" />
 
 
-				<grid width="" fixedLayout="true">
+				
 
-					<rows class="">
+			
+					
 
-
-						<row class="col-md-12">
-							<div>
+              <div class="row">
+					<div class="col-md-6">
+						<div align="left">
 								Fecha tope
 								<n:br></n:br>
-								<datebox width="100%" value="@bind(vm.actividad.fechaTope)"
+								<datebox width="60%" value="@bind(vm.actividad.fechaTope)"
 									cols="12" format="short" />
 							</div>
-							<div>
+						<n:br></n:br>
+					</div>
+
+						
+					<div class="col-md-6">
+						<div align="left">
 								Valor esperado
 								<n:br></n:br>
 								<intbox value="@bind(vm.actividad.valorEsperado)"
 									width="60%" tabindex="10" constraint="no empty" />
 							</div>
-						</row>
+						<n:br></n:br>
+					</div>
+				</div>
 						
-						<row class="col-md-12">
-							<div>
+					<div class="row">
+					<div class="col-md-6">
+						<div align="left">
 								Descripción de la actividad
 								<n:br></n:br>
 								<textbox type="text" rows="3" value="@bind(vm.actividad.descripcion)"
 									width="100%" tabindex="10" constraint="no empty" />
 							</div>
-							
-							<div align="left">
+						<n:br></n:br>
+					</div>
+						<div class="col-md-6">
+						<div align="left">
 								Seleccione Tipo de actividad
 								<n:br></n:br>
 								<combobox
 									model="@load(vm.allTipoActividad)"
-									selectedItem="@bind(vm.actividad.tipoActividad)" width="100%">
+									selectedItem="@bind(vm.actividad.tipoActividad)" width="60%">
 									<template name="model">
 										<comboitem
 											label="@load(each.descripcion)" value="@load(each)" />
 									</template>
 								</combobox>
-							</div>
+							
 
-							<div>
+							
 								<button 
 									sclass="btn-link" iconSclass="z-icon-plus blue"
 									tooltiptext="Agregar actividad" onClick="@command('agregar')"/>
-							</div>
-						</row>
-					</rows>
-				</grid>
+							
+						</div>
+						
+						</div>
+						<n:br></n:br>
+					</div>
+					
+				
 				<n:br></n:br>
 				<div align="left" class="linea-two"></div>
 				<n:br></n:br>

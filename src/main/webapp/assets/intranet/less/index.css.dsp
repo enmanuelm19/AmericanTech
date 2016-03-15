@@ -3249,7 +3249,7 @@ div.hola table {
 
 .z-loading-icon{
 	background: transparent no-repeat center;
-	background-image: url("http://localhost:8080/america/assets/img/gif-load.gif"); 
+	background-image: url("../../img/gif-load.gif"); 
 	height: 60px;
 	width: 60px;
 }
