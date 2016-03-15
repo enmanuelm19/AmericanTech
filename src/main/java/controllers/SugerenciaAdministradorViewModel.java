@@ -5,27 +5,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import modelos.Sugerencia;
+
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.Session;
-import org.zkoss.zk.ui.Sessions;
-import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
 import Dao.SugerenciaDao;
-import Dao.TipoAfiliadoDao;
-import modelos.Sugerencia;
-import modelos.TipoAfiliado;
-import modelos.Usuario;
 
-public class SugerenciaViewModel {
+public class SugerenciaAdministradorViewModel {
 
 	
+
 	private List<Sugerencia> allSugerencia;
 	private SugerenciaDao sugerenciaDao;
 	private Sugerencia sugerencia;
@@ -36,20 +32,9 @@ public class SugerenciaViewModel {
 	public void init() throws Exception{
 		this.allSugerencia = new ArrayList<Sugerencia>();
 		this.sugerenciaDao = new SugerenciaDao();
-		this.cargarSugerenciaSocio();
+		this.allSugerencia = sugerenciaDao.obtenerTodos();	
 	}
 	
-	
-	public void cargarSugerenciaSocio() {
-		Session session = Sessions.getCurrent();
-		Usuario user = (Usuario) session.getAttribute("Usuario");
-		try {
-			this.allSugerencia = sugerenciaDao.obtenerSugerenciasUsuario(user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	}
 	
 	
 	public ListModelList<Sugerencia> getAllSugerencia(){
@@ -67,12 +52,7 @@ public class SugerenciaViewModel {
 	@GlobalCommand
 	@NotifyChange({ "allSugerencia", "cantRegistros" })
 	public void refreshSugerencia() throws Exception {
-		Session session = Sessions.getCurrent();
-		Usuario user = (Usuario) session.getAttribute("Usuario");
-		this.allSugerencia = new ArrayList<Sugerencia>();
-		this.sugerenciaDao = new SugerenciaDao();
-		this.allSugerencia = sugerenciaDao.obtenerSugerenciasUsuario(user);	
-
+		this.allSugerencia = sugerenciaDao.obtenerTodos();	
 	}
 	
 	@Command
@@ -108,7 +88,4 @@ public class SugerenciaViewModel {
 		this.descFiltro = descFiltro==null?"":descFiltro.trim();
 	}
 	
-	
-
-	
-}			
+}
