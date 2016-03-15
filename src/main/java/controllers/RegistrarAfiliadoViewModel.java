@@ -4,23 +4,29 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.media.Media;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import util.ManejadorArchivo;
 import Dao.AfiliadoDao;
 import Dao.PersonaDao;
 import Dao.PreferenciaDao;
 import Dao.PreferenciaPersonaDao;
+import Dao.SocioDao;
 import Dao.TipoAfiliadoDao;
 import Dao.TipoPreferenciaDao;
+import modelos.Accion;
 import modelos.Afiliado;
 import modelos.Persona;
 import modelos.Preferencia;
@@ -47,6 +53,10 @@ public class RegistrarAfiliadoViewModel {
 	private PreferenciaPersona preferenciaPersona;
 	private PreferenciaPersonaDao preferenciaPersonaDao;
 	private Date fechaNac;
+	private boolean imagenNuevaAfiliado = false;
+	private Media uploadedImage;
+	private TipoAfiliado tipoAfiliado;
+	private String nroCarnet="";
 	
 	@Init
 	public void init(@ExecutionArgParam("socioss") Socio socioss) throws Exception{
@@ -97,7 +107,68 @@ public class RegistrarAfiliadoViewModel {
 		this.afiliado = afiliado;
 	}
 	
+	
+	public TipoAfiliado getTipoAfiliado() {
+		return tipoAfiliado;
+	}
+	
+	@NotifyChange({"nroCarnet"})
+	public void setTipoAfiliado(TipoAfiliado tipoAfiliado) {
+		if(tipoAfiliado.getIdTipoAfiliado()==1){
+			if(cantidadTipoAfiliado(1)==1){
+				Messagebox.show("El socio ya tiene asocioado un afiliado de parentesco "+tipoAfiliado.getDescripcion() , "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				this.tipoAfiliado=new TipoAfiliado(0,"",false);
+				this.afiliado.setTipoAfiliado(null);
+			}
+			else{
+				this.nroCarnet=socio.getNroCarnet()+"-"+tipoAfiliado.getSubfijo();
+				this.tipoAfiliado = tipoAfiliado;
+				this.afiliado.setTipoAfiliado(tipoAfiliado);
+			}
+		}
+		else{
+			this.nroCarnet=socio.getNroCarnet()+"-"+(Integer.parseInt(tipoAfiliado.getSubfijo())+cantidadTipoAfiliado(tipoAfiliado.getIdTipoAfiliado()));	
+			System.out.println("Sufijo"+Integer.parseInt(tipoAfiliado.getSubfijo()));
+			this.tipoAfiliado = tipoAfiliado;
+			this.afiliado.setTipoAfiliado(tipoAfiliado);
+		}	
+		
+	}
 
+	@Command
+	@NotifyChange("uploadedImageAfiliado")
+	public void uploadImage(@BindingParam("media") Media myMedia) {
+		imagenNuevaAfiliado = true;
+		uploadedImage = myMedia;
+	}
+	
+	public Media getUploadedImageAfiliado() {
+		return uploadedImage;
+	}
+	
+
+	public void setUploadedImageAfiliado(Media uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+
+	
+	public int cantidadTipoAfiliado(int cod){
+		int cant=0;
+		for(Iterator<Afiliado> i = socio.getAfiliados().iterator(); i.hasNext();) {
+			Afiliado tmp = i.next();
+			if(tmp.getTipoAfiliado().getIdTipoAfiliado()==cod){
+				cant++;
+			}
+		}
+		return cant;
+	}
+	
+	public String getNroCarnet(){
+		if(nroCarnet.equalsIgnoreCase(""))
+			return socio.getNroCarnet()+"-";
+		else
+			return nroCarnet;
+	}
 	public int getCalcularEdad() {
 		Calendar birth = new GregorianCalendar();
 		Calendar today = new GregorianCalendar();
@@ -130,6 +201,7 @@ public class RegistrarAfiliadoViewModel {
 	public Preferencia getPreferencia() {
 		return preferencia;
 	}
+	
 	
 	@NotifyChange({"preferencias","preferenciasAll","cantidadInteres","preferencia"})
 	public void setPreferencia(Preferencia preferencia) {
@@ -186,39 +258,51 @@ public class RegistrarAfiliadoViewModel {
 	
 	@Command
 	public void registrarAfiliado(@BindingParam("win") Window win) throws Exception{
-		if(persona.getIdentificacion().equalsIgnoreCase("") || persona.getNombre().equalsIgnoreCase("")||
-				persona.getApellido().equalsIgnoreCase("")|| persona.getTelefono().equalsIgnoreCase("")||
-				persona.getCorreo().equalsIgnoreCase("")|| persona.getSexo().equalsIgnoreCase("")||
-				persona.getDireccion().equalsIgnoreCase("")|| afiliado.getTipoAfiliado().equals(null)){
-					Messagebox.show("Debe llenar todos los campos", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		System.out.println(persona.getIdentificacion());
+		try{
+			if(persona.getIdentificacion().equalsIgnoreCase("") || persona.getNombre().equalsIgnoreCase("")||
+					persona.getApellido().equalsIgnoreCase("")|| persona.getTelefono().equalsIgnoreCase("")||
+					persona.getCorreo().equalsIgnoreCase("")|| persona.getSexo().equalsIgnoreCase("")||
+					persona.getDireccion().equalsIgnoreCase("")|| afiliado.getTipoAfiliado().equals(null)){
+						Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
+			else{
+				personaDao= new PersonaDao();
+				persona.setFechaNac(fechaNac);
+				if(this.imagenNuevaAfiliado==true){
+					this.persona.setFoto(ManejadorArchivo.subirImagen(uploadedImage));
 				}
-				else{
-					personaDao= new PersonaDao();
-					persona.setFechaNac(fechaNac);
-					personaDao.agregarPersona(persona);
-					afiliado.setNroCarnet(socio.getNroCarnet()+"-wq");
-					afiliado.setPersona(persona);
-					afiliado.setSocio(socio);
-					afiliado.setActivo(true);
-					afiliadoDao= new AfiliadoDao();
-					afiliadoDao.agregarAfiliado(afiliado);
-					preferenciaPersonaDao= new PreferenciaPersonaDao();
-					if(preferenciasAll.size()>0){
-						for(int i=0; i<preferenciasAll.size(); i++){
-							preferenciaPersona=new PreferenciaPersona();
-							preferenciaPersona.setPersona(persona);
-							preferenciaPersona.setPreferencia(preferenciasAll.get(i));
-							preferenciaPersona.setActivo(true);
-							preferenciaPersonaDao.agregarPreferenciaPersona(preferenciaPersona);
-						}
+				personaDao.agregarPersona(persona);
+				afiliado.setNroCarnet(getNroCarnet());
+				afiliado.setPersona(persona);
+				afiliado.setSocio(socio);
+				afiliado.setActivo(true);
+					
+				afiliadoDao= new AfiliadoDao();
+				afiliadoDao.agregarAfiliado(afiliado);
+				preferenciaPersonaDao= new PreferenciaPersonaDao();
+				if(preferenciasAll.size()>0){
+					for(int i=0; i<preferenciasAll.size(); i++){
+						preferenciaPersona=new PreferenciaPersona();
+						preferenciaPersona.setPersona(persona);
+						preferenciaPersona.setPreferencia(preferenciasAll.get(i));
+						preferenciaPersona.setActivo(true);
+						preferenciaPersonaDao.agregarPreferenciaPersona(preferenciaPersona);
+				}
+							
+			}
 						
-					}
-					win.detach();
-					Messagebox.show(
-							"El Sr(a) "	+ afiliado.getPersona().getNombre() +" "+afiliado.getPersona().getApellido()
-							+ " es ahora un afiliado del Sr. "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido(), "",
-							Messagebox.OK, Messagebox.INFORMATION);
-				}
+			win.detach();
+			BindUtils.postGlobalCommand(null, null, "refreshSocios", null);
+			Messagebox.show("El Sr(a) "	+ afiliado.getPersona().getNombre() +" "+afiliado.getPersona().getApellido()
+					+ " es ahora un afiliado del Sr. "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido(), "Exito",
+					Messagebox.OK, Messagebox.INFORMATION);
+			}
+		}
+		catch(NullPointerException e){
+			Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			
+		}
 	}
 	
 	@Command

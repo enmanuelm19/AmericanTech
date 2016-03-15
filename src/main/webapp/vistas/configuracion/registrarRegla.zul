@@ -11,10 +11,10 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-	<window border="none" title="Registrar Reglas del club"
+	<window id="winP" border="none" title="@load(vm.editable?'Editar Politicas':'Registrar Reglas del Club')"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="40%" height="auto"
-		style="iconSclass=z-icon-puzzle-piece;">
+		closable="true" width="40%" height="auto" apply="org.zkoss.bind.BindComposer"
+		style="iconSclass=z-icon-puzzle-piece;" viewModel="@id('vm') @init('controllers.RegistrarPoliticaViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 
 		<div class='contenido'>
@@ -30,22 +30,24 @@
 						<row>
 							<div>
 								<label class="col-md-2"> Descripción</label>
-								<textbox type="text" rows="5" tabindex="10" constraint="no empty" class="col-md-9" />
+								<textbox type="text" rows="5" tabindex="10" constraint="no empty" class="col-md-9"
+								value="@bind(vm.politica.descripcion)"  />
 							</div>
 						</row>
 						<row>
 							<div>
 								<label class="col-md-2"> Valor </label>
-								<intbox constraint="no empty,no negative, no zero" class="col-md-2"/>
+								<intbox constraint="no empty,no negative, no zero" class="col-md-2" value="@bind(vm.politica.valor)"/>
 							</div>
 						</row>
 					</rows>
 				</grid>
 				<space spacing="15%" />
 				<div>
-					<button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Registrar" />
+					<button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Registrar" onClick="@command('guardar', win=winP)"/>
 					<space spacing="10%" />
-					<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" />
+					<button id="cancelarBtn" iconSclass="z-icon-times" class='boton-cancelar' 
+					label="Cancelar" onClick="@command('cerrarModal', win=winP)" />
 				</div>
 				<separator spacing="5%" />
 			</div>

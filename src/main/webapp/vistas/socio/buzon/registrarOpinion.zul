@@ -25,10 +25,10 @@
 
 	<window border="none" title="Registrar Opinión"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="40%" height="50%"
-		style="iconSclass=z-icon-user;">
+		closable="true" width="40%" height="370px"
+		style="iconSclass=z-icon-user;" id="registrarOpinion">
 		<caption iconSclass="z-icon-user" />
-		<div class="contenedor" align="center">
+		<div class="contenedor" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarOpinionViewModel')">
 			<div align="left" width="90%">
 				<div align="left">
 					<div class="encabezado" style="margin-top: 4%">Datos Básicos</div>
@@ -38,62 +38,56 @@
 						<rows >
 							<row>
 								<div class="row col-md-12">
-									<div class="col-md-3">Descripción</div>
+									<div class="col-md-3">Tipo Opinión</div>
 									<div>
-										<combobox >
-											<comboitem label="En general, recomendado"> </comboitem>
-											<comboitem label="En general, no recomendado"></comboitem>
-											<comboitem label="No recomendado, problemas con el alcohol"></comboitem>
+										<combobox model="@load(vm.tiposOpinons)" selectedItem="@bind(vm.opinion.tipoOpnion)" value="@load(vm.opinion.tipoOpnion.descripcion)" placeholder="Seleccione una opción">
+											<template name="model">
+												<comboitem label="@load(each.descripcion)" value="@load(each)"/>	
+											</template>
 										</combobox>
 									</div>									
 								</div>
 								
 							</row>
-							
+							<row>
+							<div class="row col-md-12">
+								<div class="col-md-3">Descripción</div>
+								<div>
+									<textbox type="text" rows="4" class="col-md-9" constraint="no empty" value="@bind(vm.opinion.descripcion)"/>
+								</div>
+							</div>
+						</row>
 							<row >
 								<div class="col-md-12">
 									<div>
-										<div class="col-md-3">
-											Clasificacion
+										<div>
+											<label class="col-md-3">Clasificación</label>
 										</div>
-										<div class="ec-stars-wrapper">
-											<a href="#">
-												<span class="glyphicon glyphicon-star">
-												</span>
-											</a>
-											<a href="#">
-												<span class="glyphicon glyphicon-star">
-												</span>
-											</a>
-											<a href="#">
-												<span class="glyphicon glyphicon-star">
-												</span>
-											</a>
-											<a href="#">
-												<span class="glyphicon glyphicon-star">
-												</span>
-											</a>
-											<a href="#">
-												<span class="glyphicon glyphicon-star">
-												</span>
-											</a>
+										<div class="stars">
+											<radiogroup id="stars" selectedItem="@bind(vm.opinion.calificacion)"> 
+												<radio sclass="@load(vm.opinion.estrellas.star1)" value="1"  radiogroup="stars"/>
+												<radio sclass="@load(vm.opinion.estrellas.star2)" value="2"  radiogroup="stars"/>
+												<radio sclass="@load(vm.opinion.estrellas.star3)" value="3"  radiogroup="stars"/>
+												<radio sclass="@load(vm.opinion.estrellas.star4)" value="4"  radiogroup="stars"/>
+												<radio sclass="@load(vm.opinion.estrellas.star5)" value="5"  radiogroup="stars"/>
+											</radiogroup>
 										</div>
 									</div>
 								</div>
 							</row>
 						</rows>
 					</grid>
-				<div align="center" style="margin-top: 4%;">
+				<div align="center" style="margin-top: 4%; margin-bottom:10px;">
 					<hbox>
 						<div>
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
-								style="margin-bottom: 400px; margin-right:5px" label="Guardar" />
+								style="margin-right:5px" label="Guardar" onClick="@command('guardarOpinion', win=registrarOpinion)"/>
 						</div>
 						<div>
 							<button id="cancelarBtn"
-								iconSclass="z-icon-times-circle" class='boton-cancelar'
-								style="margin-bottom: 6%" label="Cancelar" />
+								iconSclass="z-icon-times" class='boton-cancelar'
+								 label="Cancelar" onClick="@command('cancelar', win=registrarOpinion)"/>
 						</div>
 					</hbox>
 				</div>

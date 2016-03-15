@@ -5,6 +5,8 @@ package modelos;
 import java.util.Date;
 import java.util.Iterator;
 
+import org.zkoss.bind.annotation.NotifyChange;
+
 import util.StarRating;
 
 /**
@@ -88,7 +90,7 @@ public class Opinion implements java.io.Serializable {
 	public short getCalificacion() {
 		return this.calificacion;
 	}
-
+	@NotifyChange({"estrellas"})
 	public void setCalificacion(short calificacion) {
 		this.calificacion = calificacion;
 	}
@@ -119,6 +121,8 @@ public class Opinion implements java.io.Serializable {
 			star=new StarRating("select", "select","select","select","no_select");
 		}else if(calificacion==5){
 			star=new StarRating("select", "select","select","select","select");
+		}else if(calificacion==0){
+			star=new StarRating("no_select", "no_select","no_select","no_select","no_select");
 		}
 		return star;
 	}
