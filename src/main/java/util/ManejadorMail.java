@@ -16,17 +16,20 @@ import modelos.Club;
 
 public class ManejadorMail {
 	
-	private ClubDao clubDao = new ClubDao();
-	private Club club;
-	private String username;
-	private String password;
+	private static ClubDao clubDao = new ClubDao();
+	private static Club club;
+	private static String username;
+	private static String password;
 	
 	
-	public void enviarEmail(String mensaje, String destinatario, String asunto) throws Exception{
+	public static void enviarEmail(String mensaje, String destinatario, String asunto) throws Exception{
 		
 		club = clubDao.obtenerClub(1);
-		username = club.getCorreo();
-		password = club.getClaveCorreo();
+		//username = club.getCorreo();
+		//password = club.getClaveCorreo();
+		
+		username = "centro.atletico.america.si@gmail.com";
+		password = "c12345678";
 		
 		Properties propiedades = new Properties();
 		propiedades.put("mail.smtp.auth", "true");

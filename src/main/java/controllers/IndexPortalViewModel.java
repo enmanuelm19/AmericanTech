@@ -38,7 +38,8 @@ public class IndexPortalViewModel {
 	private Portal portal;
 	private Club club;
 	private PortalDao portalDao;
-	private RedClub redSocialClub;
+
+	private List<RedClub> redesClub;
 	private RedClubDao redClubDao;
 
 	@Init
@@ -47,7 +48,7 @@ public class IndexPortalViewModel {
 		clubAll = new ArrayList<Club>();
 		club = new Club();
 		portal = new Portal();
-		redSocialClub = new RedClub();
+		redesClub = new ArrayList<RedClub>();
 		redClubDao = new RedClubDao();
 		clubDao = new ClubDao();
 		portalDao = new PortalDao();
@@ -56,6 +57,7 @@ public class IndexPortalViewModel {
 		portal = portalDao.obtenerPortal(id);
 		int idClub = 1;
 		club = clubDao.obtenerClub(idClub);
+		redesClub = redClubDao.obtenerTodos();
 		
 	}
 
@@ -71,6 +73,9 @@ public class IndexPortalViewModel {
 		return club;
 	}
 	
+	public ListModelList<RedClub> getRedesClub(){
+		return  new ListModelList<RedClub>(redesClub);
+	}
 	
 	
 }	

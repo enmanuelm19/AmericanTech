@@ -1,6 +1,6 @@
 <zk xmlns:n="native" >
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.ReporteAlquilerViewModel')">
+		viewModel="@id('vm') @init('reportes.estructurados.ReporteAlquilerViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -27,16 +27,14 @@
 							<div align="center">
 								<groupbox style="margin: 1%;" width="85%" height="auto">
 								<space spacing="2%"></space>
-									<!--caption label="Alquileres"></caption-->
 									<hlayout width="100%" >
 							   		   <div >
 							   		   		<radio label="Estado de la Instalacion:" value="0" selected="true" />			   		   		
 							   		   </div>
 							   		   <div>
-							   		   		<combobox >
-												<comboitem label="Reservadas"> </comboitem>
-												<comboitem label="Alquiladas"></comboitem>
-												<!--comboitem label="Disponibles"></comboitem-->
+							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
+													<comboitem label="Alquiladas" value="1" />
+													<comboitem label="Reservadas" value="2" />
 										   </combobox>
 							   		   </div>
 									   <space spacing ="2%"></space>   
@@ -59,21 +57,21 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox  width="70%" tabindex="7" />
+													<datebox  width="70%" tabindex="7" value="@bind(vm.fechadesde)" format="short"/>
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox  width="70%" tabindex="7" />
+													<datebox  width="70%" tabindex="7" value="@bind(vm.fechahasta)" format="short"/>
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
 								   	 <space spacing="1%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<button id="btnImprimirtxt" class='boton-guardar' label="Generar txt" />
 									<space spacing="2%"></space>
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+									<button id="btnImprimirpdf" class='boton-guardar' label="Generar PDF" />
 								 </div>									
 							</div>							
 							

@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -50,7 +52,7 @@ public class RegistrarUsuarioViewModel {
 	private String keyword;
 	private Grupo grupo;
 	private Media uploadedImage;
-	private List<UsuarioGrupo> usuarioGrupos;
+	private Set<UsuarioGrupo> usuarioGrupos;
 	private UsuarioGrupoDao usuarioGrupoDao;
 	
 	@Init
@@ -71,7 +73,7 @@ public class RegistrarUsuarioViewModel {
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);
 			user.setPersona(persona);
-			usuarioGrupos = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
+			usuarioGrupos = new HashSet<UsuarioGrupo>(user.getUsuarioGrupos());
 		} else {
 			this.user = usuario;
 			this.editable = true;
@@ -97,7 +99,7 @@ public class RegistrarUsuarioViewModel {
 			}else{
 			URL url = new URL("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			this.uploadedImage = new AImage(url);}
-			this.setUsuarioGrupo(new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos()));
+			this.setUsuarioGrupo(user.getUsuarioGrupos());
 		}
 
 	}
@@ -142,12 +144,14 @@ public class RegistrarUsuarioViewModel {
 			if (!editable){
 				user.setFecha(new Date());
 				user.setActivo(true);
+				this.user.setUsuarioGrupos(this.usuarioGrupos);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
 			}
 			else {
 				user.setFecha(new Date());
-				user.getPersona().setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
+				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
+				user.getPersona().setFoto(foto);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
@@ -184,7 +188,10 @@ public class RegistrarUsuarioViewModel {
 							break;
 						}
 					}
+					Persona personaTemporal = user.getPersona();
 					user.setPersona(p);
+					personaDao.hardDelete(personaTemporal);
+					Messagebox.show("Ahora puede agregar un usuario a " + p.getNombre());
 					break;
 				}
 			}
@@ -203,8 +210,8 @@ public class RegistrarUsuarioViewModel {
 	}
 	
 
-	public List<UsuarioGrupo> getUsuarioGrupo() {
-		List<UsuarioGrupo> tmp = new ArrayList<UsuarioGrupo>();
+	public Set<UsuarioGrupo> getUsuarioGrupo() {
+		Set<UsuarioGrupo> tmp = new HashSet<UsuarioGrupo>();
 		for(UsuarioGrupo u: usuarioGrupos){
 			if(u.isActivo()){
 				tmp.add(u);
@@ -214,7 +221,7 @@ public class RegistrarUsuarioViewModel {
 		return usuarioGrupos;
 	}
 
-	public void setUsuarioGrupo(List<UsuarioGrupo> usuarioGrupo) {
+	public void setUsuarioGrupo(Set<UsuarioGrupo> usuarioGrupo) {
 		this.usuarioGrupos = usuarioGrupo;
 	}
 	
@@ -235,7 +242,7 @@ public class RegistrarUsuarioViewModel {
 						if (evt.getName().equals("onOK")) {
 							try {
 								usuarioGrupoDao.eliminarUsuarioGrupo(grupo);
-								usuarioGrupos = usuarioGrupoDao.obtenerTodos();
+								usuarioGrupos = new HashSet<UsuarioGrupo>(usuarioGrupoDao.obtenerTodos());
 								Messagebox.show(grupo.getGrupo().getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
@@ -251,7 +258,7 @@ public class RegistrarUsuarioViewModel {
 	@Command
 	@NotifyChange({"usuarioGrupo", "cantRegistros"})
 	public void agregarGrupo() throws Exception{
-		UsuarioGrupo usGroup = new UsuarioGrupo();
+		UsuarioGrupo usGroup;
 		boolean existe = false;
 		
 		if(getGrupo()!= null){
@@ -263,10 +270,12 @@ public class RegistrarUsuarioViewModel {
 			if(existe == true){
 				Messagebox.show("El grupo ya esta asignado a este usuario");
 			}else{
+			usGroup = new UsuarioGrupo();
 			usGroup.setGrupo(getGrupo());
 			usGroup.setUsuario(getUser());
 			usGroup.setActivo(true);
-			usuarioGrupoDao.agregarUsuarioGrupo(usGroup);}
+			usuarioGrupos.add(usGroup);
+			}
 		}else{
 			Messagebox.show("Seleccione un grupo");
 		}
@@ -278,7 +287,7 @@ public class RegistrarUsuarioViewModel {
 	@GlobalCommand
 	@NotifyChange({ "usuarioGrupo", "cantRegistros" })
 	public void refreshUsuarioGrupo() throws Exception {
-		usuarioGrupos = new ArrayList<UsuarioGrupo>(user.getUsuarioGrupos());
+		usuarioGrupos = new HashSet<UsuarioGrupo>(this.getUsuarioGrupo());
 	}
 	
 	@Command
@@ -295,27 +304,5 @@ public class RegistrarUsuarioViewModel {
 		this.uploadedImage = uploadedImage;
 	}
 	
-	/*public String subirImagen(Media imagen){
-		String rutaFinal = null;
-		String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
-		File imageFile = new File(ruta, imagen.getName());
-		try {
-			InputStream is = imagen.getStreamData();
-			if(!imageFile.exists()){
-				Files.copy(is, imageFile.toPath());
-				rutaFinal = getServerName()+"/uploadedImages/"+imagen.getName();
-			}
-		} catch (IOException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		return rutaFinal;
-	}
 
-	private String getServerName() {
-		String port = ( Executions.getCurrent().getServerPort() == 80 ) ? "" : (":" + Executions.getCurrent().getServerPort());
-		String url = Executions.getCurrent().getScheme() + "://" + Executions.getCurrent().getServerName() + 
-					port + Executions.getCurrent().getContextPath();
-		return url;
-	}*/
 }

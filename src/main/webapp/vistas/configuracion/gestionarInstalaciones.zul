@@ -62,16 +62,15 @@
 						<rows>
 						<template name="model">
 							<row>
-								<detail open="false" fulfill="onOpen">
+								<detail open="false" fulfill="onOpen" >
                     			 	<grid
-                    			 		model="@load(vmis.allRecursoInstalacion)"  
+                    			 		model="@bind(vmis.getAllRecursoInstalacion(each))"  
                     			 		emptyMessage="No se encuentran alquileres registrados" mold="paging"
 										pageSize="4">
 									<columns>
-										<column>Recurso</column>
-										<column>Nombre</column>
-										<column>Cantidad</column>
-										<column width="100px">Acciones</column>
+										<column width="33%">Recurso</column>
+										<column width="33%">Nombre</column>
+										<column width="33%">Cantidad</column>
 									</columns>
 									<rows>
 										<template name="model">
@@ -79,10 +78,7 @@
 												<label value="@load(each.idRecursoInstalacion)" />
 												<label value="@load(each.recurso.descripcion)" />
 												<label value="@load(each.cantidad)" />
-												<div>
-													<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-													<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
-												</div>
+												
 											</row>
 										</template>
 									</rows>
@@ -98,10 +94,10 @@
 								<label 
 									value="@load(each.capacidad)"/>
 								<label 
-									value="@load(each.precioAlquiler)" />
+									value="@load(each.precioAlquiler)" />	
 								<div>
-									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar"/>
-									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"/>								
+									<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Modificar" onClick="@command('showModalRegInst', instalacion=each)"/>
+									<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', instalacion=each)"/>								
 								</div>
 							</row>
 							</template>

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.InstalacionDao;
+import Dao.InstalacionEventoDao;
 import Dao.PreferenciaDao;
 import Dao.ReservacionDao;
 import Dao.SocioDao;
@@ -28,6 +30,7 @@ import Dao.CalendarioFechaDao;
 import modelos.CalendarioFecha;
 import modelos.Evento;
 import modelos.Instalacion;
+import modelos.InstalacionEvento;
 import modelos.Persona;
 import modelos.Reservacion;
 import modelos.Socio;
@@ -41,7 +44,9 @@ public class RegistrarReservacionViewModel {
 	private ReservacionDao reservacionDao;
 	private ArrayList<Instalacion> temporalInstalaciones;
 	private Usuario usuario;
-	private Instalacion	instalacionSeleccionada;
+	private Instalacion instalacionSeleccionada;
+	private boolean disable;
+	
 	@Init
 	public void init(@ExecutionArgParam("reservacion") Reservacion reservacion) {
 		if (reservacion == null) {
@@ -111,17 +116,22 @@ public class RegistrarReservacionViewModel {
 
 	public void setTemporalInstalaciones(ArrayList<Instalacion> temporalInstalaciones) {
 		this.temporalInstalaciones = temporalInstalaciones;
+	}	
+
+	public boolean isDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
 	}
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (!isCamposVacio()) {
-			Socio socio = new Socio(1, new Persona(1,usuario.getUsername(),usuario.getUsername(),"INDEFINIDO",true), null, "1", true, null, null, null, null, null);
-			new SocioDao().agregarSocio(socio);
-			//reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
-			reservacion.setSocio(socio);
+			reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
 			reservacion.setInstalacion(getInstalacionSeleccionada());
-			if (!editable)
+			if (!editable)				
 				reservacionDao.agregarReservacion(reservacion);
 			else
 				reservacionDao.actualizarReservacion(reservacion);
@@ -154,11 +164,68 @@ public class RegistrarReservacionViewModel {
 		for (CalendarioFecha calendarioFecha : calendarioFechaAll) {
 			if (calendarioFecha.getReservacion() != null && calendarioFecha.getReservacion().equals(getReservacion())) {
 				if (Format.getDateString(calendarioFecha.getReservacion().getFechaInicio())
-						.equals(Format.getDateString(reservacion.getFechaInicio())) && Format.getDateString(calendarioFecha.getReservacion().getFechaFin())
-						.equals(Format.getDateString(reservacion.getFechaFin()))) {
+						.equals(Format.getDateString(reservacion.getFechaInicio()))
+						&& Format.getDateString(calendarioFecha.getReservacion().getFechaFin())
+								.equals(Format.getDateString(reservacion.getFechaFin()))) {
 					Messagebox.show("Debe seleccionar otra fecha");
 				}
 			}
+		}
+	}
+
+	public boolean isRango(Date a, Date b, Date d) {
+		return a.compareTo(d) * d.compareTo(b) >= 0;
+	}
+
+	public boolean isDisponible(Instalacion instalacion) throws Exception {
+
+		// verificamos que no este reservada esa intalacion
+		for (Reservacion reservacion : reservacionDao.obtenerReservacionesInstalacion(instalacion)) {
+
+			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaInicio()))
+				return false;
+			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaFin()))
+				return false;
+			if (isRango(getReservacion().getFechaInicio(), getReservacion().getFechaFin(),
+					reservacion.getFechaInicio()))
+				return false;
+
+		}
+
+		// verificamos que no se vaya usar esa instalacion en un evento
+		for (InstalacionEvento instalacionEvento : new InstalacionEventoDao().obtenerPorInstalacion(instalacion)) {
+			if (isRango(instalacionEvento.getEvento().getFechaInicio(), instalacionEvento.getEvento().getFechaFin(),
+					getReservacion().getFechaInicio()))
+				return false;
+			if (isRango(instalacionEvento.getEvento().getFechaInicio(), instalacionEvento.getEvento().getFechaFin(),
+					getReservacion().getFechaFin()))
+				return false;
+			if (isRango(getReservacion().getFechaInicio(), getReservacion().getFechaFin(),
+					instalacionEvento.getEvento().getFechaInicio()))
+				return false;
+		}
+
+		return true;
+
+	}
+
+	public void validateReservacion() {
+		if (getReservacion() != null && getReservacion().getInstalacion() != null) {
+			try {
+				if (isDisponible(getReservacion().getInstalacion())) {
+					setDisable(false);
+				} else {
+					Messagebox.show(
+							getReservacion().getInstalacion().getNombre()
+									+ " no se encuentra disponible en el rango de fecha selecionado",
+							"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					setDisable(true);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 

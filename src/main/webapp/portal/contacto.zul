@@ -72,15 +72,17 @@
 
 								<div>
 									<textbox placeholder="Tu mensaje"
-										rows="7" cols="7" value="@bind(vm.sugerencia.descripcion)"
-										constraint="no empty" />
-									<n:br></n:br>
+										rows="7" width="90%" value="@bind(vm.sugerencia.descripcion)"
+										constraint="no empty">
+									</textbox>
+
 								</div>
+
 								<div>
 									<textbox class="textbox"
-										placeholder="Tu Correo"
+										style="margin-top:15px;" placeholder="Tu Correo"
 										value="@bind(vm.clienteExterno.correo)"
-										constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email">
+										constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email valida">
 									</textbox>
 
 									<div class="clear"></div>
@@ -89,7 +91,8 @@
 									<span>
 										<button
 											iconSclass="z-icon-floppy-o" class='boton-Formulario'
-											label="Enviar" onClick="@command('guardar', win=winP)" />
+											style="margin-left: -22px;" label="Enviar"
+											onClick="@command('guardar', win=winP)" />
 									</span>
 								</div>
 								<div class="clear"></div>
@@ -99,17 +102,20 @@
 						</div>
 					</div>
 					<div class="col span_1_of_3">
-						<div class="company_address" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+						<div class="company_address"
+							apply="org.zkoss.bind.BindComposer"
+							viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
 							<n:h5>Información</n:h5>
 							<n:ul class="list3">
 								<n:li>
 									<n:img
 										src="assets/portal/img/location.png" alt="" />
 									<div class="extra-wrap">
-									
+
 										<n:p>
-											<label  value="@load(vm.club.direccion)"></label>
+											<label
+												value="@load(vm.club.direccion)">
+											</label>
 										</n:p>
 									</div>
 									<div class="clear"></div>
@@ -120,7 +126,9 @@
 										src="assets/portal/img/phone.png" alt="" />
 									<div class="extra-wrap">
 										<n:p>
-											<label  value="@load(vm.club.telefono)"></label>
+											<label
+												value="@load(vm.club.telefono)">
+											</label>
 										</n:p>
 									</div>
 									<div class="clear"></div>
@@ -130,89 +138,123 @@
 										src="assets/portal/img//fax2.png" alt="" />
 									<div class="extra-wrap">
 										<n:p>
-											<label  value="@load(vm.club.telfAlternativo)"></label>
+											<label
+												value="@load(vm.club.telfAlternativo)">
+											</label>
 										</n:p>
 									</div>
 									<div class="clear"></div>
 								</n:li>
 								<n:li>
-								
+
 									<n:img
 										src="assets/portal/img/mail.png" alt="" />
 									<div class="extra-wrap">
 										<n:p>
 											<n:p>
-											<label  value="@load(vm.club.correo)"></label>
-										</n:p>
+												<label
+													value="@load(vm.club.correo)">
+												</label>
+											</n:p>
 										</n:p>
 									</div>
-									
+
 								</n:li>
-							
+
 							</n:ul>
 						</div>
 					</div>
-					
+
 					<!-- -Redes sociales-->
-					<div class="col span_1_of_3" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')" >
+					<div class="col span_1_of_3"
+						apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
 						<div class="company_address">
 							<n:h5>Redes sociales</n:h5>
-			
-							
-							<n:ul class="list3">
-						
-									<n:li>
+
+							<grid model="@load(vm.redesClub)"
+								zclass="none" mold="paging" pageSize="10">
 
 
+								<columns zclass="none">
+									<column zclass="none" hflex=""></column>
+									<column zclass="none" hflex=""></column>
 
-									<div class="grow"><n:img class="custom" src="assets/portal/img/facebook.png" alt=""  /> </div>
-									<div class="extra-wrap">
-										<n:p>
-											<a
-												href="@load(vm.club.mision)">
-													red social
-											</a>
-										</n:p>
-									</div>
-									<div class="clear"></div>
+								</columns>
+
+								<rows zclass="none">
+									<template name="model"
+										zclass="none">
+
+										<row zclass="none">
+											<div>
+												<a
+													href="@load(each.enlace)">
+													<image
+														src="@load(each.redSocial.imagen)" width="16px"
+														height="16px" style="margin-right:10px;">
+													</image>
+													<label
+														value="@load(each.redSocial.descripcion)" />
+												</a>
+												<n:br></n:br>
+											</div>
+										</row>
+
+									</template>
+								</rows>
+
+							</grid>
+							<!-- <n:ul class="list3">
+								
+								<n:li>
+								
+								
+								
+								<div class="grow"><n:img class="custom" src="assets/portal/img/facebook.png" alt=""  /> </div>
+								<div class="extra-wrap">
+								<n:p>
+								<a href="">red social</a>
+								</n:p>
+								</div>
+								<div class="clear"></div>
 								</n:li>
-										<n:li>
-									<div class="grow"><n:img class="custom" src="assets/portal/img/twitter.png" alt=""  /> </div>
-									<div class="extra-wrap">
-										<n:p>
-											<a
-												href="mailto:info@mycompany.com">
-													red social
-											</a>
-										</n:p>
-									</div>
-									<div class="clear"></div>
+								<n:li>
+								<div class="grow"><n:img class="custom" src="assets/portal/img/twitter.png" alt=""  /> </div>
+								<div class="extra-wrap">
+								<n:p>
+								<a
+								href=""><label  value=""></label>
+								red social
+								</a>
+								</n:p>
+								</div>
+								<div class="clear"></div>
 								</n:li>
 								
 								
 								
-									<n:li>
-									<div class="grow"><n:img class="custom" src="assets/portal/img/instagram.png" alt=""  /> </div>
-									<div class="extra-wrap">
-										<n:p>
-											<a
-												href="mailto:info@mycompany.com">
-												red social
-											</a>
-										</n:p>
-									</div>
-									<div class="clear"></div>
+								<n:li>
+								<div class="grow"><n:img class="custom" src="assets/portal/img/instagram.png" alt=""  /> </div>
+								<div class="extra-wrap">
+								<n:p>
+								<a
+								href="mailto:info@mycompany.com">
+								red social
+								</a>
+								</n:p>
+								</div>
+								<div class="clear"></div>
 								</n:li>
-							</n:ul>
+								</n:ul>-->
 						</div>
 					</div>
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
 					<div class="clear"></div>
 				</div>
 			</div>

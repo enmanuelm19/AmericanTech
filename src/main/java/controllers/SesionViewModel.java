@@ -2,6 +2,9 @@ package controllers;
 
 
 import modelos.Usuario;
+import util.ManejadorArchivo;
+import util.ManejadorMail;
+
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -44,7 +47,7 @@ public class SesionViewModel implements Initiator {
 	}
 
 	@Command
-	public void showModal(){
+	public void showModal() throws Exception{
 		Window window = (Window)Executions.createComponents(
 				"recuperarContrasenna.zul", null, null);
 		window.doModal();
