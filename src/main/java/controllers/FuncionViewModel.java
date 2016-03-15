@@ -18,4 +18,13 @@ public class FuncionViewModel {
 		
 	}
 
+/* no le paren a esto
+	public ListModelList<Funcion> getFunciones(){
+		funciones = FuncionService.getFunciones();
+		return new ListModelList<Funcion>(funciones);
+		
+	}
+
+
+*/
 }
