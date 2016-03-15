@@ -45,6 +45,8 @@ public class RegistrarSugerenciaViewModel {
 		
 	}
 	
+
+	
 	
 	public ListModelList<TipoSugerencia> getAllTipoSugerencia() {
 		return new ListModelList<TipoSugerencia>(allTipoSugerencia);
@@ -58,15 +60,17 @@ public class RegistrarSugerenciaViewModel {
 			org.zkoss.zk.ui.Session session = Sessions.getCurrent();
 			Usuario user  = (Usuario)session.getAttribute("Usuario");
 			if(sugerencia.getDescripcion() != null && !sugerencia.getDescripcion().equalsIgnoreCase("")) {
-				System.out.println(user);
 				this.sugerencia.setFecha(fecha);
 				this.sugerencia.setClienteExterno(null);;
 				this.sugerencia.setUsuario(user);
 				this.sugerenciaDao.agregarSugerencia(sugerencia);
-			
+				this.sugerencia = new Sugerencia();
+				this.sugerenciaDao = new SugerenciaDao();
+				this.tipoSugerenciaDao = new TipoSugerenciaDao();
 				Messagebox.show( "La Sugerenci ha sido registrado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
+				
 				BindUtils.postGlobalCommand(null, null, "refreshSugerencia",null);
 			}
 			else {

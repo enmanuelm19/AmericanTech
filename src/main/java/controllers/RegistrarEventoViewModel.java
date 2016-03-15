@@ -19,19 +19,25 @@ import Dao.IndicadorDao;
 import Dao.IndicadorEventoDao;
 import Dao.InstalacionDao;
 import Dao.InstalacionEventoDao;
+import Dao.NoticiaDao;
 import Dao.PreferenciaDao;
 import Dao.PreferenciaEventoDao;
 import Dao.ReservacionDao;
+import Dao.SocioDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Evento;
 import modelos.Indicador;
 import modelos.IndicadorEvento;
 import modelos.Instalacion;
 import modelos.InstalacionEvento;
+import modelos.Noticia;
 import modelos.Preferencia;
 import modelos.PreferenciaEvento;
+import modelos.PreferenciaPersona;
 import modelos.Reservacion;
+import modelos.Socio;
 import modelos.TipoPreferencia;
+import util.ManejadorMail;
 
 public class RegistrarEventoViewModel {
 
@@ -145,8 +151,8 @@ public class RegistrarEventoViewModel {
 
 	public ListModelList<PreferenciaEvento> getPreferenciasEventos() throws Exception {
 		ArrayList<PreferenciaEvento> preferenciasMostrar = new ArrayList<PreferenciaEvento>();
-		for(PreferenciaEvento preferenciaEvento: listPreferenciaEvento){
-			if(preferenciaEvento.isActivo())
+		for (PreferenciaEvento preferenciaEvento : listPreferenciaEvento) {
+			if (preferenciaEvento.isActivo())
 				preferenciasMostrar.add(preferenciaEvento);
 		}
 		return new ListModelList<PreferenciaEvento>(preferenciasMostrar);
@@ -154,8 +160,8 @@ public class RegistrarEventoViewModel {
 
 	public ListModelList<InstalacionEvento> getInstalacionesEventos() throws Exception {
 		ArrayList<InstalacionEvento> instalacionesMostrar = new ArrayList<InstalacionEvento>();
-		for(InstalacionEvento instalacionEvento: listInstalacionEvento){
-			if(instalacionEvento.isActivo())
+		for (InstalacionEvento instalacionEvento : listInstalacionEvento) {
+			if (instalacionEvento.isActivo())
 				instalacionesMostrar.add(instalacionEvento);
 		}
 		return new ListModelList<InstalacionEvento>(instalacionesMostrar);
@@ -163,8 +169,8 @@ public class RegistrarEventoViewModel {
 
 	public ListModelList<IndicadorEvento> getIndicadoresEventos() throws Exception {
 		ArrayList<IndicadorEvento> indicadoresMostrar = new ArrayList<IndicadorEvento>();
-		for(IndicadorEvento indicadorEvento: listIndicadorEvento){
-			if(indicadorEvento.isActivo())
+		for (IndicadorEvento indicadorEvento : listIndicadorEvento) {
+			if (indicadorEvento.isActivo())
 				indicadoresMostrar.add(indicadorEvento);
 		}
 		return new ListModelList<IndicadorEvento>(indicadoresMostrar);
@@ -216,7 +222,8 @@ public class RegistrarEventoViewModel {
 	public void agregarInstalacionesEvento() throws Exception {
 
 		InstalacionEvento instalacionEvento;
-		if (evento.getFechaInicio() != null && evento.getFechaFin() != null && evento.getFechaInicio().before(evento.getFechaFin()))
+		if (evento.getFechaInicio() != null && evento.getFechaFin() != null
+				&& evento.getFechaInicio().before(evento.getFechaFin()))
 			for (Instalacion instalacion : temporalInstalaciones) {
 				if (isDisponible(instalacion)) {
 					if (buscarInstalacion(instalacion) == null) {
@@ -228,8 +235,7 @@ public class RegistrarEventoViewModel {
 					}
 				} else
 					Messagebox.show(
-							instalacion.getNombre()
-									+ " no se encuentra disponible en el rango de fecha selecionado",
+							instalacion.getNombre() + " no se encuentra disponible en el rango de fecha selecionado",
 							"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		else
@@ -292,26 +298,29 @@ public class RegistrarEventoViewModel {
 	@Command
 	@NotifyChange({ "preferenciasEventos", "cantidadPreferencias" })
 	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") PreferenciaEvento p) throws Exception {
-		if(preferenciaEventoDao.obtenerPreferenciaEvento(p.getIdPreferenciaEvento())!=null)
+		if (preferenciaEventoDao.obtenerPreferenciaEvento(p.getIdPreferenciaEvento()) != null)
 			p.setActivo(false);
-		else listPreferenciaEvento.remove(p);
-		
+		else
+			listPreferenciaEvento.remove(p);
+
 	}
 
 	@Command
-	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones" ,"disabled"})
+	@NotifyChange({ "instalacionesEventos", "cantidadInstalaciones", "disabled" })
 	public void eliminarInstalacionEvento(@BindingParam("instalacionEvento") InstalacionEvento i) throws Exception {
-		if(instalacionEventoDao.obtenerInstalacionEvento(i.getIdActividadInstalacion())!=null)
+		if (instalacionEventoDao.obtenerInstalacionEvento(i.getIdActividadInstalacion()) != null)
 			i.setActivo(false);
-		else listInstalacionEvento.remove(i);
+		else
+			listInstalacionEvento.remove(i);
 	}
 
 	@Command
 	@NotifyChange({ "indicadoresEventos", "indicadorEvento", "cantidadIndicadores" })
 	public void eliminarIndicadorEvento(@BindingParam("indicadorEvento") IndicadorEvento in) throws Exception {
-		if(indicadorEventoDao.obtenerIndicadorEvento(in.getIdIndicadorEvento())!=null)
+		if (indicadorEventoDao.obtenerIndicadorEvento(in.getIdIndicadorEvento()) != null)
 			in.setActivo(false);
-		else listIndicadorEvento.remove(in);
+		else
+			listIndicadorEvento.remove(in);
 	}
 
 	public Preferencia buscarPreferecia(Preferencia preferencia) {
@@ -338,19 +347,18 @@ public class RegistrarEventoViewModel {
 			this.evento.setPreferenciaEventos(this.listPreferenciaEvento);
 			this.evento.setInstalacionEventos(this.listInstalacionEvento);
 			this.evento.setEstadoEvento(estadoEDao.obtenerEstadoEvento(1));
-			if (!editable){
+			if (!editable) {
 				eventoDao.agregarEvento(evento);
-				Messagebox.show(
-						"El evento " + evento.getNombre()
-								+ " ha sido registrado exitosamente", "",
+				registrarNoticia();
+				enviarEmail();
+				Messagebox.show("El evento " + evento.getNombre() + " ha sido registrado exitosamente", "",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 
-			else{
+			else {
 				eventoDao.actualizarEvento(evento);
-				Messagebox.show(
-						"El evento " + evento.getNombre()
-								+ " ha sido actualizado exitosamente", "",
+				enviarEmail();
+				Messagebox.show("El evento " + evento.getNombre() + " ha sido actualizado exitosamente", "",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 
@@ -372,8 +380,55 @@ public class RegistrarEventoViewModel {
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
 	}
+
+	public boolean isDisabled() {
+		return this.listInstalacionEvento.size() > 0;
+	}
+
+	public void registrarNoticia() throws Exception {
+
+		Noticia noticia = new Noticia();
+		NoticiaDao noticiaDao = new NoticiaDao();
+		noticia.setFoto("localhost:8080/america/assets/img/default-placeholder.png");
+		noticia.setFechaCreacion(evento.getFechaInicio());
+		noticia.setCaducidad(evento.getFechaFin());
+		noticia.setDescripcion(evento.getDescripcion());
+		noticia.setTitulo(evento.getNombre());
+		noticia.setPublico(evento.isPublico());
+		noticiaDao.agregarNoticia(noticia);
+		
+	}
 	
-	public boolean isDisabled(){
-		return this.listInstalacionEvento.size()>0;
+	public void enviarEmail() throws Exception {
+		SocioDao socioDao = new SocioDao();
+
+		boolean bandera = false;
+
+		String mensaje, detinatario, asunto;
+
+		for (Socio socio : socioDao.obtenerTodos()) {
+			for (PreferenciaPersona preferenciaP : socio.getPersona().getPreferenciaPersonas()) {
+				for (PreferenciaEvento preferenciaE : evento.getPreferenciaEventosActive()) {
+					if (preferenciaE.getPreferencia().getIdPreferencia() == preferenciaP.getPreferencia()
+							.getIdPreferencia()) {
+
+						mensaje = "Sr(a) " + socio.getPersona().getNombre() + " " + socio.getPersona().getApellido()
+								+ " nos complace informarle que la familia americanista realizara un evento que tendra origen el dia: "
+								+ evento.getFechaInicioString()
+								+ " para mayor informacion visite nuestra portal web www.america.com.ve, Feliz Dia att Club Centro Altetico America";
+						detinatario = socio.getPersona().getCorreo();
+						asunto = "Evento: " + evento.getNombre();
+						ManejadorMail.enviarEmail(mensaje, detinatario, asunto);
+						bandera = true;
+						break;
+					}
+
+				}
+				if (bandera)
+					break;
+			}
+			bandera = false;
+		}
+
 	}
 }

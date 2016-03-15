@@ -11,7 +11,7 @@ public class ControllerOpinionPostulacion extends SelectorComposer<Component> {
 	@Listen("onClick = #btnOpinionRegistrar")
 	public void showModalOpinion(Event e) {
 		// create a window programmatically and use it as a modal dialog.
-		Window window = (Window) Executions.createComponents("socio/buzon/opinion.zul", null, null);
+		Window window = (Window) Executions.createComponents("socio/buzon/registrarOpinion.zul", null, null);
 		window.doModal();
 	}
 }

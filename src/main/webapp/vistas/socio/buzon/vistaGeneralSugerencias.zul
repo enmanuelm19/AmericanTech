@@ -68,7 +68,7 @@
 										<label value="@load(each.usuario.persona.nombre)" />
 										<label value="@load(each.usuario.persona.apellido)" />
 										<image
-											src="/assets/portal/img/img2.jpg" width="65%" align="center" />
+											src="@(each.usuario.persona.foto)" width="65%" align="center" />
 										<div>
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
