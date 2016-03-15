@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 06/03/2016 06:03:50 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 15/03/2016 08:01:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Noticia" table="noticia" schema="public" optimistic-lock="version">
         <id name="idNoticia" type="int">
             <column name="id_noticia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" />
         </many-to-one>
-        <many-to-one name="tipoNoticia" class="modelos.TipoNoticia" fetch="select" lazy="false" cascade="save-update">
-            <column name="tipo_noticiaid_tipo_noticia" not-null="true" />
+        <many-to-one name="tipoNoticia" class="modelos.TipoNoticia" fetch="select" lazy="false">
+            <column name="tipo_noticiaid_tipo_noticia" />
         </many-to-one>
         <property name="titulo" type="string">
             <column name="titulo" length="90" />

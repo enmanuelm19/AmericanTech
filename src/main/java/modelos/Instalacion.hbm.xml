@@ -8,7 +8,7 @@
             <column name="id_instalacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tipoInstalacion" class="modelos.TipoInstalacion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoInstalacion" class="modelos.TipoInstalacion" fetch="select" lazy="false">
             <column name="tipo_instalacionid_tipo_instalacion" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">
@@ -29,13 +29,13 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" not-null="true" />
             </key>
             <one-to-many class="modelos.Reservacion" />
         </set>
-        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="instalacionEventos" table="instalacion_evento" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" not-null="true" />
             </key>
@@ -47,7 +47,7 @@
             </key>
             <one-to-many class="modelos.Foto" />
         </set>
-        <set name="eventualidads" table="eventualidad" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="instalacionid_instalacion" />
             </key>

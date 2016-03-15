@@ -11,7 +11,7 @@
         <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
             <column name="postulacionid_postulacion" />
         </many-to-one>
         <property name="nroCarnet" type="string">
@@ -20,7 +20,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="socioid_socio" />
             </key>
@@ -32,19 +32,19 @@
             </key>
             <one-to-many class="modelos.Accion" />
         </set>
-        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="desvinculacions" table="desvinculacion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Desvinculacion" />
         </set>
-        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="reservacions" table="reservacion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
             <one-to-many class="modelos.Reservacion" />
         </set>
-        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="socioid_socio" not-null="true" />
             </key>
