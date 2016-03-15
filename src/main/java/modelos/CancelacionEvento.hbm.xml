@@ -8,7 +8,7 @@
             <column name="id_cancelacion_evento" />
             <generator class="increment" />
         </id>
-        <many-to-one name="motivoCancelacion" class="modelos.MotivoCancelacion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="motivoCancelacion" class="modelos.MotivoCancelacion" fetch="select" lazy="false">
             <column name="motivo_cancelacionid_motivo_cancelacion" not-null="true" />
         </many-to-one>
         <property name="descipcion" type="string">
@@ -17,7 +17,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="eventos" table="evento" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="eventos" table="evento" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="cancelacion_eventoid_cancelacion_evento" />
             </key>

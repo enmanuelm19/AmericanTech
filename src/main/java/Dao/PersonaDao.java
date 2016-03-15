@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Persona;
+import modelos.Preferencia;
 import confi.Sesion;
 
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.Session;
@@ -136,5 +138,23 @@ private Sesion sesionPostgres;
 	    return datos;	
 	}
 	
-	
+//	public List<Persona> obtenerPorPreferencia(List<Preferencia> preferencias) throws Exception { 
+//		String tira = "Select DISTINCT p.* from Persona p join preferenciaPersona prefp on p.idPersona = prefp.personaid_persona where prefp.preferenciaid_preferencia =some element(:list)";
+//		for (int i=0; i<preferencias.size(); i++){
+//			
+//		}
+//		   List<Persona> datos = new ArrayList<Persona>();  
+//		   Session em = sesionPostgres.getSessionFactory().openSession();   	
+//	        try {  
+//	        Query query = em.createQuery();
+//		    datos =  (List<Persona>) em.createCriteria(Persona.class).add(Restrictions.eq("activo", true)).list();             
+//	        } catch (Exception e) {             
+//	       
+//	         throw new Exception(e.getMessage(),e.getCause());
+//	        } finally {  
+//	          em.close();  
+//	        } 
+//	       
+//	        return datos; 
+//	}
 }

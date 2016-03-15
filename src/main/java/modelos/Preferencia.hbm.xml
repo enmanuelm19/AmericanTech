@@ -8,7 +8,7 @@
             <column name="id_preferencia" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tipoPreferencia" class="modelos.TipoPreferencia" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoPreferencia" class="modelos.TipoPreferencia" fetch="select" lazy="false">
             <column name="tipo_preferenciaid_tipo_preferencia" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
@@ -17,19 +17,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="preferenciaEventos" table="preferencia_evento" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaEvento" />
         </set>
-        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="preferenciaPersonas" table="preferencia_persona" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
             <one-to-many class="modelos.PreferenciaPersona" />
         </set>
-        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="noticiaPreferencias" table="noticia_preferencia" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="preferenciaid_preferencia" not-null="true" />
             </key>
