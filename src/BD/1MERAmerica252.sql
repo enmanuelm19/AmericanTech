@@ -180,6 +180,7 @@ CREATE TABLE reservacion (
   socioid_socio             int2 NOT NULL, 
   fecha_inicio              timestamp NOT NULL, 
   fecha_fin                 timestamp NOT NULL, 
+  condicion                 char(255), 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_reservacion));
 CREATE TABLE afiliado (

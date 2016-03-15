@@ -3,8 +3,8 @@
 		collapsible="true" sclass="transparent">
 		<caption iconSclass="z-icon-calendar orange" label="Calendario" />
 		<panelchildren>
-			<div apply="controllers.CalendarViewModel"
-				align="center" width="100%" height="700px">
+			<div apply="controllers.CalendarViewModel" align="center"
+				width="100%" height="590px" style="margin-top: 15px;">
 				<!-- Control Menu -->
 				<hlayout sclass="z-valign-middle">
 					<button id="today" label="Today" class='btn-cal' />
@@ -32,12 +32,11 @@
 
 
 				<calendars id="calendars" firstDayOfWeek="Sunday"
-					timeZone="Main=GMT+0" mold="month" width="90%" height="70%" />
-
+					timeZone="Main=GMT+0" mold="month" width="90%" height="90%" />
 			</div>
 		</panelchildren>
 	</panel>
-
+	<include src="/vistas/content/calendarEditor.zul" />
 	<!-- Create/Update Event Popup -->
 
 
