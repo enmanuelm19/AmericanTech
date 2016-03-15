@@ -11,7 +11,7 @@
         <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false" cascade="save-update">
             <column name="instalacionid_instalacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" >
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
         <property name="fechaInicio" type="timestamp">
