@@ -7,14 +7,14 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-calendar" />
-						<a label="Eventos" href="#" />
-						<label value="Lista de Eventos" />
+						<a label="Administrar evento" href="#" />
+						<label value="Registrar evento" />
 					</div>
 				</div>
 
-				<div class='contenedor' align="center" height="940px">
+				<div class='contenedor' align="center">
 					<div sclass="page-header" align="left">
-						<label value="Eventos" />
+						<label value="Registrar Evento" />
 					</div>
 					<separator spacing="30px" />
 					<space />

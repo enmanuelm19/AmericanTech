@@ -61,7 +61,9 @@
 								<n:br></n:br>
 								<textbox type="text" width="85%" value="@bind(vm.evento.nombre)"
 									tabindex="10" constraint="no empty" />
+								
 							</div>
+							
 
 							<div>
 								Descripción del evento
@@ -70,11 +72,16 @@
 									width="85%" tabindex="10" constraint="no empty" />
 							</div>
 						</row>
-
-
+						
+						<row class="col-md-12">
+	
+							<div>
+								<checkbox label="Publico?" checked="@bind(vm.evento.publico)"></checkbox>
+							</div>
+	
+						</row>
 					</rows>
 				</grid>
-				<n:br></n:br>
 				<div align="left" class="linea-two"></div>
 				<n:br></n:br>
 				<div class="row">
