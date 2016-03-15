@@ -21,99 +21,71 @@
 					<div class='form-pricing' align="left" width="90%"
 						style="margin-bottom: 20%">
 
-						<div apply="controllers.ControllerPostulacion"
-							xmlns:w='client' align="right">
-
-						</div>
-
-						<div class="contenido">
+											<div class="contenido" apply="org.zkoss.bind.BindComposer"
+								viewModel="@id('vm') @init('controllers.PostulantesViewModel')" >
 							<div align="left">
 								<div class='encabezado'>
-									PostuladosYA
+									Postulados Ya!
 								</div>
 								<div class='linea-two'></div>
 							</div>
+							<separator spacing="30px" />
 
-
-							<grid emptyMessage="" mold="paging"
-								pageSize="10" apply="org.zkoss.bind.BindComposer"
-								viewModel="@id('vm') @init('controllers.ControladorModalAbrir')">
-
+							<grid emptyMessage="No se encuentran Acciones registradas" mold="paging"
+							pageSize="10" width="100%" model="@load(vm.postulacionesAll)">
+								<auxhead sclass="category-center">
+								<auxheader colspan="1"></auxheader>
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true" placeholder="Buscar" value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"/>
+									</auxheader>
+									<auxheader colspan="1">
+										<image
+											src="../assets/img/funnel.png" />
+										<textbox instant="true"
+											 placeholder="Buscar" value="@bind(vm.apellidoFiltro)" onChange="@command('filtro')"/>
+									</auxheader>
+									<auxheader colspan="3" />
+								</auxhead>
 								<columns>
-									<column hflex="2">Foto</column>
-									<column hflex="2">
-										1er Postulado
-									</column>
-									<column hflex="2">
-										2do Nombre
-									</column>
-									<column hflex="2">
-										1er Apellido
-									</column>
-									<column hflex="2">
-										2do apellido
-									</column>
-
-									<column hflex="1">#Acción</column>
-									<column hflex="1">Fecha</column>
+									<column hflex="1" align="center">Foto</column>
+									<column hflex="2" align="center">Nombre</column>
+									<column hflex="2" align="center">Apellido</column>
+									<column hflex="2" align="center">Fecha</column>
 									<!-- Fecha Postulación -->
-
-
-									<column hflex="2">Opiniones</column>
+									<column hflex="1" align="center">Opiniones</column>
+									<column hflex="2" align="center">Calificaciónes</column>
 								</columns>
 
 								<rows>
+								<template name="model">
 									<row>
 										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David" /><!-- 1erNombre -->
-										<label value="Angel" /><!-- 2doNombre -->
-										<label value="Cordero" /><!-- 1er Apellido -->
-										<label value="Ron" /><!-- 2 Apellido -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
+											src="@load(each.postulado.persona.foto)" width="100%" align="center" />
+										<label value="@load(each.postulado.persona.nombre)" /><!-- 1erNombre -->
+										<label value="@load(each.postulado.persona.apellido)" /><!-- 1er Apellido -->
+										<label value="@load(each.fecha)" />
 										<div align="center"><!-- Opiniones -->
 											<button
-												iconSclass="glyphicon glyphicon-th-list blue"
-												onClick="@command('showModalOpiniones')">
+												iconSclass="z-icon-list green" sclass="btn-link"
+												onClick="@command('showModalOpiniones', Postulacion=each)" tooltiptext="Ver Opiniones">
 											</button>
 										</div>
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David" /><!-- 1erNombre -->
-										<label value="Angel" /><!-- 2doNombre -->
-										<label value="Cordero" /><!-- 1er Apellido -->
-										<label value="Ron" /><!-- 2 Apellido -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue">
-											</button>
+										<div class="star">
+											<label sclass="@load(each.estrellas.star1)" value="11"/>
+											<label sclass="@load(each.estrellas.star2)" value="21"/>
+											<label sclass="@load(each.estrellas.star3)" value="31" />
+											<label sclass="@load(each.estrellas.star4)" value="41"/>
+											<label sclass="@load(each.estrellas.star5)" value="51" />
 										</div>
 									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" width="40%" align="center" />
-										<label value="David" /><!-- 1erNombre -->
-										<label value="Angel" /><!-- 2doNombre -->
-										<label value="Cordero" /><!-- 1er Apellido -->
-										<label value="Ron" /><!-- 2 Apellido -->
-										<label value="032" /><!-- #Accion -->
-										<label value="08/08/08" />
-										<div align="center"><!-- Opiniones -->
-											<button
-												iconSclass="glyphicon glyphicon-th-list blue">
-											</button>
-										</div>
-									</row>
-
+									
+								</template>
 								</rows>
 								<foot>
 									<footer span="6"
-										class="footer_right" label="# items en la lista" />
+										class="footer_right" label="@load(vm.cantidadRegistros)" />
 								</foot>
 							</grid>
 						</div>
