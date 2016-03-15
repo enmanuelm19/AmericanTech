@@ -1,3 +1,0 @@
-- Colocar los membretes de la busqueda, es decir las opciones que selecciono el usuario para generar el reporte.
-- Los diseños de la graficas que estan en los mockops pueden mejor, la herramienta que usamos es un poco limitada en cuanto ese aspecto.
-- Cualquier duda que se presente en cuanto a los mockops, comunicase con el equipo de Servicios y BD

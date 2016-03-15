@@ -193,11 +193,14 @@ public class ReporteSocioViewModel {
 		setPreferenciaEventos(tmp);
 	}
 	//metodo para elliminar los datos de la tabla temporal
-	@Command
-	@NotifyChange({ "preferenciasEventos"})
-	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") Preferencia p) {
-		temporalPreferencia.remove(p);
-	}
+//	@Command
+//	@NotifyChange({ "preferenciasEventos"})
+//	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") Preferencia p) {
+//		if(this.editable)
+//			p.setActivo(false);
+//		else temporalPreferencia.remove(p);
+//		
+//	}
 	
 	
 	@Command
