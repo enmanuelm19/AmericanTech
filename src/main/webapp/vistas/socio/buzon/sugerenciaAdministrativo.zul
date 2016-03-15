@@ -24,7 +24,7 @@
 					</div>
 
 					<div class='form-pricing' width="85%" apply="org.zkoss.bind.BindComposer" 
-						viewModel="@id('vm') @init('controllers.SugerenciaViewModel')"
+						viewModel="@id('vm') @init('controllers.SugerenciaAdministradorViewModel')"
 						 style="margin-bottom: 20px;">
 
 						<separator spacing="10%" />
@@ -54,11 +54,11 @@
 						</auxhead>
 						
 						<columns>
-							<column align="center" hflex="2">Tipo</column>
-							<column align="center" hflex="2">Fecha</column>
-							<column  hflex="2" align="center">Nombre</column>
-							<column  hflex="2" align="center">Apellido</column>
-							<column  hflex="2" align="center">Foto</column>
+							<column align="center" hflex="3">Tipo</column>
+							<column align="center" hflex="3">Fecha</column>
+							<column  hflex="3" align="center">Cliente Externo</column>
+							<column  hflex="3" align="center">Socio</column>
+							<column  hflex="3" align="center">Foto</column>
 							<column hflex="6" align="center">Sugerencia</column>
 						</columns>
 								<rows>
@@ -66,10 +66,10 @@
 									<row>
 										<label value="@load(each.tipoSugerencia.descripcion)" />
 										<label value="@load(each.fecha)" />
-										<label value="@load(each.usuario.persona.nombre)" />
-										<label value="@load(each.usuario.persona.apellido)" />
+										<label value="${each.clienteExterno.nombre} ${each.clienteExterno.apellido}"/>
+										<label value="${each.usuario.persona.nombre} ${each.usuario.persona.apellido}" />
 										<image
-											src="/assets/portal/img/img2.jpg" width="65%" align="center" />
+											src="@load(each.usuario.persona.foto)" width="65%" align="center" />
 										<div>
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"
