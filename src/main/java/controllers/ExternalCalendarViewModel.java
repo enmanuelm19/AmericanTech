@@ -21,7 +21,6 @@ import org.zkoss.zul.Textbox;
 
 import Dao.EventoDao;
 import Dao.TipoPreferenciaDao;
-import modelos.Alquiler;
 import modelos.Evento;
 import modelos.PreferenciaEvento;
 import modelos.TipoPreferencia;
