@@ -26,7 +26,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="funcionid_funcion" not-null="true" />
             </key>

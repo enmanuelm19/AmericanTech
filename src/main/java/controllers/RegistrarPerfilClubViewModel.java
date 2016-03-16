@@ -51,14 +51,18 @@ public class RegistrarPerfilClubViewModel {
 	public void init() throws Exception {
 		this.ClubDao = new ClubDao();
 		this.club = new Club();
-		this.allRedClub = club.getRedClubs();
+
 		this.redSolcialDao = new RedSocialDao();
 		this.redClub = new RedClub();
 		this.redSocial = new RedSocial();
 		this.redClubDao = new RedClubDao();
 		
 		this.club = ClubDao.obtenerTodos().get(0);
-		
+//		this.allRedClub = (Set<RedClub>) redClubDao.obtenerRedClub(club.getIdClub());
+		this.allRedClub = club.getRedClubs();
+		System.out.println("PASOOOOOO");
+		System.out.println(club.getCorreo());
+		System.out.println(allRedClub);
 	}
 	
 
@@ -92,6 +96,7 @@ public class RegistrarPerfilClubViewModel {
 	@Command
 	@NotifyChange({"allRedClubs","redClub"})
 	public void eliminarEnlaceRedSocial(@BindingParam("redClub") RedClub in){
+		
 		this.allRedClub.remove(in);
 	}
 	
@@ -105,13 +110,6 @@ public class RegistrarPerfilClubViewModel {
 		this.redClub = redClub;
 	}
 
-	@Command
-	@NotifyChange({"club","redClub","redSocial"})
-	public void limpiar() {
-		this.setClub(new Club());
-		this.setRedClub(new RedClub());
-		this.setRedSocial(new RedSocial());
-	}
 	
 	@Command
 	public void cancelar() {
@@ -148,11 +146,16 @@ public class RegistrarPerfilClubViewModel {
 									Messagebox.show("La MISIÓN no puede estar en blanco", "Warning",
 												Messagebox.OK, Messagebox.EXCLAMATION);
 									} 
-									else{
+//									else if (club.getLogo() == null) {
+//										Messagebox.show("Debe cargar un Logo", "Warning",
+//													Messagebox.OK, Messagebox.EXCLAMATION);
+//										}
+									else {
 										this.club.setRedClubs(allRedClub);
-										this.ClubDao.actualizarClub(club);;
+										this.ClubDao.actualizarClub(club);
+										
 										Messagebox.show("El perfil del club  " + club.getNombre()
-												+ " ha sido Modificado", "", Messagebox.OK,
+												+ " ha sido Modificado con exito", "", Messagebox.OK,
 												Messagebox.INFORMATION);
 									}
 		}

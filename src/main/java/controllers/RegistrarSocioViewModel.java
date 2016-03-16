@@ -149,11 +149,11 @@ public class RegistrarSocioViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 				win.detach();
 			} else {
-				Messagebox.show("Debe seleccionar un accion a vincular", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe seleccionar un accion a vincular", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		
 		} else {
-			Messagebox.show("El campo Nro Carnet no puede estar vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("El campo Nro Carnet no puede estar vacio", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 	

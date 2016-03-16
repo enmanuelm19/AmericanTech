@@ -8,7 +8,7 @@
             <column name="id_reservacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false">
             <column name="instalacionid_instalacion" not-null="true" />
         </many-to-one>
         <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" >
@@ -26,7 +26,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="alquilers" table="alquiler" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="alquilers" table="alquiler" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="reservacionid_reservacion" not-null="true" />
             </key>

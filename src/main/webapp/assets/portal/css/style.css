@@ -377,6 +377,10 @@ body {
 	font-family: 'Lato', sans-serif;
 	font-style: italic;
 	border: 2px solid #CACACA;
+	 -moz-transition: borde 0.4s ease-in;
+    -o-transition: border 0.4s ease-in;
+    -webkit-transition: border 0.4s ease-in;
+    transition: border 0.4s ease-in;
 }
 .contact-form input[type="text"]:nth-child(2)
 {
@@ -445,10 +449,10 @@ body {
 /*--footer--*/
 .footer-bottom {
 	padding: 25px 0;
-	background: #303441;
+	background: #2B7DBC;
 }
 .copy p {
-	color: #666D89;
+	color: #FFFFFF;
 	font-size: 0.8125em;
 	line-height: 1.8em;
 	text-align: center;
@@ -1149,7 +1153,7 @@ padding: 1.2em 0em;
 
 .cartelera
 {
-	background-color: #5FCAB0;
+	background-color: #2B7DBC;
 	text-align:center;
 	padding: 5em 0em;
 }
@@ -1171,7 +1175,7 @@ padding: 1.2em 0em;
 	margin-top: 30px;
 }
 
-.boton-Formulario{
+.boton-Formulario, .boton-Formulario:focus{
   font-family: 'Lato', sans-serif;
   color: #fff;
   padding: 0.8em 1.5em;
@@ -1267,4 +1271,114 @@ webkit-box-shadow: 0 3px 5px #bbc3c9;
 .grow:hover {
   width: 32px;
   height:32px;
+}
+
+
+
+/*********************CHOSENBOX***********************/
+.sexo{
+	border: 2px solid #CACACA;
+    border-radius: 3px;
+    width: 43.5%;
+    margin-left: 36.5%;
+    padding-left: 10px !important;
+    padding-bottom: 20px !important;
+	 -moz-transition: borde 0.4s ease-in;
+    -o-transition: border 0.4s ease-in;
+    -webkit-transition: border 0.4s ease-in;
+    transition: border 0.4s ease-in;
+}
+.sexo .z-radio input, .motivo .z-radio input{
+	margin-top: 0px;
+    margin-right: 4px;
+}
+.sexo .z-radio label, .motivo .z-radio label{
+	font-size: 14px;
+    padding-top: 2px;
+    font-family: 'Lato', sans-serif;
+}
+
+.motivo .z-radio{
+	margin-right: 15px;
+    padding: 10px 10px;
+    border: 2px solid #cacaca;
+    border-radius: 3px;
+    -moz-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
+    -webkit-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in;
+}
+.motivo .z-radio:hover{
+	border: 2px solid #1BBC9B;
+	-moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out; 
+}
+
+.z-chosenbox{
+    border: 2px solid #cacaca;
+	border-radius: 3px;
+	padding: 7px 5px;
+	-moz-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
+    -webkit-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in; 
+	
+}
+.z-chosenbox .z-chosenbox-item .z-chosenbox-item-content, .z-chosenbox .z-chosenbox-item .z-chosenbox-delete{
+	    padding: 2px 15px 0 0px !important;
+}
+.z-chosenbox .z-chosenbox-item{
+    padding: 0px 10px;
+    height: 25px;
+ 	margin-right: 5px;
+	background: transparent;
+	border: 1px solid rgba(114,211,187,0.8);
+	-webkit-box-shadow: 0 0 10px rgba(114,211,187,0.3);
+	-moz-box-shadow: 0 0 10px rgba(114,211,187,0.3);
+     -o-box-shadow: 0 0 10px rgba(114,211,187,0.3);
+     box-shadow: 0 0 10px rgba(114,211,187,0.3);
+}
+.z-chosenbox .z-chosenbox-item .z-chosenbox-item-content{
+	font-size: 14px;
+	font-family: 'Lato', sans-serif;
+}
+.z-chosenbox .z-chosenbox-item .z-icon-times{
+	padding-top:1px;
+	color:#1BBC9B;
+}
+
+.z-chosenbox-option-hover{
+	background: rgba(114,211,187,0.3);
+}
+.z-chosenbox-popup{
+	background: rgba(135, 130, 130, 0.1);
+	font-size: 14px;
+}
+.z-chosenbox-input{
+	width: 230px !important;
+	    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    color: #888282;
+    font-size: 0.8125em;
+    opacity:0.9;
+    font-size:14px;
+}
+.textbox:focus, .z-datebox-input:focus, .sexo:hover, .z-chosenbox:hover, .imagen_postulante img:hover{
+border: 2px solid #1BBC9B !important;
+	-moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out; 
+	
+}
+.imagen_postulante img{
+	border: 2px solid #cacaca;
+	border-radius: 5px;
+	
+	-moz-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
+    -webkit-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in; 
 }

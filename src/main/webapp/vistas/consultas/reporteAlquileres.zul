@@ -33,8 +33,8 @@
 							   		   </div>
 							   		   <div>
 							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
-													<comboitem label="Alquiladas" value="1" />
-													<comboitem label="Reservadas" value="2" />
+													<comboitem label="Alquiladas" value="Alquiladas" />
+													<comboitem label="Reservadas" value="Reservadas" />
 										   </combobox>
 							   		   </div>
 									   <space spacing ="2%"></space>   
@@ -42,7 +42,7 @@
 							   		   		<radio label="Seleccione la Instalacion:" value="0"  />			   		   		
 							   		   </div>									    			   		
 							   		   	<div>
-							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)" >
+							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" >
 												<template name="model">
 														<comboitem
 															label="@load(each.nombre)" value="@load(each)" />
@@ -69,10 +69,10 @@
 								   	 <space spacing="1%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimirtxt" class='boton-guardar' label="Generar txt" />
-									<space spacing="2%"></space>
-									<button id="btnImprimirpdf" class='boton-guardar' label="Generar PDF" />
-								 </div>									
+						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
+						<space spacing="2%"></space>
+						<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+					</div>								
 							</div>							
 							
 						</div>

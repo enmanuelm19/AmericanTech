@@ -2,7 +2,7 @@
 
 	<window id="winEv" border="none" title="@load(vm.editable?'Editar evento':'Registrar evento')"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="60%" height="auto"
+		closable="true" width="50%" height="auto"
 		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarEventoViewModel')">
 		<caption iconSclass="z-icon-calendar" />
@@ -27,7 +27,7 @@
 							<div>
 								Fecha inicio
 								<n:br></n:br>
-								<datebox id="DateFchInicio" width="85%" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaInicio)"
+								<datebox id="DateFchInicio" width="50%" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaInicio)"
 									cols="12" format="short" />
 							</div>
 
@@ -35,7 +35,7 @@
 								Fecha fin
 								<n:br></n:br>
 								<datebox id="DateFchCierre" cols="12" disabled="@load(vm.disabled)" value="@bind(vm.evento.fechaFin)"
-									format="short" width="85%" />
+									format="short" width="50%" />
 							</div>
 						</row>
 						<row class="col-md-12">
@@ -43,13 +43,13 @@
 								Hora inicio
 								<n:br></n:br>
 								<timebox cols="12" value="@bind(vm.evento.fechaInicio)" disabled="@load(vm.disabled)"
-									format="short"  width="85%" />
+									format="short"  width="50%" />
 							</div>
 							<div>
 								Hora cierre
 								<n:br></n:br>
 								<timebox cols="12" value="@bind(vm.evento.fechaFin)" disabled="@load(vm.disabled)"
-									format="short" width="85%" />
+									format="short" width="50%" />
 							</div>
 
 						</row>
@@ -61,7 +61,9 @@
 								<n:br></n:br>
 								<textbox type="text" width="85%" value="@bind(vm.evento.nombre)"
 									tabindex="10" constraint="no empty" />
+								
 							</div>
+							
 
 							<div>
 								Descripción del evento
@@ -70,11 +72,18 @@
 									width="85%" tabindex="10" constraint="no empty" />
 							</div>
 						</row>
-
-
+						
+						<row class="col-md-12">
+	
+							<div>
+							   
+								<checkbox label="Publico?" checked="@bind(vm.evento.publico)"></checkbox>
+									<n:br></n:br>
+							</div>
+								<n:br></n:br>
+						</row>
 					</rows>
 				</grid>
-				<n:br></n:br>
 				<div align="left" class="linea-two"></div>
 				<n:br></n:br>
 				<div class="row">
@@ -218,7 +227,7 @@
 							<div class="col-md-6">
 								Valor esperado del indicador
 								<n:br></n:br>
-								<intbox width="80%" value="@bind(vm.indicadorEvento.valorEsperado)"
+								<intbox width="50%" value="@bind(vm.indicadorEvento.valorEsperado)"
 									tabindex="10" constraint="no empty" />
 								<button sclass="btn-link" onClick="@command('agregarIndicadorEvento')"
 									iconSclass="z-icon-plus blue" id=""

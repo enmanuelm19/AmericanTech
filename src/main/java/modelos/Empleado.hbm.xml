@@ -11,7 +11,7 @@
         <many-to-one name="persona" class="modelos.Persona" fetch="select" lazy="false" cascade="save-update">
             <column name="personaid_persona" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoEmpleado" class="modelos.TipoEmpleado" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoEmpleado" class="modelos.TipoEmpleado" fetch="select" lazy="false">
             <column name="tipo_empleadoid_tipo_empleado" not-null="true" />
         </many-to-one>
         <property name="fechaContratado" type="date">

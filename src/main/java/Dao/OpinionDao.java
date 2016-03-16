@@ -26,8 +26,9 @@ public class OpinionDao {
          Transaction tx = null;  
          try {    
         	 tx = em.beginTransaction();
-              em.save( dato);   
-              tx.commit();  
+        	 Object find=em.merge(dato);   
+             tx.commit();  
+             em.delete(find);  
          } catch (Exception e) {  
              tx.rollback();            
              e.printStackTrace();

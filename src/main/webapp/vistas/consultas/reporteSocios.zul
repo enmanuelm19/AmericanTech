@@ -1,8 +1,6 @@
 <zk xmlns:n="native">
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.ReporteSocioViewModel')">
-
-
+		viewModel="@id('vm') @init('reportes.estructurados.ReporteSocioViewModel')">
 		<div sclass="breadcrumbs">
 			<div sclass="breadcrumb">
 				<span sclass="home-icon z-icon-th-list" />
@@ -34,12 +32,16 @@
 										<label class="col-md-4">
 											Sexo:
 										</label>
-										<combobox>
+										<combobox selectedItem="@bind(vm.sexoSelected)">
+
 											<comboitem
-												label="Masculino">
+												label="Masculino" value="Masculino">
 											</comboitem>
 											<comboitem
-												label="Femenino">
+												label="Femenino" value="Femenino">
+											</comboitem>
+											<comboitem
+												label="Todos" value="Todos">
 											</comboitem>
 										</combobox>
 									</div>
@@ -49,13 +51,13 @@
 										<label class="col-md-4">
 											Nro de acciones:
 										</label>
-										<combobox>
-											<comboitem label="1">
+										<combobox selectedItem="@bind(vm.nroAccionesSelected)">
+											<comboitem label="1" value="1">
 											</comboitem>
-											<comboitem label="2">
+											<comboitem label="2" value="2">
 											</comboitem>
 											<comboitem
-												label="3 o mas">
+												label="3 o mas" value="3">
 											</comboitem>
 										</combobox>
 									</div>
@@ -65,9 +67,22 @@
 										<label class="col-md-4">
 											Edad Desde:
 										</label>
-										<combobox>
-											<comboitem label="20">
-											</comboitem>
+										<combobox
+										selectedItem="@bind(vm.edadDesdeSelected)">
+											<comboitem label="5 o menos" value="5"/>
+											<comboitem label="10" value="10"/>
+											<comboitem label="15" value="15"/>
+											<comboitem label="20" value="20"/>
+											<comboitem label="25" value="25"/>
+											<comboitem label="30" value="30"/>
+											<comboitem label="35" value="35"/>
+											<comboitem label="40" value="40"/>
+											<comboitem label="45" value="45"/>
+											<comboitem label="50" value="50"/>
+											<comboitem label="55" value="55"/>
+											<comboitem label="60" value="60"/>
+											<comboitem label="65" value="65"/>
+											<comboitem label="70 o mas" value="70"/>
 										</combobox>
 									</div>
 								</row>
@@ -76,10 +91,22 @@
 										<label class="col-md-4">
 											Edad Hasta:
 										</label>
-										<combobox>
-											<comboitem label="100">
-											</comboitem>
-
+										<combobox
+										selectedItem="@bind(vm.edadHastaSelected)">
+											<comboitem label="5 o menos" value="5"/>
+											<comboitem label="10" value="10"/>
+											<comboitem label="15" value="15"/>
+											<comboitem label="20" value="20"/>
+											<comboitem label="25" value="25"/>
+											<comboitem label="30" value="30"/>
+											<comboitem label="35" value="35"/>
+											<comboitem label="40" value="40"/>
+											<comboitem label="45" value="45"/>
+											<comboitem label="50" value="50"/>
+											<comboitem label="55" value="55"/>
+											<comboitem label="60" value="60"/>
+											<comboitem label="65" value="65"/>
+											<comboitem label="70 o mas" value="70"/>
 										</combobox>
 									</div>
 								</row>
@@ -89,7 +116,7 @@
 										<div class="col-md-6">
 											<div align="left">
 												Seleccione la
-												Categoría/as
+												CategorÃ­a/as
 												relacionadas con el
 												evento:
 												<combobox
@@ -181,16 +208,11 @@
 					</div>
 
 
-					<div align="right" xmlns:w="client"
-						style="margin:1%">
-						<button id="btnGenerarPdf"
-							iconSclass="z-icon-plus" class='boton-guardar' label="Generar PDF" />
-					</div>
-					<div align="right" xmlns:w="client"
-						style="margin:1%">
-						<button id="btnGenerarTxt"
-							iconSclass="z-icon-plus" class='boton-guardar' label="Generar TXT" />
-					</div>
+					 <div align="center" xmlns:w="client">
+						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
+						<space spacing="2%"></space>
+						<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+					</div>	
 				</div>
 			</div>
 		</div>
