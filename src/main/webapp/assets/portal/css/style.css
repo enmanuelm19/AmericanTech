@@ -449,10 +449,10 @@ body {
 /*--footer--*/
 .footer-bottom {
 	padding: 25px 0;
-	background: #303441;
+	background: #2B7DBC;
 }
 .copy p {
-	color: #666D89;
+	color: #FFFFFF;
 	font-size: 0.8125em;
 	line-height: 1.8em;
 	text-align: center;
@@ -1153,7 +1153,7 @@ padding: 1.2em 0em;
 
 .cartelera
 {
-	background-color: #5FCAB0;
+	background-color: #2B7DBC;
 	text-align:center;
 	padding: 5em 0em;
 }

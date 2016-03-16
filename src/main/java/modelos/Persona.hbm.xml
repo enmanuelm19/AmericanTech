@@ -41,19 +41,19 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="empleados" table="empleado" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="empleados" table="empleado" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Empleado" />
         </set>
-        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="miembroJuntas" table="miembro_junta" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.MiembroJunta" />
         </set>
-        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="afiliados" table="afiliado" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
@@ -65,25 +65,25 @@
             </key>
             <one-to-many class="modelos.RedPersona" />
         </set>
-        <set name="socios" table="socio" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="socios" table="socio" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Socio" />
         </set>
-        <set name="eventualidads" table="eventualidad" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="eventualidads" table="eventualidad" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Eventualidad" />
         </set>
-        <set name="postulados" table="postulado" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="postulados" table="postulado" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>
             <one-to-many class="modelos.Postulado" />
         </set>
-        <set name="usuarios" table="usuario" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="usuarios" table="usuario" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>

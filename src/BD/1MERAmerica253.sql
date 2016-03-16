@@ -121,7 +121,7 @@ CREATE TABLE noticia (
   descripcion                 text NOT NULL, 
   eventoid_evento             int2, 
   foto                        text, 
-  tipo_noticiaid_tipo_noticia int2 NOT NULL, 
+  tipo_noticiaid_tipo_noticia int2, 
   fecha_creacion              date NOT NULL, 
   caducidad                   date NOT NULL, 
   publico                     bool NOT NULL, 

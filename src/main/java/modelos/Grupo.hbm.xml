@@ -14,13 +14,13 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="usuarioGrupos" table="usuario_grupo" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="usuarioGrupos" table="usuario_grupo" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="grupoid_grupo" not-null="true" />
             </key>
             <one-to-many class="modelos.UsuarioGrupo" />
         </set>
-        <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="grupoid_grupo" not-null="true" />
             </key>

@@ -8,16 +8,16 @@
             <column name="id_sancion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="afiliado" class="modelos.Afiliado" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="afiliado" class="modelos.Afiliado" fetch="select" lazy="false">
             <column name="afiliadoid_afilado" />
         </many-to-one>
-        <many-to-one name="eventualidad" class="modelos.Eventualidad" fetch="select"  lazy="false" cascade="save-update">
+        <many-to-one name="eventualidad" class="modelos.Eventualidad" fetch="select"  lazy="false">
             <column name="eventualidadid_eventualidad" />
         </many-to-one>
         <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
             <column name="socioid_socio" />
         </many-to-one>
-        <many-to-one name="tipoSancion" class="modelos.TipoSancion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoSancion" class="modelos.TipoSancion" fetch="select" lazy="false">
             <column name="tipo_sancionid_tipo_sancion" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
