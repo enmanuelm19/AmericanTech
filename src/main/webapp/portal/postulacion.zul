@@ -1,4 +1,4 @@
-<window title="" width="100%">
+<zk xmlns:n="native">
 	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
 	<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
@@ -14,7 +14,7 @@
 	<?script type="text/javascript" src="../../assets/portal/js/efecto.js"?>
 	<include src="header.zul" />
 
-	<zk xmlns:n="native">
+	
 		<image id="image" src="../assets/portal/img/bannerPostulacion.png" width="100%" />
 		<div class='contenido ' align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PostulacionPortalViewModel')">
 			<div>
@@ -101,6 +101,6 @@
 				</div>
 			</div>
 		</div>
-	</zk>
+	
 	<include src="footer.html" />
-</window>
+	</zk>

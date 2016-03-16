@@ -1,0 +1,83 @@
+
+
+<zk xmlns:n="native">
+
+<?link rel="stylesheet" href="../assets/intranet/owlCarrusel/assets/owl.carousel.css"?>
+<?link rel="stylesheet" href="../assets/intranet/owlCarrusel/assets/owl.theme.default.min.css"?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+<script src="../assets/intranet/owlCarrusel/owl.carousel.min.js"></script>
+
+
+	
+	<script type="tex/javascript" defer="true">
+	$(document).ready(function() {
+		 var owl = $('.owl-carousel');
+		owl.owlCarousel({
+		    items:3,
+		    loop:true,
+		    margin:10,
+		    autoplay:true,
+		    autoplayTimeout:1000,
+		    nav: true,
+		    autoplayHoverPause:true
+		});
+		$('.play').on('click',function(){
+		    owl.trigger('autoplay.play.owl',[1000])
+		})
+		$('.stop').on('click',function(){
+		    owl.trigger('autoplay.stop.owl')
+		})
+		 
+  });
+ 
+
+	
+	
+	</script>
+
+
+
+
+<!-- start gallery Script -->
+
+
+
+<div class="row" align="center"  apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+<div  class="col-md-10 col-md-offset-1" >
+<label
+				style="font-family: 'Lato', sans-serif; font-size:2em;">
+				Galería de Instalaciones
+			</label>
+			<n:br></n:br>
+			<n:br></n:br>
+			
+				<label
+					style="font-family: 'Lato', sans-serif; font-size:1.3em;">
+					
+				</label><n:br></n:br><n:br></n:br><n:br></n:br> <n:br></n:br>
+			<n:br></n:br>
+
+ <n:div id="owl-demo" class="owl-carousel owl-theme" >
+ 
+  <n:div class="item"><image src="@bind(vm.club.logo)" /></n:div>
+  <n:div class="item"><image src="@bind(vm.club.logo)" /></n:div>
+  <n:div class="item"><image src="@bind(vm.club.logo)" /></n:div>
+  
+</n:div>
+<n:br></n:br>
+			<n:br></n:br><n:br></n:br>
+			<n:br></n:br>
+ 
+</div>
+</div>
+
+
+	
+
+	
+	
+
+</zk>
