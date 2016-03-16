@@ -1,0 +1,28 @@
+<?page title="Registrar Junta Directiva" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="RegistarJunta" title="Registrar Junta Directiva" border="normal" closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<caption iconSclass="z-icon-cogs" />
+		<div class="contenido" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarJuntaDirectiva')">
+			<div align="left">
+				<div class='encabezado'>Datos Básicos</div>
+				<div class='linea-two'></div>
+			</div>
+			<div class="col-md-12 row" style="margin-top:30px;margin-bottom:30px;">
+				<div class="col-md-6" align="right">
+					<label>Fecha Inicio Período</label>
+					<datebox value="@bind(vm.fechaInicio)"/>
+				</div>
+				<div class="col-md-5 col-md-offset-1" align="left">
+					<label>Fecha Fin Período</label>
+					<datebox value="@bind(vm.fechaFin)"/>
+				</div>
+			</div>
+			<space spacing="12%" />
+			<div class="row col-md-12">
+				<button	class="boton-guardar col-md-3 col-md-offset-3" label="Guardar" type="button" iconSclass="z-icon-floppy-o" onClick="@command('guaradrJunta', win=RegistarJunta)"/>
+				<button class="boton-cancelar col-md-3 col-md-offset-1"	iconSclass="z-icon-times" type="button" label="Cancelar" onClick="@command('cancelar', win=RegistarJunta)"/>
+			</div>
+			<separator spacing="5%" />
+		</div>
+	</window>
+</zk>
