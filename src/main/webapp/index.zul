@@ -268,7 +268,6 @@
  <include src="portal/contacto.zul"/>
  	</div>
  
- 
      <n:div class="footer-bottom">
      	<n:div class="wrap">
         <n:div class="copy">
