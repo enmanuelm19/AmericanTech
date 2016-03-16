@@ -23,6 +23,7 @@ import Dao.TipoPagoDao;
 import modelos.Alquiler;
 import modelos.Reservacion;
 import modelos.TipoPago;
+import enums.CondicionReservacion;
 
 public class RegistrarAlquilerViewBean {
 	private List<Reservacion> reservacionAll;
@@ -37,7 +38,7 @@ public class RegistrarAlquilerViewBean {
 			if (reservacion != null) {
 				setReservacionSelected(reservacion);
 			}
-			getReservacionAll().addAll(new ReservacionDao().obtenerTodos());
+			getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 			getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
 			getTipoPagoAll().addAll(new TipoPagoDao().obtenerTodos());
 		} catch (Exception e) {
@@ -101,8 +102,8 @@ public class RegistrarAlquilerViewBean {
 			Map<String, Object> args = new HashMap<String, Object>();
 			args.put("reservacion", reservacion);
 			setReservacionSelected(reservacion);
-			Window window = (Window) Executions.createComponents("instalacion/dialogo/registrarAlquiler.zul",
-					null, args);
+			Window window = (Window) Executions.createComponents("instalacion/dialogo/registrarAlquiler.zul", null,
+					args);
 			window.doModal();
 		}
 	}
@@ -110,7 +111,7 @@ public class RegistrarAlquilerViewBean {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (tipoPagoSelected != null) {
-			getReservacionSelected().setActivo(false);
+			getReservacionSelected().setCondicion(CondicionReservacion.ALQUILADA.getValue());
 			Alquiler alquilerCreate = new Alquiler();
 			alquilerCreate.setReservacion(getReservacionSelected());
 			alquilerCreate.setFecha(new Date());
@@ -120,7 +121,7 @@ public class RegistrarAlquilerViewBean {
 				new AlquilerDao().agregarAlquiler(alquilerCreate);
 				getAlquilerAll().clear();
 				getReservacionAll().clear();
-				getReservacionAll().addAll(new ReservacionDao().obtenerTodos());
+				getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 				getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
 				setTipoPagoAll(null);
 			} catch (Exception e) {
@@ -133,17 +134,35 @@ public class RegistrarAlquilerViewBean {
 			Messagebox.show("Por favor seleccione Tipo de Pago", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
+
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
 	}
-	
+
 	@GlobalCommand
 	@NotifyChange({ "alquilerAll", "reservacionAll" })
 	public void refreshAlquilerReservacion() throws Exception {
 		getReservacionAll().clear();
 		getAlquilerAll().clear();
-		getReservacionAll().addAll(new ReservacionDao().obtenerTodos());
+		getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 		getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
+	}
+
+	@Command
+	public void denegar(@BindingParam("reservacion") Reservacion reservacion) {
+		if (reservacion != null) {
+			if (reservacion.getCondicion() == CondicionReservacion.PENDIENTE.getValue()) {
+				reservacion.setCondicion(CondicionReservacion.CANCELADA.getValue());
+			}
+			try {
+				new ReservacionDao().actualizarReservacion(reservacion);
+				getReservacionAll().clear();
+				getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
