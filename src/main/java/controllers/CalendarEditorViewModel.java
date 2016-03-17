@@ -13,6 +13,8 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.bind.validator.AbstractValidator;
 import org.zkoss.zk.ui.event.EventListener;
 
+import Dao.EventoDao;
+import modelos.Evento;
 import util.QueueMessage;
 import util.QueueUtil;
 import viewModel.CalendarioEvent;
@@ -20,6 +22,8 @@ import viewModel.CalendarioEvent;
 public class CalendarEditorViewModel {
 
 	private CalendarioEvent calendarEventData = new CalendarioEvent();
+
+	private Evento eventoSelected = new Evento();
 
 	private boolean visible = false;
 
@@ -42,9 +46,21 @@ public class CalendarEditorViewModel {
 	}
 
 	private void startEditing(CalendarioEvent calendarEventData) {
-		this.calendarEventData = calendarEventData;
-		visible = true;
-
+		if (calendarEventData != null) {
+			this.calendarEventData = calendarEventData;
+			visible = true;
+			try {
+				for (Evento evento : new EventoDao().obtenerTodos()) {
+					if (evento.getFechaInicio().equals(calendarEventData.getBeginDate())
+							&& evento.getFechaFin().equals(calendarEventData.getEndDate()) && evento.getNombre().equals(calendarEventData.getTitle())) {
+						setEventoSelected(evento);
+					}
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		// reload entire view-model data when going to edit
 		BindUtils.postNotifyChange(null, null, this, "*");
 	}
@@ -82,6 +98,7 @@ public class CalendarEditorViewModel {
 	@Command
 	@NotifyChange("visible")
 	public void cancel() {
+		this.setEventoSelected(null);
 		QueueMessage message = new QueueMessage(QueueMessage.Type.CANCEL);
 		QueueUtil.lookupQueue().publish(message);
 		this.visible = false;
@@ -109,5 +126,13 @@ public class CalendarEditorViewModel {
 				CalendarEditorViewModel.this.startEditing((CalendarioEvent) message.getData());
 			}
 		}
+	}
+
+	public Evento getEventoSelected() {
+		return eventoSelected;
+	}
+
+	public void setEventoSelected(Evento eventoSelected) {
+		this.eventoSelected = eventoSelected;
 	}
 }

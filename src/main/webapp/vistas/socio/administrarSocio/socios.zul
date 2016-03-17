@@ -55,7 +55,7 @@
 										<label value="@load(each.persona.identificacion)" />
 										<label value="@load(each.persona.nombre)" />
 										<label value="@load(each.persona.apellido)" />
-										<image src="/assets/portal/img/img2.jpg" width="40%" align="center" />
+										<image src="@load(each.persona.foto)" width="40%" align="center" />
 										<button sclass="btn-link" iconSclass="z-icon-list blue" onClick="@command('showModalAccionesSocios', Socio=each)"/>
 										<div align="center">
 											<button iconSclass="z-icon-list blue"

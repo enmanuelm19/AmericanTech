@@ -8,10 +8,10 @@
             <column name="id_alquiler" />
             <generator class="increment" />
         </id>
-        <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="reservacion" class="modelos.Reservacion" fetch="select" lazy="false">
             <column name="reservacionid_reservacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoPago" class="modelos.TipoPago" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoPago" class="modelos.TipoPago" fetch="select" lazy="false" >
             <column name="tipo_pagoid_tipo_pago" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">
@@ -23,7 +23,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="archivoAlquilers" table="archivo_alquiler" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="alquilerid_alquiler" not-null="true" />
             </key>

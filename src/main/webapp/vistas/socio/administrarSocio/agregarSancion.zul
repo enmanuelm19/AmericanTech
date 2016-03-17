@@ -14,15 +14,15 @@
 					</div>
 					<hbox class="col-md-12" style="margin-top:20px;">
 						<div style="padding-left:30px;">
-							<image sclass="myimg" width="150px" src="../assets/portal/img/img1.jpg" />
+							<image sclass="myimg" width="150px" src="@load(vm.persona.foto)" />
 						</div>
 						<div style="padding-left:30px;">
 							<div>
 								<hbox>
 									<div>Numero de Carnet</div>
 									<hbox style="margin-left:10px;">
-											<textbox type="text" value="@bind(vm.carnet)" width="100%" readonly="@load(!vm.enableCarnet)" />
-											<button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" disabled="@load(!vm.enableCarnet)"/>
+											<textbox type="text" value="@bind(vm.carnet)" width="100%" readonly="@load(!vm.enableCarnet)" placeholder="Buscar Carnet"/>
+											<button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" disabled="@load(!vm.enableCarnet)" tooltiptext="Buscar"/>
 														
 									</hbox>					
 								</hbox>
@@ -31,8 +31,8 @@
 								<hbox>
 									<div>Cédula</div>
 									<hbox style="margin-left:80px;">
-										<textbox type="text" value="@bind(vm.cedula)" width="100%" readonly="@load(!vm.enableCedula)"/>
-										<button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCedula')" disabled="@load(!vm.enableCedula)"/>				
+										<textbox type="text" value="@bind(vm.cedula)" width="100%" readonly="@load(!vm.enableCedula)" placeholder="Buscar Cédula"/>
+										<button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCedula')" disabled="@load(!vm.enableCedula)" tooltiptext="Buscar"/>				
 									</hbox>					
 								</hbox>
 							</div>
@@ -158,7 +158,7 @@
 				<div align="center" style="margin-top:50px; margin-bottom: 50px;">
 					
 												<button iconSclass="z-icon-floppy-o" class='boton-guardar' label="Guardar" onClick="@command('guardarSancion', win=winRegistrarSancion)"/>
-												<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" />
+												<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar" onClick="@command('cancelar', win=winRegistrarSancion)"/>
 				</div>	
 			</vlayout>
 		</hlayout>

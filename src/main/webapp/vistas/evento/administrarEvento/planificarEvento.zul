@@ -12,14 +12,14 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-calendar" />
-						<a label="Eventos" href="#" />
-						<label value="Lista de Eventos" />
+						<a label="Administrar evento" href="#" />
+						<label value="Planificar evento" />
 					</div>
 				</div>
 
-				<div class='contenedor' align="center" height="940px">
+				<div class='contenedor' align="center">
 					<div sclass="page-header" align="left">
-						<label value="Eventos" />
+						<label value="Planificar Evento" />
 					</div>
 					<separator spacing="30px" />
 					<space />
@@ -53,31 +53,19 @@
 												<image
 													src="../assets/img/funnel.png" />
 												<textbox instant="true"
-													width="80%" value="@bind(vm.nombreFiltro)"
+													width="40%" value="@bind(vm.nombreFiltro)"
 													onChange="@command('filtro')" placeholder="Buscar" />
 											</auxheader>
 
-											<auxheader colspan="5" />
+											<auxheader colspan="1" />
 
 										</auxhead>
 
 										<columns>
-											<column width="5%"></column>
+											<column width="4%"></column>
 
-											<column width="20%">
+											<column width="35%">
 												Nombre
-											</column>
-											<column width="15%">
-												Fecha inicio
-											</column>
-											<column width="15%">
-												Fecha fin
-											</column>
-											<column width="15%">
-												Hora
-											</column>
-											<column width="15%">
-												Estado
 											</column>
 											<column width="15%">
 												Acciones
@@ -107,10 +95,7 @@
 															<columns>
 																<column
 																	width="40%">
-																	Descripcion
-																	de
-																	la
-																	actividad
+																	Actividad
 																</column>
 
 																<column
@@ -123,7 +108,6 @@
 																	Valor
 																	esperado
 																</column>
-
 																<column
 																	width="20%">
 																	Estado
@@ -153,14 +137,6 @@
 													</detail>
 													<label
 														value="@load(evento.nombre)" />
-													<label
-														value="@load(evento.fechaInicioString)" />
-													<label
-														value="@load(evento.fechaFinString)" />
-													<label
-														value="@load(evento.horaString)" />
-													<label
-														value="@load(evento.estadoEvento.nombre)" />
 
 													<button
 														visible="@load(evento.visible)" sclass="btn-link"

@@ -1,35 +1,34 @@
-<window title=""  width="100%">
+
 <zk xmlns:n="native">
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
-<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
-<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
-<?script type="text/javascript" src="../assets/portal/js/easing.js"?>
-<?script type="text/javascript" src="../assets/portal/js/fliplightbox.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.easing.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.magnific-popup.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.mixitup.min.js"?>
-<?script type="text/javascript" src="../assets/portal/js/jquery.scrollTo.js"?>
-<?script type="text/javascript" src="../assets/portal/js/move-top.js"?>
-<?script type="text/javascript" src="../assets/portal/js/efecto.js"?>
-<include src="header.html" />
+	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
+	<?link rel="stylesheet" type="text/css" href="../assets/portal/css/imgeffect.css" ?>
+	<?link href="../assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all"?>
+	<?script type="text/javascript" src="../../assets/portal/js/easing.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/fliplightbox.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.easing.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.magnific-popup.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.mixitup.min.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/jquery.scrollTo.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/move-top.js"?>
+	<?script type="text/javascript" src="../../assets/portal/js/efecto.js"?>
+	
+
+
+
+<?link rel="stylesheet" href="../assets/intranet/owlCarrusel/assets/owl.carousel.css"?>
+<?link rel="stylesheet" href="../assets/intranet/owlCarrusel/assets/owl.theme.default.min.css"?>
+
+
+
+<include src="header.zul" />
 
 
 
   <image id="image" src="../assets/portal/img/bannerInstalaciones.png" width="100%" /> 
 
- <div  align="center">
-<label style="font-family: 'Lato', sans-serif; font-size:2em;">Galería de Instalaciones </label><n:br></n:br> <n:br></n:br>
-<div align="center" width="75%">
-<label style="font-family: 'Lato', sans-serif; font-size:1.3em;"> 
-El Centro Atlético América cuenta con hermosas instalaciones, entre ellas cancha de beisbol, tenis, básquet, futbol y cancha de bolas criollas, 2 caneys y un salón múltiple, los cuales se encuentran disponibles para disfrute de los socios e invitados
- </label><n:br></n:br> <n:br></n:br><n:br></n:br>
- </div>
-  <include src="galeria.zul" />
- </div><n:br></n:br>
- <n:br></n:br><n:br></n:br>
+ <include src="instalacionesCarrusel.zul" />
 
   <include src="footer.html" />
    </zk> 
-</window>

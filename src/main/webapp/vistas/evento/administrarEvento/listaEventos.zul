@@ -7,14 +7,14 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-calendar" />
-						<a label="Eventos" href="#" />
-						<label value="Lista de Eventos" />
+						<a label="Administrar evento" href="#" />
+						<label value="Registrar evento" />
 					</div>
 				</div>
 
-				<div class='contenedor' align="center" height="940px">
+				<div class='contenedor' align="center">
 					<div sclass="page-header" align="left">
-						<label value="Eventos" />
+						<label value="Registrar Evento" />
 					</div>
 					<separator spacing="30px" />
 					<space />
@@ -59,14 +59,14 @@
 													placeholder="Buscar" />
 											</auxheader>
 								
-											<auxheader colspan="5" />
+											<auxheader colspan="4" />
 											
 										</auxhead>
 
 										<columns>
 											<column width="5%"></column>
 											
-											<column width="20%">
+											<column width="25%">
 												Nombre
 											</column>
 											<column width="15%">
@@ -74,9 +74,6 @@
 											</column>
 											<column width="15%">
 												Fecha fin
-											</column>
-											<column width="15%">
-												Hora
 											</column>
 											<column width="15%">
 												Estado
@@ -143,8 +140,6 @@
 														value="@load(evento.fechaInicioString)" />
 													<label
 														value="@load(evento.fechaFinString)" />
-													<label
-														value="@load(evento.horaString)" />
 													<label
 														value="@load(evento.estadoEvento.nombre)" />
 													<div>

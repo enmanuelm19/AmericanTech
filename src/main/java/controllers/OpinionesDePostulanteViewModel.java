@@ -45,20 +45,22 @@ public class OpinionesDePostulanteViewModel {
 	private PreferenciaDao prefDao= new PreferenciaDao();
 	private StarRating starRating;
 	private List<StarRating> starsRatings;
+	private boolean verDatos;
 	@Init
-	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacion) {
+	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacion, @ExecutionArgParam("verDatos") boolean ver) throws Exception {
 		this.postulacionDao= new PostulacionDao();
 		this.postulacion = postulacion;
 		this.opiniones= new HashSet<Opinion>();
 		this.opiniones= postulacion.getOpinions();
 		this.preferencias= new HashSet<Preferencia>();
+		verDatos=ver;
 		for (Iterator<PreferenciaPersona> i = postulacion.getPostulado().getPersona().getPreferenciaPersonas().iterator(); i.hasNext();) {
 			PreferenciaPersona tmp = i.next();
 			this.preferencias.add(tmp.getPreferencia());
 		}
 		
-			//this.padrino1= socioDao.obtenerSocioCarnet(postulacion.getCarnetPadrino1());
-		//this.padrino2= socioDao.obtenerSocioCarnet(postulacion.getCarnetPadrino2());
+		this.padrino1= socioDao.obtenerSocioCarnet(postulacion.getCarnetPadrino1());
+		this.padrino2= socioDao.obtenerSocioCarnet(postulacion.getCarnetPadrino2());
 	}
 	
 	public ListModelList<Opinion> getOpinionesAll(){
@@ -117,10 +119,11 @@ public class OpinionesDePostulanteViewModel {
 		return this.padrino2.getPersona().getNombre() + " "+ this.padrino2.getPersona().getApellido();
 	}
 
-
-	public String getEstrellas() {
-		return "1";
+	
+	public boolean isVerDatos() {
+		return verDatos;
 	}
+
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();

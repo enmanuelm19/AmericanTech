@@ -18,30 +18,55 @@ import org.zkoss.zul.Window;
 import Dao.ActividadDao;
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
+import Dao.IndicadorEventoDao;
 import modelos.Actividad;
 import modelos.Evento;
+import modelos.IndicadorEvento;
 
 public class PlanificarEventoViewModel {
 
 	private List<Evento> eventosAll;
+	private List<Evento>  eventosEyF;
+	private List<Evento> eventosPorPlanificar;
+	private List<Evento> eventosListoEjecutar;
+	private List<Evento> eventosEjecucion;
 	private EventoDao eventoDao;
 	private String nombreFiltro;
 	private ActividadDao actividadDao;
+	private IndicadorEventoDao indicadorEventoDao;
 	private EstadoEventoDao estadoEventoDao;
 
 	@Init
 	public void init() throws Exception {
 
 		eventosAll = new ArrayList<Evento>();
+		eventosEyF = new ArrayList<Evento>();
 		eventoDao = new EventoDao();
-		eventosAll = eventoDao.obtenerTodos();
-		actividadDao = new ActividadDao();
 		estadoEventoDao = new EstadoEventoDao();
+		actividadDao = new ActividadDao();
+		indicadorEventoDao = new IndicadorEventoDao();
+
+		eventosPorPlanificar = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(1));
+		eventosListoEjecutar = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(2));
+		eventosEjecucion = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(3));
+
+		eventosAll.addAll(eventosPorPlanificar);
+		eventosAll.addAll(eventosListoEjecutar);
+		eventosAll.addAll(eventosEjecucion);
+		
+		eventosEyF.addAll(eventosListoEjecutar);
+		eventosEyF.addAll(eventosEjecucion);
+		
 
 	}
 
 	public ListModelList<Evento> getAllEventos() {
 		return new ListModelList<Evento>(eventosAll);
+	}
+	
+	public ListModelList<Evento> getAllEventosEyF() {
+		
+		return new ListModelList<Evento>(eventosEyF);
 	}
 
 	public String getCantRegistros() {
@@ -90,30 +115,59 @@ public class PlanificarEventoViewModel {
 
 	@Command
 	public void actualizarActividad(@BindingParam("actividad") Actividad actividad) throws Exception {
-		
-		if(actividad.getValorReal()!=null && actividad.getValorReal()>0){
-			if(actividad.getFechaRealizacion()!=null && !actividad.getFechaRealizacion().after(actividad.getFechaTope())){
+
+		if (actividad.getValorReal() != null && actividad.getValorReal() > 0) {
+			if (actividad.getFechaRealizacion() != null
+					&& !actividad.getFechaRealizacion().after(actividad.getFechaTope())) {
 				actividad.setFinalizada(true);
 				actividadDao.actualizarActividad(actividad);
-				cambiarEstadoEvento(actividad.getEvento());
+				cambiarEstadoEventoAEjecucion(actividad.getEvento());
 				Messagebox.show("Actividad " + actividad.getDescripcion() + " ha sido ejecutada exitosamente", "",
 						Messagebox.OK, Messagebox.INFORMATION);
-			}else Messagebox.show("Fecha de realizacion  o valor real no valido", "Warning", Messagebox.OK,
-					Messagebox.EXCLAMATION);
-			
-		}else if(actividad.getValorReal()!=null && actividad.getValorReal()==0){
+			} else
+				Messagebox.show("Fecha de realizacion  o valor real no valido", "Warning", Messagebox.OK,
+						Messagebox.EXCLAMATION);
+
+		} else if (actividad.getValorReal() != null && actividad.getValorReal() == 0) {
 			actividad.setFechaRealizacion(null);
 			actividad.setFinalizada(true);
 			actividadDao.actualizarActividad(actividad);
 			actividadDao.actualizarActividad(actividad);
-			cambiarEstadoEvento(actividad.getEvento());
+			cambiarEstadoEventoAEjecucion(actividad.getEvento());
 			Messagebox.show("Actividad " + actividad.getDescripcion() + " ha sido ejecutada exitosamente", "",
 					Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
-	
-	public void cambiarEstadoEvento(Evento evento) throws Exception{
+
+	public void cambiarEstadoEventoAEjecucion(Evento evento) throws Exception {
 		evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(3));
 		eventoDao.actualizarEvento(evento);
 	}
+
+	@Command
+	@NotifyChange({ "allEventos", "cantRegistros" })
+	public void actualizarIndicador(@BindingParam("indicadorEvento") IndicadorEvento indicadorE) throws Exception {
+		if (indicadorE.getValorReal() != null && indicadorE.getValorReal() >= 0) {
+			indicadorEventoDao.actualizarIndicadorEvento(indicadorE);
+			Messagebox.show(
+					"Indicador " + indicadorE.getIndicador().getDescripcion() + " ha sido actualizado exitosamente", "",
+					Messagebox.OK, Messagebox.INFORMATION);
+			cambiarEstadoEventoAFinalizado(indicadorE.getEvento());
+		} else
+			Messagebox.show("Valor real no valido", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+	}
+
+	public void cambiarEstadoEventoAFinalizado(Evento evento) throws Exception {
+
+		for (IndicadorEvento indicadorE : evento.getIndicadorEventosActive())
+			if (indicadorE.getVariacion().equals("-"))
+				return;
+
+		evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(4));
+		eventoDao.actualizarEvento(evento);
+		Messagebox.show("Evento " + evento.getNombre() + " ha sido Finalizado exitosamente", "", Messagebox.OK,
+				Messagebox.INFORMATION);
+
+	}
+
 }

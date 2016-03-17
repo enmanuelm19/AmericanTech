@@ -1,0 +1,62 @@
+<?page title="Registrar Alquiler"?>
+<?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native" class='contenedor'>
+
+	<window id="winEv" border="none" height="auto" width="40%"
+		style="iconSclass=home-icon z-icon-home;" closable="true"
+		title="Registrar Alquiler"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewBean')">
+		<caption iconSclass="home-icon z-icon-home" />
+
+		<div class="contenido">
+			<div align="left">
+				<div class="encabezado">Datos de la Reservacion</div>
+				<div class="linea-two"></div>
+			</div>
+			<space spacing="15%" />
+			<div align="center">
+				<grid>
+					<rows class="">
+						<row class="col-md-12 ">
+							<div>
+								<label>Identificador</label>
+								<textbox type="text" width="85%" value="@load(vm.reservacionSelected.idReservacion)"
+									tabindex="10" disabled="true"/>
+							</div>
+							<div>
+								<label>Tipo de Pago</label>
+								<combobox model="@load(vm.tipoPagoAll)"
+									constraint="no empty" selectedItem="@bind(vm.tipoPagoSelected)"
+									width="100%">
+									<template name="model">
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
+									</template>
+								</combobox>
+							</div>
+						</row>						
+					</rows>
+				</grid>
+				<space spacing="15%" />
+				<div>
+					<button iconSclass="z-icon-floppy-o"
+						onClick="@command('guardar',win=winEv)" class='boton-guardar'
+						label="Registrar" />
+					<space spacing="10%" />
+					<button iconSclass="z-icon-times"
+						onClick="@command('cerrarModal',win=winEv)" class='boton-cancelar'
+						label="Cancelar" />
+				</div>
+
+			</div>
+		</div>
+
+	</window>
+
+</zk>

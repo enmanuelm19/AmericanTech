@@ -968,12 +968,13 @@ a:focus {
   top: 1px;
   left: 1px;
 }
+.z-button:focus{
+	background:transparent;
+}
 .z-button,
-.z-button:hover,
-.z-button:focus,
-.z-button:active {
-  background: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+.z-button:hover{
+ 	background: transparent;
+  	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 .z-button > [class*="z-icon-"] {
   display: inline;
@@ -2844,7 +2845,7 @@ padding: 30px;
 margin-left:15px;
 }
 
-.boton-guardar {
+.boton-guardar, .boton-guardar:focus {
   font-family: 'trebuchet ms';
   font-weight: bold;
   color: #FFFFF !important;
@@ -2864,7 +2865,7 @@ margin-left:15px;
   background: #4BBAD6;
 }
 
-.boton-cancelar{
+.boton-cancelar, boton-cancelar:focus{
   font-family:'trebuchet ms';
   font-weight: bold;
   color: #FFFFF !important;
@@ -3208,7 +3209,7 @@ div.hola table {
 	margin: 0px 3px;
 	color:transparent;
 }
-.star input{
+.stars input{
 	display:none;
 }
 .star label{
@@ -3229,11 +3230,11 @@ div.hola table {
 	font-weight: normal;
 }
 .z-loading{
-	background-color: #6eadff;
+	background-color: transparent;
 	cursor: wait;
 	white-space: nowrap;
-	padding:3px;
-	border: 1px solid #83B5F7;
+	//padding:3px;
+	border: 1px solid transparent;
 	top: 45% !important;
 	left: 45% !important;
 	align: center;
@@ -3248,8 +3249,20 @@ div.hola table {
 
 .z-loading-icon{
 	background: transparent no-repeat center;
-	background-image: url("http://localhost:8080/america/assets/img/gif-load.gif"); 
-	
+	background-image: url("../../img/gif-load.gif"); 
 	height: 60px;
 	width: 60px;
+}
+
+.z-messagebox-button, .z-messagebox-button:hover, .z-messagebox-button:focus{
+	font-family: 'trebuchet ms';
+    font-weight: bold;
+    color: #FFFFF !important;
+    font-size: 12px;
+    box-shadow: 2px 2px 2px #585858;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 2px;
+    background: #2B7DBC;
+    border-color: #2B7DBC;
 }

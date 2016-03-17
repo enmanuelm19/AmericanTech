@@ -11,6 +11,7 @@ import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zul.ListModelList;
@@ -28,7 +29,6 @@ public class SugerenciaViewModel {
 	private List<Sugerencia> allSugerencia;
 	private SugerenciaDao sugerenciaDao;
 	private Sugerencia sugerencia;
-	private Date dateFiltro;
 	private String descFiltro;
 	
 	
@@ -36,9 +36,20 @@ public class SugerenciaViewModel {
 	public void init() throws Exception{
 		this.allSugerencia = new ArrayList<Sugerencia>();
 		this.sugerenciaDao = new SugerenciaDao();
-		this.allSugerencia = sugerenciaDao.obtenerTodos();	
+		this.cargarSugerenciaSocio();
 	}
 	
+	
+	public void cargarSugerenciaSocio() {
+		Session session = Sessions.getCurrent();
+		Usuario user = (Usuario) session.getAttribute("Usuario");
+		try {
+			this.allSugerencia = sugerenciaDao.obtenerSugerenciasUsuario(user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
 	
 	
 	public ListModelList<Sugerencia> getAllSugerencia(){
@@ -56,7 +67,12 @@ public class SugerenciaViewModel {
 	@GlobalCommand
 	@NotifyChange({ "allSugerencia", "cantRegistros" })
 	public void refreshSugerencia() throws Exception {
-		this.allSugerencia = sugerenciaDao.obtenerTodos();	
+		Session session = Sessions.getCurrent();
+		Usuario user = (Usuario) session.getAttribute("Usuario");
+		this.allSugerencia = new ArrayList<Sugerencia>();
+		this.sugerenciaDao = new SugerenciaDao();
+		this.allSugerencia = sugerenciaDao.obtenerSugerenciasUsuario(user);	
+
 	}
 	
 	@Command

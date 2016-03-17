@@ -98,13 +98,14 @@
 </n:head>
 
 <n:body>
-	
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
 				<n:div class="header_bg">
 					<n:div class="wrap">
 						<n:div class="header">
 							
 							<n:div class="logo">
-								<n:a href="index.zul"><n:img src="assets/portal/img/logo2.png" alt="" /></n:a>
+								<n:a href="index.zul"><image  src="@bind(vm.club.logo)" class='post-person img-responsive' width="192px"  height="51px" /></n:a>
 							</n:div>	
 					
 							
@@ -129,8 +130,7 @@
 		<n:div class="wrap">
 
 						<n:div class="da-slide">
-								<n:h2>“Incentivando y promoviendo  la participación cultural y deportiva </n:h2>
-									<n:p>como medio de fortalecimiento de relaciones familiares y sociales"</n:p>
+								<n:h2> <label style ="color: #FFFFFF;  font-weight: 700; z-index: 10; text-align: center;" value="@load(vm.club.eslogan)"> </label></n:h2><n:br></n:br><n:br></n:br>
 									<n:a href="#cartelera" class="scroll da-link">Ver mas</n:a>
 									<n:a href="#about" class="scroll"><n:span class="da-img"> </n:span> </n:a>
 								</n:div>
@@ -139,8 +139,7 @@
 </n:div>
 
     <div class="about" id="about">
-	<div  apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+	<div>
 		<n:div class="wrap">
 			<n:h2>¿Quiénes somos?</n:h2>
 			<n:br></n:br>
@@ -269,7 +268,6 @@
  <include src="portal/contacto.zul"/>
  	</div>
  
- 
      <n:div class="footer-bottom">
      	<n:div class="wrap">
         <n:div class="copy">
@@ -303,6 +301,7 @@
 		 </script>>
 		</n:div>
 	</n:div>
+	</div>
 </n:body>
 </n:html>
 </zk>

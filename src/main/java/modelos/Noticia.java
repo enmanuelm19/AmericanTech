@@ -21,17 +21,16 @@ public class Noticia implements java.io.Serializable {
 	private Date caducidad;
 	private boolean publico;
 	private String enlace;
-	private boolean activo = true;
+	private boolean activo;
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
 			0);
 
 	public Noticia() {
 	}
 
-	public Noticia(int idNoticia, TipoNoticia tipoNoticia, String descripcion,
-			Date fechaCreacion, Date caducidad, boolean publico, boolean activo) {
+	public Noticia(int idNoticia, String descripcion, Date fechaCreacion,
+			Date caducidad, boolean publico, boolean activo) {
 		this.idNoticia = idNoticia;
-		this.tipoNoticia = tipoNoticia;
 		this.descripcion = descripcion;
 		this.fechaCreacion = fechaCreacion;
 		this.caducidad = caducidad;

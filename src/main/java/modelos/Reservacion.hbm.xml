@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 13/03/2016 08:35:12 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Reservacion" table="reservacion" schema="public" optimistic-lock="version">
         <id name="idReservacion" type="int">
             <column name="id_reservacion" />
             <generator class="increment" />
         </id>
-        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="instalacion" class="modelos.Instalacion" fetch="select" lazy="false">
             <column name="instalacionid_instalacion" not-null="true" />
         </many-to-one>
-        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false" >
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
         <property name="fechaInicio" type="timestamp">
@@ -20,16 +20,19 @@
         <property name="fechaFin" type="timestamp">
             <column name="fecha_fin" length="29" not-null="true" />
         </property>
+        <property name="condicion" type="char">
+            <column name="condicion" />
+        </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="alquilers" table="alquiler" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="alquilers" table="alquiler" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="reservacionid_reservacion" not-null="true" />
             </key>
             <one-to-many class="modelos.Alquiler" />
         </set>
-        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="true" fetch="select" cascade="save-update">
             <key>
                 <column name="reservacionid_reservacion" />
             </key>

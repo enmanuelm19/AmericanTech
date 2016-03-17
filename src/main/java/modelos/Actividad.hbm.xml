@@ -1,24 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/03/2016 11:15:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 17/03/2016 12:27:10 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Actividad" table="actividad" schema="public" optimistic-lock="version">
         <id name="idActividad" type="int">
             <column name="id_actividad" />
             <generator class="increment" />
         </id>
-        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" not-null="true" />
-        </many-to-one>
-        <many-to-one name="tipoActividad" class="modelos.TipoActividad" fetch="select" lazy="false" cascade="save-update">
-            <column name="tipo_actividadid_tipo_actividad" not-null="true" />
         </many-to-one>
         <property name="descripcion" type="string">
             <column name="descripcion" length="150" not-null="true" />
-        </property>
-        <property name="finalizada" type="boolean">
-            <column name="finalizada" not-null="true" />
         </property>
         <property name="fechaTope" type="timestamp">
             <column name="fecha_tope" length="29" />
@@ -31,6 +25,9 @@
         </property>
         <property name="valorReal" type="java.lang.Integer">
             <column name="valor_real" />
+        </property>
+        <property name="finalizada" type="boolean">
+            <column name="finalizada" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

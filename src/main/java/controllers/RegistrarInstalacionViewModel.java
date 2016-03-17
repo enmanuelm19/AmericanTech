@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -10,6 +12,7 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.media.Media;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -19,9 +22,11 @@ import Dao.RecursoDao;
 import Dao.RecursoInstalacionDao;
 import Dao.TipoInstalacionDao;
 import Dao.InstalacionDao;
+import modelos.IndicadorEvento;
 import modelos.Instalacion;
 import modelos.TipoInstalacion;
 import modelos.RecursoInstalacion;
+import modelos.RedClub;
 import modelos.Recurso;
 
 public class RegistrarInstalacionViewModel {
@@ -39,15 +44,22 @@ public class RegistrarInstalacionViewModel {
 	private List<RecursoInstalacion> allRecursoInstalacion;
 	private List<RecursoInstalacion> allRecursoparcial;
 	private int cantidad;
-
+	private Set<RecursoInstalacion> allRecursoparcial2;
+	private Set<RecursoInstalacion> recursosinstalacion;
+	private ArrayList<RecursoInstalacion> temporalRecurso;
+	private Media uploadedImage;
+	private boolean imagenNueva = false;
+	
 	@Init
 	public void init(@ExecutionArgParam("instalacion") Instalacion instalacion)
 			throws Exception {
 		if (instalacion == null) {
 			this.instalacion = new Instalacion();
+			recursosinstalacion = new HashSet<RecursoInstalacion>();
 			this.editable = false;
 		} else {
 			this.instalacion = instalacion;
+			recursosinstalacion = instalacion.getRecursoInstalacions();
 			this.editable = true;
 		}
 		allRecursoparcial = new ArrayList<RecursoInstalacion>();
@@ -60,8 +72,13 @@ public class RegistrarInstalacionViewModel {
 		allTipoInstalacion = tipoInstalacionDao.obtenerTodos();
 		allRecurso = recursoDao.obtenerTodos();
 		allRecursoInstalacion = recursoInstalacionDao.obtenerTodos();
+		//this.allRecursoparcial2 = instalacion.getRecursoInstalacions();
 	}
 
+	public Set<RecursoInstalacion> getAllrecursoi() {
+
+		return new HashSet<RecursoInstalacion>(allRecursoparcial2);
+	}
 	public ListModelList<TipoInstalacion> getAllTipoInstalacion() {
 
 		return new ListModelList<TipoInstalacion>(allTipoInstalacion);
@@ -78,12 +95,18 @@ public class RegistrarInstalacionViewModel {
 
 		return new ListModelList<RecursoInstalacion>(allRecursoparcial);
 	}
+	public ListModelList<RecursoInstalacion> getRecursosinstalacion() throws Exception{
+		ArrayList<RecursoInstalacion> recursosMostrar = new ArrayList<RecursoInstalacion>();
+		for(RecursoInstalacion recursoInstalacion: recursosinstalacion){
+			if(recursoInstalacion.isActivo())
+				recursosMostrar.add(recursoInstalacion);
+		}
+		return new ListModelList<RecursoInstalacion>(recursosMostrar);
+	}
 
 	public boolean isEditable() {
 		return editable;
 	}
-
-
 
 	public void setEditable(boolean editable) {
 		this.editable = editable;
@@ -117,10 +140,77 @@ public class RegistrarInstalacionViewModel {
 	public void setInstalacion(Instalacion instalacion) {
 		this.instalacion = instalacion;
 	}
+	public Set<RecursoInstalacion> getallrecursopacial2(){
+		return allRecursoparcial2;
+	}
+	public void setAllrecursopacial2(Set<RecursoInstalacion> recursoInstalacion){
+		this.allRecursoparcial2 = allRecursoparcial2;
+	}
+	public ArrayList<RecursoInstalacion> getTemporalrecursos() {
 
+		return temporalRecurso;
+	}
+
+	public void setTemporalRecurso(ArrayList<RecursoInstalacion> temporalRecurso) {
+		this.temporalRecurso = temporalRecurso;
+	}
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
+	}
+	@Command
+	@NotifyChange("uploadedImage")
+	public void upload(@BindingParam("media") Media myMedia){
+		imagenNueva=true;
+		uploadedImage = myMedia;
+	}
+
+	public Media getUploadedImage() {
+		return uploadedImage;
+	}
+
+
+	public void setUploadedImage(Media uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+//	@Command
+//	@NotifyChange({"allRecursoparcial2","recurso"})
+//	public void guardarRecursoInstalacion() {
+//		if(this.recurso.getDescripcion()!=null){
+//			for (RecursoInstalacion r: this.allRecursoparcial2) {
+//				if( r.getIdRecursoInstalacion()==this.recurso.getIdRecurso())
+//					return;
+//			}
+//			this.recursoInstalacion.setInstalacion(instalacion);
+//			this.allRecursoparcial2.add(this.recursoInstalacion);
+//			this.recurso = new Recurso();
+//
+//			System.out.println(instalacion.getRecursoInstalacions());
+//		}
+//	}
+	@Command
+	@NotifyChange({ "recursosInstalacion", "recursoInstalacion" })
+	public void guardarRecursoInstalacion() {
+	
+	if (this.recursoInstalacion.getRecurso() != null) {
+			for (RecursoInstalacion recursoInstalacion : recursosinstalacion) {
+				if (recursoInstalacion.getRecurso().getIdRecurso() == this.recursoInstalacion.getRecurso().getIdRecurso()){
+					Messagebox.show(
+							"Recurso seleccionado previamente", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+					return;
+				}
+					
+			}
+			this.recursoInstalacion.setInstalacion(instalacion);
+			recursosinstalacion.add(this.recursoInstalacion);
+			this.recursoInstalacion = new RecursoInstalacion();
+			
+	}else{
+		Messagebox.show(
+				"Seleccione al menos un recurso", "",
+				Messagebox.OK, Messagebox.INFORMATION);
+	}
 	}
 
 	@Command
@@ -135,14 +225,18 @@ public class RegistrarInstalacionViewModel {
 				&& !instalacion.getNombre().equalsIgnoreCase("")) {
 			if (instalacionDao.obtenerInstalacion(instalacion.getIdInstalacion()) == null) {
 			if (!editable) {
-				instalacionDao.agregarInstalacion(instalacion);
-				for (int i = 0; i < allRecursoparcial.size(); i++) {
-					recursoInstalacion.setInstalacion(instalacion);
-					recursoInstalacionDao.agregarRecursoInstalacion(recursoInstalacion);
-					System.out.println(
-							recursoInstalacion.getRecurso().getDescripcion() + "-"
-							+recursoInstalacion.getCantidad() + "|");
-				}
+				this.instalacion.setRecursoInstalacions(this.recursosinstalacion);
+				instalacionDao.agregarInstalacion(this.instalacion);
+//				for(RecursoInstalacion r : recursosinstalacion){
+//					r.setInstalacion(instalacion);
+//					recursoInstalacionDao.agregarRecursoInstalacion(r);
+//					
+//				}
+//				for (int i = 0; i < allRecursoparcial.size(); i++) {
+//					recursoInstalacion.setInstalacion(instalacion);
+//					recursoInstalacionDao.agregarRecursoInstalacion(recursoInstalacion);
+//					
+//				}
 				Messagebox.show(
 						"La instalacion " + instalacion.getNombre()
 								+ " ha sido registrada exitosamente", "",
@@ -165,28 +259,44 @@ public class RegistrarInstalacionViewModel {
 			}
 
 		}
-	@Command
-	public void guardarRecursoInstalacion(@BindingParam("win") Window win) throws Exception {
-		
-		
-		recursoInstalacion = new RecursoInstalacion();
-		recursoInstalacion.setRecurso(recurso);
-		recursoInstalacion.setCantidad(cantidad);
-		allRecursoparcial.add(recursoInstalacion);
-		for (int i = 0; i < allRecursoparcial.size(); i++) {
-			
-			System.out.println(
-					recursoInstalacion.getRecurso().getDescripcion() + "-"
-					+recursoInstalacion.getCantidad() + "|");
-		}
-		
-		
 
-					
-		} 
-	@GlobalCommand
-	@NotifyChange({ "allRecursoparcial" })
-	public void refreshParical() throws Exception {
-		allRecursoparcial =   recursoInstalacionDao.obtenerTodos();
-	}
+//	@Command
+//	@NotifyChange({ "allRecursoparcial" })
+//	public void guardarRecursoInstalacion(@BindingParam("win") Window win) throws Exception {
+//		
+//		//Set<RecursoInstalacion> tmp = new HashSet<RecursoInstalacion>();
+//		recursoInstalacion = new RecursoInstalacion();
+//		//recursoInstalacion.setIdRecursoInstalacion(0);
+//		recursoInstalacion.setRecurso(recurso);
+//		recursoInstalacion.setCantidad(cantidad);
+//		allRecursoparcial.add(recursoInstalacion);
+////		for(RecursoInstalacion ri : getTemporalrecursos()){
+////			tmp.add(ri);
+////		}
+//		//setAllrecursopacial2(tmp);
+//		for(RecursoInstalacion ri : allRecursoparcial ){
+//			System.out.println(ri.getRecurso().getDescripcion() + ri.getCantidad() + "|");
+//		}
+////		recursoInstalacion = new RecursoInstalacion();
+////		recursoInstalacion.setRecurso(recurso);
+////		recursoInstalacion.setCantidad(cantidad);
+////		allRecursoparcial.add(recursoInstalacion);
+////		for(RecursoInstalacion rp : allRecursoparcial){
+////			System.out.println(rp.getRecurso().getDescripcion());
+////			System.out.println(rp.getCantidad());
+////			
+////		}
+////		System.out.println(allRecursoparcial);
+////		BindUtils.postGlobalCommand(null, null, "refreshParical", null);
+////		
+//		
+//					
+//	} 	
+//	@GlobalCommand
+//	@NotifyChange({ "allRecursoparcial" })
+//	public List<RecursoInstalacion> refreshParical() {
+//		System.out.println(allRecursoparcial);
+//		return allRecursoparcial;
+//		
+//	}
 }

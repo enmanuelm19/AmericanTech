@@ -56,7 +56,7 @@ private Sesion sesionPostgres;
          } 
 	}
 	
-	public void actualizarAccion(IndicadorEvento dato) throws Exception{
+	public void actualizarIndicadorEvento(IndicadorEvento dato) throws Exception{
 		@SuppressWarnings("static-access")
 		Session em = sesionPostgres.getSessionFactory().openSession();   
          Transaction tx = null;  

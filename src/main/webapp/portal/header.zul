@@ -1,0 +1,59 @@
+<zk xmlns:n="native">
+	<div class="header_bg"  apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')">
+		<n:div class="wrap">
+			<n:div class="header">
+
+				<n:div class="logo">
+					<n:a href="../index.zul">
+						<image src="@bind(vm.club.logo)"
+							class='post-person img-responsive' width="192px" height="51px" />
+					</n:a>
+				</n:div>
+
+
+				<n:div class="nav">
+					<n:ul>
+						<n:li>
+							<n:a href="../index.zul#about" class="scroll">
+								¿Quiénes somos?
+							</n:a>
+						</n:li>
+						<n:li>
+							<n:a href="../index.zul#contact" class="scroll">
+								Contacto
+							</n:a>
+						</n:li>
+						<n:li>
+							<n:a
+								href="/america/portal/instalaciones.zul">
+								Instalaciones
+							</n:a>
+						</n:li>
+						<n:li>
+							<n:a
+								href="/america/portal/carteleraPublica.zul">
+								Informate
+							</n:a>
+						</n:li>
+						<n:li>
+							<a
+								href="/portal/postulacion.zul" visible="@load(vm.verPostulacion)">
+								Postulación
+							</a>
+						</n:li>
+						<n:li>
+							<n:a
+								href="/america/vistas/layouts/ingreso.zul">
+								Ingreso
+							</n:a>
+						</n:li>
+						<n:div class="clear"></n:div>
+					</n:ul>
+				</n:div>
+
+				<n:div class="clear"></n:div>
+			</n:div>
+		</n:div>
+	</div>
+</zk>

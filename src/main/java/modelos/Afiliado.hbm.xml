@@ -14,7 +14,7 @@
         <many-to-one name="socio" class="modelos.Socio" fetch="select">
             <column name="socioid_socio" not-null="true" />
         </many-to-one>
-        <many-to-one name="tipoAfiliado" class="modelos.TipoAfiliado" fetch="select" lazy="false" cascade="save-update">
+        <many-to-one name="tipoAfiliado" class="modelos.TipoAfiliado" fetch="select" lazy="false" >
             <column name="tipo_afiliadoid_tipo_afiliado" not-null="true" />
         </many-to-one>
         <property name="nroCarnet" type="string">
@@ -23,7 +23,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select" cascade="save-update">
+        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="afiliadoid_afilado" />
             </key>
