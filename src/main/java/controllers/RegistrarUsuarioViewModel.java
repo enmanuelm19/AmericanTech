@@ -152,6 +152,7 @@ public class RegistrarUsuarioViewModel {
 				user.setFecha(new Date());
 				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
 				user.getPersona().setFoto(foto);
+				user.setUsuarioGrupos(this.usuarioGrupos);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 			}
