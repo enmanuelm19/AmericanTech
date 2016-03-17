@@ -39,23 +39,7 @@
 							</div>
 						</row>
 						<row class="col-md-12">
-							<div>
-								Hora inicio
-								<n:br></n:br>
-								<timebox cols="12" value="@bind(vm.evento.fechaInicio)" disabled="@load(vm.disabled)"
-									format="short"  width="50%" />
-							</div>
-							<div>
-								Hora cierre
-								<n:br></n:br>
-								<timebox cols="12" value="@bind(vm.evento.fechaFin)" disabled="@load(vm.disabled)"
-									format="short" width="50%" />
-							</div>
 
-						</row>
-						<row class="col-md-12">
-							
-							
 							<div>
 								Nombre del evento
 								<n:br></n:br>
