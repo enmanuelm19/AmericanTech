@@ -13,42 +13,37 @@ public class Actividad implements java.io.Serializable {
 
 	private int idActividad;
 	private Evento evento;
-	private TipoActividad tipoActividad;
 	private String descripcion;
-	private boolean finalizada;
 	private Date fechaTope;
 	private Date fechaRealizacion;
 	private Integer valorEsperado;
 	private Integer valorReal;
-	private boolean activo = true;
+	private boolean finalizada;
+	private boolean activo;
 
 	public Actividad() {
 	}
 
-	public Actividad(int idActividad, Evento evento,
-			TipoActividad tipoActividad, String descripcion,
+	public Actividad(int idActividad, Evento evento, String descripcion,
 			boolean finalizada, boolean activo) {
 		this.idActividad = idActividad;
 		this.evento = evento;
-		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
 		this.finalizada = finalizada;
 		this.activo = activo;
 	}
 
-	public Actividad(int idActividad, Evento evento,
-			TipoActividad tipoActividad, String descripcion,
-			boolean finalizada, Date fechaTope, Date fechaRealizacion,
-			Integer valorEsperado, Integer valorReal, boolean activo) {
+	public Actividad(int idActividad, Evento evento, String descripcion,
+			Date fechaTope, Date fechaRealizacion, Integer valorEsperado,
+			Integer valorReal, boolean finalizada, boolean activo) {
 		this.idActividad = idActividad;
 		this.evento = evento;
-		this.tipoActividad = tipoActividad;
 		this.descripcion = descripcion;
-		this.finalizada = finalizada;
 		this.fechaTope = fechaTope;
 		this.fechaRealizacion = fechaRealizacion;
 		this.valorEsperado = valorEsperado;
 		this.valorReal = valorReal;
+		this.finalizada = finalizada;
 		this.activo = activo;
 	}
 
@@ -68,28 +63,12 @@ public class Actividad implements java.io.Serializable {
 		this.evento = evento;
 	}
 
-	public TipoActividad getTipoActividad() {
-		return this.tipoActividad;
-	}
-
-	public void setTipoActividad(TipoActividad tipoActividad) {
-		this.tipoActividad = tipoActividad;
-	}
-
 	public String getDescripcion() {
 		return this.descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public boolean isFinalizada() {
-		return this.finalizada;
-	}
-
-	public void setFinalizada(boolean finalizada) {
-		this.finalizada = finalizada;
 	}
 
 	public Date getFechaTope() {
@@ -124,6 +103,14 @@ public class Actividad implements java.io.Serializable {
 		this.valorReal = valorReal;
 	}
 
+	public boolean isFinalizada() {
+		return this.finalizada;
+	}
+
+	public void setFinalizada(boolean finalizada) {
+		this.finalizada = finalizada;
+	}
+
 	public boolean isActivo() {
 		return this.activo;
 	}
@@ -131,6 +118,8 @@ public class Actividad implements java.io.Serializable {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+	
+	//Metodos adicionales para la actividad
 	
 	public String getFechaTopeString() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
