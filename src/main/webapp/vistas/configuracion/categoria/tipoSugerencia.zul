@@ -47,20 +47,13 @@
 								<auxheader colspan="1">
 									<image
 										src="../assets/img/funnel.png" />
-									<textbox instant="true" width="85%" value="@bind(vm.idFiltro)" onChange="@command('filtro')"
-										placeholder="Buscar" />
-								</auxheader>
-								<auxheader colspan="1">
-									<image
-										src="../assets/img/funnel.png" />
-									<textbox instant="true" width="85%" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
+									<textbox instant="true" width="25%" value="@bind(vm.idFiltro)" onChange="@command('filtro')"
 										placeholder="Buscar" />
 								</auxheader>
 								<auxheader colspan="1" />
 							</auxhead>
 
 							<columns>
-								<column hflex="2">Codigo</column>
 								<column hflex="2">
 									Tipo Sugerencia
 								</column>
@@ -73,7 +66,6 @@
 								<template name="model">
 								
 									<row>
-										<label value="@load(each.idTipoSugerencia)" />
 										<label value="@load(each.descripcion)" />
 										<div>
 											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('showModal', Tipo=each)"/>
