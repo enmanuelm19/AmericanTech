@@ -5,7 +5,7 @@
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
 	<window title="Registrar Miembro" width="50%" height="650px" style="iconSclass=z-icon-cogs;" closable="true" class="col-md-8"
-		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" id="winRegistrarMiembro">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenido">
 			<div align="left">
@@ -13,12 +13,12 @@
 				<div class='linea-two'></div>
 			</div>
 			<space spacing="12%" />
-			<div class="row">
+			<div class="row"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarMiembroViewModel')">
 				<div align="right" class='col-md-3'>
-					<image src="/assets/portal/img/img2.jpg" width="100%" />
+					<image content="@bind(vm.uploadedImage)" src="/assets/portal/img/img2.jpg" width="100%" />
 					<separator />
 					<div>
-						<fileupload iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-1' label="Examinar" />
+						<fileupload iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-1' label="Examinar"  onUpload="@command('uploadImage',media=event.media)"/>
 					</div>
 				</div>
 				<div align="right" class='col-md-9' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarMiembroViewModel')">
@@ -26,75 +26,68 @@
 						<rows>
 							<row>
 								<div>
-									<label class="col-md-3">Nro Carnet</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.carnet)"/>
-									<button	iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('buscarCarnet')"/>
-								</div>
-							</row>
-							<row>
-								<div>
 									<label class="col-md-3">Cédula</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.cedula)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.identificacion)"/>
 									<button	iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('buscarCedula')"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Nombre</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.persona.nombre)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.nombre)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Apellido</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.persona.apellido)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.apellido)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Fecha Nacimiento</label>
-									<datebox class="col-md-9" value="@bind(vm.persona.fechaNac)" readonly="@load(vm.desactivar)"/>
+									<datebox class="col-md-9" value="@load(vm.miembro.persona.fechaNac)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Sexo</label>
-									<radiogroup id="sexo" selectedItem="@load(vm.persona.sexo)">
-										<radio id="a1" label="Masculino" value="M" radiogroup="sexo" disabled="@load(vm.desactivar)"></radio>
-										<radio id="a2" label="Femenino" value="F" radiogroup="sexo" disabled="@load(vm.desactivar)"></radio>
+									<radiogroup id="sexo" selectedItem="@load(vm.miembro.persona.sexo)">
+										<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
+										<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
 									</radiogroup>									
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Email</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.persona.correo)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.correo)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Teléfono Domicilio</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.persona.telefonoFijo)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.telefonoFijo)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Teléfono Celular</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.persona.telefono)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.telefono)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Dirección</label>
-									<textbox rows="2" cols="30" class="col-md-6" constraint="no empty" value="@load(vm.persona.direccion)" readonly="@load(vm.desactivar)"/>
+									<textbox rows="2" cols="30" class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.direccion)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Cargo</label>
-									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6">
+									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6" onChange="@command('verificar')">
 										<template name="model">
-											<comboitem label="@load(each.descripcion)" value="@bind(each)"/>
+											<comboitem label="@load(each.descripcion)" value="@load(each)"/>
 										</template>
 									</combobox>
 								</div>
@@ -105,18 +98,10 @@
 
 				<space spacing="15%" />
 				<div class="row col-md-12">
-					<button
-						class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
-						type="button" iconSclass="z-icon-floppy-o">
-					</button>
-					<button
-						class="boton-cancelar col-md-3 col-md-offset-2"
-						iconSclass="z-icon-times" type="button" label="Cancelar">
-					</button>
+					<button class="boton-guardar col-md-3 col-md-offset-2" label="Guardar" type="button" iconSclass="z-icon-floppy-o" onClick="@command('guardar', m=vm.miembro)"/>
+					<button	class="boton-cancelar col-md-3 col-md-offset-2" iconSclass="z-icon-times" type="button" label="Cancelar"/>
 				</div>
 				<separator spacing="5%" />
-
-
 			</div>
 		</div>
 	</window>

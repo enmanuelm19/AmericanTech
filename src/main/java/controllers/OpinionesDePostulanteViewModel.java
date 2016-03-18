@@ -18,6 +18,7 @@ import modelos.Preferencia;
 import modelos.PreferenciaPersona;
 import modelos.Socio;
 import modelos.TipoActividad;
+import modelos.TipoOpnion;
 
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -27,10 +28,13 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Window;
 
+import util.ContadorOpinion;
 import util.StarRating;
+import Dao.OpinionDao;
 import Dao.PostulacionDao;
 import Dao.PreferenciaDao;
 import Dao.SocioDao;
+import Dao.TipoOpnionDao;
 
 
 public class OpinionesDePostulanteViewModel {
@@ -46,6 +50,12 @@ public class OpinionesDePostulanteViewModel {
 	private StarRating starRating;
 	private List<StarRating> starsRatings;
 	private boolean verDatos;
+	private TipoOpnion tipoOpinion;
+	private TipoOpnionDao tipoOpinionDao;
+	private List<TipoOpnion> tiposOpinions;
+	private OpinionDao opinionDao;
+	private List<ContadorOpinion> contadores;
+	
 	@Init
 	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacion, @ExecutionArgParam("verDatos") boolean ver) throws Exception {
 		this.postulacionDao= new PostulacionDao();
@@ -53,7 +63,13 @@ public class OpinionesDePostulanteViewModel {
 		this.opiniones= new HashSet<Opinion>();
 		this.opiniones= postulacion.getOpinions();
 		this.preferencias= new HashSet<Preferencia>();
+		this.tipoOpinionDao= new TipoOpnionDao();
+		this.tiposOpinions= tipoOpinionDao.obtenerTodos();
+		this.opinionDao= new OpinionDao();
+		this.tipoOpinion= new TipoOpnion();
+		contadores= new ArrayList<ContadorOpinion>();
 		verDatos=ver;
+		Contador();
 		for (Iterator<PreferenciaPersona> i = postulacion.getPostulado().getPersona().getPreferenciaPersonas().iterator(); i.hasNext();) {
 			PreferenciaPersona tmp = i.next();
 			this.preferencias.add(tmp.getPreferencia());
@@ -83,6 +99,20 @@ public class OpinionesDePostulanteViewModel {
 		return this.postulacion;
 	}
 	
+	public ListModelList<TipoOpnion> getTiposOpiniones(){
+		return new ListModelList<TipoOpnion>(tiposOpinions);
+	}
+	
+	public TipoOpnion getTipoOpinion() {
+		return tipoOpinion;
+	}
+	
+	@NotifyChange({"opinionesAll"})
+	public void setTipoOpinion(TipoOpnion tipoOpinion) throws Exception {
+		this.tipoOpinion = tipoOpinion;
+		this.opiniones=new HashSet<Opinion>(this.opinionDao.obtenerOpinionesPostulacionbyTipo(postulacion, tipoOpinion));
+	}
+
 	public int getCalcularEdad() {
 		Calendar birth = new GregorianCalendar();
 		Calendar today = new GregorianCalendar();
@@ -160,4 +190,12 @@ public class OpinionesDePostulanteViewModel {
 		return (int) (promedio/opiniones.size());
 	}
 	
+	public void Contador(){
+		for(int i=0; i<this.tiposOpinions.size(); i++){
+			contadores.add(new ContadorOpinion(this.tiposOpinions.get(i), this.tiposOpinions.get(i).getcantidadOpinions(postulacion)));
+		}
+	}
+	public ListModelList<ContadorOpinion> getContadores(){
+		return new ListModelList<ContadorOpinion>(contadores);
+	}
 }

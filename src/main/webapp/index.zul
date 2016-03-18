@@ -115,12 +115,11 @@
 								   <n:li><n:a  href="#contact"  class="scroll">Contacto</n:a></n:li>
 								     <n:li><n:a  href="/america/portal/instalaciones.zul" >Instalaciones</n:a></n:li>
 								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Informate</n:a></n:li>
-								   <n:li><n:a  href="/america/portal/postulacion.zul" >Postulación</n:a></n:li>
+								   <n:li><a href="/portal/postulacion.zul" visible="@load(vm.verPostulacion)">Postulación</a></n:li>
 								   <n:li><n:a  href="/america/vistas/layouts/ingreso.zul" >Ingreso</n:a></n:li>
 								 <n:div class="clear"> </n:div>
 								 </n:ul>
 							</n:div>
-
 							<n:div class="clear"> </n:div>
 						</n:div>
 					</n:div>

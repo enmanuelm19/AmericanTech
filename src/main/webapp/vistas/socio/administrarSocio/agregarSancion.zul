@@ -67,7 +67,7 @@
 							<div style="margin-top:15px;">
 								<hbox>
 									<div>
-										<checkbox label="Suspención" checked="@bind(vm.suspencion)"/>
+										<checkbox label="Suspensión" checked="@bind(vm.suspencion)"/>
 									</div>
 									<div style="margin-left:25px;">
 										<checkbox label="Multa" checked="@bind(vm.multa)"/>
@@ -121,18 +121,18 @@
 					
 					<div style="margin-top:35px;" visible="@load(vm.suspencion)">
 						<div align="left">
-							<div class="encabezado">Detalle Suspencion</div>
+							<div class="encabezado">Detalle Suspensión</div>
 							<div align="left" class="linea-two"></div>
 						</div>
 						<hbox>
 						<hbox style="margin-top:20px; margin-left:60px;">
-							<div>Inicio Suspención</div>
+							<div>Inicio Suspensión</div>
 							<div style="margin-left:20px;">
 								<datebox width="100%" value="@bind(vm.fechaInicio)"/>
 							</div>					
 						</hbox>
 						<hbox style="margin-top:20px; margin-left:30px;">
-							<div>Fin Suspención</div>
+							<div>Fin Suspensión</div>
 							<div style="margin-left:10px;">
 								<datebox width="100%" value="@bind(vm.fechaFin)"/>
 							</div>					

@@ -1,19 +1,26 @@
 package controllers;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.zkoss.bind.BindUtils;
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.media.Media;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Window;
 
+import util.ManejadorArchivo;
 import Dao.AfiliadoDao;
 import Dao.CargoDao;
 import Dao.MiembroJuntaDao;
 import Dao.PersonaDao;
 import Dao.SocioDao;
+import modelos.Accion;
 import modelos.Afiliado;
 import modelos.Cargo;
 import modelos.JuntaDirectiva;
@@ -34,108 +41,112 @@ public class RegistrarMiembroViewModel {
 	private boolean desactivar;
 	private Afiliado afiliado;
 	private AfiliadoDao afiliadoDao;
+	private Cargo cargo;
+	private JuntaDirectiva junta;
+	private Media uploadedImage;
+	private boolean imagenNueva=false;
+	
 	@Init
 	public void init(@ExecutionArgParam("Junta") JuntaDirectiva junta) throws Exception{
-		this.miembro= new MiembroJunta();
+		miembro= new MiembroJunta();
 		this.miembroDao= new MiembroJuntaDao();
-		this.persona= new Persona();
 		this.personaDao= new PersonaDao();
 		socio= new Socio();
 		this.socioDao= new SocioDao();
 		this.carnet="";
 		this.cedula="";
 		this.cargoDao= new CargoDao();
-		this.cargos=cargoDao.obtenerTodos();
+		//this.cargos=cargoDao.obtenerTodos();
 		desactivar=true;
 		this.afiliadoDao= new AfiliadoDao();
+		this.junta=junta;
+		this.persona= new Persona();
+		miembro.setPersona(persona);
+		this.cargo= new Cargo();
+		miembro.setCargo(cargo);
+		System.out.println("jldjajdjdksjde");
 	}
+
 	public MiembroJunta getMiembro() {
+		System.out.println("jsjsjjs "+miembro.getPersona().getDireccion());
 		return miembro;
 	}
+
 	public void setMiembro(MiembroJunta miembro) {
 		this.miembro = miembro;
-	}
-	public Persona getPersona() {
-		return persona;
-	}
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-	public String getCarnet() {
-		return carnet;
-	}
-	public void setCarnet(String carnet) {
-		this.carnet = carnet;
-	}
-	public String getCedula() {
-		return cedula;
-	}
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
+		System.out.println("entroooooooooo");
 	}
 	
-	public ListModelList<Cargo> getCargosAll(){
-		return new ListModelList<Cargo>(cargos);
+	public ListModelList<Cargo> getCargosAll() throws Exception{
+		return new ListModelList<Cargo>(cargoDao.obtenerTodos());
 	}
-	public boolean isDesactivar() {
+	@Command
+	@NotifyChange("uploadedImage")
+	public void uploadImage(@BindingParam("media") Media myMedia) {
+		imagenNueva = true;
+		uploadedImage = myMedia;
+	}
+	
+	public Media getUploadedImage() {
+		return uploadedImage;
+	}
+	
+	public void setUploadedImage(Media uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+	@Command
+	@NotifyChange({"miembro","desactivar"})
+	public void buscarCedula() throws Exception{
+		if(miembro.getPersona().getIdentificacion()==null || miembro.getPersona().getIdentificacion().equalsIgnoreCase(""))
+			Messagebox.show("Debe llenar el campo Cédula", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+		else{
+			Persona per= new Persona();
+					per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
+			if(per==null){
+				Messagebox.show("Cédula no encontrada. Proceda a su registro", "Aviso", Messagebox.OK, Messagebox.EXCLAMATION);
+				miembro.setPersona(new Persona());
+				desactivar=false;
+			}
+			else{
+				miembro.setPersona(per);
+				desactivar=true;
+				System.out.println(miembro.getPersona().getCorreo());
+			}
+		}
+	}
+	
+	public boolean getDesactivar(){
 		return desactivar;
 	}
 	
 	@Command
-	@NotifyChange({"carnet","persona","cedula"})
-	public void buscarCarnet() throws Exception{
-		if(carnet==""||carnet==null){
-			Messagebox.show("Campo Carnet Vacio", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
-		}
-		else{
-			this.socioDao= new SocioDao();
-			this.socio=socioDao.obtenerSocioCarnet(carnet);
-			this.afiliado=this.afiliadoDao.obtenerPorNroCarnet(carnet);
-			if(this.socio==null && this.afiliado==null){
-				Messagebox.show("Carnet no encontrado", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
-				this.carnet="";
-			}
-			else{
-				try{
-				if(!this.socio.equals(null)){
-					this.persona=socio.getPersona();
+	public void verificar(){
+		if(miembro.getCargo().getIdCargo()==1 || miembro.getCargo().getIdCargo()==5){
+			for(Iterator<MiembroJunta> i=junta.getMiembroJuntas().iterator(); i.hasNext();){
+				MiembroJunta m=i.next();
+				if(m.getCargo().getIdCargo()==1||m.getCargo().getIdCargo()==5){
+					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "Aviso", Messagebox.OK, Messagebox.EXCLAMATION);		
+					break;
 				}
-				}
-				catch(NullPointerException e){
-					this.persona=afiliado.getPersona();
-				}
-
-				this.cedula=persona.getIdentificacion();
 			}
 		}
 	}
 	
 	@Command
-	@NotifyChange({"cedula","persona","carnet"})
-	public void buscarCedula() throws Exception{
-		if(cedula==""||cedula==null){
-			Messagebox.show("Campo Cédula Vacio", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
-		}
-		else{
-			this.personaDao= new PersonaDao();
-			this.persona=personaDao.obtenerPersonaCedula(cedula);
-			this.socio=this.socioDao.obtenerSocioPersona(persona);
-			this.afiliado=this.afiliadoDao.obtenerPorPersona(persona);
-			if(this.socio==null && this.afiliado==null){
-				Messagebox.show("Cédula no encontrada", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
-				this.cedula="";
-				this.persona=new Persona();
+	public void guardar(@BindingParam("m") MiembroJunta m) throws Exception{
+		if(desactivar){
+			System.out.println(m.getIdJuntaMiembro());
+			if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
+					||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
+					||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")){
+				Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				
 			}
 			else{
-				try{
-				if(!this.socio.equals(null)){
-					carnet=socio.getNroCarnet();
-				}
-				}
-				catch(NullPointerException e){
-					carnet=afiliado.getNroCarnet();
-				}
+				miembroDao.agregarMiembroJunta(miembro);
+				Messagebox.show("El miembro ", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				
 			}
 		}
-	}	
+	}
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import modelos.Opinion;
 import modelos.Postulacion;
 import modelos.Recurso;
+import modelos.TipoOpnion;
 import modelos.Usuario;
 import confi.Sesion;
 
@@ -150,6 +151,22 @@ public class OpinionDao {
 			   Session em = sesionPostgres.getSessionFactory().openSession();   	
 		        try {  	
 			    datos =  (List<Opinion>) em.createCriteria(Opinion.class).add(Restrictions.eq("postulacion", dato)).list();             
+		        } catch (Exception e) {             
+		       
+		         throw new Exception(e.getMessage(),e.getCause());
+		        } finally {  
+		          em.close();  
+		        } 
+		       
+		        return datos; 
+			}
+		
+		public List<Opinion> obtenerOpinionesPostulacionbyTipo(Postulacion dato, TipoOpnion tipo) throws Exception {            
+		      
+			   List<Opinion> datos = new ArrayList<Opinion>();  
+			   Session em = sesionPostgres.getSessionFactory().openSession();   	
+		        try {  	
+			    datos =  (List<Opinion>) em.createCriteria(Opinion.class).add(Restrictions.eq("postulacion", dato)).add(Restrictions.eq("tipoOpnion", tipo)).list();             
 		        } catch (Exception e) {             
 		       
 		         throw new Exception(e.getMessage(),e.getCause());

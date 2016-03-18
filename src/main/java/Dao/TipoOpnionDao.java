@@ -3,6 +3,8 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Opinion;
+import modelos.Postulacion;
 import modelos.TipoOpnion;
 
 import org.hibernate.Session;
@@ -119,6 +121,6 @@ private Sesion sesionPostgres;
         } 
         return datos; 
 	}
-
+	
 }
 
