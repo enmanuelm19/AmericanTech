@@ -6,7 +6,7 @@
     <class name="modelos.TipoAfiliado" table="tipo_afiliado" schema="public" optimistic-lock="version">
         <id name="idTipoAfiliado" type="int">
             <column name="id_tipo_afiliado" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="descripcion" type="string">
             <column name="descripcion" length="90" not-null="true" />

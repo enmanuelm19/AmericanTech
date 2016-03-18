@@ -17,7 +17,6 @@ import modelos.Postulacion;
 import modelos.Preferencia;
 import modelos.PreferenciaPersona;
 import modelos.Socio;
-import modelos.TipoActividad;
 import modelos.TipoOpnion;
 
 import org.zkoss.bind.annotation.BindingParam;
