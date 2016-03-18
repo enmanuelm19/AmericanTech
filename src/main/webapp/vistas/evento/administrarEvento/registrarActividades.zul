@@ -3,7 +3,8 @@
 	<window id="winRAct" border="none" title="Agregar Actividad"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		closable="true" width="40%" height="auto"
-		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer"
+		style="iconSclass= z-icon-calendar;"
+		apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarActividadViewModel')">
 		<caption iconSclass="z-icon-calendar" />
 
@@ -17,116 +18,96 @@
 				</div>
 				<space bar="False" spacing="10%" />
 
-
-				
-
-			
-					
-
-              <div class="row">
+				<div class="row">
 					<div class="col-md-6">
-						<div align="left">
-								Fecha tope
-								<n:br></n:br>
-								<datebox width="60%" value="@bind(vm.actividad.fechaTope)"
-									cols="12" format="short" />
-							</div>
-						<n:br></n:br>
-					</div>
-
-						
-					<div class="col-md-6">
-						<div align="left">
-								Valor esperado
-								<n:br></n:br>
-								<intbox value="@bind(vm.actividad.valorEsperado)"
-									width="60%" tabindex="10" constraint="no empty" />
-							</div>
-						<n:br></n:br>
-					</div>
-				</div>
-						
-					<div class="row">
-					<div class="col-md-6">
-						<div align="left">
-								Descripción de la actividad
-								<n:br></n:br>
-								<textbox type="text" rows="3" value="@bind(vm.actividad.descripcion)"
-									width="100%" tabindex="10" constraint="no empty" />
-							</div>
-						<n:br></n:br>
-					</div>
-						<div class="col-md-6">
-						<div align="left">
-								Seleccione Tipo de actividad
-								<n:br></n:br>
-								<combobox
-									model="@load(vm.allTipoActividad)"
-									selectedItem="@bind(vm.actividad.tipoActividad)" width="60%">
-									<template name="model">
-										<comboitem
-											label="@load(each.descripcion)" value="@load(each)" />
-									</template>
-								</combobox>
-							
-
-							
-								<button 
-									sclass="btn-link" iconSclass="z-icon-plus blue"
-									tooltiptext="Agregar actividad" onClick="@command('agregar')"/>
-							
-						</div>
-						
+						<div align="center">
+							Fecha tope
+							<n:br></n:br>
+							<datebox width="60%"
+								value="@bind(vm.actividad.fechaTope)" cols="12" format="short" />
 						</div>
 						<n:br></n:br>
 					</div>
-					
-				
-				<n:br></n:br>
-				<div align="left" class="linea-two"></div>
-				<n:br></n:br>
-				
-				<div class="col-md-12">
-					<grid model="@load(vm.actividadsEvento)"
-							emptyMessage="No se encuentran actividades registradas"
-							mold="paging" pageSize="5">
-
-							<columns>
-								<column width="40%" hflex="">Descripcion de la actividad</column>
-								
-								<column width="15%" hflex="">Acciones</column>
-							</columns>
-
-							<rows>
-							<template name="model">
-								<row>
-								
-									<label value="@load(each.descripcion)" />
-				
-									<button sclass="btn-link"
-											iconSclass="z-icon-trash-o red" 
-											tooltiptext="Eliminar" onClick="@command('eliminar', actividad=each)"/>
-								</row>
-							</template>				
-							</rows>
-
-							<foot>
-								<footer span="5" class="footer_right"
-									label="@load(vm.cantidadActividads)" />
-							</foot>
-						</grid>
-					</div>
-				<n:br></n:br>
-				<space spacing="40%" />
-				<div>
-					<button iconSclass="z-icon-floppy-o" onClick="@command('guardar',win=winRAct)"
-						class='boton-guardar' label="Guardar" />
-					<space spacing="10%" />
-					<button iconSclass="z-icon-times" onClick="@command('cerrarModal',win=winRAct)"
-						class='boton-cancelar' label="Cancelar" />
 				</div>
-				<space spacing="15%" />
+
+				<div class="row">
+					<div class="col-md-6">
+						<div align="left">
+							Descripción de la actividad
+							<n:br></n:br>
+							<textbox type="text" rows="3"
+								value="@bind(vm.actividad.descripcion)" width="100%"
+								tabindex="10" constraint="no empty" />
+						</div>
+						<n:br></n:br>
+					</div>
+					<div class="col-md-6">
+						<div align="left">
+							Valor esperado
+							<n:br></n:br>
+							<intbox
+								value="@bind(vm.actividad.valorEsperado)" width="60%"
+								tabindex="10" constraint="no empty" />
+						</div>
+						<button sclass="btn-link"
+							iconSclass="z-icon-plus blue" tooltiptext="Agregar actividad"
+							onClick="@command('agregar')" />
+
+					</div>
+
+				</div>
+
 			</div>
+
+			<n:br></n:br>
+			<n:br></n:br>
+			<div align="left" class="linea-two"></div>
+			<n:br></n:br>
+
+			<div class="col-md-12">
+				<grid model="@load(vm.actividadsEvento)"
+					emptyMessage="No se encuentran actividades registradas"
+					mold="paging" pageSize="5">
+
+					<columns>
+						<column width="40%" hflex="">
+							Descripcion de la actividad
+						</column>
+
+						<column width="15%" hflex="">Acciones</column>
+					</columns>
+
+					<rows>
+						<template name="model">
+							<row>
+
+								<label value="@load(each.descripcion)" />
+
+								<button sclass="btn-link"
+									iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"
+									onClick="@command('eliminar', actividad=each)" />
+							</row>
+						</template>
+					</rows>
+
+					<foot>
+						<footer span="5" class="footer_right"
+							label="@load(vm.cantidadActividads)" />
+					</foot>
+				</grid>
+			</div>
+			<n:br></n:br>
+			<space spacing="40%" />
+			<div>
+				<button iconSclass="z-icon-floppy-o"
+					onClick="@command('guardar',win=winRAct)" class='boton-guardar'
+					label="Guardar" />
+				<space spacing="10%" />
+				<button iconSclass="z-icon-times"
+					onClick="@command('cerrarModal',win=winRAct)"
+					class='boton-cancelar' label="Cancelar" />
+			</div>
+			<space spacing="15%" />
 		</div>
 	</window>
 </zk>

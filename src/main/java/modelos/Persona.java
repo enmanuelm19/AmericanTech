@@ -22,8 +22,7 @@ public class Persona implements java.io.Serializable {
 	private String telefono;
 	private String telefonoFijo;
 	private String direccion;
-	private boolean activo = true;
-	private Set<Empleado> empleados = new HashSet<Empleado>(0);
+	private boolean activo;
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
 	private Set<RedPersona> redPersonas = new HashSet<RedPersona>(0);
@@ -49,11 +48,11 @@ public class Persona implements java.io.Serializable {
 	public Persona(int idPersona, String identificacion, String nombre,
 			String apellido, String foto, Date fechaNac, String sexo,
 			String correo, String telefono, String telefonoFijo,
-			String direccion, boolean activo, Set<Empleado> empleados,
-			Set<MiembroJunta> miembroJuntas, Set<Afiliado> afiliados,
-			Set<RedPersona> redPersonas, Set<Socio> socios,
-			Set<Eventualidad> eventualidads, Set<Postulado> postulados,
-			Set<Usuario> usuarios, Set<PreferenciaPersona> preferenciaPersonas) {
+			String direccion, boolean activo, Set<MiembroJunta> miembroJuntas,
+			Set<Afiliado> afiliados, Set<RedPersona> redPersonas,
+			Set<Socio> socios, Set<Eventualidad> eventualidads,
+			Set<Postulado> postulados, Set<Usuario> usuarios,
+			Set<PreferenciaPersona> preferenciaPersonas) {
 		this.idPersona = idPersona;
 		this.identificacion = identificacion;
 		this.nombre = nombre;
@@ -66,7 +65,6 @@ public class Persona implements java.io.Serializable {
 		this.telefonoFijo = telefonoFijo;
 		this.direccion = direccion;
 		this.activo = activo;
-		this.empleados = empleados;
 		this.miembroJuntas = miembroJuntas;
 		this.afiliados = afiliados;
 		this.redPersonas = redPersonas;
@@ -171,14 +169,6 @@ public class Persona implements java.io.Serializable {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
-	}
-
-	public Set<Empleado> getEmpleados() {
-		return this.empleados;
-	}
-
-	public void setEmpleados(Set<Empleado> empleados) {
-		this.empleados = empleados;
 	}
 
 	public Set<MiembroJunta> getMiembroJuntas() {

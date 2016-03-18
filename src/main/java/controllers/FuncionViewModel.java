@@ -5,26 +5,20 @@ import java.util.List;
 
 import org.zkoss.zul.ListModelList;
 
-import models.Funcion;
-import service.FuncionService;
+import Dao.FuncionDao;
+import modelos.Funcion;
+
+
 
 public class FuncionViewModel {
 	
 	private List<Funcion> funciones = new ArrayList<Funcion>();
+	private FuncionDao funcionDao = new FuncionDao();
 	
-	public ListModelList<Funcion> getFunciones(){
-		funciones = FuncionService.getFunciones();
+	public ListModelList<Funcion> getFunciones() throws Exception{
+		funciones = funcionDao.obtenerTodos();
 		return new ListModelList<Funcion>(funciones);
 		
 	}
 
-/* no le paren a esto
-	public ListModelList<Funcion> getFunciones(){
-		funciones = FuncionService.getFunciones();
-		return new ListModelList<Funcion>(funciones);
-		
-	}
-
-
-*/
 }

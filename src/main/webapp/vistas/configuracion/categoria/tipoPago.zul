@@ -47,21 +47,13 @@
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
-											width="120px" placeholder="Buscar" value="@bind(vm.idFiltro)"
+											width="25%" placeholder="Buscar" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')" />
-									</auxheader>
-									<auxheader colspan="1">
-										<image
-											src="../assets/img/funnel.png" />
-										<textbox instant="true"
-											width="120px" placeholder="Buscar"
-											value="@bind(vm.descFiltro)" onChange="@command('filtro')" />
 									</auxheader>
 									<auxheader colspan="1" />
 								</auxhead>
 
 								<columns>
-									<column hflex="2">Código</column>
 									<column hflex="2">
 										Tipo de Pago
 									</column>
@@ -75,8 +67,6 @@
 									<template name="model">
 
 										<row>
-											<label
-												value="@load(each.idTipoPago)" />
 											<label
 												value="@load(each.descripcion)" />
 											<div>

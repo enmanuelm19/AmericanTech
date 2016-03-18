@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 10/03/2016 08:42:34 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 17/03/2016 12:27:10 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelos.Sancion" table="sancion" schema="public" optimistic-lock="version">
         <id name="idSancion" type="int">
@@ -11,8 +11,11 @@
         <many-to-one name="afiliado" class="modelos.Afiliado" fetch="select" lazy="false">
             <column name="afiliadoid_afilado" />
         </many-to-one>
-        <many-to-one name="eventualidad" class="modelos.Eventualidad" fetch="select"  lazy="false">
+        <many-to-one name="eventualidad" class="modelos.Eventualidad" fetch="select" lazy="false">
             <column name="eventualidadid_eventualidad" />
+        </many-to-one>
+        <many-to-one name="motivoSancion" class="modelos.MotivoSancion" fetch="select" lazy="false">
+            <column name="motivo_sancionid_motivo_sancion" not-null="true" />
         </many-to-one>
         <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
             <column name="socioid_socio" />
@@ -37,3 +40,4 @@
         </property>
     </class>
 </hibernate-mapping>
+

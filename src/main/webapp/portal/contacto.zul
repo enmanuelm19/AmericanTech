@@ -19,7 +19,7 @@
 
 			<div class="wrap">
 				<n:h2>Contáctanos</n:h2>
-				<n:h4>¿Tienes alguna Sugerencia?</n:h4>
+				<n:h4>¿Tienes alguna Opinión para darnos?</n:h4>
 				<div class="section group">
 					<div class="col span_2_of_3">
 						<div class="contact-form">
@@ -28,7 +28,7 @@
 								<div class="row">
 
 									<n:h5>
-										Tu sugerencia esta relacionada
+										Tu opinión esta relacionada
 										con:
 									</n:h5>
 									<div
@@ -56,12 +56,14 @@
 
 
 								<div>
+								   <!-- <label>Nombre</label><n:br></n:br><n:br></n:br> -->
 									<textbox class="textbox"
 										placeholder="Tu nombre"
 										value="@bind(vm.clienteExterno.nombre)"
 										constraint="no empty">
 									</textbox>
-									<textbox class="textbox"
+									
+									<textbox class="textbox" 
 										placeholder="Tu apellido"
 										value="@bind(vm.clienteExterno.apellido)"
 										constraint="no empty">
@@ -71,6 +73,7 @@
 
 
 								<div>
+								 
 									<textbox placeholder="Tu mensaje"
 										rows="7" width="90%" value="@bind(vm.sugerencia.descripcion)"
 										constraint="no empty">
@@ -79,6 +82,7 @@
 								</div>
 
 								<div>
+								  
 									<textbox class="textbox"
 										style="margin-top:15px;" placeholder="Tu Correo"
 										value="@bind(vm.clienteExterno.correo)"
@@ -90,7 +94,7 @@
 								<div class="col-md-offset-9">
 									<span>
 										<button
-											iconSclass="z-icon-floppy-o" class='boton-Formulario'
+											 class='boton-Formulario'
 											style="margin-left: -22px;" label="Enviar"
 											onClick="@command('guardar', win=winP)" />
 									</span>

@@ -80,16 +80,15 @@ public class RegistrarActividadViewModel {
 	@Command
 	@NotifyChange({ "actividadsEvento", "cantidadActividads", "actividad" })
 	public void agregar() {
-		if (isRango(evento.getFechaInicio(), evento.getFechaFin(), actividad.getFechaTope())) {
+		if (actividad.getFechaTope().before(evento.getFechaFin())) {
 			if (actividad.getDescripcion() != null && !actividad.getDescripcion().equals("")
-					&& actividad.getTipoActividad() != null && actividad.getValorEsperado() != null) {
+				 && actividad.getValorEsperado() != null) {
 				actividad.setEvento(evento);
 				listActividads.add(actividad);
 				actividad = new Actividad();
 			}
 		} else
-			Messagebox.show("la fecha tope debe estar en el rango [" + evento.getFechaInicioString() + ","
-					+ evento.getFechaFinString() + "]", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("la fecha tope debe estar antes de la fecha "+ evento.getFechaFinString(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 	}
 	
 	public boolean isRango(Date a, Date b, Date d) {
@@ -114,9 +113,13 @@ public class RegistrarActividadViewModel {
 
 		if(listActividads.size()>0){
 			
-			if(getActividadsEvento().size()>0)
-				this.evento.setEstadoEvento(estadoEDao.obtenerEstadoEvento(2));
-			else this.evento.setEstadoEvento(estadoEDao.obtenerEstadoEvento(1));
+			if(getActividadsEvento().size()>0){
+				if(evento.getEstadoEvento().getIdEstadoEvento()==1)
+					this.evento.setEstadoEvento(estadoEDao.obtenerEstadoEvento(2));
+			}
+			else 
+				this.evento.setEstadoEvento(estadoEDao.obtenerEstadoEvento(1));
+			
 			
 			this.evento.setActividads(listActividads);
 			System.out.println(evento.getActividads());

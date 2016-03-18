@@ -12,6 +12,7 @@ public class Sancion implements java.io.Serializable {
 	private int idSancion;
 	private Afiliado afiliado;
 	private Eventualidad eventualidad;
+	private MotivoSancion motivoSancion;
 	private Socio socio;
 	private TipoSancion tipoSancion;
 	private String descripcion;
@@ -23,20 +24,23 @@ public class Sancion implements java.io.Serializable {
 	public Sancion() {
 	}
 
-	public Sancion(int idSancion, TipoSancion tipoSancion, String descripcion,
-			boolean activo) {
+	public Sancion(int idSancion, MotivoSancion motivoSancion,
+			TipoSancion tipoSancion, String descripcion, boolean activo) {
 		this.idSancion = idSancion;
+		this.motivoSancion = motivoSancion;
 		this.tipoSancion = tipoSancion;
 		this.descripcion = descripcion;
 		this.activo = activo;
 	}
 
 	public Sancion(int idSancion, Afiliado afiliado, Eventualidad eventualidad,
-			Socio socio, TipoSancion tipoSancion, String descripcion,
-			Date fechaInic, Date fechaFin, Float monto, boolean activo) {
+			MotivoSancion motivoSancion, Socio socio, TipoSancion tipoSancion,
+			String descripcion, Date fechaInic, Date fechaFin, Float monto,
+			boolean activo) {
 		this.idSancion = idSancion;
 		this.afiliado = afiliado;
 		this.eventualidad = eventualidad;
+		this.motivoSancion = motivoSancion;
 		this.socio = socio;
 		this.tipoSancion = tipoSancion;
 		this.descripcion = descripcion;
@@ -68,6 +72,14 @@ public class Sancion implements java.io.Serializable {
 
 	public void setEventualidad(Eventualidad eventualidad) {
 		this.eventualidad = eventualidad;
+	}
+
+	public MotivoSancion getMotivoSancion() {
+		return this.motivoSancion;
+	}
+
+	public void setMotivoSancion(MotivoSancion motivoSancion) {
+		this.motivoSancion = motivoSancion;
 	}
 
 	public Socio getSocio() {

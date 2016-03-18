@@ -1,115 +1,127 @@
 <?page title="Mostrar grupos" contentType="text/html;charset=UTF-8"?>
 
-<!-- Load Bootstrap  -->
 <?link href="../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
-
-
-<!-- Google Open Sans font -->
-<!-- Load fonts from local -->
 <?link href="../../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
-
-<!-- Unmark if we want to use fonts from google server
-<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
--->
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 
-<zk xmlns:n="native" >
+<!-- Unmark if we want to use fonts from google server
+	<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+-->
 
-	<window border="none" title="Registrar Noticia" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"  closable="true" 
-	width="48%" height="auto" style="iconSclass=z-icon-puzzle-piece;">
-		<caption iconSclass="z-icon-puzzle-piece"/>
- 
-			
-			<div class='contenido'>
-				
-	  			<div align="left">
-						<div class='encabezado'>Noticia</div>
-						<div class='linea-two'></div>
-				</div>
-				 <space spacing="15%" />
-				
-				<div align="center">
-					<grid >
+<zk xmlns:n="native">
+	<window border="none" title="Registrar Noticia" id="winNoticias"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		closable="true" width="48%" height="auto"
+		style="iconSclass=z-icon-puzzle-piece;"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarNoticiaViewModel')">
+		<caption iconSclass="z-icon-puzzle-piece" />
 
-								<rows class="">
-
-									<row class="col-md-12">
-										<div>
-											<label value="Titulo" class="col-md-12"/>
-											<textbox type="text"
-												value="" width="100%"  constraint="no empty" />
-											
-										</div>
-										<div>
-											 <button upload="true,maxsize=300" class='boton-guardar col-md-12' label="Imagen destacada">
-										        <attribute name="onUpload"><![CDATA[
-										            org.zkoss.util.media.Media media = event.getMedia();
-										            if (media instanceof org.zkoss.image.Image) {
-										                org.zkoss.zul.Image image = new org.zkoss.zul.Image();
-										                image.setContent(media);
-										                image.setParent(pics);
-										            } else {
-										                Messagebox.show("Not an image: "+media, "Error", Messagebox.OK, Messagebox.ERROR);
-										                break;
-										            }
-										        ]]></attribute>
-										    </button>
-										</div>
-										
-									</row >
-									<row  class="col-md-12">
-										<div>
-											<label value="Evento" class="col-md-12"/>
-											<textbox type="text"
-												value="" width="80%"  constraint="no empty" />
-											<button sclass="btn-link"
-												iconSclass="z-icon-search blue" />
-										</div>
-										<div>
-											<label value="Condición" class="col-md-12"/>
-											<combobox width="100%"> 
-												<comboitem label="" />
-												<comboitem label="" />
-												<comboitem label="" />
-											</combobox>
-										</div>
-										
-
-									</row>
-									<row class="col-md-12">
-										
-										<div>
-											<label value="Fecha de Caducidad" class="col-md-12"/>
-											<datebox id="DateFechaCaducidad" width="100%" cols="12" format="short " onCreate="self.value = new Date()" />
-										</div>
-										<div>
-											<label value="Público" class="col-md-12"/>
-											<combobox width="100%"> 
-												<comboitem label="" />
-												<comboitem label="" />
-												<comboitem label="" />
-											</combobox>
-										</div>
-									</row>
-									<row class="col-md-12">
-										
-										<div>
-											<label value="Descripción" class="col-md-12"/>
-											<textbox id="txtDescripcion" readonly="false" cols="45" rows="2" type="text" value="" width="100%" />
-										</div>
-									</row>
-			
-			            </rows>
-			        </grid>
-			       <space spacing="15%" />
-			       
-			        <div>
-						<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Registrar"/>
-						<space spacing="5%" />
-						<button  iconSclass="z-icon-times"  class='boton-cancelar' label="Cancelar"/>
-			        </div><separator spacing="5%"/>
-				</div>
+		<div class='contenido'>
+			<div align="left">
+				<div class='encabezado'>Noticia</div>
+				<div class='linea-two'></div>
 			</div>
-		</window>
+			<space spacing="15%" />
+
+			<div align="center">
+				<grid>
+					<rows>
+						<row class="col-md-12">
+							<div>
+								<image
+									class="img-responsive col-md-offset-3 col-md-6"
+									content="@bind(vm.uploadedImage)">
+								</image>
+								<separator spacing="12px"></separator>
+								<button label="Examinar"
+									iconSclass="z-icon-folder-open"
+									class="boton-guardar col-md-offset-3 col-md-6"
+									upload="true,maxsize=2000"
+									onUpload="@command('upload', media=event.media)">
+								</button>
+							</div>
+							<vlayout>
+								<div>
+									<label id="lblTitulo" value="Título"
+										class="col-md-12" />
+									<textbox class="col-md-12"
+										id="txtTitulo" type="text" constraint="no empty"
+										maxlength="80" value="@bind(vm.noticia.titulo)" />
+								</div>
+								<div>
+									<label value="Fecha Creación"
+										class="col-md-12" />
+									<datebox id="DateFechaCreacion"
+										width="100%" cols="12" format="dd/MM/yyyy"
+										onCreate="self.value = new Date()" disabled="true"
+										value="@bind(vm.noticia.fechaCreacion)" />
+								</div>
+								<div>
+								<label value="Fecha Caducidad"
+									class="col-md-12" />
+								<datebox id="DateFechaCaducidad"
+									width="100%" cols="12" format="dd/MM/yyyy"
+									onCreate="self.value = new Date()"
+									value="@bind(vm.noticia.caducidad)" />
+							</div>
+							</vlayout>
+						</row>
+						<row class="col-md-12">
+							<div>
+								<label value="Público"
+									class="col-md-12" />
+								<combobox value="Seleccione una opción"
+									width="100%">
+									<comboitem label="Si" value="true" />
+									<comboitem label="No" value="false" />
+								</combobox>
+							</div>
+							<div>
+								<label value="Tipo Noticia"
+									class="col-md-12" />
+								<combobox
+									model="@load(vm.tipoNoticiaAll)"
+									selectedItem="@bind(vm.tiponoticia)"
+									value="@bind(vm.tiponoticia.descripcion)" width="100%">
+									<template name="model">
+										<comboitem
+											label="@load(each.descripcion)" value="@load(each)" />
+									</template>
+								</combobox>
+							</div>
+						</row>
+						<row class="col-md-12">
+							<div>
+								<label value="Enlace" class="col-md-12" />
+								<textbox type="text" class="col-md-12"
+									constraint="no empty" maxlength="100"
+									value="@bind(vm.noticia.enlace)" />
+							</div>
+						</row>
+					</rows>
+				</grid>
+				<div>
+					<label value="Descripción"
+						class="col-md-2" />
+					<textbox id="txtDescripcion"
+						readonly="false" cols="45" rows="7" style="overflow: hidden;" type="text" class="col-md-12"
+						value="@bind(vm.noticia.descripcion)" />
+				</div>
+				<space spacing="15%" />
+				<div>
+					<button id="btnRegistrar"
+						iconSclass="z-icon-floppy-o" class='boton-guardar'
+						label="Registrar" 
+						onClick="@command('guardar', win=winNoticias)" />
+					<space spacing="5%" />
+					<button id="btnCancelar" iconSclass="z-icon-times"
+						class='boton-cancelar' label="Cancelar"
+						onClick="@command('cerrarModal', win=winNoticias)" />
+				</div>
+				<separator spacing="5%" />
+			</div>
+		</div>
+	</window>
 </zk>

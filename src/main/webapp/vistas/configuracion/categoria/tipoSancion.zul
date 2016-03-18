@@ -49,20 +49,12 @@
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true"
-											width="85%" value="@bind(vm.idFiltro)"
-											onChange="@command('filtro')" placeholder="Buscar" />
-									</auxheader>
-									<auxheader>
-										<image
-											src="../assets/img/funnel.png" />
-										<textbox instant="true"
-											width="85%" value="@bind(vm.descFiltro)"
+											width="25%" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1" />
 								</auxhead>
 								<columns>
-									<column hflex="2">Codigo</column>
 									<column hflex="2">
 										Tipo Sancion
 									</column>
@@ -76,8 +68,6 @@
 									<template name="model">
 
 										<row>
-											<label
-												value="@load(each.idTipoSancion)" />
 												
 											<label
 												value="@load(each.descripcion)" />
