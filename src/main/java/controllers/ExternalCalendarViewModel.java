@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
 
-import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.calendar.Calendars;
 import org.zkoss.calendar.api.CalendarEvent;
@@ -52,22 +51,25 @@ public class ExternalCalendarViewModel extends SelectorComposer<Component> {
 		List<CalendarEvent> calendarEvents = new LinkedList<CalendarEvent>();
 		super.doAfterCompose(comp);
 		for (Evento evento : eventoDao.obtenerTodos()) {
-			if (evento.isPublico()) {
-				if (evento.getPreferenciaEventos() != null) {
-					if (evento.getPreferenciaEventos().size() == 1) {
-						for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {
+			if (evento.getEstadoEvento() != null && (evento.getEstadoEvento().getIdEstadoEvento() == 2
+					|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
+				if (evento.isPublico()) {
+					if (evento.getPreferenciaEventos() != null) {
+						if (evento.getPreferenciaEventos().size() == 1) {
+							for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {
+								calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
+										preferencia.getPreferencia().getTipoPreferencia().getColor(),
+										preferencia.getPreferencia().getTipoPreferencia().getColor(),
+										evento.getDescripcion(), evento.getNombre()));
+							}
+						} else {
 							calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
-									preferencia.getPreferencia().getTipoPreferencia().getColor(),
-									preferencia.getPreferencia().getTipoPreferencia().getColor(),
-									evento.getDescripcion(), evento.getNombre()));
+									"#11bcb7", "#11bcb7", evento.getDescripcion()));
 						}
 					} else {
 						calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
 								"#11bcb7", evento.getDescripcion()));
 					}
-				} else {
-					calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
-							"#11bcb7", evento.getDescripcion()));
 				}
 			}
 		}
