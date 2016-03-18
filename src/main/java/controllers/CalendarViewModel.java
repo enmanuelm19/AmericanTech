@@ -2,8 +2,10 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import org.zkoss.bind.annotation.ExecutionArgParam;
@@ -12,12 +14,14 @@ import org.zkoss.calendar.Calendars;
 import org.zkoss.calendar.api.CalendarEvent;
 import org.zkoss.calendar.event.CalendarsEvent;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkmax.ui.select.annotation.Subscribe;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Window;
 
 import Dao.EventoDao;
 import Dao.TipoPreferenciaDao;
@@ -42,31 +46,34 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 	private CalendarioModel calendarModel;
 
 	private EventoDao eventoDao = new EventoDao();
-	
+
 	private List<TipoPreferencia> tipoPreferenciaAll;
-	
+
 	// the in editing calendar ui event
 	private CalendarsEvent calendarsEvent = null;
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception {		
+	public void doAfterCompose(Component comp) throws Exception {
 		List<CalendarEvent> calendarEvents = new LinkedList<CalendarEvent>();
 		super.doAfterCompose(comp);
 		for (Evento evento : eventoDao.obtenerTodos()) {
-			if (evento.getPreferenciaEventos() != null) {
+			if (evento.getPreferenciaEventos() != null && evento.getEstadoEvento() != null
+					&& (evento.getEstadoEvento().getIdEstadoEvento() == 2
+							|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
 				if (evento.getPreferenciaEventos().size() == 1) {
 					for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {
 						calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
 								preferencia.getPreferencia().getTipoPreferencia().getColor(),
-								preferencia.getPreferencia().getTipoPreferencia().getColor(), evento.getDescripcion(),evento.getNombre()));
+								preferencia.getPreferencia().getTipoPreferencia().getColor(), evento.getNombre(),
+								Integer.toString(evento.getIdEvento())));
 					}
 				} else {
 					calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
-							"#11bcb7", evento.getDescripcion()));
+							"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 				}
 			} else {
 				calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
-						"#11bcb7", evento.getDescripcion()));
+						"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 			}
 		}
 		calendarModel = new CalendarioModel(calendarEvents);
@@ -133,52 +140,39 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 		CalendarioEvent data = (CalendarioEvent) event.getCalendarEvent();
 
 		if (data != null) {
-			data = (CalendarioEvent) event.getCalendarEvent();		
+			data = (CalendarioEvent) event.getCalendarEvent();
 		}
-		// notify the editor
-		QueueUtil.lookupQueue().publish(new QueueMessage(QueueMessage.Type.EDIT, data));
+		Map<String, Object> args = new HashMap<String, Object>();
+
+		try {
+			Evento evento1 = eventoDao.obtenerEvento(Integer.parseInt(data.getTitle()));
+			if (evento1 != null) {
+				args.put("evento", evento1);
+				Window window = (Window) Executions.createComponents("content/calendarEditor.zul", null, args);
+				window.doModal();
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-//	// listen to the calendar-update of event data, usually send when user drag
-//	// the event data
-//	@Listen("onEventUpdate = #calendars")
-//	public void updateEvent(CalendarsEvent event) {
-//		CalendarioEvent data = (CalendarioEvent) event.getCalendarEvent();
-//		data.setBeginDate(event.getBeginDate());
-//		data.setEndDate(event.getEndDate());
-//		calendarModel.update(data);
-//	}
+	// // listen to the calendar-update of event data, usually send when user
+	// drag
+	// // the event data
+	// @Listen("onEventUpdate = #calendars")
+	// public void updateEvent(CalendarsEvent event) {
+	// CalendarioEvent data = (CalendarioEvent) event.getCalendarEvent();
+	// data.setBeginDate(event.getBeginDate());
+	// data.setEndDate(event.getEndDate());
+	// calendarModel.update(data);
+	// }
 
 	// listen to queue message from other controller
-	@Subscribe(value = QueueUtil.QUEUE_NAME)
-	public void handleQueueMessage(Event event) {
-		if (!(event instanceof QueueMessage)) {
-			return;
-		}
-		QueueMessage message = (QueueMessage) event;
-		switch (message.getType()) {
-		case DELETE:
-			calendarModel.remove((CalendarioEvent) message.getData());
-			// clear the shadow of the event after editing
-			calendarsEvent.clearGhost();
-			calendarsEvent = null;
-			break;
-		case OK:
-			if (calendarModel.indexOf((CalendarioEvent) message.getData()) >= 0) {
-				calendarModel.update((CalendarioEvent) message.getData());
-			} else {
-				calendarModel.add((CalendarioEvent) message.getData());
-			}
-		case CANCEL:
-			// clear the shadow of the event after editing
-			calendarsEvent.clearGhost();
-			calendarsEvent = null;
-			break;
-		}
-	}
 
 	public List<TipoPreferencia> getTipoPreferenciaAll() {
-		if(tipoPreferenciaAll == null){
+		if (tipoPreferenciaAll == null) {
 			tipoPreferenciaAll = new ArrayList<TipoPreferencia>();
 		}
 		return tipoPreferenciaAll;
@@ -187,7 +181,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 	public void setTipoPreferenciaAll(List<TipoPreferencia> tipoPreferenciaAll) {
 		this.tipoPreferenciaAll = tipoPreferenciaAll;
 	}
-	
+
 	@Init
 	public void init() {
 		try {
@@ -197,5 +191,5 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

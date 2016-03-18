@@ -46,8 +46,8 @@ public class RegistrarReservacionViewModel {
 	private ArrayList<Instalacion> temporalInstalaciones;
 	private Usuario usuario;
 	private Instalacion instalacionSeleccionada;
-	private boolean disable;
-	
+	private boolean disabled;
+
 	@Init
 	public void init(@ExecutionArgParam("reservacion") Reservacion reservacion) {
 		if (reservacion == null) {
@@ -58,6 +58,7 @@ public class RegistrarReservacionViewModel {
 			this.instalacionSeleccionada = reservacion.getInstalacion();
 			this.editable = true;
 		}
+		this.setDisabled(true);
 		reservacionDao = new ReservacionDao();
 		try {
 			getTemporalInstalaciones().addAll(new InstalacionDao().obtenerTodos());
@@ -117,28 +118,47 @@ public class RegistrarReservacionViewModel {
 
 	public void setTemporalInstalaciones(ArrayList<Instalacion> temporalInstalaciones) {
 		this.temporalInstalaciones = temporalInstalaciones;
-	}	
-
-	public boolean isDisable() {
-		return disable;
 	}
 
-	public void setDisable(boolean disable) {
-		this.disable = disable;
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public boolean getDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
 	}
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (!isCamposVacio()) {
-			reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
-			reservacion.setInstalacion(getInstalacionSeleccionada());
-			reservacion.setCondicion(CondicionReservacion.PENDIENTE.getValue());
-			if (!editable)				
-				reservacionDao.agregarReservacion(reservacion);
-			else
-				reservacionDao.actualizarReservacion(reservacion);
-			win.detach();
-			BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
+			if (isDisponible(reservacion.getInstalacion())) {
+				CalendarioFecha calendarioFecha = new CalendarioFecha();
+				reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
+				reservacion.setInstalacion(getInstalacionSeleccionada());
+				reservacion.setCondicion(CondicionReservacion.PENDIENTE.getValue());
+				reservacion.setActivo(true);
+				if (!editable) {
+					calendarioFecha.setFecha(new Date());
+					calendarioFecha.setReservacion(reservacion);
+					calendarioFecha.setDescripcion(reservacion.getInstalacion().getDescripcion());
+					reservacionDao.agregarReservacion(reservacion);
+					new CalendarioFechaDao().agregarCalendarioFecha(calendarioFecha);
+				} else {
+					calendarioFecha = new CalendarioFechaDao()
+							.obtenerPorEvento(reservacionDao.obtenerReservacion(reservacion.getIdReservacion()));
+					calendarioFecha.setReservacion(reservacion);
+					reservacionDao.actualizarReservacion(reservacion);
+					new CalendarioFechaDao().actualizarCalendarioFecha(calendarioFecha);
+				}
+				win.detach();
+				BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
+			}
+		} else {
+			Messagebox.show("Debe seleccionar otra fecha la intalación se encuentra reservada");
 		}
 	}
 
@@ -156,6 +176,7 @@ public class RegistrarReservacionViewModel {
 
 	@Command
 	public void validarFecha() {
+		System.out.print("look");
 		List<CalendarioFecha> calendarioFechaAll = new ArrayList<CalendarioFecha>();
 		try {
 			calendarioFechaAll = new CalendarioFechaDao().obtenerTodos();
@@ -176,7 +197,10 @@ public class RegistrarReservacionViewModel {
 	}
 
 	public boolean isRango(Date a, Date b, Date d) {
-		return a.compareTo(d) * d.compareTo(b) >= 0;
+		if (a != null && b != null && d != null) {
+			return a.compareTo(d) * d.compareTo(b) >= 0;
+		}
+		return false;
 	}
 
 	public boolean isDisponible(Instalacion instalacion) throws Exception {
@@ -211,24 +235,28 @@ public class RegistrarReservacionViewModel {
 
 	}
 
-	public void validateReservacion() {
-		if (getReservacion() != null && getReservacion().getInstalacion() != null) {
+	@Command
+	@NotifyChange({ "reservacion", "disabled" })
+	public void validarReservacion() {
+		if (getReservacion() != null && getInstalacionSeleccionada() != null) {
 			try {
-				if (isDisponible(getReservacion().getInstalacion())) {
-					setDisable(false);
+				if (isDisponible(getInstalacionSeleccionada())) {
+					setDisabled(false);
+					BindUtils.postNotifyChange(null, null, RegistrarReservacionViewModel.this, "reservacion");
 				} else {
+					setDisabled(true);
 					Messagebox.show(
-							getReservacion().getInstalacion().getNombre()
+							getInstalacionSeleccionada().getNombre()
 									+ " no se encuentra disponible en el rango de fecha selecionado",
 							"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-					setDisable(true);
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-		}
+		}else
+				Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "Warning", Messagebox.OK,
+						Messagebox.EXCLAMATION);
 	}
 
 }
