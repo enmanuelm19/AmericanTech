@@ -72,7 +72,7 @@
 							<div>
 								<label value="Público"
 									class="col-md-12" />
-								<combobox value="Seleccione una opción"
+								<combobox selectedItem="@bind(vm.publico)" value="@bind(vm.noticia.publico)"
 									width="100%">
 									<comboitem label="Si" value="true" />
 									<comboitem label="No" value="false" />
@@ -83,8 +83,8 @@
 									class="col-md-12" />
 								<combobox
 									model="@load(vm.tipoNoticiaAll)"
-									selectedItem="@bind(vm.tiponoticia)"
-									value="@bind(vm.tiponoticia.descripcion)" width="100%">
+									selectedItem="@bind(vm.noticia.tipoNoticia)"
+									value="@bind(vm.noticia.tipoNoticia.descripcion)" width="100%">
 									<template name="model">
 										<comboitem
 											label="@load(each.descripcion)" value="@load(each)" />
@@ -95,9 +95,7 @@
 						<row class="col-md-12">
 							<div>
 								<label value="Enlace" class="col-md-12" />
-								<textbox type="text" class="col-md-12"
-									constraint="no empty" maxlength="100"
-									value="@bind(vm.noticia.enlace)" />
+								<textbox type="text" class="col-md-12" maxlength="100" value="@bind(vm.noticia.enlace)" />
 							</div>
 						</row>
 					</rows>
