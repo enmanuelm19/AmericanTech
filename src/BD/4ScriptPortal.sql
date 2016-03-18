@@ -14,12 +14,12 @@ VALUES  (1, 'El Centro Atlético AmÃ©rica cuenta con canchas de tenis, baloncesto
 
 --Fotos para la galeria de instalaciones
 INSERT INTO foto (url, instalacionid_instalacion, publico, clubid_club, activo)
-VALUES( http://i.imgur.com/wHrzoYB.jpg ,1,true, 1, true);
+VALUES( 'http://i.imgur.com/wHrzoYB.jpg',1,true, 1, true);
 
 INSERT INTO foto (url, instalacionid_instalacion, publico, clubid_club, activo)
-VALUES( http://i.imgur.com/cHPOldS.jpg, 2,true, 1, true)
+VALUES( 'http://i.imgur.com/cHPOldS.jpg', 2,true, 1, true);
 
 INSERT INTO foto (url, instalacionid_instalacion, publico, clubid_club, activo)
-VALUES( http://i.imgur.com/2pTsUU6.jpg, 2,true, 1, true)
+VALUES( 'http://i.imgur.com/2pTsUU6.jpg', 2,true, 1, true);
     
     
