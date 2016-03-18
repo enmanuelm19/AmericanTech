@@ -14,7 +14,9 @@ import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Messagebox.ClickEvent;
 import org.zkoss.zul.Window;
 
 import Dao.AlquilerDao;
@@ -38,7 +40,8 @@ public class RegistrarAlquilerViewBean {
 			if (reservacion != null) {
 				setReservacionSelected(reservacion);
 			}
-			getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
+			getReservacionAll()
+					.addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 			getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
 			getTipoPagoAll().addAll(new TipoPagoDao().obtenerTodos());
 		} catch (Exception e) {
@@ -97,6 +100,35 @@ public class RegistrarAlquilerViewBean {
 	}
 
 	@Command
+	public void denegarReservacion(@BindingParam("reservacion") final Reservacion reservacion) {
+		if (reservacion != null) {
+			EventListener<ClickEvent> clickListener = new EventListener<Messagebox.ClickEvent>() {
+				public void onEvent(ClickEvent event) throws Exception {
+					if (Messagebox.Button.YES.equals(event.getButton())) {
+						if (reservacion.getCondicion() == CondicionReservacion.PENDIENTE.getValue()) {
+							reservacion.setCondicion(CondicionReservacion.CANCELADA.getValue());
+						}
+						try {
+							new ReservacionDao().actualizarReservacion(reservacion);
+							getReservacionAll().clear();
+							getReservacionAll().addAll(new ReservacionDao()
+									.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Messagebox.show("The order has been cancelled.");
+					}
+				}
+			};
+			Messagebox.show("Are you sure you want to cancel?", "Cancel Order",
+					new Messagebox.Button[] { Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION,
+					clickListener);
+
+		}
+	}
+
+	@Command
 	public void showModal(@BindingParam("reservacion") Reservacion reservacion) {
 		if (reservacion != null) {
 			Map<String, Object> args = new HashMap<String, Object>();
@@ -121,7 +153,8 @@ public class RegistrarAlquilerViewBean {
 				new AlquilerDao().agregarAlquiler(alquilerCreate);
 				getAlquilerAll().clear();
 				getReservacionAll().clear();
-				getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
+				getReservacionAll().addAll(
+						new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 				getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
 				setTipoPagoAll(null);
 			} catch (Exception e) {
@@ -145,24 +178,9 @@ public class RegistrarAlquilerViewBean {
 	public void refreshAlquilerReservacion() throws Exception {
 		getReservacionAll().clear();
 		getAlquilerAll().clear();
-		getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
+		getReservacionAll()
+				.addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 		getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
 	}
 
-	@Command
-	public void denegar(@BindingParam("reservacion") Reservacion reservacion) {
-		if (reservacion != null) {
-			if (reservacion.getCondicion() == CondicionReservacion.PENDIENTE.getValue()) {
-				reservacion.setCondicion(CondicionReservacion.CANCELADA.getValue());
-			}
-			try {
-				new ReservacionDao().actualizarReservacion(reservacion);
-				getReservacionAll().clear();
-				getReservacionAll().addAll(new ReservacionDao().obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
 }

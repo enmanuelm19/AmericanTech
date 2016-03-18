@@ -36,7 +36,6 @@
 			</div>
 		</panelchildren>
 	</panel>
-	<include src="/vistas/content/calendarEditor.zul" />
 	<!-- Create/Update Event Popup -->
 
 

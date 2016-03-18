@@ -32,7 +32,7 @@
 									value="@bind(vm.instalacionSeleccionada.nombre)" selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
 									<template name="model">
 										<comboitem
-											label="@load(each.descripcion)" value="@load(each)" />
+											label="@load(each.nombre)" value="@load(each)" />
 									</template>
 								</combobox>
 							</div>
@@ -48,15 +48,15 @@
 								Fecha Inicio
 								<datebox id="fechaInicio"
 									value="@bind(vm.reservacion.fechaInicio)" width="100%"
-									tabindex="7" format="short" constraint="no past,no empty"
-									onChange="@command('validarFecha')" />
+									tabindex="7" format="short" constraint="no past,no empty" 
+									onChange="@command('validarReservacion')" />
 							</div>
 							<div>
 								Fecha Fin
 								<datebox id="fechaFin"
 									value="@bind(vm.reservacion.fechaFin)" width="100%"
 									tabindex="7" format="short" constraint="no past,no empty"
-									onChange="@command('validarFecha')" />
+									onChange="@command('validarReservacion')" />
 							</div>
 						</row>
 						<row class="col-md-12">
@@ -64,13 +64,13 @@
 								Hora Inicio
 								<timebox id="horaInicio"
 									value="@bind(vm.reservacion.fechaInicio)" width="100%"
-									tabindex="7" format="short" constraint="no past,no empty" />
+									tabindex="7" format="short" constraint="no past,no empty" disabled="@load(vm.disabled)" />
 							</div>
 							<div>
 								Hora Fin
 								<timebox id="horaFin"
 									value="@bind(vm.reservacion.fechaFin)" width="100%"
-									tabindex="7" format="short"  constraint="no past,no empty"/>
+									tabindex="7" format="short"  constraint="no past,no empty" disabled="@load(vm.disabled)"/>
 							</div>
 						</row>
 					</rows>
@@ -78,7 +78,7 @@
 				<space spacing="15%" />
 				<div>
 					<button iconSclass="z-icon-floppy-o"
-						onClick="@command('guardar',win=winEv)" disabled="vm.disable" class='boton-guardar'
+						onClick="@command('guardar',win=winEv)" disabled="@load(vm.disabled)" class='boton-guardar'
 						label="Registrar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
