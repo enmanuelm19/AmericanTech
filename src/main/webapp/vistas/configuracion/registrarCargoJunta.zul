@@ -1,10 +1,17 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
 <zk xmlns:n="native">
-	<window id="winRegistrarUnidadMedida" apply="org.zkoss.bind.BindComposer"
-			viewModel="@id('vm') @init('controllers.RegistrarUnidadMedidaViewModel')"
+	<window id="winRegistrarC"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar unidad medida':'Registrar unida medida')" closable="true" border="none"
+		title="@load(vm.editable?'Editar cargo ':'Registrar cargo')"
+		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%">
+		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarCargoViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">
@@ -19,10 +26,10 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-2">Nombre</div>
+								<div class="col-md-2">Descripción</div>
 								<div class="col-md-10">
 									<textbox type="text" rows="4"
-										width="100%" value="@bind(vm.unidadMedida.nombre)"
+										value="@bind(vm.cargo.descripcion)" width="100%"
 										constraint="no empty" />
 								</div>
 							</div>
@@ -35,13 +42,13 @@
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
 								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar', win=winRegistrarUnidadMedida)"/>
+								onClick="@command('guardar', win=winRegistrarC)" />
 						</div>
 						<div>
 							<button id="cancelarBtn"
 								iconSclass="z-icon-times-circle" class='boton-cancelar'
 								style="margin-bottom: 6%" label="Cancelar"
-								onClick="@command('cerrarModal', win=winRegistrarUnidadMedida)"/>
+								onClick="@command('cerrarModal', win=winRegistrarC)" />
 						</div>
 					</hbox>
 				</div>
