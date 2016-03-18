@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import Dao.ReservacionDao;
+import enums.CondicionReservacion;
 import modelos.Reservacion;
 
 public class ReservacionViewModel {
@@ -30,7 +31,7 @@ public class ReservacionViewModel {
 	@Init
 	public void init() throws Exception {
 		reservacionDao = new ReservacionDao();
-		getReservacionAll().addAll(reservacionDao.obtenerTodos());				
+		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));				
 	}
 
 	public List<Reservacion> getReservacionAll() {
@@ -45,9 +46,11 @@ public class ReservacionViewModel {
 	}
 
 	public String getNombreFiltro() {
+		if(nombreFiltro==null)
+			return "";
 		return nombreFiltro;
 	}
-
+	
 	public void setNombreFiltro(String nombreFiltro) {
 		this.nombreFiltro = nombreFiltro;
 	}
@@ -90,26 +93,25 @@ public class ReservacionViewModel {
 	@Command
 	@NotifyChange({ "reservacionAll", "cantRegistros" })
 	public void filtro() throws Exception {
-		List<Reservacion> reservacion = new ArrayList<Reservacion>();
-		String nomb = getNombreFiltro().toLowerCase();
-		
-		for (Iterator<Reservacion> i = reservacionDao.obtenerTodos().iterator(); i.hasNext();) {
+		List<Reservacion> reserva = new ArrayList<Reservacion>();
+		String nomb = getNombreFiltro().toLowerCase();		
+		for (Iterator<Reservacion> i = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()).iterator(); i.hasNext();) {
 			Reservacion tmp = i.next();
 			if (tmp.getInstalacion().getNombre().toLowerCase().contains(nomb)) {
-				reservacion.add(tmp);
+				reserva.add(tmp);
 			}
 		}
-		if(reservacion.isEmpty()){
-			getReservacionAll().addAll(reservacionDao.obtenerTodos());
+		if(reserva.isEmpty()){
+			getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 		}
-		getReservacionAll().addAll(reservacion);
+		getReservacionAll().addAll(reserva);
 	}
 
 	@GlobalCommand
 	@NotifyChange({"reservacionAll", "cantRegistros" })
 	public void refreshReservacion() throws Exception {
 		getReservacionAll().clear();
-		getReservacionAll().addAll(reservacionDao.obtenerTodos());
+		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 	}
 	
 	

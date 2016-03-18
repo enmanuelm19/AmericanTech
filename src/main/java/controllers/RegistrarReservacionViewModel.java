@@ -26,6 +26,7 @@ import Dao.InstalacionEventoDao;
 import Dao.PreferenciaDao;
 import Dao.ReservacionDao;
 import Dao.SocioDao;
+import enums.CondicionReservacion;
 import Dao.CalendarioFechaDao;
 import modelos.CalendarioFecha;
 import modelos.Evento;
@@ -131,6 +132,7 @@ public class RegistrarReservacionViewModel {
 		if (!isCamposVacio()) {
 			reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
 			reservacion.setInstalacion(getInstalacionSeleccionada());
+			reservacion.setCondicion(CondicionReservacion.PENDIENTE.getValue());
 			if (!editable)				
 				reservacionDao.agregarReservacion(reservacion);
 			else

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import modelos.Actividad;
 
 import modelos.Evento;
-import modelos.TipoActividad;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -97,22 +96,6 @@ private Sesion sesionPostgres;
 		   Session em = sesionPostgres.getSessionFactory().openSession();   	
 	        try {  	
 		    datos =  (List<Actividad>) em.createCriteria(Actividad.class).add(Restrictions.eq("evento", evento))
-		    		.add(Restrictions.eq("activo", true)).list();             
-	        } catch (Exception e) {             
-	       
-	         throw new Exception(e.getMessage(),e.getCause());
-	        } finally {  
-	          em.close();  
-	        } 
-	        return datos; 
-	}
-	//devuelve las actividades que tengan un tipo especifico
-	public List<Actividad> obtenerPortipo(TipoActividad tipo) throws Exception {            
-	      
-		   List<Actividad> datos = new ArrayList<Actividad>();  
-		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-	        try {  	
-		    datos =  (List<Actividad>) em.createCriteria(Actividad.class).add(Restrictions.eq("tipoActividad", tipo))
 		    		.add(Restrictions.eq("activo", true)).list();             
 	        } catch (Exception e) {             
 	       

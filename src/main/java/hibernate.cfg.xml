@@ -33,7 +33,6 @@
         <mapping resource="modelos/Actividad.hbm.xml" />
         <mapping resource="modelos/Postulado.hbm.xml" />
         <mapping resource="modelos/Preferencia.hbm.xml" />
-        <mapping resource="modelos/Empleado.hbm.xml" />
         <mapping resource="modelos/Eventualidad.hbm.xml" />
         <mapping resource="modelos/TipoArchivo.hbm.xml" />
         <mapping resource="modelos/TipoPago.hbm.xml" />
@@ -49,7 +48,6 @@
         <mapping resource="modelos/MotivoDesvinculacion.hbm.xml" />
         <mapping resource="modelos/Socio.hbm.xml" />
         <mapping resource="modelos/Persona.hbm.xml" />
-        <mapping resource="modelos/TipoEmpleado.hbm.xml" />
         <mapping resource="modelos/EstadoAccion.hbm.xml" />
         <mapping resource="modelos/Grupo.hbm.xml" />
         <mapping resource="modelos/Noticia.hbm.xml" />
@@ -58,7 +56,6 @@
         <mapping resource="modelos/Opinion.hbm.xml" />
         <mapping resource="modelos/PreferenciaEvento.hbm.xml" />
         <mapping resource="modelos/RecursoInstalacion.hbm.xml" />
-        <mapping resource="modelos/TipoActividad.hbm.xml" />
         <mapping resource="modelos/TipoSancion.hbm.xml" />
         <mapping resource="modelos/Accion.hbm.xml" />
         <mapping resource="modelos/Cargo.hbm.xml" />
@@ -80,6 +77,7 @@
         <mapping resource="modelos/MotivoCancelacion.hbm.xml" />
         <mapping resource="modelos/MotivoVenta.hbm.xml" />
         <mapping resource="modelos/SolicitudVenta.hbm.xml" />
+        <mapping resource="modelos/MotivoSancion.hbm.xml" />
         <mapping resource="modelos/Indicador.hbm.xml" />
         <mapping resource="modelos/Alquiler.hbm.xml" />
         <mapping resource="modelos/CancelacionEvento.hbm.xml" />

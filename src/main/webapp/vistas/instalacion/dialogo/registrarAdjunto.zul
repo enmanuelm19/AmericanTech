@@ -1,0 +1,34 @@
+<window id="test" border="none" height="auto" width="40%"
+	style="iconSclass=home-icon z-icon-home;" closable="true"
+	title="Registrar Invitados"
+	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('controllers.MisAlquileresViewModel')">
+	<div align="left">
+		<div class="encabezado">Invitados</div>
+		<div class="linea-two"></div>
+	</div>
+	<space spacing="15%" />
+	<div align="center">
+		<grid>
+			<rows class="">
+				<row class="col-md-12 ">
+					<hbox>
+						<label value=" Upload any PDF File " />
+						<button label=" Upload " upload="true"
+							onUpload="@command('onUploadPDF',upEvent=event)">
+						</button>
+						<button label=" Show PDF "
+							visible="@load(vm.fileuploaded)" style="background:#11bcb7" onClick="@command('showPDF')">
+						</button>
+					</hbox>
+
+					<iframe height="100%" width="100%" id="reportframe"
+						content="@bind(vm.fileContent)">
+					</iframe>
+				</row>
+			</rows>
+		</grid>
+		<space spacing="15%" />
+	</div>
+</window>
