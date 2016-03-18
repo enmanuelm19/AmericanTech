@@ -30,7 +30,7 @@ public class CarteleraViewModel {
 
 	private List<Noticia> noticiaAll;
 	private NoticiaDao noticiaDao;
-	
+	private List<Noticia> noticiasPublicasAll;
 
 	@Init
 	public void init() throws Exception {
@@ -48,7 +48,18 @@ public class CarteleraViewModel {
 		return noticiaAll.size() + " items en la lista";
 	}
 
-
+	public void noticiasActivas() throws Exception{
+		for(int i=0; i<noticiaDao.obtenerTodos().size();i++)
+		{
+			if(noticiaDao.obtenerTodos().get(i).isPublico()==false)
+				noticiaAll.add(noticiaDao.obtenerTodos().get(i));
+			else
+				noticiasPublicasAll.add(noticiaDao.obtenerTodos().get(i));
+				
+		}
+		
+	}
+	
 	@GlobalCommand
 	@NotifyChange({ "allNoticia", "cantRegistros" })
 	public void refreshPreferencia() throws Exception {
