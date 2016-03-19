@@ -25,9 +25,13 @@
 					<div class="wrap">
 						<div class="section group">
 							<div class="contact-form" width="60%" align="center">
+							   <div class="row">
+							    <label>Correo</label><n:br></n:br>
 								<textbox type="text" class="textbox" placeholder="Tu Cedula" constraint="no empty" value="@bind(vm.persona.identificacion)"/>
+								
 								<textbox type="text" class="textbox" placeholder="Tu nombre" constraint="no empty" value="@bind(vm.persona.nombre)"/>
 								<div class="clear"></div>
+								</div>
 								<textbox type="text" class="textbox" placeholder="Tu Apellido" constraint="no empty" value="@bind(vm.persona.apellido)"/>
 								<textbox type="text" class="textbox" placeholder="Tu Dirección" constraint="no empty" value="@bind(vm.persona.direccion)"/>
 								<div class="clear"></div>
