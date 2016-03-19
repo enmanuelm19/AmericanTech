@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,8 +54,9 @@ public class MiPerfilViewModel {
 	private Set<PreferenciaPersona> PreferenciasPersona;
 	private Media uploadedImage;
 	private boolean imagenNueva = false;
-	
-
+	private Afiliado afiliado;
+	private boolean verAfiliado;
+	private Set<Afiliado> afiliados;
 	@Init
 	public void init() throws Exception {
 
@@ -62,7 +65,19 @@ public class MiPerfilViewModel {
 		this.afiliadoDao = new AfiliadoDao();
 		this.accionDao = new AccionDao();
 		this.socioDao = new SocioDao();
-		socio = socioDao.obtenerSocioPersona(usuario.getPersona());
+		this.afiliado= afiliadoDao.obtenerPorPersona(usuario.getPersona());
+		this.socio = socioDao.obtenerSocioPersona(usuario.getPersona());
+		if(this.afiliado==null && this.socio==null){
+			verAfiliado=false;
+		}else{
+			if(this.afiliado!=null){
+				verAfiliado=false;
+				this.afiliados= new HashSet<Afiliado>();
+			} else if(this.socio!=null){
+				verAfiliado=true;
+				this.afiliados= this.socio.getAfiliados();
+			}
+		}
 		preferenciaDao = new PreferenciaDao();
 		tPreferenciaDao = new TipoPreferenciaDao();
 		temporalPreferencia = new ArrayList<Preferencia>();
@@ -103,7 +118,7 @@ public class MiPerfilViewModel {
 	public void setTipoPreferenciaSelected(TipoPreferencia tipoPreferenciaSelected) {
 		this.tipoPreferenciaSelected = tipoPreferenciaSelected;
 	}
-
+	
 	public ListModelList<PreferenciaPersona> getAllPreferenciasPersona(){
 		
 		ArrayList<PreferenciaPersona> preferenciasMostrar = new ArrayList<PreferenciaPersona>();
@@ -115,7 +130,7 @@ public class MiPerfilViewModel {
 	}
 
 	public ListModelList<Afiliado> getAllAfiliados() throws Exception {
-		return new ListModelList<Afiliado>(usuario.getPersona().getAfiliados());
+		return new ListModelList<Afiliado>(this.afiliados);
 	}
 
 	public ListModelList<Accion> getAllAcciones() throws Exception {
@@ -146,6 +161,11 @@ public class MiPerfilViewModel {
 	public String getCantidadAfiliado() throws Exception{
 		return getAllAfiliados().size()+" items en la lista";
 	} 
+	
+	
+	public boolean isVerAfiliado() {
+		return verAfiliado;
+	}
 
 	public int getCalcularEdad() {
 		Calendar birth = new GregorianCalendar();

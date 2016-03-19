@@ -68,14 +68,17 @@
 									Cuéntanos porque quieres pertenecer a la familia del Centro Atlético America
 									</label>
 									<n:br></n:br><n:br></n:br><n:br></n:br>
+									<div class="col-md-12">
 									<radiogroup id="motivo" selectedItem="@bind(vm.postulacion.motivoPostulacion)" model="@load(vm.motivosAll)" style="text-align:center;">
 										<template name="model">
-											<radio label="@load(each.descripcion)" value="@load(each)" radiogroup="motivo" style="margin-right:15px;" />									
+											<radio label="@load(each.descripcion)" value="@load(each)" radiogroup="motivo" style="margin-right:15px;"/>									
 										</template>
 									</radiogroup>
+									</div>
 								</div>
 								<n:br></n:br><n:br></n:br>
-								<div>
+								<div class="clear"></div>
+								<div class="col-md-12" align="center">
 									<label style="font-family: 'Lato', sans-serif; font-size:2em;">
 										Miembros del club que te apadrinan
 									</label>

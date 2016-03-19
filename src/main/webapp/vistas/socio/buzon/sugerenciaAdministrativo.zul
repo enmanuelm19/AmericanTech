@@ -46,11 +46,11 @@
 						<auxhead sclass="category-center">
 
             				<auxheader colspan="1">
-            					<image src="../../../assets/img/funnel.png"  width="13%"/>
+            					<image src="../assets/img/funnel.png"  width="13%"/>
                					<textbox instant="true" width="85%" placeholder="Buscar" 
                							value="@bind(vm.descFiltro)" onChange="@command('filtro')"/>
             				</auxheader>
-            				 <auxheader colspan="1" />
+            				 <auxheader colspan="5" />
 						</auxhead>
 						
 						<columns>
@@ -71,9 +71,7 @@
 										<image
 											src="@load(each.usuario.persona.foto)" width="65%" align="center" />
 										<div>
-											<textbox cols="45" rows="3"
-												readonly="true" type="text"
-												value="@load(each.descripcion)"
+											<label value="@load(each.descripcion)"
 												width="100%" />
 										</div>
 										<label value="" />

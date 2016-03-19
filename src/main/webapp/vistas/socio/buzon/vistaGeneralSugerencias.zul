@@ -49,7 +49,7 @@
                					<textbox instant="true" width="85%" placeholder="Buscar" 
                							value="@bind(vm.descFiltro)" onChange="@command('filtro')"/>
             				</auxheader>
-            				 <auxheader colspan="1" />
+            				 <auxheader colspan="5" />
 						</auxhead>
 						
 						<columns>

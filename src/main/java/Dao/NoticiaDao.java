@@ -10,6 +10,7 @@ import confi.Sesion;
 
 import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -93,7 +94,7 @@ private Sesion sesionPostgres;
            List<Noticia> datos = new ArrayList<Noticia>();  
            Session em = sesionPostgres.getSessionFactory().openSession();       
             try {   
-            datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("activo", true)).list();             
+            datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("activo", true)).addOrder(Order.desc("fechaCreacion")).list();             
             } catch (Exception e) {             
            
              throw new Exception(e.getMessage(),e.getCause());
