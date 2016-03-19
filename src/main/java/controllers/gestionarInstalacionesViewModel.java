@@ -18,8 +18,10 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import Dao.FotoDao;
 import Dao.InstalacionDao;
 import Dao.RecursoInstalacionDao;
+import modelos.Foto;
 import modelos.Instalacion;
 import modelos.RecursoInstalacion;
 import modelos.TipoInstalacion;
@@ -37,6 +39,8 @@ public class gestionarInstalacionesViewModel {
 	private String descFiltro;
 	private String idFiltro;
 	private int id;
+	private List<Foto> listFotos;
+	private FotoDao fotosInstDao;
 
 	@Init
 	public void init() throws Exception {
@@ -46,7 +50,9 @@ public class gestionarInstalacionesViewModel {
 		allinstalaciones = new ArrayList<Instalacion>();
 		allrecursoinstalaciones = new ArrayList<RecursoInstalacion>();
 		recursoInstalacionDao = new RecursoInstalacionDao();
-		
+		listFotos = new ArrayList<Foto>();
+		fotosInstDao = new FotoDao();
+		//listFotos = fotosInstDao.obtenerFotoinstalacion(instalacion);
 		
 		instalacionDao = new InstalacionDao();
 		allinstalaciones = instalacionDao.obtenerTodos();
