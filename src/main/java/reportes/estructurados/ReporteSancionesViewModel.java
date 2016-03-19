@@ -38,7 +38,7 @@ public class ReporteSancionesViewModel {
 	private Socio socio;
 	private SocioDao socioDao;
 	private String carnet;	
-	private int tipo;
+	private String tipo;
 	private int estadoinstalacion;
 	private Date fechadesde;
 	private Date fechahasta;
@@ -104,11 +104,11 @@ public class ReporteSancionesViewModel {
 		this.socio = socio;
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	
@@ -163,6 +163,11 @@ public class ReporteSancionesViewModel {
 		{
 			this.nrocarnet = false;
 			this.sancionados =true;
+		}
+		else
+		{
+			this.nrocarnet = true;
+			this.sancionados= false;
 		}
 		
 	}
