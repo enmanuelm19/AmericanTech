@@ -68,7 +68,7 @@ VALUES  (1, 'Configuracion', ' ', 'z-icon-cogs', ' ', 0, true),
 	(27, 'Tipo instalacion', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, true),
 	(28, 'Tipo sancion', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true),
 	(29, 'Tipo Afiliado', 'configuracion/categoria/tipoAfiliado.zul', 'z-icon-angle-double-right', ' ', 8, true),
-	(30, 'Tipo actividad', 'configuracion/categoria/tipoActividad.zul', 'z-icon-angle-double-right', ' ', 8, true),
+	--(30, 'Tipo actividad', 'configuracion/categoria/tipoActividad.zul', 'z-icon-angle-double-right', ' ', 8, true),
 	(31, 'Motivo desvinculacion', 'configuracion/categoria/motivoDesvinculacion.zul', 'z-icon-angle-double-right', ' ', 8, true),
 	(32, 'Acciones', 'socio/acciones.zul', 'z-icon-angle-double-right', ' ', 2, true),
 	(33, 'Mi perfil', 'socio/miPerfil.zul', 'z-icon-angle-double-right', ' ', 2, true),
@@ -105,8 +105,8 @@ VALUES  (1, 'Configuracion', ' ', 'z-icon-cogs', ' ', 0, true),
 	(64, 'Eventualidades', 'consultas/reporteEventualidadesEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
 	(65, 'Evento', 'consultas/reporteEventoValorEsperadoRealEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
 	(66, 'Socio', 'consultas/reporteSociosEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
--- (67, 'Instalacion', ' ', 'z-icon-angle-double-right', ' ', 14, true),
-	(68, 'Evento', 'consultas/reporteEventoValorEsperadoRealEst.zul.zul', 'z-icon-angle-double-right', ' ', 14, true),
+   -- (67, 'Instalacion', 'consultas/reporteInstalacionesEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
+	(68, 'Instalacion', 'consultas/reporteSociosEst.zul', 'z-icon-angle-double-right', ' ', 14, true),
 	(69, 'Red Social', 'configuracion/categoria/redSocial.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (70, 'Tipo eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (71, 'Indicador', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, true),
@@ -115,7 +115,7 @@ VALUES  (1, 'Configuracion', ' ', 'z-icon-cogs', ' ', 0, true),
     (74, 'Tipo Noticia', 'configuracion/categoria/tipoNoticia.zul', 'z-icon-angle-double-right', ' ', 8, true),
     (75, 'Motivo Cancelacion', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, true),
 	(76, 'Sugerencias', 'socio/buzon/sugerenciasAdministrar.zul', 'z-icon-angle-double-right', ' ', 10, true);
---id 13 67 disponible
+--id 13 30 67 disponible
 	
 -- inserta las funciones pertenecientes al grupo de socio
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 33, 1, true);
@@ -152,7 +152,7 @@ INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 2
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 27, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 28, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 29, 2, true);
-INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 30, 2, true);
+-- INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 30, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 31, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 32, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 36, 2, true);

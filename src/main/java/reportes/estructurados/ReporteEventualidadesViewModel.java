@@ -9,12 +9,14 @@ import java.util.Set;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.DependsOn;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
 
 
 
@@ -40,7 +42,7 @@ public class ReporteEventualidadesViewModel {
 
 	private Socio socio;
 	private SocioDao socioDao;
-	private int tipo;
+	private String tipo;
 	private Time horaInicio;
 	private Time horaFin;
 	private Date fechaInicio;
@@ -48,11 +50,17 @@ public class ReporteEventualidadesViewModel {
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
 	private String carnet;
+	private boolean disablecarnet;
+	private boolean disableinstalaciones;
 
 
 	@Init
 	public void init() {
 		instalacionDao = new InstalacionDao();
+		this.socio= new Socio();
+		this.disableinstalaciones = true;
+		this.disablecarnet=true;
+
 	}
 
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
@@ -112,12 +120,28 @@ public class ReporteEventualidadesViewModel {
 		this.socio = socio;
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	@NotifyChange({"disablecarnet","disableinstalaciones"})
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
+		if(this.tipo.equalsIgnoreCase("Instalaciones")){
+			this.disableinstalaciones = false;
+			this.disablecarnet=true;
+		}
+		else if(this.tipo.equalsIgnoreCase("Socios") || this.tipo.equalsIgnoreCase("Afiliados"))
+		{
+			this.disablecarnet = false;
+			this.disableinstalaciones = true;
+		}
+		else
+		{
+			this.disablecarnet = true;
+			this.disableinstalaciones =true;
+		}
+		
 	}
 	public String getCarnet() {
 		return carnet;
@@ -143,9 +167,27 @@ public class ReporteEventualidadesViewModel {
 			}
 			else {
 				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);	
-				System.out.println(tipo);
 			}
 
 		}
+	}
+
+	public boolean getDisablecarnet() {
+		return disablecarnet;
+	}
+
+	public void setDisablecarnet(boolean disable) {
+		this.disablecarnet = disable;
 	}	
+	
+	public boolean getDisableinstalaciones() {
+		return disableinstalaciones;
+	}
+
+	public void setDisableinstalacionest(boolean disable) {
+		this.disableinstalaciones = disable;
+	}	
+
+	
+	
 }
