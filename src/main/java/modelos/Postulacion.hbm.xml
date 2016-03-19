@@ -47,5 +47,11 @@
             </key>
             <one-to-many class="modelos.Venta" />
         </set>
+        <set name="noticias" table="noticia" inverse="true" lazy="false" fetch="select" cascade="save-update">
+            <key>
+                <column name="postulacionid_postulacion" />
+            </key>
+            <one-to-many class="modelos.Noticia" />
+        </set>
     </class>
 </hibernate-mapping>
