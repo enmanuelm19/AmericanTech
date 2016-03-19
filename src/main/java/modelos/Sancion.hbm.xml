@@ -15,7 +15,7 @@
             <column name="eventualidadid_eventualidad" />
         </many-to-one>
         <many-to-one name="motivoSancion" class="modelos.MotivoSancion" fetch="select" lazy="false">
-            <column name="motivo_sancionid_motivo_sancion" not-null="true" />
+            <column name="motivo_sancionid_motivo_sancion" not-null="false" />
         </many-to-one>
         <many-to-one name="socio" class="modelos.Socio" fetch="select" lazy="false">
             <column name="socioid_socio" />

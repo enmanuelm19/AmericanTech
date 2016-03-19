@@ -34,7 +34,7 @@
 
 							<columns>
 								<column hflex="1"/>
-								<column hflex="9">Período</column>
+								<column hflex="9" sort="auto(desc)">Período</column>
 								<column hflex="3" align="center">Agregar Miembro</column>
 							</columns>
 							<rows>
@@ -74,9 +74,7 @@
 										</detail>
 										
 										<label value="${junta.fechaInic} - ${junta.fechaFin}"/>
-										<button sclass="btn-link" iconSclass="z-icon-plus blue" tooltiptext="Agregar Miembro"
-										onClick="@command('showModal', preferencia=each)" />
-																
+										<button sclass="btn-link" iconSclass="z-icon-plus blue" tooltiptext="Agregar Miembro" onClick="@command('agregarMiembro', Junta=junta)" />
 									<div>
 											
 								</div>

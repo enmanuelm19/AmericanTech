@@ -4,154 +4,93 @@
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <zk>
-	<window title="Registrar Miembro" width="40%" height="70%"
-		style="iconSclass=z-icon-cogs;" closable="true" class="col-md-8"
-		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+	<window title="Registrar Miembro" width="50%" height="650px" style="iconSclass=z-icon-cogs;" closable="true" class="col-md-8"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" id="winRegistrarMiembro">
 		<caption iconSclass="z-icon-cogs" />
-
 		<div class="contenido">
 			<div align="left">
 				<div class='encabezado'>Datos Básicos</div>
 				<div class='linea-two'></div>
 			</div>
 			<space spacing="12%" />
-
-			<div class="row">
+			<div class="row"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarMiembroViewModel')">
 				<div align="right" class='col-md-3'>
-					<image src="/assets/portal/img/img2.jpg"
-						width="100%" />
+					<image content="@bind(vm.uploadedImage)" src="/assets/portal/img/img2.jpg" width="100%" />
 					<separator />
 					<div>
-						<fileupload iconSclass="z-icon-folder-open blue"
-							class='boton-guardar col-md-offset-1' label="Examinar" />
+						<fileupload iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-1' label="Examinar"  onUpload="@command('uploadImage',media=event.media)"/>
 					</div>
 				</div>
-				<div align="right" class='col-md-9'>
+				<div align="right" class='col-md-9' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarMiembroViewModel')">
 					<grid>
 						<rows>
 							<row>
 								<div>
-
-									<label class="col-md-3">
-										N° Carnet
-									</label>
-									<textbox id="txtNroCarnet"
-										class="col-md-6" constraint="no empty">
-									</textbox>
-									<button
-										iconSclass="z-icon-search blue" class="col-md-2 btn-link">
-									</button>
+									<label class="col-md-3">Cédula</label>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.identificacion)"/>
+									<button	iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('buscarCedula')"/>
 								</div>
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3">
-										Cédula
-									</label>
-
-									<textbox class="col-md-6"
-										constraint="no empty" />
-									<button
-										iconSclass="z-icon-search blue" class="col-md-2 btn-link">
-									</button>
+									<label class="col-md-3">Nombre</label>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.nombre)"/>
 								</div>
-
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3">
-										Nombre
-									</label>
-
-									<textbox class="col-md-9"
-										constraint="no empty" />
-
+									<label class="col-md-3">Apellido</label>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.apellido)"/>
 								</div>
-
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3">
-										Apellido
-									</label>
-
-									<textbox class="col-md-9"
-										constraint="no empty" />
-
+									<label class="col-md-3">Fecha Nacimiento</label>
+									<datebox class="col-md-9" value="@load(vm.miembro.persona.fechaNac)"/>
 								</div>
-
-							</row>
-							<row>
-								<div>
-									<label class="col-md-3">
-										Nacimiento
-									</label>
-
-									<datebox class="col-md-9" />
-
-								</div>
-
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Sexo</label>
-
-									<combobox>
-										<comboitem
-											label="Seleccione una opción">
-										</comboitem>
-										<comboitem label="M"></comboitem>
-										<comboitem label="F"></comboitem>
-									</combobox>
-
-								</div>
-
-							</row>
-							<row>
-								<div>
-									<label class="col-md-3">
-										Email
-									</label>
-									<textbox id="TxtEmail"
-										class="col-md-6" constraint="no empty">
-									</textbox>
+									<radiogroup id="sexo" selectedItem="@load(vm.miembro.persona.sexo)">
+										<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
+										<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
+									</radiogroup>									
 								</div>
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3">
-										Teléfono
-									</label>
-									<textbox id="txtTelefono"
-										class="col-md-6" constraint="no empty">
-									</textbox>
+									<label class="col-md-3">Email</label>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.correo)"/>
 								</div>
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3">
-										Dirección
-									</label>
-									<textbox id="txtDireccion" rows="2"
-										cols="30" class="col-md-9" constraint="no empty">
-									</textbox>
+									<label class="col-md-3">Teléfono Domicilio</label>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.telefonoFijo)"/>
 								</div>
 							</row>
-								<row>
+							<row>
+								<div>
+									<label class="col-md-3">Teléfono Celular</label>
+									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.telefono)"/>
+								</div>
+							</row>
+							<row>
+								<div>
+									<label class="col-md-3">Dirección</label>
+									<textbox rows="2" cols="30" class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.direccion)"/>
+								</div>
+							</row>
+							<row>
 								<div>
 									<label class="col-md-3">Cargo</label>
-
-									<combobox>
-										<comboitem
-											label="Seleccione una opción">
-										</comboitem>
-										<comboitem label="Presidente"></comboitem>
-										<comboitem label="Vocal"></comboitem>
-										<comboitem label="Tesorero"></comboitem>
+									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6" onChange="@command('verificar')">
+										<template name="model">
+											<comboitem label="@load(each.descripcion)" value="@load(each)"/>
+										</template>
 									</combobox>
-
 								</div>
-
 							</row>
 						</rows>
 					</grid>
@@ -159,18 +98,10 @@
 
 				<space spacing="15%" />
 				<div class="row col-md-12">
-					<button
-						class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
-						type="button" iconSclass="z-icon-floppy-o">
-					</button>
-					<button
-						class="boton-cancelar col-md-3 col-md-offset-2"
-						iconSclass="z-icon-times" type="button" label="Cancelar">
-					</button>
+					<button class="boton-guardar col-md-3 col-md-offset-2" label="Guardar" type="button" iconSclass="z-icon-floppy-o" onClick="@command('guardar', m=vm.miembro)"/>
+					<button	class="boton-cancelar col-md-3 col-md-offset-2" iconSclass="z-icon-times" type="button" label="Cancelar"/>
 				</div>
 				<separator spacing="5%" />
-
-
 			</div>
 		</div>
 	</window>

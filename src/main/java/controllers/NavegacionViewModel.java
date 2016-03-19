@@ -285,5 +285,13 @@ public class NavegacionViewModel{
 		}
 		cambiarPantalla(funcionMiPerfil);
 	}
-
+	
+	public String getBienvenido(){
+		Usuario user = (Usuario) Sessions.getCurrent().getAttribute("Usuario");
+		return "Bienvenido, "+user.getPersona().getNombre();
+	}
+	public String getImagen(){
+		Usuario user = (Usuario) Sessions.getCurrent().getAttribute("Usuario");
+		return user.getPersona().getFoto();
+	}
 }
