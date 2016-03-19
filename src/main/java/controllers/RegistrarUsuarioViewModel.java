@@ -139,14 +139,18 @@ public class RegistrarUsuarioViewModel {
 				user.setActivo(true);
 				this.user.setUsuarioGrupos(this.usuarioGrupos);
 				user.getPersona().setIdentificacion(keyword);
+				if(getUploadedImage()!=null){
+				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
+				user.getPersona().setFoto(foto);}
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
 				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!");
 			}
 			else {
 				user.setFecha(new Date());
+				if(getUploadedImage()!=null){
 				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
-				user.getPersona().setFoto(foto);
+				user.getPersona().setFoto(foto);}
 				user.setUsuarioGrupos(this.usuarioGrupos);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
@@ -174,7 +178,9 @@ public class RegistrarUsuarioViewModel {
 	public void busqueda(@BindingParam("win") Window win) throws Exception{
 		personas = personaDao.obtenerTodos();
 		usuarios = usuarioDao.obtenerTodos();
+		boolean encontro = true;
 		if (keyword!= null) {
+			outloop:
 			for(Persona p : personas){
 				if(keyword.equalsIgnoreCase(p.getIdentificacion())){
 					
@@ -182,18 +188,27 @@ public class RegistrarUsuarioViewModel {
 						if(u.getPersona().getIdentificacion().equalsIgnoreCase(p.getIdentificacion())){
 							Messagebox.show("Lo sentimos la persona ya tiene un usuario asignado, editar el usuario en la lista");
 							cerrarModal(win);
-							break;
+							encontro = true;
+							break outloop;
 						}
 					}
 					Persona personaTemporal = user.getPersona();
 					user.setPersona(p);
 					personaDao.hardDelete(personaTemporal);
 					Messagebox.show("Ahora puede agregar un usuario a " + p.getNombre());
-					break;
+					break outloop;
+				}else{
+					encontro = false;
 				}
+
 			}
+
 		}else{
 			Messagebox.show("Por favor ingrese datos en el campo");
+		}
+		
+		if(encontro == false){
+			Messagebox.show("Persona no encontrada, proceda a ingresar los datos");
 		}
 
 	}
