@@ -11,6 +11,9 @@
         <many-to-one name="evento" class="modelos.Evento" fetch="select" lazy="false">
             <column name="eventoid_evento" />
         </many-to-one>
+        <many-to-one name="postulacion" class="modelos.Postulacion" fetch="select" lazy="false">
+            <column name="postulacionid_postulacion" />
+        </many-to-one>
         <many-to-one name="tipoNoticia" class="modelos.TipoNoticia" fetch="select" lazy="false">
             <column name="tipo_noticiaid_tipo_noticia" />
         </many-to-one>
