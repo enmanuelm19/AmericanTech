@@ -27,10 +27,10 @@
 
 								<div class="row">
 
-									<n:h5>
-										Tu opinión esta relacionada
-										con:
-									</n:h5>
+									<label>
+										Tu opinión esta relacionada con:
+									</label>
+									<n:br></n:br>
 									<div
 										style="width:550px; background-color: #FFFFFF ">
 										<combobox zclass="none"
@@ -56,28 +56,31 @@
 
 
 								<div class="row">
-								<div zclass="none"  class="col-md-6">
-								 <label>Nombre</label><n:br></n:br><n:br></n:br>
-									<textbox zclass="none" class="textbox" 
-									 
-										placeholder="Tu nombre"
-										value="@bind(vm.clienteExterno.nombre)"
-										constraint="no empty"  width="78%">
-									</textbox>
+									<div zclass="none"
+										class="col-md-6">
+										<label>Nombre</label>
+										<n:br></n:br>
+										<textbox zclass="none"
+											class="textbox" placeholder="Tu nombre"
+											value="@bind(vm.clienteExterno.nombre)" constraint="no empty"
+											width="78%">
+										</textbox>
 									</div>
 									<div class="col-md-6">
-									 <label>Apellido</label><n:br></n:br><n:br></n:br>
-									<textbox class="textbox"  
-										placeholder="Tu apellido"
-										value="@bind(vm.clienteExterno.apellido)"
-										constraint="no empty" width="78%">
-									</textbox>
+										<label>Apellido</label>
+										<n:br></n:br>
+										<textbox class="textbox"
+											placeholder="Tu apellido"
+											value="@bind(vm.clienteExterno.apellido)"
+											constraint="no empty" width="78%">
+										</textbox>
 									</div>
 								</div>
 
 
 								<div class="row">
-								 <label>Mensaje</label><n:br></n:br><n:br></n:br>
+									<label>Mensaje</label>
+									<n:br></n:br>
 									<textbox placeholder="Tu mensaje"
 										rows="7" width="90%" value="@bind(vm.sugerencia.descripcion)"
 										constraint="no empty">
@@ -85,10 +88,11 @@
 
 								</div>
 
-								<div  class="row">
-								   <label>Correo</label><n:br></n:br>
-									<textbox class="textbox"
-										style="margin-top:10px;" placeholder="Tu Correo"
+								<div class="row">
+									<label>Correo</label>
+									<n:br></n:br>
+									<textbox class="textbox" width="40%"
+										placeholder="Tu Correo"
 										value="@bind(vm.clienteExterno.correo)"
 										constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email valida">
 									</textbox>
@@ -97,8 +101,7 @@
 								</div>
 								<div class="col-md-offset-9">
 									<span>
-										<button
-											 class='boton-Formulario'
+										<button class='boton-Formulario'
 											style="margin-left: -22px;" label="Enviar"
 											onClick="@command('guardar', win=winP)" />
 									</span>
@@ -213,7 +216,7 @@
 								</rows>
 
 							</grid>
-						
+
 						</div>
 					</div>
 
