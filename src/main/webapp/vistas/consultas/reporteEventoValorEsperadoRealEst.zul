@@ -33,7 +33,7 @@
 								   	 			<row class="col-md-12 ">
 								   	 				<div align="left">
 									                  	<div>
-															<checkbox label="Fecha"></checkbox>
+															<checkbox checked="@bind(vm.fecha)" label="Fecha"></checkbox>
 														</div>
 								   	 				</div>
 								   	 			</row>
