@@ -124,7 +124,7 @@ CREATE TABLE noticia (
   postulacionid_postulacion   int2, 
   foto                        text, 
   tipo_noticiaid_tipo_noticia int2, 
-  fecha_creacion              date NOT NULL, 
+  fecha_creacion              timestamp NOT NULL, 
   caducidad                   date NOT NULL, 
   publico                     bool NOT NULL, 
   enlace                      varchar(255), 
@@ -181,7 +181,7 @@ CREATE TABLE reservacion (
   socioid_socio             int2 NOT NULL, 
   fecha_inicio              timestamp NOT NULL, 
   fecha_fin                 timestamp NOT NULL, 
-  condicion                 char(255), 
+  condicion                 char(1) DEFAULT 'P', 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_reservacion));
 CREATE TABLE afiliado (

@@ -26,8 +26,8 @@
         <property name="foto" type="string">
             <column name="foto" />
         </property>
-        <property name="fechaCreacion" type="date">
-            <column name="fecha_creacion" length="13" not-null="true" />
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="29" not-null="true" />
         </property>
         <property name="caducidad" type="date">
             <column name="caducidad" length="13" not-null="true" />
