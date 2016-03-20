@@ -35,6 +35,7 @@
 							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
 													<comboitem label="Alquiladas" value="Alquiladas" />
 													<comboitem label="Reservadas" value="Reservadas" />
+													<comboitem label="Todas" value="Todas" />
 										   </combobox>
 							   		   </div>
 									   <space spacing ="2%"></space>   

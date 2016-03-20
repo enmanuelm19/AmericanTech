@@ -17,15 +17,12 @@ import org.zkoss.zul.Window;
 import Dao.ActividadDao;
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
-import Dao.TipoActividadDao;
 import modelos.Actividad;
 import modelos.Evento;
-import modelos.TipoActividad;
 
 public class RegistrarActividadViewModel {
 	
 	private Actividad actividad;
-	private TipoActividadDao tipoActividadDao;
 	private EventoDao eventoDao;
 	private EstadoEventoDao estadoEDao;
 	private ActividadDao actividadDao;
@@ -40,7 +37,6 @@ public class RegistrarActividadViewModel {
 		estadoEDao = new EstadoEventoDao();
 		actividadDao = new ActividadDao();
 		actividad = new Actividad();
-		tipoActividadDao = new TipoActividadDao();
 	}
 
 	public Actividad getActividad() {
@@ -59,9 +55,7 @@ public class RegistrarActividadViewModel {
 		this.evento = evento;
 	}
 
-	public List<TipoActividad> getAllTipoActividad() throws Exception{
-		return tipoActividadDao.obtenerTodos();
-	}
+	
 	
 	public ListModelList<Actividad> getActividadsEvento() throws Exception {
 		ArrayList<Actividad> actividadsMostrar = new ArrayList<Actividad>();
@@ -84,6 +78,7 @@ public class RegistrarActividadViewModel {
 			if (actividad.getDescripcion() != null && !actividad.getDescripcion().equals("")
 				 && actividad.getValorEsperado() != null) {
 				actividad.setEvento(evento);
+				actividad.setActivo(true);
 				listActividads.add(actividad);
 				actividad = new Actividad();
 			}

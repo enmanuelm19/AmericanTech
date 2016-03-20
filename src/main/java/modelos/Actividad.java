@@ -133,5 +133,15 @@ public class Actividad implements java.io.Serializable {
 		else
 			return "No finalizada";
 	}
+	
+public String getVariacion(){
+		
+		if(valorReal==null || valorReal == valorEsperado)
+			return "-";
+		else if(valorReal>valorEsperado)
+			return "+"+String.valueOf(valorReal-valorEsperado);
+		else return String.valueOf(valorReal-valorEsperado);
+	}
+
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.EstadoAccion;
+import modelos.Sancion;
 import modelos.TipoSugerencia;
 import confi.Sesion;
 

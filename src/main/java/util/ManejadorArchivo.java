@@ -69,7 +69,12 @@ public class ManejadorArchivo {
 		File file = new File(imagenLocal);
 		image = ImageIO.read(file);
 		ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-		ImageIO.write(image, "jpg", byteArray);
+		String extension = "png";
+		if(file.getName().lastIndexOf(".") != -1 && file.getName().lastIndexOf(".") != 0){
+			extension = file.getName().substring(file.getName().lastIndexOf(".")+1);
+			System.out.println(extension);
+		}
+		ImageIO.write(image, extension, byteArray);
 		byte[] byteImage = byteArray.toByteArray();
 		String dataImage = Base64.encode(byteImage);
 		String data = URLEncoder.encode("image", "UTF-8") + "=" +URLEncoder.encode(dataImage, "UTF-8");

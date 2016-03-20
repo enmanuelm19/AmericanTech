@@ -1,10 +1,14 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
@@ -40,59 +44,23 @@ public class JuntaDirectivaViewModel {
 		return juntaD;
 	}
 	
-	/*
-	public String getCedulaFiltro() {
-		if(cedulaFiltro==null)
-			return "";
-		return cedulaFiltro;
-	}
-
-	public void setCedulaFiltro(String cedulaFiltro) {
-		this.cedulaFiltro = cedulaFiltro==null?"":cedulaFiltro.trim();
-	}
-	public String getNombreFiltro() {
-		if(nombreFiltro==null)
-			return "";
-		return nombreFiltro;
-	}
-
-	public void setNombreFiltro(String nombreFiltro) {
-		this.nombreFiltro = nombreFiltro==null?"":nombreFiltro.trim();
-	}
-
-	public String getApellidoFiltro() {
-		if(apellidoFiltro==null)
-			return "";
-		return apellidoFiltro;
-	}
-
-	public void setApellidoFiltro(String apellidoFiltro) {
-		this.apellidoFiltro = apellidoFiltro==null?"":apellidoFiltro.trim();
-	}
-	
-/*	@Command
-	@NotifyChange({ "sociosAll", "cantidadSocios" })
-	public void filtro() throws Exception {
-		List<JuntaDirectiva> tip = new ArrayList<JuntaDirectiva>();
-		String primerNom = getNombreFiltro().toLowerCase();
-		String primerApell = getApellidoFiltro().toLowerCase();
-		String cedula=getCedulaFiltro();
-		
-		for (Iterator<JuntaDirectiva> i = juntaDao.obtenerTodos().iterator(); i.hasNext();) {
-			JuntaDirectiva tmp = i.next();
-			
-				if (tmp.getPersona().getIdentificacion().toLowerCase().contains(cedula) &&
-					tmp.getPersona().getNombre().toLowerCase().contains(primerNom) &&
-					tmp.getPersona().getApellido().toLowerCase().contains(primerApell)){
-						tip.add(tmp);
-				}
-		}
-		this.socios = tip;
-	}
-	*/
 	@Command
 	public void showModalRegistrarMienbroJunta(){
-		Window window = (Window)Executions.createComponents("configuracion/registrarMiembroJunta.zul", null, null);
+		Window window = (Window)Executions.createComponents("configuracion/registrarJuntaDirectiva.zul", null, null);
 		window.doModal();
+	}
+	
+	@GlobalCommand
+	@NotifyChange({"juntaAll","cantidad"})
+	public void refreshJunta() throws Exception{
+		this.juntas= juntaDao.obtenerTodos();
+	}
+	
+	@Command
+	public void agregarMiembro(@BindingParam("Junta") JuntaDirectiva j){
+		Map<String, Object> args = new HashMap<String, Object>();
+    	args.put("Junta", j);
+		 Window window = (Window)Executions.createComponents("configuracion/registrarMiembroJunta.zul", null, args);
+		 window.doModal();
 	}
 }

@@ -8,6 +8,7 @@ import confi.Sesion;
 
 import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -92,7 +93,7 @@ private Sesion sesionPostgres;
            List<JuntaDirectiva> datos = new ArrayList<JuntaDirectiva>();  
            Session em = sesionPostgres.getSessionFactory().openSession();       
             try {   
-            datos =  (List<JuntaDirectiva>) em.createCriteria(JuntaDirectiva.class).add(Restrictions.eq("activo", true)).list();             
+            datos =  (List<JuntaDirectiva>) em.createCriteria(JuntaDirectiva.class).add(Restrictions.eq("activo", true)).addOrder(Order.desc("fechaInic")).list();             
             } catch (Exception e) {             
            
              throw new Exception(e.getMessage(),e.getCause());

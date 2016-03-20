@@ -38,43 +38,20 @@ public class ReporteSancionesViewModel {
 	private Socio socio;
 	private SocioDao socioDao;
 	private String carnet;	
-	private int tipo;
-	private int estadoinstalacion;
+	private String tipo;
 	private Date fechadesde;
 	private Date fechahasta;
-	private InstalacionDao instalacionDao;
-	private TipoInstalacion tipoInstalacionSelected;
+	private boolean nrocarnet;
+	private boolean sancionados;
+	private boolean check;
 
 
 	@Init
 	public void init() {
-		instalacionDao = new InstalacionDao();
 		this.socio = new Socio();
+		this.nrocarnet = true;
 	}
 
-	public ListModelList<Instalacion> getInstalaciones() throws Exception {
-
-		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
-
-	}
-	
-	@NotifyChange("tipoInstalacionSelected")
-	public TipoInstalacion getTipotipoInstalacionSelected() {
-		return tipoInstalacionSelected;
-	}
-
-	@NotifyChange("InstalacionPorTipo")
-	public void setTipoInstalacionSelected(TipoInstalacion tipoInstalacionSelected) {
-		this.tipoInstalacionSelected = tipoInstalacionSelected;
-	}
-
-	public int getEstadoinstalacion() {
-		return estadoinstalacion;
-	}
-
-	public void setEstadoinstalacion(int estadoinstalacion) {
-		this.estadoinstalacion = estadoinstalacion;
-	}
 
 	public Date getFechadesde() {
 		return fechadesde;
@@ -100,11 +77,11 @@ public class ReporteSancionesViewModel {
 		this.socio = socio;
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	
@@ -130,6 +107,42 @@ public class ReporteSancionesViewModel {
 			}
 
 		}
+	}
+
+	public boolean isNrocarnet() {
+		return nrocarnet;
+	}
+
+	public void setNrocarnet(boolean nrocarnet) {
+		this.nrocarnet = nrocarnet;
+	}
+
+	public boolean isSancionados() {
+		return sancionados;
+	}
+
+	public void setSancionados(boolean sancionados) {
+		this.sancionados = sancionados;
+	}
+
+	public boolean isCheck() {
+		return check;
+	}
+
+	@NotifyChange({"nrocarnet","sancionados"})
+	public void setCheck(boolean check) {
+		this.check = check;
+		if (this.check == true )
+		{
+			this.nrocarnet = false;
+			this.sancionados =true;
+		}
+		else
+		{
+			this.nrocarnet = true;
+			this.sancionados= false;
+		}
+		
 	}
 
 }

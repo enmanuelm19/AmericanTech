@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,7 @@ import Dao.AlquilerDao;
 import Dao.ReservacionDao;
 import Dao.TipoPagoDao;
 import modelos.Alquiler;
+import modelos.Evento;
 import modelos.Reservacion;
 import modelos.Usuario;
 
@@ -45,6 +47,7 @@ public class MisAlquileresViewModel {
 	private Usuario usuario;
 	private String filePath;
 	private boolean fileuploaded = false;
+	private String nombreFiltro;
 	
 	AMedia fileContent;
 
@@ -65,6 +68,19 @@ public class MisAlquileresViewModel {
 			e.printStackTrace();
 		}
 	}
+	
+
+	public String getNombreFiltro() {
+		if(nombreFiltro==null)
+			return "";
+		return nombreFiltro;
+	}
+
+
+	public void setNombreFiltro(String nombreFiltro) {
+		this.nombreFiltro = nombreFiltro;
+	}
+
 
 	public List<Alquiler> getAlquilerAll() {
 		if (alquilerAll == null) {
@@ -166,6 +182,25 @@ public class MisAlquileresViewModel {
 		ByteArrayInputStream is = new ByteArrayInputStream(buffer);
 		fileContent = new AMedia("report", "pdf", "application/pdf", is);
 
+	}
+	
+	@Command
+	@NotifyChange({ "alquilerAll", "cantRegistros" })
+	public void filtro() throws Exception {
+		List<Alquiler> alquiler = new ArrayList<Alquiler>();
+		String nomb = getNombreFiltro().toLowerCase();
+		
+		for (Iterator<Alquiler> i = new AlquilerDao().obtenerTodos().iterator(); i.hasNext();) {
+			Alquiler tmp = i.next();
+			if (tmp.getReservacion().getInstalacion().getNombre().toLowerCase().contains(nomb)) {
+				alquiler.add(tmp);
+			}
+		}
+		alquilerAll = alquiler;
+	}
+	
+	public String getCantRegistros() {
+		return alquilerAll.size() + " items en la lista";
 	}
 
 }

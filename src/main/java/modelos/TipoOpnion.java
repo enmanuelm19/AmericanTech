@@ -3,6 +3,7 @@ package modelos;
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -63,5 +64,14 @@ public class TipoOpnion implements java.io.Serializable {
 	public void setOpinions(Set<Opinion> opinions) {
 		this.opinions = opinions;
 	}
-
+	
+	public int getcantidadOpinions(Postulacion post){
+		int cantidad=0;
+		for (Iterator<Opinion> i = opinions.iterator(); i.hasNext();) {
+			Opinion tmp = i.next();
+			if(tmp.getPostulacion().getIdPostulacion()==post.getIdPostulacion())
+				cantidad++;
+		}
+		return cantidad;
+	}
 }

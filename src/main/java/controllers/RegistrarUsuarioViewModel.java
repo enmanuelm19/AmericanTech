@@ -1,10 +1,7 @@
 package controllers;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -19,19 +16,15 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.image.AImage;
 import org.zkoss.util.media.Media;
-import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.WebApps;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-import java.nio.file.Files;
-
 import Dao.GrupoDao;
 import Dao.PersonaDao;
 import Dao.UsuarioDao;
 import Dao.UsuarioGrupoDao;
-import modelos.FuncionGrupo;
 import modelos.Grupo;
 import modelos.Persona;
 import modelos.Usuario;
@@ -145,16 +138,23 @@ public class RegistrarUsuarioViewModel {
 				user.setFecha(new Date());
 				user.setActivo(true);
 				this.user.setUsuarioGrupos(this.usuarioGrupos);
+				user.getPersona().setIdentificacion(keyword);
+				if(getUploadedImage()!=null){
+				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
+				user.getPersona().setFoto(foto);}
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
+				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!");
 			}
 			else {
 				user.setFecha(new Date());
+				if(getUploadedImage()!=null){
 				String foto = ManejadorArchivo.subirImagen(getUploadedImage());
-				user.getPersona().setFoto(foto);
+				user.getPersona().setFoto(foto);}
 				user.setUsuarioGrupos(this.usuarioGrupos);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
+				Messagebox.show("Usuario " + user.getUsername() + " actualizado exitosamente!");
 			}
 			
 			win.detach();
@@ -178,7 +178,9 @@ public class RegistrarUsuarioViewModel {
 	public void busqueda(@BindingParam("win") Window win) throws Exception{
 		personas = personaDao.obtenerTodos();
 		usuarios = usuarioDao.obtenerTodos();
+		boolean encontro = true;
 		if (keyword!= null) {
+			outloop:
 			for(Persona p : personas){
 				if(keyword.equalsIgnoreCase(p.getIdentificacion())){
 					
@@ -186,18 +188,27 @@ public class RegistrarUsuarioViewModel {
 						if(u.getPersona().getIdentificacion().equalsIgnoreCase(p.getIdentificacion())){
 							Messagebox.show("Lo sentimos la persona ya tiene un usuario asignado, editar el usuario en la lista");
 							cerrarModal(win);
-							break;
+							encontro = true;
+							break outloop;
 						}
 					}
 					Persona personaTemporal = user.getPersona();
 					user.setPersona(p);
 					personaDao.hardDelete(personaTemporal);
 					Messagebox.show("Ahora puede agregar un usuario a " + p.getNombre());
-					break;
+					break outloop;
+				}else{
+					encontro = false;
 				}
+
 			}
+
 		}else{
 			Messagebox.show("Por favor ingrese datos en el campo");
+		}
+		
+		if(encontro == false){
+			Messagebox.show("Persona no encontrada, proceda a ingresar los datos");
 		}
 
 	}

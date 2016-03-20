@@ -9,6 +9,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
@@ -20,6 +21,7 @@ import java.util.Map;
 
 import Dao.ReservacionDao;
 import enums.CondicionReservacion;
+import modelos.Evento;
 import modelos.Reservacion;
 
 public class ReservacionViewModel {
@@ -34,6 +36,9 @@ public class ReservacionViewModel {
 		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));				
 	}
 
+	public ListModelList<Reservacion> getAllReservacion() {
+		return new ListModelList<Reservacion>(reservacionAll);
+	} 
 	public List<Reservacion> getReservacionAll() {
 		if(reservacionAll == null){
 			reservacionAll = new ArrayList<Reservacion>();
@@ -69,7 +74,7 @@ public class ReservacionViewModel {
 	}
 	
 	@Command
-	@NotifyChange({ "reservacionAll", "cantRegistros" })
+	@NotifyChange({ "allReservacion", "cantRegistros" })
 	public void eliminar(@BindingParam("reservacion") final Reservacion reservacion) {
 		Messagebox.show("Estas seguro de eliminar " + reservacion.getIdReservacion(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new EventListener() {
@@ -77,7 +82,7 @@ public class ReservacionViewModel {
 						if (evt.getName().equals("onOK")) {
 							try {
 								reservacionDao.eliminarReservacion(reservacion);
-								reservacionAll = reservacionDao.obtenerTodos();
+								reservacionAll = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue());
 								Messagebox.show(reservacion.getIdReservacion() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
@@ -91,7 +96,7 @@ public class ReservacionViewModel {
 	}
 	
 	@Command
-	@NotifyChange({ "reservacionAll", "cantRegistros" })
+	@NotifyChange({ "allReservacion", "cantRegistros" })
 	public void filtro() throws Exception {
 		List<Reservacion> reserva = new ArrayList<Reservacion>();
 		String nomb = getNombreFiltro().toLowerCase();		
@@ -101,14 +106,12 @@ public class ReservacionViewModel {
 				reserva.add(tmp);
 			}
 		}
-		if(reserva.isEmpty()){
-			getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
-		}
+		getReservacionAll().clear();
 		getReservacionAll().addAll(reserva);
 	}
 
 	@GlobalCommand
-	@NotifyChange({"reservacionAll", "cantRegistros" })
+	@NotifyChange({"allReservacion", "cantRegistros" })
 	public void refreshReservacion() throws Exception {
 		getReservacionAll().clear();
 		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));

@@ -49,7 +49,7 @@
                					<textbox instant="true" width="85%" placeholder="Buscar" 
                							value="@bind(vm.descFiltro)" onChange="@command('filtro')"/>
             				</auxheader>
-            				 <auxheader colspan="1" />
+            				 <auxheader colspan="5" />
 						</auxhead>
 						
 						<columns>
@@ -67,8 +67,8 @@
 										<label value="@load(each.fecha)" />
 										<label value="@load(each.usuario.persona.nombre)" />
 										<label value="@load(each.usuario.persona.apellido)" />
-										<image
-											src="@(each.usuario.persona.foto)" width="65%" align="center" />
+										<image  class="img-responsive col-md-offset-0"
+											src="@load(each.usuario.persona.foto)" width="65%" align="center" />
 										<div>
 											<textbox cols="45" rows="3"
 												readonly="true" type="text"

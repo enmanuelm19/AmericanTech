@@ -13,6 +13,7 @@ import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.media.Media;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -21,10 +22,13 @@ import org.zkoss.zul.Window;
 import Dao.RecursoDao;
 import Dao.RecursoInstalacionDao;
 import Dao.TipoInstalacionDao;
+import Dao.FotoDao;
 import Dao.InstalacionDao;
+import modelos.Foto;
 import modelos.IndicadorEvento;
 import modelos.Instalacion;
 import modelos.TipoInstalacion;
+import util.ManejadorArchivo;
 import modelos.RecursoInstalacion;
 import modelos.RedClub;
 import modelos.Recurso;
@@ -48,20 +52,16 @@ public class RegistrarInstalacionViewModel {
 	private Set<RecursoInstalacion> recursosinstalacion;
 	private ArrayList<RecursoInstalacion> temporalRecurso;
 	private Media uploadedImage;
+	private List<Media> allfotoinstalacion;
+	private List<Foto> allfotoEditable;
 	private boolean imagenNueva = false;
+	private FotoDao fotosInstDao;
 	
 	@Init
 	public void init(@ExecutionArgParam("instalacion") Instalacion instalacion)
 			throws Exception {
-		if (instalacion == null) {
-			this.instalacion = new Instalacion();
-			recursosinstalacion = new HashSet<RecursoInstalacion>();
-			this.editable = false;
-		} else {
-			this.instalacion = instalacion;
-			recursosinstalacion = instalacion.getRecursoInstalacions();
-			this.editable = true;
-		}
+		fotosInstDao = new FotoDao();
+		allfotoinstalacion = new ArrayList<Media>();
 		allRecursoparcial = new ArrayList<RecursoInstalacion>();
 		recurso = new Recurso();
 		recursoInstalacion = new RecursoInstalacion();
@@ -72,6 +72,29 @@ public class RegistrarInstalacionViewModel {
 		allTipoInstalacion = tipoInstalacionDao.obtenerTodos();
 		allRecurso = recursoDao.obtenerTodos();
 		allRecursoInstalacion = recursoInstalacionDao.obtenerTodos();
+		
+		if (instalacion == null) {
+			this.instalacion = new Instalacion();
+			recursosinstalacion = new HashSet<RecursoInstalacion>();
+			this.editable = false;
+			allfotoEditable = new ArrayList<Foto>();
+			alquilable = false;
+		} else {
+			this.instalacion = instalacion;
+			recursosinstalacion = instalacion.getRecursoInstalacions();
+			this.editable = true;
+			if (instalacion.isAlquilable()){
+				alquilable = true;
+			}else{
+				alquilable = false;
+			}
+			
+			allfotoEditable = fotosInstDao.obtenerFotoinstalacion(instalacion);
+			
+		}
+		
+		
+
 		//this.allRecursoparcial2 = instalacion.getRecursoInstalacions();
 	}
 
@@ -86,6 +109,14 @@ public class RegistrarInstalacionViewModel {
 	public List<RecursoInstalacion> getAllRecursoInstalacion() {
 
 		return new ListModelList<RecursoInstalacion>(allRecursoparcial);
+	}
+	public ListModelList<Media> getAllfotoinstalacion() {
+		//Obtengo la lista MEDIA para que sea visible al crear
+		return new ListModelList<Media>(allfotoinstalacion);
+	}
+	public ListModelList<Foto> getFotoEditable() {
+		
+		return new ListModelList<Foto>(allfotoEditable);
 	}
 	public ListModelList<Recurso> getAllRecurso() {
 
@@ -158,11 +189,58 @@ public class RegistrarInstalacionViewModel {
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
 	}
+	@GlobalCommand
+	@NotifyChange("fotoEditable")
+	public void refreshfotos() throws Exception{
+		allfotoEditable = fotosInstDao.obtenerFotoinstalacion(instalacion);
+	};
+	boolean alquilable;
+	public boolean isAlquilable() {
+		return alquilable;
+	}
+
 	@Command
-	@NotifyChange("uploadedImage")
-	public void upload(@BindingParam("media") Media myMedia){
-		imagenNueva=true;
-		uploadedImage = myMedia;
+	@NotifyChange("alquilable")
+	public void validaralquiler(){
+		if(instalacion.isAlquilable()){
+			alquilable = true;
+		}else{
+			alquilable = false;
+		}
+	}
+	@Command
+	@NotifyChange({"uploadedImage","allfotoinstalacion"})
+	public void upload(@BindingParam("media") final Media myMedia) throws Exception{
+		if(!editable){
+			imagenNueva=true;
+			uploadedImage = myMedia;
+			allfotoinstalacion.add(uploadedImage);
+		}else{
+			Messagebox.show("Imagen subida con exito para la instalación " + instalacion.getNombre(), "American Tech",
+					Messagebox.OK , Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+						public void onEvent(Event evt) throws InterruptedException {
+							if (evt.getName().equals("onOK")) {
+								try {
+									System.out.println(instalacion.getIdInstalacion());
+									Foto foto = new Foto();
+									foto.setInstalacion(instalacion);
+									
+									foto.setPublico(true);
+									foto.setActivo(true);
+									foto.setUrl(ManejadorArchivo.subirImagen(myMedia));
+									fotosInstDao.agregarFoto(foto);
+								
+									BindUtils.postGlobalCommand(null, null, "refreshfotos", null);
+								} catch (Exception e) {
+									Messagebox.show(e.getMessage(), "Error al cargar la imagen",
+											Messagebox.OK, Messagebox.ERROR);
+								}
+							}
+						}
+					});
+			
+		};
+		
 	}
 
 	public Media getUploadedImage() {
@@ -173,23 +251,11 @@ public class RegistrarInstalacionViewModel {
 	public void setUploadedImage(Media uploadedImage) {
 		this.uploadedImage = uploadedImage;
 	}
-//	@Command
-//	@NotifyChange({"allRecursoparcial2","recurso"})
-//	public void guardarRecursoInstalacion() {
-//		if(this.recurso.getDescripcion()!=null){
-//			for (RecursoInstalacion r: this.allRecursoparcial2) {
-//				if( r.getIdRecursoInstalacion()==this.recurso.getIdRecurso())
-//					return;
-//			}
-//			this.recursoInstalacion.setInstalacion(instalacion);
-//			this.allRecursoparcial2.add(this.recursoInstalacion);
-//			this.recurso = new Recurso();
-//
-//			System.out.println(instalacion.getRecursoInstalacions());
-//		}
-//	}
+	public String getCantRecursoInstalacion() {
+		return recursosinstalacion.size()+ " items en la lista";
+	}
 	@Command
-	@NotifyChange({ "recursosInstalacion", "recursoInstalacion" })
+	@NotifyChange({ "recursosinstalacion" })
 	public void guardarRecursoInstalacion() {
 	
 	if (this.recursoInstalacion.getRecurso() != null) {
@@ -202,6 +268,7 @@ public class RegistrarInstalacionViewModel {
 				}
 					
 			}
+			this.recursoInstalacion.setActivo(true);
 			this.recursoInstalacion.setInstalacion(instalacion);
 			recursosinstalacion.add(this.recursoInstalacion);
 			this.recursoInstalacion = new RecursoInstalacion();
@@ -220,27 +287,34 @@ public class RegistrarInstalacionViewModel {
 				&& instalacion.getNombre() != null
 				&& instalacion.getTipoInstalacion() != null
 				&& instalacion.getCapacidad() != 0
-				&& instalacion.getPrecioAlquiler() != 0
 				&& !instalacion.getDescripcion().equalsIgnoreCase("")
 				&& !instalacion.getNombre().equalsIgnoreCase("")) {
-			if (instalacionDao.obtenerInstalacion(instalacion.getIdInstalacion()) == null) {
+
 			if (!editable) {
+				if (instalacionDao.obtenerInstalacion(instalacion.getIdInstalacion()) == null) {
 				this.instalacion.setRecursoInstalacions(this.recursosinstalacion);
 				instalacionDao.agregarInstalacion(this.instalacion);
-//				for(RecursoInstalacion r : recursosinstalacion){
-//					r.setInstalacion(instalacion);
-//					recursoInstalacionDao.agregarRecursoInstalacion(r);
-//					
-//				}
-//				for (int i = 0; i < allRecursoparcial.size(); i++) {
-//					recursoInstalacion.setInstalacion(instalacion);
-//					recursoInstalacionDao.agregarRecursoInstalacion(recursoInstalacion);
-//					
-//				}
+				for(Media m: allfotoinstalacion){
+					Foto foto = new Foto();
+					foto.setInstalacion(instalacion);
+					foto.setPublico(true);
+					foto.setActivo(true);
+					foto.setUrl(ManejadorArchivo.subirImagen(m));
+					fotosInstDao.agregarFoto(foto);
+					
+				};
+
 				Messagebox.show(
 						"La instalacion " + instalacion.getNombre()
 								+ " ha sido registrada exitosamente", "",
 						Messagebox.OK, Messagebox.INFORMATION);
+			
+				}else {
+				
+				Messagebox.show("Instalacion con el Nombre "
+						+ instalacion.getNombre() + " ya existe",
+						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
 				
 			} else {
 				instalacionDao.actualizarInstalacion(instalacion);
@@ -251,52 +325,10 @@ public class RegistrarInstalacionViewModel {
 			}
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshInstalacion", null);
-			}else {
-				Messagebox.show("Instalacion con el Nombre "
-						+ instalacion.getNombre() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-			}
+
 			}
 
 		}
 
-//	@Command
-//	@NotifyChange({ "allRecursoparcial" })
-//	public void guardarRecursoInstalacion(@BindingParam("win") Window win) throws Exception {
-//		
-//		//Set<RecursoInstalacion> tmp = new HashSet<RecursoInstalacion>();
-//		recursoInstalacion = new RecursoInstalacion();
-//		//recursoInstalacion.setIdRecursoInstalacion(0);
-//		recursoInstalacion.setRecurso(recurso);
-//		recursoInstalacion.setCantidad(cantidad);
-//		allRecursoparcial.add(recursoInstalacion);
-////		for(RecursoInstalacion ri : getTemporalrecursos()){
-////			tmp.add(ri);
-////		}
-//		//setAllrecursopacial2(tmp);
-//		for(RecursoInstalacion ri : allRecursoparcial ){
-//			System.out.println(ri.getRecurso().getDescripcion() + ri.getCantidad() + "|");
-//		}
-////		recursoInstalacion = new RecursoInstalacion();
-////		recursoInstalacion.setRecurso(recurso);
-////		recursoInstalacion.setCantidad(cantidad);
-////		allRecursoparcial.add(recursoInstalacion);
-////		for(RecursoInstalacion rp : allRecursoparcial){
-////			System.out.println(rp.getRecurso().getDescripcion());
-////			System.out.println(rp.getCantidad());
-////			
-////		}
-////		System.out.println(allRecursoparcial);
-////		BindUtils.postGlobalCommand(null, null, "refreshParical", null);
-////		
-//		
-//					
-//	} 	
-//	@GlobalCommand
-//	@NotifyChange({ "allRecursoparcial" })
-//	public List<RecursoInstalacion> refreshParical() {
-//		System.out.println(allRecursoparcial);
-//		return allRecursoparcial;
-//		
-//	}
+
 }

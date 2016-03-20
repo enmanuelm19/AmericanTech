@@ -82,9 +82,11 @@
 											</row>
 										</template>
 									</rows>
+									
 									<foot>
-            							<footer span="2" class="footer_right" label="2 items en la lista" />
-        							</foot>
+										<footer span="5" class="footer_right"
+											label="@load(vminst.cantRecursoInstalacion)" />
+									</foot>
 									</grid>
                    				 </detail>
 								<label 

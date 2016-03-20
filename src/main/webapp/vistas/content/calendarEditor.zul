@@ -1,31 +1,48 @@
-<div apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm') @init('controllers.CalendarEditorViewModel')"
-	validationMessages="@id('vmsgs')">
-	<window title="Detalle del Evento" border="normal" width="500px"
-		form="@id('fx') @load(vm.calendarEvent) @save(vm.calendarEvent, before='ok') @validator(vm.dateValidator)"
-		allDay="@ref(vm.isAllDay(fx.beginDate,fx.endDate))" mode="popup"
-		visible="@load(vm.visible)" position="center,center">
-		<div class="contenido">
-			<div align="center">
-				<grid>
-					<rows class="">
-						<row class="col-md-12 ">
-							<image id="image" width="100%"
-								src="/assets/img/caney1.jpg" />
-						</row>
-						<row class="col-md-12 ">
-							<div>
-								<label width="100%" style="font-size:20px" value="@load(vm.eventoSelected.nombre)" />
-							</div>
-						</row>
-					</rows>
-				</grid>
-				<space spacing="15%" />
-				<div>
-					<button iconSclass="z-icon-times"
-						class='boton-cancelar' label="Cerrar" onClick="@command('cancel')" />
-				</div>
+<window id="winEv" border="none" title="@load(vm.eventoSelected.nombre)"
+	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	closable="true" width="50%" height="auto"
+	style="iconSclass= z-icon-calendar;"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('controllers.CalendarEditorViewModel')">
+	<caption iconSclass="z-icon-calendar" />
+	<div class="contenido">
+		<div align="center">
+			<grid>
+				<rows class="">
+					<row class="col-md-12 ">
+						<image id="image" width="100%"
+							src="/assets/img/caney1.jpg" />
+					</row>
+					<row class="col-md-12 ">
+						<div>
+							<label width="100%" style="font-size:20px"
+								value="@load(vm.eventoSelected.nombre)" />
+						</div>
+					</row>
+					<row class="col-md-12 ">
+						<div>
+							<label width="100%" style="font-size:18px"
+								value="Fecha:" />
+							<label width="100%" style="font-size:16px"
+								value="@load(vm.eventoSelected.fechaInicioString)" /> -
+							<label width="100%" style="font-size:16px"
+								value="@load(vm.eventoSelected.fechaFinString)" />
+
+						</div>
+					</row>
+					<row class="col-md-12 ">
+						<div>
+							<label width="100%" style="font-size:16px"
+								value="@load(vm.eventoSelected.descripcion)" />
+						</div>
+					</row>
+				</rows>
+			</grid>
+			<space spacing="15%" />
+			<div>
+				<button iconSclass="z-icon-times" class='boton-cancelar' style="background:#FF000F; color:#FFFFFF"
+					label="Cerrar" onClick="@command('cerrarModal',win = winEv)" />
 			</div>
 		</div>
-	</window>
-</div>
+	</div>
+</window>

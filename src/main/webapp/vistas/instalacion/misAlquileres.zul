@@ -36,7 +36,7 @@
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true"
+										<textbox instant="true" value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"
 											width="140px" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="5" />
@@ -66,7 +66,7 @@
 										var="alquiler">
 										<row>
 											<label
-												value="@load(alquiler.reservacion.instalacion.descripcion)" />
+												value="@load(alquiler.reservacion.instalacion.nombre)" />
 											<label
 												value="@load(alquiler.reservacion.fechaInicioString)" />
 											<label
@@ -79,10 +79,7 @@
 												<button
 													sclass="btn-link"
 													onClick="@command('showModal',alquiler = alquiler)"
-													iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />
-												<button
-													sclass="btn-link" iconSclass="z-icon-trash-o red"
-													tooltiptext="Eliminar" />
+													iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />												
 											</div>
 										</row>
 									</template>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -13,6 +14,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
 import Dao.IndicadorDao;
@@ -24,6 +26,7 @@ import Dao.PreferenciaDao;
 import Dao.PreferenciaEventoDao;
 import Dao.ReservacionDao;
 import Dao.SocioDao;
+import Dao.TipoNoticiaDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Evento;
 import modelos.Indicador;
@@ -60,7 +63,7 @@ public class RegistrarEventoViewModel {
 	private Set<PreferenciaEvento> listPreferenciaEvento;
 	private Set<InstalacionEvento> listInstalacionEvento;
 	private Set<IndicadorEvento> listIndicadorEvento;
-
+	private TipoNoticiaDao tipoNoticiaDao;
 	@Init
 	public void init(@ExecutionArgParam("evento") Evento evento) {
 		if (evento == null) {
@@ -89,7 +92,7 @@ public class RegistrarEventoViewModel {
 		instalacionEventoDao = new InstalacionEventoDao();
 		indicadorEventoDao = new IndicadorEventoDao();
 		preferenciaEventoDao = new PreferenciaEventoDao();
-
+		tipoNoticiaDao= new TipoNoticiaDao();
 	}
 
 	@NotifyChange("preferenciasPorTipo")
@@ -395,7 +398,11 @@ public class RegistrarEventoViewModel {
 		noticia.setDescripcion(evento.getDescripcion());
 		noticia.setTitulo(evento.getNombre());
 		noticia.setPublico(evento.isPublico());
+		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
+		noticia.setEvento(evento);
+		noticia.setActivo(true);
 		noticiaDao.agregarNoticia(noticia);
+		
 		
 	}
 	

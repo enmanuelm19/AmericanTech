@@ -21,10 +21,11 @@ public class Postulacion implements java.io.Serializable {
 	private String carnetPadrino1;
 	private String carnetPadrino2;
 	private boolean aprobado;
-	private boolean activo = true;
+	private boolean activo;
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
 	private Set<Venta> ventas = new HashSet<Venta>(0);
+	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 
 	public Postulacion() {
 	}
@@ -45,7 +46,8 @@ public class Postulacion implements java.io.Serializable {
 	public Postulacion(int idPostulacion, MotivoPostulacion motivoPostulacion,
 			Postulado postulado, Date fecha, String carnetPadrino1,
 			String carnetPadrino2, boolean aprobado, boolean activo,
-			Set<Socio> socios, Set<Opinion> opinions, Set<Venta> ventas) {
+			Set<Socio> socios, Set<Opinion> opinions, Set<Venta> ventas,
+			Set<Noticia> noticias) {
 		this.idPostulacion = idPostulacion;
 		this.motivoPostulacion = motivoPostulacion;
 		this.postulado = postulado;
@@ -57,6 +59,7 @@ public class Postulacion implements java.io.Serializable {
 		this.socios = socios;
 		this.opinions = opinions;
 		this.ventas = ventas;
+		this.noticias = noticias;
 	}
 
 	public int getIdPostulacion() {
@@ -145,6 +148,14 @@ public class Postulacion implements java.io.Serializable {
 
 	public void setVentas(Set<Venta> ventas) {
 		this.ventas = ventas;
+	}
+
+	public Set<Noticia> getNoticias() {
+		return this.noticias;
+	}
+
+	public void setNoticias(Set<Noticia> noticias) {
+		this.noticias = noticias;
 	}
 	
 	

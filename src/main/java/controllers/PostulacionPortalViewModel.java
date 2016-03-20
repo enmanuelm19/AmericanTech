@@ -58,6 +58,7 @@ public class PostulacionPortalViewModel {
 	private Noticia noticia;
 	private TipoNoticiaDao tipoNoticiaDao;
 	private NoticiaDao noticiaDao;
+	
 	@Init
 	public void init() throws Exception{
 		this.preferenciaDao= new PreferenciaDao();

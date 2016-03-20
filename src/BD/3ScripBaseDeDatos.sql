@@ -1,6 +1,6 @@
 --Tipo_Sugerencia
 
-insert into tipo_sugerencia (descripcion,activo) values ('OpiniÃ³n',true);
+insert into tipo_sugerencia (descripcion,activo) values ('Opinión',true);
 insert into tipo_sugerencia (descripcion,activo) values ('Queja',true);
 insert into tipo_sugerencia (descripcion,activo) values ('Sugerencia',true);
 insert into tipo_sugerencia (descripcion,activo) values ('Pregunta',true);
@@ -19,8 +19,8 @@ insert into tipo_preferencia (descripcion,color,activo) values ('Social','#20B2A
 
 --tipo_afiliado
 
-insert into tipo_afiliado (descripcion,subfijo,activo) values ('Esposa','01',true);
 insert into tipo_afiliado (descripcion,subfijo,activo) values ('Esposo','01',true);
+insert into tipo_afiliado (descripcion,subfijo,activo) values ('Esposa','01',true);
 insert into tipo_afiliado (descripcion,subfijo,activo) values ('Hijo','02',true);
 insert into tipo_afiliado (descripcion,subfijo,activo) values ('Hija','02',true);
 
@@ -28,14 +28,18 @@ insert into tipo_afiliado (descripcion,subfijo,activo) values ('Hija','02',true)
 insert into tipo_sancion (descripcion,activo) values ('Suspension',true);
 insert into tipo_sancion (descripcion,activo) values ('Multa',true);
 
+--Tipo_archivo
+insert into tipo_archivo (descripcion,activo) values ('Lista Invitados',true);
+insert into tipo_archivo (descripcion,activo) values ('Lista Proveedores',true);
+
 --tipo_eventualidad
 
 insert into tipo_eventualidad (descripcion,activo) 
                        values ('Deuda',true),
- 							  ('EstravÃ­o de Recursos',true),
+ 							  ('Estravío de Recursos',true),
 							  ('Mala Conducta',true),
 							  ('Actos Inmorales', true),
-           					  ('DaÃƒÂ±os a Instalacion', true);
+           					  ('Daños a Instalación', true);
            					  
 --Tipo_noticia
 
@@ -43,6 +47,11 @@ insert into tipo_noticia (descripcion,color,activo) values ('Evento','#FF0000',t
 insert into tipo_noticia (descripcion,color,activo) values ('Acciones','#FFFF00',true);
 insert into tipo_noticia (descripcion,color,activo) values ('Sucesos','#A52A2A',true);
 insert into tipo_noticia (descripcion,color,activo) values ('Otros','#FFA500',true);
+
+--Tipo_opinion
+INSERT INTO tipo_opnion (descripcion, activo) VALUES ('Lo Recomiendo', true);
+INSERT INTO tipo_opnion (descripcion, activo) VALUES ('No lo recomiendo', true);
+INSERT INTO tipo_opnion (descripcion, activo) VALUES ('No lo conozco', true);
 
 --tipo_pago
 INSERT INTO tipo_pago(descripcion, activo)
@@ -63,14 +72,23 @@ insert into motivo_sancion (descripcion,activo) values ('Eventualidad',true);
 insert into motivo_sancion (descripcion,activo) values ('Morosidad',true);
 
 --Motivo_postulacion
-insert into motivo_postulacion (descripcion,activo) values ('Inversion',true);
-insert into motivo_postulacion (descripcion,activo) values ('Participacion Deportiva',true);
+insert into motivo_postulacion (descripcion,activo) values ('Inversión',true);
+insert into motivo_postulacion (descripcion,activo) values ('Participación Deportiva',true);
 insert into motivo_postulacion (descripcion,activo) values ('Beneficios del Club',true);
 
 --Motivo_Venta
-Insert into motivo_venta (descripcion,activo) VALUES ('Necesidad Economica',TRUE);
+Insert into motivo_venta (descripcion,activo) VALUES ('Necesidad Económica',TRUE);
 Insert into motivo_venta (descripcion,activo) VALUES ('Cambio de Ciudad',TRUE);
 Insert into motivo_venta (descripcion,activo) VALUES ('Descontento con el Club',TRUE);
+
+--Motivo_cancelacion
+
+insert into motivo_cancelacion (descripcion,activo) values ('Falta de Presupuesto',true);
+
+--motivo_desvinculacion
+
+insert into motivo_desvinculacion (descripcion,activo) values ('Venta de Accion',true);
+insert into motivo_desvinculacion (descripcion,activo) values ('Socio Sancionado',true)
 
 --Estado_Accion
 insert into estado_accion (nombre,activo) values ('Activa',True);
@@ -95,7 +113,7 @@ INSERT INTO indicador(descripcion, activo)
     VALUES ('Asistencia de Personas', TRUE),
            ('Ingresos Recolectados', TRUE),
            ('Utilidad', TRUE),
-           ('Ingresos por Incripcion a Torneos', TRUE),
+           ('Ingresos por Inscripcion a Torneos', TRUE),
            ('Ingresos por Bebidas alcoholicas', TRUE);
 
 --Persona
@@ -120,17 +138,35 @@ insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) value
 insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0339',500000,1,true);
 insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0340',500000,1,true);
 insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0341',500000,2,true);
+insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0342',500000,2,true);
+insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0343',500000,2,true);
+insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0344',500000,2,true);
+insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0345',500000,2,true);
 
 --solicitud_venta
 
 insert into solicitud_venta (accionid_accion,motivo,fecha,motivo_ventaid_motivo_venta,activo) values (4,'Necesidad Economica','01/03/2016',1,true);
 
+--Noticia
+
+INSERT INTO noticia(titulo, descripcion, tipo_noticiaid_tipo_noticia,fecha_creacion, caducidad, publico, activo)
+    VALUES ('Prepárate para el 89 aniversario del Centro Atlético América', 'En su semana aniversario, la junta directiva, encabezada por el Dr. Víctor Montilla, se complace en invitar a todos los consocios y comunidad larense a disfrutar y compartir del programa de actividades designado.',4, '25-04-2016', '10-05-2016', true, true),
+	       ('Jornadas Infociencias XXXII', ' La 32 edición de las Jornadas de Infociencias de la Universidad Centroccidental Lisandro Alvarado, se realizará el día 6 de Abril del presente año en las instalaciones del Decanato de Ciencias y Tecnología, núcleo Obelisco, donde se darán a conocer cuatro proyectos informáticos creados por los estudiantes de Ingeniería en Informática.',3, '06-04-2016', '21-04-2016', true, true);
+
 --Cliente _ Externo
 
-insert into cliente_externo (nombre,apellido,correo,activo) values ('Jose','Altuve','elpequeÃƒÆ’Ã‚Â±ogigante@gmail.com',true);
-insert into cliente_externo (nombre,apellido,correo,activo) values ('Miguel','Cabrera','miggycabrera@gmail.com',true);
-insert into cliente_externo (nombre,apellido,correo,activo) values ('Edgar','Ramirez','edgarr@gmail.com',true);
-insert into cliente_externo (nombre,apellido,correo,activo) values ('Gustavo','Dudamel','directoryola@gmail.com',true);
+insert into cliente_externo (nombre,apellido,correo,activo) values ('Jose','Mendoza','elpequeñogigante@gmail.com',true);
+insert into cliente_externo (nombre,apellido,correo,activo) values ('Miguel','Alonso','miggy_19@gmail.com',true);
+insert into cliente_externo (nombre,apellido,correo,activo) values ('Edgar','Sanchez','edgarr@gmail.com',true);
+insert into cliente_externo (nombre,apellido,correo,activo) values ('Gustavo','Araujo','directoryola@gmail.com',true);
+
+--Sugerencias
+
+INSERT INTO sugerencia(descripcion, fecha, cliente_externoid_cliente, tipo_sugerenciaid_tipo_sugerencia, activo)
+    VALUES ('Quiero manifestar mi molestia, tuve un incidente con uno de los vigilantes que me insulto y me trato mal, me sorprende que permitan esto, yo conozco miembros de la directiva y son gente muy seria.', '20-02-2016', 1, 2, true),
+	   ('Buenos Días, quisiera sugerir que aumenten la iluminacion en la nueva cancha de futbol, me parece muy bonita pero en la noche ahi puntos que les falta iluminación', '25-02-2016', 2, 3, true),
+	   ('Necesito hacer una fiesta para mi hijo, que cumple 11 años. ¿Como puedo alquilar una de sus instalaciones?, la distribucion de los espacios es lo que tengo en mente para la fiesta', '27-02-2016', 3, 4, true),
+	   ('Estuve el fin de semana allá, y pienso que la seguridad es muy escasa en el campo de beisbol, tuve una anecdota no muy grata por este motivo, pienso que es bueno que analicen esto.', '13-03-2016', 4, 1, true);
 
 --Instalacion
 
@@ -147,6 +183,12 @@ insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo)
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Natacion',2,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Kickingball',2,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Voleibol',2,true);
+insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Baile',3,true);
+insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Bebedor Ocasional',3,true);
+insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Musica',3,true);
+insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Televisión',3,true);
+
+
 
 --Recurso
 
@@ -159,16 +201,19 @@ insert into recurso (descripcion,activo) values ('Hieleras',True);
 insert into recurso (descripcion,activo) values ('Cornetas',True);
 
 --recurso_instalacion
+
 insert into recurso_instalacion (instalacionid_instalacion,recursoid_recurso,cantidad,activo) values (2,1,100,true);
 insert into recurso_instalacion (instalacionid_instalacion,recursoid_recurso,cantidad,activo) values (2,2,100,true);
 
 --Socio
+
 insert into socio (nro_carnet,personaid_persona,activo) values ('B-0338',1,true);
 insert into socio (nro_carnet,personaid_persona,activo) values ('B-0339',2,true);
 insert into socio (nro_carnet,personaid_persona,activo) values ('B-0340',3,true);
 insert into socio (nro_carnet,personaid_persona,activo) values ('B-0341',4,true);
 
 --Postulado
+
 Insert into postulado (personaid_persona,activo) VALUES  ( 5,False);
 Insert into postulado (personaid_persona,activo) VALUES  ( 6,False);
 Insert into postulado (personaid_persona,activo) VALUES  ( 7,False);
@@ -209,11 +254,19 @@ insert into red_persona (enlace,red_socialid_red_social,personaid_persona,activo
 insert into red_persona (enlace,red_socialid_red_social,personaid_persona,activo) values ('https://www.facebook.com/Josefag16',1,3,true);
 
 --Evento
-insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,cancelacion_eventoid_cancelacion_evento,activo) values ('Torneo de Beisbol','Torneo Libre Masculino de Beisbol','10/03/2016','10/06/2016',true,4,null,true);
-insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,cancelacion_eventoid_cancelacion_evento,activo) values ('Torneo de Tenis','Torneo Libre Femenino de tenis','10/03/2016','10/06/2016',true,4,null,true);
+insert into evento (nombre,descripcion,fecha_inicio,fecha_fin,publico,estado_eventoid_estado_evento,cancelacion_eventoid_cancelacion_evento,activo) 
+			values ('Torneo de Beisbol','Torneo Libre Masculino de Beisbol','10/03/2016','16/03/2016',true,4,null,true);
+		    	   ('Torneo de Tenis','Torneo Libre Femenino de tenis','10/03/2016','10/06/2016',true,4,null,true);
 
 --actividad
-insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,fecha_realizacion,valor_esperado,valor_real,activo) values ('mantenimiento al campo de Beisbol',false,1,'10/03/2016','08/03/2016',2000,2200,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,fecha_realizacion,valor_esperado,valor_real,activo) values ('Mantenimiento al Campo de Beisbol',true,1,'01/03/2016','02/03/2016',2000,2200,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,valor_esperado,activo) values ('Contratar Arbitros para el Torneo',false,1,'10/03/2016',10,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,fecha_realizacion,valor_esperado,activo) values ('Buscar Patrocinantes',true,1,'27/02/2016','01/03/2016',8,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,valor_esperado,activo) values ('Comprar equipamiento para los equipos',false,1,'08/03/2016',90000,true);			   		  
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,fecha_realizacion,valor_esperado,valor_real,activo) values ('Reparar Cancha de Tenis Principal',true,2,'01/03/2016','02/03/2016',250000,230000,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,valor_esperado,activo) values ('Contratar Arbitros para el Torneo',false,2,'10/03/2016',10,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,fecha_realizacion,valor_esperado,activo) values ('Buscar Patrocinantes',true,2,'27/02/2016','01/03/2016',8,true);
+insert into actividad (descripcion,finalizada,eventoid_evento,fecha_tope,valor_esperado,activo) values ('Comprar equipamiento para los equipos',false,2,'08/03/2016',90000,true);			   		  
 
 --Instalacion_evento
 
@@ -268,7 +321,7 @@ INSERT INTO indicador_evento(valor_esperado, valor_real, indicadorid_indicador,
            (300000, 350000, 3, 2, TRUE),
            (200000, 300000, 4, 2, TRUE);
            
---Mas Afiliados          
+--Afiliados          
 INSERT INTO afiliado(tipo_afiliadoid_tipo_afiliado, socioid_socio, nro_carnet, 
             personaid_persona, activo)
     VALUES (1, 2, 'B-0339-01', 5, TRUE),
