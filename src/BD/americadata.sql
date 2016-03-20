@@ -554,7 +554,7 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (27, 'Tipo instalacion', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (28, 'Tipo sancion', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (29, 'Tipo Afiliado', 'configuracion/categoria/tipoAfiliado.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (30, 'Tipo actividad', 'configuracion/categoria/tipoActividad.zul', 'z-icon-angle-double-right', ' ', 8, true);
+--INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (30, 'Tipo actividad', 'configuracion/categoria/tipoActividad.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (31, 'Motivo desvinculacion', 'configuracion/categoria/motivoDesvinculacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (32, 'Acciones', 'socio/acciones.zul', 'z-icon-angle-double-right', ' ', 2, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (33, 'Mi perfil', 'socio/miPerfil.zul', 'z-icon-angle-double-right', ' ', 2, true);
@@ -637,7 +637,7 @@ INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, a
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (13, 49, 5, true);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (14, 55, 5, true);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (53, 44, 6, true);
-INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (29, 30, 2, false);
+--INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (29, 30, 2, false);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (16, 17, 2, true);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (33, 37, 2, true);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (18, 19, 2, true);
