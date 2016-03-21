@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadistico_eventualidades1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadistico_sanciones" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -8,11 +8,11 @@
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select i.nombre as Instalacion, COUNT(e.*), (COUNT(e.*) *100) /(select COUNT(*) from eventualidad where fecha between '03/01/2015' and '03/30/2016') as Porcentaje
-  from instalacion i, eventualidad e
-  where i.id_instalacion = e.instalacionid_instalacion and i.activo = e.activo = TRUE and e.fecha between '03/01/2015' and '03/30/2016' group by i.id_instalacion]]>
+		<![CDATA[SELECT t.descripcion, COUNT(s.*) as count,  (COUNT(s.*) * 100) / (SELECT COUNT(*) FROM sancion WHERE fecha_inic BETWEEN '01-01-2015' AND '12-30-2016') as porcentaje
+FROM sancion s, tipo_sancion t
+WHERE s.tipo_sancionid_tipo_sancion = t.id_tipo_sancion AND s.activo = t.activo = TRUE AND s.fecha_inic BETWEEN '01-01-2015' AND '12-30-2016' GROUP BY t.id_tipo_sancion;]]>
 	</queryString>
-	<field name="instalacion" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
 	<field name="count" class="java.lang.Long"/>
 	<field name="porcentaje" class="java.lang.Long"/>
 	<background>
@@ -92,9 +92,9 @@
 					</chartLegend>
 				</chart>
 				<pieDataset>
-					<keyExpression><![CDATA[$F{instalacion} + " valor: " + $F{count}]]></keyExpression>
+					<keyExpression><![CDATA[$F{descripcion} + " valor: " + $F{count}]]></keyExpression>
 					<valueExpression><![CDATA[$F{count}]]></valueExpression>
-					<labelExpression><![CDATA[$F{instalacion} + " procentaje: " + $F{porcentaje} + "%"]]></labelExpression>
+					<labelExpression><![CDATA[$F{descripcion} + " procentaje: " + $F{porcentaje} + "%"]]></labelExpression>
 				</pieDataset>
 				<pie3DPlot>
 					<plot/>

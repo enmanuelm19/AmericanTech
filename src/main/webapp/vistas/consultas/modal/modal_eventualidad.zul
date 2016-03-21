@@ -1,0 +1,8 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Reporte" border="normal" width="800px" height="1000px" closable="true" mode="modal">
+    <jasperreport id="report" height="1000px" />
+</window>
+</zk>
+
+

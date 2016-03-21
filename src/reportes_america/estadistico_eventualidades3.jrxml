@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadistico_eventualidades1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadistico_eventualidades3" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select i.nombre as Instalacion, COUNT(e.*), (COUNT(e.*) *100) /(select COUNT(*) from eventualidad where fecha between '03/01/2015' and '03/30/2016') as Porcentaje
-  from instalacion i, eventualidad e
-  where i.id_instalacion = e.instalacionid_instalacion and i.activo = e.activo = TRUE and e.fecha between '03/01/2015' and '03/30/2016' group by i.id_instalacion]]>
+		<![CDATA[Select te.descripcion, COUNT(e.*) as Cantidad
+  from eventualidad e, tipo_eventualidad te
+  where e.fecha between '03-01-2016' and '03-30-2016' and e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad
+]]>
 	</queryString>
-	<field name="instalacion" class="java.lang.String"/>
-	<field name="count" class="java.lang.Long"/>
-	<field name="porcentaje" class="java.lang.Long"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -82,25 +82,19 @@
 		<band height="270" splitType="Stretch">
 			<pie3DChart>
 				<chart>
-					<reportElement mode="Opaque" x="0" y="0" width="802" height="270" uuid="503b1c6f-1769-491c-b18b-c49396c1ebf5"/>
-					<chartTitle position="Top">
-						<font fontName="Arial" size="12" isBold="true" pdfFontName="Arial"/>
-					</chartTitle>
+					<reportElement x="0" y="0" width="802" height="270" uuid="e877d49a-f301-4b91-83a4-ce501738e4cf"/>
+					<chartTitle/>
 					<chartSubtitle/>
-					<chartLegend>
-						<font fontName="Arial" size="12" isBold="true"/>
-					</chartLegend>
+					<chartLegend/>
 				</chart>
 				<pieDataset>
-					<keyExpression><![CDATA[$F{instalacion} + " valor: " + $F{count}]]></keyExpression>
-					<valueExpression><![CDATA[$F{count}]]></valueExpression>
-					<labelExpression><![CDATA[$F{instalacion} + " procentaje: " + $F{porcentaje} + "%"]]></labelExpression>
+					<keyExpression><![CDATA[$F{descripcion} + " valor: " + $F{cantidad}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+					<labelExpression><![CDATA[$F{descripcion}]]></labelExpression>
 				</pieDataset>
 				<pie3DPlot>
 					<plot/>
-					<itemLabel>
-						<font fontName="Arial" size="12" isBold="true"/>
-					</itemLabel>
+					<itemLabel/>
 				</pie3DPlot>
 			</pie3DChart>
 		</band>
