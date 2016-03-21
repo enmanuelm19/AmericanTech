@@ -44,26 +44,27 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 	private Time horaFin;
 	private Date fechaDesde;
 	private Date fechaHasta;
-	private InstalacionDao instalacionDao;
-	private TipoInstalacion tipoInstalacionSelected;
+	//private InstalacionDao instalacionDao;
+	//private TipoInstalacion tipoInstalacionSelected;
 	private String carnet;
-	private boolean hora;
-	private boolean horaDesde;
-	private boolean horaHasta;
-	private boolean instalacioncheck;
-	private boolean instalacion;
-
+	private boolean fechades;
+	private boolean fechahas;
+	private boolean fechacheck;
+	private boolean eventocheck;
+	private boolean textbuscar;
+	private boolean discheckevento;
+	private boolean discheckfecha;
 
 	@Init
 	public void init() {
-		this.setHoraDesde(true);
-		this.setHoraHasta(true);
-		this.setInstalacion(true);
+		this.setFechades(true);
+		this.setFechahas(true);
+		this.setTextbuscar(true);
 
 	}
 
 	
-	@NotifyChange("tipoInstalacionSelected")
+	/*@NotifyChange("tipoInstalacionSelected")
 	public TipoInstalacion getTipotipoInstalacionSelected() {
 		return tipoInstalacionSelected;
 	}
@@ -71,7 +72,7 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 	@NotifyChange("InstalacionPorTipo")
 	public void setTipoInstalacionSelected(TipoInstalacion tipoInstalacionSelected) {
 		this.tipoInstalacionSelected = tipoInstalacionSelected;
-	}
+	}*/
 
 
 	public Date getFechaDesde() {
@@ -148,11 +149,9 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		}
 	}*/
 
-	public boolean getHora() {
-		return hora;
-	}
 
-	@NotifyChange({"horaDesde","horaHasta"})
+
+	/*@NotifyChange({"horaDesde","horaHasta"})
 	public void setHora(boolean hora) {
 		this.hora = hora;
 		if (this.hora == true)
@@ -165,54 +164,117 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 			this.horaDesde = true;
 			this.horaHasta = true;			
 		}	
+	}*/
+
+
+	public boolean getFechades() {
+		return fechades;
 	}
 
 
-	public boolean getHoraDesde() {
-		return horaDesde;
+	public void setFechades(boolean fechades) {
+		this.fechades = fechades;
 	}
 
 
-	public void setHoraDesde(boolean horaDesde) {
-		this.horaDesde = horaDesde;
+	public boolean getFechahas() {
+		return fechahas;
 	}
 
 
-	public boolean getHoraHasta() {
-		return horaHasta;
+	public void setFechahas(boolean fechahas) {
+		this.fechahas = fechahas;
 	}
 
 
-	public void setHoraHasta(boolean horaHasta) {
-		this.horaHasta = horaHasta;
+	public boolean getFechacheck() {
+		return fechacheck;
 	}
 
-
-	public boolean getInstalacioncheck() {
-		return instalacioncheck;
-	}
-
-	@NotifyChange({"instalacion"})
-	public void setInstalacioncheck(boolean instalacioncheck) {
-		this.instalacioncheck = instalacioncheck;
-		if (this.instalacioncheck == true)
+	@NotifyChange({"fechades","fechahas","discheckevento","textbuscar"})
+	public void setFechacheck(boolean fechacheck) {
+		this.fechacheck = fechacheck;
+		if (this.fechacheck == true)
 		{
-			this.instalacion = false;
+			this.setFechades(false);
+			this.setFechahas(false);
+			//this.setEventocheck();
+			this.setDischeckevento(true);
+			if (this.discheckevento == true)
+			{
+				this.setTextbuscar(true);
+			}
+			else
+			{
+				this.setTextbuscar(false);
+			}
 		}
 		else
 		{
-			this.instalacion = true;
+			this.setFechades(true);
+			this.setFechahas(true);
+			this.setDischeckevento(false);
+		}	
+	}
+
+
+	public boolean getEventocheck() {
+		return eventocheck;
+	}
+
+	@NotifyChange({"fechades","fechahas","discheckfecha","textbuscar"})
+	public void setEventocheck(boolean eventocheck) {
+		this.eventocheck = eventocheck;
+		if (this.eventocheck == true)
+		{
+			this.setTextbuscar(false);
+			this.setDischeckfecha(true);
+			if (this.discheckfecha == true)
+			{
+				this.setFechades(true);
+				this.setFechahas(true);			
+			}
+			else
+			{
+				this.setFechades(false);
+				this.setFechahas(false);	
+			}
+		}
+		else
+		{
+			this.setTextbuscar(true);
+			this.setDischeckfecha(false);
 		}
 	}
 
 
-	public boolean getInstalacion() {
-		return instalacion;
+	public boolean getTextbuscar() {
+		return textbuscar;
 	}
 
 
-	public void setInstalacion(boolean instalacion) {
-		this.instalacion = instalacion;
+	public void setTextbuscar(boolean textbuscar) {
+		this.textbuscar = textbuscar;
+	}
+
+
+	public boolean getDischeckevento() {
+		return discheckevento;
+	}
+
+
+	public void setDischeckevento(boolean discheckevento) {
+		this.discheckevento = discheckevento;
+	}
+
+
+	public boolean getDischeckfecha() {
+		return discheckfecha;
+	}
+
+
+	public void setDischeckfecha(boolean discheckfecha) {
+		this.discheckfecha = discheckfecha;
 	}
 
 	
