@@ -182,6 +182,7 @@ INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 4
 
 -- INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 67, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 68, 2, true);
+INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 69, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 70, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 71, 2, true);
 INSERT INTO funcion_grupo ( funcionid_funcion, grupoid_grupo, activo) VALUES ( 72, 2, true);

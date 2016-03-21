@@ -57,7 +57,7 @@ CREATE TABLE sancion (
   fecha_fin                       date, 
   monto                           float4, 
   eventualidadid_eventualidad     int2, 
-  motivo_sancionid_motivo_sancion int2 NOT NULL, 
+  motivo_sancionid_motivo_sancion int2 DEFAULT 1, 
   tipo_sancionid_tipo_sancion     int2 NOT NULL, 
   activo                          bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_sancion));
@@ -121,9 +121,10 @@ CREATE TABLE noticia (
   titulo                      varchar(90), 
   descripcion                 text NOT NULL, 
   eventoid_evento             int2, 
+  postulacionid_postulacion   int2, 
   foto                        text, 
   tipo_noticiaid_tipo_noticia int2, 
-  fecha_creacion              date NOT NULL, 
+  fecha_creacion              timestamp NOT NULL, 
   caducidad                   date NOT NULL, 
   publico                     bool NOT NULL, 
   enlace                      varchar(255), 
@@ -180,7 +181,7 @@ CREATE TABLE reservacion (
   socioid_socio             int2 NOT NULL, 
   fecha_inicio              timestamp NOT NULL, 
   fecha_fin                 timestamp NOT NULL, 
-  condicion                 char(255), 
+  condicion                 char(1) DEFAULT 'P', 
   activo                    bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_reservacion));
 CREATE TABLE afiliado (
@@ -548,3 +549,4 @@ ALTER TABLE evento ADD CONSTRAINT FKevento717938 FOREIGN KEY (cancelacion_evento
 ALTER TABLE sancion ADD CONSTRAINT FKsancion174634 FOREIGN KEY (afiliadoid_afilado) REFERENCES afiliado (id_afilado);
 ALTER TABLE sancion ADD CONSTRAINT FKsancion24094 FOREIGN KEY (motivo_sancionid_motivo_sancion) REFERENCES motivo_sancion (id_motivo_sancion);
 ALTER TABLE instalacion ADD CONSTRAINT FKinstalacio183404 FOREIGN KEY (tipo_instalacionid_tipo_instalacion) REFERENCES tipo_instalacion (id_tipo_instalacion);
+ALTER TABLE noticia ADD CONSTRAINT FKnoticia482720 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
