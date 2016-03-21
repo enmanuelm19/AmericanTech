@@ -25,29 +25,37 @@
 		<div class="owl-carousel owl-theme " children="@load(vm.allNoticia)">
 			<template name="children" var="noticias">
 				<n:div class="item col-md-6" zclass="none">
-						<n:div class="box">		
+						<n:div class="box"  style="box-shadow: 0 2px 5px 0 ${noticias.tipoNoticia.color}, 0 2px 10px 0 ${noticias.tipoNoticia.color};" >		
 <!-- 							<label zclass="none" class="day" value="@load(noticias.fechaCreacion.day)"></label> -->
 <!-- 							<label zclass="none" class="day" value="@load(noticias.fechaCreacion.date)"></label> -->
 <!-- 							<label zclass="none" class="day" value="@load(noticias.fechaCreacion.year)"></label> -->
-							<div class="box-icon">
+
+							<div class="box-icon" style="background-color:${noticias.tipoNoticia.color};">
 								<span class="fa fa-4x">
-									<image src="@load(noticias.foto)"></image>
+									<image width="100px"  height="100px" style="border-radius:50%; box-shadow: 0 2px 10px 0 ${noticias.tipoNoticia.color}, 0 -2px 10px 0 ${noticias.tipoNoticia.color};" src="@load(noticias.foto)"></image>
 								</span>
 							</div>
-<!-- 							<div class="ribbon"></div> -->
-							<n:div class="info">
-							
-								<div>
-									<n:h4 class="info text-center">
-										<label zclass="none" value="@load(noticias.titulo)" />
-									</n:h4>
-									<n:p>
-										<label zclass="none" value="@load(noticias.descripcion)" />
-									</n:p>
-								</div>
-								<a href="" class="btn">Ver más</a>
-							</n:div>
-						</n:div>
+									<div>
+							<div style="background-color:${noticias.tipoNoticia.color};  opacity: 0.1;">
+												<n:div class="info">
+								
+									<div>
+										<n:h4 style="color: #717171 !important;
+		font-size: 16px;
+		padding-top: 10px;
+		text-align: justify;" class="info text-center">
+											<label zclass="none" value="@load(noticias.titulo)" />
+										</n:h4>
+										<n:p>
+											<label zclass="none" value="@load(noticias.descripcion)" />
+										</n:p>
+									</div>
+	<!-- 								<a href="" class="btn">Ver más</a> -->
+								</n:div>
+							</div>
+		
+						</div>
+					</n:div>
 				</n:div>
 			</template>
 		</div>
