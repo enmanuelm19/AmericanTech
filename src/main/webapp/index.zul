@@ -13,8 +13,9 @@
 <n:link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <n:link rel="stylesheet" type="text/css" href="assets/portal/css/imgeffect.css" />
 <n:link href="assets/portal/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<script src="assets/portal/js/jquery.min.js"></script>
+<!--  <script src="assets/portal/js/jquery.min.js"></script>-->
 <!-- start gallery Script -->
+ <script src="assets/portal/js/jquery-2.2.1.min.js"></script>
 	<script type="text/javascript" src="assets/portal/js/jquery.easing.min.js"></script>	
 	<script type="text/javascript" src="assets/portal/js/jquery.mixitup.min.js"></script>
 				<script type="text/javascript">
@@ -105,7 +106,7 @@
 						<n:div class="header">
 							
 							<n:div class="logo">
-								<n:a href="index.zul"><image  src="@bind(vm.club.logo)" class='post-person img-responsive' width="192px"  height="51px" /></n:a>
+								<n:a href="index.zul"><image  src="@bind(vm.club.logo)" class='post-person img-responsive' /></n:a>
 							</n:div>	
 					
 							
@@ -137,7 +138,7 @@
 		</n:div>
 </n:div>
 
-    <div class="about" id="about">
+    <n:div class="about" id="about">
 	<div>
 		<n:div class="wrap">
 			<n:h2>¿Quiénes somos?</n:h2>
@@ -217,8 +218,9 @@
 			</n:div>
 		</n:div>
 	</div>
-	</div>
+	</n:div>
 
+<n:div  id="cartelera">
 <div class="cartelera" id="cartelera" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.IndexPortalViewModel')"> 
 	<n:div class="wrap ">
@@ -243,7 +245,7 @@
       
          <n:h3 style=" margin-top: 10px;color: #FFFFFF; font-size: 1.5em;font-weight: bold">Visión</n:h3><n:br></n:br>
         <n:div>
- 		<label style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal;" value="@load(vm.club.vision)"></label>
+ 		<label style=" margin-top: 18px;color: #FFFFFF; font-size: 1.4em;font-weight: normal; text-align:justify; " value="@load(vm.club.vision)"></label>
         </n:div>
      
     </n:div>
@@ -262,10 +264,10 @@
 									
 		</n:div>
 	</div>
-
-<div class="contact" id="contact">
+</n:div>
+<n:div class="contact" id="contact">
  <include src="portal/contacto.zul"/>
- 	</div>
+ 	</n:div>
  
      <n:div class="footer-bottom">
      	<n:div class="wrap">
@@ -296,6 +298,20 @@
 		 setTimeout(function(){
 		 	$(".none-body").css("width", "auto");
 		 }, 1000);
+
+		
+setTimeout(function(){
+
+$(".scroll").click(function() {
+var el = $(this).attr("href")+"";
+
+console.log($("#about").length);
+    $('html, body').animate({
+        scrollTop: $(el).offset().top
+    }, 2000);
+   /* return false;*/
+});
+}, 5000);
 		 
 		 </script>>
 		</n:div>

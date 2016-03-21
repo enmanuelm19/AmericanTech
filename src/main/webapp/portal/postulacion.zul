@@ -103,17 +103,15 @@
 										value="@bind(vm.persona.telefono)" width="78%" />
 								</div>
 								<div class="col-md-6" align="left">
-									<div class="" width="78%">
-										<label
-											style="font-family:'Lato', sans-serif; font-size:1em;float: left;">
-											Sexo:
-										</label>
+								<label>Sexo</label>
+									<div class="sexo" width="78%">
+										
 										<n:br></n:br>
 										<radiogroup id="sv1"
 											selectedItem="@bind(vm.persona.sexo)" style="float: left;">
 											<radio id="ra1"
-												label="Femenino" value="F" radiogroup="sv1"
-												style="margin-right:35px;" />
+												label="Femenino" value="F" radiogroup="sv1" style="margin-right:10px;"
+												/>
 											<radio id="ra2"
 												label="Masculino" value="M" radiogroup="sv1" />
 										</radiogroup>
@@ -151,9 +149,7 @@
 								align="center">
 								<label
 									style="font-family: 'Lato', sans-serif; font-size:2em;">
-									Cuéntanos porque quieres pertenecer
-									a la familia del Centro Atlético
-									America
+									Cuéntanos por qué quieres pertenecer a la familia del Centro Atlético América
 								</label>
 								<n:br></n:br>
 								<n:br></n:br>
@@ -230,7 +226,7 @@
 								<n:br></n:br>
 							</div>
 							<span>
-								<button iconSclass="z-icon-floppy-o"
+								<button 
 									class='boton-Formulario' label="Enviar postulación"
 									onClick="@command('agregarPostulacion')" />
 							</span>

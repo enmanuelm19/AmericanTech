@@ -12,7 +12,7 @@
 	<script type="tex/javascript" defer="true">
 		$(document).ready(function() { var owl = $('.owl-carousel');
 		owl.owlCarousel({ 
-		
+		items:2,
 		loop:true, 
 		margin:10, 
 		autoplay:true,
