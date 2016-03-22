@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estadisticos.ReporteEventualidadesEstViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -31,12 +32,12 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  value="@bind(vm.fechaDesde)" width="70%" tabindex="7" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox  width="70%" value="@bind(vm.fechaHasta)" tabindex="7" />
 												</div>						   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
@@ -46,14 +47,14 @@
 											  <row class="col-md-12 ">
 								   	 				<div align="left">
 									                  	<div>
-															<checkbox label="Hora"></checkbox>
+															<checkbox label="Hora" checked="@bind(vm.hora)"></checkbox>
 														</div>
 								   	 				</div>											  						   	 
 											  </row>
 											  <row class="col-md-12 ">
 												 <div class="col-md-12" align="center">
 														Desde: 
-														<combobox width="30%">
+														<combobox width="30%" disabled="@load(vm.horaDesde)">
 															<comboitem label="12 AM"></comboitem>
 															<comboitem label="1 AM"></comboitem>
 															<comboitem label="2 AM"></comboitem>
@@ -81,7 +82,7 @@
 													   </combobox>
 													   <space spacing="2%"></space>
 														Hasta: 
-														<combobox width="30%">
+														<combobox width="30%" disabled="@load(vm.horaHasta)">
 															<comboitem label="12 AM"></comboitem>
 															<comboitem label="1 AM"></comboitem>
 															<comboitem label="2 AM"></comboitem>
@@ -111,14 +112,14 @@
 											  </row>
 											  <row class="col-md-12">
 								                  	<div>
-														<checkbox label=""></checkbox>
+														<checkbox label="" checked="@bind(vm.instalacioncheck)"></checkbox>
 													</div>
 											  </row>
 											  <row class="col-md-12">
 								                  	<div class="col-md-12">
 								                  		<space spacing="1%"></space>
 														<label> Instalacion:</label>
-														<combobox width="30%">
+														<combobox width="30%" disabled="@load(vm.instalacion)">
 															<comboitem label="Caney"></comboitem>
 															<comboitem label="Piscina"></comboitem>																																							
 													   </combobox>

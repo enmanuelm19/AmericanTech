@@ -1,0 +1,85 @@
+<zk xmlns:n="native">
+<script src="../assets/portal/js/jquery-2.2.1.min.js"/>
+
+	
+	<?link rel="stylesheet" href="../assets/intranet/owlCarrusel/assets/owl.carousel.css"?>
+	<?link rel="stylesheet" href="../assets/intranet/owlCarrusel/assets/owl.theme.default.min.css"?>
+	
+	<script src="../assets/intranet/owlCarrusel/owl.carousel.min.js"></script>
+	
+	
+
+	
+	
+
+	<script type="tex/javascript" defer="true">
+		$(document).ready(function() { var owl = $('.owl-carousel');
+		owl.owlCarousel({ 
+		items:1,
+		loop:true, 
+		margin:10, 
+		autoplay:true,
+		autoplayTimeout:10000, 
+		nav: true, 
+		autoplayHoverPause:true 
+		});
+		$('.play').on('click',function(){
+		owl.trigger('autoplay.play.owl',[1000]) })
+		$('.stop').on('click',function(){
+		owl.trigger('autoplay.stop.owl') })
+
+		});
+
+	</script>
+
+
+	<div class="row" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')">
+		<div class="col-xs-10 col-md-offset-1">
+			<label style="font-family: 'Lato', sans-serif; font-size:2em;">Noticias </label>
+			<n:br></n:br>
+			<n:br></n:br>
+
+			<label style="font-family: 'Lato', sans-serif; font-size:1.3em;"></label>
+
+			<n:br></n:br>
+			<n:br></n:br>
+
+			<n:div  class="owl-demo" zclass="none">
+				<div zclass="none" class="owl-carousel owl-theme" children="@load(vm.allNoticia)">
+					<template name="children" var="noticias">
+						<div  style="display: inline-block !important;" class="owl-item" zclass="none">
+							<div style="margin-left: 2px; margin-right: 2px; margin-bottom:5px;" class="box" zclass="none">	
+								<div class="box-icon" zclass="none">
+									<span class="fa fa-4x">
+										<image src="@load(noticias.foto)" width="50px" height="50px"></image>
+										
+									</span>
+								</div>
+								<n:div class="info" >						
+									<div>
+										<n:h4 class="info text-center">
+											<label zclass="none" value="@load(noticias.titulo)" />
+										</n:h4>
+										<n:p style="padding:15px; min-width:300px; man-width:500px; min-height:300px; max-height:300px; overflow-x: hidden;
+overflow-y: auto;">
+											<label zclass="none" value="@load(noticias.descripcion)" />
+										</n:p>
+										
+									</div>
+									<n:br></n:br>
+									<include src="redes.html" />
+									<!-- <a href="" class="btn">Ver más</a> -->
+								</n:div>
+							</div>
+						</div>
+					</template>
+				</div>
+			</n:div>
+			
+			<n:br></n:br>
+			<n:br></n:br>
+			<n:br></n:br>
+			<n:br></n:br>
+		</div>
+	</div>
+</zk>

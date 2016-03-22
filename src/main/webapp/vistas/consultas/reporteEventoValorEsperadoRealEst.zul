@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estadisticos.ReporteEventoValorEsperadoRealEstViewModel')" >
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -33,7 +34,7 @@
 								   	 			<row class="col-md-12 ">
 								   	 				<div align="left">
 									                  	<div>
-															<checkbox label="Fecha"></checkbox>
+															<checkbox checked="@bind(vm.fechacheck)" disabled="@load(vm.discheckfecha)" label="Fecha"></checkbox>
 														</div>
 								   	 				</div>
 								   	 			</row>
@@ -42,12 +43,12 @@
 												   	 	<hlayout width="100%" >
 											                  	<div>
 																	Desde: 
-																	<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+																	<datebox  width="70%" disabled="@load(vm.fechades)" tabindex="7" />
 																</div>
 																<space spacing="5%"></space>
 																<div>
 																	Hasta: 
-																	<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+																	<datebox  width="70%" disabled="@load(vm.fechahas)" tabindex="7" />
 																</div>																		   	 							   	 	
 												   	 	</hlayout>
 								   	 				</div>
@@ -55,10 +56,10 @@
 								   	 			<row class="col-md-12 ">
 								   	 				<div align="left">
 									                  	<div>
-															<checkbox label="Evento"></checkbox>
+															<checkbox label="Evento" checked="@bind(vm.eventocheck)" disabled="@load(vm.discheckevento)"></checkbox>
 															 <div class="col-md-12">	
 																	<image src="../assets/img/funnel.png" />
-																	<textbox instant="true" width="50%" placeholder="Buscar" />		   		
+																	<textbox instant="true" width="50%" disabled="@load(vm.textbuscar)" placeholder="Buscar" />		   		
 														   	 </div>	
 														</div>
 								   	 				</div>

@@ -31,10 +31,10 @@
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Seleccione :</label>
-												       <combobox selectedItem="@bind(vm.tipo)">
-															<comboitem label="Instalaciones" value="1"> </comboitem>
-															<comboitem label="Socios" value="2"></comboitem>
-															<comboitem label="Afiliados" value="3"></comboitem>
+												       <combobox selectedItem="@bind(vm.tipo)" onChanging="@command('desabilitar')">
+															<comboitem label="Instalaciones" value="Instalaciones"> </comboitem>
+															<comboitem label="Socios" value="Socios"></comboitem>
+															<comboitem label="Afiliados" value="Afiliados"></comboitem>
 													   </combobox>			   		
 											   	 </div>								   	 
 											  </row>   
@@ -43,14 +43,14 @@
 											   		   <div >
 											   		   		<label class="col-md-4">Nro de Carnet </label>
 											   		   </div>   
-												       <textbox value="@bind(vm.carnet)"></textbox>
-												       <button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" />			   		
+												       <textbox value="@bind(vm.carnet)" disabled="@load(vm.disablecarnet)"></textbox>
+												       <button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" disabled="@load(vm.disablecarnet)"/>			   		
 											   	 </div>								   	 
 											  </row>
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Instalacion :</label>
-												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)">
+												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)" disabled="@load(vm.disableinstalaciones)">
 															<template name="model">
 																	<comboitem
 																		label="@load(each.nombre)" value="@load(each)" />
