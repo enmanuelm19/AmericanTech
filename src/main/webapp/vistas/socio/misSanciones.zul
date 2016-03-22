@@ -30,7 +30,7 @@
 				        </auxhead>
 				        <columns class="z-grid z-column-content ">
 							<column label="Motivo" width="170px"  align="center" />
-				            <column label="Descripcion" width="170px"  align="center"  /> 
+				            <column label="Descripcion" width="370px"  align="center"  /> 
 				            <column label="Monto" align="center" /> 
 				            <column label="Inicio" align="center"/>
 				            <column label="Final" align="center" />    
@@ -40,7 +40,7 @@
 				            	<row>
 				             		<label value="@load(each.tipoSancion.descripcion)" />
 									<label value="@load(each.descripcion)" />
-									<label value="@load(each.monto)" />
+									<label class="label label-danger arrowed" value="@load(each.monto)" />
 									<label value="@load(each.fechaInic)" />
 									<label value="${each.fechaFin}" />
 				             	</row>
