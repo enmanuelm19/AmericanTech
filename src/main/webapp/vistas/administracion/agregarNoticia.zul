@@ -48,7 +48,7 @@
 										class="col-md-12" />
 									<textbox class="col-md-12"
 										id="txtTitulo" type="text" constraint="no empty"
-										maxlength="80" value="@bind(vm.noticia.titulo)" />
+										maxlength="65" value="@bind(vm.noticia.titulo)" />
 								</div>
 								<div>
 									<label value="Fecha Creación"
