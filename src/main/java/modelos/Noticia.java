@@ -13,6 +13,7 @@ public class Noticia implements java.io.Serializable {
 
 	private int idNoticia;
 	private Evento evento;
+	private Postulacion postulacion;
 	private TipoNoticia tipoNoticia;
 	private String titulo;
 	private String descripcion;
@@ -38,12 +39,14 @@ public class Noticia implements java.io.Serializable {
 		this.activo = activo;
 	}
 
-	public Noticia(int idNoticia, Evento evento, TipoNoticia tipoNoticia,
-			String titulo, String descripcion, String foto, Date fechaCreacion,
-			Date caducidad, boolean publico, String enlace, boolean activo,
+	public Noticia(int idNoticia, Evento evento, Postulacion postulacion,
+			TipoNoticia tipoNoticia, String titulo, String descripcion,
+			String foto, Date fechaCreacion, Date caducidad, boolean publico,
+			String enlace, boolean activo,
 			Set<NoticiaPreferencia> noticiaPreferencias) {
 		this.idNoticia = idNoticia;
 		this.evento = evento;
+		this.postulacion = postulacion;
 		this.tipoNoticia = tipoNoticia;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -70,6 +73,14 @@ public class Noticia implements java.io.Serializable {
 
 	public void setEvento(Evento evento) {
 		this.evento = evento;
+	}
+
+	public Postulacion getPostulacion() {
+		return this.postulacion;
+	}
+
+	public void setPostulacion(Postulacion postulacion) {
+		this.postulacion = postulacion;
 	}
 
 	public TipoNoticia getTipoNoticia() {

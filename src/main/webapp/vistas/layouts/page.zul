@@ -10,6 +10,11 @@
 		<include src="/vistas/content/carteleraNoticias.zul" />
 		<n:br></n:br>
 		<n:br></n:br>
+			<separator spacing="10px"></separator>
+		<n:div class="info">
+			<a href="/america/vistas/index.zul" class="btn">Todaaaas</a>
+		</n:div>
+		<separator spacing="10px"></separator>
 		<n:br></n:br>
 		<include src="/vistas/content/calendario.zul" />
 	</div>

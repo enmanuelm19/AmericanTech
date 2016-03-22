@@ -1,4 +1,4 @@
-package reportes.estructurados;
+package reportes.estadisticos;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -37,37 +37,31 @@ import modelos.TipoPreferencia;
 
 
 
-public class ReporteEventualidadesViewModel {
+public class ReporteEventualidadesEstViewModel {
 	
-
-	private Socio socio;
-	private SocioDao socioDao;
 	private String tipo;
 	private Time horaInicio;
 	private Time horaFin;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private Date fechaDesde;
+	private Date fechaHasta;
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
 	private String carnet;
-	private boolean disablecarnet;
-	private boolean disableinstalaciones;
+	private boolean hora;
+	private boolean horaDesde;
+	private boolean horaHasta;
+	private boolean instalacioncheck;
+	private boolean instalacion;
 
 
 	@Init
 	public void init() {
-		instalacionDao = new InstalacionDao();
-		this.socio= new Socio();
-		this.disableinstalaciones = true;
-		this.disablecarnet=true;
+		this.setHoraDesde(true);
+		this.setHoraHasta(true);
+		this.setInstalacion(true);
 
 	}
 
-	public ListModelList<Instalacion> getInstalaciones() throws Exception {
-
-		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
-
-	}
 	
 	@NotifyChange("tipoInstalacionSelected")
 	public TipoInstalacion getTipotipoInstalacionSelected() {
@@ -80,20 +74,19 @@ public class ReporteEventualidadesViewModel {
 	}
 
 
-	public Date getFechaInicio() {
-		return fechaInicio;
+	public Date getFechaDesde() {
+		return fechaDesde;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setFechaDesde(Date fechaDesde) {
+		this.fechaDesde = fechaDesde;
+	}
+	public Date getFechaHasta() {
+		return fechaHasta;
 	}
 
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechaHasta(Date fechaHasta) {
+		this.fechaHasta = fechaHasta;
 	}
 
 	public Time getHoraInicio() {
@@ -112,37 +105,20 @@ public class ReporteEventualidadesViewModel {
 		this.horaFin = horaFin;
 	}
 
-	public Socio getSocio() {
+	/*public Socio getSocio() {
 		return socio;
 	}
 
 	public void setSocio(Socio socio) {
 		this.socio = socio;
-	}
+	}*/
 
 	public String getTipo() {
 		return tipo;
 	}
 
 	@NotifyChange({"disablecarnet","disableinstalaciones"})
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-		if(this.tipo.equalsIgnoreCase("Instalaciones")){
-			this.disableinstalaciones = false;
-			this.disablecarnet=true;
-		}
-		else if(this.tipo.equalsIgnoreCase("Socios") || this.tipo.equalsIgnoreCase("Afiliados"))
-		{
-			this.disablecarnet = false;
-			this.disableinstalaciones = true;
-		}
-		else
-		{
-			this.disablecarnet = true;
-			this.disableinstalaciones =true;
-		}
-		
-	}
+
 	public String getCarnet() {
 		return carnet;
 	}
@@ -152,7 +128,7 @@ public class ReporteEventualidadesViewModel {
 	}
 
 
-	@Command
+	/*@Command
 	@NotifyChange({"carnet","socio"})
 	public void buscarCarnet() throws Exception{
 		if(carnet==""||carnet==null){
@@ -170,23 +146,74 @@ public class ReporteEventualidadesViewModel {
 			}
 
 		}
+	}*/
+
+	public boolean getHora() {
+		return hora;
 	}
 
-	public boolean getDisablecarnet() {
-		return disablecarnet;
+	@NotifyChange({"horaDesde","horaHasta"})
+	public void setHora(boolean hora) {
+		this.hora = hora;
+		if (this.hora == true)
+		{
+			this.horaDesde = false;
+			this.horaHasta = false;
+		}
+		else
+		{
+			this.horaDesde = true;
+			this.horaHasta = true;			
+		}	
 	}
 
-	public void setDisablecarnet(boolean disable) {
-		this.disablecarnet = disable;
-	}	
-	
-	public boolean getDisableinstalaciones() {
-		return disableinstalaciones;
+
+	public boolean getHoraDesde() {
+		return horaDesde;
 	}
 
-	public void setDisableinstalacionest(boolean disable) {
-		this.disableinstalaciones = disable;
-	}	
+
+	public void setHoraDesde(boolean horaDesde) {
+		this.horaDesde = horaDesde;
+	}
+
+
+	public boolean getHoraHasta() {
+		return horaHasta;
+	}
+
+
+	public void setHoraHasta(boolean horaHasta) {
+		this.horaHasta = horaHasta;
+	}
+
+
+	public boolean getInstalacioncheck() {
+		return instalacioncheck;
+	}
+
+	@NotifyChange({"instalacion"})
+	public void setInstalacioncheck(boolean instalacioncheck) {
+		this.instalacioncheck = instalacioncheck;
+		if (this.instalacioncheck == true)
+		{
+			this.instalacion = false;
+		}
+		else
+		{
+			this.instalacion = true;
+		}
+	}
+
+
+	public boolean getInstalacion() {
+		return instalacion;
+	}
+
+
+	public void setInstalacion(boolean instalacion) {
+		this.instalacion = instalacion;
+	}
 
 	
 	

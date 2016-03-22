@@ -2,6 +2,7 @@ package controllers;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,13 +32,14 @@ public class CarteleraViewModel {
 	private List<Noticia> noticiaAll;
 	private NoticiaDao noticiaDao;
 	private List<Noticia> noticiasPublicasAll;
-
+	
 	@Init
 	public void init() throws Exception {
 		
 		noticiaAll = new ArrayList<Noticia>();
 		noticiaDao = new NoticiaDao();
-		noticiaAll = noticiaDao.obtenerTodos();
+		noticiaAll = noticiaDao.obtenerNoticiasVigentes(new Date());
+		noticiasPublicasAll = noticiaDao.obtenerNoticiasPublicas(new Date());
 	}
 
 	public ListModelList<Noticia> getAllNoticia() {
@@ -48,18 +50,15 @@ public class CarteleraViewModel {
 		return noticiaAll.size() + " items en la lista";
 	}
 
-	public void noticiasActivas() throws Exception{
-		for(int i=0; i<noticiaDao.obtenerTodos().size();i++)
-		{
-			if(noticiaDao.obtenerTodos().get(i).isPublico()==false)
-				noticiaAll.add(noticiaDao.obtenerTodos().get(i));
-			else
-				noticiasPublicasAll.add(noticiaDao.obtenerTodos().get(i));
-				
-		}
-		
-	}
 	
+	public List<Noticia> getNoticiasPublicasAll() {
+		return noticiasPublicasAll;
+	}
+
+	public void setNoticiasPublicasAll(List<Noticia> noticiasPublicasAll) {
+		this.noticiasPublicasAll = noticiasPublicasAll;
+	}
+
 	@GlobalCommand
 	@NotifyChange({ "allNoticia", "cantRegistros" })
 	public void refreshPreferencia() throws Exception {

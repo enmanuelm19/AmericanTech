@@ -24,10 +24,9 @@ public class Sancion implements java.io.Serializable {
 	public Sancion() {
 	}
 
-	public Sancion(int idSancion, MotivoSancion motivoSancion,
-			TipoSancion tipoSancion, String descripcion, boolean activo) {
+	public Sancion(int idSancion, TipoSancion tipoSancion, String descripcion,
+			boolean activo) {
 		this.idSancion = idSancion;
-		this.motivoSancion = motivoSancion;
 		this.tipoSancion = tipoSancion;
 		this.descripcion = descripcion;
 		this.activo = activo;

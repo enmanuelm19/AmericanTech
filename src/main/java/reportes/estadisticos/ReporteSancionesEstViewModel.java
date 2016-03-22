@@ -1,4 +1,4 @@
-package reportes.estructurados;
+package reportes.estadisticos;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import java.util.Set;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.DependsOn;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -23,44 +22,35 @@ import org.zkoss.zul.Window;
 
 
 
-
-
-
-
 import Dao.InstalacionDao;
+import Dao.PersonaDao;
 import Dao.SocioDao;
-import modelos.Evento;
 import modelos.Instalacion;
+import modelos.Persona;
 import modelos.Socio;
 import modelos.TipoInstalacion;
 import modelos.TipoPreferencia;
 
 
 
-public class ReporteEventualidadesViewModel {
+public class ReporteSancionesEstViewModel {
 	
-
 	private Socio socio;
 	private SocioDao socioDao;
+	private String carnet;	
 	private String tipo;
-	private Time horaInicio;
-	private Time horaFin;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private int estadoinstalacion;
+	private Date fechadesde;
+	private Date fechahasta;
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
-	private String carnet;
-	private boolean disablecarnet;
-	private boolean disableinstalaciones;
+
 
 
 	@Init
 	public void init() {
 		instalacionDao = new InstalacionDao();
-		this.socio= new Socio();
-		this.disableinstalaciones = true;
-		this.disablecarnet=true;
-
+		this.socio = new Socio();
 	}
 
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
@@ -79,37 +69,28 @@ public class ReporteEventualidadesViewModel {
 		this.tipoInstalacionSelected = tipoInstalacionSelected;
 	}
 
-
-	public Date getFechaInicio() {
-		return fechaInicio;
+	public int getEstadoinstalacion() {
+		return estadoinstalacion;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setEstadoinstalacion(int estadoinstalacion) {
+		this.estadoinstalacion = estadoinstalacion;
 	}
 
-	public Date getFechaFin() {
-		return fechaFin;
+	public Date getFechadesde() {
+		return fechadesde;
 	}
 
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechadesde(Date fechadesde) {
+		this.fechadesde = fechadesde;
 	}
 
-	public Time getHoraInicio() {
-		return horaInicio;
+	public Date getFechahasta() {
+		return fechahasta;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public Time getHoraFin() {
-		return horaFin;
-	}
-
-	public void setHoraFin(Time horaFin) {
-		this.horaFin = horaFin;
+	public void setFechahasta(Date fechahasta) {
+		this.fechahasta = fechahasta;
 	}
 
 	public Socio getSocio() {
@@ -124,33 +105,17 @@ public class ReporteEventualidadesViewModel {
 		return tipo;
 	}
 
-	@NotifyChange({"disablecarnet","disableinstalaciones"})
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-		if(this.tipo.equalsIgnoreCase("Instalaciones")){
-			this.disableinstalaciones = false;
-			this.disablecarnet=true;
-		}
-		else if(this.tipo.equalsIgnoreCase("Socios") || this.tipo.equalsIgnoreCase("Afiliados"))
-		{
-			this.disablecarnet = false;
-			this.disableinstalaciones = true;
-		}
-		else
-		{
-			this.disablecarnet = true;
-			this.disableinstalaciones =true;
-		}
-		
 	}
+	
 	public String getCarnet() {
 		return carnet;
 	}
 
 	public void setCarnet(String carnet) {
 		this.carnet = carnet;
-	}
-
+	}	
 
 	@Command
 	@NotifyChange({"carnet","socio"})
@@ -162,32 +127,11 @@ public class ReporteEventualidadesViewModel {
 			this.socioDao= new SocioDao();
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
 			if(this.socio==null){
-				Messagebox.show("Carnet no encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-				this.carnet="";
-			}
-			else {
-				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);	
+				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 
 		}
 	}
 
-	public boolean getDisablecarnet() {
-		return disablecarnet;
-	}
 
-	public void setDisablecarnet(boolean disable) {
-		this.disablecarnet = disable;
-	}	
-	
-	public boolean getDisableinstalaciones() {
-		return disableinstalaciones;
-	}
-
-	public void setDisableinstalacionest(boolean disable) {
-		this.disableinstalaciones = disable;
-	}	
-
-	
-	
 }
