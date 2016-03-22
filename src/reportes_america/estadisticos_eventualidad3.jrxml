@@ -8,9 +8,9 @@
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[Select te.descripcion, COUNT(e.*) as Cantidad, ( COUNT(e.*) * 100)/(SELECT COUNT(e.*) from eventualidad e WHERE e.fecha between '03-01-2016' and '03-30-2016' and e.instalacionid_instalacion = 1) as Porcentaje
+		<![CDATA[Select te.descripcion, COUNT(e.*) as Cantidad, ( COUNT(e.*) * 100)/(SELECT COUNT(e.*) from eventualidad e WHERE e.fecha between '01-03-2016' and '30-03-2016' and e.instalacionid_instalacion = 1) as Porcentaje
 from eventualidad e, tipo_eventualidad te
-where e.fecha between '03-01-2016' and '03-30-2016'
+where e.fecha between '01-03-2016' and '30-03-2016'
 and e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad
 and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 	</queryString>

@@ -43,24 +43,6 @@ import org.zkoss.zkex.zul.JasperreportExporterFactory;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import antlr.collections.List;
 import Dao.InstalacionDao;
 import Dao.PersonaDao;
@@ -86,7 +68,8 @@ public class ReporteSancionesEstViewModel {
 	private Date fechahasta;
 	private InstalacionDao instalacionDao;
 	private TipoInstalacion tipoInstalacionSelected;
-
+	
+	
 	//reporte
 		private String sql = "";
 		
@@ -106,12 +89,13 @@ public class ReporteSancionesEstViewModel {
 		this.socio = new Socio();
 	}
 
+
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
 
 		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
 
 	}
-	
+
 	@NotifyChange("tipoInstalacionSelected")
 	public TipoInstalacion getTipotipoInstalacionSelected() {
 		return tipoInstalacionSelected;

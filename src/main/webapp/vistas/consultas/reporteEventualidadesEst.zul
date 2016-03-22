@@ -119,10 +119,12 @@
 								                  	<div class="col-md-12">
 								                  		<space spacing="1%"></space>
 														<label> Instalacion:</label>
-														<combobox width="30%" selectedItem="@bind(vm.horaHastaSelect)" disabled="@load(vm.instalacion)">
-															<comboitem label="Caney"></comboitem>
-															<comboitem label="Piscina"></comboitem>																																							
-													   </combobox>
+													   <combobox width="30%" model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" disabled="@load(vm.instalacion)">
+														<template name="model">
+																<comboitem
+																	label="@load(each.nombre)" value="@load(each)" />
+														</template>
+												   </combobox>
 													</div>
 											  </row>
 										</rows>
