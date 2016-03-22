@@ -1,137 +1,78 @@
-
-
 <zk xmlns:n="native" >
 	<div>
-	<hlayout  spacing="0">
-		
-		<vlayout spacing="0" hflex="1">
-			<div sclass="breadcrumbs">
-				<div sclass="breadcrumb">
-					<span sclass="home-icon z-icon-user" />
-					<a label="Socios" href="#" />
-					<label value="Solicitar Venta" />
+		<hlayout  spacing="0">
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-user" />
+						<a label="Socios" href="#" />
+						<label value="Solicitar Venta" />
+					</div>
 				</div>
-
-			</div>
-
-			<div class='contenedor'>
-
-				<div sclass="page-header">
-					<label value="Solicitar Venta" />
-
-				</div>
-				<div class='contenido' align="center">
-				<div class="form-pricing" width="580px" >
-						<div>
-	
-			
-		<div align="center">
-		
-			<div align="left">
-			<div class='encabezado'>Mis Acciones</div>
-			<div class='linea-two'></div>
-			</div>
-			<separator spacing="20px"/>
-			<listbox id="box"
-											multiple="true" checkmark="true">
-											<listhead>
-												<listheader
-													label="Solicitar Venta" />
-												<listheader label="# Acción" />
-											</listhead>
+				<div class='contenedor' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.SolicitudVentaViewModel')">
+					<div sclass="page-header">
+						<label value="Solicitar Venta" />
+					</div>
+					<div class='contenido' align="center">
+						<div class="form-pricing" width="580px" >
+							<div>
+								<div align="center">
+									<div align="left">
+										<div class='encabezado'>Mis Acciones</div>
+										<div class='linea-two'></div>
+									</div>
+									<separator spacing="20px"/>
+									<listbox multiple="true" checkmark="true" model="@load(vm.accionesSocio)" selectedItems="@bind(vm.seleccionadas)">
+										<listhead>
+											<listheader	label="Solicitar Venta" />
+											<listheader label="Nro Acción" />
+										</listhead>
+										<template name="model">
 											<listitem>
 												<listcell label="" />
-												<listcell
-													label="0001" />
+												<listcell label="@load(each.nroAccion)" />
 											</listitem>
-											<listitem>
-												<listcell label="" />
-												<listcell label="0002" />
-											</listitem>
-											<listitem>
-												<listcell label="" />
-												<listcell label="0003" />
-											</listitem>										
-										</listbox>
-		
-		</div>
-			<separator spacing="20px"/>		
-		<div>
-		
-			<div align="left">
-			<div class='encabezado'>Informacion de la Venta</div>
-			<div class='linea-two'></div>
-			</div>
-			<separator spacing="20px"/>			
-			<grid>
-			<rows class="col-md-12">
-			     			    
-			                 <!-- <row class="col-md-11">
-			              
-			                  	  <div width="80px">
-			              		   	# Acción
-			              		   </div>
-			                       <div>
-			              		   <textbox type="text" value="" width="200px" />
-			                      </div>
-			                      		                      
-			                  </row>-->
-			                  
-			                   <row class="col-md-12">
-			              		 
-			              		  
-			              		  
-							<div class="col-md-12">
-								 Motivo Venta 
-								<n:br></n:br>
-								<textbox type="text" rows="5"
-									width="100%" tabindex="10" constraint="no empty" />
+										</template>										
+									</listbox>
+								</div>
+								<separator spacing="20px"/>		
+								<div>
+									<div align="left">
+										<div class='encabezado'>Información de la Venta</div>
+										<div class='linea-two'></div>
+									</div>
+									<separator spacing="20px"/>			
+									<grid>
+										<rows class="col-md-12">
+						     		    	<row class="col-md-12">
+						           		 		<div class="col-md-12">Motivo Venta <n:br></n:br>
+													<radiogroup id="motivos" model="@load(vm.motivos)" selectedItem="@bind(vm.solicitud.motivoVenta)">
+														<template name="model">
+															<radio radiogroup="motivos" label="@load(each.descripcion)" value="@load(each)" style="margin-right:20px;"/>
+														</template>
+													</radiogroup>
+												</div>
+												</row>
+												<row class="col-md-12">
+												<div class="col-md-12">Descripción Venta <n:br></n:br>
+													<textbox type="text" rows="5" width="100%" tabindex="10" constraint="no empty" value="@bind(vm.solicitud.motivo)"/>
+												</div>
+						           	        </row>    
+						                   	<row class="col-md-4 col-md-offset-4"> <separator spacing="25px"></separator>
+								               	<hlayout>
+							               	  		<div>
+								                   		<button  iconSclass="z-icon-floppy-o"  class='boton-guardar' label="Solicitar Venta" onClick="@command('guardarSolicitud')" style="margin-bottom:20px;"/>
+								                   	</div>
+								               	</hlayout>
+						               		 </row>
+						           		</rows>
+									</grid>
+								</div>
 							</div>
-			              		   
-			              
-			             	      <!-- <div>
-							   		 <listbox width="200px" height="25px" selectedItem="@bind(vm.dateFormat)"
-									                            mold="select" tabindex="7">
-									                            <listitem label="Motivo 01" value="" />
-									                             <listitem label="Motico 02" value="" />
-									                             <listitem label="Motico 02" value="" />
-								     </listbox>     	
-								     <separator spacing="15px"></separator>	
-		    					 </div> -->
-			                  </row>    
-			                       
-			         
-			               	
-			                  <row class="col-md-4 col-md-offset-4"> <separator spacing="25px"></separator>
-			                  	<hlayout>
-			                 
-			                  	  		<div >
-			                    		<button   iconSclass=""  class='boton-guardar' label="Solicitar Venta"/>
-			                    	</div>
-		
-			                  	</hlayout>
-			             		
-			                 </row>
-			 			
-			            </rows>
-				
-			</grid>
-	
-	</div>
-
 						</div>
 					</div>
-
 				</div>
-
-			</div>
-
-
-
-
-		</vlayout>
-	</hlayout>
-
-</div>
+			</vlayout>
+		</hlayout>
+	</div>
 </zk>
-

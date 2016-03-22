@@ -73,32 +73,55 @@ public class RegistrarAccionViewModel {
 		System.out.println("valor "+accion.getValor());
 		if ((accion.getNroAccion() != null && !accion.getNroAccion().equalsIgnoreCase("")) || (accion.getValor() > 0.0 && !String.valueOf(accion.getValor()).equalsIgnoreCase(""))) {
 			accion.setActivo(true);
-			if (!editable){				
-				accionDAO.agregarAccion(accion);
-				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido registrada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);
+			if (!editable){
+				if(validarDesc())
+					Messagebox.show("Ya existe una acción con ese número","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				else{
+					accionDAO.agregarAccion(accion);
+					Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
+						publicarNoticia();
+					}
+					win.detach();
+					BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
+				}
 			}
 			else{
 				if(accion.getEstadoAccion().getIdEstadoAccion()==2){
 					accion.setSocio(null);
 				}
 				accionDAO.actualizarAccion(accion);
-				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);		
-			}
-			if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
-				this.noticia=new Noticia();
-				this.noticia.setTitulo("Acción en Venta");
-				this.noticia.setDescripcion("¡Se a aperturado el proceso de postulación para una acción en venta!");
-				this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
-				this.noticia.setFechaCreacion(new Date());
-				this.noticia.setCaducidad(new Date());
-				this.noticia.setPublico(true);
-				this.noticia.setActivo(true);
-				this.noticiaDao.agregarNoticia(noticia);
+				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);		
+				if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
+					publicarNoticia();
+				}
+				win.detach();
+				BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
 			}
 			
-			win.detach();
-			BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
 		}
 
+	}
+	
+	public boolean validarDesc() throws Exception{
+		boolean val=false;
+		List<Accion> acc= accionDAO.obtenerTodos();
+		for(int i=0; i<acc.size(); i++){
+			if(acc.get(i).getNroAccion().equalsIgnoreCase(accion.getNroAccion()))
+				val=true;
+		}
+		return val;
+	}
+	public void publicarNoticia() throws Exception{
+		this.noticia=new Noticia();
+		this.noticia.setTitulo("Acción en Venta");
+		this.noticia.setDescripcion("¡Se a aperturado el proceso de postulación para una acción en venta!");
+		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
+		this.noticia.setFechaCreacion(new Date());
+		this.noticia.setCaducidad(new Date());
+		this.noticia.setPublico(true);
+		this.noticia.setActivo(true);
+		this.noticiaDao.agregarNoticia(noticia);
+	
 	}
 }

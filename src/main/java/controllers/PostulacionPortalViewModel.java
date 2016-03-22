@@ -182,6 +182,7 @@ public class PostulacionPortalViewModel {
 							this.padrino2=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino2());
 							if(!this.padrino1.equals(null) && !this.padrino2.equals(null)){
 								this.persona.setFoto(ManejadorArchivo.subirImagen(uploadedImage));
+								this.persona.setActivo(true);
 								this.personaDao.agregarPersona(persona);
 								this.postulado.setPersona(this.persona);
 								this.postulado.setActivo(true);

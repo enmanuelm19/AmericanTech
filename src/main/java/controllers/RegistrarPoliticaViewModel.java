@@ -63,19 +63,19 @@ public class RegistrarPoliticaViewModel {
 					politica.setClub(ClubDao.obtenerClub(1));
 					politica.setActivo(true);
 					tipoDao.agregarPolitica(politica);
-					Messagebox.show("Se ha registrado la regla exitosamente", "Exito", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("Se ha registrado la regla exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarPolitica(politica);
-					Messagebox.show("La regla ha sido actualizado exitosamente", "Exito", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("La regla ha sido actualizado exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,"refreshReglas", null);
 			}
 		else{
 
-			Messagebox.show("Debe llenar los campos","Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar los campos","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
-		}
-
 	}
+
+}
 

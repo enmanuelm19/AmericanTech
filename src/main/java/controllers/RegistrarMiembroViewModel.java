@@ -98,12 +98,12 @@ public class RegistrarMiembroViewModel {
 	@NotifyChange({"miembro","desactivar"})
 	public void buscarCedula() throws Exception{
 		if(miembro.getPersona().getIdentificacion()==null || miembro.getPersona().getIdentificacion().equalsIgnoreCase(""))
-			Messagebox.show("Debe llenar el campo Cédula", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar el campo Cédula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		else{
 			Persona per= new Persona();
 					per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
 			if(per==null){
-				Messagebox.show("Cédula no encontrada. Proceda a su registro", "Aviso", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cédula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				miembro.setPersona(new Persona());
 				desactivar=false;
 			}
@@ -125,7 +125,7 @@ public class RegistrarMiembroViewModel {
 			for(Iterator<MiembroJunta> i=junta.getMiembroJuntas().iterator(); i.hasNext();){
 				MiembroJunta m=i.next();
 				if(m.getCargo().getIdCargo()==1||m.getCargo().getIdCargo()==5){
-					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "Aviso", Messagebox.OK, Messagebox.EXCLAMATION);		
+					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);		
 					break;
 				}
 			}
@@ -139,12 +139,12 @@ public class RegistrarMiembroViewModel {
 			if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
 					||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
 					||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")){
-				Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				
 			}
 			else{
 				miembroDao.agregarMiembroJunta(miembro);
-				Messagebox.show("El miembro ", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("El miembro ", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				
 			}
 		}
