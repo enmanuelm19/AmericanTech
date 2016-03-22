@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2016-03-22T14:38:42 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="evento_actividad" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
@@ -117,6 +119,34 @@ ON a.eventoid_evento = e.id_evento]]>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{INSTALACIONES}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="31" width="51" height="20" uuid="7b5d9dbe-7d26-4ad1-a74e-08109b24ac1c"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="467" y="31" width="100" height="20" uuid="531f7c1e-58a5-4746-8f63-d8a7ec2fbfd8"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_INICIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="571" y="31" width="51" height="20" uuid="0a23c912-5f90-4d49-967b-fe29143a123f"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[hasta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="634" y="31" width="100" height="20" uuid="deceec8f-99ee-4af4-96b6-4d046ffe69bd"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

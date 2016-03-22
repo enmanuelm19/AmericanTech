@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estructurados.ReporteActividadEventoViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -27,7 +28,10 @@
 								<groupbox style="margin: 1%;" width="85%" height="auto">
 									 <div class="col-md-12" style="margin:1%">	
 											<image src="../assets/img/funnel.png" />
-											<textbox instant="true" width="50%" placeholder="Buscar" />		   		
+				
+											<textbox instant="true"
+													width="40%" value="@bind(vm.nombreFiltro)"
+													onChange="@command('filtro')" placeholder="Buscar" />	   		
 								   	 </div>	
 									<space spacing="2%"></space>
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
@@ -35,24 +39,17 @@
 										<grid>
 											<rows>
 												  <row class="col-md-12" >			                  				                  
-													    <listbox hflex="2" height="200px" vflex="true" multiple="true" rows="5">
+													    <listbox model="@load(vm.allEventos)" hflex="2" height="200px" vflex="true" multiple="true" rows="5" selectedItem="@bind(vm.eventoSelected)">
 													        <listhead>
 													            <listheader label="Eventos" ></listheader>
 													        </listhead>
-													        <!--template name="model"-->
-													            <!-- listitem>
-													                <listcell label="${each.firstName }"/>
-													                <listcell label="${each.lastName }"/>
-													                <listcell label="${each.fullName }"/>
-													                <listcell label="${each.married ? 'Y' : 'N' }"/>
-													            </listitem>-->
-														        <listitem>
-														            <listcell label="Dia del Padre" />
-														        </listitem>
-														        <listitem>
-														            <listcell label="Evento Deportivo Juvenil" />
-														        </listitem>								        
-													        <!--/template-->
+													        <template name="model">
+													            <listitem >
+													             
+																	 <listcell label="${each.nombre }"/>
+									     						
+													            </listitem>
+													        </template>
 													    </listbox>   
 												 </row>
 											</rows>
@@ -63,7 +60,8 @@
 						        <div align="center" xmlns:w="client">
 								   <button id="btnImprimir" class='boton-guardar' label="Generar txt" />
 								   <space spacing="2%"></space>
-								   <button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+								   
 							    </div>	
 							</div>	
 							<space spacing="2%"></space>
