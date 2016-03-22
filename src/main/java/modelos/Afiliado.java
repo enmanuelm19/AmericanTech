@@ -114,10 +114,10 @@ public class Afiliado implements java.io.Serializable {
 		if (today.get(Calendar.MONTH) <= birth.get(Calendar.MONTH)) {
 			if (today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)) {
 				if (today.get(Calendar.DATE) > birth.get(Calendar.DATE)) {
-					factor = -1; //Aun no celebra su cumpleaños
+					factor = -1; 
 				}
 			} else {
-		factor = -1; //Aun no celebra su cumpleaños
+		factor = -1;
 		}
 		
 		} 

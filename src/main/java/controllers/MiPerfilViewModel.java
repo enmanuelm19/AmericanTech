@@ -42,7 +42,6 @@ public class MiPerfilViewModel {
 	private Usuario usuario;
 	private PreferenciaPersonaDao preferenciaPDAO;
 	private AfiliadoDao afiliadoDao;
-	private Afiliado afiliado;
 	private AccionDao accionDao;
 	private SocioDao socioDao;
 	private Socio socio;
@@ -75,16 +74,6 @@ public class MiPerfilViewModel {
 	}
 	
 	
-
-	public Afiliado getAfiliado() {
-		return afiliado;
-	}
-
-
-
-	public void setAfiliado(Afiliado afiliado) {
-		this.afiliado = afiliado;
-	}
 
 
 

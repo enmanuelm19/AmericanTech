@@ -58,7 +58,7 @@
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
 								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar1', win=winCambiarClave)" />
+								onClick="@command('guardar11', win=winCambiarClave)" />
 						</div>
 						<div>
 							<button id="cancelarBtn"

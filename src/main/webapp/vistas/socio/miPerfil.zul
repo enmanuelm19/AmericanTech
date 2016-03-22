@@ -8,7 +8,7 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-user" />
-						<a label="Socio > " href="#" />
+						<a label="Socio " href="#" />
 						<a label="Mi Perfil" href="#" />
 					</div>
 				</div>
