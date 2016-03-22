@@ -62,7 +62,6 @@ public class MiPerfilViewModel {
 		usuario = (Usuario) Sessions.getCurrent().getAttribute("Usuario");
 		this.preferenciaPDAO = new PreferenciaPersonaDao();
 		this.afiliadoDao = new AfiliadoDao();
-		this.afiliado= new Afiliado();
 		this.accionDao = new AccionDao();
 		this.socioDao = new SocioDao();
 		this.socio = socioDao.obtenerSocioPersona(usuario.getPersona());
