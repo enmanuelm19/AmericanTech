@@ -80,7 +80,7 @@ public class SancionDao {
                 		.add(Restrictions.eq("afiliado",dato)).add(Restrictions.eq("activo",true)).list();
             } catch (Exception e) {  
             e.printStackTrace();
-           
+            
             throw new Exception(e.getMessage(),e.getCause());
             }  finally {  
                 sesion.close();  

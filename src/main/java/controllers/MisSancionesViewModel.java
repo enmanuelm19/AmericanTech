@@ -55,7 +55,7 @@ public class MisSancionesViewModel {
 
 		try {
 			this.sanciones= this.sancionDao.obtenerSancionesSocio(socio);
-			if(sanciones.isEmpty()){
+			if(sanciones.isEmpty()){ 
 				this.sanciones= this.sancionDao.obtenerSancionAfiliado(afiliado);
 			}
 		} catch (Exception e) {
