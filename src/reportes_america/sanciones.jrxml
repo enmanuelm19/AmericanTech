@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_socios" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sanciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="2"/>
@@ -19,8 +19,7 @@ ON p.id_persona = s.personaid_persona
 INNER JOIN tipo_sancion ts
 ON ts.id_tipo_sancion = sa.tipo_sancionid_tipo_sancion
 INNER JOIN eventualidad ev
-ON ev.id_eventualidad = sa.eventualidadid_eventualidad
-]]>
+ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 	</queryString>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="nro_carnet" class="java.lang.String"/>
@@ -61,7 +60,7 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad
 		</band>
 	</title>
 	<pageHeader>
-		<band height="66" splitType="Stretch">
+		<band height="67" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
@@ -95,42 +94,42 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[nombre]]></text>
+				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="113" y="1" width="100" height="20" uuid="366301cf-302f-402e-b5de-78c67e7953b2"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[nro_carnet]]></text>
+				<text><![CDATA[Nro Carnet]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="236" y="0" width="100" height="20" uuid="e667b399-0e19-49cb-979a-0d26a4126fd1"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[descripcion]]></text>
+				<text><![CDATA[Descripcion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="416" y="1" width="100" height="20" uuid="66fb2edf-8c6a-45cd-a633-c8cf81508171"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[fechai]]></text>
+				<text><![CDATA[Fecha Inicial]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="556" y="1" width="100" height="20" uuid="d2ab3555-c4ca-4390-bb87-52edc1991b7e"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[fechaf]]></text>
+				<text><![CDATA[Fecha Final]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="688" y="0" width="100" height="20" uuid="e04d0d29-7288-4f8c-a262-01dabae2b284"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[motivo]]></text>
+				<text><![CDATA[Motivo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

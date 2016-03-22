@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estadisticos.ReporteSancionesEstViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -31,19 +32,19 @@
 								   	 	<hlayout width="100%" style="padding:2%">
 							                  	<div>
 													Desde: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox format="" width="70%" value="@bind(vm.fechadesde)" tabindex="7" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
-													<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
+													<datebox format="" width="70%" value="@bind(vm.fechahasta)" tabindex="7" />
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
 								   	 <space spacing="2%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
 								 </div>	
 							</div>
 						</div>

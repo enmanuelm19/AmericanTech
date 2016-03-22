@@ -31,7 +31,7 @@
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Seleccione :</label>
-												       <combobox selectedItem="@bind(vm.tipo)">
+												       <combobox selectedItem="@bind(vm.tipo)" disabled="@load(vm.sancionados)">
 															<comboitem label="Todos" value="1"> </comboitem>
 															<comboitem label="Socios" value="2"></comboitem>
 															<comboitem label="Afiliados" value="3"></comboitem>
@@ -41,10 +41,10 @@
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">
 											   		   <div >
-											   		   		<checkbox label="Nro de Carnet" class="col-md-4" />
+											   		   		<checkbox label="Nro de Carnet" checked="@bind(vm.check)" class="col-md-4" />
 											   		   </div>   
-												       <textbox value="@bind(vm.carnet)"></textbox>
-												       <button iconSclass="z-icon-search blue" class='btn-link' onClick="@command('buscarCarnet')" />
+												       <textbox value="@bind(vm.carnet)" disabled="@load(vm.nrocarnet)"></textbox>
+												       <button iconSclass="z-icon-search blue" disabled="@load(vm.nrocarnet)" class='btn-link' onClick="@command('buscarCarnet')" />
 														   		
 											   	 </div>								   	 
 											  </row>	

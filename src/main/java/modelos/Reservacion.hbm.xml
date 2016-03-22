@@ -21,7 +21,7 @@
             <column name="fecha_fin" length="29" not-null="true" />
         </property>
         <property name="condicion" type="char">
-            <column name="condicion" />
+            <column name="condicion" length="1" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />

@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estadisticos.ReporteEventoValorEsperadoRealEstViewModel')" >
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -27,70 +28,30 @@
 								<groupbox style="margin: 1%;" width="85%" height="auto">
 									<space spacing="2%"></space>
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
-								   	 	<caption label="Fecha"  ></caption>
+								   	 	<caption label="Evento"  ></caption>
 								   	 	<grid>
 								   	 		<rows>
-								   	 			<row class="col-md-12 ">
-								   	 				<div align="left">
-									                  	<div>
-															<checkbox label="Fecha"></checkbox>
-														</div>
-								   	 				</div>
-								   	 			</row>
-								   	 			<row class="col-md-12 ">
-								   	 				<div align="center">
-												   	 	<hlayout width="100%" >
-											                  	<div>
-																	Desde: 
-																	<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
-																</div>
-																<space spacing="5%"></space>
-																<div>
-																	Hasta: 
-																	<datebox format="@load(vm.dateFormat)" width="70%" tabindex="7" />
-																</div>																		   	 							   	 	
-												   	 	</hlayout>
-								   	 				</div>
-								   	 			</row>
-								   	 			<row class="col-md-12 ">
-								   	 				<div align="left">
-									                  	<div>
-															<checkbox label="Evento"></checkbox>
-															 <div class="col-md-12">	
-																	<image src="../assets/img/funnel.png" />
-																	<textbox instant="true" width="50%" placeholder="Buscar" />		   		
-														   	 </div>	
-														</div>
-								   	 				</div>
-								   	 			</row>
-												<row class="col-md-12" >			                  				                  
-												    <listbox hflex="2"  vflex="true" multiple="true" rows="5" height="200px">
-												        <listhead>
-												            <listheader label="Eventos" ></listheader>
-												        </listhead>
-												        <!--template name="model"-->
-												            <!-- listitem>
-												                <listcell label="${each.firstName }"/>
-												                <listcell label="${each.lastName }"/>
-												                <listcell label="${each.fullName }"/>
-												                <listcell label="${each.married ? 'Y' : 'N' }"/>
-												            </listitem>-->
-													        <listitem>
-													            <listcell label="Dia del Padre" />
-													        </listitem>
-													        <listitem>
-													            <listcell label="Evento Deportivo Juvenil" />
-													        </listitem>								        
-												        <!--/template-->
-												    </listbox>   
-												</row>
+	
+								   	 			<row class="col-md-12">
+								                  	<div class="col-md-12">
+								                  		<space spacing="1%"></space>
+														<label> Evento:</label>
+													   <combobox width="80%" model="@load(vm.eventos)" selectedItem="@bind(vm.eventoSelected)" >
+														<template name="model">
+																<comboitem
+																	label="@load(each.nombre)" value="@load(each)" />
+														</template>
+												   </combobox>
+													</div>
+											  </row>
+											
 								   	 		</rows>
 								   	 	</grid>
 								   	 </groupbox>
 									 <space spacing="1%"></space>									   	 
 								</groupbox >
 							    <div align="center" xmlns:w="client">
-									<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
 							    </div>									
 							</div>
 						</div>

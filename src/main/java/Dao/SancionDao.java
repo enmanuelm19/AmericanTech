@@ -158,5 +158,4 @@ public class SancionDao {
         } 
         return datos; 
 	}
-
 }

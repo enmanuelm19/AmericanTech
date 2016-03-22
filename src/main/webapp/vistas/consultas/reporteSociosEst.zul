@@ -1,5 +1,6 @@
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('reportes.estadisticos.ReporteSociosEstViewModel')">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
@@ -31,7 +32,7 @@
 							   	 			<row class="col-md-12 ">
 							   	 				<div align="left">
 								                  	<div>
-														<checkbox label="Edad"></checkbox>
+														<checkbox label="Edad" checked="@bind(vm.checkedad)"></checkbox>
 													</div>
 							   	 				</div>
 							   	 			</row>
@@ -40,44 +41,73 @@
 											   	 	<hlayout width="100%" >
 										                  	<div>
 																<label class="col-md-2">Desde:</label> 
-																<combobox width="" class="col-md-4" >
-																	<comboitem label="Caney"></comboitem>
-																	<comboitem label="Piscina"></comboitem>																																							
-															    </combobox>	
+																<combobox width="" class="col-md-4" selectedItem="@bind(vm.edaddesde)">
+																	<comboitem label="5 o menos" value="5"/>
+																	<comboitem label="10" value="10"/>
+																	<comboitem label="15" value="15"/>
+																	<comboitem label="20" value="20"/>
+																	<comboitem label="25" value="25"/>
+																	<comboitem label="30" value="30"/>
+																	<comboitem label="35" value="35"/>
+																	<comboitem label="40" value="40"/>
+																	<comboitem label="45" value="45"/>
+																	<comboitem label="50" value="50"/>
+																	<comboitem label="55" value="55"/>
+																	<comboitem label="60" value="60"/>
+																	<comboitem label="65" value="65"/>
+																	<comboitem label="70 o mas" value="70"/>
+																</combobox>
 																<label class="col-md-2">Hasta:</label> 
-																<combobox width="" class="col-md-4">
-																	<comboitem label="Caney"></comboitem>
-																	<comboitem label="Piscina"></comboitem>																																							
-															    </combobox>																	
+																<combobox width="" class="col-md-4" selectedItem="@bind(vm.edadhasta)">
+																	<comboitem label="5 o menos" value="5"/>
+																	<comboitem label="10" value="10"/>
+																	<comboitem label="15" value="15"/>
+																	<comboitem label="20" value="20"/>
+																	<comboitem label="25" value="25"/>
+																	<comboitem label="30" value="30"/>
+																	<comboitem label="35" value="35"/>
+																	<comboitem label="40" value="40"/>
+																	<comboitem label="45" value="45"/>
+																	<comboitem label="50" value="50"/>
+																	<comboitem label="55" value="55"/>
+																	<comboitem label="60" value="60"/>
+																	<comboitem label="65" value="65"/>
+																	<comboitem label="70 o mas" value="70"/>
+																</combobox>																
 															</div>																		   	 							   	 	
 											   	 	</hlayout>
 							   	 				</div>
 							   	 			</row>
 							   	 			<row class="col-md-12">
 							   	 				<div >
-						                  			<checkbox label="Sexo" class="col-md-2"></checkbox>
-													<combobox width="30%" class="col-md-5">
-														<comboitem label="Caney"></comboitem>
-														<comboitem label="Piscina"></comboitem>																																							
+						                  			<checkbox label="Sexo" checked="@bind(vm.checksexo)" class="col-md-2"></checkbox>
+													<combobox width="30%" class="col-md-5" selectedItem="@bind(vm.sexo)">
+														<comboitem label="Femenino" value="Femenino"></comboitem>
+														<comboitem label="Masculino" value="Masculino"></comboitem>
+														<comboitem label="Ambos" value="Ambos"></comboitem>																																							
 												   </combobox>	 	   		
 							   	 				</div>
 							   	 			</row>
 							   	 			<row class="col-md-12 ">
 							   	 				<div >
-						                  			<checkbox label="Categoria" class="col-md-2"></checkbox>
-													<combobox width="30%" class="col-md-5">
-														<comboitem label="Caney"></comboitem>
-														<comboitem label="Piscina"></comboitem>																																							
+						                  			<checkbox label="Categoria" class="col-md-2" checked="@bind(vm.checkcategoria)"></checkbox>
+													<combobox width="30%" class="col-md-5" selectedItem="@bind(vm.tipoPreferenciaSelected)" model="@load(vm.tipoPreferencia)">
+														<template name="model">
+																<comboitem
+																	label="@load(each.descripcion)" value="@load(each)" />
+														</template>																																						
 												   </combobox>	 	   		
 							   	 				</div>
 							   	 			</row>
 							   	 			<row class="col-md-12 ">
 							   	 				<div align="left">
 							   	 				<div >
-						                  			<checkbox label="Preferencia" class="col-md-2"></checkbox>
-													<combobox width="30%" class="col-md-5">
-														<comboitem label="Caney"></comboitem>
-														<comboitem label="Piscina"></comboitem>																																							
+						                  			<checkbox label="Preferencia" class="col-md-2" checked="@bind(vm.checkpreferencia)"></checkbox>
+													<combobox model="@load(vm.preferenciasPorTipo)" width="30%" class="col-md-5" selectedItem="@bind(vm.preferencia)">
+														<template name="model">
+																<comboitem
+																	label="@load(each.descripcion)" value="@load(each)" />
+														</template>																																					
 												   </combobox>	 	   		
 							   	 				</div>	
 							   	 				</div>
@@ -90,7 +120,7 @@
 									 <space spacing="1%"></space>									   	 
 								</groupbox >
 							    <div align="center" xmlns:w="client">
-									<button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
 							    </div>									
 							</div>
 						</div>
