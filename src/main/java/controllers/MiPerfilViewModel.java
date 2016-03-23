@@ -27,6 +27,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.WrongValueException;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -59,6 +60,9 @@ public class MiPerfilViewModel {
 	private Afiliado afiliado;
 	private boolean verAfiliado;
 	private Set<Afiliado> afiliados;
+	private String password;
+	private String newPassword;
+	private String confirmPassword;
 
 
 	@Init
@@ -343,6 +347,55 @@ public class MiPerfilViewModel {
 		win.detach();
 	}
 	
+	@Command
+	public void cambioContrasena(@BindingParam("win") Window win) throws Exception{
+		if(getPassword() == null || getNewPassword() == null || getConfirmPassword() == null){
+			Messagebox.show("No se permiten campos vacios!");
+		}else{
+			if(getPassword().equals(usuario.getContrasenna())){
+				if(getNewPassword().equals(getConfirmPassword())){
+					usuario.setContrasenna(getNewPassword());
+					usuarioDao.actualizarUsuario(usuario);
+					Messagebox.show("Contraseña actualizada satisfactoriamente!");
+					win.detach();
+				}else{
+					Messagebox.show("Las contraseñas no coinciden!");
+				}
+			}else{
+				Messagebox.show("Contraseña incorrecta");
+			}
+		}
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	
 	
 }
