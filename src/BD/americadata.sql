@@ -293,22 +293,6 @@ SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 
 
 --
--- TOC entry 2820 (class 0 OID 31276)
--- Dependencies: 267
--- Data for Name: archivo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 2838 (class 0 OID 31360)
--- Dependencies: 285
--- Data for Name: tipo_archivo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
 -- TOC entry 2836 (class 0 OID 31351)
 -- Dependencies: 283
 -- Data for Name: archivo_alquiler; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -324,14 +308,6 @@ SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 
 SELECT pg_catalog.setval('archivo_alquiler_id_archivo_alquiler_seq', 1, false);
 
-
---
--- TOC entry 2864 (class 0 OID 0)
--- Dependencies: 266
--- Name: archivo_id_archivo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('archivo_id_archivo_seq', 1, false);
 
 
 --
@@ -1345,15 +1321,6 @@ SELECT pg_catalog.setval('sugerencia_id_sugerencia_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('tipo_afiliado_id_tipo_afiliado_seq', 1, false);
-
-
---
--- TOC entry 2912 (class 0 OID 0)
--- Dependencies: 284
--- Name: tipo_archivo_id_tipo_archivo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('tipo_archivo_id_tipo_archivo_seq', 1, false);
 
 
 --
