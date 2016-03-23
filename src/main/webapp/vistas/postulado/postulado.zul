@@ -65,7 +65,7 @@
 											src="@load(each.postulado.persona.foto)" width="100%" align="center" />
 										<label value="@load(each.postulado.persona.nombre)" /><!-- 1erNombre -->
 										<label value="@load(each.postulado.persona.apellido)" /><!-- 1er Apellido -->
-										<label value="@load(each.fecha)" />
+										<label value="@load(each.fechaParse)" />
 										<div align="center"><!-- Opiniones -->
 											<button
 												iconSclass="z-icon-list green" sclass="btn-link"
