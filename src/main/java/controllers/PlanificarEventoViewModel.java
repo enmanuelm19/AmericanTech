@@ -21,6 +21,7 @@ import Dao.EventoDao;
 import Dao.IndicadorEventoDao;
 import modelos.Actividad;
 import modelos.Evento;
+import modelos.Indicador;
 import modelos.IndicadorEvento;
 
 public class PlanificarEventoViewModel {
@@ -114,60 +115,73 @@ public class PlanificarEventoViewModel {
 	}
 
 	@Command
-	public void actualizarActividad(@BindingParam("actividad") Actividad actividad) throws Exception {
+	@NotifyChange({ "allEventosEyF", "cantRegistros" })
+	public void actualizarActividads(@BindingParam("evento") Evento evento) throws Exception {
 
-		if (actividad.getValorReal() != null && actividad.getValorReal() > 0) {
-			if (actividad.getFechaRealizacion() != null
-					&& !actividad.getFechaRealizacion().after(actividad.getFechaTope())) {
-				actividad.setFinalizada(true);
-				actividadDao.actualizarActividad(actividad);
-				cambiarEstadoEventoAEjecucion(actividad.getEvento());
-				Messagebox.show("Actividad " + actividad.getDescripcion() + " ha sido ejecutada exitosamente", "",
-						Messagebox.OK, Messagebox.INFORMATION);
-			} else
-				Messagebox.show("Fecha de realizacion  o valor real no valido", "Warning", Messagebox.OK,
-						Messagebox.EXCLAMATION);
-
-		} else if (actividad.getValorReal() != null && actividad.getValorReal() == 0) {
-			actividad.setFechaRealizacion(null);
-			actividad.setFinalizada(true);
-			actividadDao.actualizarActividad(actividad);
-			actividadDao.actualizarActividad(actividad);
-			cambiarEstadoEventoAEjecucion(actividad.getEvento());
-			Messagebox.show("Actividad " + actividad.getDescripcion() + " ha sido ejecutada exitosamente", "",
+		boolean listo = true;
+		boolean algunaFinalizada = false;
+		
+		for(Actividad actividad: evento.getActividadsActive()){
+			if(actividad.getFechaRealizacion()!=null || actividad.getValorReal()!=null){
+				if(actividad.getFechaRealizacion()==null || actividad.getFechaRealizacion().after(actividad.getFechaTope())){
+					Messagebox.show("Fecha no valida de la actividad: "+actividad.getDescripcion(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					listo = false;
+					break;
+				}
+				else if(actividad.getValorReal()==null){
+					Messagebox.show("valor real no valido de la actividad: "+actividad.getDescripcion(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					listo = false;
+					break;
+					
+				}else{
+					algunaFinalizada = true;
+					actividad.setFinalizada(true);
+				}
+				
+			}else actividad.setFinalizada(false);
+		}
+		
+		if(listo && algunaFinalizada){
+			evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(2));
+			eventoDao.actualizarEvento(evento);
+			Messagebox.show(
+					"actividades del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "",
 					Messagebox.OK, Messagebox.INFORMATION);
 		}
+		
+		if(listo && !algunaFinalizada){
+			evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(3));
+			eventoDao.actualizarEvento(evento);
+			Messagebox.show(
+					"actividades del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "",
+					Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
+	
 	}
 
-	public void cambiarEstadoEventoAEjecucion(Evento evento) throws Exception {
-		evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(3));
-		eventoDao.actualizarEvento(evento);
-	}
+	
 
 	@Command
-	@NotifyChange({ "allEventos", "cantRegistros" })
-	public void actualizarIndicador(@BindingParam("indicadorEvento") IndicadorEvento indicadorE) throws Exception {
-		if (indicadorE.getValorReal() != null && indicadorE.getValorReal() >= 0) {
-			indicadorEventoDao.actualizarIndicadorEvento(indicadorE);
-			Messagebox.show(
-					"Indicador " + indicadorE.getIndicador().getDescripcion() + " ha sido actualizado exitosamente", "",
-					Messagebox.OK, Messagebox.INFORMATION);
-			cambiarEstadoEventoAFinalizado(indicadorE.getEvento());
-		} else
-			Messagebox.show("Valor real no valido", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-	}
-
-	public void cambiarEstadoEventoAFinalizado(Evento evento) throws Exception {
-
-		for (IndicadorEvento indicadorE : evento.getIndicadorEventosActive())
-			if (indicadorE.getVariacion().equals("-"))
-				return;
-
-		evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(4));
+	@NotifyChange({ "allEventosEyF", "cantRegistros" })
+	public void actualizarIndicadores(@BindingParam("evento") Evento evento) throws Exception {
+		
+		boolean todasFinalizada = true;
+		for(IndicadorEvento indicadorEvento: evento.getIndicadorEventosActive()){
+			if(indicadorEvento.getValorReal()==null)
+				todasFinalizada = false;
+		}
+		
+		if(todasFinalizada){
+			evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(4));
+			
+		}
 		eventoDao.actualizarEvento(evento);
-		Messagebox.show("Evento " + evento.getNombre() + " ha sido Finalizado exitosamente", "", Messagebox.OK,
-				Messagebox.INFORMATION);
-
+		Messagebox.show(
+				"indicadores del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "",
+				Messagebox.OK, Messagebox.INFORMATION);
+		
 	}
+
 
 }
