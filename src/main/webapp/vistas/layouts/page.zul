@@ -12,7 +12,7 @@
 		<n:br></n:br>
 			<separator spacing="10px"></separator>
 		<n:div class="info">
-			<a href="/america/vistas/index.zul" class="btn">Todaaaas</a>
+			<a class="btn">Todaaaas </a>
 		</n:div>
 		<separator spacing="10px"></separator>
 		<n:br></n:br>

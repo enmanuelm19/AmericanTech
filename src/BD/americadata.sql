@@ -293,22 +293,6 @@ SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 
 
 --
--- TOC entry 2820 (class 0 OID 31276)
--- Dependencies: 267
--- Data for Name: archivo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 2838 (class 0 OID 31360)
--- Dependencies: 285
--- Data for Name: tipo_archivo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
 -- TOC entry 2836 (class 0 OID 31351)
 -- Dependencies: 283
 -- Data for Name: archivo_alquiler; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -324,14 +308,6 @@ SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 
 SELECT pg_catalog.setval('archivo_alquiler_id_archivo_alquiler_seq', 1, false);
 
-
---
--- TOC entry 2864 (class 0 OID 0)
--- Dependencies: 266
--- Name: archivo_id_archivo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('archivo_id_archivo_seq', 1, false);
 
 
 --
@@ -408,7 +384,7 @@ SELECT pg_catalog.setval('cliente_externo_id_cliente_seq', 1, false);
 -- Data for Name: club; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, logo, telf_alternativo, correo, clave_correo, eslogan, activo) VALUES (1, 'J-08521135-7', 'Centro Atlético America', 'Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.', '0251-4410025', 'Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.', 'Constituirnos como la institución social por excelencia dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de sus afiliados y sus familiares e impulsar la transformación consolidando un ambiente cada día más idóneo para el desarrollo biopsicosocial de nuestras generaciones.', 'http://i.imgur.com/bzOnmjv.png', '0251-4411594', 'centroatleticoclubamerica@gmail.com', NULL, 'Incentivando y promoviendo la participación cultural y deportiva', true);
+INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, logo, telf_alternativo, correo, clave_correo, eslogan, activo) VALUES (1, 'J-08521135-7', 'Centro Atlético America', 'Av. Fuerzas Armadas con Calle 57, Concepci�n, Barquisimeto.', '0251-4410025', 'Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.', 'Constituirnos como la institución social por excelencia dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de sus afiliados y sus familiares e impulsar la transformación consolidando un ambiente cada día más idóneo para el desarrollo biopsicosocial de nuestras generaciones.', 'http://i.imgur.com/UKvuTwu.png', '0251-4411594', 'centroatleticoclubamerica@gmail.com', NULL, 'Incentivando y promoviendo la participación cultural y deportiva', true);
 
 
 --
@@ -1055,7 +1031,7 @@ SELECT pg_catalog.setval('politica_id_politica_seq', 1, false);
 -- Data for Name: portal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO portal (id_portal, instalacion, socio, evento, activo, foto_socio, foto_instalaciones, foto_evento) VALUES (1, 'El Centro Atlético America cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas. Además cuenta con un salón de Fiestas y dos Caneis para el disfrute de sus socios e invitados', 'Nuestros socios se caracterizan por su familiaridad y buen comportamiento, ayudando así a mantener las tradiciones de club. ¿Quieres ser un socio del Centro Atlético America?', 'Nos interesa Motivar la interacción social a través de actividades culturales de intercambio en busca del crecimiento humano mediante la realización de eventos. ¿Quieres participar en nuestros eventos?', true, 'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');
+INSERT INTO portal (id_portal, instalacion, socio, evento, activo, foto_socio, foto_instalaciones, foto_evento) VALUES (1, 'El Centro Atlético America cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas. Además cuenta con un salón de Fiestas y dos Caneyes para el disfrute de sus socios e invitados', 'Nuestros socios se caracterizan por su familiaridad y buen comportamiento, ayudando así a mantener las tradiciones de club. ¿Quieres ser un socio del Centro Atlético America?', 'Nos interesa Motivar la interacción social a través de actividades culturales de intercambio en busca del crecimiento humano mediante la realización de eventos. ¿Quieres participar en nuestros eventos?', true, 'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');
 
 
 --
@@ -1194,7 +1170,9 @@ SELECT pg_catalog.setval('recurso_instalacion_id_recurso_instalacion_seq', 1, fa
 -- Dependencies: 257
 -- Data for Name: red_social; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
+INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (1, 'Facebook', 'http://i.imgur.com/J8nfPwn.png',true);
+INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (2, 'Instagram', 'http://i.imgur.com/E6xQKvN.png',true);
+INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (3, 'Twitter', 'http://i.imgur.com/rox1qxk.png',true);
 
 
 --
@@ -1203,7 +1181,8 @@ SELECT pg_catalog.setval('recurso_instalacion_id_recurso_instalacion_seq', 1, fa
 -- Data for Name: red_club; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-
+INSERT INTO red_club (id_red_club, clubid_club, red_socialid_red_social, enlace, activo) VALUES (1, 1, 3, 'https://twitter.com/CAAAMERICA',true);
+INSERT INTO red_club (id_red_club, clubid_club, red_socialid_red_social, enlace, activo) VALUES (2, 1, 1, 'https://www.facebook.com/accaa',true);
 
 --
 -- TOC entry 2903 (class 0 OID 0)
@@ -1345,15 +1324,6 @@ SELECT pg_catalog.setval('sugerencia_id_sugerencia_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('tipo_afiliado_id_tipo_afiliado_seq', 1, false);
-
-
---
--- TOC entry 2912 (class 0 OID 0)
--- Dependencies: 284
--- Name: tipo_archivo_id_tipo_archivo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('tipo_archivo_id_tipo_archivo_seq', 1, false);
 
 
 --

@@ -366,13 +366,6 @@ CREATE TABLE motivo_venta (
   descripcion     varchar(120) NOT NULL, 
   activo          bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_motivo_venta));
-CREATE TABLE archivo (
-  id_archivo  SERIAL NOT NULL, 
-  url        varchar(255) NOT NULL, 
-  nombre     varchar(120) NOT NULL, 
-  extension  varchar(50) NOT NULL, 
-  activo     bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_archivo));
 CREATE TABLE estado_evento (
   id_estado_evento  SERIAL NOT NULL, 
   nombre           varchar(40) NOT NULL, 
@@ -416,17 +409,14 @@ CREATE TABLE estado_accion (
   activo           bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_estado_accion));
 CREATE TABLE archivo_alquiler (
-  id_archivo_alquiler          SERIAL NOT NULL, 
-  archivoid_archivo           int2 NOT NULL, 
-  alquilerid_alquiler         int2 NOT NULL, 
-  tipo_archivoid_tipo_archivo int2 NOT NULL, 
-  activo                      bool DEFAULT 'true' NOT NULL, 
+  id_archivo_alquiler  SERIAL NOT NULL, 
+  url                 varchar(255) NOT NULL, 
+  nombre              varchar(120) NOT NULL, 
+  extension           varchar(50) NOT NULL, 
+  tipo                varchar(40) NOT NULL, 
+  alquilerid_alquiler int2 NOT NULL, 
+  activo              bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_archivo_alquiler));
-CREATE TABLE tipo_archivo (
-  id_tipo_archivo  SERIAL NOT NULL, 
-  nombre          varchar(80) NOT NULL, 
-  activo          bool DEFAULT 'true' NOT NULL, 
-  PRIMARY KEY (id_tipo_archivo));
 CREATE TABLE tipo_noticia (
   id_tipo_noticia  SERIAL NOT NULL, 
   descripcion     varchar(200) NOT NULL, 
@@ -531,9 +521,7 @@ ALTER TABLE eventualidad ADD CONSTRAINT FKeventualid316997 FOREIGN KEY (personai
 ALTER TABLE solicitud_venta ADD CONSTRAINT FKsolicitud_549112 FOREIGN KEY (accionid_accion) REFERENCES accion (id_accion);
 ALTER TABLE eventualidad ADD CONSTRAINT FKeventualid821934 FOREIGN KEY (tipo_eventualidadid_tipo_eventualidad) REFERENCES tipo_eventualidad (id_tipo_eventualidad);
 ALTER TABLE accion ADD CONSTRAINT FKaccion803928 FOREIGN KEY (estado_accionid_estado_accion) REFERENCES estado_accion (id_estado_accion);
-ALTER TABLE archivo_alquiler ADD CONSTRAINT FKarchivo_al422819 FOREIGN KEY (archivoid_archivo) REFERENCES archivo (id_archivo);
 ALTER TABLE archivo_alquiler ADD CONSTRAINT FKarchivo_al266100 FOREIGN KEY (alquilerid_alquiler) REFERENCES alquiler (id_alquiler);
-ALTER TABLE archivo_alquiler ADD CONSTRAINT FKarchivo_al163068 FOREIGN KEY (tipo_archivoid_tipo_archivo) REFERENCES tipo_archivo (id_tipo_archivo);
 ALTER TABLE noticia ADD CONSTRAINT FKnoticia363644 FOREIGN KEY (tipo_noticiaid_tipo_noticia) REFERENCES tipo_noticia (id_tipo_noticia);
 ALTER TABLE politica ADD CONSTRAINT FKpolitica881306 FOREIGN KEY (clubid_club) REFERENCES club (id_club);
 ALTER TABLE solicitud_venta ADD CONSTRAINT FKsolicitud_857177 FOREIGN KEY (motivo_ventaid_motivo_venta) REFERENCES motivo_venta (id_motivo_venta);
