@@ -57,6 +57,12 @@ import org.zkoss.zul.Window;
 
 
 
+
+
+
+
+
+
 import Dao.ActividadDao;
 import modelos.Actividad;
 import Dao.EstadoEventoDao;
@@ -70,6 +76,7 @@ import modelos.TipoInstalacion;
 import modelos.TipoPreferencia;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -78,6 +85,8 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRTextExporter;
+import net.sf.jasperreports.engine.export.JRTextExporterParameter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class ReporteActividadEventoViewModel {
@@ -199,27 +208,26 @@ public class ReporteActividadEventoViewModel {
 				el.printStackTrace();
 			}
 			if (this.eventoSelected == null){
-				Messagebox.show("Seleccione el evento a consultar", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Seleccione el evento a consultar", "AMERICAN TECH", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			
 			else{
 				
 			this.titulo = "Actividades del evento";
-			this.consulta= this.eventoSelected.getNombre();
+			this.consulta = this.eventoSelected.getNombre();
 			this.fecha_inicial = this.eventoSelected.getFechaInicio().toString();
 			this.fecha_hasta = this.eventoSelected.getFechaFin().toString();
-			reporte = System.getProperty("user.home") + "/reportes_america/evento_actividad.jrxml";
+			this.reporte = System.getProperty("user.home") + "/reportes_america/evento_actividad.jrxml";
 			
 			this.sql = " SELECT a.descripcion, to_char(a.fecha_tope, 'YYYY-MM-DD') as fecha_tope, to_char(a.fecha_realizacion, 'YYYY-MM-DD') as fecha_realizacion, a.valor_real, a.valor_esperado, a.finalizada"
 						+ " FROM actividad a"
 						+ " WHERE a.eventoid_evento = " + getEventoSelected().getIdEvento() +";";
 			
 			
-			generarPDF();
+			this.generarPDF();
 			}
 		}
 		
-	
 	
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
 		System.out.println(sql);
@@ -228,10 +236,17 @@ public class ReporteActividadEventoViewModel {
 		String nombreArchivo = this.titulo.concat(date);
 		JasperPrint jasperPrint = cargarJasper();
 		
+		@SuppressWarnings("unused")
 		JRExporter exporter = new JRPdfExporter();
+		if(jasperPrint.getPages().size() > 0){
 	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		} else {
+			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		}
+	    
 	    con.close();
 	}
+	
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
@@ -249,9 +264,9 @@ public class ReporteActividadEventoViewModel {
 		parameters.put("FECHA_HASTA", fecha_hasta);
 		parameters.put("IMAGEN_EQUIPO", imagen_equipo );
 		parameters.put("IMAGEN_CLUB", image_club);
-		return  JasperFillManager.fillReport(jasperRepor, parameters, con);
+		return  JasperFillManager.fillReport(jasperRepor, parameters,con);
 		
-		
+			
 	}
 
 }
