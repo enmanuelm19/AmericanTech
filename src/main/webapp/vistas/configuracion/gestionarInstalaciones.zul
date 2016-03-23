@@ -42,11 +42,11 @@
 							<auxheader colspan="1" />
             				<auxheader colspan="1">
             					<image src="../assets/img/funnel.png" />
-               					<textbox instant="true" width="85%" placeholder="Buscar"/>
+               					<textbox instant="true" width="85%" placeholder="Buscar" value="@bind(vmis.nombreFiltro)" onChange="@command('filtro')"/>
             				</auxheader>
             				<auxheader colspan="1">
             					<image src="../assets/img/funnel.png" />
-               					<textbox instant="true" width="85%" placeholder="Buscar"/>
+               					<textbox instant="true" width="85%" placeholder="Buscar" value="@bind(vmis.tipoFiltro)" onChange="@command('filtro')"/>
             				</auxheader>
             				 <auxheader colspan="3" />
 						</auxhead>
