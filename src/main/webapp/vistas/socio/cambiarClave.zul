@@ -9,7 +9,7 @@
 		style="iconSclass=z-icon-cogs; height:auto;"
 		title="Cambiar Contraseña" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="40%" width="35%" apply="org.zkoss.bind.BindComposer"
+		height="50%" width="35%" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.MiPerfilViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
