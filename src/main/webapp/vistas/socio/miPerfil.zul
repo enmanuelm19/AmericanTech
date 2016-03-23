@@ -1,109 +1,202 @@
-<!-- Responsable Hector Gil -->
+
 <zk xmlns:n="native">
-	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.MiPerfilViewModel')">
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.MiPerfilViewModel')">
 		<hlayout spacing="0">
+
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-user" />
-						<a label="Socio > " href="#" />
+						<a label="Socio " href="#" />
 						<a label="Mi Perfil" href="#" />
 					</div>
 				</div>
-				<div class='contenedor' align="center" apply="controllers.ControllerVerAfiliado">
+
+				<div class='contenedor' align="center"
+					apply="controllers.ControllerVerAfiliado">
+
 					<div sclass="page-header" align="left">
 						<label value="Mi Perfil" />
 					</div>
 
-					<div class='contenido ' align="center" width="100%">
-						<div class="col-md-10 col-centered">
+					<div class='contenido ' align="center"
+						width="100%">
+						<div class="col-md-10 col-centered ">
+
 							<div class='form-pricing' width="100%">
+
 								<vbox>
 									<div align="left">
-										<div class="encabezado">Datos del Socio</div>
-										<div align="left" class="linea-two"></div>
+										<div class="encabezado">
+											Datos del Socio
+										</div>
+										<div align="left"
+											class="linea-two">
+										</div>
 									</div>
+
 									<!-- GRUPO DATOS BASICOS -->
+
 									<separator spacing="30px"></separator>
 									<div class="row">
 										<separator spacing="30px"></separator>
+
 										<div class="col-md-4">
 											<div class="input-group">
-												<image class="img-responsive col-md-offset-0" content="@bind(vm.uploadedImage)"
-													src="@bind(vm.usuario.persona.foto)" width="100%"/>
-												<separator spacing="30px"></separator>
-												<fileupload	label="Examinar" upload="true,maxsize=2000" style="margin-left: 25%"
-													onUpload="@command('upload',media=event.media)"	iconSclass="z-icon-folder-open"
+												<image
+													class="img-responsive col-md-offset-0"
+													content="@bind(vm.uploadedImage)"
+													src="@bind(vm.usuario.persona.foto)" width="100%" />
+
+												<separator
+													spacing="30px">
+												</separator>
+												<fileupload
+													label="Examinar" upload="true,maxsize=2000"
+													style="margin-left: 25%"
+													onUpload="@command('upload',media=event.media)"
+													iconSclass="z-icon-folder-open"
 													class='boton-guardar col-md-offset-7' />
 											</div>
 										</div>
+
 										<div class="col-md-6">
 											<grid>
 												<rows>
 													<row>
 														<div>
-															<label class="col-md-4" value="Cédula" />
-															<textbox value="@bind(vm.usuario.persona.identificacion)"
-																constraint="no empty" class="col-md-6" readonly="true"/>
+															<label
+																class="col-md-4" value="Cédula" />
+															<textbox
+																id="txtcedula"
+																value="@bind(vm.usuario.persona.identificacion)"
+																constraint="no empty" class="col-md-6"
+																readonly="true">
+															</textbox>
+														</div>
+													</row>
+
+													<row>
+														<div>
+															<label
+																class="col-md-4" value="Numero Carnet" />
+															<textbox
+																constraint="no empty" class="col-md-6" readonly="true"
+																value="@bind(vm.socio.nroCarnet)">
+															</textbox>
+
+
+														</div>
+													</row>
+
+													<row>
+														<div>
+															<label
+																class="col-md-4" value="Nombre" />
+															<textbox
+																constraint="no empty" class="col-md-6" readonly="true"
+																value="@bind(vm.usuario.persona.nombre)">
+															</textbox>
+
 														</div>
 													</row>
 													<row>
-														<div>
-															<label class="col-md-4" value="Numero Carnet" />
-															<textbox constraint="no empty" class="col-md-6" readonly="true" value="@bind(vm.socio.nroCarnet)"/>
-														</div>
-													</row>
-													<row>
-														<div>
-															<label class="col-md-4" value="Nombre" />
-															<textbox constraint="no empty" class="col-md-6" readonly="true" value="@bind(vm.usuario.persona.nombre)"/>
-														</div>
+
 													</row>
 													<row>
 														<div>
 															<label
 																class="col-md-4" value="Apellido" />
-															<textbox constraint="no empty" class="col-md-6" readonly="true" value="@bind(vm.usuario.persona.apellido)"/>
+															<textbox
+																constraint="no empty" class="col-md-6" readonly="true"
+																value="@bind(vm.usuario.persona.apellido)">
+															</textbox>
+
+														</div>
+													</row>
+													<row>
+
+													</row>
+													<row>
+														<div>
+															<label
+																class="col-md-4" value="Correo" />
+															<textbox
+																constraint="no empty" class="col-md-6" type="email"
+																value="@bind(vm.usuario.persona.correo)">
+															</textbox>
+
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Correo" />
-															<textbox constraint="no empty" class="col-md-6" type="email" value="@bind(vm.usuario.persona.correo)"/>
+															<label
+																class="col-md-4" value="Telefono" />
+															<textbox
+																constraint="no empty" class="col-md-6" readonly="false"
+																value="@bind(vm.usuario.persona.telefono)">
+															</textbox>
+
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Telefono" />
-															<textbox constraint="no empty" class="col-md-6" readonly="false" value="@bind(vm.usuario.persona.telefono)"/>
+															<label
+																class="col-md-4" value="Nacimiento" />
+															<textbox
+																constraint="no empty" class="col-md-6"
+																value="@bind(vm.usuario.persona.fechaNac)"
+																readonly="true">
+															</textbox>
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Nacimiento" />
-															<textbox constraint="no empty" class="col-md-6" value="@bind(vm.usuario.persona.fechaNac)" readonly="true"/>
+															<label
+																class="col-md-4" value="Edad" />
+															<textbox
+																value="@load(vm.calcularEdad)" constraint="no empty"
+																class="col-md-6" readonly="true">
+															</textbox>
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Edad" />
-															<textbox value="@load(vm.calcularEdad)" constraint="no empty" class="col-md-6" readonly="true"/>
-														</div>
-													</row>
-													<row>
-														<div>
-															<label class="col-md-4" value="Sexo" />
-															<radiogroup id="sexo" selectedItem="@load(vm.usuario.persona.sexo)">
-																<radio id="a1" label="Masculino" value="M" radiogroup="sexo"/>
-																<radio id="a2" label="Femenino" value="F" radiogroup="sexo"/>
+															<label
+																class="col-md-4" value="Sexo" />
+															<radiogroup
+																id="sexo"
+																selectedItem="@load(vm.usuario.persona.sexo)">
+																<radio
+																	id="a1" label="Masculino" value="M"
+																	radiogroup="sexo">
+																</radio>
+																<radio
+																	id="a2" label="Femenino" value="F" radiogroup="sexo">
+																</radio>
 															</radiogroup>
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Direccion" />
-															<textbox constraint="no empty" class="col-md-6" readonly="false" cols="45" rows="2" type="text"
+															<label
+																class="col-md-4" value="Direccion" />
+															<textbox
+																constraint="no empty" class="col-md-6" readonly="false"
+																cols="45" rows="2" type="text"
 																value="@bind(vm.usuario.persona.direccion)" />
+
+														</div>
+													</row>
+													<row>
+														<div>
+															<label
+																class="col-md-4" value="Cambiar Contraseña" />
+															<button
+																iconSclass="z-icon-edit" onClick="@command('showModal')"
+																class='boton-guardar' label="Cambiar" />
+
 														</div>
 													</row>
 												</rows>
@@ -111,128 +204,245 @@
 										</div>
 									</div>
 
+
 									<!-- AQUI TERMINA GRUPO BASICOS -->
-									<n:br></n:br><n:br></n:br>
+									<n:br></n:br>
+									<n:br></n:br>
 									<div align="left">
-										<div class="encabezado">Intereses</div>
-										<div align="left" class="linea-two"></div>
-									</div><n:br></n:br><n:br></n:br>
-									<hbox align="center" pack="center" width="100%"><!-- GRUPO INTERESES -->
-										<grid emptyMessage="No se encuentran preferencias registradas" mold="paging" pageSize="5"
+										<div class="encabezado">
+											Intereses
+										</div>
+										<div align="left"
+											class="linea-two">
+
+										</div>
+									</div>
+									<n:br></n:br>
+									<n:br></n:br>
+
+									<hbox align="center" pack="left"
+										width="100%"><!-- GRUPO INTERESES -->
+
+										<grid
+											emptyMessage="No se encuentran preferencias registradas"
+											mold="paging" pageSize="5"
 											model="@load(vm.allPreferenciasPersona)">
-											<auxhead sclass="category-center">
-												<auxheader colspan="1">
-													<combobox class="col-md-12" model="@load(vm.allTipoPreferencia)" selectedItem="@bind(vm.tipoPreferenciaSelected)">
-														<template name="model">
-															<comboitem label="@load(each.descripcion)" value="@load(each)" />
+
+											<auxhead
+												sclass="category-center">
+
+												<auxheader
+													colspan="1">
+
+													<combobox
+														class="col-md-12" model="@load(vm.allTipoPreferencia)"
+														selectedItem="@bind(vm.tipoPreferenciaSelected)">
+														<template
+															name="model">
+															<comboitem
+																label="@load(each.descripcion)" value="@load(each)" />
 														</template>
 													</combobox>
+
 												</auxheader>
-												<auxheader colspan="1">
-													<chosenbox model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%" emptyMessage="" creatable="true"
+												<auxheader
+													colspan="1">
+													<chosenbox
+													    class="col-md-12"
+														model="@load(vm.preferenciasPorTipo)"
+														width="80%" emptyMessage="" creatable="true"
 														selectedObjects="@bind(vm.temporalPreferencia)" />
+
 												</auxheader>
-												<auxheader colspan="1">
-													<button sclass="btn-link" onClick="@command('agregarPreferenciasPersona')"
-														iconSclass="z-icon-plus blue" tooltiptext="Agregar preferencia" />
+												<auxheader
+													colspan="1">
+													<button
+														sclass="btn-link"
+														onClick="@command('agregarPreferenciasPersona')"
+														iconSclass="z-icon-plus blue"
+														tooltiptext="Agregar preferencia" />
 												</auxheader>
 											</auxhead>
+
 											<columns>
-												<column hflex="3">Tipo Preferencia</column>
-												<column hflex="3">Preferencia</column>
-												<column>Acciones</column>
+												<column hflex="3">
+													Tipo Preferencia
+												</column>
+												<column hflex="3">
+													Preferencia
+												</column>
+
+												<column>
+													Acciones
+												</column>
 											</columns>
 											<rows>
-												<template name="model">
+
+												<template
+													name="model">
 													<row>
-														<label value="@load(each.preferencia.tipoPreferencia.descripcion)" />
-														<label value="@load(each.preferencia.descripcion)" />
+														<label
+															value="@load(each.preferencia.tipoPreferencia.descripcion)" />
+														<label
+															value="@load(each.preferencia.descripcion)" />
 														<div>
-															<button sclass="btn-link" iconSclass="z-icon-trash-o red"
-																tooltiptext="Eliminar" onClick="@command('eliminarPreferencia', PreferenciaP=each)" />
+															<button
+																sclass="btn-link" iconSclass="z-icon-trash-o red"
+																tooltiptext="Eliminar"
+																onClick="@command('eliminarPreferencia', PreferenciaP=each)" />
 														</div>
 													</row>
 												</template>
+
+
 											</rows>
 											<foot>
-												<footer span="3" class="footer_right" label="@load(vm.cantidadPreferencias)" />
+												<footer span="3"
+													class="footer_right"
+													label="@load(vm.cantidadPreferencias)" />
 											</foot>
 										</grid>
+
+
+
 									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
-									<n:br></n:br><n:br></n:br>
+									<n:br></n:br>
+									<n:br></n:br>
+
 									<div align="left">
-										<div class="encabezado">Datos Accion</div>
-										<div align="left" class="linea-two">
+										<div class="encabezado">
+											Datos Accion
+										</div>
+										<div align="left"
+											class="linea-two">
+
+										</div>
 									</div>
-								</div>
-								<hbox align="center" pack="center" width="100%"><!-- GRUPO ACCIONES -->
-									<grid emptyMessage="No se encuentran acciones vinculadas" mold="paging" pageSize="5" model="@load(vm.allAcciones)">
-										<columns>
-											<column hflex="3">Número acción</column>
-												<column hflex="3">Valor Bsf.</column>
+
+									<hbox align="center" pack="center"
+										width="100%"><!-- GRUPO ACCIONES -->
+
+										<grid
+											emptyMessage="No se encuentran acciones vinculadas"
+											mold="paging" pageSize="5" model="@load(vm.allAcciones)">
+
+											<columns>
+												<column hflex="3">
+													Número acción
+												</column>
+												<column hflex="3">
+													Valor Bsf.
+												</column>
 											</columns>
 											<rows>
-												<template name="model">
+
+												<template
+													name="model">
 													<row>
-														<label value="@load(each.nroAccion)" />
-														<label value="@load(each.valor)" />
+														<label
+															value="@load(each.nroAccion)" />
+														<label
+															value="@load(each.valor)" />
+													</row>
+												</template>
+
+
+											</rows>
+											<foot>
+												<footer span="3"
+													class="footer_right" label="@load(vm.cantidadAcciones)" />
+											</foot>
+										</grid>
+
+									</hbox><!-- AQUI TERMINA GRUPO ACCIONES -->
+									<n:br></n:br>
+									<n:br></n:br>
+									<div align="left">
+										<div class="encabezado">
+											Datos Afiliado
+										</div>
+										<div align="left"
+											class="linea-two">
+
+										</div>
+									</div>
+
+									<n:br></n:br>
+									<n:br></n:br>
+									<hbox align="center" pack="center"
+										width="100%"><!-- Inicio GRUPO afilaido -->
+
+										<grid
+											emptyMessage="No se encuentran afiliados vinculados"
+											mold="paging" pageSize="5" model="@load(vm.allAfiliados)">
+											<columns>
+
+												<column width="10%"
+													label="Carnet" align="center" />
+												<column width="15%"
+													label="Nombre" align="center" />
+												<column width="15%"
+													label="Apellido" align="center" />
+												<column width="15%"
+													label="Correo" align="center" />
+												<column width="15%"
+													label="Edad" align="center" />
+												<column width="15%"
+													label="Parentesco" align="center" />
+											</columns>
+											<rows>
+												<template name="model" var="afiliado">
+													<row>
+
+														<label
+															value="@load(afiliado.nroCarnet)" />
+														<label
+															value="@load(afiliado.persona.nombre)" />
+														<label
+															value="@load(afiliado.persona.apellido)" />
+														<label
+															value="@load(afiliado.persona.correo)" />
+														<label
+															value="@load(afiliado.calcularEdadAfiliado)" />
+														<label
+															value="@load(afiliado.tipoAfiliado.descripcion)" />
+
 													</row>
 												</template>
 											</rows>
 											<foot>
-												<footer span="3" class="footer_right" label="@load(vm.cantidadAcciones)" />
+												<footer span="3"
+													class="footer_right" label="@load(vm.cantidadAfiliado)" />
 											</foot>
 										</grid>
-									</hbox><!-- AQUI TERMINA GRUPO ACCIONES -->
-									<n:br></n:br><n:br></n:br>
-									<div visible="@load(vm.verAfiliado)">
-										<div align="left" visible="@load(vm.verAfiliado)">
-											<div class="encabezado">Datos Afiliado</div>
-											<div align="left" class="linea-two"></div>
-										</div>
-										<n:br></n:br><n:br></n:br>
-										<hbox align="center" pack="center" width="100%"><!-- Inicio GRUPO afilaido -->
-											<grid emptyMessage="No se encuentran afiliados vinculados" mold="paging" pageSize="5"
-												model="@load(vm.allAfiliados)">
-												<columns>
-													<column width="10%"	label="Carnet" align="center" />
-													<column width="15%" label="Nombre" align="center" />
-													<column width="15%" label="Apellido" align="center" />
-													<column width="15%" label="Parentesco" align="center" />
-												</columns>
-												<rows>
-													<template name="model" var="afiliado">
-														<row>
-															<label value="@load(afiliado.nroCarnet)" />
-															<label value="@load(afiliado.persona.nombre)" />
-															<label value="@load(afiliado.persona.apellido)" />
-															<label value="@load(afiliado.tipoAfiliado.descripcion)" />
-	<!-- 														<div> -->
-	<!-- 															<button -->
-	<!-- 																sclass="btn-link" iconSclass="z-icon-search blue" -->
-	<!-- 																tooltiptext="Ver" -->
-	<!-- 																onClick="@command('showModal', afiliado=afiliado)" /> -->
-	<!-- 														</div> -->
-														</row>
-													</template>
-												</rows>
-												<foot>
-													<footer span="3" class="footer_right" label="@load(vm.cantidadAfiliado)" />
-												</foot>
-											</grid>
-										</hbox><!-- AQUI TERMINA GRUPO afiliados -->
-									</div>
+
+									</hbox><!-- AQUI TERMINA GRUPO afiliados -->
 								</vbox>
+
 								<separator spacing="30px"></separator>
-								<hbox width="" align="center" pack="center">
+								<hbox width="" align="center"
+									pack="center">
+
 									<separator spacing="5%"></separator>
-									<button iconSclass="z-icon-edit" onClick="@command('guardar')" class='boton-guardar' label="Guardar" />
+
+
+									<button iconSclass="z-icon-edit"
+										onClick="@command('guardar')" class='boton-guardar'
+										label="Guardar" />
+
 									<space bar="False" spacing="5%" />
-									<button	iconSclass="z-icon-times-circle" class='boton-cancelar' onClick="@command('cancelar')" label="Cancelar " />
+
+									<button
+										iconSclass="z-icon-times-circle" class='boton-cancelar'
+										onClick="@command('cancelar')" label="Cancelar " />
 								</hbox>
 							</div>
 						</div>
 					</div>
+
+
+
+
 				</div><!-- FIN CONTENEDOR -->
 			</vlayout>
 		</hlayout>

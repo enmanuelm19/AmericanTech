@@ -81,20 +81,7 @@ public class ReporteAlquilerViewModel {
 	@Init
 	public void init() {
 		instalacionDao = new InstalacionDao();
-	//	arrestadoInstalacion = new ArrayList<String>();		
 	}
-
-//	static {
-//		arrestadoInstalacion.add(1,"Reservadas");
-//		arrestadoInstalacion.add(2, "Alquiladas");
-//	}
-//	
-//
-//	public ListModelList<String> getArrestadoInstalacion() throws Exception {
-//
-//		return new ListModelList<String>(arrestadoInstalacion);
-//
-//	}
 	
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
 
