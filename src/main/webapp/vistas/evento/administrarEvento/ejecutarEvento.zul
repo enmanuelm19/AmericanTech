@@ -86,6 +86,10 @@
 														Fecha tope
 													</column>
 													<column
+														align="center" width="18%">
+														Fecha realizada
+													</column>
+													<column
 														align="center" width="12%">
 														Valor esperado
 													</column>
@@ -95,12 +99,9 @@
 													</column>
 													<column
 														align="center" width="12%">
-														Variacion
+														Variación
 													</column>
-													<column
-														align="center" width="18%">
-														Fecha realizada
-													</column>
+													
 													<column
 														align="center" width="10%">
 														Acciones
@@ -115,6 +116,10 @@
 																value="@load(actividad.descripcion)" />
 															<label
 																value="@load(actividad.fechaTopeString)" />
+															<datebox
+																value="@bind(actividad.fechaRealizacion)" format="short"
+																width="80%" tabindex="10" />
+															
 															<label
 																value="@load(actividad.valorEsperado)" />
 
@@ -125,9 +130,7 @@
 															<label
 																value="@load(actividad.variacion)" />
 
-															<datebox
-																value="@bind(actividad.fechaRealizacion)" format="short"
-																width="80%" tabindex="10" />
+															
 
 															<button
 																sclass="btn-link" iconSclass="z-icon-check blue"

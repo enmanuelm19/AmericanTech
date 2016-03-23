@@ -2,7 +2,7 @@
 
 	<window id="winEv" border="none" title="@load(vm.editable?'Editar evento':'Registrar evento')"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="50%" height="auto"
+		closable="true" width="55%" height="auto"
 		style="iconSclass= z-icon-calendar;" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarEventoViewModel')">
 		<caption iconSclass="z-icon-calendar" />
