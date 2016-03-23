@@ -10,7 +10,7 @@
 	<queryString>
 		<![CDATA[SELECT i.nombre AS Instalacion, COUNT(a.*) AS Frecuencia, SUM(a.monto) As Ingreso_Total
 FROM instalacion i, reservacion r, alquiler a
-WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.reservacionid_reservacion AND i.activo = r.activo = a.activo= TRUE AND r.fecha_inicio BETWEEN '01-01-2016' AND '01-30-2016' GROUP BY i.id_instalacion;]]>
+WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.reservacionid_reservacion AND i.activo = r.activo = a.activo= TRUE AND r.fecha_inicio BETWEEN '01-01-2016' AND '30-01-2016' GROUP BY i.id_instalacion;]]>
 	</queryString>
 	<field name="instalacion" class="java.lang.String"/>
 	<field name="frecuencia" class="java.lang.Long"/>

@@ -198,7 +198,7 @@ public class ReporteSancionesEstViewModel {
 			
 		} else if (this.fechadesde == null || this.fechahasta == null){
 			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else if (this.fechadesde.compareTo(this.fechahasta) > 1 ){
+		} else if (this.fechadesde.compareTo(this.fechahasta) == 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += "Reporte general de las sanciones entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";

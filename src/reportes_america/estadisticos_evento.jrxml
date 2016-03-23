@@ -2,17 +2,13 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_evento" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="181"/>
+	<property name="ireport.y" value="76"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[Select DISTINCT e.nombre as evento, i.descripcion as indicador, ie.valor_esperado, ie.valor_real
-from indicador i, evento e, indicador_evento ie, preferencia p, preferencia_evento pe, tipo_preferencia tp
-where i.id_indicador = ie.indicadorid_indicador and e.id_evento = ie.eventoid_evento and e.id_evento = pe.eventoid_evento and p.id_preferencia = pe.preferenciaid_preferencia
- and e.fecha_inicio between '03-03-2015' and '03-30-2017' and e.id_evento = 4 and i.activo=e.activo=ie.activo=p.activo=pe.activo=tp.activo=TRUE
-order by e.nombre]]>
+		<![CDATA[Select DISTINCT e.nombre as evento, i.descripcion as indicador, ie.valor_esperado, ie.valor_real from indicador i, evento e, indicador_evento ie, preferencia p, preferencia_evento pe, tipo_preferencia tp where i.id_indicador = ie.indicadorid_indicador and e.id_evento = ie.eventoid_evento and e.id_evento = pe.eventoid_evento and p.id_preferencia = pe.preferenciaid_preferencia and e.id_evento = 3 and i.activo=e.activo=ie.activo=p.activo=pe.activo=tp.activo=TRUE order by e.nombre]]>
 	</queryString>
 	<field name="evento" class="java.lang.String"/>
 	<field name="indicador" class="java.lang.String"/>
@@ -133,7 +129,7 @@ order by e.nombre]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{valor_esperado}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="443" y="4" width="100" height="20" uuid="cde9bb62-b755-4b88-9c13-16b94e958d80"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
@@ -149,38 +145,38 @@ order by e.nombre]]>
 		<band height="2" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="347" splitType="Stretch">
+		<band height="228" splitType="Stretch">
 			<line>
-				<reportElement x="4" y="200" width="798" height="1" uuid="c6eb906f-ab84-4246-b0db-b5f6df034e97"/>
+				<reportElement x="4" y="171" width="798" height="1" uuid="c6eb906f-ab84-4246-b0db-b5f6df034e97"/>
 			</line>
 			<textField>
-				<reportElement x="652" y="224" width="90" height="20" uuid="609653b6-b5ef-4cd8-b2a7-e4ed6a589d1f"/>
+				<reportElement x="652" y="175" width="90" height="20" uuid="609653b6-b5ef-4cd8-b2a7-e4ed6a589d1f"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="742" y="224" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
+				<reportElement x="742" y="175" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="327" y="204" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
+				<reportElement x="327" y="175" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="224" width="340" height="20" uuid="b8089da3-ae14-47da-90dc-76ac0798ad03"/>
+				<reportElement x="278" y="195" width="340" height="20" uuid="b8089da3-ae14-47da-90dc-76ac0798ad03"/>
 				<textElement textAlignment="Justified"/>
 				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="6" y="224" width="154" height="20" uuid="144152b9-fcd1-4dfe-a3e3-e59a80c430d5"/>
+				<reportElement x="8" y="175" width="154" height="20" uuid="144152b9-fcd1-4dfe-a3e3-e59a80c430d5"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
@@ -188,7 +184,7 @@ order by e.nombre]]>
 			</textField>
 			<barChart>
 				<chart>
-					<reportElement x="0" y="0" width="802" height="182" uuid="35781a09-91bb-4f06-8217-c7e7740ba11b"/>
+					<reportElement x="0" y="0" width="802" height="161" uuid="35781a09-91bb-4f06-8217-c7e7740ba11b"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

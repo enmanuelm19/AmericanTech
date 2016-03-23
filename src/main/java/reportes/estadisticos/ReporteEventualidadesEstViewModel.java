@@ -259,7 +259,7 @@ public class ReporteEventualidadesEstViewModel {
 			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde == null || this.fechaHasta == null){
 			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else if (this.fechaDesde.compareTo(this.fechaHasta) > 1 ){
+		} else if (this.fechaDesde.compareTo(this.fechaHasta) == 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			if(!this.hora && this.instalacion){
@@ -288,8 +288,7 @@ public class ReporteEventualidadesEstViewModel {
 
 	public void salida1() throws FileNotFoundException, JRException, SQLException{
 		reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad1.jrxml";
-		this.consulta += "Reporte general de eventualid ";
-			this.consulta += "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
+		this.consulta += "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
 			
 			sql = "select i.nombre as Instalacion, COUNT(e.*), "
 					+ "(COUNT(e.*) *100) /(select COUNT(*) from eventualidad "
