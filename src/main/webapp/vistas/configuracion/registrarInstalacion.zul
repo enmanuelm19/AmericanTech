@@ -58,10 +58,9 @@
 						</div>
 
 						<div align="right" class='col-md-4'>
-
-							<image content="@bind(vminst.uploadedImage)"
-									
-								class='col-md-12' />
+							<image src="../assets/portal/img/img2.jpg" class='col-md-12'  visible="@load(vminst.fotodefault)"/>
+							<image content="@bind(vminst.uploadedImage)" class='col-md-12' visible="@load(!vminst.fotodefault)"/>
+							
 							<separator />
 							<div>
 								<fileupload
