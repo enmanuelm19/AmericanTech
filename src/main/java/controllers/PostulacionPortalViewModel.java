@@ -182,6 +182,7 @@ public class PostulacionPortalViewModel {
 							this.padrino2=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino2());
 							if(!this.padrino1.equals(null) && !this.padrino2.equals(null)){
 								this.persona.setFoto(ManejadorArchivo.subirImagen(uploadedImage));
+								this.persona.setActivo(true);
 								this.personaDao.agregarPersona(persona);
 								this.postulado.setPersona(this.persona);
 								this.postulado.setActivo(true);
@@ -202,10 +203,13 @@ public class PostulacionPortalViewModel {
 								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!");
 								this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(5));
 								this.noticia.setFechaCreacion(now);
-								this.noticia.setCaducidad(now);
+								Date dia= new Date();
+								dia.setDate(now.getDate()+15);
+								this.noticia.setCaducidad(dia);
 								this.noticia.setPublico(false);
 								this.noticia.setFoto(this.persona.getFoto());
 								this.noticia.setActivo(true);
+								this.noticia.setPostulacion(postulacion);
 								this.noticiaDao.agregarNoticia(noticia);
 								this.persona=new Persona();
 								this.temporalPreferencia= new ArrayList<Preferencia>();

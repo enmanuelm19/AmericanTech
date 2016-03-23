@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -53,27 +56,44 @@ public class MiPerfilViewModel {
 	private Set<PreferenciaPersona> PreferenciasPersona;
 	private Media uploadedImage;
 	private boolean imagenNueva = false;
-	
+	private Afiliado afiliado;
+	private boolean verAfiliado;
+	private Set<Afiliado> afiliados;
+
 
 	@Init
 	public void init() throws Exception {
-
 		usuario = (Usuario) Sessions.getCurrent().getAttribute("Usuario");
 		this.preferenciaPDAO = new PreferenciaPersonaDao();
 		this.afiliadoDao = new AfiliadoDao();
 		this.accionDao = new AccionDao();
 		this.socioDao = new SocioDao();
+		this.afiliado= afiliadoDao.obtenerPorPersona(usuario.getPersona());
 		this.socio = socioDao.obtenerSocioPersona(usuario.getPersona());
-		this.preferenciaDao = new PreferenciaDao();
-		this.tPreferenciaDao = new TipoPreferenciaDao();
-		this.temporalPreferencia = new ArrayList<Preferencia>();
-		this.PreferenciasPersona = usuario.getPersona().getPreferenciaPersonas();
-		this.preferenciaPDAO = new PreferenciaPersonaDao();
+		if(this.afiliado==null && this.socio==null){
+			verAfiliado=false;
+		}else{
+			if(this.afiliado!=null){
+				verAfiliado=false;
+				this.afiliados= new HashSet<Afiliado>();
+			} else if(this.socio!=null){
+				verAfiliado=true;
+				this.afiliados= this.socio.getAfiliados();
+			}
+		}
+		preferenciaDao = new PreferenciaDao();
+		tPreferenciaDao = new TipoPreferenciaDao();
+		temporalPreferencia = new ArrayList<Preferencia>();
+		PreferenciasPersona = usuario.getPersona().getPreferenciaPersonas();
+		preferenciaPDAO = new PreferenciaPersonaDao();
 		this.usuarioDao= new UsuarioDao();
 		
 	}
 	
 	
+	public boolean isVerAfiliado() {
+		return verAfiliado;
+	}
 
 
 
@@ -133,13 +153,66 @@ public class MiPerfilViewModel {
 
 		return new ListModelList<TipoPreferencia>(tPreferenciaDao.obtenerTodos());
 	}
-
+/*
 	public ListModelList<Preferencia> getPreferenciasPorTipo() throws Exception {
 		if (tipoPreferenciaSelected != null) {
 			return new ListModelList<Preferencia>(preferenciaDao.obtenerPreferenciasTipo(tipoPreferenciaSelected));
 		}
 		return new ListModelList<Preferencia>();
 	}
+	*/
+	public ListModelList<Preferencia> getPreferenciasAll() throws Exception{
+		List<Preferencia> preferencias= new ArrayList<Preferencia>();
+		if(this.afiliado!=null){
+			List<Preferencia> p=this.preferenciaDao.obtenerTodos();
+			for(int j=0; j<p.size(); j++){
+				boolean val=false;
+
+				for(Iterator<PreferenciaPersona> i=afiliado.getPersona().getPreferenciaPersonas().iterator(); i.hasNext();){
+					PreferenciaPersona tmp= i.next();
+					if(tmp.getPreferencia().getIdPreferencia()==p.get(j).getIdPreferencia()){
+						val=true;
+					}
+				}
+				if(val==false)
+					preferencias.add(p.get(j));
+			}
+		}
+		else if(this.socio!=null){
+			List<Preferencia> p=this.preferenciaDao.obtenerTodos();
+			for(int j=0; j<p.size(); j++){
+				boolean val=false;
+				for(Iterator<PreferenciaPersona> i=socio.getPersona().getPreferenciaPersonas().iterator(); i.hasNext();){
+					PreferenciaPersona tmp= i.next();
+					if(tmp.getPreferencia().getIdPreferencia()==p.get(j).getIdPreferencia()){
+						val=true;
+					}
+				}
+				if(val==false)
+					preferencias.add(p.get(j));
+			}
+		}
+		return new ListModelList<Preferencia>(preferencias);
+			
+			/*
+				
+				
+		} else if(this.socio!=null){
+			List<Preferencia> p=this.preferenciaDao.obtenerTodos();
+			
+			for(Iterator<PreferenciaPersona> i=socio.getPersona().getPreferenciaPersonas().iterator(); i.hasNext();){
+				boolean val=false;
+				PreferenciaPersona tmp= i.next();
+				
+				for(int j=0; j<p.size(); j++){
+					if(tmp.getPreferencia().getIdPreferencia()==p.get(j).getIdPreferencia()){
+						val=true;
+					}
+				}
+				if(val==false)
+					preferencias.add(p.get(j));
+			}*/
+		}
 	
 	public String getCantidadPreferencias(){
 		return getAllPreferenciasPersona().size()+" items en la lista";
@@ -203,7 +276,7 @@ public class MiPerfilViewModel {
 	}
 	
 	@Command
-	@NotifyChange({ "allPreferenciasPersona", "cantidadPreferencias" })
+	@NotifyChange({ "allPreferenciasPersona", "cantidadPreferencias","preferenciasAll" })
 	public void eliminarPreferencia(@BindingParam("PreferenciaP") PreferenciaPersona p) throws Exception {
 		if(preferenciaPDAO.obtenerPreferenciaPersona(p.getIdPreferenciaPersona())!=null)
 			p.setActivo(false);
@@ -243,7 +316,7 @@ public class MiPerfilViewModel {
 		
 		this.usuarioDao.actualizarUsuario(usuario);
 		Messagebox.show("Usuario " + usuario.getPersona().getNombre()
-				+ " ha sido actualizado", "", Messagebox.OK,
+				+ " ha sido actualizado", "American Tech", Messagebox.OK,
 				Messagebox.INFORMATION);
 		
 	}

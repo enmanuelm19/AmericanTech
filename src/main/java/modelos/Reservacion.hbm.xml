@@ -32,7 +32,7 @@
             </key>
             <one-to-many class="modelos.Alquiler" />
         </set>
-        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="calendarioFechas" table="calendario_fecha" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="reservacionid_reservacion" />
             </key>

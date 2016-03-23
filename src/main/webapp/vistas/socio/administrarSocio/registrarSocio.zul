@@ -54,20 +54,20 @@
 						</row>
 						<row>
 							<div>
-								<label class="col-md-4" value="Telefono Domicilio" />
+								<label class="col-md-4" value="Teléfono Domicilio" />
 								<textbox constraint="no empty" class="col-md-6" readonly="true"  value="@load(vm.postulacion.postulado.persona.telefonoFijo)"/>
 							</div>
 						</row>
 						<row>
 							<div>
-								<label class="col-md-4" value="Telefono Celular" />
+								<label class="col-md-4" value="Teléfono Celular" />
 								<textbox constraint="no empty" class="col-md-6" readonly="true"  value="@load(vm.postulacion.postulado.persona.telefono)"/>
 							</div>
 						</row>
 						<row>
 							<div>
 								<label class="col-md-4"	value="Fecha Nacimiento" />
-								<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.fechaNac)" />
+								<textbox constraint="no empty" class="col-md-6" readonly="true" value="@load(vm.postulacion.postulado.persona.fechaParse)" />
 							</div>
 						</row>
 						<row>
@@ -87,7 +87,7 @@
 						</row>
 						<row>
 							<div>
-								<label class="col-md-4" value="Direccion" />
+								<label class="col-md-4" value="Dirección" />
 								<textbox constraint="no empty" class="col-md-6" readonly="true" cols="60" rows="4" type="text"
 									value="@load(vm.postulacion.postulado.persona.direccion)"  />
 							</div>

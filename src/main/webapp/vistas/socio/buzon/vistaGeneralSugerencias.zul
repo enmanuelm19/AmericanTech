@@ -26,8 +26,6 @@
 								class='boton-guardar' />
 						</div>
 
-						<separator spacing="10%" />
-
 
 						<div align="left">
 							<div class="encabezado">Sugerencias</div>

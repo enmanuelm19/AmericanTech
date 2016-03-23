@@ -72,9 +72,13 @@ insert into motivo_sancion (descripcion,activo) values ('Eventualidad',true);
 insert into motivo_sancion (descripcion,activo) values ('Morosidad',true);
 
 --Motivo_postulacion
-insert into motivo_postulacion (descripcion,activo) values ('Inversi髇',true);
-insert into motivo_postulacion (descripcion,activo) values ('Participaci髇 Deportiva',true);
-insert into motivo_postulacion (descripcion,activo) values ('Beneficios del Club',true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (1, 'Beneficios del Club', true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (2, 'Inversi贸n', true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (3, 'Deporte', true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (4, 'Osio', true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (5, 'Recreaci贸n', true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (6, 'Diversi贸n', true);
+INSERT INTO motivo_postulacion (id_motivo_postulacion, descripcion, activo) VALUES (7, 'Por amor', true);
 
 --Motivo_Venta
 Insert into motivo_venta (descripcion,activo) VALUES ('Necesidad Econ髆ica',TRUE);
@@ -91,8 +95,10 @@ insert into motivo_desvinculacion (descripcion,activo) values ('Venta de Accion'
 insert into motivo_desvinculacion (descripcion,activo) values ('Socio Sancionado',true)
 
 --Estado_Accion
-insert into estado_accion (nombre,activo) values ('Activa',True);
-insert into estado_accion (nombre,activo) values ('En Venta',True);
+INSERT INTO estado_accion (nombre, activo) VALUES ('Asociada', true);
+INSERT INTO estado_accion (nombre, activo) VALUES ('En Venta', true);
+INSERT INTO estado_accion (nombre, activo) VALUES ('En Solicitud', true);
+INSERT INTO estado_accion (nombre, activo) VALUES ('Inactiva', true);
 
 --Red_Social
 
@@ -117,21 +123,26 @@ INSERT INTO indicador(descripcion, activo)
            ('Ingresos por Bebidas alcoholicas', TRUE);
 
 --Persona
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20525481','Mariangel','Arrieche','05/05/91','F','mariangel@gmail.com','04120584875','02517588520','Barquisimeto',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20525489','Gipsy','Martinez','17/10/91','F','gipsy@gmail.com','04120585789','02517587878','El Cuji',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20322921','Jose','Abreu','16/02/90','M','DeadNox16@gmail.com','04120585285','02534913354','Quibor',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '1589654','Mirian','Vega','05/06/55','F','vegamirian@gmail.com','04120584875','02517588520','Barquisimeto',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20125489','Armando','Perdomo','17/08/54','M','armandoptgs@gmail.com','04120585789','02517587878','Barquisimeto',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '2022921','Malon','Mendoza','22/12/59','M','malomalon@gmail.com','04120585285','02534913354','Caripito',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '25525481','Andy','Elachouche','05/07/78','M','andyelpelon@gmail.com','04120584875','02517588520','Los valles del tuy',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20425489','Mario','Kempes','17/10/91','M','matadorkempes@gmail.com','04120585789','02517587878','Cabudare',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20822921','Wilie','Mays','16/02/90','M','wmmlb@gmail.com','04120585285','02534913354','Barquisimeto',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20925481','Pablo','Giralt','05/05/91','M','directvpgiralt@gmail.com','04120584875','02517588520','Barquisimeto',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20725489','Maria','Machado','17/10/91','F','elcambiollego@gmail.com','04120585789','02517587878','El Tocuyo',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20722921','Francesco','Totti','16/02/90','M','tifosiroma@gmail.com','04120585285','02534913354','Carora',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20825481','Nestor','Garcia','05/05/91','M','chegarcia99@gmail.com','04120584875','02517588520','San Felipe',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20925489','Giovanny','Savarece','17/10/91','M','nycosmos@gmail.com','04120585789','02517587878','Barquisimeto',TRUE);
-Insert into persona (identificacion,nombre,apellido,fecha_nac,sexo,correo,telefono,telefono_fijo,direccion,activo) VALUES ( '20122921','Raul','Gonzalez','16/02/90','M','angeldemadrid@gmail.com','04120585285','02534913354','Barquisimeto',TRUE);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('20387728', 'Enmanuel', 'Medina', NULL, '1980-03-01', 'M', 'enmanuelm19@gmail.com', '04146549874', '02516548765', 'Cabudare', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('12345678', 'Carlos', 'Amaro', NULL, '1981-04-01', 'M', 'carlos@gmail.com', '04249876668', '02513348765', 'Barquisimeto', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('11111111', 'Juan', 'Petaquero', NULL, '1982-05-01', 'M', 'juan@gmail.com', '04127896654', '02516548705', 'Valle Hondo, Cabudare', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('55555555', 'Manuel', 'Guerrero', 'http://i.imgur.com/xXp0wXP.png', '1983-06-01', 'M', 'manuel@gmail.com', '04147658877', '02516548265', 'Carrera 25 con calle 12', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('33333333', 'Sergio', 'Hernandez', NULL, '1983-07-01', 'M', 'sergio@hotmail.com', '04167779788', '02516540965', 'Av Libertador con calle 12', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('99999999', 'Pedro', 'Camacaro', NULL, '1984-08-01', 'M', 'pedrocamacaro@gmail.com', '04263423433', '0255657432', 'Santa Isabel, Avenida 4', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('22186230', 'Fidel', 'Aliaga', 'http://i.imgur.com/mSJl1BZ.jpg', '1985-03-17', 'M', 'fidel.alejos@gmail.com', '04263237394', '02512553545', 'Barquisimeto', false);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('19648893', 'Ruben', 'Vivas', 'http://i.imgur.com/ycCM1PJ.jpg', '1991-09-13', 'M', 'rvivas89@gmail.com', '04165438877', '02513456566', 'Urbanizaci贸n Las Trinitarias2', false);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('21140247', 'Mariangel', 'Arrieche', 'http://i.imgur.com/8t2CuRs.png', '1980-03-18', 'F', 'mariangel@gmail.com', '0416555555', '02412222222', 'barquisimeto', false);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('23393273', 'Roman', 'Arrieche', 'http://i.imgur.com/krJ9S4R.png', '1992-03-18', 'M', 'roman@gmail.com', '041255555', NULL, 'Barquisimeto', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('11593903', 'Romulo', 'Dominguez', 'http://i.imgur.com/duCXybQ.jpg', '1972-03-03', 'M', 'rdominguez@gmail.com', '04168765555', '02512557654', 'Pardos del Glof III Cabudare', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('13353553', 'Maria', 'Rosario', NULL, '1976-09-24', 'F', 'maria@gmail.com', '04243131311', NULL, 'Prados del Golf III, Cabudare', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('19818668', 'Edward', 'Rodriguez', NULL, '1989-08-18', 'M', 'j@gmail.com', '78389327', NULL, 'La Piedad', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('22097230', 'Karla', 'Moron', NULL, '1994-06-17', 'F', 'karla@gmail.com', '04263567394', '02512903265', 'Trujillo', false);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('19648034', 'Elisa', 'Vivas', NULL, '1991-09-13', 'M', 'rvivas89@gmail.com', '04165438877', '02513456566', 'Urbanizaci贸n Las Trinitarias2', false);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('20860247', 'Mariangel', 'Arrieche', 'http://i.imgur.com/8t2CuRs.png', '1980-03-18', 'F', 'mariangel@gmail.com', '0416555555', '02412222222', 'barquisimeto', false);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('23393273', 'Roman', 'Arrieche', 'http://i.imgur.com/krJ9S4R.png', '1992-03-18', 'M', 'roman@gmail.com', '041255555', NULL, 'Barquisimeto', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('11593903', 'Romulo', 'Dominguez', 'http://i.imgur.com/duCXybQ.jpg', '1972-03-03', 'M', 'rdominguez@gmail.com', '04168765555', '02512557654', 'Pardos del Glof III Cabudare', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('13353553', 'Maria', 'Rosario', NULL, '1976-09-24', 'F', 'maria@gmail.com', '04243131311', NULL, 'Prados del Golf III, Cabudare', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('19818668', 'Edward', 'Rodriguez', NULL, '1989-08-18', 'M', 'j@gmail.com', '78389327', NULL, 'La Piedad', true);
 
 --Accion
 insert into accion (nro_accion,valor,estado_accionid_estado_accion,activo) values ('B-0338',500000,1,true);
