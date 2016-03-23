@@ -37,7 +37,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Preferencias
+									Listado Preferencia
 								</div>
 								<div class='linea-two'></div>
 							</div>
@@ -68,7 +68,7 @@
 										Tipo Preferencia
 									</column>
 									<column hflex="2">
-										Descripcion
+										Descripción
 									</column>
 									<column>Acciones</column>
 								</columns>

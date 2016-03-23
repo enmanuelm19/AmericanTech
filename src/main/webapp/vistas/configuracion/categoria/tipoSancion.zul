@@ -34,7 +34,7 @@
 							<div align="left">
 								<div sclass="encabezado">
 									<label
-										value="Lista Tipos Saciones" />
+										value="Listado Tipo Sación" />
 								</div>
 								<div class='linea-two'></div>
 
@@ -56,7 +56,7 @@
 								</auxhead>
 								<columns>
 									<column hflex="2">
-										Tipo Sancion
+										Tipo Sanción
 									</column>
 									<column width="20%"
 										align="center">
