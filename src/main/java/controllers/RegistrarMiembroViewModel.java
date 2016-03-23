@@ -45,36 +45,46 @@ public class RegistrarMiembroViewModel {
 	private JuntaDirectiva junta;
 	private Media uploadedImage;
 	private boolean imagenNueva=false;
-	
+	private boolean editar;
 	@Init
-	public void init(@ExecutionArgParam("Junta") JuntaDirectiva junta) throws Exception{
-		miembro= new MiembroJunta();
+	public void init(@ExecutionArgParam("Junta") JuntaDirectiva junta,@ExecutionArgParam("m") MiembroJunta m) throws Exception{
 		this.miembroDao= new MiembroJuntaDao();
 		this.personaDao= new PersonaDao();
-		socio= new Socio();
-		this.socioDao= new SocioDao();
-		this.carnet="";
-		this.cedula="";
 		this.cargoDao= new CargoDao();
-		//this.cargos=cargoDao.obtenerTodos();
-		desactivar=true;
 		this.afiliadoDao= new AfiliadoDao();
-		this.junta=junta;
-		this.persona= new Persona();
-		miembro.setPersona(persona);
-		this.cargo= new Cargo();
-		miembro.setCargo(cargo);
-		System.out.println("jldjajdjdksjde");
+		this.socioDao= new SocioDao();
+		
+		if(m==null){
+			editar=false;
+			miembro= new MiembroJunta();
+			socio= new Socio();
+			this.carnet="";
+			this.cedula="";
+			//this.cargos=cargoDao.obtenerTodos();
+			desactivar=true;
+			this.junta=junta;
+			this.persona= new Persona();
+			miembro.setPersona(persona);
+			this.cargo= new Cargo();
+			miembro.setCargo(cargo);
+			miembro.setJuntaDirectiva(junta);
+			System.out.println("jldjajdjdksjde");
+		}
+		else{
+			editar=true;
+			miembro= m;
+			cedula=miembro.getPersona().getIdentificacion();
+			desactivar=true;
+			this.junta=junta;
+		}
 	}
 
 	public MiembroJunta getMiembro() {
-		System.out.println("jsjsjjs "+miembro.getPersona().getDireccion());
 		return miembro;
 	}
 
 	public void setMiembro(MiembroJunta miembro) {
 		this.miembro = miembro;
-		System.out.println("entroooooooooo");
 	}
 	
 	public ListModelList<Cargo> getCargosAll() throws Exception{
@@ -101,7 +111,7 @@ public class RegistrarMiembroViewModel {
 			Messagebox.show("Debe llenar el campo Cédula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		else{
 			Persona per= new Persona();
-					per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
+			per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
 			if(per==null){
 				Messagebox.show("Cédula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				miembro.setPersona(new Persona());
@@ -110,7 +120,7 @@ public class RegistrarMiembroViewModel {
 			else{
 				miembro.setPersona(per);
 				desactivar=true;
-				System.out.println(miembro.getPersona().getCorreo());
+				System.out.println("correo del miembro: "+miembro.getPersona().getCorreo());
 			}
 		}
 	}
@@ -133,20 +143,33 @@ public class RegistrarMiembroViewModel {
 	}
 	
 	@Command
-	public void guardar(@BindingParam("m") MiembroJunta m) throws Exception{
-		if(desactivar){
-			System.out.println(m.getIdJuntaMiembro());
-			if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
-					||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
-					||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")){
-				Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
-				
-			}
-			else{
-				miembroDao.agregarMiembroJunta(miembro);
-				Messagebox.show("El miembro ", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
-				
+	public void guardar(@BindingParam("win") Window win) throws Exception{
+		if(!editar){
+			if(desactivar){
+				if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
+						||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
+						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")){
+					Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				}
+				else{
+					miembroDao.agregarMiembroJunta(miembro);
+					Messagebox.show("El Sr(a) "+miembro.getPersona().getNombre()+" "+miembro.getPersona().getApellido()+" ahora es "+
+					miembro.getCargo().getDescripcion()+" de la junta directiva", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					win.detach();
+					BindUtils.postGlobalCommand(null, null, "refreshJuntas",null);
+				}
 			}
 		}
+		else{
+			miembroDao.actualizarMiembroJunta(miembro);
+			Messagebox.show("El Miembro "+miembro.getPersona().getNombre()+" "+miembro.getPersona().getApellido()+" ha sido actualizado", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			win.detach();
+			BindUtils.postGlobalCommand(null, null, "refreshJuntas",null);
+		}
+	}
+	
+	@Command
+	public void cancelar(@BindingParam("win") Window win){
+		win.detach();
 	}
 }

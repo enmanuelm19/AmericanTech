@@ -21,7 +21,7 @@
 						<fileupload iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-1' label="Examinar"  onUpload="@command('uploadImage',media=event.media)"/>
 					</div>
 				</div>
-				<div align="right" class='col-md-9' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarMiembroViewModel')">
+				<div align="right" class='col-md-9'>
 					<grid>
 						<rows>
 							<row>
@@ -98,8 +98,8 @@
 
 				<space spacing="15%" />
 				<div class="row col-md-12">
-					<button class="boton-guardar col-md-3 col-md-offset-2" label="Guardar" type="button" iconSclass="z-icon-floppy-o" onClick="@command('guardar', m=vm.miembro)"/>
-					<button	class="boton-cancelar col-md-3 col-md-offset-2" iconSclass="z-icon-times" type="button" label="Cancelar"/>
+					<button class="boton-guardar col-md-3 col-md-offset-2" label="Guardar" type="button" iconSclass="z-icon-floppy-o" onClick="@command('guardar', win=winRegistrarMiembro)"/>
+					<button	class="boton-cancelar col-md-3 col-md-offset-2" iconSclass="z-icon-times" type="button" label="Cancelar" onClick="@command('cancelar', win=winRegistrarMiembro)"/>
 				</div>
 				<separator spacing="5%" />
 			</div>
