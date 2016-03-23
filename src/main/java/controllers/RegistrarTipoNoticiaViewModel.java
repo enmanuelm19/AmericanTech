@@ -56,8 +56,8 @@ public class RegistrarTipoNoticiaViewModel {
 
 		if (tipoNoticia.getDescripcion() != null
 				&& !tipoNoticia.getDescripcion().equalsIgnoreCase("")) {
-			if (tipoDao
-					.obtenerTipoDescripcion(tipoNoticia.getDescripcion()) == null) {
+//			if (tipoDao
+//					.obtenerTipoDescripcion(tipoNoticia.getDescripcion()) == null) {
 				if (!editable) {
 					tipoDao.agregarTipoNoticia(tipoNoticia);
 					Messagebox.show(
@@ -76,11 +76,12 @@ public class RegistrarTipoNoticiaViewModel {
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoNoticia", null);
-			} else {
-				Messagebox.show("tipo de noticia con la descripcion "
-						+ tipoNoticia.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-			}
+		
+//			} else {
+//				Messagebox.show("tipo de noticia con la descripcion "
+//						+ tipoNoticia.getDescripcion() + " ya existe",
+//						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+//			}
 		}
 
 	}

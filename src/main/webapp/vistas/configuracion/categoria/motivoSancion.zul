@@ -7,22 +7,22 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categorias" href="#" />
-						<label value="Motivo postulación" />
+						<label value="Motivo sanción" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Motivos Postulaciones" />
+						<label value="Motivos Sanciones" />
 					</div>
 
 					<space />
 					<space />
-					<div class='form-pricing  col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+					<div class='form-pricing col-xs-11 col-sm-11 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
-						viewModel="@id('vm') @init('controllers.MotivoPostulacionViewModel')">
+						viewModel="@id('vm') @init('controllers.MotivoSancionViewModel')">
 						<div xmlns:w='client' align="right">
-							<button id="btnRegMotivoPostulacion"
+							<button id="btnRegmotivoSancion"
 								label="Agregar Nuevo" iconSclass="z-icon-plus"
 								style="margin-bottom: -4%" class='boton-guardar'
 								onClick="@command('showModal')" />
@@ -32,17 +32,18 @@
 
 						<div class="contenido">
 							<div align="left">
-								<div class='encabezado'>
-									Listado Motivo Postulación
+								<div align="left">
+									<div class='encabezado'>
+										Listado Motivo Sanción
+									</div>
+									<div class='linea-two'></div>
 								</div>
-								<div class='linea-two'></div>
 							</div>
 							<separator spacing="20px" />
-
 							<grid
-								emptyMessage="No se encuentran motivos postulación registrados"
-								mold="paging" pageSize="10" id="gridMotivoPostulacion"
-								model="@load(vm.allMotivoPostulacion)">
+								emptyMessage="No se encuentran motivos de sanciones registrados"
+								mold="paging" pageSize="10" id="gridMotivoCancelacion"
+								model="@load(vm.allMotivoSancion)">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
@@ -53,15 +54,13 @@
 									</auxheader>
 									<auxheader colspan="1" />
 								</auxhead>
-
 								<columns>
-									<column hflex="2">Motivo Postulación</column>
+									<column>Motivo Sanción</column>
 									<column width="20%"
 										align="center">
 										Acciones
 									</column>
 								</columns>
-
 								<rows>
 									<template name="model">
 
@@ -72,23 +71,21 @@
 												<button
 													sclass="btn-link" iconSclass="z-icon-pencil blue"
 													tooltiptext="Editar"
-													onClick="@command('showModal', Tipo=each)" />
+													onClick="@command('showModal', Motivo=each)" />
 												<button
 													sclass="btn-link" iconSclass="z-icon-trash-o red"
 													tooltiptext="Eliminar"
-													onClick="@command('eliminar', Tipo=each)" />
+													onClick="@command('eliminar', Motivo=each)" />
 											</div>
 										</row>
 
 									</template>
 								</rows>
-
 								<foot>
-									<footer span="1"
+									<footer span="3"
 										class="footer_right" label="@load(vm.cantRegistros)" />
 								</foot>
 							</grid>
-
 						</div>
 					</div>
 				</div>

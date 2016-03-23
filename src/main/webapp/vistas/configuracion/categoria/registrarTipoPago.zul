@@ -26,12 +26,9 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-2">Descripción</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										value="@bind(vm.tipoPago.descripcion)" width="100%"
-										constraint="no empty" />
-								</div>
+								<label class="col-md-2">Descripción</label>
+									<textbox type="text" rows="4" class="col-xs-12 col-sm-12 col-md-12"
+										value="@bind(vm.tipoPago.descripcion)" constraint="no empty" />
 							</div>
 						</row>
 					</rows>

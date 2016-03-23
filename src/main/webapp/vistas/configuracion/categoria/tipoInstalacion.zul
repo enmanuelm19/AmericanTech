@@ -28,7 +28,7 @@
 				
 				<div class="contenido" >
 					<div align="left">
-						<div class='encabezado'>Lista Tipos Instalaciones</div>
+						<div class='encabezado'>Listado Tipo Instalación</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="20px"/>
@@ -45,7 +45,7 @@
 						</auxhead>
 						
 						<columns>
-							<column hflex="2">Tipo Instalacion</column>
+							<column hflex="2">Tipo Instalación</column>
 							<column width="20%" align="center">Acciones</column>
 						</columns>
 						
