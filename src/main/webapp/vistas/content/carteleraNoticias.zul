@@ -22,7 +22,7 @@
 	<!-- 	</script> -->
 
 	<div zclass="none" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')">
-		<div class="owl-carousel owl-theme " children="@load(vm.allNoticia)">
+		<div class="owl-carousel owl-theme " children="@load(vm.noticiaAll)">
 			<template name="children" var="noticias">
 				<n:div class="item col-md-6" zclass="none">
 					<separator spacing="10px"></separator>
