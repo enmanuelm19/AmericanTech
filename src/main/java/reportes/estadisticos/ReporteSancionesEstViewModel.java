@@ -200,7 +200,7 @@ public class ReporteSancionesEstViewModel {
 			el.printStackTrace();
 		}
 		
-		reporte = System.getProperty("user.home") + "/reportes_america/estadistico_sanciones.jrxml";
+		reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_sanciones.jrxml";
 		if(this.fechadesde == null && this.fechahasta == null){
 			
 			sql = "SELECT t.descripcion, COUNT(s.*) as count, "

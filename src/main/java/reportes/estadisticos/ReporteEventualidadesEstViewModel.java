@@ -54,6 +54,7 @@ import org.zkoss.zul.Window;
 
 
 
+
 import Dao.InstalacionDao;
 import Dao.SocioDao;
 import modelos.Evento;
@@ -79,7 +80,7 @@ public class ReporteEventualidadesEstViewModel {
 	private boolean horaHasta;
 	private boolean instalacioncheck;
 	private boolean instalacion;
-	private int horaDesdeSelect, horaHastaSelect;
+	private String horaDesdeSelect, horaHastaSelect;
 	
 	//reporte
 		private String sql = "";
@@ -255,32 +256,33 @@ public class ReporteEventualidadesEstViewModel {
 		this.instalacion = instalacion;
 	}
 	
-	@NotifyChange("horaDesdeSelect")
-	public int getHoraDesdeSelect() {
-		return horaDesdeSelect;
-	}	
 
 	@NotifyChange("horaDesdeSelect")
-	public void  seHhoraDesdeSelect(int horaDesdeSelect) {
+	public String getHoraDesdeSelect() {
+		return this.horaDesdeSelect;
+	}
+	
+	@NotifyChange("horaDesdeSelect")
+	public void setHoraDesdeSelect(String horaDesdeSelect) {
 		this.horaDesdeSelect = horaDesdeSelect;
 	}
+
+
 	
 	@NotifyChange("horaHastaSelect")
-	public int getHoraHastaSelect() {
-		return horaHastaSelect;
+	public String getHoraHastaSelect() {
+		return this.horaHastaSelect;
 	}
 	
 	@NotifyChange("horaHastaSelect")
-	public void  setHoraHastaSelect(int edadHastaSelected) {
+	public void setHoraHastaSelect(String horaHastaSelect) {
 		this.horaHastaSelect = horaHastaSelect;
 	}
 
 	
 	@Command
 	public void btnPDF(Event e) throws SQLException, JRException, IOException {
-		System.out.println("TONY");
-		cargarSql();
-		
+		cargarSql();		
 	}
 	
 	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
@@ -291,42 +293,45 @@ public class ReporteEventualidadesEstViewModel {
 			el.printStackTrace();
 		}
 		
-		System.out.println("hora: "+ this.horaDesdeSelect);
-		System.out.println("hora: "+ this.horaDesdeSelect);
 		if(this.fechaDesde == null && this.fechaHasta == null){
-			reporte = System.getProperty("user.home") + "/reportes_america/estadistico_eventualidades1.jrxml";
-			sql = "select i.nombre as Instalacion, COUNT(e.*), (COUNT(e.*) *100) /(select COUNT(*) from eventualidad) as Porcentaje "
-					+ "from instalacion i, eventualidad e "
-					+ "where i.id_instalacion = e.instalacionid_instalacion and "
-					+ "i.activo = e.activo = TRUE  group by i.id_instalacion";
-			this.consulta += "Reporte general de eventualidaes sin un rango de fechas.";
-			generarPDF();
-			
+			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde == null || this.fechaHasta == null){
 			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde.compareTo(this.fechaHasta) > 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
-			
-			sql = "select i.nombre as Instalacion, COUNT(e.*), "
-					+ "(COUNT(e.*) *100) /(select COUNT(*) from eventualidad "
-					+ "where fecha between '03/01/2015' and '03/30/2016') as Porcentaje "
-					+ "from instalacion i, eventualidad e "
-					+ "where i.id_instalacion = e.instalacionid_instalacion "
-					+ "and i.activo = e.activo = TRUE "
-					+ "and e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+  sdf.format(this.fechaHasta) +"' group by i.id_instalacion ";
-			
-		
-			generarPDF();
+			if(!this.hora && !this.instalacion){
+				salida1();
+			} else if(this.hora && !this.instalacion){
+				salida2();
+			} else if (this.hora && this.instalacion){
+				salida3();
+			} else {
+				salida4();
+			}
 		}
+		
+		
+		
+		
+		
 		
 	}
 	
-	public void sqlHORA() throws FileNotFoundException, JRException, SQLException{
+	private void salida4() {
+		// TODO Auto-generated method stub
 		
-		if(this.fechaDesde == null && this.fechaHasta == null){
-			reporte = System.getProperty("user.home") + "/reportes_america/estadistico_eventualidades1.jrxml";
+	}
+
+
+	private void salida2() throws FileNotFoundException, JRException, SQLException {
+		reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad2.jrxml";
+		this.consulta += "Reporte general de eventualidad ";
+			this.consulta += "Reporte de eventualidaes entre la hora " + Integer.valueOf(this.horaDesdeSelect) + " y "+  Integer.valueOf(this.horaHastaSelect)+".";
+		
+		
+		if(this.horaDesdeSelect == null && this.horaHastaSelect == null){
+			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad1.jrxml";
 			sql = "select i.nombre as Instalacion, COUNT(e.*), (COUNT(e.*) *100) /(select COUNT(*) from eventualidad) as Porcentaje "
 					+ "from instalacion i, eventualidad e "
 					+ "where i.id_instalacion = e.instalacionid_instalacion and "
@@ -334,11 +339,41 @@ public class ReporteEventualidadesEstViewModel {
 			this.consulta += "Reporte general de eventualidaes sin un rango de fechas.";
 			generarPDF();
 			
-		} else if (this.fechaDesde == null || this.fechaHasta == null){
+		} else if (this.horaDesdeSelect == null || this.horaHastaSelect == null){
 			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else if (this.fechaDesde.compareTo(this.fechaHasta) > 1 ){
+		} else if (this.horaDesdeSelect.compareTo(this.horaHastaSelect) > 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
+			this.consulta += "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
+			
+					sql = "select DISTINCT ((select COUNT(*) from eventualidad e "
+							+ "where date_part('hour', e.fecha)< "+ Integer.valueOf(this.horaDesdeSelect) +") * 100) / (select COUNT(*) from eventualidad e)  as Antes, "
+							+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha) "
+							+ "between "+ Integer.valueOf(this.horaDesdeSelect) +" and "+ Integer.valueOf(this.horaHastaSelect) +" )* 100) / (select COUNT(*) from eventualidad e)  as Seleccion, "
+							+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha)> "+ Integer.valueOf(this.horaHastaSelect) +")  * 100) / (select COUNT(*) from eventualidad e)  as Despues "
+							+ "from eventualidad e "
+							+ "where e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+  sdf.format(this.fechaHasta) +"' and e.activo = true;";
+		
+			generarPDF();
+		}		
+	}
+
+
+
+	private void salida3() {
+		sql = "Select te.descripcion, COUNT(e.*) as Cantidad, ( COUNT(e.*) * 100)/(SELECT COUNT(e.*) from eventualidad e "
+				+ "WHERE e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+sdf.format(this.fechaHasta)+"' and e.instalacionid_instalacion =  "+this.in+") as Porcentaje "
+				+ "from eventualidad e, tipo_eventualidad te "
+				+ "where e.fecha between '03-01-2016' and '03-30-2016' "
+				+ "and e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad "
+				+ "and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad";
+		
+	}
+
+
+	public void salida1() throws FileNotFoundException, JRException, SQLException{
+		reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad1.jrxml";
+		this.consulta += "Reporte general de eventualid ";
 			this.consulta += "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
 			
 			sql = "select i.nombre as Instalacion, COUNT(e.*), "
@@ -349,16 +384,9 @@ public class ReporteEventualidadesEstViewModel {
 					+ "and i.activo = e.activo = TRUE "
 					+ "and e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+  sdf.format(this.fechaHasta) +"' group by i.id_instalacion ";
 			
-		
 			generarPDF();
-		}
-		
-//		select DISTINCT ((select COUNT(*) from eventualidad e where date_part('hour', e.fecha)< 16) * 100) / (select COUNT(*) from eventualidad e)  as Antes,
-//		  ((select COUNT(*) from eventualidad e where date_part('hour', e.fecha) between 16 and 19)  * 100) / (select COUNT(*) from eventualidad e)  as Seleccion,
-//                ((select COUNT(*) from eventualidad e where date_part('hour', e.fecha)> 19)  * 100) / (select COUNT(*) from eventualidad e)  as Despues
-//from eventualidad e
-//where e.fecha between '03-01-2015' and '12-30-2016' and e.activo = true;
 	}
+	
 	
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
 		Date hoy = (Date) Calendar.getInstance().getTime();
