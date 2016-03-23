@@ -1,9 +1,20 @@
 package reportes.estadisticos;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.zkoss.bind.BindUtils;
@@ -13,20 +24,13 @@ import org.zkoss.bind.annotation.DependsOn;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zhtml.Filedownload;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-
-
-
-
-
-
-
-
-
-
+import Dao.EventoDao;
 import Dao.InstalacionDao;
 import Dao.SocioDao;
 import modelos.Evento;
@@ -34,247 +38,117 @@ import modelos.Instalacion;
 import modelos.Socio;
 import modelos.TipoInstalacion;
 import modelos.TipoPreferencia;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 
 
 public class ReporteEventoValorEsperadoRealEstViewModel {
 	
-	private String tipo;
-	private Time horaInicio;
-	private Time horaFin;
-	private Date fechaDesde;
-	private Date fechaHasta;
-	//private InstalacionDao instalacionDao;
-	//private TipoInstalacion tipoInstalacionSelected;
-	private String carnet;
-	private boolean fechades;
-	private boolean fechahas;
-	private boolean fechacheck;
-	private boolean eventocheck;
-	private boolean textbuscar;
-	private boolean discheckevento;
-	private boolean discheckfecha;
+	private Evento eventoSelected;
+	private EventoDao eventoDao;
+
+	//reporte
+	private String sql = "";
+	
+	private String consulta = "";
+	private String titulo = "Sanciones";
+	private String reporte;
+	private Connection con;
+	private Map<String, Object> parameters = new HashMap<String, Object>();
+	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
+	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+
 
 	@Init
 	public void init() {
-		this.setFechades(true);
-		this.setFechahas(true);
-		this.setTextbuscar(true);
+		eventoDao = new EventoDao();
+	}
+	
+	public ListModelList<Evento> getEventos() throws Exception {
 
+		return new ListModelList<Evento>(eventoDao.obtenerTodos());
+
+	}	
+	
+	@NotifyChange("eventoSelected")
+	public Evento getEventoSelected() {
+		return this.eventoSelected;
+	}
+
+	@NotifyChange("eventoSelected")
+	public void setEventoSelected(Evento eventoSelected) {
+		this.eventoSelected = eventoSelected;
+	}
+	
+	@Command
+	public void btnPDF(Event e) throws SQLException, JRException, IOException {
+		
+		try {
+			Class.forName ("org.postgresql.Driver");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
+		} catch (ClassNotFoundException el) {
+			el.printStackTrace();
+		}
+		
+		if(this.eventoSelected == null){
+			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_evento.jrxml";
+			this.consulta += "Reporte del evento "+ this.eventoSelected.getNombre() +", referente a: "
+					+ this.eventoSelected.getDescripcion() +".";
+	
+			sql = "Select DISTINCT e.nombre as evento, i.descripcion as indicador, ie.valor_esperado, ie.valor_real "
+					+ "from indicador i, evento e, indicador_evento ie, preferencia p, preferencia_evento pe, tipo_preferencia tp "
+					+ "where i.id_indicador = ie.indicadorid_indicador and e.id_evento = ie.eventoid_evento and e.id_evento = pe.eventoid_evento "
+					+ "and p.id_preferencia = pe.preferenciaid_preferencia "
+					+ "and e.id_evento = "+ this.eventoSelected.getIdEvento()
+					+ " and i.activo=e.activo=ie.activo=p.activo=pe.activo=tp.activo=TRUE "
+					+ " order by e.nombre";
+		
+			System.out.println(sql);
+			generarPDF();
+		}		
 	}
 
 	
-	/*@NotifyChange("tipoInstalacionSelected")
-	public TipoInstalacion getTipotipoInstalacionSelected() {
-		return tipoInstalacionSelected;
+	
+	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		Date hoy = (Date) Calendar.getInstance().getTime();
+		String date = "-"+sdfGuio.format(hoy).toString();
+		String nombreArchivo = this.titulo.concat(date);
+		JasperPrint jasperPrint = cargarJasper();
+		
+		JRExporter exporter = new JRPdfExporter();
+	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+	    con.close();
 	}
-
-	@NotifyChange("InstalacionPorTipo")
-	public void setTipoInstalacionSelected(TipoInstalacion tipoInstalacionSelected) {
-		this.tipoInstalacionSelected = tipoInstalacionSelected;
-	}*/
-
-
-	public Date getFechaDesde() {
-		return fechaDesde;
-	}
-
-	public void setFechaDesde(Date fechaDesde) {
-		this.fechaDesde = fechaDesde;
-	}
-	public Date getFechaHasta() {
-		return fechaHasta;
-	}
-
-	public void setFechaHasta(Date fechaHasta) {
-		this.fechaHasta = fechaHasta;
-	}
-
-	public Time getHoraInicio() {
-		return horaInicio;
-	}
-
-	public void setHoraInicio(Time horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public Time getHoraFin() {
-		return horaFin;
-	}
-
-	public void setHoraFin(Time horaFin) {
-		this.horaFin = horaFin;
-	}
-
-	/*public Socio getSocio() {
-		return socio;
-	}
-
-	public void setSocio(Socio socio) {
-		this.socio = socio;
-	}*/
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	@NotifyChange({"disablecarnet","disableinstalaciones"})
-
-	public String getCarnet() {
-		return carnet;
-	}
-
-	public void setCarnet(String carnet) {
-		this.carnet = carnet;
-	}
-
-
-	/*@Command
-	@NotifyChange({"carnet","socio"})
-	public void buscarCarnet() throws Exception{
-		if(carnet==""||carnet==null){
-			Messagebox.show("Campo Carnet Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		}
-		else{
-			this.socioDao= new SocioDao();
-			this.socio=socioDao.obtenerSocioCarnet(carnet);
-			if(this.socio==null){
-				Messagebox.show("Carnet no encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-				this.carnet="";
-			}
-			else {
-				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);	
-			}
-
-		}
-	}*/
-
-
-
-	/*@NotifyChange({"horaDesde","horaHasta"})
-	public void setHora(boolean hora) {
-		this.hora = hora;
-		if (this.hora == true)
-		{
-			this.horaDesde = false;
-			this.horaHasta = false;
-		}
-		else
-		{
-			this.horaDesde = true;
-			this.horaHasta = true;			
-		}	
-	}*/
-
-
-	public boolean getFechades() {
-		return fechades;
-	}
-
-
-	public void setFechades(boolean fechades) {
-		this.fechades = fechades;
-	}
-
-
-	public boolean getFechahas() {
-		return fechahas;
-	}
-
-
-	public void setFechahas(boolean fechahas) {
-		this.fechahas = fechahas;
-	}
-
-
-	public boolean getFechacheck() {
-		return fechacheck;
-	}
-
-	@NotifyChange({"fechades","fechahas","discheckevento","textbuscar"})
-	public void setFechacheck(boolean fechacheck) {
-		this.fechacheck = fechacheck;
-		if (this.fechacheck == true)
-		{
-			this.setFechades(false);
-			this.setFechahas(false);
-			//this.setEventocheck();
-			this.setDischeckevento(true);
-			if (this.discheckevento == true)
-			{
-				this.setTextbuscar(true);
-			}
-			else
-			{
-				this.setTextbuscar(false);
-			}
-		}
-		else
-		{
-			this.setFechades(true);
-			this.setFechahas(true);
-			this.setDischeckevento(false);
-		}	
-	}
-
-
-	public boolean getEventocheck() {
-		return eventocheck;
-	}
-
-	@NotifyChange({"fechades","fechahas","discheckfecha","textbuscar"})
-	public void setEventocheck(boolean eventocheck) {
-		this.eventocheck = eventocheck;
-		if (this.eventocheck == true)
-		{
-			this.setTextbuscar(false);
-			this.setDischeckfecha(true);
-			if (this.discheckfecha == true)
-			{
-				this.setFechades(true);
-				this.setFechahas(true);			
-			}
-			else
-			{
-				this.setFechades(false);
-				this.setFechahas(false);	
-			}
-		}
-		else
-		{
-			this.setTextbuscar(true);
-			this.setDischeckfecha(false);
-		}
-	}
-
-
-	public boolean getTextbuscar() {
-		return textbuscar;
-	}
-
-
-	public void setTextbuscar(boolean textbuscar) {
-		this.textbuscar = textbuscar;
-	}
-
-
-	public boolean getDischeckevento() {
-		return discheckevento;
-	}
-
-
-	public void setDischeckevento(boolean discheckevento) {
-		this.discheckevento = discheckevento;
-	}
-
-
-	public boolean getDischeckfecha() {
-		return discheckfecha;
-	}
-
-
-	public void setDischeckfecha(boolean discheckfecha) {
-		this.discheckfecha = discheckfecha;
+	
+	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
+		JasperDesign jd = null;  
+		jd = JRXmlLoader.load(reporte); 
+		JRDesignQuery newQuery = new JRDesignQuery();  
+		newQuery.setText(sql);  
+		jd.setQuery(newQuery); 
+		JasperReport jasperRepor = JasperCompileManager.compileReport(jd);
+		parameters.clear();
+		FileInputStream image_club = new FileInputStream(img);
+		FileInputStream imagen_equipo = new FileInputStream(img2);
+		parameters.put("TITULO", titulo);
+		parameters.put("CONSULTA", consulta);
+		parameters.put("IMAGEN_EQUIPO", imagen_equipo );
+		parameters.put("IMAGEN_CLUB", image_club);
+		return  JasperFillManager.fillReport(jasperRepor, parameters, con);
 	}
 
 	
