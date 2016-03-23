@@ -2,6 +2,7 @@ package modelos;
 
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -87,5 +88,16 @@ public class JuntaDirectiva implements java.io.Serializable {
 	public void setMiembroJuntas(Set<MiembroJunta> miembroJuntas) {
 		this.miembroJuntas = miembroJuntas;
 	}
+	
+	public String getFechaInicioParse(){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
+		return sdf.format(this.fechaInic);
+	}
+	public String getFechaFinParse(){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
+		return sdf.format(this.fechaFin);
+	}
+	
+	
 
 }

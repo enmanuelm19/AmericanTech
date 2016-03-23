@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import modelos.Alquiler;
-import modelos.Archivo;
 import modelos.ArchivoAlquiler;
-import modelos.TipoArchivo;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -106,42 +104,6 @@ private Sesion sesionPostgres;
 	          em.close();  
 	        } 
 	       
-	        return datos; 
-	}
-	
-	//devuelve el archivo que pertenece a un alquiler a partir de un archivo dentro de la clase archivo
-	
-	public ArchivoAlquiler obtenerPorArchivo(Archivo archivo) throws Exception {            
-	      
-		   ArchivoAlquiler datos = new ArchivoAlquiler();  
-		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-	        try {  	
-		    datos =  (ArchivoAlquiler) em.createCriteria(ArchivoAlquiler.class).add(Restrictions.eq("archivo", archivo))
-		    		.add(Restrictions.eq("activo", true)).list();             
-	        } catch (Exception e) {             
-	       
-	         throw new Exception(e.getMessage(),e.getCause());
-	        } finally {  
-	          em.close();  
-	        } 
-	        return datos; 
-	}
-	
-	//devuelve los archivos por tipo de archivos tipoArchivo
-	
-	public List<ArchivoAlquiler> obtenerPorTipo(TipoArchivo tipoArchivo) throws Exception {            
-	      
-		List<ArchivoAlquiler> datos = new ArrayList<ArchivoAlquiler>();  
-		   Session em = sesionPostgres.getSessionFactory().openSession();   	
-	        try {  	
-		    datos =  (List<ArchivoAlquiler>) em.createCriteria(ArchivoAlquiler.class).add(Restrictions.eq("tipoArchivo", tipoArchivo))
-		    		.add(Restrictions.eq("activo", true)).list();             
-	        } catch (Exception e) {             
-	       
-	         throw new Exception(e.getMessage(),e.getCause());
-	        } finally {  
-	          em.close();  
-	        } 
 	        return datos; 
 	}
 }

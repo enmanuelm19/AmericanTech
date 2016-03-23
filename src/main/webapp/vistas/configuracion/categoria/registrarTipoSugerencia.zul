@@ -6,7 +6,7 @@
 
 <zk xmlns:n="native" >
 	<window id="winRegistrarTipoS" style="iconSclass=z-icon-cogs; height:auto;" title="@load(vm.editable?'Editar tipo sugerencia':'Registrar tipo sugerencia')" closable="true" border="none" 
-				action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="50%" width="40%" 
+				action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="55%" width="40%" 
 				apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarTipoSugerenciaViewModel')">
 			 <caption iconSclass="z-icon-cogs"/>
 		<div class="contenedor" align="center" >
@@ -21,10 +21,10 @@
 			     	<rows>
 			     	<row>
 			     	<div class="row col-md-12">
-			     		<div class="col-md-2">
+			     		<div class="col-md-10">
 			     			Descripción
 			     		</div>
-			     		<div class="col-md-10">
+			     		<div class="col-xs-12 col-md-12">
 			     		 <textbox type="text" rows="4" value="@bind(vm.tipoSugerencia.descripcion)" width="100%" constraint="no empty" />
 			     		</div>
 			     	</div>	

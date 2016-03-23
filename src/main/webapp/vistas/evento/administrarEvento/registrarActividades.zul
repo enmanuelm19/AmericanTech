@@ -2,7 +2,7 @@
 
 	<window id="winRAct" border="none" title="Agregar Actividad"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="40%" height="auto"
+		closable="true" width="45%" height="auto"
 		style="iconSclass= z-icon-calendar;"
 		apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarActividadViewModel')">
@@ -20,7 +20,7 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<div align="center">
+						<div align="left">
 							Fecha tope
 							<n:br></n:br>
 							<datebox width="60%"
@@ -48,11 +48,11 @@
 							<intbox
 								value="@bind(vm.actividad.valorEsperado)" width="60%"
 								tabindex="10" constraint="no empty" />
-						</div>
+						
 						<button sclass="btn-link"
 							iconSclass="z-icon-plus blue" tooltiptext="Agregar actividad"
 							onClick="@command('agregar')" />
-
+						</div>
 					</div>
 
 				</div>
@@ -98,7 +98,7 @@
 			</div>
 			<n:br></n:br>
 			<space spacing="40%" />
-			<div>
+			<div align="center">
 				<button iconSclass="z-icon-floppy-o"
 					onClick="@command('guardar',win=winRAct)" class='boton-guardar'
 					label="Guardar" />

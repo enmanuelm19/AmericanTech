@@ -13,8 +13,7 @@
 					<label value="Junta Directiva" />
 				</div>
 
-				<space />
-				<space />
+				<space /><space />
 				<div class='form-pricing col-md-9 col-md-offset-1' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.JuntaDirectivaViewModel')">
 					<div align="right">
 						<button id="btnRegMiembroJunta" label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar' onClick="@command('showModalRegistrarMienbroJunta')"/>
@@ -61,11 +60,11 @@
 																<button
 																	sclass="btn-link" iconSclass="z-icon-pencil blue"
 																	tooltiptext="Editar"
-																	onClick="@command('showModal', preferencia=each)" />
+																	onClick="@command('editarMiembro', m=miembro, j=junta)" />
 																<button
 																	sclass="btn-link" iconSclass="z-icon-trash-o red"
 																	tooltiptext="Eliminar"
-																	onClick="@command('eliminar', preferencia=each)" />
+																	onClick="@command('eliminarMiembro', m=miembro, j=junta)" />
 															</div>
 														</row>
 													</template>
@@ -73,7 +72,7 @@
 											</grid>
 										</detail>
 										
-										<label value="${junta.fechaInic} - ${junta.fechaFin}"/>
+										<label value="${junta.fechaInicioParse} - ${junta.fechaFinParse}"/>
 										<button sclass="btn-link" iconSclass="z-icon-plus blue" tooltiptext="Agregar Miembro" onClick="@command('agregarMiembro', Junta=junta)" />
 									<div>
 											

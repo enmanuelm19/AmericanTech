@@ -42,7 +42,7 @@
 												<rows>
 													<row>
 														<div>
-															<label class="col-md-4" value="Cédula" />
+															<label class="col-md-4" value="CÃ©dula" />
 															<textbox value="@bind(vm.usuario.persona.identificacion)"
 																constraint="no empty" class="col-md-6" readonly="true"/>
 														</div>
@@ -81,7 +81,7 @@
 													<row>
 														<div>
 															<label class="col-md-4" value="Nacimiento" />
-															<textbox constraint="no empty" class="col-md-6" value="@bind(vm.usuario.persona.fechaNac)" readonly="true"/>
+															<textbox constraint="no empty" class="col-md-6" value="@bind(vm.usuario.persona.fechaParse)" readonly="true"/>
 														</div>
 													</row>
 													<row>
@@ -121,20 +121,15 @@
 										<grid emptyMessage="No se encuentran preferencias registradas" mold="paging" pageSize="5"
 											model="@load(vm.allPreferenciasPersona)">
 											<auxhead sclass="category-center">
-												<auxheader colspan="1">
-													<combobox class="col-md-12" model="@load(vm.allTipoPreferencia)" selectedItem="@bind(vm.tipoPreferenciaSelected)">
-														<template name="model">
-															<comboitem label="@load(each.descripcion)" value="@load(each)" />
-														</template>
-													</combobox>
-												</auxheader>
-												<auxheader colspan="1">
-													<chosenbox model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%" emptyMessage="" creatable="true"
+												
+												<auxheader colspan="2">
+													<label>Puede seleccionar varias preferencias</label><separator></separator>
+													<chosenbox model="@load(vm.preferenciasAll)" hflex="1" width="100%" emptyMessage="" creatable="true"
 														selectedObjects="@bind(vm.temporalPreferencia)" />
 												</auxheader>
-												<auxheader colspan="1">
+												<auxheader colspan="1" align="left">
 													<button sclass="btn-link" onClick="@command('agregarPreferenciasPersona')"
-														iconSclass="z-icon-plus blue" tooltiptext="Agregar preferencia" />
+														iconSclass="z-icon-plus blue" tooltiptext="Agregar preferencia" style="margin-top:30px;"/>
 												</auxheader>
 											</auxhead>
 											<columns>
@@ -168,7 +163,7 @@
 								<hbox align="center" pack="center" width="100%"><!-- GRUPO ACCIONES -->
 									<grid emptyMessage="No se encuentran acciones vinculadas" mold="paging" pageSize="5" model="@load(vm.allAcciones)">
 										<columns>
-											<column hflex="3">Número acción</column>
+											<column hflex="3">NÃºmero acciÃ³n</column>
 												<column hflex="3">Valor Bsf.</column>
 											</columns>
 											<rows>

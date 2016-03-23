@@ -37,6 +37,7 @@ public class RegistrarInstalacionViewModel {
 
 	private Instalacion instalacion;
 	private boolean editable;
+	private boolean fotodefault;
 	private InstalacionDao instalacionDao;
 	private List<TipoInstalacion> allTipoInstalacion;
 	private TipoInstalacionDao tipoInstalacionDao;
@@ -79,6 +80,7 @@ public class RegistrarInstalacionViewModel {
 			this.editable = false;
 			allfotoEditable = new ArrayList<Foto>();
 			alquilable = false;
+			
 		} else {
 			this.instalacion = instalacion;
 			recursosinstalacion = instalacion.getRecursoInstalacions();
@@ -92,6 +94,14 @@ public class RegistrarInstalacionViewModel {
 			allfotoEditable = fotosInstDao.obtenerFotoinstalacion(instalacion);
 			
 		}
+		if(allfotoinstalacion.isEmpty()){
+			fotodefault = true;
+			System.out.println(allfotoinstalacion.isEmpty());
+			System.out.println(fotodefault);
+		}else{
+			fotodefault = false;
+		}
+		
 		
 		
 
@@ -141,6 +151,13 @@ public class RegistrarInstalacionViewModel {
 
 	public void setEditable(boolean editable) {
 		this.editable = editable;
+	}
+	public boolean isFotodefault() {
+		return fotodefault;
+	}
+
+	public void setFotodefault(boolean fotodefault) {
+		this.fotodefault = fotodefault;
 	}
 	public Recurso getRecurso() {
 		return recurso;
@@ -208,13 +225,16 @@ public class RegistrarInstalacionViewModel {
 			alquilable = false;
 		}
 	}
+	
 	@Command
-	@NotifyChange({"uploadedImage","allfotoinstalacion"})
+	@NotifyChange({"uploadedImage","allfotoinstalacion","fotodefault"})
 	public void upload(@BindingParam("media") final Media myMedia) throws Exception{
 		if(!editable){
 			imagenNueva=true;
 			uploadedImage = myMedia;
 			allfotoinstalacion.add(uploadedImage);
+			fotodefault = false;
+			System.out.println(fotodefault);
 		}else{
 			Messagebox.show("Imagen subida con exito para la instalación " + instalacion.getNombre(), "American Tech",
 					Messagebox.OK , Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {

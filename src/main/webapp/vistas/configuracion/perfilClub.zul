@@ -271,7 +271,7 @@
 								onClick="@command('guardar')">
 							</button>
 							<button
-								class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('limpiar')"
+								class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('cancelar')"
 								iconSclass="z-icon-times" type="button" label="Cancelar">
 							</button>
 						</div>

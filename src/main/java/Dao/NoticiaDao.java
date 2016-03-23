@@ -145,4 +145,25 @@ private Sesion sesionPostgres;
   				       
   		   return datos; 
   		}
+  	
+  	
+	public List<Noticia> obtenerNoticiasPublicas(Date dato) throws Exception {            
+	      
+  		List<Noticia> datos = new ArrayList<Noticia>();  
+  		Session em = sesionPostgres.getSessionFactory().openSession();   	
+  		 try { 
+  		//devuelve las noticias cuya caducidad sea mayor o igual a la fecha que le envie por parametro y lo ordena de las mas nuevas a las mas viejas.
+  		   datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.ge("caducidad", dato))
+  				   .add(Restrictions.eq("activo", true))
+  				   .add(Restrictions.eq("publico", true))
+  				   .addOrder(Order.desc("fechaCreacion")).list();             
+  			  } catch (Exception e) {             
+  		 
+  		throw new Exception(e.getMessage(),e.getCause());
+  		     } finally {  
+  		      em.close();  
+  			 } 
+  				       
+  		   return datos; 
+  		}
 }

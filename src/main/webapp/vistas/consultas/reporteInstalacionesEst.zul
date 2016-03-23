@@ -44,7 +44,7 @@
 									<space spacing="1%"></space>								 							   	
 								</groupbox >
 							    <div align="center" xmlns:w="client" style="margin:1%">
-								   <button id="btnGenerar" iconSclass="z-icon-plus" class='boton-guardar' label="Generar" />
+								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
 							    </div>									
 							</div>
 						</div>

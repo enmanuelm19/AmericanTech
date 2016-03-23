@@ -27,14 +27,12 @@
         <mapping resource="modelos/Sugerencia.hbm.xml" />
         <mapping resource="modelos/ArchivoAlquiler.hbm.xml" />
         <mapping resource="modelos/Evento.hbm.xml" />
-        <mapping resource="modelos/Archivo.hbm.xml" />
         <mapping resource="modelos/EstadoEvento.hbm.xml" />
         <mapping resource="modelos/Foto.hbm.xml" />
         <mapping resource="modelos/Actividad.hbm.xml" />
         <mapping resource="modelos/Postulado.hbm.xml" />
         <mapping resource="modelos/Preferencia.hbm.xml" />
         <mapping resource="modelos/Eventualidad.hbm.xml" />
-        <mapping resource="modelos/TipoArchivo.hbm.xml" />
         <mapping resource="modelos/TipoPago.hbm.xml" />
         <mapping resource="modelos/Portal.hbm.xml" />
         <mapping resource="modelos/Recurso.hbm.xml" />

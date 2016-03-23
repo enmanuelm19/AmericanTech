@@ -1,5 +1,6 @@
 package controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -56,7 +57,10 @@ public class RegistrarSugerenciaViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception{
 			this.sugerencia.setActivo(true);
-			Date fecha = new Date();
+			@SuppressWarnings("deprecation")
+			Date fecha = new Date("dd/MM/yyyy");
+			System.out.print(fecha);
+			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 			org.zkoss.zk.ui.Session session = Sessions.getCurrent();
 			Usuario user  = (Usuario)session.getAttribute("Usuario");
 			if(sugerencia.getDescripcion() != null && !sugerencia.getDescripcion().equalsIgnoreCase("")) {
@@ -67,7 +71,7 @@ public class RegistrarSugerenciaViewModel {
 				this.sugerencia = new Sugerencia();
 				this.sugerenciaDao = new SugerenciaDao();
 				this.tipoSugerenciaDao = new TipoSugerenciaDao();
-				Messagebox.show( "La Sugerenci ha sido registrado exitosamente", "",
+				Messagebox.show( "La Sugerencia ha sido registrado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
 				

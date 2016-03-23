@@ -12,7 +12,7 @@
 
 	<window id="winRegistrarSugerencia" border="none" title="Registrar Sugerencia"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="48%" height="55%"
+		closable="true" width="48%" height="60%"
 		style="iconSclass=z-icon-user;">
 		<caption iconSclass="z-icon-user" />
 		<div class='contenido' apply="org.zkoss.bind.BindComposer" 
@@ -29,7 +29,7 @@
 					<rows class="">
 						<row class="col-md-12">
 							<div>
-								<label class="col-md-3">Tipo Sugerencia </label>  
+								<label class="col-md-5">Su sugerencia esta relacionada con </label>  
 								<combobox
 									model="@load(vm.allTipoSugerencia)" class="col-md-5"
 									selectedItem="@bind(vm.sugerencia.tipoSugerencia)"
@@ -44,7 +44,7 @@
 						</row>
 						<row class="col-md-12">
 							<div>
-								Escriba aquí su sugerenciaaa
+								Escriba aquí su sugerencia
 								<textbox cols="45" rows="4"
 									readonly="false" type="text" width="100%"
 									constraint="no empty" value="@bind(vm.sugerencia.descripcion)" />
