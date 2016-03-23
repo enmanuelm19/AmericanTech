@@ -72,7 +72,7 @@ public class RegistrarJuntaDirectiva {
 			this.juntaDirectiva.setClub(clubDao.obtenerClub(1));
 			this.juntaDirectivaDao.agregarJuntaDirectiva(juntaDirectiva);
 
-			Messagebox.show("La Junta Directiva del período "+this.fechaInicio+" - "+this.fechaFin+" ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("La Junta Directiva del período "+this.juntaDirectiva.getFechaInicioParse()+" a "+this.juntaDirectiva.getFechaFinParse()+" ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshJuntas",null);
 			

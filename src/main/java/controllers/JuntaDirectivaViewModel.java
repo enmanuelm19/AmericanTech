@@ -52,7 +52,7 @@ public class JuntaDirectivaViewModel {
 	
 	@GlobalCommand
 	@NotifyChange({"juntaAll","cantidad"})
-	public void refreshJunta() throws Exception{
+	public void refreshJuntas() throws Exception{
 		this.juntas= juntaDao.obtenerTodos();
 	}
 	
