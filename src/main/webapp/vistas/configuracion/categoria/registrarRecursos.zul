@@ -27,7 +27,7 @@
 						<row>
 							<div class="row col-md-12">
 								<div class="col-md-10">Descripción</div>
-								<div class="col-md-10">
+								<div class="col-xs-12 col-md-10">
 									<textbox type="text" rows="4"
 										value="@bind(vm.recurso.descripcion)" width="100%"
 										constraint="no empty" />
