@@ -3092,7 +3092,8 @@ margin-top:80px;
 	
 .z-window-close{
 	background:#11BCB7;
-	border-radius:8px;
+	border-radius:5px;
+	margin-top: 5px;
 }
 .z-window-close:hover{
 	border: 1px solid #11BCB7;

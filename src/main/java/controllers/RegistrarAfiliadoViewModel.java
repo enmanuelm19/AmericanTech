@@ -58,6 +58,7 @@ public class RegistrarAfiliadoViewModel {
 	private TipoAfiliado tipoAfiliado;
 	private String nroCarnet="";
 	private ArrayList<Preferencia> temporalPreferencia;
+	private boolean fotodefault;
 	
 	@Init
 	public void init(@ExecutionArgParam("socioss") Socio socioss) throws Exception{
@@ -75,9 +76,11 @@ public class RegistrarAfiliadoViewModel {
 		preferenciasAll= new ArrayList<Preferencia>();
 		temporalPreferencia = new ArrayList<Preferencia>();
 		System.out.println("dasdadasdiijijjl: "+socioss.getIdSocio());
-		
+		fotodefault=true;
 	}
-	
+	public boolean isFotodefault() {
+		return fotodefault;
+	}
 	public Persona getPersona() {
 		return persona;
 	}
@@ -150,10 +153,11 @@ public class RegistrarAfiliadoViewModel {
 	}
 
 	@Command
-	@NotifyChange("uploadedImageAfiliado")
+	@NotifyChange({"uploadedImageAfiliado","fotodefault"})
 	public void uploadImage(@BindingParam("media") Media myMedia) {
 		imagenNuevaAfiliado = true;
 		uploadedImage = myMedia;
+		fotodefault=false;
 	}
 	
 	public Media getUploadedImageAfiliado() {
