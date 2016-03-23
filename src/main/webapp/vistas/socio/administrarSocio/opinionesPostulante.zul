@@ -59,7 +59,7 @@
 											<row>
 												<div>
 													<label class="col-md-4" value="Fecha de Nacimiento" />
-													<textbox constraint="no empty" class="col-md-6" readonly="true"	value="@load(vm.postulacion.postulado.persona.fechaNac)"/>
+													<textbox constraint="no empty" class="col-md-6" readonly="true"	value="@load(vm.postulacion.postulado.persona.fechaParse)"/>
 												</div>
 											</row>
 											<row>
@@ -79,7 +79,7 @@
 											</row>
 											<row>
 												<div>
-													<label class="col-md-4" value="Direccion" />
+													<label class="col-md-4" value="Dirección" />
 													<textbox constraint="no empty" class="col-md-6" readonly="true"	cols="50" rows="4" type="text"
 														value="@load(vm.postulacion.postulado.persona.direccion)" />
 												</div>
@@ -130,7 +130,7 @@
 											</row>
 											<row>
 												<div>
-													<label class="col-md-4" value="Motivo Postulacion" />
+													<label class="col-md-4" value="Motivo Postulación" />
 													<textbox class="col-md-6" readonly="true" value="@load(vm.postulacion.motivoPostulacion.descripcion)"/>
 												</div>
 											</row>
@@ -202,7 +202,7 @@
 									</div>
 									<div  class="col-md-6" children="@load(vm.contadores)">
 										<template name="children">
-											<div class="opiniones col-md-4">
+											<div class="opiniones col-md-4" style="@load(each.color)">
 												<label value="${each.cantidad}"/><separator/>
 												<label value="${each.tipoOpnion.descripcion}"/>
 											</div>
