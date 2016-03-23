@@ -7,8 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import modelos.Afiliado;
 import modelos.Noticia;
 import modelos.Preferencia;
+import modelos.PreferenciaPersona;
+import modelos.Socio;
+import modelos.Usuario;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -19,30 +23,50 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.image.AImage;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import Dao.AfiliadoDao;
 import Dao.NoticiaDao;
+import Dao.NoticiaPreferenciaDao;
+import Dao.PreferenciaPersonaDao;
+import Dao.SocioDao;
 
 
 public class CarteleraViewModel {
 
 	private List<Noticia> noticiaAll;
+	private List<PreferenciaPersona> ListPrefPersona;
+	private PreferenciaPersonaDao preferenciaPersDao;
+	private NoticiaPreferenciaDao noticiaPreferenciaDao;
 	private NoticiaDao noticiaDao;
 	private List<Noticia> noticiasPublicasAll;
+	private Usuario usuario;
 	
 	@Init
 	public void init() throws Exception {
+		ListPrefPersona = new ArrayList<PreferenciaPersona>();
+		noticiaAll      = new ArrayList<Noticia>();
+	
+		noticiaDao  = new NoticiaDao();
+		noticiaPreferenciaDao = new NoticiaPreferenciaDao();
+		preferenciaPersDao = new PreferenciaPersonaDao();
 		
-		noticiaAll = new ArrayList<Noticia>();
-		noticiaDao = new NoticiaDao();
-		noticiaAll = noticiaDao.obtenerNoticiasVigentes(new Date());
+		noticiaAll  = noticiaDao.obtenerNoticiasVigentes(new Date());
 		noticiasPublicasAll = noticiaDao.obtenerNoticiasPublicas(new Date());
+		
+		usuario = (Usuario) Sessions.getCurrent().getAttribute("Usuario");
 	}
 
-	public ListModelList<Noticia> getAllNoticia() {
+	public void setNoticiaAll(List<Noticia> noticiaAll) {
+		this.noticiaAll = noticiaAll;
+	}
+
+	public ListModelList<Noticia> getNoticiaAll() {
 		return new ListModelList<Noticia>(noticiaAll);
 	}
 	
@@ -50,7 +74,6 @@ public class CarteleraViewModel {
 		return noticiaAll.size() + " items en la lista";
 	}
 
-	
 	public List<Noticia> getNoticiasPublicasAll() {
 		return noticiasPublicasAll;
 	}
@@ -61,7 +84,7 @@ public class CarteleraViewModel {
 
 	@GlobalCommand
 	@NotifyChange({ "allNoticia", "cantRegistros" })
-	public void refreshPreferencia() throws Exception {
+	public void refreshNoticia() throws Exception {
 		noticiaAll = noticiaDao.obtenerTodos();
 	}
 
@@ -74,6 +97,41 @@ public class CarteleraViewModel {
 		window.doModal();
 	}
 	
+	@GlobalCommand
+	@NotifyChange("noticiaAll")
+	public void refreshPostulaciones() throws Exception {
+		 noticiaAll.clear();
+		 
+		 for(int i=0;i< noticiaDao.obtenerNoticiasVigentes(new Date()).size();i++)
+		 {
+			 if (noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion() != null)
+				 noticiaAll.add(noticiaDao.obtenerNoticiasVigentes(new Date()).get(i));
+		 }
+		 this.setNoticiaAll(noticiaAll);
+	}
+	
+	@GlobalCommand
+	@NotifyChange("noticiaAll")
+	public void refreshCarteleraGeneral() throws Exception {
+	 noticiaAll.clear();
+	 noticiaAll = noticiaDao.obtenerNoticiasVigentes(new Date());
+	}
+	
+	@GlobalCommand
+	@NotifyChange("noticiaAll")
+	public void refreshEventos() throws Exception {
+		noticiaAll.clear();
+		ListPrefPersona = preferenciaPersDao.obtenerPreferenciasPersona(this.usuario.getPersona());
+		
+		 for(int j=0;j< noticiaPreferenciaDao.obtenerTodos().size();j++){
+			 for(int i=0; i< ListPrefPersona.size(); i++){
+				 if(noticiaPreferenciaDao.obtenerTodos().get(j).getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia())
+				 {
+					 noticiaAll.add(noticiaPreferenciaDao.obtenerTodos().get(j).getNoticia());
+				 }
+			 }
+		 }
+	}
 	
 	@Command
 	@NotifyChange({ "allNoticia", "cantRegistros" })
