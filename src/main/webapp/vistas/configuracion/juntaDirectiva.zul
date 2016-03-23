@@ -73,7 +73,7 @@
 											</grid>
 										</detail>
 										
-										<label value="${junta.fechaInic} - ${junta.fechaFin}"/>
+										<label value="${junta.fechaInicioParse} - ${junta.fechaFinParse}"/>
 										<button sclass="btn-link" iconSclass="z-icon-plus blue" tooltiptext="Agregar Miembro" onClick="@command('agregarMiembro', Junta=junta)" />
 									<div>
 											

@@ -91,6 +91,9 @@ public class MiPerfilViewModel {
 	}
 	
 	
+	public boolean isVerAfiliado() {
+		return verAfiliado;
+	}
 
 
 
