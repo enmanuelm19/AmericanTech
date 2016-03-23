@@ -72,6 +72,7 @@ public class MiPerfilViewModel {
 		this.socio = socioDao.obtenerSocioPersona(usuario.getPersona());
 		if(this.afiliado==null && this.socio==null){
 			verAfiliado=false;
+			this.afiliados= new HashSet<Afiliado>();
 		}else{
 			if(this.afiliado!=null){
 				verAfiliado=false;

@@ -42,14 +42,14 @@
 												<rows>
 													<row>
 														<div>
-															<label class="col-md-4" value="CÃ©dula" />
+															<label class="col-md-4" value="Cédula" />
 															<textbox value="@bind(vm.usuario.persona.identificacion)"
 																constraint="no empty" class="col-md-6" readonly="true"/>
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Numero Carnet" />
+															<label class="col-md-4" value="Número Carnet" />
 															<textbox constraint="no empty" class="col-md-6" readonly="true" value="@bind(vm.socio.nroCarnet)"/>
 														</div>
 													</row>
@@ -74,13 +74,19 @@
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Telefono" />
+															<label class="col-md-4" value="Teléfono Domicilio" />
+															<textbox constraint="no empty" class="col-md-6" readonly="false" value="@bind(vm.usuario.persona.telefonoFijo)"/>
+														</div>
+													</row>
+													<row>
+														<div>
+															<label class="col-md-4" value="Teléfono Celular" />
 															<textbox constraint="no empty" class="col-md-6" readonly="false" value="@bind(vm.usuario.persona.telefono)"/>
 														</div>
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Nacimiento" />
+															<label class="col-md-4" value="Fecha Nacimiento" />
 															<textbox constraint="no empty" class="col-md-6" value="@bind(vm.usuario.persona.fechaParse)" readonly="true"/>
 														</div>
 													</row>
@@ -101,7 +107,7 @@
 													</row>
 													<row>
 														<div>
-															<label class="col-md-4" value="Direccion" />
+															<label class="col-md-4" value="Dirección" />
 															<textbox constraint="no empty" class="col-md-6" readonly="false" cols="45" rows="2" type="text"
 																value="@bind(vm.usuario.persona.direccion)" />
 														</div>
@@ -156,14 +162,14 @@
 									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
 									<n:br></n:br><n:br></n:br>
 									<div align="left">
-										<div class="encabezado">Datos Accion</div>
+										<div class="encabezado">Datos Acción</div>
 										<div align="left" class="linea-two">
 									</div>
 								</div>
 								<hbox align="center" pack="center" width="100%"><!-- GRUPO ACCIONES -->
 									<grid emptyMessage="No se encuentran acciones vinculadas" mold="paging" pageSize="5" model="@load(vm.allAcciones)">
 										<columns>
-											<column hflex="3">NÃºmero acciÃ³n</column>
+											<column hflex="3">Número acción</column>
 												<column hflex="3">Valor Bsf.</column>
 											</columns>
 											<rows>
@@ -193,6 +199,7 @@
 													<column width="10%"	label="Carnet" align="center" />
 													<column width="15%" label="Nombre" align="center" />
 													<column width="15%" label="Apellido" align="center" />
+													<column width="15%" label="Edad" align="center" />
 													<column width="15%" label="Parentesco" align="center" />
 												</columns>
 												<rows>
@@ -201,6 +208,7 @@
 															<label value="@load(afiliado.nroCarnet)" />
 															<label value="@load(afiliado.persona.nombre)" />
 															<label value="@load(afiliado.persona.apellido)" />
+															<label value="@load(afiliado.calcularEdadAfiliado)" />
 															<label value="@load(afiliado.tipoAfiliado.descripcion)" />
 	<!-- 														<div> -->
 	<!-- 															<button -->
