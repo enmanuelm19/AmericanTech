@@ -66,7 +66,7 @@ public class CarteleraViewModel {
 		this.noticiaAll = noticiaAll;
 	}
 
-	public ListModelList<Noticia> getNoticiaAll() {
+	public List<Noticia> getNoticiaAll() {
 		return new ListModelList<Noticia>(noticiaAll);
 	}
 	
