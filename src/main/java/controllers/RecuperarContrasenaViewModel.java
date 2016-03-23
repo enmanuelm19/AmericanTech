@@ -25,6 +25,8 @@ import org.zkoss.zul.Textbox;
 
 import Dao.UsuarioDao;
 import modelos.Usuario;
+import util.ManejadorArchivo;
+import util.ManejadorMail;
 
 public class RecuperarContrasenaViewModel implements Initiator {
 
@@ -45,7 +47,7 @@ public class RecuperarContrasenaViewModel implements Initiator {
 	}
 
 	@Command
-	public void enviarRespuesta(){
+	public void enviarRespuesta() throws Exception{
 		final Session session = Sessions.getCurrent();
 		if(attemp > 3){
 			Messagebox.show("Ha superado el numero de intentos permitido por favor regrese mas tarde", "Confirmar", Messagebox.OK, Messagebox.INFORMATION, new org.zkoss.zk.ui.event.EventListener(){
@@ -61,6 +63,8 @@ public class RecuperarContrasenaViewModel implements Initiator {
 		}
 		
 		if(respuesta.getValue().equalsIgnoreCase(getUser().getRespuesta())){
+			Usuario u = (Usuario)session.getAttribute("user");
+			ManejadorMail.enviarEmail("La contraseña para el usuario "+u.getUsername()+" es " + u.getContrasenna()+ "\n\n Ya puedes ingresar a nuestro sistema, recuerde cambiar su contraseña entrando a su perfil.", u.getPersona().getCorreo(), "Recuperacion de contraseña");
 			Messagebox.show("Su contraseña ha sido enviada a su correo!");
 			attemp = 0;
 			session.removeAttribute("user");

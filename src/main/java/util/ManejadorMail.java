@@ -43,13 +43,25 @@ public class ManejadorMail {
 			}
 		});
 		
+		final Transport tr = sesion.getTransport("smtp");
+		
 		try {
-			Message msg = new MimeMessage(sesion);
+			final Message msg = new MimeMessage(sesion);
 			msg.setFrom(new InternetAddress(username));
 			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
 			msg.setSubject(asunto);
 			msg.setText(mensaje);
-			Transport.send(msg);
+			new Thread(new Runnable() {
+			    public void run() {
+			        try {
+						tr.send(msg);
+						tr.close();
+					} catch (MessagingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			    }
+			}).start();
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
