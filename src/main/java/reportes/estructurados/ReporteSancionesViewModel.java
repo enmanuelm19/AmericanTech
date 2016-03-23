@@ -40,18 +40,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
-
-
-
-
 import Dao.InstalacionDao;
 import Dao.PersonaDao;
 import Dao.SocioDao;
@@ -85,6 +73,7 @@ public class ReporteSancionesViewModel {
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+
 
 
 	@Init
@@ -132,7 +121,10 @@ public class ReporteSancionesViewModel {
 
 	public void setCarnet(String carnet) {
 		this.carnet = carnet;
-	}	
+	}
+	
+	
+
 
 	@Command
 	@NotifyChange({"carnet","socio"})
