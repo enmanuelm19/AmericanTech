@@ -98,20 +98,20 @@
 															</auxhead>
 
 															<columns>
-																<column
+																<column align="center"
 																	width="">
 																	Indicador
 																</column>
-																<column
+																<column align="center"
 																	width="">
 																	Valor
 																	esperado
 																</column>
-																<column
+																<column align="center"
 																	width="">
 																	Valor real
 																</column>
-																<column
+																<column align="center"
 																	width="">
 																	Variacion
 																</column>

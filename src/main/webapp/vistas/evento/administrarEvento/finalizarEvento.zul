@@ -42,13 +42,16 @@
 										value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"
 										placeholder="Buscar" />
 								</auxheader>
+								
+								<auxheader colspan="1" />
 
 							</auxhead>
 
 							<columns>
-								<column width="3%"></column>
+								<column width="4%"></column>
 
 								<column width="35%">Nombre</column>
+								<column width="15%">Acciones</column>
 							</columns>
 
 							<rows>
@@ -74,20 +77,16 @@
 														Indicador
 													</column>
 													<column
-														align="center" width="15%">
+														align="center" width="20%">
 														Valor esperado
 													</column>
 													<column
-														align="center" width="20%">
+														align="center" width="15%">
 														Valor real
 													</column>
 													<column
-														align="center" width="15%">
+														align="center" width="20%">
 														Variación
-													</column>
-													<column
-														align="center" width="15%">
-														Acciones
 													</column>
 												</columns>
 												<rows>
@@ -104,10 +103,7 @@
 															<label
 																value="@load(indicadorE.variacion)" />
 
-															<button
-																sclass="btn-link" iconSclass="z-icon-check blue"
-																tooltiptext="Guardar"
-																onClick="@command('actualizarIndicador',indicadorEvento=indicadorE)" />
+
 
 														</row>
 													</template>
@@ -116,6 +112,9 @@
 										</detail>
 										<label
 											value="@load(evento.nombre)" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-check blue" tooltiptext="Guardar"
+											onClick="@command('actualizarIndicadores',evento=evento)" />
 									</row>
 								</template>
 

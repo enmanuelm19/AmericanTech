@@ -49,14 +49,16 @@
 										value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"
 										placeholder="Buscar" />
 								</auxheader>
+								
+								<auxheader colspan="1" />
 
 							</auxhead>
 
 							<columns>
-								<column width="3%"></column>
+								<column width="4%"></column>
 
 								<column width="35%">Nombre</column>
-
+								<column width="15%">Acciones</column>
 							</columns>
 
 							<rows>
@@ -86,25 +88,20 @@
 														Fecha tope
 													</column>
 													<column
-														align="center" width="18%">
+														align="center" width="20%">
 														Fecha realizada
 													</column>
 													<column
-														align="center" width="12%">
+														align="center" width="15%">
 														Valor esperado
 													</column>
 													<column
-														align="center" width="12%">
+														align="center" width="15%">
 														Valor Real
 													</column>
 													<column
-														align="center" width="12%">
+														align="center" width="15%">
 														Variación
-													</column>
-													
-													<column
-														align="center" width="10%">
-														Acciones
 													</column>
 
 												</columns>
@@ -119,7 +116,7 @@
 															<datebox
 																value="@bind(actividad.fechaRealizacion)" format="short"
 																width="80%" tabindex="10" />
-															
+
 															<label
 																value="@load(actividad.valorEsperado)" />
 
@@ -130,12 +127,9 @@
 															<label
 																value="@load(actividad.variacion)" />
 
-															
 
-															<button
-																sclass="btn-link" iconSclass="z-icon-check blue"
-																tooltiptext="Guardar"
-																onClick="@command('actualizarActividad',actividad=actividad)" />
+
+
 
 														</row>
 													</template>
@@ -144,6 +138,9 @@
 										</detail>
 										<label
 											value="@load(evento.nombre)" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-check blue" tooltiptext="Guardar"
+											onClick="@command('actualizarActividads',evento=evento)" />
 									</row>
 								</template>
 
