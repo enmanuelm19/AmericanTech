@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -53,22 +56,36 @@ public class MiPerfilViewModel {
 	private Set<PreferenciaPersona> PreferenciasPersona;
 	private Media uploadedImage;
 	private boolean imagenNueva = false;
-	
+	private Afiliado afiliado;
+	private boolean verAfiliado;
+	private Set<Afiliado> afiliados;
+
 
 	@Init
 	public void init() throws Exception {
-
 		usuario = (Usuario) Sessions.getCurrent().getAttribute("Usuario");
 		this.preferenciaPDAO = new PreferenciaPersonaDao();
 		this.afiliadoDao = new AfiliadoDao();
 		this.accionDao = new AccionDao();
 		this.socioDao = new SocioDao();
+		this.afiliado= afiliadoDao.obtenerPorPersona(usuario.getPersona());
 		this.socio = socioDao.obtenerSocioPersona(usuario.getPersona());
-		this.preferenciaDao = new PreferenciaDao();
-		this.tPreferenciaDao = new TipoPreferenciaDao();
-		this.temporalPreferencia = new ArrayList<Preferencia>();
-		this.PreferenciasPersona = usuario.getPersona().getPreferenciaPersonas();
-		this.preferenciaPDAO = new PreferenciaPersonaDao();
+		if(this.afiliado==null && this.socio==null){
+			verAfiliado=false;
+		}else{
+			if(this.afiliado!=null){
+				verAfiliado=false;
+				this.afiliados= new HashSet<Afiliado>();
+			} else if(this.socio!=null){
+				verAfiliado=true;
+				this.afiliados= this.socio.getAfiliados();
+			}
+		}
+		preferenciaDao = new PreferenciaDao();
+		tPreferenciaDao = new TipoPreferenciaDao();
+		temporalPreferencia = new ArrayList<Preferencia>();
+		PreferenciasPersona = usuario.getPersona().getPreferenciaPersonas();
+		preferenciaPDAO = new PreferenciaPersonaDao();
 		this.usuarioDao= new UsuarioDao();
 		
 	}
