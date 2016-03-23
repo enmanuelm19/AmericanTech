@@ -118,10 +118,11 @@ public class RegistrarAccionViewModel {
 		this.noticia.setDescripcion("¡Se a aperturado el proceso de postulación para una acción en venta!");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
 		this.noticia.setFechaCreacion(new Date());
-		this.noticia.setCaducidad(new Date());
+		Date dia= new Date();
+		dia.setDate(new Date().getDate()+15);
+		this.noticia.setCaducidad(dia);
 		this.noticia.setPublico(true);
 		this.noticia.setActivo(true);
 		this.noticiaDao.agregarNoticia(noticia);
-	
 	}
 }

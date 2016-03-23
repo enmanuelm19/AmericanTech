@@ -202,7 +202,7 @@
 									</div>
 									<div  class="col-md-6" children="@load(vm.contadores)">
 										<template name="children">
-											<div class="opiniones col-md-4">
+											<div class="opiniones col-md-4" style="@load(each.color)">
 												<label value="${each.cantidad}"/><separator/>
 												<label value="${each.tipoOpnion.descripcion}"/>
 											</div>
