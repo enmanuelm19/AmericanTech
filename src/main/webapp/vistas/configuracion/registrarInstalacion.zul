@@ -25,49 +25,42 @@
 					<div class='row'>
 
 						<div class='col-md-2'>
-							<grid id="galery" class='col-md-12'
-								sclass="galeria" mold="paging" pageSize="3">
+							<grid visible="@load(vminst.editable)" id="galeryFotos" class='col-md-12'
+								sclass="galeria" mold="paging" pageSize="3" model="@load(vminst.fotoEditable)">
 								<columns>
 									<column class='col-md-12' align="center" />
 								</columns>
 								<rows>
+									<template name="model" >
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" class='im col-md-12' />
+											src="@load(each.url)" class='im col-md-12' />
 									</row>
+									</template>
+									
+								</rows>
+							</grid>
+							<grid visible="@load(!vminst.editable)" id="galery" class='col-md-12'
+								sclass="galeria" mold="paging" pageSize="3" model="@load(vminst.allfotoinstalacion)">
+								<columns>
+									<column class='col-md-12' align="center" />
+								</columns>
+								<rows>
+									<template name="model" >
 									<row>
 										<image
-											src="/assets/portal/img/img1.jpg" class='im col-md-12' />
+											content="@load(each)" class='im col-md-12' />
 									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img1.jpg" class='im col-md-12' />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img2.jpg" class='im col-md-8' />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img1.jpg" class='im col-md-8' />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img1.jpg" class='im col-md-8' />
-									</row>
-									<row>
-										<image
-											src="/assets/portal/img/img1.jpg" class='im col-md-8' />
-									</row>
+									</template>
+									
 								</rows>
 							</grid>
 						</div>
 
 						<div align="right" class='col-md-4'>
-
-							<image content="@bind(vminst.uploadedImage)"
-									src="@bind(vminst.instalacion.fotos)"
-								class='col-md-12' />
+							<image src="../assets/portal/img/img2.jpg" class='col-md-12'  visible="@load(vminst.fotodefault)"/>
+							<image content="@bind(vminst.uploadedImage)" class='col-md-12' visible="@load(!vminst.fotodefault)"/>
+							
 							<separator />
 							<div>
 								<fileupload
@@ -112,15 +105,13 @@
 											<combobox id="cmbTipoInstalacion"
 												model="@load(vminst.allTipoInstalacion)"
 												selectedItem="@bind(vminst.instalacion.tipoInstalacion)"
-												value="@bind(vminst.instalacion.tipoInstalacion.descripcion)"  class="col-md-4" >
+												value="@bind(vminst.instalacion.tipoInstalacion.descripcion)"  class="col-md-4" placeholder="Seleccione una categoria">
 												<template name="model">
 													<comboitem
 														label="@load(each.descripcion)" value="@load(each)" />
 												</template>
 											</combobox>
-											<button id="btnAgregar" 
-												iconSclass="z-icon-plus blue" class='btn-link col-md-4'
-												tooltiptext="Agregar" />
+											
 										</div>
 									</row>
 									<row>
@@ -137,6 +128,15 @@
 									<row>
 										<div>
 											<label class="col-md-4">
+												Alquilable
+											</label>
+											<checkbox id="CheckAlquilableSi" label="Si" onCheck="@command('validaralquiler')" class="col-md-2" checked="@bind(vminst.instalacion.alquilable)"/>
+										</div>
+										
+									</row>
+									<row>
+										<div visible="@load(vminst.alquilable)">
+											<label class="col-md-4">
 												Costo Alquiler
 											</label>
 											<doublebox
@@ -144,15 +144,7 @@
 												value="@bind(vminst.instalacion.precioAlquiler)"/>
 										</div>
 									</row>
-									<row>
-										<div>
-											<label class="col-md-4">
-												Alquilable
-											</label>
-											<checkbox id="CheckAlquilableSi" label="Si" onCheck="" class="col-md-2" checked="@bind(vminst.instalacion.alquilable)"/>
-										</div>
-										
-									</row>
+									
 								</rows>
 							</grid>
 
@@ -235,10 +227,7 @@
 								</template>
 							</rows>
 
-							<foot>
-								<footer span="5" class="footer_right"
-									label="@load(vm.cantidadIndicadores)" />
-							</foot>
+							
 						</grid>
 <!-- 							<listbox  -->
 <!-- 								model="@load(vminst.recursosinstalacion)" -->

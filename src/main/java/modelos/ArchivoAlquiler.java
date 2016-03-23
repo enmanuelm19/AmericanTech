@@ -9,19 +9,24 @@ public class ArchivoAlquiler implements java.io.Serializable {
 
 	private int idArchivoAlquiler;
 	private Alquiler alquiler;
-	private Archivo archivo;
-	private TipoArchivo tipoArchivo;
-	private boolean activo = true;
+	private String url;
+	private String nombre;
+	private String extension;
+	private String tipo;
+	private boolean activo;
 
 	public ArchivoAlquiler() {
 	}
 
 	public ArchivoAlquiler(int idArchivoAlquiler, Alquiler alquiler,
-			Archivo archivo, TipoArchivo tipoArchivo, boolean activo) {
+			String url, String nombre, String extension, String tipo,
+			boolean activo) {
 		this.idArchivoAlquiler = idArchivoAlquiler;
 		this.alquiler = alquiler;
-		this.archivo = archivo;
-		this.tipoArchivo = tipoArchivo;
+		this.url = url;
+		this.nombre = nombre;
+		this.extension = extension;
+		this.tipo = tipo;
 		this.activo = activo;
 	}
 
@@ -41,20 +46,36 @@ public class ArchivoAlquiler implements java.io.Serializable {
 		this.alquiler = alquiler;
 	}
 
-	public Archivo getArchivo() {
-		return this.archivo;
+	public String getUrl() {
+		return this.url;
 	}
 
-	public void setArchivo(Archivo archivo) {
-		this.archivo = archivo;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public TipoArchivo getTipoArchivo() {
-		return this.tipoArchivo;
+	public String getNombre() {
+		return this.nombre;
 	}
 
-	public void setTipoArchivo(TipoArchivo tipoArchivo) {
-		this.tipoArchivo = tipoArchivo;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getExtension() {
+		return this.extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+
+	public String getTipo() {
+		return this.tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public boolean isActivo() {

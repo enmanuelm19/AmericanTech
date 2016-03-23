@@ -19,7 +19,7 @@
 
 			<div class="wrap">
 				<n:h2>Contáctanos</n:h2>
-				<n:h4>¿Tienes alguna Sugerencia?</n:h4>
+				<n:h4>¿Tienes alguna opinión para darnos?</n:h4>
 				<div class="section group">
 					<div class="col span_2_of_3">
 						<div class="contact-form">
@@ -27,12 +27,12 @@
 
 								<div class="row">
 
-									<n:h5>
-										Tu sugerencia esta relacionada
-										con:
-									</n:h5>
+									<label>
+										Tu opinión esta relacionada con:
+									</label>
+									<n:br></n:br>
 									<div
-										style="width:550px; margin-left: 14px; background-color: #FFFFFF ">
+										style="width:550px; background-color: #FFFFFF ">
 										<combobox zclass="none"
 											id="combo"
 											style="margin-left: -14px; background-color: #FFFFFF"
@@ -55,22 +55,32 @@
 
 
 
-								<div>
-									<textbox class="textbox"
-										placeholder="Tu nombre"
-										value="@bind(vm.clienteExterno.nombre)"
-										constraint="no empty">
-									</textbox>
-									<textbox class="textbox"
-										placeholder="Tu apellido"
-										value="@bind(vm.clienteExterno.apellido)"
-										constraint="no empty">
-									</textbox>
-									<div class="clear"></div>
+								<div class="row">
+									<div zclass="none"
+										class="col-md-6">
+										<label>Nombre</label>
+										<n:br></n:br>
+										<textbox zclass="none"
+											class="textbox" placeholder="Tu nombre"
+											value="@bind(vm.clienteExterno.nombre)" constraint="no empty"
+											width="78%">
+										</textbox>
+									</div>
+									<div class="col-md-6">
+										<label>Apellido</label>
+										<n:br></n:br>
+										<textbox class="textbox"
+											placeholder="Tu apellido"
+											value="@bind(vm.clienteExterno.apellido)"
+											constraint="no empty" width="78%">
+										</textbox>
+									</div>
 								</div>
 
 
-								<div>
+								<div class="row">
+									<label>Mensaje</label>
+									<n:br></n:br>
 									<textbox placeholder="Tu mensaje"
 										rows="7" width="90%" value="@bind(vm.sugerencia.descripcion)"
 										constraint="no empty">
@@ -78,9 +88,11 @@
 
 								</div>
 
-								<div>
-									<textbox class="textbox"
-										style="margin-top:15px;" placeholder="Tu Correo"
+								<div class="row">
+									<label>Correo</label>
+									<n:br></n:br>
+									<textbox class="textbox" width="40%"
+										placeholder="Tu Correo"
 										value="@bind(vm.clienteExterno.correo)"
 										constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email valida">
 									</textbox>
@@ -89,8 +101,7 @@
 								</div>
 								<div class="col-md-offset-9">
 									<span>
-										<button
-											iconSclass="z-icon-floppy-o" class='boton-Formulario'
+										<button class='boton-Formulario'
 											style="margin-left: -22px;" label="Enviar"
 											onClick="@command('guardar', win=winP)" />
 									</span>
@@ -205,48 +216,7 @@
 								</rows>
 
 							</grid>
-							<!-- <n:ul class="list3">
-								
-								<n:li>
-								
-								
-								
-								<div class="grow"><n:img class="custom" src="assets/portal/img/facebook.png" alt=""  /> </div>
-								<div class="extra-wrap">
-								<n:p>
-								<a href="">red social</a>
-								</n:p>
-								</div>
-								<div class="clear"></div>
-								</n:li>
-								<n:li>
-								<div class="grow"><n:img class="custom" src="assets/portal/img/twitter.png" alt=""  /> </div>
-								<div class="extra-wrap">
-								<n:p>
-								<a
-								href=""><label  value=""></label>
-								red social
-								</a>
-								</n:p>
-								</div>
-								<div class="clear"></div>
-								</n:li>
-								
-								
-								
-								<n:li>
-								<div class="grow"><n:img class="custom" src="assets/portal/img/instagram.png" alt=""  /> </div>
-								<div class="extra-wrap">
-								<n:p>
-								<a
-								href="mailto:info@mycompany.com">
-								red social
-								</a>
-								</n:p>
-								</div>
-								<div class="clear"></div>
-								</n:li>
-								</n:ul>-->
+
 						</div>
 					</div>
 

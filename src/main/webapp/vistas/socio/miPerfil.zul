@@ -1,10 +1,8 @@
 <!-- Responsable Hector Gil -->
-
-
 <zk xmlns:n="native">
-	<div>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.MiPerfilViewModel')">
 		<hlayout spacing="0">
-
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
@@ -13,23 +11,16 @@
 						<a label="Mi Perfil" href="#" />
 					</div>
 				</div>
-
 				<div class='contenedor' align="center"
 					apply="controllers.ControllerVerAfiliado">
-
 					<div sclass="page-header" align="left">
 						<label value="Mi Perfil" />
 					</div>
 
 					<div class='contenido ' align="center"
 						width="100%">
-						<div class="col-md-10 col-centered "
-							form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
-   				   @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, 
-   				   captcha=vm.captcha, captchaInput=vm.captchaInput)">
-
+						<div class="col-md-10 col-centered">
 							<div class='form-pricing' width="100%">
-
 								<vbox>
 									<div align="left">
 										<div class="encabezado">
@@ -39,27 +30,27 @@
 											class="linea-two">
 										</div>
 									</div>
-
 									<!-- GRUPO DATOS BASICOS -->
-
 									<separator spacing="30px"></separator>
 									<div class="row">
 										<separator spacing="30px"></separator>
-										
 										<div class="col-md-4">
 											<div class="input-group">
 												<image
-													src="/assets/portal/img/img1.jpg"
-													class='img-responsive col-md-offset-4' />
+													class="img-responsive col-md-offset-0"
+													content="@bind(vm.uploadedImage)"
+													src="@bind(vm.usuario.persona.foto)" width="100%" />
 												<separator
 													spacing="30px">
 												</separator>
 												<fileupload
-													label="Examinar" iconSclass="z-icon-folder-open"
+													label="Examinar" upload="true,maxsize=2000"
+													style="margin-left: 25%"
+													onUpload="@command('upload',media=event.media)"
+													iconSclass="z-icon-folder-open"
 													class='boton-guardar col-md-offset-7' />
 											</div>
 										</div>
-
 										<div class="col-md-6">
 											<grid>
 												<rows>
@@ -68,66 +59,35 @@
 															<label
 																class="col-md-4" value="Cédula" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																value="V18122444">
-															</textbox>
-														</div>
-													</row>
-
-													<row>
-														<div>
-															<label
-																class="col-md-4" value="Numero Carnet" />
-															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																value="123456">
-															</textbox>
-
-
-														</div>
-													</row>
-
-													<row>
-														<div>
-															<label
-																class="col-md-4" value="Primer Nombre" />
-															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																value="Jesus">
-															</textbox>
-
+																value="@bind(vm.usuario.persona.identificacion)"
+																constraint="no empty" class="col-md-6" readonly="true" />
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Segundo Nombre" />
+																class="col-md-4" value="Número Carnet" />
 															<textbox
 																constraint="no empty" class="col-md-6" readonly="true"
-																value="Jesus">
-															</textbox>
+																value="@bind(vm.socio.nroCarnet)" />
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Primer Apellido" />
+																class="col-md-4" value="Nombre" />
 															<textbox
 																constraint="no empty" class="col-md-6" readonly="true"
-																value="Jesus">
-															</textbox>
-
+																value="@bind(vm.usuario.persona.nombre)" />
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Segundo Apellido" />
+																class="col-md-4" value="Apellido" />
 															<textbox
 																constraint="no empty" class="col-md-6" readonly="true"
-																value="Jesus">
-															</textbox>
-
+																value="@bind(vm.usuario.persona.apellido)" />
 														</div>
 													</row>
 													<row>
@@ -135,35 +95,36 @@
 															<label
 																class="col-md-4" value="Correo" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																type="email" value="hdhdhdh@jdhdh.com">
-															</textbox>
-															<button
-																class="col-md-2 btn-link"
-																iconSclass="z-icon-pencil blue" />
+																constraint="no empty" class="col-md-6" type="email"
+																value="@bind(vm.usuario.persona.correo)" />
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Telefono" />
+																class="col-md-4" value="Teléfono Domicilio" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																value="04135689256">
-															</textbox>
-															<button
-																class="col-md-2 btn-link"
-																iconSclass="z-icon-pencil blue" />
+																constraint="no empty" class="col-md-6" readonly="false"
+																value="@bind(vm.usuario.persona.telefonoFijo)" />
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Nacimiento" />
+																class="col-md-4" value="Teléfono Celular" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																value="10/01/70">
-															</textbox>
+																constraint="no empty" class="col-md-6" readonly="false"
+																value="@bind(vm.usuario.persona.telefono)" />
+														</div>
+													</row>
+													<row>
+														<div>
+															<label
+																class="col-md-4" value="Fecha Nacimiento" />
+															<textbox
+																constraint="no empty" class="col-md-6"
+																value="@bind(vm.usuario.persona.fechaParse)"
+																readonly="true" />
 														</div>
 													</row>
 													<row>
@@ -171,32 +132,42 @@
 															<label
 																class="col-md-4" value="Edad" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
-																value="33">
-															</textbox>
+																value="@load(vm.calcularEdad)" constraint="no empty"
+																class="col-md-6" readonly="true" />
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
 																class="col-md-4" value="Sexo" />
-															<checkbox
-																label="Masculino" />
-															<checkbox
-																label="Femenino" />
+															<radiogroup
+																id="sexo"
+																selectedItem="@load(vm.usuario.persona.sexo)">
+																<radio
+																	id="a1" label="Masculino" value="M" radiogroup="sexo" />
+																<radio
+																	id="a2" label="Femenino" value="F" radiogroup="sexo" />
+															</radiogroup>
 														</div>
 													</row>
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Direccion" />
+																class="col-md-4" value="Dirección" />
 															<textbox
-																constraint="no empty" class="col-md-6" readonly="true"
+																constraint="no empty" class="col-md-6" readonly="false"
 																cols="45" rows="2" type="text"
-																value="Av Venezuela con calle 25 edif.Grecia,Barquisimeto,EdoLara" />
+																value="@bind(vm.usuario.persona.direccion)" />
+														</div>
+													</row>
+													<row>
+														<div>
+															<label
+																class="col-md-4" value="Cambiar Contraseña" />
 															<button
-																class="col-md-2 btn-link"
-																iconSclass="z-icon-pencil blue" />
+																iconSclass="z-icon-edit" onClick="@command('showModal')"
+																class='boton-guardar' label="Cambiar" />
+
 														</div>
 													</row>
 												</rows>
@@ -204,58 +175,52 @@
 										</div>
 									</div>
 
-
 									<!-- AQUI TERMINA GRUPO BASICOS -->
-	<n:br></n:br>	<n:br></n:br>
+									<n:br></n:br>
+									<n:br></n:br>
 									<div align="left">
 										<div class="encabezado">
 											Intereses
 										</div>
 										<div align="left"
 											class="linea-two">
-
 										</div>
-									</div>	<n:br></n:br>	<n:br></n:br>
-
+									</div>
+									<n:br></n:br>
+									<n:br></n:br>
 									<hbox align="center" pack="center"
 										width="100%"><!-- GRUPO INTERESES -->
 										<grid
-											emptyMessage="No se encuentran reglas registradas"
-											mold="paging" pageSize="10">
+											emptyMessage="No se encuentran preferencias registradas"
+											mold="paging" pageSize="5"
+											model="@load(vm.allPreferenciasPersona)">
 											<auxhead
 												sclass="category-center">
+
 												<auxheader
-													colspan="1">
-													<combobox
-														width="100%" class="col-md-12"
-														value="Tipo Preferencias">
-														<comboitem
-															label="Deporte" />
-														<comboitem
-															label="Cultura" />
-														<comboitem
-															label="Social" />
-													</combobox>
+													colspan="2">
+													<label>
+														Puede
+														seleccionar
+														varias
+														preferencias
+													</label>
+													<separator></separator>
+													<chosenbox
+														model="@load(vm.preferenciasAll)" hflex="1" width="100%"
+														emptyMessage="" creatable="true"
+														selectedObjects="@bind(vm.temporalPreferencia)" />
 												</auxheader>
-												<auxheader
-													colspan="1">
-													<combobox
-														width="100%" class="col-md-12" value="Preferencias">
-														<comboitem
-															label="futbol" />
-														<comboitem
-															label="beisbol" />
-														<comboitem
-															label="basket" />
-														<comboitem
-															label="softball" />
-													</combobox>
-												</auxheader>
-												<auxheader
-													colspan="1">
+												<auxheader colspan="1"
+													align="left">
+													<button
+														sclass="btn-link"
+														onClick="@command('agregarPreferenciasPersona')"
+														iconSclass="z-icon-plus blue"
+														tooltiptext="Agregar preferencia"
+														style="margin-top:30px;" />
 												</auxheader>
 											</auxhead>
-
 											<columns>
 												<column hflex="3">
 													Tipo Preferencia
@@ -263,394 +228,152 @@
 												<column hflex="3">
 													Preferencia
 												</column>
-
 												<column>
 													Acciones
 												</column>
 											</columns>
 											<rows>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="Futbol" />
-
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="beisbol" />
-
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="Basket" />
-
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												<row>
-													<label
-														value="Deporte" />
-													<label
-														value="Softball" />
-
-													<div>
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar" />
-													</div>
-												</row>
-												
-
-
+												<template
+													name="model">
+													<row>
+														<label
+															value="@load(each.preferencia.tipoPreferencia.descripcion)" />
+														<label
+															value="@load(each.preferencia.descripcion)" />
+														<div>
+															<button
+																sclass="btn-link" iconSclass="z-icon-trash-o red"
+																tooltiptext="Eliminar"
+																onClick="@command('eliminarPreferencia', PreferenciaP=each)" />
+														</div>
+													</row>
+												</template>
 											</rows>
 											<foot>
 												<footer span="3"
-													class="footer_right" label="3 items en la lista" />
+													class="footer_right"
+													label="@load(vm.cantidadPreferencias)" />
 											</foot>
 										</grid>
-
-
-
 									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
-									<n:br></n:br>	<n:br></n:br>
-									
+									<n:br></n:br>
+									<n:br></n:br>
 									<div align="left">
 										<div class="encabezado">
-											Redes sociales
+											Datos Acción
 										</div>
 										<div align="left"
 											class="linea-two">
-
 										</div>
 									</div>
-									
-										<n:br></n:br>	<n:br></n:br>
-									
-									
-									
-										<div class="col-md-12">
-					<div class="row" align="left">
-						<div class="col-md-6">
-							Seleccione sus redes sociales
-							<n:br></n:br>
-							<combobox width="85%">
-								<comboitem label="Facebook" />
-								<comboitem label="Twitter" />
-								<comboitem label="Instagram" />
-							</combobox>
-
-						</div>
-						<div class="col-md-6">
-							Usuario en la red social
-							<n:br></n:br>
-							<textbox type="text" width="80%"
-								tabindex="10" constraint="no empty" />
-							<button sclass="btn-link"
-								iconSclass="z-icon-plus blue" id=""
-								tooltiptext="Agregar Indicador" />
-						</div>
-					</div>
-
-					<grid id="gridRedes"
-						emptyMessage="No se encuentran solicitudes registradas"
-						mold="paging" pageSize="10">
-
-						<columns>
-
-							<column hflex="">Red social</column>
-
-							<column hflex="">Usuario</column>
-							<column hflex="2">Acciones</column>
-						</columns>
-
-						<rows>
-							<row>
-								<div>
-
-									<label value="Facebook" />
-
-								</div>
-								<div>
-
-									<label value="Ana_suarez" />
-
-								</div>
-
-
-								<div>
-									<button sclass="btn-link"
-										iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
-								</div>
-							</row>
-
-						</rows>
-
-						<foot>
-							<footer span="5" class="footer_right"
-								label="0 items en la lista" />
-						</foot>
-					</grid>
-
-				</div>
-									
-									
-									
-									
-									
-									
-										<n:br></n:br>	<n:br></n:br>
-									<div align="left">
-										<div class="encabezado">
-											Datos Accion
-										</div>
+									<hbox align="center" pack="center"
+										width="100%"><!-- GRUPO ACCIONES -->
+										<grid
+											emptyMessage="No se encuentran acciones vinculadas"
+											mold="paging" pageSize="5" model="@load(vm.allAcciones)">
+											<columns>
+												<column hflex="3">
+													Número acción
+												</column>
+												<column hflex="3">
+													Valor Bsf.
+												</column>
+											</columns>
+											<rows>
+												<template
+													name="model">
+													<row>
+														<label
+															value="@load(each.nroAccion)" />
+														<label
+															value="@load(each.valor)" />
+													</row>
+												</template>
+											</rows>
+											<foot>
+												<footer span="3"
+													class="footer_right" label="@load(vm.cantidadAcciones)" />
+											</foot>
+										</grid>
+									</hbox><!-- AQUI TERMINA GRUPO ACCIONES -->
+									<n:br></n:br>
+									<n:br></n:br>
+									<div
+										visible="@load(vm.verAfiliado)">
 										<div align="left"
-											class="linea-two">
-
+											visible="@load(vm.verAfiliado)">
+											<div class="encabezado">
+												Datos Afiliado
+											</div>
+											<div align="left"
+												class="linea-two">
+											</div>
 										</div>
+										<n:br></n:br>
+										<n:br></n:br>
+										<hbox align="center"
+											pack="center" width="100%"><!-- Inicio GRUPO afilaido -->
+											<grid
+												emptyMessage="No se encuentran afiliados vinculados"
+												mold="paging" pageSize="5" model="@load(vm.allAfiliados)">
+												<columns>
+													<column width="10%"
+														label="Carnet" align="center" />
+													<column width="15%"
+														label="Nombre" align="center" />
+													<column width="15%"
+														label="Apellido" align="center" />
+													<column width="15%"
+														label="Edad" align="center" />
+													<column width="15%"
+														label="Parentesco" align="center" />
+												</columns>
+												<rows>
+													<template
+														name="model" var="afiliado">
+														<row>
+															<label
+																value="@load(afiliado.nroCarnet)" />
+															<label
+																value="@load(afiliado.persona.nombre)" />
+															<label
+																value="@load(afiliado.persona.apellido)" />
+															<label
+																value="@load(afiliado.calcularEdadAfiliado)" />
+															<label
+																value="@load(afiliado.tipoAfiliado.descripcion)" />
+															<!-- 														<div> -->
+															<!-- 															<button -->
+															<!-- 																sclass="btn-link" iconSclass="z-icon-search blue" -->
+															<!-- 																tooltiptext="Ver" -->
+															<!-- 																onClick="@command('showModal', afiliado=afiliado)" /> -->
+															<!-- 														</div> -->
+														</row>
+													</template>
+												</rows>
+												<foot>
+													<footer span="3"
+														class="footer_right" label="@load(vm.cantidadAfiliado)" />
+												</foot>
+											</grid>
+										</hbox><!-- AQUI TERMINA GRUPO afiliados -->
 									</div>
-	<n:br></n:br>	<n:br></n:br>
-									<hbox width="100%"><!-- inicio GRUPO accion -->
-										<panel border="none"
-											collapsible="true" sclass="transparent">
-											<panelchildren>
-												<grid sclass="domain">
-													<columns>
-														<column
-															width="50%" label="Numero Accion"
-															iconSclass="z-icon-caret-right blue" align="center" />
-														<column
-															width="35%" label="Valor BS"
-															iconSclass="z-icon-caret-right blue" align="center" />
-													</columns>
-													<rows>
-														<row>
-															<label
-																value="12345" />
-															<label
-																value="60.000" sclass="label label-primary arrowed" />
-														</row>
-														<row>
-															<label
-																value="78916" />
-															<label
-																value="60.000" sclass="label label-primary arrowed" />
-														</row>
-													</rows>
-												</grid>
-											</panelchildren>
-										</panel>
-
-
-
-
-									</hbox><!-- AQUI TERMINA GRUPO accion -->
-	<n:br></n:br>	<n:br></n:br>
-									<div align="left">
-										<div class="encabezado">
-											Datos Afiliado
-										</div>
-										<div align="left"
-											class="linea-two">
-
-										</div>
-									</div>
-
-	<n:br></n:br>	<n:br></n:br>
-									<hbox width="100%"><!-- Inicio GRUPO afilaido -->
-
-
-										<panel border="none"
-											collapsible="true" sclass="transparent">
-
-											<panelchildren>
-												<grid sclass="domain">
-													<columns
-														sclass="z-grid z-column-content">
-
-														<column
-															width="10%" label="Carnet"
-															iconSclass="z-icon-caret-right blue" align="center" />
-														<column
-															width="15%" label="1er nombre"
-															iconSclass="z-icon-caret-right blue" align="center" />
-															<column
-															width="15%" label="2do nombre"
-															iconSclass="z-icon-caret-right blue" align="center" />
-															<column
-															width="15%" label="1er apellido"
-															iconSclass="z-icon-caret-right blue" align="center" />
-															<column
-															width="15%" label="2do Apellido"
-															iconSclass="z-icon-caret-right blue" align="center" />
-														<column
-															width="15%" label="parentesco"
-															iconSclass="z-icon-caret-right blue" align="center" />
-														<column
-															width="10%" align="center" label="Ver" />
-
-													</columns>
-													<rows>
-														<row>
-
-															<label
-																value="12345" />
-															<label
-																value="laura" />
-																<label
-																value="Maria" />
-																<label
-																value="Diaz" />
-																<label
-																value="perez" />
-															<label
-																value="Esposa" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-search blue"
-																	tooltiptext="Ver" id="btnVerAfiliado" />
-															</div>
-
-														</row>
-														<row>
-
-															<label
-																value="12345" />
-															<label
-																value="laura" />
-																<label
-																value="Maria" />
-																<label
-																value="Diaz" />
-																<label
-																value="perez" />
-															<label
-																value="Esposa" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-search blue"
-																	tooltiptext="Ver"/>
-															</div>
-
-														</row>
-														<row>
-
-															<label
-																value="12345" />
-															<label
-																value="laura" />
-																<label
-																value="Maria" />
-																<label
-																value="Diaz" />
-																<label
-																value="perez" />
-															<label
-																value="Esposa" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-search blue"
-																	tooltiptext="Ver"/>
-															</div>
-
-														</row>
-														
-														<row>
-
-															<label
-																value="12345" />
-															<label
-																value="laura" />
-																<label
-																value="Maria" />
-																<label
-																value="Diaz" />
-																<label
-																value="perez" />
-															<label
-																value="Esposa" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-search blue"
-																	tooltiptext="Ver"/>
-															</div>
-
-														</row>
-														<row>
-
-															<label
-																value="12345" />
-															<label
-																value="laura" />
-																<label
-																value="Maria" />
-																<label
-																value="Diaz" />
-																<label
-																value="perez" />
-															<label
-																value="Esposa" />
-															<div>
-																<button
-																	sclass="btn-link" iconSclass="z-icon-search blue"
-																	tooltiptext="Ver"/>
-															</div>
-
-														</row>
-														
-
-													</rows>
-												</grid>
-											</panelchildren>
-										</panel>
-
-									</hbox><!-- AQUI TERMINA GRUPO afiliados -->
-
-
-
-
 								</vbox>
-
-							<separator spacing="30px"></separator>
+								<separator spacing="30px"></separator>
 								<hbox width="" align="center"
 									pack="center">
-
 									<separator spacing="5%"></separator>
-
-
 									<button iconSclass="z-icon-edit"
-										class='boton-guardar' label="Guardar" />
-									
+										onClick="@command('guardar')" class='boton-guardar'
+										label="Guardar" />
 									<space bar="False" spacing="5%" />
-
 									<button
 										iconSclass="z-icon-times-circle" class='boton-cancelar'
-										label="Cancelar " />
+										onClick="@command('cancelar')" label="Cancelar " />
 								</hbox>
 							</div>
 						</div>
 					</div>
-
-
-
-
 				</div><!-- FIN CONTENEDOR -->
 			</vlayout>
 		</hlayout>

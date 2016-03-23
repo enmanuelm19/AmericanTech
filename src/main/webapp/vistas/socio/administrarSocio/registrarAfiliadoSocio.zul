@@ -120,27 +120,20 @@
 								<div class="encabezado">Intereses</div>
 								<div align="left" class="linea-two"></div>
 							</div>
-							<hbox align="center" pack="center"
-								width="100%"><!-- GRUPO INTERESES -->
+							<hbox align="center" pack="center" width="100%" ><!-- GRUPO INTERESES -->
 								<grid emptyMessage="No se encuentran reglas registradas" mold="paging" pageSize="10" model="@load(vm.preferenciasAll)">
 									<auxhead sclass="category-center">
-										<auxheader colspan="1">
-											<combobox class="col-md-12" model="@load(vm.tiposPreferencias)" selectedItem="@bind(vm.tipoPreferencia)"
-												placeholder="Seleccione una categoria">
-												<template name="model">
-													<comboitem label="@load(each.descripcion)" value="@bind(each)" />
-												</template>
-											</combobox>
-										</auxheader>
-										<auxheader colspan="1">
-											<combobox width="100%" class="col-md-12" model="@load(vm.preferencias)" selectedItem="@bind(vm.preferencia)"
-												placeholder="Seleccione un interes">
-												<template name="model">
-													<comboitem label="@load(each.descripcion)" value="@bind(each)" />
-												</template>
-											</combobox>
-										</auxheader>
-										<auxheader colspan="1"></auxheader>
+									
+												<auxheader colspan="2">
+													<label>Puede seleccionar varias preferencias</label><separator></separator>
+													<chosenbox model="@load(vm.preferencias)" hflex="1" width="100%" emptyMessage="" creatable="true"
+														selectedObjects="@bind(vm.temporalPreferencia)"/>
+												</auxheader>
+												<auxheader colspan="1" align="left">
+													<button sclass="btn-link" onClick="@command('agregarPreferenciasPersona')"
+														iconSclass="z-icon-plus blue" tooltiptext="Agregar preferencia" style="margin-top:30px;"/>
+												</auxheader>
+										
 									</auxhead>
 									<columns>
 										<column hflex="3">Categoria</column>
@@ -166,13 +159,43 @@
 							<separator></separator>
 							<separator></separator>
 							<separator></separator>
-							<hbox width="" align="center" pack="center">
+							<div class="col-md-12">
+										<div align="left">
+											<div class="encabezado">Datos Afiliados</div>
+											<div align="left" class="linea-two"></div>
+										</div>
+										<n:br></n:br><n:br></n:br>
+										
+											<grid emptyMessage="No se encuentran afiliados vinculados" mold="paging" pageSize="5"
+												model="@load(vm.afiliadosSocios)">
+												<columns>
+													<column width="10%"	label="Carnet" align="center" />
+													<column width="15%" label="Nombre" align="center" />
+													<column width="15%" label="Apellido" align="center" />
+													<column width="15%" label="Parentesco" align="center" />
+												</columns>
+												<rows>
+													<template name="model" var="afiliado">
+														<row>
+															<label value="@load(afiliado.nroCarnet)" />
+															<label value="@load(afiliado.persona.nombre)" />
+															<label value="@load(afiliado.persona.apellido)" />
+															<label value="@load(afiliado.tipoAfiliado.descripcion)" />
+														</row>
+													</template>
+												</rows>
+												<foot>
+													<footer span="3" class="footer_right" label="@load(vm.cantidadAfiliado)" />
+												</foot>
+											</grid>
+							<hbox align="center" style="margin-top:20px;">
 								<separator spacing="5%"></separator>
 								<button iconSclass="z-icon-save" class='boton-guardar' label="Guardar" onClick="@command('registrarAfiliado', win=winRegAfiliado)"/>
 								<button iconSclass="z-icon-times" class='boton-cancelar' label="Cancelar " onClick="@command('cancelar', win=winRegAfiliado)"/>
 							</hbox>
-						</div>
 					</div>
+				</div>
+				</div>
 				</div>
 			</vlayout>
 		</hlayout>

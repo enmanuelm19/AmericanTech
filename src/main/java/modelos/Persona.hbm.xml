@@ -83,7 +83,7 @@
             </key>
             <one-to-many class="modelos.Usuario" />
         </set>
-        <set name="preferenciaPersonas" table="preferencia_persona" inverse="false" lazy="true" fetch="select" cascade="save-update">
+        <set name="preferenciaPersonas" table="preferencia_persona" inverse="false" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="personaid_persona" not-null="true" />
             </key>

@@ -17,7 +17,7 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
         <mapping resource="modelos/CalendarioFecha.hbm.xml" />
         <mapping resource="modelos/Politica.hbm.xml" />
@@ -27,14 +27,12 @@
         <mapping resource="modelos/Sugerencia.hbm.xml" />
         <mapping resource="modelos/ArchivoAlquiler.hbm.xml" />
         <mapping resource="modelos/Evento.hbm.xml" />
-        <mapping resource="modelos/Archivo.hbm.xml" />
         <mapping resource="modelos/EstadoEvento.hbm.xml" />
         <mapping resource="modelos/Foto.hbm.xml" />
         <mapping resource="modelos/Actividad.hbm.xml" />
         <mapping resource="modelos/Postulado.hbm.xml" />
         <mapping resource="modelos/Preferencia.hbm.xml" />
         <mapping resource="modelos/Eventualidad.hbm.xml" />
-        <mapping resource="modelos/TipoArchivo.hbm.xml" />
         <mapping resource="modelos/TipoPago.hbm.xml" />
         <mapping resource="modelos/Portal.hbm.xml" />
         <mapping resource="modelos/Recurso.hbm.xml" />

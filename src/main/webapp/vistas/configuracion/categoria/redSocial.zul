@@ -45,19 +45,12 @@
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true" value="@bind(vm.idFiltro)" onChange="@command('filtro')"
-											width="85%" placeholder="Buscar" />
-									</auxheader>
-									<auxheader colspan="1">
-										<image
-											src="../assets/img/funnel.png" />
-										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
-											width="85%" placeholder="Buscar" />
+											width="25%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="2" />
 								</auxhead>
 
 								<columns>
-									<column hflex="25%">Codigo</column>
 									<column hflex="25%">Red Social</column>
 									<column hflex="25%">Icono</column>
 									<column width="25%" align="center">Acciones</column>
@@ -67,7 +60,6 @@
 								<template name="model">
 								
 									<row>
-										<label value="@load(each.idRedSocial)" />
 										<label value="@load(each.descripcion)" />
 										
 										<image src="@load(each.imagen)" width="15%" align="center" />

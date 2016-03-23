@@ -10,6 +10,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -17,7 +18,6 @@ import org.zkoss.zul.Window;
 import Dao.SugerenciaDao;
 import Dao.ClienteExternoDao;
 import Dao.TipoSugerenciaDao;
-
 import modelos.Sugerencia;
 import modelos.TipoSugerencia;
 import modelos.ClienteExterno;
@@ -88,19 +88,34 @@ public class RegistrarSugerenciaIndexViewModel {
 
 
 	@Command
+	@NotifyChange({"sugerencia","clienteExterno"})
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 
-		if (sugerencia.getDescripcion() != null && !sugerencia.getDescripcion().equalsIgnoreCase("")) {
+		
+		try { 
+			if (sugerencia.getDescripcion() == null || sugerencia.getDescripcion().equalsIgnoreCase("") ||
+					sugerencia.getTipoSugerencia() == null) {
+					Messagebox.show("Debe llenar todos los campos", "",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}
+				else{
+					if (!editable) {
+						this.sugerencia.setClienteExterno(clienteExterno);   
+						sugerencia.setFecha(date);
+						sugerenciaDao.agregarSugerencia(sugerencia);
+						sugerencia= new Sugerencia();
+						clienteExterno= new ClienteExterno();
+						Messagebox.show("La sugerencia ha sido registrada exitosamente", "",
+								Messagebox.OK, Messagebox.INFORMATION);
+					}
 
-			if (!editable) {
-				this.sugerencia.setClienteExterno(clienteExterno);   
-				sugerencia.setFecha(date);
-				sugerenciaDao.agregarSugerencia(sugerencia);
-				Messagebox.show("La sugerencia ha sido registrada exitosamente", "",
+				}
+			} catch(Exception e) { 
+				Messagebox.show("Verifique los campos e intente de nuevo", "",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
-
-		}
+		
+	
 
 	}
 }

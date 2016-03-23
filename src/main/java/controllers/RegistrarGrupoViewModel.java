@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -26,7 +28,7 @@ public class RegistrarGrupoViewModel {
 	private Grupo grupo;
 	private boolean editable;
 	private GrupoDao grupoDao;
-	private List<FuncionGrupo> funciones;
+	private Set<FuncionGrupo> funciones;
 	private FuncionGrupoDao funcionGrupoDao;
 	private List<Funcion> funcionesAll;
 	private FuncionDao funcionDao;
@@ -34,13 +36,17 @@ public class RegistrarGrupoViewModel {
 	
 	@Init
 	public void init(@ExecutionArgParam("Grupo") Grupo group) {
+		this.funciones = new HashSet<FuncionGrupo>();
 		if (group == null) {
 			this.grupo = new Grupo();
 			this.editable = false;
+			this.funciones = grupo.getFuncionGrupos();
 		} else {
 			this.grupo = group;
 			this.editable = true;
-			this.funciones = new ArrayList<FuncionGrupo>(grupo.getFuncionGrupos());
+			setFunciones(grupo.getFuncionGrupos());
+			funciones = getFunciones();
+					
 		}
 		grupoDao = new GrupoDao();
 		funcionGrupoDao = new FuncionGrupoDao();
@@ -59,9 +65,11 @@ public class RegistrarGrupoViewModel {
 		{
 			if (!editable){
 				grupo.setActivo(true);
+				grupo.setFuncionGrupos(funciones);
 				grupoDao.agregarGrupo(grupo);
 			}
 			else {
+				grupo.setFuncionGrupos(funciones);
 				grupoDao.actualizarGrupo(grupo);
 			}
 				
@@ -75,13 +83,13 @@ public class RegistrarGrupoViewModel {
 	@Command
 	@NotifyChange({"funciones", "cantRegistros"})
 	public void eliminarFuncion(@BindingParam("Funcion") final FuncionGrupo funcion){
-		Messagebox.show("Estas seguro de eliminar " + funcion.getFuncion().getNombre() + "del grupo", "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + funcion.getFuncion().getNombre() + " del grupo", "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
+								funcion.setActivo(false);
 								funcionGrupoDao.eliminarFuncionGrupo(funcion);
-								//funciones = funcionGrupoDao.obtenerTodos();
 								Messagebox.show(funcion.getFuncion().getNombre() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshFuncionesGrupo", null);
@@ -107,8 +115,8 @@ public class RegistrarGrupoViewModel {
 		this.editable = editable;
 	}
 
-	public List<FuncionGrupo> getFunciones() {
-		List<FuncionGrupo> tmp =  new ArrayList<FuncionGrupo>();
+	public Set<FuncionGrupo> getFunciones() {
+		Set<FuncionGrupo> tmp =  new HashSet<FuncionGrupo>();
 		for(FuncionGrupo f: funciones){
 			if(f.isActivo()){
 				tmp.add(f);
@@ -118,7 +126,7 @@ public class RegistrarGrupoViewModel {
 		return funciones;
 	}
 
-	public void setFunciones(List<FuncionGrupo> funciones) {
+	public void setFunciones(Set<FuncionGrupo> funciones) {
 		this.funciones = funciones;
 	}
 
@@ -133,7 +141,7 @@ public class RegistrarGrupoViewModel {
 	@GlobalCommand
 	@NotifyChange({ "funciones", "cantRegistros" })
 	public void refreshFuncionesGrupo() throws Exception {
-		funciones = new ArrayList<FuncionGrupo>(grupo.getFuncionGrupos());
+		funciones = this.getFunciones();
 	}
 
 	public List<Funcion> getFuncionesAll() throws Exception {
@@ -179,7 +187,9 @@ public class RegistrarGrupoViewModel {
 			}else{
 				funcGrupo.setFuncion(funcionSeleccionada);
 				funcGrupo.setActivo(true);
-				funcionGrupoDao.agregarFuncionGrupo(funcGrupo);
+				funciones.add(funcGrupo);
+				//funcionGrupoDao.agregarFuncionGrupo(funcGrupo);
+				Messagebox.show("Funcion " + funcionSeleccionada.getNombre() + " agregada exitosamente!");
 			}
 		}
 		

@@ -4,6 +4,7 @@ package Dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Afiliado;
 import modelos.Sancion;
 import modelos.Socio;
 
@@ -62,6 +63,24 @@ public class SancionDao {
             } catch (Exception e) {  
             e.printStackTrace();
            
+            throw new Exception(e.getMessage(),e.getCause());
+            }  finally {  
+                sesion.close();  
+            }       
+	    return datos;	
+	}
+	
+	
+	public List<Sancion> obtenerSancionAfiliado(Afiliado dato)throws Exception{
+	    @SuppressWarnings("static-access")
+		Session sesion = sesionPostgres.getSessionFactory().openSession();   
+	    List<Sancion> datos = new ArrayList<Sancion>();        
+            try{
+                datos = (List<Sancion>) sesion.createCriteria(Sancion.class)
+                		.add(Restrictions.eq("afiliado",dato)).add(Restrictions.eq("activo",true)).list();
+            } catch (Exception e) {  
+            e.printStackTrace();
+            
             throw new Exception(e.getMessage(),e.getCause());
             }  finally {  
                 sesion.close();  
@@ -139,5 +158,4 @@ public class SancionDao {
         } 
         return datos; 
 	}
-
 }

@@ -1,0 +1,74 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+	<window id="winCambiarClave"
+		style="iconSclass=z-icon-cogs; height:auto;"
+		title="Cambiar Contraseña" closable="true" border="none"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		height="50%" width="35%" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.MiPerfilViewModel')">
+		<caption iconSclass="z-icon-cogs" />
+		<div class="contenedor" align="center">
+			<div align="left" width="100%">
+				<div align="left">
+					<div class="encabezado" style="margin-top: 4%">
+						Datos Básicos
+					</div>
+					<div align="left" class="linea-two"
+						style="margin-bottom: 6%" />
+				</div>
+				<grid>
+					<rows>
+						<row>
+							<div class="row col-md-12">
+								<div>
+									<label class="col-md-4"
+										value="Contraseña Actual" />
+									<textbox value=""
+										constraint="no empty" class="col-md-6">
+									</textbox>
+								</div>
+								<div>
+									<label class="col-md-4"
+										value="Nueva Contraseña" />
+									<textbox value=""
+										constraint="no empty" class="col-md-6">
+									</textbox>
+								</div>
+								<space></space>
+								<div>
+									<label class="col-md-4"
+										value="Confirme Contraseña" />
+									<textbox value=""
+										constraint="no empty" class="col-md-6">
+									</textbox>
+								</div>
+							</div>
+
+						</row>
+					</rows>
+				</grid>
+				<div align="center" style="margin-top: 7%;">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar'
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
+								onClick="@command('guardar11', win=winCambiarClave)" />
+						</div>
+						<div>
+							<button id="cancelarBtn"
+								iconSclass="z-icon-times-circle" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar"
+								onClick="@command('cerrarModal', win=winCambiarClave)" />
+						</div>
+					</hbox>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

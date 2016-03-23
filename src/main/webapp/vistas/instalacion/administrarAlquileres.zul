@@ -72,7 +72,7 @@
 													onClick="@command('showModal',reservacion = reservacion)" />
 												<button class='btn-link'
 													iconSclass="z-icon-times red" tooltiptext="Denegar"
-													onClick="@command('denegar',reservacion = reservacion)" />
+													onClick="@command('denegarReservacion',reservacion = reservacion)" />
 											</div>
 										</row>
 									</template>

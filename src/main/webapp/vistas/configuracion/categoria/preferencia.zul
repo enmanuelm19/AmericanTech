@@ -52,26 +52,18 @@
 											src="../assets/img/funnel.png" />
 										<textbox instant="true" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')"
-											width="85%" placeholder="Buscar" />
+											width="65%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox instant="true" value="@bind(vm.tipoPrefrenciaFiltro)"
 											onChange="@command('filtro')"
-											width="85%" placeholder="Buscar" />
-									</auxheader>
-									<auxheader colspan="1">
-										<image
-											src="../assets/img/funnel.png" />
-										<textbox instant="true" value="@bind(vm.descFiltro)"
-											onChange="@command('filtro')"
-											width="85%" placeholder="Buscar" />
+											width="65%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1" />
 								</auxhead>
 								<columns>
-									<column hflex="2">Codigo</column>
 									<column hflex="2">
 										Tipo Preferencia
 									</column>
@@ -85,8 +77,6 @@
 									<template name="model">
 
 										<row>
-											<label
-												value="@load(each.idPreferencia)" />
 											<label
 												value="@load(each.tipoPreferencia.descripcion)" />
 											<label

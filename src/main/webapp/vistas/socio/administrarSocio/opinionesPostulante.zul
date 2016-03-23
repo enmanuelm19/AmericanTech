@@ -59,7 +59,7 @@
 											<row>
 												<div>
 													<label class="col-md-4" value="Fecha de Nacimiento" />
-													<textbox constraint="no empty" class="col-md-6" readonly="true"	value="@load(vm.postulacion.postulado.persona.fechaNac)"/>
+													<textbox constraint="no empty" class="col-md-6" readonly="true"	value="@load(vm.postulacion.postulado.persona.fechaParse)"/>
 												</div>
 											</row>
 											<row>
@@ -79,7 +79,7 @@
 											</row>
 											<row>
 												<div>
-													<label class="col-md-4" value="Direccion" />
+													<label class="col-md-4" value="Dirección" />
 													<textbox constraint="no empty" class="col-md-6" readonly="true"	cols="50" rows="4" type="text"
 														value="@load(vm.postulacion.postulado.persona.direccion)" />
 												</div>
@@ -130,7 +130,7 @@
 											</row>
 											<row>
 												<div>
-													<label class="col-md-4" value="Motivo Postulacion" />
+													<label class="col-md-4" value="Motivo Postulación" />
 													<textbox class="col-md-6" readonly="true" value="@load(vm.postulacion.motivoPostulacion.descripcion)"/>
 												</div>
 											</row>
@@ -184,13 +184,32 @@
 								</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
 
 
+								
 								<separator spacing="30px"></separator>
 								<div visible="@load(!vm.verDatos)">
 								<div align="left">
 									<div class="encabezado">Opiniones</div>
 									<div align="left" class="linea-two"></div>
 								</div>
+								<separator></separator>
+								<div class="col-md-12 row">
+									<div class="col-md-6" style="margin-top: 20px;" align="left">
+										<radiogroup id="tipo" selectedItem="@bind(vm.tipoOpinion)" model="@load(vm.tiposOpiniones)" style="text-align:center;">
+											<template name="model">
+												<radio label="@load(each.descripcion)" value="@load(each)" radiogroup="tipo" style="margin-right:15px;" />									
+											</template>
+										</radiogroup>
+									</div>
+									<div  class="col-md-6" children="@load(vm.contadores)">
+										<template name="children">
+											<div class="opiniones col-md-4" style="@load(each.color)">
+												<label value="${each.cantidad}"/><separator/>
+												<label value="${each.tipoOpnion.descripcion}"/>
+											</div>
+										</template>
+									</div>
 								
+								</div>
 									<grid
 										emptyMessage="No hay opiniones" mold="paging" pageSize="5"  model="@load(vm.opinionesAll)">
 										<auxhead

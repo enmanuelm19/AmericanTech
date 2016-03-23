@@ -59,7 +59,7 @@ public class RegistrarOpinionViewModel {
 	@Command
 	public void guardarOpinion(@BindingParam("win") Window win) throws Exception{
 		if(this.opinion.getTipoOpnion()==null||this.opinion.getDescripcion()==null||this.opinion.getDescripcion().equalsIgnoreCase("")){
-			Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			Usuario usuario=(Usuario)Executions.getCurrent().getSession().getAttribute("Usuario");
@@ -71,7 +71,7 @@ public class RegistrarOpinionViewModel {
 				}
 			}
 			if(opino==true){
-				Messagebox.show("Usted ya ha dado su opinión sobre el postulado "+this.opinion.getPostulacion().getPostulado().getPersona().getNombre()+" "+this.opinion.getPostulacion().getPostulado().getPersona().getApellido(), "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Usted ya ha dado su opinión sobre el postulado "+this.opinion.getPostulacion().getPostulado().getPersona().getNombre()+" "+this.opinion.getPostulacion().getPostulado().getPersona().getApellido(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				win.detach();
 			}
 			else{
@@ -79,7 +79,7 @@ public class RegistrarOpinionViewModel {
 				this.opinion.setFecha(new Date());
 				this.opinionDao.agregarOpinion(opinion);
 				Messagebox.show("Su opinión sobre el postulado "+this.opinion.getPostulacion().getPostulado().getPersona().getNombre()+" "
-						+this.opinion.getPostulacion().getPostulado().getPersona().getApellido()+ " ha sido registrada exitosamente", "Exito",
+						+this.opinion.getPostulacion().getPostulado().getPersona().getApellido()+ " ha sido registrada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshPostulaciones",null);

@@ -57,6 +57,7 @@ public class RegistrarAfiliadoViewModel {
 	private Media uploadedImage;
 	private TipoAfiliado tipoAfiliado;
 	private String nroCarnet="";
+	private ArrayList<Preferencia> temporalPreferencia;
 	
 	@Init
 	public void init(@ExecutionArgParam("socioss") Socio socioss) throws Exception{
@@ -72,6 +73,7 @@ public class RegistrarAfiliadoViewModel {
 		tiposPreferencias= tipoPreferenciaDao.obtenerTodos();
 		preferencias= new ArrayList<Preferencia>();
 		preferenciasAll= new ArrayList<Preferencia>();
+		temporalPreferencia = new ArrayList<Preferencia>();
 		System.out.println("dasdadasdiijijjl: "+socioss.getIdSocio());
 		
 	}
@@ -93,11 +95,18 @@ public class RegistrarAfiliadoViewModel {
 		return new ListModelList<TipoPreferencia>(tiposPreferencias);
 	}
 	
-	public ListModelList<Preferencia> getPreferencias(){
-		return new ListModelList<Preferencia>(preferencias);
+	public ListModelList<Preferencia> getPreferencias() throws Exception{
+		return new ListModelList<Preferencia>(this.preferenciaDao.obtenerTodos());
 	}
 	public ListModelList<Preferencia> getPreferenciasAll(){
 		return new ListModelList<Preferencia>(preferenciasAll);
+	}
+	public ArrayList<Preferencia> getTemporalPreferencia() {
+		return temporalPreferencia;
+	}
+
+	public void setTemporalPreferencia(ArrayList<Preferencia> temporalPreferencia) {
+		this.temporalPreferencia = temporalPreferencia;
 	}
 	public Afiliado getAfiliado() {
 		return afiliado;
@@ -107,7 +116,12 @@ public class RegistrarAfiliadoViewModel {
 		this.afiliado = afiliado;
 	}
 	
-	
+	public ListModelList<Afiliado> getAfiliadosSocios(){
+		return new ListModelList<Afiliado>(this.socio.getAfiliados());
+	}
+	public String getCantidadAfiliado(){
+		return this.socio.getAfiliados().size()+" items en la lista";
+	}
 	public TipoAfiliado getTipoAfiliado() {
 		return tipoAfiliado;
 	}
@@ -116,12 +130,12 @@ public class RegistrarAfiliadoViewModel {
 	public void setTipoAfiliado(TipoAfiliado tipoAfiliado) {
 		if(tipoAfiliado.getIdTipoAfiliado()==1){
 			if(cantidadTipoAfiliado(1)==1){
-				Messagebox.show("El socio ya tiene asocioado un afiliado de parentesco "+tipoAfiliado.getDescripcion() , "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("El socio ya tiene asocioado un afiliado de parentesco "+tipoAfiliado.getDescripcion() , "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.tipoAfiliado=new TipoAfiliado(0,"",false);
 				this.afiliado.setTipoAfiliado(null);
 			}
 			else{
-				this.nroCarnet=socio.getNroCarnet()+"-"+tipoAfiliado.getSubfijo();
+				this.nroCarnet=socio.getNroCarnet()+tipoAfiliado.getSubfijo();
 				this.tipoAfiliado = tipoAfiliado;
 				this.afiliado.setTipoAfiliado(tipoAfiliado);
 			}
@@ -206,29 +220,16 @@ public class RegistrarAfiliadoViewModel {
 	@NotifyChange({"preferencias","preferenciasAll","cantidadInteres","preferencia"})
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
-		//boolean encontro=false;
-		/*if(preferenciasAll.size()==0){
-			preferenciasAll.add(preferencia);
-		}
-		else{
-			for(int i=0; i<preferenciasAll.size(); i++){
-				if(preferenciasAll.get(i).getDescripcion()==preferencia.getDescripcion()){
-					System.out.println("dio: "+true);
-					}
-				else{
-					if(encontro==false){
-						System.out.println("dio: "+false);
-						preferenciasAll.add(preferencia);
-						encontro=true;
-					}
-				}
-			}
-		}
-		*/
-			preferenciasAll.add(preferencia);
-			preferencia= new Preferencia();
+		preferenciasAll.add(preferencia);
+		preferencia= new Preferencia();
 	}
-
+	@Command
+	@NotifyChange({ "preferenciasAll","cantidadInteres"})
+	public void agregarPreferenciasPersona() {
+		for(int i=0; i<temporalPreferencia.size(); i++)
+			preferenciasAll.add(temporalPreferencia.get(i));
+	}
+	
 	public TipoPreferencia getTipoPreferencia() {
 		return tipoPreferencia;
 	}
@@ -236,14 +237,6 @@ public class RegistrarAfiliadoViewModel {
 	public void setTipoPreferencia(TipoPreferencia tipoPreferencia) throws Exception {
 		this.tipoPreferencia = tipoPreferencia;
 		preferencias= preferenciaDao.obtenerPreferenciasTipo(tipoPreferencia);
-	/*	for(int i=0; i<preferenciasAll.size(); i++){
-			for(int j=0; j<preferencias.size(); j++){
-				if(preferenciasAll.get(i).getDescripcion()==preferencias.get(j).getDescripcion()){
-					preferencias.remove(preferenciasAll.get(i));
-					System.out.println("kkskskk");
-				}
-			}
-		}*/
 	}
 	
 	@Command
@@ -264,7 +257,7 @@ public class RegistrarAfiliadoViewModel {
 					persona.getApellido().equalsIgnoreCase("")|| persona.getTelefono().equalsIgnoreCase("")||
 					persona.getCorreo().equalsIgnoreCase("")|| persona.getSexo().equalsIgnoreCase("")||
 					persona.getDireccion().equalsIgnoreCase("")|| afiliado.getTipoAfiliado().equals(null)){
-						Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			else{
 				personaDao= new PersonaDao();
@@ -295,12 +288,12 @@ public class RegistrarAfiliadoViewModel {
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshSocios", null);
 			Messagebox.show("El Sr(a) "	+ afiliado.getPersona().getNombre() +" "+afiliado.getPersona().getApellido()
-					+ " es ahora un afiliado del Sr. "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido(), "Exito",
+					+ " es ahora un afiliado del Sr. "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido(), "American Tech",
 					Messagebox.OK, Messagebox.INFORMATION);
 			}
 		}
 		catch(NullPointerException e){
-			Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			
 		}
 	}

@@ -8,7 +8,7 @@
             <column name="id_evento" />
             <generator class="increment" />
         </id>
-        <many-to-one name="cancelacionEvento" class="modelos.CancelacionEvento" fetch="select" lazy="false">
+        <many-to-one name="cancelacionEvento" class="modelos.CancelacionEvento" fetch="select" lazy="false" cascade="save-update">
             <column name="cancelacion_eventoid_cancelacion_evento" />
         </many-to-one>
         <many-to-one name="estadoEvento" class="modelos.EstadoEvento" fetch="select" lazy="false">

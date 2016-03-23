@@ -6,11 +6,11 @@
 
 <zk xmlns:n="native">
 	<window id="winRegistrarMP"
-		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar motivo postulacion':'Registrar motivo postulacion')"
+		style="iconSclass=z-icon-cogs;"
+		title="@load(vm.editable?'Editar motivo postulación':'Registrar motivo postulación')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
+		height="55%" width="40%" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarMotivoPostulacionViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
@@ -25,11 +25,11 @@
 				<grid>
 					<rows>
 						<row>
-							<div class="row col-md-12">
-								<div class="col-md-2">Descripción</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										value="@bind(vm.motivoPostulacion.descripcion)" width="100%"
+							<div>
+								<div class="col-md-10">Descripción</div>
+								<div class="col-xs-12 col-md-12">
+									<textbox type="text" rows="4" width="100%"
+										value="@bind(vm.motivoPostulacion.descripcion)" 
 										constraint="no empty" />
 								</div>
 							</div>

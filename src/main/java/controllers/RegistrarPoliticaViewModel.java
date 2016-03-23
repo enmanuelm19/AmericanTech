@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import modelos.Politica;
 import modelos.TipoPreferencia;
 
@@ -60,22 +62,36 @@ public class RegistrarPoliticaViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (politica.getDescripcion() != null && !politica.getDescripcion().equalsIgnoreCase("")) {
 				if (!editable) {
-					politica.setClub(ClubDao.obtenerClub(1));
-					politica.setActivo(true);
-					tipoDao.agregarPolitica(politica);
-					Messagebox.show("Se ha registrado la regla exitosamente", "Exito", Messagebox.OK, Messagebox.INFORMATION);
+					if(validarDescripcion()){
+						Messagebox.show("Ya existe una regla con esa descripción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					}
+					else{
+						politica.setClub(ClubDao.obtenerClub(1));
+						politica.setActivo(true);
+						tipoDao.agregarPolitica(politica);
+						Messagebox.show("Se ha registrado la regla exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					}
 				} else {
 					tipoDao.actualizarPolitica(politica);
-					Messagebox.show("La regla ha sido actualizado exitosamente", "Exito", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("La regla ha sido actualizado exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,"refreshReglas", null);
 			}
 		else{
 
-			Messagebox.show("Debe llenar los campos","Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar los campos","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
-		}
-
 	}
+	
+	public boolean validarDescripcion() throws Exception{
+		List<Politica> pol= tipoDao.obtenerTodos();
+		boolean validar= false;
+		for(int i=0; i< pol.size(); i++){
+			if(pol.get(i).getDescripcion().equalsIgnoreCase(politica.getDescripcion()))
+				validar=true;
+		}
+		return validar;
+	}
+}
 

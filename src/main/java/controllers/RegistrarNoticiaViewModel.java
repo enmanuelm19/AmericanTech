@@ -7,9 +7,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import modelos.Noticia;
+import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
+import modelos.PreferenciaEvento;
 import modelos.TipoNoticia;
 import modelos.UsuarioGrupo;
 
@@ -27,6 +30,7 @@ import org.zkoss.zul.Window;
 
 import util.ManejadorArchivo;
 import Dao.NoticiaDao;
+import Dao.PreferenciaDao;
 import Dao.TipoNoticiaDao;
 
 public class RegistrarNoticiaViewModel {
@@ -37,6 +41,7 @@ public class RegistrarNoticiaViewModel {
 	private Noticia noticia;
 	private NoticiaDao noticiaDao;
 	private boolean editable;
+	private boolean publico;
 	
 	@Init
 	public void init(@ExecutionArgParam("noticia") Noticia noticia) throws Exception {
@@ -48,11 +53,11 @@ public class RegistrarNoticiaViewModel {
 			this.noticia = noticia;
 			this.editable = true;
 		}
-		
+		//publico = false;
+		noticiaDao= new NoticiaDao();
 		tipoNoticiaAll = new ArrayList<TipoNoticia>();
 		tipoNoticiaDao = new TipoNoticiaDao();
 		tipoNoticiaAll = tipoNoticiaDao.obtenerTodos();
-		
 	}
 	
 	public boolean isEditable() {
@@ -61,6 +66,15 @@ public class RegistrarNoticiaViewModel {
 
 	public void setEditable(boolean editable) {
 		this.editable = editable;
+	}
+	
+
+	public boolean isPublico() {
+		return publico;
+	}
+
+	public void setPublico(boolean publico) {
+		this.publico = publico;
 	}
 
 	public List<TipoNoticia> getTipoNoticiaAll() {
@@ -72,16 +86,18 @@ public class RegistrarNoticiaViewModel {
 		this.tipoNoticiaAll = tipoNoticiaAll;
 	}
 
+	
 
-	@NotifyChange("tiponoticia")
-	public TipoNoticia getTiponoticia() {
-		return tiponoticia;
+	@NotifyChange("noticia")
+	public Noticia getNoticia() {
+		return noticia;
 	}
-
-	@NotifyChange("tiponoticia")
-	public void setTiponoticia(TipoNoticia tiponoticia) {
-		this.tiponoticia = tiponoticia;
+	
+	@NotifyChange("noticia")
+	public void setNoticia(Noticia noticia) {
+		this.noticia = noticia;
 	}
+	
 	
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
@@ -104,15 +120,6 @@ public class RegistrarNoticiaViewModel {
 		this.uploadedImage = uploadedImage;
 	}
 
-
-	public Noticia getNoticia() {
-		return noticia;
-	}
-
-
-	public void setNoticia(Noticia noticia) {
-		this.noticia = noticia;
-	}
 	
 	public void asignarFoto() throws IOException{
 		String tmp;
@@ -143,16 +150,14 @@ public class RegistrarNoticiaViewModel {
 	
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		if (noticia.getDescripcion()!=null && !noticia.getDescripcion().equalsIgnoreCase("")){
+		if (noticia.getTitulo()!=null && !noticia.getTitulo().equalsIgnoreCase("")){
 			if(!editable){
 				noticia.setCaducidad(new Date());
 				noticia.setFechaCreacion(new Date());
 				noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
-				
-				
-				System.out.println("caducidad " +noticia.getCaducidad() + " fecha creac " + noticia.getFechaCreacion()
-						+ " enlace " + noticia.getEnlace() + " foto " + noticia.getFoto() + " tipo noti " +noticia.getTipoNoticia()
-						+ "descripcion " + noticia.getDescripcion() + "  " );
+				noticia.setPublico(this.publico);
+				noticia.setActivo(true);
+			
 				noticiaDao.agregarNoticia(noticia);
 				Messagebox.show(
 						"La noticia " + noticia.getTitulo()
@@ -161,10 +166,8 @@ public class RegistrarNoticiaViewModel {
 			}else
 			{
 				noticiaDao.actualizarNoticia(noticia);
-				Messagebox.show(
-						"La noticia " + noticia.getTitulo()
-								+ " ha sido actualizada exitosamente", "",
-						Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("La noticia " + noticia.getTitulo() + " ha sido actualizada exitosamente", "",
+										Messagebox.OK, Messagebox.INFORMATION);
 				
 			}
 			win.detach();

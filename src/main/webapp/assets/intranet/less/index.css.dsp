@@ -3266,3 +3266,19 @@ div.hola table {
     background: #2B7DBC;
     border-color: #2B7DBC;
 }
+.z-row .z-detail-outer{
+	background: transparent;
+}
+.z-row .z-detail-outer+td, .z-row .z-detail-inner:first-child{
+	border-left: 1px solid rgba(92, 197, 202, 0.7);
+}
+.z-detail{
+	background: transparent;
+	border: 0px solid;
+	width: 23px;
+    height: 23px;
+}
+.z-detail-icon{
+	color: #2B7DBC;
+	font-size: 25px;
+}

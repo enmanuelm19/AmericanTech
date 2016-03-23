@@ -54,6 +54,7 @@
 											width="85%" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')" placeholder="Buscar" />
 									</auxheader>
+									<auxheader colspan="4"></auxheader>
 								</auxhead>
 								<columns class="z-grid z-column-content"
 									menupopup="auto">

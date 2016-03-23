@@ -86,28 +86,28 @@ ON p.id_persona = s.personaid_persona]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[nombre]]></text>
+				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="486" y="0" width="100" height="20" uuid="c50ce146-603b-4461-9d14-ab14e0f4c77e"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[telefono]]></text>
+				<text><![CDATA[Telefono]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="227" y="0" width="100" height="20" uuid="d623fb28-7852-47b2-9678-ac1e93af60a2"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[sexo]]></text>
+				<text><![CDATA[Sexo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="698" y="0" width="100" height="20" uuid="62816ee0-1fe5-476c-bb06-bb14c7aed6e2"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[carnet]]></text>
+				<text><![CDATA[Carnet]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

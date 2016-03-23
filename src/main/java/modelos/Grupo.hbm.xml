@@ -20,7 +20,7 @@
             </key>
             <one-to-many class="modelos.UsuarioGrupo" />
         </set>
-        <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="false" fetch="select">
+        <set name="funcionGrupos" table="funcion_grupo" inverse="true" lazy="false" fetch="select" cascade="save-update">
             <key>
                 <column name="grupoid_grupo" not-null="true" />
             </key>

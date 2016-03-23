@@ -1,5 +1,6 @@
 package Dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ import confi.Sesion;
 
 import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -93,7 +95,7 @@ private Sesion sesionPostgres;
            List<Noticia> datos = new ArrayList<Noticia>();  
            Session em = sesionPostgres.getSessionFactory().openSession();       
             try {   
-            datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("activo", true)).list();             
+            datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("activo", true)).addOrder(Order.desc("fechaCreacion")).list();             
             } catch (Exception e) {             
            
              throw new Exception(e.getMessage(),e.getCause());
@@ -113,6 +115,48 @@ private Sesion sesionPostgres;
   		Session em = sesionPostgres.getSessionFactory().openSession();   	
   		 try {  	
   		   datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.eq("evento", dato)).add(Restrictions.eq("activo", true)).list();             
+  			  } catch (Exception e) {             
+  		 
+  		throw new Exception(e.getMessage(),e.getCause());
+  		     } finally {  
+  		      em.close();  
+  			 } 
+  				       
+  		   return datos; 
+  		}
+  	
+    //Metodo para obtener las noticias que no han caducado
+
+  	public List<Noticia> obtenerNoticiasVigentes(Date dato) throws Exception {            
+  			      
+  		List<Noticia> datos = new ArrayList<Noticia>();  
+  		Session em = sesionPostgres.getSessionFactory().openSession();   	
+  		 try { 
+  		//devuelve las noticias cuya caducidad sea mayor o igual a la fecha que le envie por parametro y lo ordena de las mas nuevas a las mas viejas.
+  		   datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.ge("caducidad", dato))
+  				   .add(Restrictions.eq("activo", true))
+  				   .addOrder(Order.desc("fechaCreacion")).list();             
+  			  } catch (Exception e) {             
+  		 
+  		throw new Exception(e.getMessage(),e.getCause());
+  		     } finally {  
+  		      em.close();  
+  			 } 
+  				       
+  		   return datos; 
+  		}
+  	
+  	
+	public List<Noticia> obtenerNoticiasPublicas(Date dato) throws Exception {            
+	      
+  		List<Noticia> datos = new ArrayList<Noticia>();  
+  		Session em = sesionPostgres.getSessionFactory().openSession();   	
+  		 try { 
+  		//devuelve las noticias cuya caducidad sea mayor o igual a la fecha que le envie por parametro y lo ordena de las mas nuevas a las mas viejas.
+  		   datos =  (List<Noticia>) em.createCriteria(Noticia.class).add(Restrictions.ge("caducidad", dato))
+  				   .add(Restrictions.eq("activo", true))
+  				   .add(Restrictions.eq("publico", true))
+  				   .addOrder(Order.desc("fechaCreacion")).list();             
   			  } catch (Exception e) {             
   		 
   		throw new Exception(e.getMessage(),e.getCause());

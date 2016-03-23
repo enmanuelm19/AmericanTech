@@ -35,7 +35,7 @@
 								<div class='linea-two'></div>
 							</div>
 							<separator spacing="1%" />
-							<grid model="@load(vm.reservacionAll)"
+							<grid model="@load(vm.allReservacion)"
 								emptyMessage="No se encuentran reservaciones registrados"
 								mold="paging" pageSize="5">
 								<auxhead sclass="category-center">
@@ -69,7 +69,7 @@
 										var="reservacion">
 										<row>
 											<label
-												value="@load(reservacion.instalacion.descripcion)" />
+												value="@load(reservacion.instalacion.nombre)" />
 											<label
 												value="@load(reservacion.fechaInicioString)" />
 											<label

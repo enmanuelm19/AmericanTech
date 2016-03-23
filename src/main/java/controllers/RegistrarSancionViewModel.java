@@ -197,14 +197,14 @@ public class RegistrarSancionViewModel {
 	@NotifyChange({"carnet","socio","persona","eventualidades","cedula"})
 	public void buscarCarnet() throws Exception{
 		if(carnet==""||carnet==null){
-			Messagebox.show("Campo Carnet Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Carnet Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.socioDao= new SocioDao();
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
 			this.afiliado=this.afiliadoDao.obtenerPorNroCarnet(carnet);
 			if(this.socio==null && this.afiliado==null){
-				Messagebox.show("Carnet no encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Carnet no encontrado", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.carnet="";
 		
 			}
@@ -232,7 +232,7 @@ public class RegistrarSancionViewModel {
 	@NotifyChange({"cedula","persona","eventualidades","carnet"})
 	public void buscarCedula() throws Exception{
 		if(cedula==""||cedula==null){
-			Messagebox.show("Campo Cédula Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Cédula Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.personaDao= new PersonaDao();
@@ -241,7 +241,7 @@ public class RegistrarSancionViewModel {
 			this.socio=this.socioDao.obtenerSocioPersona(persona);
 			this.afiliado=this.afiliadoDao.obtenerPorPersona(persona);
 			if(this.socio==null && this.afiliado==null){
-				Messagebox.show("Cédula no encontrada", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cédula no encontrada", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.cedula="";
 				this.persona=new Persona();
 			}
@@ -308,7 +308,7 @@ public class RegistrarSancionViewModel {
 
 	public void setFechaInicio(Date fechaInicio) {
 		if(fechaInicio.after(fechaFin)){
-			Messagebox.show("Fecha de inicio de suspención debe ser antes a la de fin de suspención", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de inicio de suspención debe ser antes a la de fin de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaInicio = fechaInicio;
@@ -322,7 +322,7 @@ public class RegistrarSancionViewModel {
 
 	public void setFechaFin(Date fechaFin) {
 		if(fechaFin.before(fechaInicio)){
-			Messagebox.show("Fecha de fin de suspención debe ser despues a la de inicio de suspención", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de fin de suspención debe ser despues a la de inicio de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaFin = fechaFin;
@@ -343,7 +343,7 @@ public class RegistrarSancionViewModel {
 			this.sancion.setTipoSancion(this.tipoSancion);
 			if(this.tipoSancion.getIdTipoSancion()==1){
 				if(this.sancion.getDescripcion()==""||this.sancion.getDescripcion()==null){
-					Messagebox.show("Debe ingresar la descripción de la sanción", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe ingresar la descripción de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					boolean validar=validacionAgregar();
@@ -355,7 +355,7 @@ public class RegistrarSancionViewModel {
 			}
 			else if(this.tipoSancion.getIdTipoSancion()==2){
 				if(this.evetualidad==null){
-					Messagebox.show("Debe seleccionar una Eventualidad", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe seleccionar una Eventualidad", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					this.sancion.setEventualidad(this.evetualidad);
@@ -371,7 +371,7 @@ public class RegistrarSancionViewModel {
 		}
 		else{
 			if(this.persona==null){
-				Messagebox.show("Debe seleccionar a quien sancionar", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe seleccionar a quien sancionar", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			else{
 				if(sancionSocio==true){
@@ -382,13 +382,13 @@ public class RegistrarSancionViewModel {
 				}
 				
 				if(this.tipoSancion==null){
-					Messagebox.show("Debe seleccionar un motivo de sanción", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe seleccionar un motivo de sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					this.sancion.setTipoSancion(this.tipoSancion);
 					if(this.tipoSancion.getIdTipoSancion()==1){
 						if(this.sancion.getDescripcion()==""||this.sancion.getDescripcion()==null){
-							Messagebox.show("Debe ingresar la descripción de la sanción", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Debe ingresar la descripción de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 						}
 						else{
 							boolean validar=validacionAgregar();
@@ -400,7 +400,7 @@ public class RegistrarSancionViewModel {
 					}
 					else if(this.tipoSancion.getIdTipoSancion()==2){
 						if(this.evetualidad==null){
-							Messagebox.show("Debe seleccionar una Eventualidad", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Debe seleccionar una Eventualidad", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 						}
 						else{
 							this.sancion.setEventualidad(this.evetualidad);
@@ -423,7 +423,7 @@ public class RegistrarSancionViewModel {
 		if(this.multa==true){
 			if(this.multabs<=0){
 				validar1=false;
-				Messagebox.show("Debe ingresar el valor de la multa", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe ingresar el valor de la multa", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				System.out.println("multa no valida");
 			}
 			else if(this.multabs>=1){
@@ -439,7 +439,7 @@ public class RegistrarSancionViewModel {
 		
 		if(this.suspencion==true){
 			if(this.fechaFin.compareTo(this.fechaInicio)==0){
-				Messagebox.show("Debe Ingresar un rango de fechas de suspención", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe Ingresar un rango de fechas de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				validar2=false;
 			}
 			else{
@@ -481,7 +481,7 @@ public class RegistrarSancionViewModel {
 			}
 		}
 		sancionDao.actualizarSancion(sancion);
-		Messagebox.show("La Sancion del Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido actualizada", "", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show("La Sancion del Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido actualizada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
 		win.detach();
 
@@ -495,37 +495,14 @@ public class RegistrarSancionViewModel {
 		}
 		sancion.setActivo(true);
 		sancionDao.agregarSancion(sancion);
-		Messagebox.show("El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido sancionado", "", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show("El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido sancionado", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
 		win.detach();
-
-	/*	Messagebox.show("Esta seguro de aplicar sanción al Sr(a) " + this.persona.getNombre()+ " "+this.persona.getApellido(), "Confirmar",
-				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
-					public void onEvent(Event evt) throws InterruptedException {
-						if (evt.getName().equals("onOK")) {
-							try {
-								sancionDao= new SancionDao();
-								eventualidadDao= new EventualidadDao();
-								if(verEventualidad==true){
-									eventualidadDao.actualizarEventualidad(evetualidad);
-								}
-								sancion.setActivo(true);
-								sancionDao.agregarSancion(sancion);
-								Messagebox.show("El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido sancionado", "", Messagebox.OK, Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
-								win.detach();
-							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), "El Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " no se pudo sancionar",
-										Messagebox.OK, Messagebox.ERROR);
-							}
-						}
-					}
-				});*/
-		}
+	}
 	
 	@Command
 	public void cancelar(@BindingParam("win") Window win){
 		win.detach();
 	}
 	
-	}
+}

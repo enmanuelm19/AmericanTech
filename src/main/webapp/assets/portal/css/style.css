@@ -106,7 +106,7 @@ body {
 	font-size: 1em;
 	text-transform: uppercase;
 	margin: 0 auto;
-	width: 10%;
+	width: 13%;
 	text-align: center;
 	padding: 1em 2em;
 }
@@ -1280,7 +1280,7 @@ webkit-box-shadow: 0 3px 5px #bbc3c9;
 	border: 2px solid #CACACA;
     border-radius: 3px;
     width: 43.5%;
-    margin-left: 36.5%;
+    /*margin-left: 36.5%;*/
     padding-left: 10px !important;
     padding-bottom: 20px !important;
 	 -moz-transition: borde 0.4s ease-in;
@@ -1307,6 +1307,8 @@ webkit-box-shadow: 0 3px 5px #bbc3c9;
     -o-transition: all 0.4s ease-in;
     -webkit-transition: all 0.4s ease-in;
     transition: all 0.4s ease-in;
+    float:left;
+    margin-bottom: 10px;
 }
 .motivo .z-radio:hover{
 	border: 2px solid #1BBC9B;
