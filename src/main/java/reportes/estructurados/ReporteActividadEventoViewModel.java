@@ -198,6 +198,12 @@ public class ReporteActividadEventoViewModel {
 			} catch (ClassNotFoundException el) {
 				el.printStackTrace();
 			}
+			if (this.eventoSelected == null){
+				Messagebox.show("Seleccione el evento a consultar", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
+			
+			else{
+				
 			this.titulo = "Actividades del evento";
 			this.consulta= this.eventoSelected.getNombre();
 			this.fecha_inicial = this.eventoSelected.getFechaInicio().toString();
@@ -210,6 +216,7 @@ public class ReporteActividadEventoViewModel {
 			
 			
 			generarPDF();
+			}
 		}
 		
 	
