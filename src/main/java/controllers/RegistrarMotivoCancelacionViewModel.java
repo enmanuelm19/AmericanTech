@@ -58,17 +58,16 @@ public class RegistrarMotivoCancelacionViewModel {
 
 		if (motivoCancelacion.getDescripcion() != null
 				&& !motivoCancelacion.getDescripcion().equalsIgnoreCase("")) {
-			if (motivoDao.obtenerMotivoCancelacion(motivoCancelacion
-					.getDescripcion()) == null) {
+			if (motivoDao.obtenerMotivoCancelacion(motivoCancelacion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoDao.agregarMotivoCancelacion(motivoCancelacion);
-					Messagebox.show("El motivo de cancelacion "
+					Messagebox.show("El motivo de cancelación "
 							+ motivoCancelacion.getDescripcion()
 							+ " ha sido registrado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoCancelacion(motivoCancelacion);
-					Messagebox.show("El motivo de cancelacion "
+					Messagebox.show("El motivo de cancelación "
 							+ motivoCancelacion.getDescripcion()
 							+ " ha sido actualizado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -77,7 +76,7 @@ public class RegistrarMotivoCancelacionViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoCancelacion", null);
 			} else {
-				Messagebox.show("motivo cancelacion con la descripcion "
+				Messagebox.show("motivo cancelacion con la descripción "
 						+ motivoCancelacion.getDescripcion() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}

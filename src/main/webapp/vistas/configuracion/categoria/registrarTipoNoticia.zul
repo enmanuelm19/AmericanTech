@@ -24,23 +24,18 @@
 				<grid>
 					<rows>
 						<row>
-							<div class="row col-md-12">
-								<div class="col-md-3">Descripción</div>
-								<div class="col-md-9">
-									<textbox type="text" rows="4"
-										value="@bind(vm.tipoNoticia.descripcion)" width="100%"
-										constraint="no empty" />
-								</div>
+							<div class="col-md-12">
+								<label class="col-md-10">Descripción</label>
+									<textbox type="text" rows="3" class="col-xs-12 col-sm-12 col-md-12"
+										value="@bind(vm.tipoNoticia.descripcion)" constraint="no empty" />
 							</div>
 						</row>
 						<row>
-							<div class="row col-md-12">
-								<div class="col-md-3">Color</div>
-								<div class="col-md-9">
-									<colorbox id="colorPicker"
-										value="@bind(vm.tipoNoticia.color)" />
-								</div>
+							<div class="col-md-12">
+								<label class="col-md-10">Color</label>
+							<colorbox id="colorPicker" value="@bind(vm.tipoNoticia.color)"   class="col-xs-4 col-sm-4 col-md-3"/>
 							</div>
+							
 						</row>
 
 					</rows>

@@ -36,7 +36,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class="encabezado">
-									Lista Motivos Ventas
+									Listado Motivo Venta
 								</div>
 								<div align="left" class="linea-two">
 
@@ -46,7 +46,7 @@
 
 
 							<grid
-								emptyMessage="No se encuentran motivos venta registrados"
+								emptyMessage="No se encuentran motivos de venta registrados"
 								mold="paging" pageSize="10" id="gridMotivoVenta"
 								model="@load(vm.allMotivoVenta)">
 								<auxhead sclass="category-center">

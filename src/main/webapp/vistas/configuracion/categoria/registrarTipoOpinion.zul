@@ -7,7 +7,7 @@
 <zk xmlns:n="native">
 	<window id="winRegistrarTipoO"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar tipo opinion':'Registrar tipo opinion')"
+		title="@load(vm.editable?'Editar tipo opinión':'Registrar tipo opinión')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
@@ -26,12 +26,9 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-2">Descripción</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										value="@bind(vm.tipoOpnion.descripcion)" width="100%"
-										constraint="no empty" />
-								</div>
+								<label class="col-md-10">Descripción</label>
+									<textbox type="text" rows="4" class="col-xs-12 col-sm-12 col-md-12"
+										value="@bind(vm.tipoOpnion.descripcion)" constraint="no empty" />
 							</div>
 						</row>
 					</rows>

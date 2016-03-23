@@ -19,12 +19,9 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-2">Descripcion</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										width="100%" value="@bind(vm.indicador.descripcion)"
-										constraint="no empty" />
-								</div>
+								<label class="col-xs-12 col-sm-12 col-md-12">Descripción</label>
+								<textbox type="text" rows="4"  class="col-md-12 col-xs-12 col-sm-12"
+										value="@bind(vm.indicador.descripcion)"	constraint="no empty" />
 							</div>
 						</row>
 					</rows>

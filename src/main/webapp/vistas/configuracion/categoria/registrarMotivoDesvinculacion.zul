@@ -6,10 +6,10 @@
 <zk xmlns:n="native">
 	<window id="winRegistrarMD"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar motivo desvinculacion':'Registrar motivo desvinculacion')"
+		title="@load(vm.editable?'Editar motivo desvinculación':'Registrar motivo desvinculación')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
+		height="55%" width="40%" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarMotivoDesvinculacionViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
@@ -25,12 +25,9 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-2">Descripción</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										value="@bind(vm.motivoDesvinculacion.descripcion)"
-										width="100%" constraint="no empty" />
-								</div>
+								<label class="col-md-10"></label>
+									<textbox type="text" rows="4" class="col-xs-12 col-md-12" value="@bind(vm.motivoDesvinculacion.descripcion)"
+										constraint="no empty" />
 							</div>
 						</row>
 					</rows>
