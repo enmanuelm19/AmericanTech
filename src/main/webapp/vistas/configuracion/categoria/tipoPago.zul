@@ -32,7 +32,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Tipos Pagos
+									Listado Tipo Pago
 								</div>
 								<div class='linea-two'></div>
 							</div>
@@ -40,7 +40,7 @@
 
 							<grid id="gridTipoEventualidad"
 								model="@load(vm.allTipoPago)"
-								emptyMessage="No se encuentran tipos de Pagos registrados"
+								emptyMessage="No se encuentran tipos de pagos registrados"
 								mold="paging" pageSize="10">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
@@ -55,7 +55,7 @@
 
 								<columns>
 									<column hflex="2">
-										Tipo de Pago
+										Tipo Pago
 									</column>
 									<column width="20%"
 										align="center">

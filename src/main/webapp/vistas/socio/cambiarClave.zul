@@ -1,4 +1,4 @@
-<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?page title="AmericaTech" contentType="text/html"?>
 <?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
@@ -6,7 +6,7 @@
 
 <zk xmlns:n="native">
 	<window id="winCambiarClave"
-		style="iconSclass=z-icon-cogs; height:auto;"
+		style="iconSclass=z-icon-key; height:auto;"
 		title="Cambiar Contraseña" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="35%" apply="org.zkoss.bind.BindComposer"
@@ -28,28 +28,29 @@
 								<div>
 									<label class="col-md-4"
 										value="Contraseña Actual" />
-									<textbox value=""
-										constraint="no empty" class="col-md-6">
+									<textbox value="@bind(vm.password)" type="password"
+										constraint="no empty" class="col-md-6" id="pwd">
 									</textbox>
 								</div>
 								<div>
 									<label class="col-md-4"
 										value="Nueva Contraseña" />
-									<textbox value=""
-										constraint="no empty" class="col-md-6">
+									<textbox value="@bind(vm.newPassword)" type="password"
+										constraint="no empty" class="col-md-6" id="npwd">
 									</textbox>
 								</div>
 								<space></space>
 								<div>
 									<label class="col-md-4"
 										value="Confirme Contraseña" />
-									<textbox value=""
-										constraint="no empty" class="col-md-6">
+									<textbox value="@bind(vm.confirmPassword)" type="password"
+										constraint="no empty" class="col-md-6" id="cpwd">
 									</textbox>
 								</div>
 							</div>
 
 						</row>
+						<row><checkbox label="Show Password" onCheck='pwd.setType(self.isChecked() ? "text" : "password"); npwd.setType(self.isChecked() ? "text" : "password"); cpwd.setType(self.isChecked() ? "text" : "password")' /></row>
 					</rows>
 				</grid>
 				<div align="center" style="margin-top: 7%;">
@@ -58,7 +59,7 @@
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
 								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar11', win=winCambiarClave)" />
+								onClick="@command('cambioContrasena', win=winCambiarClave)" />
 						</div>
 						<div>
 							<button id="cancelarBtn"

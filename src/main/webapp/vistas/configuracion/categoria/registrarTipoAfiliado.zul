@@ -9,7 +9,7 @@
 		title="@load(vm.editable?'Editar tipo afiliado':'Registrar tipo afiliado')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
+		height="55%" width="40%" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarTipoAfiliadoViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
@@ -24,13 +24,10 @@
 				<grid>
 					<rows>
 						<row>
-							<div class="row col-md-12">
-								<div class="col-md-2">Descripción</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										value="@bind(vm.tipoAfiliado.descripcion)"
-										width="100%" constraint="no empty" />
-								</div>
+							<div class="col-md-12">
+								<label class="col-md-10">Descripción</label>
+								<textbox type="text" rows="4" class="col-xs-12 col-md-12"
+										value="@bind(vm.tipoAfiliado.descripcion)" constraint="no empty" />
 							</div>
 						</row>
 					</rows>

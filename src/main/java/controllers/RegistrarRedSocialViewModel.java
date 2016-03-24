@@ -77,8 +77,8 @@ public class RegistrarRedSocialViewModel {
 
 		if (RedSocial.getDescripcion() != null
 				&& !RedSocial.getDescripcion().equalsIgnoreCase("")) {
-			if (redDao
-					.obtenerDescripcion(RedSocial.getDescripcion()) == null) {
+//			if (redDao
+//					.obtenerDescripcion(RedSocial.getDescripcion()) == null) {
 				if(imagenNueva){
 					this.RedSocial.setImagen(ManejadorArchivo.subirImagen(uploadedImage));
 				}
@@ -100,11 +100,11 @@ public class RegistrarRedSocialViewModel {
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshRedSocial", null);
-			} else {
-				Messagebox.show("red social con la descripcion "
-						+ RedSocial.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-			}
+//			} else {
+//				Messagebox.show("red social con la descripcion "
+//						+ RedSocial.getDescripcion() + " ya existe",
+//						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+//			}
 		}
 
 	}

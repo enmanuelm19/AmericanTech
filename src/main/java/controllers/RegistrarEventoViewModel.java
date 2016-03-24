@@ -226,7 +226,7 @@ public class RegistrarEventoViewModel {
 
 		InstalacionEvento instalacionEvento;
 		if (evento.getFechaInicio() != null && evento.getFechaFin() != null
-				&& evento.getFechaInicio().before(evento.getFechaFin()))
+				&& (evento.getFechaInicio().before(evento.getFechaFin()) || evento.getFechaInicio().getTime()-evento.getFechaFin().getTime()==0) && evento.getFechaInicio().getTime( )>= new Date().getTime())
 			for (Instalacion instalacion : temporalInstalaciones) {
 				if (isDisponible(instalacion)) {
 					if (buscarInstalacion(instalacion) == null) {
@@ -353,14 +353,15 @@ public class RegistrarEventoViewModel {
 			if (!editable) {
 				eventoDao.agregarEvento(evento);
 				registrarNoticia();
-				enviarEmail();
+				//enviarEmail();
 				Messagebox.show("El evento " + evento.getNombre() + " ha sido registrado exitosamente", "",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 
 			else {
 				eventoDao.actualizarEvento(evento);
-				enviarEmail();
+				actualizarNoticia();
+				//enviarEmail();
 				Messagebox.show("El evento " + evento.getNombre() + " ha sido actualizado exitosamente", "",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
@@ -393,9 +394,9 @@ public class RegistrarEventoViewModel {
 		Noticia noticia = new Noticia();
 		NoticiaDao noticiaDao = new NoticiaDao();
 		noticia.setFoto("localhost:8080/america/assets/img/default-placeholder.png");
-		noticia.setFechaCreacion(evento.getFechaInicio());
+		noticia.setFechaCreacion(new Date());
 		noticia.setCaducidad(evento.getFechaFin());
-		noticia.setDescripcion(evento.getDescripcion());
+		noticia.setDescripcion("Nos complace informarle a nuestra familia americanista la realizacion de evento: "+evento.getNombre()+" Desde: "+evento.getFechaInicioString()+" Hasta: "+evento.getFechaFinString());
 		noticia.setTitulo(evento.getNombre());
 		noticia.setPublico(evento.isPublico());
 		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
@@ -406,7 +407,7 @@ public class RegistrarEventoViewModel {
 		
 	}
 	
-	public void enviarEmail() throws Exception {
+	/*public void enviarEmail() throws Exception {
 		SocioDao socioDao = new SocioDao();
 
 		boolean bandera = false;
@@ -437,5 +438,24 @@ public class RegistrarEventoViewModel {
 			bandera = false;
 		}
 
+	}*/
+	
+	public void actualizarNoticia() throws Exception{
+		
+		
+		System.out.println("noticias sise: "+evento.getNoticias().size());
+		
+		
+		NoticiaDao noticiaDao = new NoticiaDao();
+		Noticia noticia = noticiaDao.obtenerNoticia(evento.getNoticias().iterator().next().getIdNoticia());
+		noticia.setCaducidad(evento.getFechaFin());
+		noticia.setDescripcion("Nos complace informarle a nuestra familia americanista la realizacion de evento: "+evento.getNombre()+" Desde: "+evento.getFechaInicioString()+" Hasta: "+evento.getFechaFinString());
+		noticia.setTitulo(evento.getNombre());
+		noticia.setPublico(evento.isPublico());
+		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
+		noticia.setEvento(evento);
+		//noticia.setActivo(true);
+		noticiaDao.actualizarNoticia(noticia);
+		
 	}
 }

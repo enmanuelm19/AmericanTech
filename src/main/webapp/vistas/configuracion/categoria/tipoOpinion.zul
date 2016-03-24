@@ -7,7 +7,7 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categorias" href="#" />
-						<label value="Tipo opinion" />
+						<label value="Tipo opinión" />
 					</div>
 				</div>
 				<div align="center">
@@ -32,7 +32,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Tipos Opiniones
+									Listado Tipo Opinión
 								</div>
 								<div class='linea-two'></div>
 							</div>
@@ -40,7 +40,7 @@
 
 							<grid id="gridTipoOpinion"
 								model="@load(vm.allTipoOpnion)"
-								emptyMessage="No se encuentran tipos de Opiniones registrados"
+								emptyMessage="No se encuentran tipos de opiniones registrados"
 								mold="paging" pageSize="10">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
@@ -55,7 +55,7 @@
 
 								<columns>
 									<column hflex="2">
-										Tipo de Opinion
+										Tipo de Opinión
 									</column>
 									<column width="20%"
 										align="center">

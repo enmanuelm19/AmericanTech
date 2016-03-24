@@ -3,15 +3,14 @@
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-
 <zk xmlns:n="native">
-	<window id="winRegistrarTipoE"
+	<window id="winRegistrarMSancion"
 		style="iconSclass=z-icon-cogs; height:auto;"
-		title="@load(vm.editable?'Editar tipo eventualidad':'Registrar tipo eventualidad')"
+		title="@load(vm.editable?'Editar motivo sanción':'Registrar motivo sanción')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.RegistrarTipoEventualidadViewModel')">
+		viewModel="@id('vm') @init('controllers.RegistrarMotivoSancionViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">
@@ -25,10 +24,10 @@
 				<grid>
 					<rows>
 						<row>
-							<div class="row col-md-12">
-								<label class="col-md-2">Descripción </label>
-									<textbox type="text" rows="4"  class="col-xs-12 col-sm-12 col-md-12"
-										value="@bind(vm.tipoEventualidad.descripcion)" constraint="no empty" />
+							<div class="col-md-12">
+							<label class="col-md-10">Descripción</label>
+							<textbox type="text" rows="4" class="col-xs-12 col-sm-12 col-md-12"
+								value="@bind(vm.motivoSancion.descripcion)" constraint="no empty" />
 							</div>
 						</row>
 					</rows>
@@ -39,13 +38,13 @@
 							<button iconSclass="z-icon-floppy-o"
 								class='boton-guardar'
 								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
-								onClick="@command('guardar', win=winRegistrarTipoE)" />
+								onClick="@command('guardar', win=winRegistrarMSancion)" />
 						</div>
 						<div>
 							<button id="cancelarBtn"
 								iconSclass="z-icon-times-circle" class='boton-cancelar'
 								style="margin-bottom: 6%" label="Cancelar"
-								onClick="@command('cerrarModal', win=winRegistrarTipoE)" />
+								onClick="@command('cerrarModal', win=winRegistrarMSancion)" />
 						</div>
 					</hbox>
 				</div>
