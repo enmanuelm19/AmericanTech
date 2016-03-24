@@ -66,6 +66,7 @@ public class RegistrarUsuarioViewModel {
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);
 			user.setPersona(persona);
+			user.getPersona().setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			usuarioGrupos = new HashSet<UsuarioGrupo>(user.getUsuarioGrupos());
 		} else {
 			this.user = usuario;
@@ -144,7 +145,7 @@ public class RegistrarUsuarioViewModel {
 				user.getPersona().setFoto(foto);}
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
-				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!");
+				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}
 			else {
 				user.setFecha(new Date());
@@ -154,7 +155,7 @@ public class RegistrarUsuarioViewModel {
 				user.setUsuarioGrupos(this.usuarioGrupos);
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
-				Messagebox.show("Usuario " + user.getUsername() + " actualizado exitosamente!");
+				Messagebox.show("Usuario " + user.getUsername() + " actualizado exitosamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}
 			
 			win.detach();
@@ -186,7 +187,7 @@ public class RegistrarUsuarioViewModel {
 					
 					for(Usuario u : usuarios){
 						if(u.getPersona().getIdentificacion().equalsIgnoreCase(p.getIdentificacion())){
-							Messagebox.show("Lo sentimos la persona ya tiene un usuario asignado, editar el usuario en la lista");
+							Messagebox.show("Lo sentimos la persona ya tiene un usuario asignado, editar el usuario en la lista", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 							cerrarModal(win);
 							encontro = true;
 							break outloop;
@@ -195,7 +196,7 @@ public class RegistrarUsuarioViewModel {
 					Persona personaTemporal = user.getPersona();
 					user.setPersona(p);
 					personaDao.hardDelete(personaTemporal);
-					Messagebox.show("Ahora puede agregar un usuario a " + p.getNombre());
+					Messagebox.show("Ahora puede agregar un usuario a " + p.getNombre(), "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 					break outloop;
 				}else{
 					encontro = false;
@@ -248,18 +249,18 @@ public class RegistrarUsuarioViewModel {
 	@Command
 	@NotifyChange({"usuarioGrupo", "cantRegistros"})
 	public void eliminarGrupos(@BindingParam("Grupo") final UsuarioGrupo grupo){
-		Messagebox.show("Estas seguro de eliminar " + grupo.getGrupo().getDescripcion()+ "del usuario", "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + grupo.getGrupo().getDescripcion()+ "del usuario", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								usuarioGrupoDao.eliminarUsuarioGrupo(grupo);
 								usuarioGrupos = new HashSet<UsuarioGrupo>(usuarioGrupoDao.obtenerTodos());
-								Messagebox.show(grupo.getGrupo().getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(grupo.getGrupo().getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), grupo.getGrupo().getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(grupo.getGrupo().getDescripcion() + " No se pudo eliminar", "American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}
@@ -280,7 +281,7 @@ public class RegistrarUsuarioViewModel {
 				}
 			}
 			if(existe == true){
-				Messagebox.show("El grupo ya esta asignado a este usuario");
+				Messagebox.show("El grupo ya esta asignado a este usuario", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}else{
 			usGroup = new UsuarioGrupo();
 			usGroup.setGrupo(getGrupo());
@@ -289,7 +290,7 @@ public class RegistrarUsuarioViewModel {
 			usuarioGrupos.add(usGroup);
 			}
 		}else{
-			Messagebox.show("Seleccione un grupo");
+			Messagebox.show("Seleccione un grupo", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
 		
 
@@ -305,7 +306,15 @@ public class RegistrarUsuarioViewModel {
 	@Command
 	@NotifyChange("uploadedImage")
 	public void upload(@BindingParam("media") Media myMedia){
-		setUploadedImage(myMedia);
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				setUploadedImage(myMedia);
+			}
+		}else{
+				Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}
 	}
 
 	public Media getUploadedImage() {
