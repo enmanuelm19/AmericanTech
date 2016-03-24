@@ -6,7 +6,7 @@ INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, cor
 
 -- insertando datos al portal (OBLIGATORIAMENTE EL ID DEBE SER 1 FAVOR NO CAMBIAR, YA QUE NO FUNCIONARA)
 INSERT INTO portal (id_portal, instalacion, socio, evento, foto_socio, foto_instalaciones, foto_evento)
-VALUES  (1, 'El Centro Atlético América cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas. Además cuenta con un salón de Fiestas y dos Caneys para el disfrute de sus socios e invitados', 
+VALUES  (1, 'El Centro Atlético América cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas. Además cuenta con un salón de Fiestas y dos Caneis para el disfrute de sus socios e invitados', 
 'Nuestros socios se caracterizan por su familiaridad y buen comportamiento, ayudando así a mantener las tradiciones de club. ¿Quieres ser un socio del Centro Atlético América?', 
 'Nos interesa Motivar la interacción social a través de actividades culturales de intercambio en busca del crecimiento humano mediante la realización de eventos. ¿Quieres participar en nuestros eventos?',
  'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');

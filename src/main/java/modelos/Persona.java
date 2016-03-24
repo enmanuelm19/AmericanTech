@@ -2,7 +2,6 @@ package modelos;
 
 // Generated 06/03/2016 06:03:48 PM by Hibernate Tools 4.3.1
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -236,9 +235,5 @@ public class Persona implements java.io.Serializable {
 			Set<PreferenciaPersona> preferenciaPersonas) {
 		this.preferenciaPersonas = preferenciaPersonas;
 	}
-	
-	public String getFechaParse(){
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
-		return sdf.format(this.fechaNac);
-	}
+
 }
