@@ -659,7 +659,7 @@ INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, a
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (42, 56, 2, true);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (41, 54, 2, true);
 INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (62, 69, 2, true);
-
+INSERT INTO funcion_grupo (id_funcion_grupo, funcionid_funcion, grupoid_grupo, activo) VALUES (63, 13, 2, true);
 
 --
 -- TOC entry 2876 (class 0 OID 0)
