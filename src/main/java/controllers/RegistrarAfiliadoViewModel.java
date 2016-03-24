@@ -269,6 +269,7 @@ public class RegistrarAfiliadoViewModel {
 				if(this.imagenNuevaAfiliado==true){
 					this.persona.setFoto(ManejadorArchivo.subirImagen(uploadedImage));
 				}
+				persona.setActivo(true);
 				personaDao.agregarPersona(persona);
 				afiliado.setNroCarnet(getNroCarnet());
 				afiliado.setPersona(persona);

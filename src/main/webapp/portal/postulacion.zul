@@ -39,14 +39,14 @@
 									<label>Cédula</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
-										placeholder="Tu Cedula" width="78%" constraint="no empty"
-										value="@bind(vm.persona.identificacion)" />
+										placeholder="Tu Cedula" width="78%"
+										value="@bind(vm.persona.identificacion)" constraint="no empty, /[0-9]/: Este campo no puede ser vacio. Debe ingresar solo números."/>
 								</div>
 								<div class="col-md-6" align="left">
 									<label>Nombre</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
-										placeholder="Tu nombre" width="78%" constraint="no empty"
+										placeholder="Tu nombre" width="78%" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula."
 										value="@bind(vm.persona.nombre)" />
 								</div>
 
@@ -57,7 +57,7 @@
 									<label>Apellido</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
-										placeholder="Tu Apellido" constraint="no empty"
+										placeholder="Tu Apellido" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula."
 										value="@bind(vm.persona.apellido)" width="78%" />
 								</div>
 								<div class="col-md-6" align="left">
@@ -89,7 +89,7 @@
 
 									<textbox type="text" class="textbox"
 										placeholder="Tu Teléfono de Domicilio"
-										value="@bind(vm.persona.telefonoFijo)" width="78%" />
+										value="@bind(vm.persona.telefonoFijo)" width="78%" constraint="no empty, /[0-9]/: Este campo no puede ser vacio. Debe ingresar solo números"/>
 								</div>
 
 							</div>
@@ -100,7 +100,7 @@
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										placeholder="Tu Teléfono movil"
-										value="@bind(vm.persona.telefono)" width="78%" />
+										value="@bind(vm.persona.telefono)" width="78%" constraint="no empty, /[0-9]/: Este campo no puede ser vacio. Debe ingresar solo números"/>
 								</div>
 								<div class="col-md-6" align="left">
 								<label>Sexo</label>

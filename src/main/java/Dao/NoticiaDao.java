@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import modelos.Evento;
 import modelos.Eventualidad;
 import modelos.Noticia;
+import modelos.Postulacion;
 import confi.Sesion;
 
 import org.hibernate.Transaction;
@@ -166,4 +167,22 @@ private Sesion sesionPostgres;
   				       
   		   return datos; 
   		}
+	
+	public Noticia obtenerNoticiaPostulacion(Postulacion dato) throws Exception {            
+	      
+  		Noticia datos;  
+  		Session em = sesionPostgres.getSessionFactory().openSession();   	
+  		 try {  	
+  		   datos =  (Noticia) em.createCriteria(Noticia.class).add(Restrictions.eq("postulacion", dato)).add(Restrictions.eq("activo", true)).uniqueResult();             
+  			  } catch (Exception e) {             
+  		 
+  		throw new Exception(e.getMessage(),e.getCause());
+  		     } finally {  
+  		      em.close();  
+  			 } 
+  				       
+  		   return datos; 
+  		}
+  	
+
 }
