@@ -18,10 +18,9 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="input-group">
-						<image class="img-responsive col-md-offset-0" content="@bind(vm.uploadedImage)"></image>
-						<!-- <image src="/assets/portal/img/img1.jpg" class='img-responsive col-md-offset-0' /> -->
+						<image class="img-responsive col-md-offset-0" content="@bind(vm.uploadedImage)" src="@bind(vm.user.persona.foto)"></image>
 						<separator spacing="5px"></separator>
-						<button label="Examinar" iconSclass="z-icon-folder-open" class="boton-guardar col-md-offset-0" upload="true,maxsize=2000" onUpload="@command('upload', media=event.media)"></button>
+						<button label="Examinar" iconSclass="z-icon-folder-open" class="boton-guardar col-md-offset-0" upload="true" onUpload="@command('upload', media=event.media)"></button>
 					</div>
 				</div>
 				<div class="col-md-8">
