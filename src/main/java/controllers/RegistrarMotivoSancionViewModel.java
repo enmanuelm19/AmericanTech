@@ -62,24 +62,24 @@ public class RegistrarMotivoSancionViewModel {
 				if (!editable) {
 					motivoSancion.setActivo(true);
 					motivoDao.agregarMotivoSancion(motivoSancion);
-					Messagebox.show("El motivo de sanción "
+					Messagebox.show("El motivo sanción "
 							+ motivoSancion.getDescripcion()
-							+ " ha sido registrado exitosamente", "",
+							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoSancion(motivoSancion);
-					Messagebox.show("El motivo de sanción "
+					Messagebox.show("El motivo sanción "
 							+ motivoSancion.getDescripcion()
-							+ " ha sido actualizado exitosamente", "",
+							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoSancion", null);
 			} else {
-				Messagebox.show("motivo sanción con la descripción "
+				Messagebox.show("El motivo sanción con la descripción "
 						+ motivoSancion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 

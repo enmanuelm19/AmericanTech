@@ -7,7 +7,8 @@
 <zk xmlns:n="native" >
 	<window id="winRegistrarTipoS" style="iconSclass=z-icon-cogs; height:auto;" 
 			title="@load(vm.editable?'Editar tipo sugerencia':'Registrar tipo sugerencia')" closable="true" border="none" 
-			action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="60%" width="40%" 
+			action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})" height="50%" 
+			 class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" 
 			apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarTipoSugerenciaViewModel')">
 	   
 	    <caption iconSclass="z-icon-cogs"/>

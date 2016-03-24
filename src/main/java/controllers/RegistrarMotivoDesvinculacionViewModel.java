@@ -64,14 +64,14 @@ public class RegistrarMotivoDesvinculacionViewModel {
 					motivoDao.agregarMotivoDesvinculacion(motivoDesvinculacion);
 					Messagebox.show("El motivo de desvinculacion "
 							+ motivoDesvinculacion.getDescripcion()
-							+ " ha sido registrado exitosamente", "",
+							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao
 							.actualizarMotivoDesvinculacion(motivoDesvinculacion);
 					Messagebox.show("El motivo de desvinculacion "
 							+ motivoDesvinculacion.getDescripcion()
-							+ " ha sido actualizado exitosamente", "",
+							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
@@ -80,7 +80,7 @@ public class RegistrarMotivoDesvinculacionViewModel {
 			} else {
 				Messagebox.show("motivo desvinculacion con la descripcion "
 						+ motivoDesvinculacion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 
