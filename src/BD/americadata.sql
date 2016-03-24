@@ -258,8 +258,8 @@ INSERT INTO instalacion (id_instalacion, nombre, descripcion, capacidad, precio_
 -- Data for Name: reservacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO reservacion (id_reservacion, instalacionid_instalacion, socioid_socio, fecha_inicio, fecha_fin, condicion, activo) VALUES (1, 1, 4, '2016-03-22 15:00:00', '2016-03-24 19:00:00', 'A                                                                                                                                                                                                                                                              ', true);
-INSERT INTO reservacion (id_reservacion, instalacionid_instalacion, socioid_socio, fecha_inicio, fecha_fin, condicion, activo) VALUES (2, 2, 4, '2016-03-18 00:00:00', '2016-03-20 00:00:00', 'A                                                                                                                                                                                                                                                              ', true);
+INSERT INTO reservacion (id_reservacion, instalacionid_instalacion, socioid_socio, fecha_inicio, fecha_fin, condicion, activo) VALUES (1, 1, 4, '2016-03-22 15:00:00', '2016-03-24 19:00:00', 'A', true);
+INSERT INTO reservacion (id_reservacion, instalacionid_instalacion, socioid_socio, fecha_inicio, fecha_fin, condicion, activo) VALUES (2, 2, 4, '2016-03-18 00:00:00', '2016-03-20 00:00:00', 'A', true);
 
 
 --
@@ -292,6 +292,7 @@ INSERT INTO alquiler (id_alquiler, reservacionid_reservacion, tipo_pagoid_tipo_p
 SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 
 
+
 --
 -- TOC entry 2836 (class 0 OID 31351)
 -- Dependencies: 283
@@ -307,8 +308,6 @@ SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('archivo_alquiler_id_archivo_alquiler_seq', 1, false);
-
-
 
 --
 -- TOC entry 2752 (class 0 OID 30949)
@@ -384,7 +383,7 @@ SELECT pg_catalog.setval('cliente_externo_id_cliente_seq', 1, false);
 -- Data for Name: club; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, logo, telf_alternativo, correo, clave_correo, eslogan, activo) VALUES (1, 'J-08521135-7', 'Centro AtlÃ©tico America', 'Av. Fuerzas Armadas con Calle 57, Concepción, Barquisimeto.', '0251-4410025', 'Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la uniÃ³n familiar y consolidando el legado de sus fundadores.', 'Constituirnos como la instituciÃ³n social por excelencia dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de sus afiliados y sus familiares e impulsar la transformaciÃ³n consolidando un ambiente cada dÃ­a mÃ¡s idÃ³neo para el desarrollo biopsicosocial de nuestras generaciones.', 'http://i.imgur.com/UKvuTwu.png', '0251-4411594', 'centroatleticoclubamerica@gmail.com', NULL, 'Incentivando y promoviendo la participaciÃ³n cultural y deportiva', true);
+INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, logo, telf_alternativo, correo, clave_correo, eslogan, activo) VALUES (1, 'J-08521135-7', 'Centro AtlÃ©tico America', 'Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.', '0251-4410025', 'Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la uniÃ³n familiar y consolidando el legado de sus fundadores.', 'Constituirnos como la instituciÃ³n social por excelencia dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de sus afiliados y sus familiares e impulsar la transformaciÃ³n consolidando un ambiente cada dÃ­a mÃ¡s idÃ³neo para el desarrollo biopsicosocial de nuestras generaciones.', 'http://i.imgur.com/bzOnmjv.png', '0251-4411594', 'centroatleticoclubamerica@gmail.com', NULL, 'Incentivando y promoviendo la participaciÃ³n cultural y deportiva', true);
 
 
 --
@@ -514,6 +513,7 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (10, 'Danos tu opinion', ' ', 'z-icon-angle-double-right', ' ', 2, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (11, 'Administrar evento', ' ', 'z-icon-angle-double-right', ' ', 4, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (12, 'Estructurado', ' ', 'z-icon-angle-double-right', ' ', 5, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (13, 'Motivo Sancion', 'configuracion/categoria/motivoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (14, 'Estadisticos', ' ', 'z-icon-angle-double-right', ' ', 5, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (15, 'Seguridad', ' ', 'z-icon-angle-double-right', ' ', 6, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (16, 'Perfil del club', 'configuracion/perfilClub.zul', 'z-icon-angle-double-right', ' ', 1, true);
@@ -530,7 +530,6 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (27, 'Tipo instalacion', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (28, 'Tipo sancion', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (29, 'Tipo Afiliado', 'configuracion/categoria/tipoAfiliado.zul', 'z-icon-angle-double-right', ' ', 8, true);
---INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (30, 'Tipo actividad', 'configuracion/categoria/tipoActividad.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (31, 'Motivo desvinculacion', 'configuracion/categoria/motivoDesvinculacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (32, 'Acciones', 'socio/acciones.zul', 'z-icon-angle-double-right', ' ', 2, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (33, 'Mi perfil', 'socio/miPerfil.zul', 'z-icon-angle-double-right', ' ', 2, true);
@@ -865,11 +864,11 @@ SELECT pg_catalog.setval('motivo_venta_id_motivo_venta_seq', 3, true);
 -- Data for Name: tipo_noticia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (1, 'Evento', '#FF0000', true);
+INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (1, 'Evento', '#3300cc', false);
 INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (2, 'Acciones', '#FFFF00', true);
-INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (3, 'Sucesos', '#A52A2A', true);
+INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (3, 'Sucesos', '#cc00ff', true);
 INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (4, 'Otros', '#FFA500', true);
-INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (5, 'PostulaciÃ³n', '#339966', true);
+INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (5, 'Postulación', '#f88514', false);
 
 
 --
@@ -878,22 +877,22 @@ INSERT INTO tipo_noticia (id_tipo_noticia, descripcion, color, activo) VALUES (5
 -- Data for Name: noticia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (1, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (2, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (3, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (4, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (5, 'Nueva PostulaciÃ³n', 'El Sr(a). Fidel Aliaga, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciÃ³n de opiniones postulantes!', NULL, 'http://i.imgur.com/mSJl1BZ.jpg', 5, '2016-03-17', '2016-03-17', false, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (6, ' PrepÃ¡rate para el 89 aniversario del Centro AtlÃ©tico AmÃ©rica', 'En su semana aniversario, la junta directiva, encabezada por el Dr. VÃ­ctor Montilla, se complace en invitar a todos los consocios y comunidad larense a disfrutar y compartir del programa de actividades designado.', NULL, 'http://i.imgur.com/JNy9o9V.png', 4, '2016-03-18', '2016-03-20', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (7, 'Jornadas Infociencias XXXII', ' La 32 ediciÃ³n de las Jornadas de Infociencias de la Universidad Centroccidental Lisandro Alvarado, se realizarÃ¡ el dÃ­a 6 de Abril del presente aÃ±o en las instalaciones del Decanato de Ciencias y TecnologÃ­a, nÃºcleo Obelisco, donde se darÃ¡n a conocer cuatro proyectos informÃ¡ticos creados por los estudiantes de IngenierÃ­a en InformÃ¡tica', NULL, 'http://i.imgur.com/JNy9o9V.png', 3, '2016-03-18', '2016-03-20', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (8, 'Nueva PostulaciÃ³n', 'El Sr(a). Ruben Vivas, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciÃ³n de opiniones postulantes!', NULL, 'http://i.imgur.com/ycCM1PJ.jpg', 5, '2016-03-18', '2016-03-18', false, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (1, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (2, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (3, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (4, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-17', '2016-03-17', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (5, 'Nueva Postulación', 'El Sr(a). Fidel Aliaga, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 'http://i.imgur.com/mSJl1BZ.jpg', 5, '2016-03-17', '2016-03-17', false, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (6, ' Prepárate para el 89 aniversario del Centro Atlético América', 'En su semana aniversario, la junta directiva, encabezada por el Dr. Víctor Montilla, se complace en invitar a todos los consocios y comunidad larense a disfrutar y compartir del programa de actividades designado.', NULL, 'http://i.imgur.com/JNy9o9V.png', 4, '2016-03-18', '2016-03-20', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (7, 'Jornadas Infociencias XXXII', 'La 32 edición de las Jornadas de Infociencias de la Universidad Centroccidental Lisandro Alvarado, se realizará el día 6 de Abril del presente año en las instalaciones del Decanato de Ciencias y Tecnología, núcleo Obelisco, donde se darán a conocer cuatro proyectos informáticos creados por los estudiantes de Ingeniería en Informática', NULL, 'http://i.imgur.com/JNy9o9V.png', 3, '2016-03-18', '2016-03-20', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (8, 'Nueva Postulación', 'El Sr(a). Ruben Vivas, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 'http://i.imgur.com/ycCM1PJ.jpg', 5, '2016-03-18', '2016-03-18', false, NULL, true);
 INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (9, 'Torneo de Beisbol', 'Disfruta del Torneo de Beisbol', NULL, 'localhost:8080/america/assets/img/default-placeholder.png', 1, '2016-03-18', '2016-03-19', false, NULL, true);
 INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (10, 'Evento Hilder', 'Este un evento con la noticia corregida', 3, 'localhost:8080/america/assets/img/default-placeholder.png', 1, '2016-03-25', '2016-04-01', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (11, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-18', '2016-03-18', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (12, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-18', '2016-03-18', true, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (13, 'Nueva PostulaciÃ³n', 'El Sr(a). Mariangel Arrieche, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciÃ³n de opiniones postulantes!', NULL, 'http://i.imgur.com/8t2CuRs.png', 5, '2016-03-18', '2016-03-18', false, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (14, 'Nueva PostulaciÃ³n', 'El Sr(a). Romulo Dominguez, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciÃ³n de opiniones postulantes!', NULL, 'http://i.imgur.com/duCXybQ.jpg', 5, '2016-03-18', '2016-03-18', false, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (15, 'parrilla osullivan', 'evento  para quitar la presion de los desarrolladores del club america', 4, 'localhost:8080/america/assets/img/default-placeholder.png', 1, '2016-03-20', '2016-03-21', false, NULL, true);
-INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (16, 'AcciÃ³n en Venta', 'Â¡Se a aperturado el proceso de postulaciÃ³n para una acciÃ³n en venta!', NULL, NULL, 2, '2016-03-18', '2016-03-18', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (11, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-18', '2016-03-18', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (12, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-18', '2016-03-18', true, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (13, 'Nueva Postulación', 'El Sr(a). Mariangel Arrieche, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciÃ³n de opiniones postulantes!', NULL, 'http://i.imgur.com/8t2CuRs.png', 5, '2016-03-18', '2016-03-18', false, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (14, 'Nueva Postulación', 'El Sr(a). Romulo Dominguez, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciÃ³n de opiniones postulantes!', NULL, 'http://i.imgur.com/duCXybQ.jpg', 5, '2016-03-18', '2016-03-18', false, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (15, 'Parrilla Osullivan', 'Evento para quitar la presión de los desarrolladores del Club América', 4, 'localhost:8080/america/assets/img/default-placeholder.png', 1, '2016-03-20', '2016-03-21', false, NULL, true);
+INSERT INTO noticia (id_noticia, titulo, descripcion, eventoid_evento, foto, tipo_noticiaid_tipo_noticia, fecha_creacion, caducidad, publico, enlace, activo) VALUES (16, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 2, '2016-03-18', '2016-03-18', true, NULL, true);
 
 
 --
@@ -1031,7 +1030,7 @@ SELECT pg_catalog.setval('politica_id_politica_seq', 1, false);
 -- Data for Name: portal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO portal (id_portal, instalacion, socio, evento, activo, foto_socio, foto_instalaciones, foto_evento) VALUES (1, 'El Centro AtlÃ©tico America cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas. AdemÃ¡s cuenta con un salÃ³n de Fiestas y dos Caneyes para el disfrute de sus socios e invitados', 'Nuestros socios se caracterizan por su familiaridad y buen comportamiento, ayudando asÃ­ a mantener las tradiciones de club. Â¿Quieres ser un socio del Centro AtlÃ©tico America?', 'Nos interesa Motivar la interacciÃ³n social a travÃ©s de actividades culturales de intercambio en busca del crecimiento humano mediante la realizaciÃ³n de eventos. Â¿Quieres participar en nuestros eventos?', true, 'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');
+INSERT INTO portal (id_portal, instalacion, socio, evento, activo, foto_socio, foto_instalaciones, foto_evento) VALUES (1, 'El Centro Atlético America cuenta con canchas de tenis, baloncesto, beisbol, bolas criollas. Además cuenta con un Salón de Fiestas y dos Caneis para el disfrute de sus socios e invitados', 'Nuestros Socios se caracterizan por su familiaridad y buen comportamiento, ayudando así a mantener las tradiciones de club. ¿Quieres ser un socio del Centro Atlético America?', 'Nos interesa Motivar la interacción social a través de actividades culturales de intercambio en busca del crecimiento humano mediante la realización de eventos. ¿Quieres participar en nuestros eventos?', true, 'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');
 
 
 --
@@ -1170,9 +1169,7 @@ SELECT pg_catalog.setval('recurso_instalacion_id_recurso_instalacion_seq', 1, fa
 -- Dependencies: 257
 -- Data for Name: red_social; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (1, 'Facebook', 'http://i.imgur.com/J8nfPwn.png',true);
-INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (2, 'Instagram', 'http://i.imgur.com/E6xQKvN.png',true);
-INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (3, 'Twitter', 'http://i.imgur.com/rox1qxk.png',true);
+
 
 
 --
@@ -1181,8 +1178,7 @@ INSERT INTO red_social (id_red_social, descripcion, imagen, activo) VALUES (3, '
 -- Data for Name: red_club; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO red_club (id_red_club, clubid_club, red_socialid_red_social, enlace, activo) VALUES (1, 1, 3, 'https://twitter.com/CAAAMERICA',true);
-INSERT INTO red_club (id_red_club, clubid_club, red_socialid_red_social, enlace, activo) VALUES (2, 1, 1, 'https://www.facebook.com/accaa',true);
+
 
 --
 -- TOC entry 2903 (class 0 OID 0)
@@ -1324,6 +1320,8 @@ SELECT pg_catalog.setval('sugerencia_id_sugerencia_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('tipo_afiliado_id_tipo_afiliado_seq', 1, false);
+
+
 
 
 --
