@@ -93,25 +93,22 @@
 															</auxhead>
 
 															<columns>
-																<column
+																<column align="center"
 																	width="40%">
 																	Actividad
 																</column>
 
-																<column
+																<column align="center"
 																	width="20%">
 																	Fecha
 																	tope
 																</column>
-																<column
+																<column align="center"
 																	width="20%">
 																	Valor
 																	esperado
 																</column>
-																<column
-																	width="20%">
-																	Estado
-																</column>
+						
 															</columns>
 															<rows>
 																<template
@@ -123,13 +120,6 @@
 																			value="@load(actividad.fechaTopeString)" />
 																		<label
 																			value="@load(actividad.valorEsperado)" />
-																		<label
-																			value="@load(actividad.estado)" />
-																		<button
-																			visible="@load(evento.visible)" sclass="btn-link"
-																			iconSclass="z-icon-plus blue"
-																			tooltiptext="Agregar actividad"
-																			onClick="@command('showModal',evento=evento)" />
 																	</row>
 																</template>
 															</rows>

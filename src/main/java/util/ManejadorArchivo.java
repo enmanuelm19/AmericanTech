@@ -72,7 +72,6 @@ public class ManejadorArchivo {
 		String extension = "png";
 		if(file.getName().lastIndexOf(".") != -1 && file.getName().lastIndexOf(".") != 0){
 			extension = file.getName().substring(file.getName().lastIndexOf(".")+1);
-			System.out.println(extension);
 		}
 		ImageIO.write(image, extension, byteArray);
 		byte[] byteImage = byteArray.toByteArray();

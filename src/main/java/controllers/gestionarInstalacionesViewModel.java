@@ -21,6 +21,7 @@ import org.zkoss.zul.Window;
 import Dao.FotoDao;
 import Dao.InstalacionDao;
 import Dao.RecursoInstalacionDao;
+import modelos.Accion;
 import modelos.Foto;
 import modelos.Instalacion;
 import modelos.RecursoInstalacion;
@@ -41,6 +42,9 @@ public class gestionarInstalacionesViewModel {
 	private int id;
 	private List<Foto> listFotos;
 	private FotoDao fotosInstDao;
+	private String nombreFiltro;
+	private String tipoFiltro;
+	
 
 	@Init
 	public void init() throws Exception {
@@ -100,7 +104,15 @@ public class gestionarInstalacionesViewModel {
 	public void setIdFiltro(String idFiltro) {
 		this.idFiltro = idFiltro==null?"":idFiltro.trim();
 	}
-	
+//	public String getPropietarioFiltro() {
+//		if(propietarioFiltro==null)
+//			return "";
+//		return propietarioFiltro;
+//	}
+//
+//	public void setPropietarioFiltro(String propietarioFiltro) {
+//		this.propietarioFiltro = propietarioFiltro==null?"":propietarioFiltro.trim();
+//	}
 	@Command
 	public void showModalRegInst(@BindingParam("instalacion") Instalacion instalacion) {
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -120,6 +132,46 @@ public class gestionarInstalacionesViewModel {
 		this.tipoPrefrenciaFiltro = tipoPrefrenciaFiltro==null?"":tipoPrefrenciaFiltro.trim();
 	}*/
 
+	public String getNombreFiltro() {
+		if(nombreFiltro==null)
+			return "";
+		return nombreFiltro;
+	}
+
+	public void setNombreFiltro(String nombreFiltro) {
+		this.nombreFiltro = nombreFiltro==null?"":nombreFiltro.trim();
+	}
+	
+	public String getTipoFiltro() {
+		if(tipoFiltro==null)
+			return "";
+		return tipoFiltro;
+	}
+
+	public void setTipoFiltro(String tipoFiltro) {
+		this.tipoFiltro = tipoFiltro==null?"":tipoFiltro.trim();
+	}
+	
+	@Command
+	@NotifyChange({ "allInstalaciones", "cantInstalaciones" })
+	public void filtro() throws Exception {
+		List<Instalacion> tip = new ArrayList<Instalacion>();
+		String nom = getNombreFiltro().toLowerCase();
+		String tipo = getTipoFiltro().toLowerCase();
+		//System.out.println("condicion "+condicion);
+		for (Iterator<Instalacion> i = instalacionDao.obtenerTodos().iterator(); i.hasNext();) {
+			Instalacion tmp = i.next();
+			
+				System.out.println("Instalacion "+tmp.getNombre());
+				
+				if (tmp.getNombre().toLowerCase().contains(nom) && tmp.getTipoInstalacion().getDescripcion().toLowerCase().contains(tipo)) {
+						tip.add(tmp);
+			}
+			
+		}
+		this.allinstalaciones = tip;
+	}
+	
 	@Command
 	@NotifyChange({ "allinstalaciones", "cantInstalaciones" })
 	public void eliminar(@BindingParam("instalacion") final Instalacion instalacion) {

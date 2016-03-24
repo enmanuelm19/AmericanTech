@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2016-03-23T17:29:31 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="evento_actividad" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
@@ -6,7 +8,7 @@
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
-	<parameter name="EVENTO" class="java.lang.String"/>
+	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="INSTALACIONES" class="java.lang.String"/>
 	<parameter name="FECHA_INICIAL" class="java.lang.String"/>
 	<parameter name="FECHA_HASTA" class="java.lang.String"/>
@@ -17,7 +19,8 @@ INNER JOIN evento e
 ON a.eventoid_evento = e.id_evento]]>
 	</queryString>
 	<field name="descripcion" class="java.lang.String"/>
-	<field name="to_char" class="java.lang.String"/>
+	<field name="fecha_tope" class="java.lang.String"/>
+	<field name="fecha_realizacion" class="java.lang.String"/>
 	<field name="valor_real" class="java.lang.Integer"/>
 	<field name="valor_esperado" class="java.lang.Integer"/>
 	<field name="finalizada" class="java.lang.Boolean"/>
@@ -60,7 +63,7 @@ ON a.eventoid_evento = e.id_evento]]>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Evento]]></text>
+				<text><![CDATA[Evento:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="15" y="0" width="765" height="31" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
@@ -74,7 +77,7 @@ ON a.eventoid_evento = e.id_evento]]>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{EVENTO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{CONSULTA}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="416" y="31" width="51" height="20" uuid="ad89a476-0136-4b48-bad9-46e0f7e9a63b"/>
@@ -95,7 +98,7 @@ ON a.eventoid_evento = e.id_evento]]>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[hasta]]></text>
+				<text><![CDATA[Hasta:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="634" y="31" width="100" height="20" uuid="7cece39e-c3c1-4d5e-b53d-54b4d29c744f"/>
@@ -105,18 +108,32 @@ ON a.eventoid_evento = e.id_evento]]>
 				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="56" width="101" height="20" uuid="a3c4c74a-b950-462e-bb4c-1be96ddae3a7"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Instalaciones:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="101" y="56" width="697" height="20" uuid="4a763718-fc49-46bd-a1ce-07c5b29413d0"/>
+				<reportElement x="416" y="31" width="51" height="20" uuid="7b5d9dbe-7d26-4ad1-a74e-08109b24ac1c"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{INSTALACIONES}]]></textFieldExpression>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="467" y="31" width="100" height="20" uuid="531f7c1e-58a5-4746-8f63-d8a7ec2fbfd8"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_INICIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="571" y="31" width="51" height="20" uuid="0a23c912-5f90-4d49-967b-fe29143a123f"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[hasta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="634" y="31" width="100" height="20" uuid="deceec8f-99ee-4af4-96b6-4d046ffe69bd"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
