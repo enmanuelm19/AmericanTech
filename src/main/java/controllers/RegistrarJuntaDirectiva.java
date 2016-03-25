@@ -39,7 +39,7 @@ public class RegistrarJuntaDirectiva {
 
 	public void setFechaInicio(Date fechaInicio) {
 		if(fechaInicio.after(fechaFin)){
-			Messagebox.show("Fecha de inicio del período ser antes a la de fin del período", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de inicio del perï¿½odo ser antes a la de fin del perï¿½odo", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaInicio = fechaInicio;
@@ -53,7 +53,7 @@ public class RegistrarJuntaDirectiva {
 
 	public void setFechaFin(Date fechaFin) {
 		if(fechaFin.before(fechaInicio)){
-			Messagebox.show("Fecha de fin del período debe ser despues a la de inicio del período", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de fin del perï¿½odo debe ser despues a la de inicio del perï¿½odo", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaFin = fechaFin;
@@ -72,7 +72,7 @@ public class RegistrarJuntaDirectiva {
 			this.juntaDirectiva.setClub(clubDao.obtenerClub(1));
 			this.juntaDirectivaDao.agregarJuntaDirectiva(juntaDirectiva);
 
-			Messagebox.show("La Junta Directiva del período "+this.juntaDirectiva.getFechaInicioParse()+" a "+this.juntaDirectiva.getFechaFinParse()+" ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("La Junta Directiva del perï¿½odo "+this.juntaDirectiva.getFechaInic()+" a "+this.juntaDirectiva.getFechaFin()+" ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshJuntas",null);
 			
