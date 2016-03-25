@@ -36,14 +36,14 @@
 							align="center">
 							<div class="row">
 								<div class="col-md-6" align="left">
-									<label>Cédula</label>
+									<label style="color:red;">*</label><label>Cédula</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										placeholder="Tu Cedula" width="78%" constraint="no empty"
 										value="@bind(vm.persona.identificacion)" />
 								</div>
 								<div class="col-md-6" align="left">
-									<label>Nombre</label>
+									<label style="color:red;">*</label><label>Nombre</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										placeholder="Tu nombre" width="78%" constraint="no empty"
@@ -54,14 +54,14 @@
 
 							<div class="row">
 								<div class="col-md-6" align="left">
-									<label>Apellido</label>
+									<label style="color:red;">*</label><label>Apellido</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										placeholder="Tu Apellido" constraint="no empty"
 										value="@bind(vm.persona.apellido)" width="78%" />
 								</div>
 								<div class="col-md-6" align="left">
-									<label>Dirección</label>
+									<label style="color:red;">*</label><label>Dirección</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										placeholder="Tu Dirección" constraint="no empty"
@@ -73,7 +73,7 @@
 
 							<div class="row">
 								<div class="col-md-6" align="left">
-									<label>Tu email</label>
+									<label style="color:red;">*</label><label>Tu email</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										width="78%" placeholder="Tu Email"
@@ -82,7 +82,7 @@
 								</div>
 
 								<div class="col-md-6" align="left">
-									<label>
+									<label style="color:red;">*</label><label>
 										Tu teléfono de domicilio
 									</label>
 									<n:br></n:br>
@@ -96,14 +96,14 @@
 
 							<div class="row">
 								<div class="col-md-6" align="left">
-									<label>Tu teléfono movil</label>
+									<label style="color:red;">*</label><label>Tu teléfono móvil</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
 										placeholder="Tu Teléfono movil"
 										value="@bind(vm.persona.telefono)" width="78%" />
 								</div>
 								<div class="col-md-6" align="left">
-								<label>Sexo</label>
+								<label style="color:red;">*</label><label>Sexo</label>
 									<div class="sexo" width="78%">
 										
 										<n:br></n:br>
@@ -121,7 +121,7 @@
 							<separator />
 							<div class="row" align="left">
 								<div class="col-md-6">
-									<label style="margin-top: -20px;">
+									<label style="color:red;">*</label><label style="margin-top: -20px;">
 										Fecha de nacimiento:
 									</label>
 									<n:br></n:br>
@@ -155,7 +155,7 @@
 								<n:br></n:br>
 								<n:br></n:br>
 								<div class="col-md-12" align="center">
-									<radiogroup id="motivo"
+									<label style="color:red;">*</label><radiogroup id="motivo"
 										selectedItem="@bind(vm.postulacion.motivoPostulacion)"
 										model="@load(vm.motivosAll)" style="text-align:center;">
 										<template name="model">
@@ -183,7 +183,7 @@
 								<div class="row">
 									<div class="col-md-6"
 										align="left">
-										<label>
+										<label style="color:red;">*</label><label>
 											Código del socio (Padrino 1)
 										</label>
 										<n:br></n:br>
@@ -194,7 +194,7 @@
 									</div>
 									<div class="col-md-6"
 										align="left">
-										<label>
+										<label style="color:red;">*</label><label>
 											Código del socio (Padrino 2)
 										</label>
 										<textbox type="text"
@@ -214,7 +214,7 @@
 							<n:br></n:br>
 							<n:br></n:br>
 							<div align="left">
-								<label>
+								<label style="color:red;">*</label><label>
 									Puede seleccionar varias opciones
 								</label>
 								<n:br></n:br>
@@ -225,11 +225,15 @@
 								<separator />
 								<n:br></n:br>
 							</div>
+							<div align="left">
+							<label  style="color:red;">*Campos obligatorios</label>
+							</div>
 							<span>
 								<button 
 									class='boton-Formulario' label="Enviar postulación"
 									onClick="@command('agregarPostulacion')" />
 							</span>
+							
 							<div class="clear"></div>
 						</div>
 					</div>
