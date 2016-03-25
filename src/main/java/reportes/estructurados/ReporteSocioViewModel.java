@@ -33,6 +33,7 @@ import Dao.TipoPreferenciaDao;
 import modelos.TipoPreferencia;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -41,6 +42,8 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRTextExporter;
+import net.sf.jasperreports.engine.export.JRTextExporterParameter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import modelos.Preferencia;
 import modelos.PreferenciaEvento;
@@ -59,8 +62,8 @@ public class ReporteSocioViewModel {
 	private String edadDedeSelected;
 	private String edadHastaSelected; 
 	private String sexoSelected;
-
-	//reporte
+	private boolean isPdf;
+	
 
 	private String sql = "SELECT DISTINCT p.nombre || ' ' || p.apellido as NOMBRE, "
 			+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO, p.telefono as TELEFONO, "
@@ -169,7 +172,6 @@ public class ReporteSocioViewModel {
 
 
 	public Set<Preferencia> getPreferenciaEventos() {
-		//System.out.println(preferenciaEventos.size());
 		return preferenciaEventos;
 	}	
 	public void setPreferenciaEventos(Set<Preferencia> preferenciaEventos) {
@@ -214,12 +216,14 @@ public class ReporteSocioViewModel {
 
 	@Command
 	public void btnPDF(Event e) throws SQLException, JRException, IOException {
+		this.isPdf = true;
 		cargarSql();
 	}
 
 	@Command
-	public void btnEXCEL(Event e) throws SQLException, JRException, IOException {
-		//cargarSql();
+	public void btnTXT(Event e) throws SQLException, JRException, IOException {
+		this.isPdf = false;
+		cargarSql();
 	}
 
 	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
@@ -234,9 +238,15 @@ public class ReporteSocioViewModel {
 			el.printStackTrace();
 		}
 
-		//System.out.println(this.sexoSelected);
-		//System.out.println(this.edadDedeSelected);
-		//System.out.println(this.edadHastaSelected);
+		
+		sql = "SELECT DISTINCT p.nombre || ' ' || p.apellido as NOMBRE, "
+				+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO, p.telefono as TELEFONO, "
+				+ "s.nro_carnet as CARNET FROM socio s "
+				+ "INNER JOIN persona p ON s.personaid_persona = p.id_persona "
+				+ "INNER JOIN preferencia_persona pp ON pp.personaid_persona = p.id_persona "
+				+ "INNER JOIN preferencia pre ON pre.id_preferencia = pp.preferenciaid_preferencia "
+				+ "INNER JOIN tipo_preferencia tipop ON tipop.id_tipo_preferencia = pre.tipo_preferenciaid_tipo_preferencia  "
+				+ "WHERE p.activo = true ";
 
 		if(this.sexoSelected == null){
 			Messagebox.show("Seleccione un Sexo", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
@@ -284,24 +294,41 @@ public class ReporteSocioViewModel {
 		}	
 	}
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-
 		String nombreArchivo = titulo;
 		JasperPrint jasperPrint = cargarJasper();
-		JRExporter exporter = new JRPdfExporter();		
-
+			
+		
 		if(jasperPrint.getPages().size() > 0){
-			Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
-
+			if(this.isPdf) {
+				JRExporter exporter = new JRPdfExporter();
+				Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf");
+			} else {
+				JRExporter exporterTxt = new JRTextExporter();
+				exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
+				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
+				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
+				exporterTxt.exportReport();
+				FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+			    Filedownload.save(input, "txt", "reporte.txt");	    
+			    con.close();
+			    
+			    try{
+		    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
+		    		file.delete();
+		    	}catch(Exception e){
+		    		
+		    		e.printStackTrace();
+		    		
+		    	}
+			    
+			}
+			
 		} else {
-
 			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-
 		}		
 		con.close();
-		System.out.println(sql);
-		sql=sqloriginal;
 	}
-
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
 		jd = JRXmlLoader.load(reporte); 

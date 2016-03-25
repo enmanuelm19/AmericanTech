@@ -383,11 +383,7 @@ public void generarPDF() throws JRException, FileNotFoundException, SQLException
 		    
 		    try{
 	    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
-	    		if(file.delete()){
-	    			System.out.println(file.getName() + " is deleted!");
-	    		}else{
-	    			System.out.println("Delete operation is failed.");
-	    		}	
+	    		file.delete();	
 	    	}catch(Exception e){
 	    		
 	    		e.printStackTrace();
