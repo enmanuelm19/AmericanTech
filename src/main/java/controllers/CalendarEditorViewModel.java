@@ -6,7 +6,10 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Window;
 
+import Dao.InstalacionEventoDao;
 import modelos.Evento;
+import modelos.Foto;
+import modelos.InstalacionEvento;
 import viewModel.CalendarioEvent;
 
 public class CalendarEditorViewModel {
@@ -14,6 +17,8 @@ public class CalendarEditorViewModel {
 	private CalendarioEvent calendarEventData = new CalendarioEvent();
 
 	private Evento eventoSelected = new Evento();
+
+	private String imagenInstalacion;
 
 	private boolean visible = false;
 
@@ -33,7 +38,12 @@ public class CalendarEditorViewModel {
 	public void init(@ExecutionArgParam("evento") Evento evento) {
 		if (evento != null) {
 			setEventoSelected(evento);
-		}	
+			for (InstalacionEvento instalacionE : getEventoSelected().getInstalacionEventos()) {
+				for (Foto foto : instalacionE.getInstalacion().getFotos()) {
+					setImagenInstalacion(foto.getUrl());
+				}
+			}
+		}
 	}
 
 	public Evento getEventoSelected() {
@@ -43,7 +53,15 @@ public class CalendarEditorViewModel {
 	public void setEventoSelected(Evento eventoSelected) {
 		this.eventoSelected = eventoSelected;
 	}
-	
+
+	public String getImagenInstalacion() {
+		return imagenInstalacion;
+	}
+
+	public void setImagenInstalacion(String imagenInstalacion) {
+		this.imagenInstalacion = imagenInstalacion;
+	}
+
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
