@@ -176,7 +176,7 @@
 
 					<div align="center" xmlns:w="client">
 						<button id="btnEXCEL" class='boton-guardar'
-							onClick="@command('btnEXCEL')" label="Generar txt" />
+							onClick="@command('btnTXT')" label="Generar txt" />
 						<space spacing="2%"></space>
 						<button id="btnPDF" class='boton-guardar'
 							onClick="@command('btnPDF')" label="Generar PDF" />
