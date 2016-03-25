@@ -175,7 +175,7 @@
 					<n:div class="desc"
 						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
 
-						<n:h3>Nuestros socios</n:h3>
+						<n:h3>Nuestros Socios</n:h3>
 						<n:br></n:br>
 						<label
 							style="color: #444444; font-size: 1.02em; text-align: left; padding: 1em 1em 2em 1em; line-height: 1.9em;"
@@ -183,11 +183,9 @@
 						</label>
 						<n:br></n:br>
 					</n:div>
-					<n:a style=" z-index: 1;"
-						href="portal/postulacion.zul" class="boton-Formulario"
-						type="button">
-						Postulate
-					</n:a>
+					<a href="/portal/error.zul" visible="@load(vm.cancelarPostulacion)" class="boton-Formulario">Postulación</a>
+					<a href="/portal/postulacion.zul" visible="@load(vm.verPostulacion)" class="boton-Formulario">Postulación</a>
+					
 
 
 
