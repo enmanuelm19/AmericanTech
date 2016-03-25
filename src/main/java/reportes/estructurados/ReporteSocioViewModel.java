@@ -64,6 +64,7 @@ public class ReporteSocioViewModel {
 	private String sexoSelected;
 	private boolean isPdf;
 	
+	
 
 	private String sql = "SELECT DISTINCT p.nombre || ' ' || p.apellido as NOMBRE, "
 			+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO, p.telefono as TELEFONO, "
@@ -92,7 +93,9 @@ public class ReporteSocioViewModel {
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
-
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+	private String rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/reporte_socios.txt";;
+	
 	@Init
 	public void init(@ExecutionArgParam("elTipo") TipoPreferencia tpreferencia) {
 		tPreferenciaDao = new TipoPreferenciaDao();		
@@ -294,8 +297,10 @@ public class ReporteSocioViewModel {
 		}	
 	}
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-		String nombreArchivo = titulo;
-		JasperPrint jasperPrint = cargarJasper();
+		Date hoy = (Date) Calendar.getInstance().getTime();
+		String date = "-"+sdfGuio.format(hoy).toString();
+		String nombreArchivo = this.titulo.concat(date);
+		JasperPrint jasperPrint = cargarJasper();	
 			
 		
 		if(jasperPrint.getPages().size() > 0){
@@ -305,23 +310,20 @@ public class ReporteSocioViewModel {
 			} else {
 				JRExporter exporterTxt = new JRTextExporter();
 				exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
-				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, this.rutaNoEstructurado);
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
 				exporterTxt.exportReport();
-				FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
-			    Filedownload.save(input, "txt", "reporte.txt");	    
+				FileInputStream input = new FileInputStream(this.rutaNoEstructurado);
+			    Filedownload.save(input, "txt", nombreArchivo+".txt");	    
 			    con.close();
 			    
 			    try{
-		    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
+		    		File file = new File(this.rutaNoEstructurado);
 		    		file.delete();
 		    	}catch(Exception e){
-		    		
 		    		e.printStackTrace();
-		    		
 		    	}
-			    
 			}
 			
 		} else {
