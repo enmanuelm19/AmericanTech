@@ -15,7 +15,7 @@ public class Afiliado implements java.io.Serializable {
 	private Socio socio;
 	private TipoAfiliado tipoAfiliado;
 	private String nroCarnet;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Sancion> sancions = new HashSet<Sancion>(0);
 
 	public Afiliado() {

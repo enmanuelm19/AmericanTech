@@ -111,7 +111,7 @@ CREATE TABLE instalacion (
   nombre                              varchar(180) NOT NULL, 
   descripcion                         text NOT NULL, 
   capacidad                           int2 NOT NULL, 
-  precio_alquiler                     float4 NOT NULL, 
+  precio_alquiler                     float4, 
   alquilable                          bool DEFAULT 'true' NOT NULL, 
   tipo_instalacionid_tipo_instalacion int2 NOT NULL, 
   activo                              bool DEFAULT 'true' NOT NULL, 

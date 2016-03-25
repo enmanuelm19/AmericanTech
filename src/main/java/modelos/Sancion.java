@@ -19,7 +19,7 @@ public class Sancion implements java.io.Serializable {
 	private Date fechaInic;
 	private Date fechaFin;
 	private Float monto;
-	private boolean activo;
+	private boolean activo = true;
 
 	public Sancion() {
 	}
