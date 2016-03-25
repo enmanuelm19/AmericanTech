@@ -21,7 +21,7 @@ public class Evento implements java.io.Serializable {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private boolean publico;
-	private boolean activo = true;
+	private boolean activo;
 	private Set<Noticia> noticias = new HashSet<Noticia>(0);
 	private Set<PreferenciaEvento> preferenciaEventos = new HashSet<PreferenciaEvento>(
 			0);
@@ -153,24 +153,24 @@ public class Evento implements java.io.Serializable {
 	public void setNoticias(Set<Noticia> noticias) {
 		this.noticias = noticias;
 	}
-	
-	public Set<PreferenciaEvento> getPreferenciaEventos(){
-		return preferenciaEventos;
+
+	public Set<PreferenciaEvento> getPreferenciaEventos() {
+		return this.preferenciaEventos;
 	}
 
 	public void setPreferenciaEventos(Set<PreferenciaEvento> preferenciaEventos) {
 		this.preferenciaEventos = preferenciaEventos;
 	}
-	
-	public Set<Actividad> getActividads(){
+
+	public Set<Actividad> getActividads() {
 		return this.actividads;
 	}
 
 	public void setActividads(Set<Actividad> actividads) {
 		this.actividads = actividads;
 	}
-	
-	public Set<InstalacionEvento> getInstalacionEventos(){
+
+	public Set<InstalacionEvento> getInstalacionEventos() {
 		return this.instalacionEventos;
 	}
 
@@ -178,7 +178,7 @@ public class Evento implements java.io.Serializable {
 		this.instalacionEventos = instalacionEventos;
 	}
 
-	public Set<IndicadorEvento> getIndicadorEventos(){
+	public Set<IndicadorEvento> getIndicadorEventos() {
 		return this.indicadorEventos;
 	}
 
@@ -193,6 +193,8 @@ public class Evento implements java.io.Serializable {
 	public void setCalendarioFechas(Set<CalendarioFecha> calendarioFechas) {
 		this.calendarioFechas = calendarioFechas;
 	}
+	
+	//Metodos Extra para el evento
 	
 	public String getHoraString(){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");

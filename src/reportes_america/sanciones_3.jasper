@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2016-03-22T16:58:54 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sanciones_socios_afiliados" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+<!-- 2016-03-23T10:28:18 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_socios" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="2"/>
@@ -10,19 +10,24 @@
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT sa.descripcion,
- to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,
- CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  ev.descripcion END  as Motivo
-FROM sancion sa
-INNER JOIN socio s
-ON s.id_socio = sa.socioid_socio
-INNER JOIN persona p
-ON p.id_persona = s.personaid_persona
-INNER JOIN tipo_sancion ts
-ON ts.id_tipo_sancion = sa.tipo_sancionid_tipo_sancion
-INNER JOIN eventualidad ev
-ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
+		<![CDATA[SELECT CASE WHEN p.nombre IS NULL THEN pa.nombre || ' ' || pa.apellido ELSE p.nombre || ' ' || p.apellido END as NOMBRE, CASE WHEN s.nro_carnet IS NULL THEN af.nro_carnet ELSE s.nro_carnet END as nro_carnet, sa.descripcion, to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF, CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  ev.descripcion END as Motivo
+					FROM sancion sa
+					FULL OUTER JOIN socio s
+					ON s.id_socio = sa.socioid_socio
+					FULL OUTER JOIN afiliado af
+					ON af.id_afilado = sa.afiliadoid_afilado
+					FULL OUTER JOIN persona p
+					ON p.id_persona = s.personaid_persona
+					FULL OUTER JOIN persona pa
+					ON pa.id_persona = af.personaid_persona
+					INNER JOIN tipo_sancion ts
+					ON ts.id_tipo_sancion = sa.tipo_sancionid_tipo_sancion
+					INNER JOIN eventualidad ev
+					ON ev.id_eventualidad = sa.eventualidadid_eventualidad
+					WHERE sa.activo = true]]>
 	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="nro_carnet" class="java.lang.String"/>
 	<field name="descripcion" class="java.lang.String"/>
 	<field name="fechai" class="java.lang.String"/>
 	<field name="fechaf" class="java.lang.String"/>
@@ -90,60 +95,88 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 				<reportElement x="0" y="0" width="802" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="15" y="0" width="100" height="20" uuid="e667b399-0e19-49cb-979a-0d26a4126fd1"/>
+				<reportElement x="13" y="0" width="100" height="20" uuid="e9e7adda-8e8b-4d89-be84-f3aa3e32f433"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Descripcion]]></text>
+				<text><![CDATA[nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="213" y="0" width="100" height="20" uuid="66fb2edf-8c6a-45cd-a633-c8cf81508171"/>
+				<reportElement x="113" y="1" width="100" height="20" uuid="366301cf-302f-402e-b5de-78c67e7953b2"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Fecha Inicial]]></text>
+				<text><![CDATA[nro_carnet]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="387" y="0" width="100" height="20" uuid="d2ab3555-c4ca-4390-bb87-52edc1991b7e"/>
+				<reportElement x="236" y="0" width="100" height="20" uuid="e667b399-0e19-49cb-979a-0d26a4126fd1"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Fecha Final]]></text>
+				<text><![CDATA[descripcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="603" y="0" width="100" height="20" uuid="e04d0d29-7288-4f8c-a262-01dabae2b284"/>
+				<reportElement x="416" y="1" width="100" height="20" uuid="66fb2edf-8c6a-45cd-a633-c8cf81508171"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Motivo]]></text>
+				<text><![CDATA[fechai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="556" y="1" width="100" height="20" uuid="d2ab3555-c4ca-4390-bb87-52edc1991b7e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[fechaf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="688" y="0" width="100" height="20" uuid="e04d0d29-7288-4f8c-a262-01dabae2b284"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[motivo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="15" y="2" width="100" height="20" uuid="ea0ef45a-14c0-4a32-b16f-a0c837dd9a31"/>
+				<reportElement x="13" y="2" width="100" height="20" uuid="d13327a3-c727-4322-bd42-c973b2bce93a"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="2" width="100" height="20" uuid="f12cfa6f-d89c-42b2-b8be-399f33ae998d"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="2" width="100" height="20" uuid="ea0ef45a-14c0-4a32-b16f-a0c837dd9a31"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="213" y="2" width="100" height="20" uuid="b325bdaa-d84f-4406-91ed-e4f44fa488b1"/>
+				<reportElement x="416" y="3" width="100" height="20" uuid="b325bdaa-d84f-4406-91ed-e4f44fa488b1"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechai}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="387" y="2" width="100" height="20" uuid="eb501896-83bf-4cb5-8e30-b630e890ea4a"/>
+				<reportElement x="556" y="3" width="100" height="20" uuid="eb501896-83bf-4cb5-8e30-b630e890ea4a"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechaf}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="603" y="2" width="100" height="20" uuid="a88ba905-c738-477f-b3e4-c065aaea7eae"/>
+				<reportElement x="688" y="2" width="100" height="20" uuid="a88ba905-c738-477f-b3e4-c065aaea7eae"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>

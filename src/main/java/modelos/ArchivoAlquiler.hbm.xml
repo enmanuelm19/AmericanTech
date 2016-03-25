@@ -20,7 +20,7 @@
         <property name="extension" type="string">
             <column name="extension" length="50" not-null="true" />
         </property>
-        <property name="tipo" type="string">
+        <property name="tipoListado" type="string">
             <column name="tipo" length="40" not-null="true" />
         </property>
         <property name="activo" type="boolean">
