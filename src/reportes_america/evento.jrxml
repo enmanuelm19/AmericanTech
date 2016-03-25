@@ -11,7 +11,8 @@ FROM evento e
 INNER JOIN preferencia_evento pe
 ON pe.eventoid_evento = e.id_evento
 INNER JOIN preferencia p
-ON p.id_preferencia = pe.preferenciaid_preferencia]]>
+ON p.id_preferencia = pe.preferenciaid_preferencia
+where e.activo = true]]>
 	</queryString>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="fecha_inicio" class="java.sql.Timestamp"/>

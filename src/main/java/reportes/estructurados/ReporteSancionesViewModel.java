@@ -81,9 +81,9 @@ public class ReporteSancionesViewModel {
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
 	private boolean isPdf;
-
+	private String rutaNoEstructurado;
 
 
 	@Init
@@ -249,6 +249,7 @@ public class ReporteSancionesViewModel {
 			this.titulo = "LISTADO SANCIONES";
 			this.consulta= "Sanciones de Socios y Afiliados";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones_3.jrxml";
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones_3.txt";
 			
 			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
 					+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
@@ -272,7 +273,7 @@ public class ReporteSancionesViewModel {
 			this.titulo = "LISTADO SANCIONES";
 			this.consulta= "Sanciones de Socios";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones.jrxml";
-			
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones.txt";
 			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
 					+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
 					+ "CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  "
@@ -290,7 +291,7 @@ public class ReporteSancionesViewModel {
 			this.titulo = "LISTADO SANCIONES";
 			this.consulta= "Sanciones de Afiliados";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones.jrxml";
-			
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones.txt";
 			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
 				+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
 				+ "CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  "
@@ -325,6 +326,8 @@ public void cargarSql1() throws FileNotFoundException, JRException, SQLException
 		this.titulo = "LISTADO SANCIONES";
 		this.consulta= "Sanciones del Carnet Nro: " + this.getCarnet() + " del socio " + this.getSocio().getPersona().getNombre() + " "+ this.getSocio().getPersona().getApellido();
 		reporte = System.getProperty("user.home") + "/reportes_america/sanciones_socios_afiliados.jrxml";
+		this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones_socios_afiliados.txt";
+		
 		this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
 					+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
 					+ "CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  "
@@ -362,8 +365,10 @@ public void sqlDate() throws FileNotFoundException, JRException, SQLException{
 	}
 
 public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-	String nombreArchivo = titulo;
-	JasperPrint jasperPrint = cargarJasper();
+	Date hoy = (Date) Calendar.getInstance().getTime();
+	String date = "-"+sdfGuio.format(hoy).toString();
+	String nombreArchivo = this.titulo.concat(date);
+	JasperPrint jasperPrint = cargarJasper();	
 		
 	
 	if(jasperPrint.getPages().size() > 0){
@@ -373,16 +378,16 @@ public void generarPDF() throws JRException, FileNotFoundException, SQLException
 		} else {
 			JRExporter exporterTxt = new JRTextExporter();
 			exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
-			exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+			exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, this.rutaNoEstructurado);
 			exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
 			exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
 			exporterTxt.exportReport();
-			FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
-		    Filedownload.save(input, "txt", "reporte.txt");	    
+			FileInputStream input = new FileInputStream(this.rutaNoEstructurado);
+			Filedownload.save(input, "txt", nombreArchivo+".txt");
 		    con.close();
 		    
 		    try{
-	    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
+		    	File file = new File(this.rutaNoEstructurado);
 	    		file.delete();	
 	    	}catch(Exception e){
 	    		
