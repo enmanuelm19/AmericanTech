@@ -389,9 +389,11 @@ public class ReporteEventualidadesEstViewModel {
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
 		JasperPrint jasperPrint = cargarJasper();
-		
-		JRExporter exporter = new JRPdfExporter();
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		if(jasperPrint.getPages().size() > 0){
+		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		} else {
+			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} 
 	    con.close();
 	}
 	
