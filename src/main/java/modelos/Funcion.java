@@ -17,7 +17,7 @@ public class Funcion implements java.io.Serializable {
 	private String clase;
 	private Integer padreidFuncion;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<FuncionGrupo> funcionGrupos = new HashSet<FuncionGrupo>(0);
 
 	public Funcion() {

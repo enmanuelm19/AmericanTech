@@ -12,7 +12,7 @@ public class MotivoSancion implements java.io.Serializable {
 
 	private int idMotivoSancion;
 	private String descripcion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Sancion> sancions = new HashSet<Sancion>(0);
 
 	public MotivoSancion() {
