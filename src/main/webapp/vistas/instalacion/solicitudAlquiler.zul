@@ -39,7 +39,7 @@
 							<div>
 								<label>Precio</label>
 								<decimalbox disabled="true"
-									width="100%" value="@load(vm.instalacionSeleccionada.precioAlquiler)">
+									width="100%" value="@load(vm.precio(vm.reservacion.fechaInicio,vm.reservacion.fechaFin, vm.reservacion.instalacion.precioAlquiler))">
 								</decimalbox>
 							</div>
 						</row>
@@ -55,24 +55,10 @@
 								Fecha Fin
 								<datebox id="fechaFin"
 									value="@bind(vm.reservacion.fechaFin)" width="100%"
-									tabindex="7" format="short" constraint="no past,no empty"
+									tabindex="7" format="short" constraint="no empty, no past"
 									onChange="@command('validarReservacion')" />
 							</div>
-						</row>
-						<row class="col-md-12">
-							<div>
-								Hora Inicio
-								<timebox id="horaInicio"
-									value="@bind(vm.reservacion.fechaInicio)" width="100%"
-									tabindex="7" format="short" constraint="no past,no empty" disabled="@load(vm.disabled)" />
-							</div>
-							<div>
-								Hora Fin
-								<timebox id="horaFin"
-									value="@bind(vm.reservacion.fechaFin)" width="100%"
-									tabindex="7" format="short"  constraint="no past,no empty" disabled="@load(vm.disabled)"/>
-							</div>
-						</row>
+						</row>						
 					</rows>
 				</grid>
 				<space spacing="15%" />

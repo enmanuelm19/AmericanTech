@@ -14,6 +14,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -117,6 +118,18 @@ public class ReservacionViewModel {
 		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 	}
 	
+	public double precio(Date date1, Date date2,float precio){
+		if(date1 != null && date2 != null){
+			return precio * diasEntreFecha(date1, date2);
+		}
+		return 0;
+	}
+	
+	public int diasEntreFecha(Date date1, Date date2) {
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día
+		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
+		return (int) diferencia;
+	}
 	
 
 }
