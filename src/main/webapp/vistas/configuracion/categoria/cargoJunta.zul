@@ -2,7 +2,6 @@
 <zk xmlns:n="native">
 	<div class="contenedor">
 		<hlayout spacing="0">
-
 			<vlayout spacing="0" hflex="1">
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
@@ -12,19 +11,15 @@
 					</div>
 				</div>
 				<div align="center" height="970px">
-
-					<div sclass="page-header" align="left"
-						style="margin-bottom: 4%;">
+					<div sclass="page-header" align="left" style="margin-bottom: 4%;">
 						<label value="Cargos Junta Directiva" />
 					</div>
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' align="left" 
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
 						viewModel="@id('vm') @init('controllers.CargoViewModel')">
 						<div xmlns:w='client' align="right">
-							<button id="btnRegCargoJunta"
-								label="Agregar Nuevo" style="margin-bottom: -4%"
-								iconSclass="z-icon-plus" class='boton-guardar'
-								onClick="@command('showModal')" />
+							<button id="btnRegCargoJunta" label="Agregar Nuevo" style="margin-bottom: -4%"
+								iconSclass="z-icon-plus" class='boton-guardar' onClick="@command('showModal')" />
 						</div>
 
 						<separator spacing="10px" />
@@ -32,78 +27,47 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista de Cargos
+									Listado Cargos
 								</div>
 								<div class='linea-two'></div>
 							</div>
 							<separator spacing="20px" />
 
-							<grid
-								emptyMessage="No se encuentran Cargos registrados" mold="paging"
+							<grid emptyMessage="No se encuentran Cargos registrados" mold="paging"
 								pageSize="10" id="gridCargo" model="@load(vm.allCargo)">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
-										<image
-											src="../assets/img/funnel.png" />
-										<textbox instant="true"
-											width="85%" value="@bind(vm.idFiltro)"
-											onChange="@command('filtro')" placeholder="Buscar" />
-									</auxheader>
-									<auxheader colspan="1">
-										<image
-											src="../assets/img/funnel.png" />
-										<textbox instant="true"
-											width="85%" value="@bind(vm.descFiltro)"
+										<image src="../assets/img/funnel.png" />
+										<textbox instant="true" width="25%" value="@bind(vm.idFiltro)"
 											onChange="@command('filtro')" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1" />
 								</auxhead>
 
 								<columns>
-									<column hflex="2">Código</column>
-									<column hflex="2">
-										Nombre Cargo
-									</column>
-									<column width="20%"
-										align="center">
-										Acciones
-									</column>
+									<column hflex="2">Nombre Cargo</column>
+									<column width="20%" align="center">Acciones</column>
 								</columns>
 
 								<rows>
 									<template name="model">
-
 										<row>
-											<label
-												value="@load(each.idCargo)" />
-											<label
-												value="@load(each.descripcion)" />
+											<label value="@load(each.descripcion)" />
 											<div>
 												<button
-													sclass="btn-link" iconSclass="z-icon-pencil blue"
-													tooltiptext="Editar"
+													sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar"
 													onClick="@command('showModal', Tipo=each)" />
 												<button
-													sclass="btn-link" iconSclass="z-icon-trash-o red"
-													tooltiptext="Eliminar"
+													sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar"
 													onClick="@command('eliminar', Tipo=each)" />
 											</div>
 										</row>
-
 									</template>
 								</rows>
-
 								<foot>
-									<footer span="1"
-										class="footer_right" label="@load(vm.cantRegistros)" />
+									<footer span="1" class="footer_right" label="@load(vm.cantRegistros)" />
 								</foot>
 							</grid>
-
-
-
-
-
-
 						</div>
 					</div>
 				</div>
@@ -111,9 +75,3 @@
 		</hlayout>
 	</div>
 </zk>
-
-
-
-
-
-

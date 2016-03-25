@@ -62,23 +62,23 @@ public class RegistrarTipoPreferenciaViewModel {
 					Messagebox.show(
 							"El tipo de sugerencia "
 									+ tipoPreferencia.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoPreferencia(tipoPreferencia);
 					Messagebox.show(
 							"El tipo de preferencia "
 									+ tipoPreferencia.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoPreferencia", null);
 			} else {
-				Messagebox.show("tipo de preferencia con la descripcion "
+				Messagebox.show("El tipo de preferencia con la descripción "
 						+ tipoPreferencia.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 

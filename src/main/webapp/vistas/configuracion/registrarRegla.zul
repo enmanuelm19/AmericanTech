@@ -13,7 +13,8 @@
 <zk xmlns:n="native">
 	<window id="winP" border="none" title="@load(vm.editable?'Editar Politicas':'Registrar Reglas del Club')"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" width="40%" height="auto" apply="org.zkoss.bind.BindComposer"
+		closable="true" class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"
+		height="auto" apply="org.zkoss.bind.BindComposer"
 		style="iconSclass=z-icon-puzzle-piece;" viewModel="@id('vm') @init('controllers.RegistrarPoliticaViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 
@@ -29,15 +30,15 @@
 					<rows>
 						<row>
 							<div>
-								<label class="col-md-2"> Descripción</label>
-								<textbox type="text" rows="5" tabindex="10" constraint="no empty" class="col-md-9"
+								<label class="col-md-10"> Descripción</label>
+								<textbox type="text" rows="5" tabindex="10" constraint="no empty" class="col-sm-12 col-xs-12 col-md-12"
 								value="@bind(vm.politica.descripcion)"  />
 							</div>
 						</row>
 						<row>
 							<div>
-								<label class="col-md-2"> Valor </label>
-								<intbox constraint="no empty,no negative, no zero" class="col-md-2" value="@bind(vm.politica.valor)"/>
+								<label class="col-md-10"> Valor </label>
+								<intbox constraint="no empty,no negative, no zero" class="col-sm-12 col-xs-12 col-md-3" value="@bind(vm.politica.valor)"/>
 							</div>
 						</row>
 					</rows>

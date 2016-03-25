@@ -63,14 +63,14 @@ public class RegistrarTipoNoticiaViewModel {
 					Messagebox.show(
 							"El tipo de noticia "
 									+ tipoNoticia.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoNoticia(tipoNoticia);
 					Messagebox.show(
 							"El tipo de noticia "
 									+ tipoNoticia.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
@@ -80,7 +80,7 @@ public class RegistrarTipoNoticiaViewModel {
 //			} else {
 //				Messagebox.show("tipo de noticia con la descripcion "
 //						+ tipoNoticia.getDescripcion() + " ya existe",
-//						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+//						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 //			}
 		}
 

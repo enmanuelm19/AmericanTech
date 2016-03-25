@@ -123,11 +123,11 @@ public class RegistrarPerfilClubViewModel {
 			this.club.setLogo(ManejadorArchivo.subirImagen(uploadedImage));
 		}
 		if (club.getRif() == null || club.getRif().equalsIgnoreCase("")) {
-			Messagebox.show("El RIF no puede estar blanco", "Warning",
+			Messagebox.show("El RIF no puede estar blanco", "American Tech",
 					Messagebox.OK, Messagebox.EXCLAMATION);
 			} else if (club.getNombre() == null
 					|| club.getNombre().equalsIgnoreCase("")) {
-				Messagebox.show("El NOMBRE no puede estar en blanco", "Warning",
+				Messagebox.show("El NOMBRE no puede estar en blanco", "American Tech",
 						Messagebox.OK, Messagebox.EXCLAMATION);
 					} else if (club.getDireccion() == null
 							|| club.getDireccion().equalsIgnoreCase("")) {
@@ -135,15 +135,15 @@ public class RegistrarPerfilClubViewModel {
 								"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 						} else if (club.getTelefono() == null
 								|| club.getTelefono().equalsIgnoreCase("")) {
-							Messagebox.show("El TELEFONO no puede estar en blanco", "Warning",
+							Messagebox.show("El TELEFONO no puede estar en blanco", "American Tech",
 									Messagebox.OK, Messagebox.EXCLAMATION);
 							} else if (club.getMision() == null
 									|| club.getMision().equalsIgnoreCase("")) {
-								Messagebox.show("La MISIÓN no puede estar en blanco", "Warning",
+								Messagebox.show("La MISIÓN no puede estar en blanco", "American Tech",
 										Messagebox.OK, Messagebox.EXCLAMATION);
 								} else if (club.getVision() == null
 										|| club.getVision().equalsIgnoreCase("")) {
-									Messagebox.show("La MISIÓN no puede estar en blanco", "Warning",
+									Messagebox.show("La MISIÓN no puede estar en blanco", "American Tech",
 												Messagebox.OK, Messagebox.EXCLAMATION);
 									} 
 //									else if (club.getLogo() == null) {
@@ -155,7 +155,7 @@ public class RegistrarPerfilClubViewModel {
 										this.ClubDao.actualizarClub(club);
 										
 										Messagebox.show("El perfil del club  " + club.getNombre()
-												+ " ha sido Modificado con exito", "", Messagebox.OK,
+												+ " ha sido Modificado con exito", "American Tech", Messagebox.OK,
 												Messagebox.INFORMATION);
 									}
 		}

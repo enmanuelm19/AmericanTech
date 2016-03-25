@@ -60,16 +60,16 @@ public class RegistrarTipoSancionViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoSancion(tipoSancion);
 					Messagebox.show(
-							"El tipo de sancion "
+							"El tipo de sanción "
 									+ tipoSancion.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoSancion(tipoSancion);
 					Messagebox.show(
-							"El tipo de sancion "
+							"El tipo de sanción "
 									+ tipoSancion.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 
@@ -77,9 +77,9 @@ public class RegistrarTipoSancionViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshTipoSancion",
 						null);
 			} else {
-				Messagebox.show("tipo sancion con la descripcion "
+				Messagebox.show("tipo sanción con la descripción "
 						+ tipoSancion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 
