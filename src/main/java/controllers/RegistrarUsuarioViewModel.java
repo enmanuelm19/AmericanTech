@@ -197,6 +197,7 @@ public class RegistrarUsuarioViewModel {
 						user.setPersona(p);
 						personaDao.hardDelete(personaTemporal);
 						Messagebox.show("Ahora puede agregar un usuario a " + p.getNombre(), "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+						encontro = true;
 						break outloop;
 					}else{
 						encontro = false;
