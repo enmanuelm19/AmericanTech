@@ -58,7 +58,7 @@
 								   	 <space spacing="1%"></space>							   	
 								</groupbox >
 						        <div align="center" xmlns:w="client">
-								   <button id="btnText" class='boton-guardar' onClick="@command('btnText')" label="Generar txt" />
+								   <button id="btnText" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" />
 								   <space spacing="2%"></space>
 								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
 								   

@@ -118,6 +118,7 @@ public class ReporteActividadEventoViewModel {
 		private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 		private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+		private boolean isPdf;
 		
 		@Init
 		public void init() throws Exception {
@@ -191,7 +192,13 @@ public class ReporteActividadEventoViewModel {
 		
 		@Command
 		public void btnPDF(Event e) throws SQLException, JRException, IOException {
+			this.isPdf = true;
 			cargarSql();
+		}
+		@Command
+		public void btnTxt(Event e) throws SQLException, JRException, IOException {
+			this.isPdf = false;
+			cargarSql();	 
 		}
 		
 		
@@ -229,24 +236,46 @@ public class ReporteActividadEventoViewModel {
 		}
 		
 	
-	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-		System.out.println(sql);
-		Date hoy = (Date) Calendar.getInstance().getTime();
-		String date = "-"+sdfGuio.format(hoy).toString();
-		String nombreArchivo = this.titulo.concat(date);
-		JasperPrint jasperPrint = cargarJasper();
-		
-		@SuppressWarnings("unused")
-		JRExporter exporter = new JRPdfExporter();
-		if(jasperPrint.getPages().size() > 0){
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
-		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+			String nombreArchivo = titulo;
+			JasperPrint jasperPrint = cargarJasper();
+				
+			
+			if(jasperPrint.getPages().size() > 0){
+				if(this.isPdf) {
+					JRExporter exporter = new JRPdfExporter();
+					Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf");
+				} else {
+					JRExporter exporterTxt = new JRTextExporter();
+					exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
+					exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+					exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
+					exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
+					exporterTxt.exportReport();
+					FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+				    Filedownload.save(input, "txt", "reporte.txt");	    
+				    con.close();
+				    
+				    try{
+			    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
+			    		if(file.delete()){
+			    			System.out.println(file.getName() + " is deleted!");
+			    		}else{
+			    			System.out.println("Delete operation is failed.");
+			    		}	
+			    	}catch(Exception e){
+			    		
+			    		e.printStackTrace();
+			    		
+			    	}
+				    
+				}
+				
+			} else {
+				Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			}		
+			con.close();
 		}
-	    
-	    con.close();
-	}
-	
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
