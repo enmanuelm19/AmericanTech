@@ -67,15 +67,17 @@ public class ReporteEventoViewModel {
 	//Reporte
 	private Preferencia preferencia1,preferencia2, preferencia3, preferencia4, preferencia5;
 	private String consulta = "";
-	private String titulo = "Alquiler";
+	private String titulo = "";
 	private String reporte = System.getProperty("user.home") + "/reportes_america/reporte_socios.jrxml";
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 	private String sql = "";
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"), sdfGuio = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
 	private boolean isPdf;
+	private String tituloCategoria; 
+	
 	@Init
 	public void init() {
 		tipopreferenciaDao = new TipoPreferenciaDao();
@@ -197,6 +199,11 @@ public class ReporteEventoViewModel {
 		cargarSql();
 
 	}
+	
+	public void titulo(){
+		this.tituloCategoria = this.tipoPreferenciaSelected.getDescripcion();
+	}
+	
 
 	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
 		try {
@@ -217,7 +224,8 @@ public class ReporteEventoViewModel {
 		{
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			this.titulo = "EVENTOS";
-			this.consulta= "Eventos ";
+			titulo();
+			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
 			
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
@@ -247,12 +255,14 @@ public class ReporteEventoViewModel {
 			System.out.println(this.preferenciaEventos.size());
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			cargarVariables();
+			String variable = this.tipoPreferenciaSelected.getDescripcion();
 			//Preferencia preferencia1 = this.getPreferenciaEventos().iterator().next();
 			int idprefe = getPreferencia1().getIdPreferencia();
 			System.out.println(idprefe);
 
 			this.titulo = "EVENTOS";
-			this.consulta= "Eventos ";
+			titulo();
+			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
 			
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
@@ -278,7 +288,8 @@ public class ReporteEventoViewModel {
 			System.out.println(idprefe2);
 
 			this.titulo = "EVENTOS";
-			this.consulta= "Eventos ";
+			titulo();
+			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
 			
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
@@ -289,7 +300,7 @@ public class ReporteEventoViewModel {
 					+ " INNER JOIN tipo_preferencia tp "
 					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
 					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+") ;";
+					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+") ";
 			
 			sqlDate();			
 			
@@ -305,7 +316,8 @@ public class ReporteEventoViewModel {
 			System.out.println(idprefe);
 			String variable = this.tipoPreferenciaSelected.getDescripcion();	
 			this.titulo = "EVENTOS";
-			this.consulta= "Eventos ";
+			titulo();
+			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
 			
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
@@ -316,7 +328,7 @@ public class ReporteEventoViewModel {
 					+ " INNER JOIN tipo_preferencia tp "
 					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
 					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+") ;"; 
+					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+") "; 
 			
 		/*this.sql= " select  distinct on (t1.id_evento) t2.*, t3.id_preferencia ,t1.fecha_inicio, t1.fecha_fin, t1.nombre, "
 			+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento z,evento y where z.eventoid_evento=y.id_evento " 
@@ -345,7 +357,8 @@ public class ReporteEventoViewModel {
 			System.out.println(idprefe);
 
 			this.titulo = "EVENTOS";
-			this.consulta= "Eventos ";
+			titulo();
+			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
 			
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
@@ -356,7 +369,7 @@ public class ReporteEventoViewModel {
 					+ " INNER JOIN tipo_preferencia tp "
 					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
 					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+") ;";
+					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+") ";
 			
 			sqlDate();			
 									
@@ -375,7 +388,8 @@ public class ReporteEventoViewModel {
 			System.out.println(idprefe);
 
 			this.titulo = "EVENTOS";
-			this.consulta= "Eventos ";
+			titulo();
+			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
 			
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
@@ -386,7 +400,7 @@ public class ReporteEventoViewModel {
 					+ " INNER JOIN tipo_preferencia tp "
 					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
 					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+", "+ idprefe5+") ;";
+					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+", "+ idprefe5+") ";
 			
 			sqlDate();			
 		}
@@ -414,7 +428,7 @@ public class ReporteEventoViewModel {
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += "entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";
-			sql += " and e.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"'" ;
+			sql += " and e.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"';" ;
 			
 			/*if(this.estadoinstalacion.equalsIgnoreCase("Alquiladas")){
 				
@@ -462,12 +476,12 @@ public class ReporteEventoViewModel {
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
 				exporterTxt.exportReport();
-				FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+				FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/evento.txt");
 			    Filedownload.save(input, "txt", "reporte.txt");	    
 			    con.close();
 			    
 			    try{
-		    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
+		    		File file = new File(("user.home") + "/reportes_america/evento.txt");
 		    		file.delete();	
 		    	}catch(Exception e){
 		    		
@@ -586,6 +600,14 @@ public class ReporteEventoViewModel {
 
 	public void setPreferencia1(Preferencia preferencia1) {
 		this.preferencia1 = preferencia1;
+	}
+
+	public String getTituloCategoria() {
+		return tituloCategoria;
+	}
+
+	public void setTituloCategoria(String tituloCategoria) {
+		this.tituloCategoria = tituloCategoria;
 	}
 
 }
