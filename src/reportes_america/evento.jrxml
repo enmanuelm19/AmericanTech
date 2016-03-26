@@ -20,30 +20,30 @@ ON p.id_preferencia = pe.preferenciaid_preferencia]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="156" splitType="Stretch">
+		<band height="121" splitType="Stretch">
 			<staticText>
-				<reportElement x="262" y="19" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<reportElement x="263" y="3" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
 				<textElement>
 					<font fontName="Arial" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="213" y="68" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
+				<reportElement x="217" y="38" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="152" width="798" height="1" uuid="3a77e1ee-5875-48d2-8871-d10fae1d8d87"/>
+				<reportElement x="4" y="110" width="798" height="1" uuid="3a77e1ee-5875-48d2-8871-d10fae1d8d87"/>
 			</line>
 			<image>
-				<reportElement x="0" y="0" width="192" height="152" uuid="cb4606d4-6295-4f82-a4e0-0fe66d40c035"/>
+				<reportElement x="0" y="0" width="192" height="100" uuid="cb4606d4-6295-4f82-a4e0-0fe66d40c035"/>
 				<imageExpression><![CDATA["C:\\Users\\suarezcumare\\reportes_america\\imagen_club.png"]]></imageExpression>
 			</image>
 			<image hAlign="Center" vAlign="Middle">
-				<reportElement x="597" y="3" width="205" height="149" uuid="e10b4d8f-dfb0-40b6-a4aa-46fc3f181f37"/>
+				<reportElement x="597" y="3" width="205" height="97" uuid="e10b4d8f-dfb0-40b6-a4aa-46fc3f181f37"/>
 				<imageExpression><![CDATA["C:\\Users\\suarezcumare\\reportes_america\\imagen_equipo.png"]]></imageExpression>
 			</image>
 		</band>
