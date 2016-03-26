@@ -2833,7 +2833,7 @@ body {
 
 .contenedor{
 background-color: #FFFFFF;
-min-height:700px;
+min-height:1200px;
 }
 .contenido{
 padding: 30px;

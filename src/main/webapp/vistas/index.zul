@@ -1,73 +1,82 @@
 <?page title="American Tech" contentType="text/html;charset=UTF-8"?>
 <?link rel="shortcut icon" type="image/x-icon" href="../assets/img/at-favicon.png" ?>
 
-<?link href="../assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/css/fonts.css" rel="stylesheet" type="text/css"?>
 
 
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
-<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 
-<?link href="../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<?link href="/assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
 <?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
+
+
+<?link rel="stylesheet" href="/assets/intranet/owlCarrusel/assets/owl.carousel.css"?>
+<?link rel="stylesheet" href="/assets/intranet/owlCarrusel/assets//owl.theme.default.min.css"?>
+<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
+
 <?init class="controllers.SesionViewModel" ?>
 <zk xmlns:n="native">
-<div apply="org.zkoss.bind.BindComposer"
-			viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
-	<div sclass="navbar" style="padding-left:0px"
-	 width="100%">
-	<!-- Brand Logo -->
-	<div sclass="navbar-brand pull-left" style="width: 190px;border-right: 1px solid #cccccc;
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.NavegacionViewModel')">
+		<div sclass="navbar" style="padding-left:0px" width="100%">
+			<!-- Brand Logo -->
+			<div sclass="navbar-brand pull-left"
+				style="width: 190px;border-right: 1px solid #cccccc;
    		 height: 100%;background: #FFF;position: absolute;padding: 0px;">
-		<image tooltiptext="Avatar" width="66%" style="margin-left: 27px;"
-			src="/assets/img/american-tech.png" sclass="pull-left  msg-photo" />
-	</div>
-	<!-- Navbar -->
-	<hlayout sclass="nav-user pull-right" spacing="0">
-		<!-- User menu -->
-		<menubar sclass="user-menu light-blue">
-			<menu tooltiptext="Bienvenido!" label="@load(vm.bienvenido)"
-				image="@load(vm.imagen)">
-				<menupopup>
+				<image tooltiptext="Avatar" width="66%"
+					style="margin-left: 27px;" src="/assets/img/american-tech.png"
+					sclass="pull-left  msg-photo" />
+			</div>
+			<!-- Navbar -->
+			<hlayout sclass="nav-user pull-right" spacing="0">
+				<!-- User menu -->
+				<menubar sclass="user-menu light-blue">
+					<menu tooltiptext="Bienvenido!"
+						label="@load(vm.bienvenido)" image="@load(vm.imagen)">
+						<menupopup>
 
-					<menuitem label="Perfil" iconSclass="z-icon-user"
-						onClick="@command('miPerfil')" />
-					<menuseparator />
-					<menuitem label="Salir" onClick="@command('cerrarSesion')"
-						iconSclass="z-icon-off" />
-				</menupopup>
-			</menu>
-		</menubar>
-	</hlayout>
-</div>
-	<div id="main">
-		<hlayout spacing="0" >
-			<div id="sidebar" sclass="sidebar">
-				<!-- Navigation List -->
-				<div>
-					<navbar id="navbar" sclass="nav-list"
-						orient="vertical">
-						<navitem label="Inicio" iconSclass="z-icon-home"
-							selected="true" href="/america/vistas/index.zul" />
-					</navbar>
+							<menuitem label="Perfil"
+								iconSclass="z-icon-user" onClick="@command('miPerfil')" />
+							<menuseparator />
+							<menuitem label="Salir"
+								onClick="@command('cerrarSesion')" iconSclass="z-icon-off" />
+						</menupopup>
+					</menu>
+				</menubar>
+			</hlayout>
+		</div>
+		<div id="main">
+			<hlayout spacing="0">
+				<div id="sidebar" sclass="sidebar">
+					<!-- Navigation List -->
+					<div>
+						<navbar id="navbar" sclass="nav-list"
+							orient="vertical">
+							<navitem label="Inicio"
+								iconSclass="z-icon-home" selected="true"
+								href="/america/vistas/index.zul" />
+						</navbar>
+					</div>
+					<!-- Toggler -->
+					<div sclass="sidebar-collapse">
+						<a id="toggler"
+							iconSclass="z-icon-angle-double-left" />
+					</div>
+					<!-- Tooptip for Calender Navitem -->
+					<popup id="calpp" zclass="tooltip"
+						sclass="right tooltip-error cal">
+						<span zclass="tooltip-arrow" />
+						<label zclass="tooltip-inner"
+							value="2 Important Event" />
+					</popup>
 				</div>
-				<!-- Toggler -->
-				<div sclass="sidebar-collapse">
-					<a id="toggler"
-						iconSclass="z-icon-angle-double-left" />
-				</div>
-				<!-- Tooptip for Calender Navitem -->
-				<popup id="calpp" zclass="tooltip"
-					sclass="right tooltip-error cal">
-					<span zclass="tooltip-arrow" />
-					<label zclass="tooltip-inner"
-						value="2 Important Event" />
-				</popup>
-			</div>
-			<div id="contenido" hflex="1">
-				<include src="layouts/breadcrumbs.zul" />
-				<include src="layouts/page.zul" />
-			</div>
-		</hlayout>
-	</div>
+				<div id="contenido" hflex="1">
+					<include src="layouts/breadcrumbs.zul" />
+						<include src="layouts/page.zul" />
+					
+				</div>	
+			</hlayout>
+		</div>
 	</div>
 </zk>

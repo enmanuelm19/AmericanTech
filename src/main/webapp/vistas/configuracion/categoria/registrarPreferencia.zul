@@ -29,7 +29,7 @@
 							<div>
 								<label class="col-xs-12 col-sm-12 col-md-10">Tipo</label>
 								<combobox
-									model="@load(vm.allTipoPreferencia)" class="col-sm-7 col-md-5"
+									model="@load(vm.allTipoPreferencia)" class="col-sm-7 col-md-7" 
 									selectedItem="@bind(vm.preferencia.tipoPreferencia)"
 									value="@bind(vm.preferencia.tipoPreferencia.descripcion)">
 									<template name="model">
