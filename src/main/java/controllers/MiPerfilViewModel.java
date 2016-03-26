@@ -146,7 +146,7 @@ public class MiPerfilViewModel {
 	}
 
 	public ListModelList<Afiliado> getAllAfiliados() throws Exception {
-		return new ListModelList<Afiliado>(usuario.getPersona().getSocios().iterator().next().getAfiliados());
+		return new ListModelList<Afiliado>(afiliados);
 	}
 
 	public ListModelList<Accion> getAllAcciones() throws Exception {
