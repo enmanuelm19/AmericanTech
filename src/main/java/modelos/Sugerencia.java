@@ -2,6 +2,7 @@ package modelos;
 
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public class Sugerencia implements java.io.Serializable {
 	}
 
 	public Sugerencia(int idSugerencia, TipoSugerencia tipoSugerencia,
-			String descripcion, Date fecha, boolean activo) {
+		String descripcion, Date fecha, boolean activo) {
 		this.idSugerencia = idSugerencia;
 		this.tipoSugerencia = tipoSugerencia;
 		this.descripcion = descripcion;
@@ -96,5 +97,10 @@ public class Sugerencia implements java.io.Serializable {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-
+		
+	public String getFechaString(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(fecha);
+	}
+	
 }
