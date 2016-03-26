@@ -10,11 +10,11 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --Club
-INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, logo, telf_alternativo, correo, clave_correo, eslogan, activo) VALUES (1, 'J-08521135-7', 'Centro Atl√©tico Am√©rica', 'Av. Fuerzas Armadas con Calle 57, Concepci√≥n, Barquisimeto.', '0251-4410025', 'Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la uni√≥n familiar y consolidando el legado de sus fundadores.', 'Constituirnos como la instituci√≥n social por excelencia dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de sus socios y sus familiares e impulsar la transformaci√≥n consolidando un ambiente cada d√≠a m√°s id√≥neo para el desarrollo biopsicosocial de nuestras generaciones.', 'http://i.imgur.com/UKvuTwu.png', '0251-4411594', 'centroatleticoclubamerica@gmail.com', NULL, 'Incentivando y Promoviendo la Participaci√≥n Cultural y Deportiva', true);
+INSERT INTO club (id_club, rif, nombre, direccion, telefono, mision, vision, logo, telf_alternativo, correo, clave_correo, eslogan, activo) VALUES (1, 'J-08521135-7', 'Centro AtlÈtico AmÈrica', 'Av. Fuerzas Armadas con Calle 57, ConcepciÛn, Barquisimeto.', '0251-4410025', 'Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la uniÛn familiar y consolidando el legado de sus fundadores.', 'Constituirnos como la instituciÛn social por excelencia dedicada a consolidar valores sociales, culturales y deportivos que permitan el crecimiento de sus socios y sus familiares e impulsar la transformaciÛn consolidando un ambiente cada dÌa m·s idÛneo para el desarrollo biopsicosocial de nuestras generaciones.', 'http://i.imgur.com/UKvuTwu.png', '0251-4411594', 'centroatleticoclubamerica@gmail.com', NULL, 'Incentivando y Promoviendo la ParticipaciÛn Cultural y Deportiva', true);
 
 --Portal
 
-INSERT INTO portal (id_portal, instalacion, socio, evento, activo, foto_socio, foto_instalaciones, foto_evento) VALUES (1, 'El Centro Atl√©tico Am√©rica cuenta con canchas de Tenis, Baloncesto, B√©isbol, Bolas criollas. Adem√°s cuenta con un Sal√≥n de Fiestas y dos Caneyes para el disfrute de sus socios e invitados', 'Nuestros Socios Se caracterizan por su familiaridad y buen comportamiento, ayudando as√≠ a mantener las tradiciones de Club. ¬øQuieres ser un socio del Centro Atl√©tico Am√©rica?', 'Nos Interesa Motivar la interacci√≥n social a trav√©s de actividades culturales de intercambio, en busca del crecimiento humano mediante la Realizaci√≥n de Eventos. ¬øQuieres participar en nuestros Eventos?', true, 'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');
+INSERT INTO portal (id_portal, instalacion, socio, evento, activo, foto_socio, foto_instalaciones, foto_evento) VALUES (1, 'El Centro AtlÈtico AmÈrica cuenta con canchas de Tenis, Baloncesto, BÈisbol, Bolas criollas. Adem·s cuenta con un SalÛn de Fiestas y dos Caneyes para el disfrute de sus socios e invitados', 'Nuestros Socios Se caracterizan por su familiaridad y buen comportamiento, ayudando asÌ a mantener las tradiciones de Club. øQuieres ser un socio del Centro AtlÈtico AmÈrica?', 'Nos Interesa Motivar la interacciÛn social a travÈs de actividades culturales de intercambio, en busca del crecimiento humano mediante la RealizaciÛn de Eventos. øQuieres participar en nuestros Eventos?', true, 'http://i.imgur.com/lCSPRiL.png', 'http://i.imgur.com/ccWOi9A.png', 'http://i.imgur.com/KBRnFaM.png');
 
 --Tipo_Sugerencia
 
@@ -46,24 +46,24 @@ insert into tipo_afiliado (descripcion,subfijo,activo) values ('Hijo','-2',true)
 insert into tipo_afiliado (descripcion,subfijo,activo) values ('Hija','-2',true);
 
 --Tipo_sancion
-insert into tipo_sancion (descripcion,activo) values ('Suspensi√≥n',true);
+insert into tipo_sancion (descripcion,activo) values ('SuspensiÛn',true);
 insert into tipo_sancion (descripcion,activo) values ('Multa',true);
 
 --tipo_eventualidad
 
 insert into tipo_eventualidad (descripcion,activo) 
-                       values ('Estrav√≠o de Recursos',true),
+                       values ('EstravÌo de Recursos',true),
 							  ('Mala Conducta',true),
 							  ('Actos Inmorales', true),
-           					  ('Da√±os a Instalaci√≥n', true),
+           					  ('DaÒos a InstalaciÛn', true),
            					  ('Pelea', true);
            					  
 --Tipo_noticia
 
 insert into tipo_noticia (descripcion,color,activo) values ('Evento Auto','#3300cc',false);
-insert into tipo_noticia (descripcion,color,activo) values ('Postulaci√≥n Auto','#f88514',false);
+insert into tipo_noticia (descripcion,color,activo) values ('PostulaciÛn Auto','#f88514',false);
 insert into tipo_noticia (descripcion,color,activo) values ('Evento','#3300cc',true);
-insert into tipo_noticia (descripcion,color,activo) values ('Postulaci√≥n','#f88514',true);
+insert into tipo_noticia (descripcion,color,activo) values ('PostulaciÛn','#f88514',true);
 insert into tipo_noticia (descripcion,color,activo) values ('Acciones','#FFFF00',true);
 insert into tipo_noticia (descripcion,color,activo) values ('Sucesos','#cc00ff',true);
 insert into tipo_noticia (descripcion,color,activo) values ('Otros','#FFA500',true);
@@ -77,13 +77,13 @@ INSERT INTO tipo_opnion (descripcion, activo) VALUES ('No lo Conozco', true);
 INSERT INTO tipo_pago(descripcion, activo)
     VALUES ('Efectivo', TRUE),
 	   	   ('Transferencia', TRUE),
-	       ('Dep√≥sito', TRUE);
+	       ('DepÛsito', TRUE);
 
 --Estado_evento
 
 insert into estado_evento (nombre,activo) values ('Por Planificar',true);
 insert into estado_evento (nombre,activo) values ('Listo para Ejecutar',true);
-insert into estado_evento (nombre,activo) values ('En Ejecuci√≥n',true);
+insert into estado_evento (nombre,activo) values ('En EjecuciÛn',true);
 insert into estado_evento (nombre,activo) values ('Finalizado',true);
 insert into estado_evento (nombre,activo) values ('Cancelado',true);
 
@@ -93,14 +93,14 @@ insert into motivo_sancion (descripcion,activo) values ('Morosidad',true);
 
 --Motivo_postulacion
 INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('Beneficios del Club', true);
-INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('Inversi√≥n', true);
+INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('InversiÛn', true);
 INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('Deporte', true);
 INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('Osio', true);
-INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('Recreaci√≥n', true);
-INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('Diversi√≥n', true);
+INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('RecreaciÛn', true);
+INSERT INTO motivo_postulacion (descripcion, activo) VALUES ('DiversiÛn', true);
 
 --Motivo_Venta
-Insert into motivo_venta (descripcion,activo) VALUES ('Necesidad Econ√≥mica',TRUE);
+Insert into motivo_venta (descripcion,activo) VALUES ('Necesidad EconÛmica',TRUE);
 Insert into motivo_venta (descripcion,activo) VALUES ('Cambio de Ciudad',TRUE);
 Insert into motivo_venta (descripcion,activo) VALUES ('Descontento con el Club',TRUE);
 Insert into motivo_venta (descripcion,activo) VALUES ('Otro',TRUE);
@@ -113,7 +113,7 @@ INSERT INTO motivo_cancelacion (descripcion, activo) VALUES ( 'Actividades Imcom
 
 --motivo_desvinculacion
 
-insert into motivo_desvinculacion (descripcion,activo) values ('Venta de Acci√≥n',true);
+insert into motivo_desvinculacion (descripcion,activo) values ('Venta de AcciÛn',true);
 insert into motivo_desvinculacion (descripcion,activo) values ('Socio Sancionado',true);
 
 --Estado_Accion
@@ -145,20 +145,20 @@ INSERT INTO indicador(descripcion, activo)
     VALUES ('Asistencia de Personas', TRUE),
            ('Ingresos Recolectados', TRUE),
            ('Utilidad', TRUE),
-           ('Ingresos por Inscripci√≥n a Torneos', TRUE),
-           ('Ingresos por Bebidas alcoh√≥licas', TRUE);
+           ('Ingresos por InscripciÛn a Torneos', TRUE),
+           ('Ingresos por Bebidas alcohÛlicas', TRUE);
            
 --Instalacion
 
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Softball','Espacio para la Pr√°ctica de Softball √≥ B√©isbol',500,20000,true,1,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Softball','Espacio para la Pr·ctica de Softball Û BÈisbol',500,20000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Salon de Fiesta Principal','Espacio de excelente prestancia para Fiestas y Celebraciones',150,25000,true,2,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Parque Infantil','√Årea recreacional para ni√±os y ni√±as',150,0,false,3,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Tenis','Espacio para la Pr√°ctica de Tenis, para el disfrute de todos nuestros socios',500,5000,true,1,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Baloncesto','Es un espacio deportivo ideal para quienes Pr√°ctican el Baloncesto ',150,5000,true,1,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Parque Infantil','¡rea recreacional para niÒos y niÒas',150,0,false,3,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Tenis','Espacio para la Pr·ctica de Tenis, para el disfrute de todos nuestros socios',500,5000,true,1,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Baloncesto','Es un espacio deportivo ideal para quienes Pr·ctican el Baloncesto ',150,5000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Bolas Criollas','Cancha popular entre nuestros socios, en especial los fines de semana',150,5000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Caney de Rafa','Amplio Caney, muy popular entre la Comunidad Americanista',150,2000,true,4,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Caney de Chevechita','Caney que debe su Nombre a un Socio emblem√°tico, desaparecido f√≠sicamente desde hace a√±os.',150,0,false,4,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Piscina','√Årea amplia con Comodidades dignas de la Comunidad Americanista',150,35000,true,3,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Caney de Chevechita','Caney que debe su Nombre a un Socio emblem·tico, desaparecido fÌsicamente desde hace aÒos.',150,0,false,4,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Piscina','¡rea amplia con Comodidades dignas de la Comunidad Americanista',150,35000,true,3,true);
 
 --foto
 
@@ -168,7 +168,7 @@ INSERT INTO foto ( url, instalacionid_instalacion, publico, clubid_club, activo)
 
 --Recurso
 
-insert into recurso (descripcion,activo) values ('Sillas de Pl√°stico',True);
+insert into recurso (descripcion,activo) values ('Sillas de Pl·stico',True);
 insert into recurso (descripcion,activo) values ('Sillas de Madera',True);
 insert into recurso (descripcion,activo) values ('Mesas Redondas',True);
 insert into recurso (descripcion,activo) values ('Mesas Cuadradas',True);
@@ -198,7 +198,7 @@ insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo)
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Baile',3,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Musica',3,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Bebedor Ocasional',3,true);
-insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Televisi√≥n',4,true);
+insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('TelevisiÛn',4,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Cine',4,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Cantar',4,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Ciclismo',2,true);
@@ -223,7 +223,7 @@ INSERT INTO politica (descripcion, valor, clubid_club, activo) VALUES ('Veces qu
 
 --Persona
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('20387728', 'Enmanuel', 'Medina', NULL, '1980-03-01', 'M', 'enmanuelm19@gmail.com', '04146549874', '02516548765', 'Cabudare', true);
-INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('12345678', 'Prisco', 'Canel√≥n', NULL, '1981-04-01', 'M', 'carlos@gmail.com', '04249876668', '02513348765', 'Barquisimeto', true);
+INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('12345678', 'Prisco', 'CanelÛn', NULL, '1981-04-01', 'M', 'carlos@gmail.com', '04249876668', '02513348765', 'Barquisimeto', true);
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('12546318', 'Carlos', 'Colmenarez', NULL, '1982-05-01', 'M', 'juan@gmail.com', '04127896654', '02516548705', 'Valle Hondo, Cabudare', true);
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('14327254', 'Manuel', 'Guerrero', 'http://i.imgur.com/xXp0wXP.png', '1983-06-01', 'M', 'manuel@gmail.com', '04147658877', '02516548265', 'Carrera 25 con calle 12', true);
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('13658792', 'Hector', 'Gil', NULL, '1983-07-01', 'M', 'sergio@hotmail.com', '04167779788', '02516540965', 'Av Libertador con calle 12', true);
@@ -231,17 +231,17 @@ INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, co
 
 --usuario 
 
-INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'enmanuel', '¬øQui√©n?', 'administrador', 1, '2016-02-22', true);
-INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'carlos', '¬øNombre de mi Madre?', 'raquel', 2, '2016-02-22', true);
-INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'juan', '¬øNombre de mi Abuela?', 'esperanza', 3, '2016-02-22', true);
-INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'manuel', '¬øNombre de mi primera mascota?', 'rossy', 4, '2016-02-22', true);
-INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'sergio', '¬øColor Favorito?', 'azul', 5, '2016-02-22', true);
-INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'pedro', '¬øLugar Favorito?', 'mi casa', 6, '2016-02-22', true);
+INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'enmanuel', 'øQuiÈn?', 'administrador', 1, '2016-02-22', true);
+INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'carlos', 'øNombre de mi Madre?', 'raquel', 2, '2016-02-22', true);
+INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'juan', 'øNombre de mi Abuela?', 'esperanza', 3, '2016-02-22', true);
+INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'manuel', 'øNombre de mi primera mascota?', 'rossy', 4, '2016-02-22', true);
+INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'sergio', 'øColor Favorito?', 'azul', 5, '2016-02-22', true);
+INSERT INTO usuario (contrasenna, username, pregunta, respuesta, personaid_persona, fecha, activo) VALUES ('12345678', 'pedro', 'øLugar Favorito?', 'mi casa', 6, '2016-02-22', true);
 
 
 --funcion
 
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (1, 'Configuraci√≥n', ' ', 'z-icon-cogs', ' ', 0, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (1, 'ConfiguraciÛn', ' ', 'z-icon-cogs', ' ', 0, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (2, 'Socios', ' ', 'z-icon-user', ' ', 0, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (3, 'Instalaciones', ' ', 'z-icon-home', ' ', 0, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (4, 'Eventos', ' ', 'z-icon-calendar', ' ', 0, true);
@@ -250,11 +250,11 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (7, 'Postulaciones', ' ', 'z-icon-puzzle-piece', ' ', 0, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (8, 'Categorias', ' ', 'z-icon-angle-double-right', ' ', 1, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (9, 'Administrar Socio', ' ', 'z-icon-angle-double-right', ' ', 2, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (10, 'Danos tu Opini√≥n', ' ', 'z-icon-angle-double-right', ' ', 2, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (10, 'Danos tu OpiniÛn', ' ', 'z-icon-angle-double-right', ' ', 2, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (11, 'Administrar Evento', ' ', 'z-icon-angle-double-right', ' ', 4, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (12, 'Estructurado', ' ', 'z-icon-angle-double-right', ' ', 5, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (13, 'Motivo Sanci√≥n', 'configuracion/categoria/motivoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (14, 'Estad√≠sticos', ' ', 'z-icon-angle-double-right', ' ', 5, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (13, 'Motivo SanciÛn', 'configuracion/categoria/motivoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (14, 'EstadÌsticos', ' ', 'z-icon-angle-double-right', ' ', 5, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (15, 'Seguridad', ' ', 'z-icon-angle-double-right', ' ', 6, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (16, 'Perfil del Club', 'configuracion/perfilClub.zul', 'z-icon-angle-double-right', ' ', 1, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (17, 'Junta Directiva', 'configuracion/juntaDirectiva.zul', 'z-icon-angle-double-right', ' ', 1, true);
@@ -263,14 +263,14 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (20, 'Preferencias', 'configuracion/categoria/preferencia.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (21, 'Recursos', 'configuracion/categoria/recursos.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (22, 'Cargo Junta Directiva', 'configuracion/categoria/cargoJunta.zul', 'z-icon-angle-double-right', ' ', 1, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (23, 'Motivo Postulaci√≥n', 'configuracion/categoria/motivoPostulacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (23, 'Motivo PostulaciÛn', 'configuracion/categoria/motivoPostulacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (24, 'Motivo Venta', 'configuracion/categoria/motivoVenta.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (25, 'Tipo Sugerencia', 'configuracion/categoria/tipoSugerencia.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (26, 'Tipo Preferencia', 'configuracion/categoria/tipoPreferencia.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (27, 'Tipo Instalaci√≥n', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (28, 'Tipo Sanci√≥n', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (27, 'Tipo InstalaciÛn', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (28, 'Tipo SanciÛn', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (29, 'Tipo Afiliado', 'configuracion/categoria/tipoAfiliado.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (31, 'Motivo Desvinculaci√≥n', 'configuracion/categoria/motivoDesvinculacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (31, 'Motivo DesvinculaciÛn', 'configuracion/categoria/motivoDesvinculacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (32, 'Acciones', 'socio/acciones.zul', 'z-icon-angle-double-right', ' ', 2, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (33, 'Mi Perfil', 'socio/miPerfil.zul', 'z-icon-angle-double-right', ' ', 2, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (34, 'Mis Sanciones', 'socio/misSanciones.zul', 'z-icon-angle-double-right', ' ', 2, true);
@@ -279,8 +279,8 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (37, 'Registrar Afiliado', 'socio/administrarSocio/socios.zul', 'z-icon-angle-double-right', ' ', 9, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (38, 'Sanciones', 'socio/administrarSocio/sanciones.zul', 'z-icon-angle-double-right', ' ', 9, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (39, 'Sugerencias', 'socio/buzon/vistaGeneralSugerencias.zul', 'z-icon-angle-double-right', ' ', 10, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (40, 'Opini√≥n Postulaci√≥n', 'socio/buzon/opinionPostulacion.zul', 'z-icon-angle-double-right', ' ', 10, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (41, 'Reservaci√≥n', 'instalacion/misReservaciones.zul', 'z-icon-angle-double-right', ' ', 3, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (40, 'OpiniÛn PostulaciÛn', 'socio/buzon/opinionPostulacion.zul', 'z-icon-angle-double-right', ' ', 10, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (41, 'ReservaciÛn', 'instalacion/misReservaciones.zul', 'z-icon-angle-double-right', ' ', 3, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (42, 'Alquileres', 'instalacion/administrarAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (43, 'Mis Alquileres', 'instalacion/misAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (44, 'Eventualidades', 'instalacion/registrarEventualidadInst.zul', 'z-icon-angle-double-right', ' ', 2, true);
@@ -310,10 +310,10 @@ INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcio
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (69, 'Red Social', 'configuracion/categoria/redSocial.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (70, 'Tipo Eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (71, 'Indicador', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (72, 'Tipo Opini√≥n', 'configuracion/categoria/tipoOpinion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (72, 'Tipo OpiniÛn', 'configuracion/categoria/tipoOpinion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (73, 'Tipo Pago', 'configuracion/categoria/tipoPago.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (74, 'Tipo Noticia', 'configuracion/categoria/tipoNoticia.zul', 'z-icon-angle-double-right', ' ', 8, true);
-INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (75, 'Motivo Cancelaci√≥n', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
+INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (75, 'Motivo CancelaciÛn', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, true);
 INSERT INTO funcion (id_funcion, nombre, pagina, icon_uri, clase, padreid_funcion, activo) VALUES (76, 'Sugerencias', 'socio/buzon/sugerenciaAdministrativo.zul', 'z-icon-angle-double-right', ' ', 10, true);
 
 --grupo
