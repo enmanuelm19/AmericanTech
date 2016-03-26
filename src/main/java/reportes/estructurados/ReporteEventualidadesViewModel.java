@@ -241,7 +241,6 @@ public class ReporteEventualidadesViewModel {
 			el.printStackTrace();
 		}
 		
-		System.out.println(this.tipo);
 		if( this.tipo == null){
 			Messagebox.show("Debe elegir una seleccion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if( this.tipo.equalsIgnoreCase("Instalaciones")){
@@ -328,7 +327,6 @@ public class ReporteEventualidadesViewModel {
 	}
 
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-		System.out.println(sql);
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);

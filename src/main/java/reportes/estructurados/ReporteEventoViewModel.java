@@ -209,7 +209,7 @@ public class ReporteEventoViewModel {
 		try {
 			Class.forName ("org.postgresql.Driver");
 		
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America14","postgres","622590");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
 			
 			
 		} catch (ClassNotFoundException el) {
