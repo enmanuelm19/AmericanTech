@@ -27,59 +27,59 @@
 							<row>
 								<div>
 									<label class="col-md-3">Cédula</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.identificacion)"/>
-									<button	iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('buscarCedula')"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.identificacion)" readonly="@load(vm.desactivar)"/>
+									<button	iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('buscarCedula')" disabled="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Nombre</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.nombre)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.nombre)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Apellido</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.apellido)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.apellido)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Fecha Nacimiento</label>
-									<datebox class="col-md-9" value="@load(vm.miembro.persona.fechaNac)"/>
+									<datebox class="col-md-9" value="@bind(vm.miembro.persona.fechaNac)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Sexo</label>
-									<radiogroup id="sexo" selectedItem="@load(vm.miembro.persona.sexo)">
-										<radio id="a1" label="Masculino" value="M" radiogroup="sexo"></radio>
-										<radio id="a2" label="Femenino" value="F" radiogroup="sexo"></radio>
+									<radiogroup id="sexo" selectedItem="@bind(vm.miembro.persona.sexo)">
+										<radio id="a1" label="Masculino" value="M" radiogroup="sexo" disabled="@load(vm.desactivar)"></radio>
+										<radio id="a2" label="Femenino" value="F" radiogroup="sexo" disabled="@load(vm.desactivar)"></radio>
 									</radiogroup>									
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Email</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.correo)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.correo)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Teléfono Domicilio</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.telefonoFijo)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.telefonoFijo)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Teléfono Celular</label>
-									<textbox class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.telefono)"/>
+									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.telefono)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Dirección</label>
-									<textbox rows="2" cols="30" class="col-md-6" constraint="no empty" value="@load(vm.miembro.persona.direccion)"/>
+									<textbox rows="2" cols="30" class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.direccion)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
