@@ -105,7 +105,8 @@
 		<hbox>
 			<panel border="none" collapsible="true"	sclass="transparent">
 				<panelchildren>
-					<listbox sclass="domain" model="@load(vm.accionesAll)" selectedItem="@bind(vm.seleccionada)">
+					<listbox sclass="domain" model="@load(vm.accionesAll)" selectedItem="@bind(vm.seleccionada)" mold="paging"
+							pageSize="10">
 					    <listhead>
 					        <listheader width="30%" label="Número Acción" iconSclass="z-icon-caret-right blue"/>
 					        <listheader width="35%" label="Valor Bs" iconSclass="z-icon-caret-right blue"/>
