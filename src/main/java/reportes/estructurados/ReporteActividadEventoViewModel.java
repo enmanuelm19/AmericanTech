@@ -205,13 +205,9 @@ public class ReporteActividadEventoViewModel {
 		
 		public void cargarSql() throws FileNotFoundException, JRException, SQLException{
 			try {
-				
-				System.out.println(sql);
 				Class.forName ("org.postgresql.Driver");
-			
 				con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
-				
-				
+
 			} catch (ClassNotFoundException el) {
 				el.printStackTrace();
 			}
