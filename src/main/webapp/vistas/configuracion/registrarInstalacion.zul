@@ -65,7 +65,6 @@
 							<div>
 								<fileupload
 									onUpload="@command('upload',media=event.media)"
-									upload="true,maxsize=2000" 
 									iconSclass="z-icon-folder-open"
 									class='boton-guardar col-md-6 col-md-offset-3' label="Examinar"  />
 							</div>
@@ -210,7 +209,7 @@
 							<columns>
 								<column hflex="">Recurso</column>
 								<column hflex="">Cantidad</column>
-<!-- 								<column hflex="">Accion</column> -->
+								<column hflex="">Accion</column>
 							</columns>
 
 							<rows>
@@ -218,11 +217,11 @@
 									<row>
 										<label value="@load(each.recurso.descripcion)" />
 										<label value="@load(each.cantidad)" />
-<!-- 										<div> -->
+										<div>
 	
-<!-- 											<button sclass="btn-link" onClick="@command('eliminarIndicadorEvento',indicadorEvento=each)" -->
-<!-- 												iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" /> -->
-<!-- 										</div> -->
+											<button sclass="btn-link" onClick="@command('eliminarRecursoInstalacion', recursoInstalacion=each)"
+												iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+										</div>
 									</row>
 								</template>
 							</rows>

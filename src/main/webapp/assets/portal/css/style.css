@@ -1355,12 +1355,12 @@ webkit-box-shadow: 0 3px 5px #bbc3c9;
 	background: rgba(114,211,187,0.3);
 }
 .z-chosenbox-popup{
-	background: rgba(135, 130, 130, 0.1);
+	background: white;
 	font-size: 14px;
 }
 .z-chosenbox-input{
 	width: 230px !important;
-	    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-style: italic;
     color: #888282;
     font-size: 0.8125em;

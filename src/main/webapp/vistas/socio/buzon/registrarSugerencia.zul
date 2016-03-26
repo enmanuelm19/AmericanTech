@@ -30,7 +30,7 @@
 						<row class="col-md-12">
 							<div>
 								<label class="col-md-5">Su sugerencia esta relacionada con </label>  
-								<combobox
+								<combobox readonly="true"
 									model="@load(vm.allTipoSugerencia)" class="col-md-5"
 									selectedItem="@bind(vm.sugerencia.tipoSugerencia)"
 									value="@bind(vm.sugerencia.tipoSugerencia.descripcion)">

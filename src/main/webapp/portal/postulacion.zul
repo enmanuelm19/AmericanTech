@@ -38,15 +38,34 @@
 								<div class="col-md-6" align="left">
 									<label style="color:red;">*</label><label>Cédula</label>
 									<n:br></n:br>
-									<textbox type="text" class="textbox"
-										placeholder="Tu Cedula" width="78%" constraint="no empty"
-										value="@bind(vm.persona.identificacion)" />
+									<textbox type="text" xmlns:w="client" class="textbox"
+										placeholder="Tu Cedula" width="78%" maxlength="10"
+										value="@bind(vm.persona.identificacion)" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+										</textbox>
 								</div>
 								<div class="col-md-6" align="left">
 									<label style="color:red;">*</label><label>Nombre</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
-										placeholder="Tu nombre" width="78%" constraint="no empty"
+										placeholder="Tu nombre" width="78%" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula."
 										value="@bind(vm.persona.nombre)" />
 								</div>
 
@@ -57,7 +76,7 @@
 									<label style="color:red;">*</label><label>Apellido</label>
 									<n:br></n:br>
 									<textbox type="text" class="textbox"
-										placeholder="Tu Apellido" constraint="no empty"
+										placeholder="Tu Apellido" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula."
 										value="@bind(vm.persona.apellido)" width="78%" />
 								</div>
 								<div class="col-md-6" align="left">
@@ -87,9 +106,28 @@
 									</label>
 									<n:br></n:br>
 
-									<textbox type="text" class="textbox"
+									<textbox type="text" class="textbox" xmlns:w="client"
 										placeholder="Tu Teléfono de Domicilio"
-										value="@bind(vm.persona.telefonoFijo)" width="78%" />
+										value="@bind(vm.persona.telefonoFijo)" width="78%" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números"><attribute w:name="doKeyDown_"><![CDATA[
+											function (evt) {
+												var keyCode = event.keyCode;
+												if( keyCode == 8 // back space
+													|| keyCode == 13 // enter
+													|| keyCode == 16 // enter
+													|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+													|| keyCode == 46) { // Delete
+													this.$doKeyDown_(evt);
+												} else if ( !evt.shiftKey &&  // only do without shift key
+													(keyCode >= 48 && keyCode <= 57)
+													|| (keyCode >= 96 && keyCode <= 105)) {// number range
+													this.$doKeyDown_(evt);
+												} else {
+													evt.stop();
+													return;
+												}
+											}
+										]]></attribute>
+										</textbox>
 								</div>
 
 							</div>
@@ -98,9 +136,29 @@
 								<div class="col-md-6" align="left">
 									<label style="color:red;">*</label><label>Tu teléfono móvil</label>
 									<n:br></n:br>
-									<textbox type="text" class="textbox"
+									<textbox type="text" class="textbox" xmlns:w="client"
 										placeholder="Tu Teléfono movil"
-										value="@bind(vm.persona.telefono)" width="78%" />
+										value="@bind(vm.persona.telefono)" width="78%" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números">
+											<attribute w:name="doKeyDown_"><![CDATA[
+											function (evt) {
+												var keyCode = event.keyCode;
+												if( keyCode == 8 // back space
+													|| keyCode == 13 // enter
+													|| keyCode == 16 // enter
+													|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+													|| keyCode == 46) { // Delete
+													this.$doKeyDown_(evt);
+												} else if ( !evt.shiftKey &&  // only do without shift key
+													(keyCode >= 48 && keyCode <= 57)
+													|| (keyCode >= 96 && keyCode <= 105)) {// number range
+													this.$doKeyDown_(evt);
+												} else {
+													evt.stop();
+													return;
+												}
+											}
+										]]></attribute>
+											</textbox>
 								</div>
 								<div class="col-md-6" align="left">
 								<label style="color:red;">*</label><label>Sexo</label>

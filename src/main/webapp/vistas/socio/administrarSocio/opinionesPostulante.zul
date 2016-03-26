@@ -92,7 +92,8 @@
 
 								<div class="col-md-6">
 									<div class="input-group col-md-8 col-md-offset-1">
-										<image src="@load(vm.postulacion.postulado.persona.foto)" class='img-responsive' width="100%"/>
+										<image src="../assets/portal/img/img2.jpg" class='col-md-12'  visible="@load(vm.fotodefault)"/>
+										<image src="@load(vm.postulacion.postulado.persona.foto)" class='img-responsive' width="100%" visible="@load(!vm.fotodefault)"/>
 										<separator spacing="30px">
 										</separator>
 
