@@ -67,22 +67,55 @@ public class AdministrarPortalViewModel {
 	@Command
 	@NotifyChange("uploadedImage")
 	public void upload(@BindingParam("media") Media myMedia) {
-		imagenNuevaSocio = true;
-		uploadedImage = myMedia;
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				setUploadedImage(myMedia);
+				imagenNuevaSocio = true;
+				uploadedImage = myMedia;
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
+		
+		
+		
 	}
 
 	@Command
 	@NotifyChange("uploadedImageInstalacion")
 	public void uploadInstalacion(@BindingParam("media") Media myMedia) {
-		imagenNuevaInstalacion = true;
-		uploadedImageInstalacion = myMedia;
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				setUploadedImage(myMedia);
+				imagenNuevaInstalacion = true;
+				uploadedImageInstalacion = myMedia;
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
 	}
 
 	@Command
 	@NotifyChange("uploadedImageEvento")
 	public void uploadEvento(@BindingParam("media") Media myMedia) {
-		imagenNuevaEvento = true;
-		uploadedImageEvento = myMedia;
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				setUploadedImage(myMedia);
+				imagenNuevaEvento = true;
+				uploadedImageEvento = myMedia;
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
 	}
 
 	public Media getUploadedImage() {
@@ -111,6 +144,8 @@ public class AdministrarPortalViewModel {
 
 	@Command
 	public void guardar() throws Exception {
+		
+
 
 		if (imagenNuevaSocio) {
 			this.portal.setFotoSocio(ManejadorArchivo.subirImagen(uploadedImage));
@@ -125,12 +160,12 @@ public class AdministrarPortalViewModel {
 
 		if (portal.getEvento().equalsIgnoreCase("") || portal.getInstalacion().equalsIgnoreCase("")
 				|| portal.getSocio().equalsIgnoreCase("")) {
-			Messagebox.show("Debe llenar todos los campos y adjuntar las imagenes", null, Messagebox.OK,
+			Messagebox.show("Debe llenar todos los campos y adjuntar las imagenes", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 
 		} else {
 			portalDao.actualizarPortal(portal);
-			Messagebox.show("El portal  ha sido actualizado exitosamente", "", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("El portal  ha sido actualizado exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 
 			BindUtils.postGlobalCommand(null, null, "refreshportal", null);
 
