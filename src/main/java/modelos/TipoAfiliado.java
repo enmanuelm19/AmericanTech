@@ -13,7 +13,7 @@ public class TipoAfiliado implements java.io.Serializable {
 	private int idTipoAfiliado;
 	private String descripcion;
 	private String subfijo;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
 
 	public TipoAfiliado() {

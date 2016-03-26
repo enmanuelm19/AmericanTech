@@ -11,7 +11,7 @@ public class Politica implements java.io.Serializable {
 	private Club club;
 	private String descripcion;
 	private Long valor;
-	private boolean activo;
+	private boolean activo = true;
 
 	public Politica() {
 	}

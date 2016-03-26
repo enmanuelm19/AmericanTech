@@ -22,7 +22,7 @@ public class Club implements java.io.Serializable {
 	private String correo;
 	private String claveCorreo;
 	private String eslogan;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Foto> fotos = new HashSet<Foto>(0);
 	private Set<Politica> politicas = new HashSet<Politica>(0);
 	private Set<JuntaDirectiva> juntaDirectivas = new HashSet<JuntaDirectiva>(0);

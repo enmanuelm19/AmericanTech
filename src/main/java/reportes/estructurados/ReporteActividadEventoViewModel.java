@@ -119,6 +119,7 @@ public class ReporteActividadEventoViewModel {
 		private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
 		private boolean isPdf;
+		private String rutaNoEstructurado;
 		
 		@Init
 		public void init() throws Exception {
@@ -204,13 +205,9 @@ public class ReporteActividadEventoViewModel {
 		
 		public void cargarSql() throws FileNotFoundException, JRException, SQLException{
 			try {
-				
-				System.out.println(sql);
 				Class.forName ("org.postgresql.Driver");
-			
 				con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
-				
-				
+
 			} catch (ClassNotFoundException el) {
 				el.printStackTrace();
 			}
@@ -237,27 +234,29 @@ public class ReporteActividadEventoViewModel {
 		
 	
 		public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-			String nombreArchivo = titulo;
-			JasperPrint jasperPrint = cargarJasper();
-				
-			
+			Date hoy = (Date) Calendar.getInstance().getTime();
+			String date = "-"+sdfGuio.format(hoy).toString();
+			String nombreArchivo = this.titulo.concat(date);
+			JasperPrint jasperPrint = cargarJasper();			
+
 			if(jasperPrint.getPages().size() > 0){
 				if(this.isPdf) {
 					JRExporter exporter = new JRPdfExporter();
 					Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf");
 				} else {
+					this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/evento_actividad.txt";
 					JRExporter exporterTxt = new JRTextExporter();
 					exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
-					exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+					exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, this.rutaNoEstructurado);
 					exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
 					exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
 					exporterTxt.exportReport();
-					FileInputStream input = new FileInputStream(System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
-				    Filedownload.save(input, "txt", "reporte.txt");	    
+					FileInputStream input = new FileInputStream(this.rutaNoEstructurado);
+					Filedownload.save(input, "txt", nombreArchivo+".txt");    
 				    con.close();
 				    
 				    try{
-			    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
+			    		File file = new File(this.rutaNoEstructurado);
 			    		file.delete();	
 			    	}catch(Exception e){
 			    		
@@ -268,7 +267,7 @@ public class ReporteActividadEventoViewModel {
 				}
 				
 			} else {
-				Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("No existe planificacion para este evento.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}		
 			con.close();
 		}

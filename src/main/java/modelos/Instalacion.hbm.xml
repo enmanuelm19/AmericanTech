@@ -21,7 +21,7 @@
             <column name="capacidad" not-null="true" />
         </property>
         <property name="precioAlquiler" type="float">
-            <column name="precio_alquiler" precision="8" scale="8" not-null="true" />
+            <column name="precio_alquiler" precision="8" scale="8" not-null="true"/>
         </property>
         <property name="alquilable" type="boolean">
             <column name="alquilable" not-null="true" />
