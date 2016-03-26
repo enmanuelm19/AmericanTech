@@ -33,7 +33,7 @@
 								<rows class="">
 									<row class="col-md-12">
 										<div>
-											<label value="Nro Acción" class="col-md-12"/>
+											<label value="Número Acción" class="col-md-12"/>
 											<textbox type="text" class="col-md-12"
 												value="@bind(vm.accion.nroAccion)" width="100%"  constraint="no empty"/>
 											
@@ -44,7 +44,7 @@
 										<div>
 											<label value="Estado Acción" class="col-md-12"/>
 											<combobox width="100%" class="col-md-12" model="@load(vm.estadosAll)" selectedItem="@bind(vm.accion.estadoAccion)"
-											value="@bind(vm.accion.estadoAccion.nombre)" placeholder="Seleccione una opción"> 
+											value="@bind(vm.accion.estadoAccion.nombre)" placeholder="Seleccione una opción" onChange="@command('val')"> 
 												<template name="model">
 													<comboitem label="@bind(each.nombre)"  value="@bind(each)"/>
 												</template>

@@ -25,7 +25,7 @@
 								viewModel="@id('vm') @init('controllers.PostulantesViewModel')" >
 							<div align="left">
 								<div class='encabezado'>
-									Postulados Ya!
+									Listado Postulaciones
 								</div>
 								<div class='linea-two'></div>
 							</div>
@@ -53,9 +53,8 @@
 									<column hflex="2" align="center">Nombre</column>
 									<column hflex="2" align="center">Apellido</column>
 									<column hflex="2" align="center">Fecha</column>
-									<!-- Fecha Postulación -->
 									<column hflex="1" align="center">Opiniones</column>
-									<column hflex="2" align="center">Calificaciónes</column>
+									<column hflex="2" align="center">Calificaciones</column>
 								</columns>
 
 								<rows>

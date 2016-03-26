@@ -19,16 +19,22 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import modelos.Postulacion;
+import Dao.PersonaDao;
 import Dao.PostulacionDao;
+import Dao.PostuladoDao;
 
 public class PostulantesViewModel {
 	private PostulacionDao postDAO= new PostulacionDao();
 	private String nombreFiltro;
 	private String apellidoFiltro;
 	private List<Postulacion> postulaciones;
+	private PersonaDao pdao;
+	private PostuladoDao podao;
 	@Init
 	public void init() throws Exception {
 		postulaciones = postDAO.obtenerTodos();
+		pdao= new PersonaDao();
+		podao= new PostuladoDao();
 	}
 	
 	public ListModelList<Postulacion> getPostulacionesAll() {
@@ -113,6 +119,8 @@ public class PostulantesViewModel {
 						if (evt.getName().equals("onOK")) {
 							try {Messagebox.show("La postulación ha sido eliminada", "", Messagebox.OK,
 										Messagebox.INFORMATION);
+							pdao.eliminarPersona(postulacions.getPostulado().getPersona());
+							podao.eliminarPostulado(postulacions.getPostulado());
 							postulacions.setAprobado(false);
 							postDAO.eliminarPostulacion(postulacions);	
 							BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);

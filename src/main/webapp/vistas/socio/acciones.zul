@@ -25,7 +25,7 @@
 				
 					<div class="contenido" >
 						<div align="left">
-							<div class='encabezado'>Lista de Acciones</div>
+							<div class='encabezado'>Listado Acciones</div>
 							<div class='linea-two'></div>
 						</div>
 						<separator spacing="20px"/>
@@ -54,7 +54,7 @@
 							</auxhead>
 						
 							<columns>
-								<column hflex="2">Nro Acción</column>	
+								<column hflex="2">Número Acción</column>	
 								<column hflex="2">Nombre Propietario</column>
 								<column hflex="2">Apellido Propietario</column>
 								<column hflex="2">Condición </column>
