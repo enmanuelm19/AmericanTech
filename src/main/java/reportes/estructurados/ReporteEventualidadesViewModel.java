@@ -1,9 +1,20 @@
 package reportes.estructurados;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.zkoss.bind.BindUtils;
@@ -13,20 +24,11 @@ import org.zkoss.bind.annotation.DependsOn;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zhtml.Filedownload;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
-
-
-
 import Dao.InstalacionDao;
 import Dao.SocioDao;
 import modelos.Evento;
@@ -34,6 +36,20 @@ import modelos.Instalacion;
 import modelos.Socio;
 import modelos.TipoInstalacion;
 import modelos.TipoPreferencia;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRTextExporter;
+import net.sf.jasperreports.engine.export.JRTextExporterParameter;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 
 
@@ -43,40 +59,54 @@ public class ReporteEventualidadesViewModel {
 	private Socio socio;
 	private SocioDao socioDao;
 	private String tipo;
-	private Time horaInicio;
-	private Time horaFin;
+	private String horaInicio;
+	private String horaFin;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private InstalacionDao instalacionDao;
-	private TipoInstalacion tipoInstalacionSelected;
+	private Instalacion instalacionSelected;
 	private String carnet;
 	private boolean disablecarnet;
 	private boolean disableinstalaciones;
+	
+	//Declaracion del reporte
+	private String consulta = "";
+	private String titulo = "REPORTE DE EVENTUALIDADES";
+	private String sql = "";
+	private String reporte;
+	private Connection con;
+	private Map<String, Object> parameters = new HashMap<String, Object>();
+	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
+	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+	private boolean isPdf;
+	private String rutaNoEstructurado;
 
 
 	@Init
 	public void init() {
 		instalacionDao = new InstalacionDao();
-		this.socio= new Socio();
 		this.disableinstalaciones = true;
 		this.disablecarnet=true;
 
 	}
 
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
-
-		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
-
+		ArrayList<Instalacion> instalaciones = (ArrayList<Instalacion>) instalacionDao.obtenerTodos();
+		Instalacion todas = new Instalacion();
+		todas.setIdInstalacion(0);
+		todas.setNombre("Todas");
+		instalaciones.add(todas);
+		return new ListModelList<Instalacion>(instalaciones);
 	}
 	
-	@NotifyChange("tipoInstalacionSelected")
-	public TipoInstalacion getTipotipoInstalacionSelected() {
-		return tipoInstalacionSelected;
+	@NotifyChange("instalacionSelected")
+	public Instalacion getInstalacionSelected() {
+		return instalacionSelected;
 	}
 
-	@NotifyChange("InstalacionPorTipo")
-	public void setTipoInstalacionSelected(TipoInstalacion tipoInstalacionSelected) {
-		this.tipoInstalacionSelected = tipoInstalacionSelected;
+	public void setInstalacionSelected(Instalacion instalacionSelected) {
+		this.instalacionSelected = instalacionSelected;
 	}
 
 
@@ -96,19 +126,19 @@ public class ReporteEventualidadesViewModel {
 		this.fechaFin = fechaFin;
 	}
 
-	public Time getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Time getHoraFin() {
+	public String getHoraFin() {
 		return horaFin;
 	}
 
-	public void setHoraFin(Time horaFin) {
+	public void setHoraFin(String horaFin) {
 		this.horaFin = horaFin;
 	}
 
@@ -163,7 +193,6 @@ public class ReporteEventualidadesViewModel {
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
 			if(this.socio==null){
 				Messagebox.show("Carnet no encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-				this.carnet="";
 			}
 			else {
 				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);	
@@ -186,7 +215,174 @@ public class ReporteEventualidadesViewModel {
 
 	public void setDisableinstalacionest(boolean disable) {
 		this.disableinstalaciones = disable;
-	}	
+	}
+	
+	
+	@Command
+	public void btnPDF(Event e) throws SQLException, JRException, IOException {
+		this.isPdf = true;
+		cargarSql();
+	}
+	@Command
+	public void btnTxt(Event e) throws SQLException, JRException, IOException {
+		this.isPdf = false;
+		cargarSql();	 
+	}
+	
+	
+	
+	
+	
+	public void cargarSql() throws SQLException, FileNotFoundException, JRException {
+		try {
+			Class.forName ("org.postgresql.Driver");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
+		} catch (ClassNotFoundException el) {
+			el.printStackTrace();
+		}
+		
+		if( this.tipo == null){
+			Messagebox.show("Debe elegir una seleccion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else if( this.tipo.equalsIgnoreCase("Instalaciones")){
+			this.reporte = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.jrxml";
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.txt";
+			instalacion();
+		} else {
+			this.reporte = System.getProperty("user.home") + "/reportes_america/eventualidades_socios_afiliados.jrxml";
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/eventualidades_socios_afiliados.txt";
+			sociosAfiliado();
+		} 
+	}
+
+	public void instalacion() throws FileNotFoundException, JRException, SQLException {
+		if(instalacionSelected == null){
+			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			
+			this.consulta = "Reporte de eventualidades sobre instalacion: " + this.instalacionSelected.getNombre() + " ";
+			this.sql = "SELECT e.descripcion, te.descripcion as Tipo, "
+					+ "p.nombre || ' ' || p.apellido as NOMBRE, to_char(e.fecha, 'YYYY-MM-DD') as Fecha,"
+					+ " to_char(e.fecha, 'HH:MM') as Hora FROM eventualidad e "
+					+ "INNER JOIN tipo_eventualidad te "
+					+ "ON e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad "
+					+ "INNER JOIN persona p "
+					+ "ON p.id_persona = e.personaid_persona where e.activo = true ";
+			
+			if(this.instalacionSelected.getIdInstalacion() != 0){
+				this.sql += " and e.instalacionid_instalacion = " + this.instalacionSelected.getIdInstalacion() + " ";
+			}
+			
+			sqlTime();
+		}
+		
+	}
+
+	public void sociosAfiliado() throws FileNotFoundException, JRException, SQLException {		
+		this.sql = "SELECT e.descripcion, i.nombre, "
+				+ "te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, "
+				+ "to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora "
+				+ "FROM eventualidad e "
+				+ "INNER JOIN instalacion i "
+				+ "ON i.id_instalacion = e.instalacionid_instalacion "
+				+ "INNER JOIN tipo_eventualidad te "
+				+ "ON e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad "
+				+ "INNER JOIN persona p "
+				+ "ON p.id_persona = e.personaid_persona where e.activo = true ";
+		
+		if(this.socio == null){
+			this.consulta = "Reporte de eventualidades de todos los: " + this.getTipo().toUpperCase();
+			sqlTime();
+		} else {
+			this.consulta = "Reporte de eventualidades sobre: " + this.getTipo();
+			this.sql += " and e.personaid_persona = " +this.socio.getPersona().getIdPersona();
+			sqlTime();
+		}
+	}
+	
+	public void sqlTime() throws FileNotFoundException, JRException, SQLException{
+		if(this.horaInicio == null && this.horaFin == null){
+			sqlDate();
+		} else if (this.horaInicio == null || this.horaFin == null){
+			Messagebox.show("Debe Seleccionar el rango de hora", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else if (Integer.valueOf(this.horaInicio)  >=  Integer.valueOf(this.horaFin)  ){
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			this.sql += " and date_part('hour', e.fecha) between "+ Integer.valueOf(this.horaInicio) +" and "+ Integer.valueOf(this.horaFin)+ " ";
+			sqlDate();
+		}	
+	}
+	
+	public void sqlDate() throws FileNotFoundException, JRException, SQLException{
+		if(this.fechaInicio == null && this.fechaFin == null){
+			generarPDF();
+		} else if (this.fechaInicio == null || this.fechaFin == null){
+			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else if (this.fechaInicio.compareTo(this.fechaFin) == 1 ){
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			this.consulta += "  entre las fechas " + sdf.format(this.fechaInicio) + " y "+ sdf.format(this.fechaFin)+".";
+			this.sql += " AND e.fecha  BETWEEN '" + sdf.format(this.fechaInicio) + "' AND '" + sdf.format(this.fechaFin) + "' ";	
+			generarPDF();
+		}
+	}
+
+	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		Date hoy = (Date) Calendar.getInstance().getTime();
+		String date = "-"+sdfGuio.format(hoy).toString();
+		String nombreArchivo = this.titulo.concat(date);
+		JasperPrint jasperPrint = cargarJasper();			
+
+		if(jasperPrint.getPages().size() > 0){
+			if(this.isPdf) {
+				JRExporter exporter = new JRPdfExporter();
+				Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf");
+			} else {
+				
+				JRExporter exporterTxt = new JRTextExporter();
+				exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
+				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, this.rutaNoEstructurado);
+				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
+				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
+				exporterTxt.exportReport();
+				FileInputStream input = new FileInputStream(this.rutaNoEstructurado);
+				Filedownload.save(input, "txt", nombreArchivo+".txt");    
+			    con.close();
+			    
+			    try{
+		    		File file = new File(this.rutaNoEstructurado);
+		    		file.delete();	
+		    	}catch(Exception e){
+		    		
+		    		e.printStackTrace();
+		    		
+		    	}
+			    
+			}
+			
+		} else {
+			Messagebox.show("No existe planificacion para este evento.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		}		
+		con.close();
+	}
+
+	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
+		JasperDesign jd = null;  
+		jd = JRXmlLoader.load(reporte); 
+		JRDesignQuery newQuery = new JRDesignQuery();  
+		newQuery.setText(sql);  
+		jd.setQuery(newQuery); 
+		JasperReport jasperRepor = JasperCompileManager.compileReport(jd);
+		parameters.clear();
+		FileInputStream image_club = new FileInputStream(img);
+		FileInputStream imagen_equipo = new FileInputStream(img2);
+		parameters.put("TITULO", titulo);
+		parameters.put("CONSULTA", consulta);
+		parameters.put("IMAGEN_EQUIPO", imagen_equipo );
+		parameters.put("IMAGEN_CLUB", image_club);
+		return  JasperFillManager.fillReport(jasperRepor, parameters, con);
+		
+		
+	}
 
 	
 	

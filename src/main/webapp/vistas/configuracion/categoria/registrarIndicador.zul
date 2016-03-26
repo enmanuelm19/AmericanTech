@@ -4,7 +4,7 @@
 		style="iconSclass=z-icon-cogs; height:auto;"
 		title="@load(vm.editable?'Editar indicador':'Registrar indicador')" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%">
+		height="50%"  class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">

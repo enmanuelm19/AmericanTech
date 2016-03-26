@@ -2,7 +2,6 @@ package modelos;
 
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,7 +21,7 @@ public class Postulacion implements java.io.Serializable {
 	private String carnetPadrino1;
 	private String carnetPadrino2;
 	private boolean aprobado;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
 	private Set<Venta> ventas = new HashSet<Venta>(0);
@@ -188,10 +187,5 @@ public class Postulacion implements java.io.Serializable {
 			star=new StarRating("select", "select","select","select","select");
 		}
 		return star;
-	}
-	public String getFechaParse(){
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
-		  
-		 return sdf.format(this.fecha);
 	}
 }

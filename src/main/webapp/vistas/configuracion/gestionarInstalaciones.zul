@@ -10,7 +10,7 @@
 			<div sclass="breadcrumbs">
 				<div sclass="breadcrumb">
 					<span sclass="home-icon z-icon-cogs" />
-					<a label="Configuracion" href="#"/>
+					<a label="Configuración" href="#"/>
 					<label value="Instalaciones"/>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 				
 				<div class="contenido">
 					<div align="left">
-						<div class='encabezado'>Lista Instalaciones</div>
+						<div class='encabezado'>Listado Instalaciones</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="1%"/>
@@ -53,7 +53,7 @@
 						<columns>
 							<column width="40px" />
 							<column hflex="2">Nombre</column>
-							<column hflex="2">Tipo Instalacion</column>
+							<column hflex="2">Tipo Instalación</column>
 							<column hflex="1">Capacidad </column>
 							<column hflex="1">Costo</column>
 							<column width="15%">Acciones </column>

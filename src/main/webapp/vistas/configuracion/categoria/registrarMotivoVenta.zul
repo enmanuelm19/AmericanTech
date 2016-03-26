@@ -10,7 +10,8 @@
 		title="@load(vm.editable?'Editar motivo venta':'Registrar motivo venta')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="55%" width="40%" apply="org.zkoss.bind.BindComposer"
+		height="50%"  class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"
+		 apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarMotivoVentaViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">

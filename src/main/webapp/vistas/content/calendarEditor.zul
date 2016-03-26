@@ -11,7 +11,7 @@
 				<rows class="">
 					<row class="col-md-12 ">
 						<image id="image" width="100%"
-							src="/assets/img/caney1.jpg" />
+							src="@load(vm.imagenInstalacion)" />
 					</row>
 					<row class="col-md-12 ">
 						<div>

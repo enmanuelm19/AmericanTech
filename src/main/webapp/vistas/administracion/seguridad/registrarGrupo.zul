@@ -76,7 +76,7 @@
 						</auxhead>
 
 						<columns>
-							<column hflex="3">Funcion</column>
+							<column hflex="3">Función</column>
 							<column>Acciones</column>
 						</columns>
 						<rows>

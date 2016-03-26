@@ -29,7 +29,7 @@
 							</div>
 							<separator spacing="20px" />
 
-							<grid model="@load(vm.allNoticia)"
+							<grid model="@load(vm.noticiaAll)"
 								emptyMessage="No se encuentran Noticias registradas" mold="paging" pageSize="10">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">

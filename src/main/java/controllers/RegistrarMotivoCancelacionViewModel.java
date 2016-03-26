@@ -63,13 +63,13 @@ public class RegistrarMotivoCancelacionViewModel {
 					motivoDao.agregarMotivoCancelacion(motivoCancelacion);
 					Messagebox.show("El motivo de cancelación "
 							+ motivoCancelacion.getDescripcion()
-							+ " ha sido registrado exitosamente", "",
+							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoCancelacion(motivoCancelacion);
 					Messagebox.show("El motivo de cancelación "
 							+ motivoCancelacion.getDescripcion()
-							+ " ha sido actualizado exitosamente", "",
+							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
@@ -78,7 +78,7 @@ public class RegistrarMotivoCancelacionViewModel {
 			} else {
 				Messagebox.show("motivo cancelacion con la descripción "
 						+ motivoCancelacion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 

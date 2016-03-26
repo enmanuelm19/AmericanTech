@@ -32,9 +32,9 @@
 												 <div class="col-md-8">	
 													   <label class="col-md-4">Seleccione :</label>
 												       <combobox selectedItem="@bind(vm.tipo)" disabled="@load(vm.sancionados)">
-															<comboitem label="Todos" value="1"> </comboitem>
-															<comboitem label="Socios" value="2"></comboitem>
-															<comboitem label="Afiliados" value="3"></comboitem>
+															<comboitem label="Todos" value="Todos"> </comboitem>
+															<comboitem label="Socios" value="Socios"></comboitem>
+															<comboitem label="Afiliados" value="Afiliados"></comboitem>
 													   </combobox>			   		
 											   	 </div>								   	 
 											  </row>   
@@ -68,9 +68,9 @@
 								   	 <space spacing="2%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
+									<button id="btnImprimir" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" />
 									<space spacing="2%"></space>
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
+									<button id="btnImprimir1" class='boton-guardar' onClick="@command('btnImprimir1')" label="Generar PDF" />
 								 </div>	
 							</div>
 						</div>

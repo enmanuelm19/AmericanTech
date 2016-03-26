@@ -28,9 +28,6 @@
 								<groupbox style="margin: 1%;" width="85%" height="auto">
 								<space spacing="2%"></space>
 									<hlayout width="100%" >
-							   		   <div >
-							   		   		<radio label="Estado de la Instalacion:" value="0" selected="true" />			   		   		
-							   		   </div>
 							   		   <div>
 							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
 													<comboitem label="Alquiladas" value="Alquiladas" />
@@ -38,10 +35,7 @@
 													<comboitem label="Todas" value="Todas" />
 										   </combobox>
 							   		   </div>
-									   <space spacing ="2%"></space>   
-							   		   <div >
-							   		   		<radio label="Seleccione la Instalacion:" value="0"  />			   		   		
-							   		   </div>									    			   		
+									   <space spacing ="2%"></space>   								    			   		
 							   		   	<div>
 							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" >
 												<template name="model">
@@ -70,7 +64,7 @@
 								   	 <space spacing="1%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
+						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnTXT')" label="Generar txt" />
 						<space spacing="2%"></space>
 						<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
 					</div>								

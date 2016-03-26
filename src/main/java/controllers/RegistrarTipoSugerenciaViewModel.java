@@ -59,25 +59,25 @@ public class RegistrarTipoSugerenciaViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoSugerencia(tipoSugerencia);
 					Messagebox.show(
-							"El tipo de sugerencia "
+							"El tipo sugerencia "
 									+ tipoSugerencia.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoSugerencia(tipoSugerencia);
 					Messagebox.show(
-							"El tipo de sugerencia "
+							"El tipo sugerencia "
 									+ tipoSugerencia.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoSugerencia", null);
 			} else {
-				Messagebox.show("tipo de sugerencia con la descripcion "
+				Messagebox.show("El tipo sugerencia con la descripción "
 						+ tipoSugerencia.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 

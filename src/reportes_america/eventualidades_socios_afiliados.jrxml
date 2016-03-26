@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="eventualidades_socios_afiliados" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="eventualidades_socios_afiliados" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -26,31 +26,31 @@ ON p.id_persona = e.personaid_persona]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="156" splitType="Stretch">
+		<band height="115" splitType="Stretch">
 			<staticText>
-				<reportElement x="262" y="19" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<reportElement x="264" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
 				<textElement>
 					<font fontName="Arial" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="213" y="68" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
+				<reportElement x="213" y="36" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="195" height="140" uuid="29dc685e-75e2-49e1-962d-983fd145a3c3"/>
+				<reportElement x="0" y="0" width="195" height="100" uuid="29dc685e-75e2-49e1-962d-983fd145a3c3"/>
 				<imageExpression><![CDATA[$P{IMAGEN_CLUB}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="603" y="1" width="195" height="128" uuid="bbc3d4ef-0a0b-43d9-a51b-b5752fbd0b69"/>
+				<reportElement x="603" y="1" width="195" height="88" uuid="bbc3d4ef-0a0b-43d9-a51b-b5752fbd0b69"/>
 				<imageExpression><![CDATA[$P{IMAGEN_EQUIPO}]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="0" y="152" width="798" height="1" uuid="3a77e1ee-5875-48d2-8871-d10fae1d8d87"/>
+				<reportElement x="4" y="108" width="798" height="1" uuid="3a77e1ee-5875-48d2-8871-d10fae1d8d87"/>
 			</line>
 		</band>
 	</title>
@@ -106,21 +106,21 @@ ON p.id_persona = e.personaid_persona]]>
 				<text><![CDATA[Involucrado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="644" y="0" width="59" height="20" uuid="5c253fe5-2f2b-474e-ad28-bd50c215d37e"/>
+				<reportElement x="661" y="0" width="59" height="20" uuid="5c253fe5-2f2b-474e-ad28-bd50c215d37e"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="724" y="1" width="74" height="20" uuid="18b13895-a12a-4b45-9210-8e55a6d6d516"/>
+				<reportElement x="748" y="0" width="40" height="20" uuid="18b13895-a12a-4b45-9210-8e55a6d6d516"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="516" y="0" width="100" height="20" uuid="1583b42c-681d-4e7c-800b-b81d2c015b0c"/>
+				<reportElement x="516" y="1" width="100" height="20" uuid="1583b42c-681d-4e7c-800b-b81d2c015b0c"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -145,28 +145,28 @@ ON p.id_persona = e.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="363" y="2" width="100" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
+				<reportElement x="363" y="2" width="129" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="724" y="2" width="74" height="20" uuid="78ab625f-3f5c-4c25-9301-18433557f9c5"/>
+				<reportElement x="748" y="1" width="54" height="20" uuid="78ab625f-3f5c-4c25-9301-18433557f9c5"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="648" y="2" width="76" height="20" uuid="6729528f-21a0-495b-b30b-447d7cb8cc44"/>
+				<reportElement x="665" y="2" width="76" height="20" uuid="6729528f-21a0-495b-b30b-447d7cb8cc44"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="516" y="2" width="100" height="20" uuid="1572ed99-3313-4671-96c4-a5eb95078434"/>
+				<reportElement x="516" y="2" width="128" height="20" uuid="1572ed99-3313-4671-96c4-a5eb95078434"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

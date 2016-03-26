@@ -5,159 +5,125 @@
 			<div sclass="breadcrumb">
 				<span sclass="home-icon z-icon-th-list" />
 				<a label="Estructurado" href="#" />
-				<label value="Evento" />
+				<label value="Socios" />
 			</div>
 		</div>
 		<div class="contenedor" align="center">
 			<div sclass="page-header" align="left">
-				<label value="Evento" />
+				<label value="Socio" />
 			</div>
 
 			<div
 				class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
-				align="left" width="78%">
+				align="left">
 				<div class="contenido">
 					<div align="left">
 						<div class='encabezado'>Consulta Socio</div>
 						<div class='linea-two'></div>
 					</div>
-
 					<div align="center">
-
-
 						<grid>
 							<rows>
 								<row class="col-md-12 ">
 									<div class="col-md-8">
-										<label class="col-md-4">
+										<label class="col-md-2">
 											Sexo:
 										</label>
-										<combobox selectedItem="@bind(vm.sexoSelected)">
+										<combobox class="col-md-5" readonly="true"
+											selectedItem="@bind(vm.sexoSelected)">
 
-											<comboitem
-												label="Masculino" value="Masculino">
+											<comboitem label="Masculino"
+												value="Masculino">
 											</comboitem>
-											<comboitem
-												label="Femenino" value="Femenino">
+											<comboitem label="Femenino"
+												value="Femenino">
 											</comboitem>
-											<comboitem
-												label="Todos" value="Todos">
-											</comboitem>
-										</combobox>
-									</div>
-								</row>
-								<row class="col-md-12 ">
-									<div class="col-md-8">
-										<label class="col-md-4">
-											Nro de acciones:
-										</label>
-										<combobox selectedItem="@bind(vm.nroAccionesSelected)">
-											<comboitem label="1" value="1">
-											</comboitem>
-											<comboitem label="2" value="2">
-											</comboitem>
-											<comboitem
-												label="3 o mas" value="3">
+											<comboitem label="Todos"
+												value="Todos">
 											</comboitem>
 										</combobox>
 									</div>
 								</row>
 								<row class="col-md-12 ">
+									
+									
 									<div class="col-md-8">
-										<label class="col-md-4">
+										<label class="col-md-2">
 											Edad Desde:
 										</label>
-										<combobox
-										selectedItem="@bind(vm.edadDesdeSelected)">
-											<comboitem label="5 o menos" value="5"/>
-											<comboitem label="10" value="10"/>
-											<comboitem label="15" value="15"/>
-											<comboitem label="20" value="20"/>
-											<comboitem label="25" value="25"/>
-											<comboitem label="30" value="30"/>
-											<comboitem label="35" value="35"/>
-											<comboitem label="40" value="40"/>
-											<comboitem label="45" value="45"/>
-											<comboitem label="50" value="50"/>
-											<comboitem label="55" value="55"/>
-											<comboitem label="60" value="60"/>
-											<comboitem label="65" value="65"/>
-											<comboitem label="70 o mas" value="70"/>
+										<combobox class="col-md-5" readonly="true"
+											model="@load(vm.listaedades)"
+											selectedItem="@bind(vm.edadDesdeSelected)">
+											<template name="model">
+												<comboitem
+													label="@load(each)" value="@load(each)" />
+											</template>
+
+											
+										</combobox>
+									</div>
+								
+								
+								</row>
+								<row class="col-md-12 ">
+									<div class="col-md-8">
+										<label class="col-md-2">
+											Edad Hasta:
+										</label>
+										<combobox class="col-md-5" readonly="true"
+											model="@load(vm.listaedades)"
+											selectedItem="@bind(vm.edadHastaSelected)">
+											<template name="model">
+												<comboitem
+													label="@load(each)" value="@load(each)" />
+											</template>
 										</combobox>
 									</div>
 								</row>
 								<row class="col-md-12 ">
 									<div class="col-md-8">
-										<label class="col-md-4">
-											Edad Hasta:
+										<label class="col-md-2">
+											Tipo Preferecia:
 										</label>
-										<combobox
-										selectedItem="@bind(vm.edadHastaSelected)">
-											<comboitem label="5 o menos" value="5"/>
-											<comboitem label="10" value="10"/>
-											<comboitem label="15" value="15"/>
-											<comboitem label="20" value="20"/>
-											<comboitem label="25" value="25"/>
-											<comboitem label="30" value="30"/>
-											<comboitem label="35" value="35"/>
-											<comboitem label="40" value="40"/>
-											<comboitem label="45" value="45"/>
-											<comboitem label="50" value="50"/>
-											<comboitem label="55" value="55"/>
-											<comboitem label="60" value="60"/>
-											<comboitem label="65" value="65"/>
-											<comboitem label="70 o mas" value="70"/>
+										<combobox class="col-md-5" readonly="true"
+											model="@load(vm.allTipoPreferencia)"
+											selectedItem="@bind(vm.tipoPreferenciaSelected)">
+											<template name="model">
+												<comboitem
+													label="@load(each.descripcion)" value="@load(each)" />
+											</template>
 										</combobox>
+
 									</div>
+
 								</row>
-								<row>
-									<div>
+								<row class="col-md-12 ">
+									<div class="col-md-8">
+										<label class="col-md-5">
+											Preferencia:
+										</label>
+										<chosenbox class="col-md-5" 
+											model="@load(vm.preferenciasPorTipo)" emptyMessage=""
+											creatable="true"
+											selectedObjects="@bind(vm.temporalPreferencia)" />
 
-										<div class="col-md-6">
-											<div align="left">
-												Seleccione la
-												CategorÃ­a/as
-												relacionadas con el
-												evento:
-												<combobox
-													model="@load(vm.allTipoPreferencia)"
-													selectedItem="@bind(vm.tipoPreferenciaSelected)"
-													width="80%%">
-													<template
-														name="model">
-														<comboitem
-															label="@load(each.descripcion)" value="@load(each)" />
-													</template>
-												</combobox>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div align="left">
-												Seleccione la
-												sub-categoria/as
-												relacionadas con el
-												evento:
-												<chosenbox
-													model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%"
-													emptyMessage="" creatable="true"
-													selectedObjects="@bind(vm.temporalPreferencia)" />
+										<button sclass="btn-link"
+											class="col-md-2"
+											onClick="@command('agregarSeleccionPreferencia')"
+											iconSclass="z-icon-plus blue" id=""
+											tooltiptext="Agregar preferencia" />
 
-												<button
-													sclass="btn-link"
-													onClick="@command('agregarSeleccionPreferencia')"
-													iconSclass="z-icon-plus blue" id=""
-													tooltiptext="Agregar preferencia" />
-											</div>
-										</div>
 									</div>
+
 								</row>
 
 								<row>
-									<div class="col-md-12">
-<!-- 									model="@load(vm)" -->
-											<grid 
+									<div class="col-md-8">
+
+										<grid
 											emptyMessage="No se encuentran sub-categorias registradas"
-											mold="paging" pageSize="5" model="@load(vm.preferenciaEventos)"> 
+											mold="paging" pageSize="5"
+											model="@load(vm.preferenciaEventos)">
 
 											<columns>
 												<column width="40%"
@@ -208,11 +174,13 @@
 					</div>
 
 
-					 <div align="center" xmlns:w="client">
-						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
+					<div align="center" xmlns:w="client">
+						<button id="btnEXCEL" class='boton-guardar'
+							onClick="@command('btnTXT')" label="Generar txt" />
 						<space spacing="2%"></space>
-						<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
-					</div>	
+						<button id="btnPDF" class='boton-guardar'
+							onClick="@command('btnPDF')" label="Generar PDF" />
+					</div>
 				</div>
 			</div>
 		</div>

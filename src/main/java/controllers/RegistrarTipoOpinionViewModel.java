@@ -59,25 +59,25 @@ public class RegistrarTipoOpinionViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoOpnion(tipoOpnion);
 					Messagebox.show(
-							"El tipo de opinion "
+							"El tipo de opinión "
 									+ tipoOpnion.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoOpnion(tipoOpnion);
 					Messagebox.show(
-							"El tipo de opinion "
+							"El tipo de opinión "
 									+ tipoOpnion.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshTipoOpnion",
 						null);
 			} else {
-				Messagebox.show("tipo de opinion con la descripcion "
+				Messagebox.show("El tipo de opinión con la descripción "
 						+ tipoOpnion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 

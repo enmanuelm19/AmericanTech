@@ -225,16 +225,33 @@ public class RegistrarInstalacionViewModel {
 			alquilable = false;
 		}
 	}
+	@Command
+	@NotifyChange({"recursosinstalacion","recursoInstalacion"})
+	public void eliminarRecursoInstalacion(@BindingParam("recursoInstalacion") RecursoInstalacion ri){
+			recursosinstalacion.remove(ri);
+			Messagebox.show("El recurso " + ri.getRecurso().getDescripcion() +" se ha eliminado para esta instalacion", "American Tech",
+					Messagebox.OK, null );
+	}
+
 	
 	@Command
 	@NotifyChange({"uploadedImage","allfotoinstalacion","fotodefault"})
 	public void upload(@BindingParam("media") final Media myMedia) throws Exception{
 		if(!editable){
-			imagenNueva=true;
-			uploadedImage = myMedia;
-			allfotoinstalacion.add(uploadedImage);
-			fotodefault = false;
-			System.out.println(fotodefault);
+			if(myMedia instanceof org.zkoss.image.Image){
+				if(myMedia.getByteData().length > 2000*1024){
+					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				}else{
+					imagenNueva=true;
+					uploadedImage = myMedia;
+					allfotoinstalacion.add(uploadedImage);
+					fotodefault = false;
+					System.out.println(fotodefault);
+				}
+			}else{
+				Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}
+
 		}else{
 			Messagebox.show("Imagen subida con exito para la instalación " + instalacion.getNombre(), "American Tech",
 					Messagebox.OK , Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
@@ -279,20 +296,26 @@ public class RegistrarInstalacionViewModel {
 	public void guardarRecursoInstalacion() {
 	
 	if (this.recursoInstalacion.getRecurso() != null) {
+		if(this.recursoInstalacion.getCantidad() <= 0){
+			Messagebox.show("La cantidad de recursos debe ser mayor a 0",
+					"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		}else{
 			for (RecursoInstalacion recursoInstalacion : recursosinstalacion) {
-				if (recursoInstalacion.getRecurso().getIdRecurso() == this.recursoInstalacion.getRecurso().getIdRecurso()){
-					Messagebox.show(
-							"Recurso seleccionado previamente", "",
-							Messagebox.OK, Messagebox.INFORMATION);
-					return;
-				}
-					
+			if (recursoInstalacion.getRecurso().getIdRecurso() == this.recursoInstalacion.getRecurso().getIdRecurso()){
+				Messagebox.show(
+						"Recurso seleccionado previamente", "",
+						Messagebox.OK, Messagebox.INFORMATION);
+				return;
 			}
-			this.recursoInstalacion.setActivo(true);
-			this.recursoInstalacion.setInstalacion(instalacion);
-			recursosinstalacion.add(this.recursoInstalacion);
-			this.recursoInstalacion = new RecursoInstalacion();
-			
+				
+		}
+		this.recursoInstalacion.setActivo(true);
+		this.recursoInstalacion.setInstalacion(instalacion);
+		recursosinstalacion.add(this.recursoInstalacion);
+		this.recursoInstalacion = new RecursoInstalacion();
+		
+		}
+
 	}else{
 		Messagebox.show(
 				"Seleccione al menos un recurso", "",

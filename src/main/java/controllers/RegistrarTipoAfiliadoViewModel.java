@@ -46,22 +46,22 @@ public class RegistrarTipoAfiliadoViewModel {
 					Messagebox.show(
 							"El tipo de afiliado "
 									+ tipoAfiliado.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoAfiliado(tipoAfiliado);
 					Messagebox.show(
 							"El tipo de afiliado "
 									+ tipoAfiliado.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshTipoAfiliado",null);
 			} else {
-				Messagebox.show("tipo de afiliado con la descripciÃ³n"
+				Messagebox.show("El tipo de afiliado con la descripción"
 						+ tipoAfiliado.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 	}

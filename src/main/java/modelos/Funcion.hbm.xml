@@ -23,6 +23,9 @@
         <property name="padreidFuncion" type="java.lang.Integer">
             <column name="padreid_funcion" />
         </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>

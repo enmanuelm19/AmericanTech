@@ -1,5 +1,6 @@
 package controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -154,6 +155,9 @@ public class RegistrarReservacionViewModel {
 					reservacionDao.actualizarReservacion(reservacion);
 					new CalendarioFechaDao().actualizarCalendarioFecha(calendarioFecha);
 				}
+				Messagebox.show(
+						"Reservacion Agregada: " + getInstalacionSeleccionada().getNombre(),
+						"", Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 			}
@@ -207,6 +211,9 @@ public class RegistrarReservacionViewModel {
 
 		// verificamos que no este reservada esa intalacion
 		for (Reservacion reservacion : reservacionDao.obtenerReservacionesInstalacion(instalacion)) {
+			if(getReservacion().getIdReservacion() == reservacion.getIdReservacion()){
+				continue;
+			}
 
 			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaInicio()))
 				return false;
@@ -254,9 +261,23 @@ public class RegistrarReservacionViewModel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else
-				Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "Warning", Messagebox.OK,
-						Messagebox.EXCLAMATION);
+		} else
+			Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "Warning", Messagebox.OK,
+					Messagebox.EXCLAMATION);
+	}
+
+	
+	public double precio(Date date1, Date date2,float precio){
+		if(date1 != null && date2 != null){
+			return precio * diasEntreFecha(date1, date2);
+		}
+		return 0;
+	}
+	
+	public int diasEntreFecha(Date date1, Date date2) {
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día
+		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
+		return (int) diferencia;
 	}
 
 }

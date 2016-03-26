@@ -79,18 +79,18 @@ public class MotivoSancionViewModel {
 	@NotifyChange({ "allMotivoSancion", "cantRegistros" })
 	public void eliminar(@BindingParam("Motivo") final MotivoSancion motivo) {
 
-		Messagebox.show("Estas seguro de eliminar " + motivo.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + motivo.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								motivoSancionDao.eliminarMotivoSancion(motivo);
 								motivosAll = motivoSancionDao.obtenerTodos();
-								Messagebox.show(motivo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(motivo.getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshMotivoSancion", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), motivo.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), motivo.getDescripcion() + "American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

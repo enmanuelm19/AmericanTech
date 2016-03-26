@@ -63,23 +63,23 @@ public class RegistrarTipoEventualidadViewModel {
 					Messagebox.show(
 							"El tipo de eventualidad "
 									+ tipoEventualidad.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoEventualidad(tipoEventualidad);
 					Messagebox.show(
 							"El tipo de eventualidad "
 									+ tipoEventualidad.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshTipoEventualidad",
 						null);
 			} else {
-				Messagebox.show("tipo de eventualidad con la descripcion "
+				Messagebox.show("El tipo de eventualidad con la descripción "
 						+ tipoEventualidad.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 
