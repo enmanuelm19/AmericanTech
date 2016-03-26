@@ -2,6 +2,7 @@ package modelos;
 
 // Generated 05/03/2016 11:15:24 PM by Hibernate Tools 4.3.1
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -187,5 +188,11 @@ public class Postulacion implements java.io.Serializable {
 			star=new StarRating("select", "select","select","select","select");
 		}
 		return star;
+	}
+
+	public String getFechaParse(){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
+		  
+		 return sdf.format(this.fecha);
 	}
 }
