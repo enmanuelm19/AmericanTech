@@ -240,7 +240,7 @@ public class RegistrarInstalacionViewModel {
 		if(!editable){
 			if(myMedia instanceof org.zkoss.image.Image){
 				if(myMedia.getByteData().length > 2000*1024){
-					Messagebox.show("Escoja una imagen de menor tamaÃ±o", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}else{
 					imagenNueva=true;
 					uploadedImage = myMedia;
