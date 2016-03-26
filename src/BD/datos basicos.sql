@@ -152,12 +152,12 @@ INSERT INTO indicador(descripcion, activo)
 
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Softball','Espacio para la Práctica de Softball ó Béisbol',500,20000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Salon de Fiesta Principal','Espacio de excelente prestancia para Fiestas y Celebraciones',150,25000,true,2,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Parque Infantil','Área recreacional para niños y niñas',150,NULL,false,3,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Parque Infantil','Área recreacional para niños y niñas',150,0,false,3,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Tenis','Espacio para la Práctica de Tenis, para el disfrute de todos nuestros socios',500,5000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Baloncesto','Es un espacio deportivo ideal para quienes Práctican el Baloncesto ',150,5000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Cancha de Bolas Criollas','Cancha popular entre nuestros socios, en especial los fines de semana',150,5000,true,1,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Caney de Rafa','Amplio Caney, muy popular entre la Comunidad Americanista',150,2000,true,4,true);
-insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Caney de Chevechita','Caney que debe su Nombre a un Socio emblemático, desaparecido físicamente desde hace años.',150,NULL,false,4,true);
+insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Caney de Chevechita','Caney que debe su Nombre a un Socio emblemático, desaparecido físicamente desde hace años.',150,0,false,4,true);
 insert into instalacion (nombre,descripcion,capacidad,precio_alquiler,alquilable,tipo_instalacionid_tipo_instalacion,activo) values ('Piscina','Área amplia con Comodidades dignas de la Comunidad Americanista',150,35000,true,3,true);
 
 --foto
