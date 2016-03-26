@@ -203,19 +203,6 @@ insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo)
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Cantar',4,true);
 insert into preferencia (descripcion,tipo_preferenciaid_tipo_preferencia,activo) values ('Ciclismo',2,true);
 
---Accion
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000001', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000002', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000003', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000004', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000005', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000006', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000007', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000008', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000009', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000010', 10000, NULL, 4, true);
-INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000011', 10000, NULL, 4, true);
-
 --politica
 
 INSERT INTO politica (descripcion, valor, clubid_club, activo) VALUES ('Personas que puede traer un socio por visita diaria', 3, 1, true);
@@ -228,6 +215,24 @@ INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, co
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('14327254', 'Manuel', 'Guerrero', 'http://i.imgur.com/xXp0wXP.png', '1983-06-01', 'M', 'manuel@gmail.com', '04147658877', '02516548265', 'Carrera 25 con calle 12', true);
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('13658792', 'Hector', 'Gil', NULL, '1983-07-01', 'M', 'sergio@hotmail.com', '04167779788', '02516540965', 'Av Libertador con calle 12', true);
 INSERT INTO persona (identificacion, nombre, apellido, foto, fecha_nac, sexo, correo, telefono, telefono_fijo, direccion, activo) VALUES ('16267894', 'Pedro', 'Camacaro', NULL, '1984-08-01', 'M', 'pedrocamacaro@gmail.com', '04263423433', '0255657432', 'Santa Isabel, Avenida 4', true);
+
+--socio
+
+INSERT INTO socio (postulacionid_postulacion, nro_carnet, personaid_persona, activo) VALUES ( NULL, 'B-0339', 2, true);
+INSERT INTO socio (postulacionid_postulacion, nro_carnet, personaid_persona, activo) VALUES ( NULL, 'B-0340', 3, true);
+
+--Accion
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000001', 10000, 1, 1, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000002', 10000, 2, 1, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000003', 10000, NULL, 2, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000004', 10000, NULL, 2, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000005', 10000, NULL, 2, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000006', 10000, NULL, 2, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000007', 10000, NULL, 2, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000008', 10000, NULL, 4, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000009', 10000, NULL, 4, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000010', 10000, NULL, 4, true);
+INSERT INTO accion (nro_accion, valor, socioid_socio, estado_accionid_estado_accion, activo) VALUES ( 'A00000011', 10000, NULL, 4, true);
 
 --usuario 
 
