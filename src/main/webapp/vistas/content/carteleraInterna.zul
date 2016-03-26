@@ -1,0 +1,12 @@
+<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
+
+<div align="left">
+		<div class="row">
+			<div class="col-xs-12" zclass="none">
+			<include src="content/carteleraNoticias.zul" />
+				<include src="/vistas/content/calendario.zul" /> 
+			</div>
+		</div>
+	</div>
+
+

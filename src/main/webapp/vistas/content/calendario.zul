@@ -1,8 +1,8 @@
 <div class="contenedor">
-	<panel border="none" width="100%" class="z-panel-expand"
-		collapsible="true" sclass="transparent">
-		<caption iconSclass="z-icon-calendar orange" label="Calendario" />
-		<panelchildren>
+<!-- 	<panel border="none" width="100%" class="z-panel-expand" -->
+<!-- 		collapsible="true" sclass="transparent"> -->
+<!-- 		<caption iconSclass="z-icon-calendar orange" label="Calendario" /> -->
+<!-- 		<panelchildren> -->
 			<div apply="controllers.CalendarViewModel" align="center"
 				width="100%" height="590px" style="margin-top: 15px;">
 				<!-- Control Menu -->
@@ -34,8 +34,8 @@
 				<calendars id="calendars" firstDayOfWeek="Sunday"
 					timeZone="Main=GMT+0" mold="month" width="90%" height="90%" />
 			</div>
-		</panelchildren>
-	</panel>
+<!-- 		</panelchildren> -->
+<!-- 	</panel> -->
 	<!-- Create/Update Event Popup -->
 
 
