@@ -268,14 +268,13 @@ public class ReporteEventoViewModel {
 		try {
 			Class.forName ("org.postgresql.Driver");
 		
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America15","postgres","622590");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America15","postgres","postgres");
 			
 			
 		} catch (ClassNotFoundException el) {
 			el.printStackTrace();
 		}
 		
-		//if (this.tipoPreferenciaSelected == null )
 		if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == false && this.checkestricto == false)
 		{
 			this.titulo = "EVENTOS";
