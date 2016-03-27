@@ -80,7 +80,7 @@ public class ReporteSancionesEstViewModel {
 		private Map<String, Object> parameters = new HashMap<String, Object>();
 		private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 		private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
 
 
 	@Init
