@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_eventualidad1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="84"/>
+	<property name="ireport.y" value="103"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -23,14 +23,14 @@
 			<staticText>
 				<reportElement x="262" y="19" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
 				<textElement>
-					<font fontName="Arial" size="24" isBold="true"/>
+					<font fontName="Comic Sans MS" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="216" y="54" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="false"/>
+					<font fontName="Comic Sans MS" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.]]></text>
 			</staticText>
@@ -52,23 +52,23 @@
 			<staticText>
 				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
-					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+					<font fontName="Comic Sans MS" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Referencia del Reporte:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="0" width="802" height="66" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="18" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="Comic Sans MS"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{CONSULTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="802" height="31" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -80,21 +80,21 @@
 			<staticText>
 				<reportElement x="36" y="1" width="100" height="20" uuid="4fa94580-009a-448c-a451-b93bc7937e25"/>
 				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Instalacion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="229" y="1" width="100" height="20" uuid="f89447f3-87cb-4019-92f5-a38d4119bd1a"/>
 				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="405" y="0" width="100" height="20" uuid="65372061-eeb7-4486-ab99-0d4b626c110a"/>
 				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Porcentaje]]></text>
 			</staticText>
@@ -102,24 +102,24 @@
 	</columnHeader>
 	<detail>
 		<band height="24" splitType="Stretch">
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="36" y="4" width="100" height="20" uuid="57811500-0e0d-44c3-b13e-929ab192e8b2"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="229" y="4" width="100" height="20" uuid="ad13e281-90dc-4601-8d18-1af126d39199"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="405" y="0" width="100" height="20" uuid="2dbece12-eea2-41f4-93de-3c3fa4dc7065"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{porcentaje}]]></textFieldExpression>
 			</textField>
@@ -139,33 +139,35 @@
 			<textField>
 				<reportElement x="651" y="229" width="90" height="20" uuid="609653b6-b5ef-4cd8-b2a7-e4ed6a589d1f"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="741" y="229" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="326" y="209" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="275" y="229" width="340" height="20" uuid="b8089da3-ae14-47da-90dc-76ac0798ad03"/>
-				<textElement textAlignment="Justified"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Comic Sans MS"/>
+				</textElement>
 				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="5" y="229" width="154" height="20" uuid="144152b9-fcd1-4dfe-a3e3-e59a80c430d5"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
