@@ -65,7 +65,7 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Correo electrónico </label>
-									<textbox type="email" class="col-md-9"  value="@bind(vm.user.persona.correo)"> </textbox>
+									<textbox type="email" class="col-md-9" disabled="@load(vm.editable)" value="@bind(vm.user.persona.correo)"> </textbox>
 								</div>
 							</row>
 							<row>
@@ -92,7 +92,7 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Usuario </label>
-									<textbox  class="col-md-9" value="@bind(vm.user.username)">
+									<textbox  class="col-md-9" disabled="@load(vm.editable)" value="@bind(vm.user.username)">
 									</textbox>
 								</div>
 							</row>
