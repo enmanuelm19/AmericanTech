@@ -12,9 +12,8 @@
 			<div sclass="page-header" align="left">
 				<label value="Socio" />
 			</div>
-
-			<div
-				class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
+			<separator spacing="1%" />
+			<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
 				align="left">
 				<div class="contenido">
 					<div align="left">
@@ -45,8 +44,6 @@
 									</div>
 								</row>
 								<row class="col-md-12 ">
-									
-									
 									<div class="col-md-8">
 										<label class="col-md-2">
 											Edad Desde:
@@ -107,12 +104,11 @@
 											creatable="true"
 											selectedObjects="@bind(vm.temporalPreferencia)" />
 
-										<button sclass="btn-link"
-											class="col-md-2"
+										<button class="col-md-2"
+										 sclass="btn-link"
 											onClick="@command('agregarSeleccionPreferencia')"
 											iconSclass="z-icon-plus blue" id=""
 											tooltiptext="Agregar preferencia" />
-
 									</div>
 
 								</row>
