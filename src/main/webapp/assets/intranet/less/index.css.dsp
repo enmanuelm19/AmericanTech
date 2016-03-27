@@ -3250,7 +3250,8 @@ div.hola table {
 
 .z-loading-icon{
 	background: transparent no-repeat center;
-	background-image: url("../../img/gif-load.gif"); 
+	background-image: url("../../img/loading_blue.gif"); 
+	background-size: 100% 100%;
 	height: 60px;
 	width: 60px;
 }
@@ -3282,4 +3283,26 @@ div.hola table {
 .z-detail-icon{
 	color: #2B7DBC;
 	font-size: 25px;
+}
+.z-messagebox-information{
+	background-image: url('../../img/check.png');
+	background-size: 100% 100%;
+}
+.z-messagebox.z-div{
+	margin-top: 5px;
+}
+.z-messagebox.z-div span.z-label{
+	font-family: 'Lato',Sans-serif;
+	font-size: 13px;
+}
+.z-messagebox-question{
+	margin-top:4px;
+	background-image: url('../../img/pregunta.png');
+	background-size: 100% 100%;
+	
+}
+.z-messagebox-exclamation{
+	margin-top:4px;
+	background-image: url('../../img/icon.png');
+	background-size: 100% 100%;	
 }

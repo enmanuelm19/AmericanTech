@@ -37,23 +37,16 @@ public class RegistrarTipoAfiliadoViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		this.tipoAfiliado.setActivo(true);
-		if (tipoAfiliado.getDescripcion() != null
-				&& !tipoAfiliado.getDescripcion().equalsIgnoreCase("")) {
-			if (this.tipoDao.obtenerTipoDescripcion(tipoAfiliado
-					.getDescripcion()) == null) {
+		if (tipoAfiliado.getDescripcion() != null && !tipoAfiliado.getDescripcion().equalsIgnoreCase("") && tipoAfiliado.getSubfijo()!=null &&
+				!tipoAfiliado.getSubfijo().equalsIgnoreCase("")) {
+			if (this.tipoDao.obtenerTipoDescripcion(tipoAfiliado.getDescripcion()) == null) {
 				if (!editable) {
 					tipoDao.agregarTipoAfiliado(tipoAfiliado);
-					Messagebox.show(
-							"El tipo de afiliado "
-									+ tipoAfiliado.getDescripcion()
-									+ " ha sido registrado exitosamente", "American Tech",
+					Messagebox.show("El tipo de afiliado "+ tipoAfiliado.getDescripcion()+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoAfiliado(tipoAfiliado);
-					Messagebox.show(
-							"El tipo de afiliado "
-									+ tipoAfiliado.getDescripcion()
-									+ " ha sido actualizado exitosamente", "American Tech",
+					Messagebox.show("El tipo de afiliado "+ tipoAfiliado.getDescripcion()+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
@@ -63,6 +56,9 @@ public class RegistrarTipoAfiliadoViewModel {
 						+ tipoAfiliado.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}
+		else{
+			Messagebox.show("Debe llenar los campos","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 
