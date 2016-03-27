@@ -3304,6 +3304,5 @@ div.hola table {
 .z-messagebox-exclamation{
 	margin-top:4px;
 	background-image: url('../../img/icon.png');
-	background-size: 100% 100%;
-	
+	background-size: 100% 100%;	
 }
