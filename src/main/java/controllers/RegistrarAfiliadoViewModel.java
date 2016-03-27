@@ -138,14 +138,24 @@ public class RegistrarAfiliadoViewModel {
 				this.afiliado.setTipoAfiliado(null);
 			}
 			else{
-				this.nroCarnet=socio.getNroCarnet()+tipoAfiliado.getSubfijo();
+				this.nroCarnet=socio.getNroCarnet()+"-"+tipoAfiliado.getSubfijo();
+				this.tipoAfiliado = tipoAfiliado;
+				this.afiliado.setTipoAfiliado(tipoAfiliado);
+			}
+		}else if(tipoAfiliado.getIdTipoAfiliado()==2){
+			if(cantidadTipoAfiliado(2)==1){
+				Messagebox.show("El socio ya tiene asocioado un afiliado de parentesco "+tipoAfiliado.getDescripcion() , "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				this.tipoAfiliado=new TipoAfiliado(0,"",false);
+				this.afiliado.setTipoAfiliado(null);
+			}
+			else{
+				this.nroCarnet=socio.getNroCarnet()+"-"+tipoAfiliado.getSubfijo();
 				this.tipoAfiliado = tipoAfiliado;
 				this.afiliado.setTipoAfiliado(tipoAfiliado);
 			}
 		}
 		else{
 			this.nroCarnet=socio.getNroCarnet()+"-"+(Integer.parseInt(tipoAfiliado.getSubfijo())+cantidadTipoAfiliado(tipoAfiliado.getIdTipoAfiliado()));	
-			System.out.println("Sufijo"+Integer.parseInt(tipoAfiliado.getSubfijo()));
 			this.tipoAfiliado = tipoAfiliado;
 			this.afiliado.setTipoAfiliado(tipoAfiliado);
 		}	

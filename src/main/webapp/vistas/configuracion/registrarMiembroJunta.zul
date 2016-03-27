@@ -85,7 +85,7 @@
 							<row>
 								<div>
 									<label class="col-md-3">Cargo</label>
-									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6" onChange="@command('verificar')">
+									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6" onChange="@command('verificar')" placeholder="Seleccione un cargo">
 										<template name="model">
 											<comboitem label="@load(each.descripcion)" value="@load(each)"/>
 										</template>
