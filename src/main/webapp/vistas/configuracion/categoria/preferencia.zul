@@ -50,14 +50,14 @@
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true" value="@bind(vm.idFiltro)"
+										<textbox instant="true" value="@bind(vm.tipoPrefrenciaFiltro)"
 											onChange="@command('filtro')"
 											width="65%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true" value="@bind(vm.tipoPrefrenciaFiltro)"
+										<textbox instant="true" value="@bind(vm.descFiltro)"
 											onChange="@command('filtro')"
 											width="65%" placeholder="Buscar" />
 									</auxheader>
