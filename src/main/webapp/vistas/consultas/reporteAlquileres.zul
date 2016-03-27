@@ -24,27 +24,38 @@
 								<div class='linea-two'></div>
 							</div>
 							<space spacing="2%"></space>
-							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-								<space spacing="2%"></space>
-									<hlayout width="100%" >
-							   		   <div>
-							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
-													<comboitem label="Alquiladas" value="Alquiladas" />
-													<comboitem label="Reservadas" value="Reservadas" />
-													<comboitem label="Todas" value="Todas" />
-										   </combobox>
-							   		   </div>
-									   <space spacing ="2%"></space>   								    			   		
-							   		   	<div>
-							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" >
+							<grid>
+								<rows>
+									<row class="col-md-12">
+										<div class="col-md-8">
+								   		    	<label class="col-md-2">
+								   		    		Seleccióne:
+								   		    	</label>
+								   		   		<combobox class="col-md-6" selectedItem="@bind(vm.estadoinstalacion)">
+														<comboitem label="Alquiladas" value="Alquiladas" />
+														<comboitem label="Reservadas" value="Reservadas" />
+														<comboitem label="Todas" value="Todas" />
+											   </combobox>
+								   		</div> 
+									</row>	 
+									<row class="col-md-12">     								    			   		
+							   		    <div class="col-md-8">
+							   		    	<label class="col-md-2">
+							   		    		Instalación:
+							   		    	</label>								   		    	
+							   		   		<combobox class="col-md-6" model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" >
 												<template name="model">
 														<comboitem
 															label="@load(each.nombre)" value="@load(each)" />
 												</template>
 										   </combobox>							   		   	
-							   		   	</div>	
-									</hlayout>
+							   		   	</div>
+									</row>
+								</rows>
+							</grid>
+							<div align="center">
+								<space spacing="2%"></space>
+
 									<space spacing="2%"></space>
 										
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
@@ -61,8 +72,7 @@
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
-								   	 <space spacing="1%"></space>						   	 
-								</groupbox >
+								   	 <space spacing="1%"></space>
 							     <div align="center" xmlns:w="client">
 						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnTXT')" label="Generar txt" />
 						<space spacing="2%"></space>
