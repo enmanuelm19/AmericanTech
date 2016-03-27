@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -28,14 +27,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
 import Dao.InstalacionDao;
 import modelos.Instalacion;
 import modelos.Preferencia;
@@ -163,8 +154,7 @@ public class ReporteAlquilerViewModel {
 		
 		
 		if (this.estadoinstalacion == null){
-			Messagebox.show("Seleccione el estado de la instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-			
+			Messagebox.show("Seleccione el estado de la instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Reservadas")) {
 			
 			this.titulo = "INSTALACIONES RESERVADAS";
@@ -280,7 +270,7 @@ public class ReporteAlquilerViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

@@ -59,8 +59,8 @@ public class ReporteEventualidadesViewModel {
 	private Socio socio;
 	private SocioDao socioDao;
 	private String tipo;
-	private String horaInicio;
-	private String horaFin;
+	private Time horaInicio;
+	private Time horaFin;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private InstalacionDao instalacionDao;
@@ -79,6 +79,7 @@ public class ReporteEventualidadesViewModel {
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat hora = new SimpleDateFormat("HH");
 	private boolean isPdf;
 	private String rutaNoEstructurado;
 
@@ -126,19 +127,19 @@ public class ReporteEventualidadesViewModel {
 		this.fechaFin = fechaFin;
 	}
 
-	public String getHoraInicio() {
+	public Time getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(String horaInicio) {
+	public void setHoraInicio(Time horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public String getHoraFin() {
+	public Time getHoraFin() {
 		return horaFin;
 	}
 
-	public void setHoraFin(String horaFin) {
+	public void setHoraFin(Time horaFin) {
 		this.horaFin = horaFin;
 	}
 
@@ -300,14 +301,15 @@ public class ReporteEventualidadesViewModel {
 	}
 	
 	public void sqlTime() throws FileNotFoundException, JRException, SQLException{
+		System.out.println("hora: "+ this.horaInicio);
 		if(this.horaInicio == null && this.horaFin == null){
 			sqlDate();
 		} else if (this.horaInicio == null || this.horaFin == null){
 			Messagebox.show("Debe Seleccionar el rango de hora", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else if (Integer.valueOf(this.horaInicio)  >=  Integer.valueOf(this.horaFin)  ){
+		} else if (this.horaInicio.after(this.horaFin)){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.sql += " and date_part('hour', e.fecha) between "+ Integer.valueOf(this.horaInicio) +" and "+ Integer.valueOf(this.horaFin)+ " ";
+			this.sql += " and date_part('hour', e.fecha) between "+ hora.format(this.horaInicio) +" and "+ hora.format(this.horaFin)+ " ";
 			sqlDate();
 		}	
 	}
@@ -331,7 +333,8 @@ public class ReporteEventualidadesViewModel {
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
 		JasperPrint jasperPrint = cargarJasper();			
-
+		
+		
 		if(jasperPrint.getPages().size() > 0){
 			if(this.isPdf) {
 				JRExporter exporter = new JRPdfExporter();

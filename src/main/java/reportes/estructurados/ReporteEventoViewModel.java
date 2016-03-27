@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import org.apache.commons.collections.iterators.CollatingIterator;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -32,7 +31,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
 import Dao.PreferenciaDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Preferencia;
@@ -216,7 +214,7 @@ public class ReporteEventoViewModel {
 			setPreferenciaEventos(tmp);		
 		}
 		else{
-			Messagebox.show("Solo puede Seleccionar 5 preferencias", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Solo se pueden Seleccionar 5 preferencias", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 
 	}
