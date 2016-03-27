@@ -214,13 +214,13 @@ public class ReporteSociosEstViewModel {
 	@NotifyChange({"carnet","socio"})
 	public void buscarCarnet() throws Exception{
 		if(carnet==""||carnet==null){
-			Messagebox.show("Campo Carnet Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Carnet Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.socioDao= new SocioDao();
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
 			if(this.socio==null){
-				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Carnet encontrado", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 
 		}
@@ -397,7 +397,7 @@ public class ReporteSociosEstViewModel {
 		 sql = "SELECT DISTINCT ";
 		if ( this.checkedad == false && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false  ) //
 		{
-			Messagebox.show("Debe seleccionar almenos una opcion de busqueda", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar almenos una opción de busqueda", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		//1
 		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false)
@@ -583,7 +583,7 @@ public class ReporteSociosEstViewModel {
 	public void sqlAge() throws FileNotFoundException, JRException, SQLException{
 		
 		if(this.edaddesde > this.edadhasta){
-			Messagebox.show("Debe seleccionar un rango de edades valido", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar un rango de edades valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
 			sqlparticular += " AND substring(age(now(),p.fecha_nac)::text from 1 for 2)::int between "+ Integer.valueOf(this.edaddesde) +" and "+ Integer.valueOf(this.edadhasta) +" ";
@@ -604,7 +604,7 @@ public class ReporteSociosEstViewModel {
 	public void sqlCategoria() throws FileNotFoundException, JRException, SQLException{
 		
 		if(this.tipoPreferenciaSelected == null){
-			Messagebox.show("Debe seleccionar una Categoria", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar una Categoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += " .";
 			sqlparticular += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
@@ -621,7 +621,7 @@ public class ReporteSociosEstViewModel {
 	public void sqlPreferencia() throws FileNotFoundException, JRException, SQLException{
 		
 		if(this.preferencia == null){
-			Messagebox.show("Debe seleccionar una preferencia", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar una preferencia", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
 			sqlparticular += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
@@ -637,7 +637,7 @@ public class ReporteSociosEstViewModel {
 	public void sqlFinal() throws FileNotFoundException, JRException, SQLException{
 		System.out.println("sqlfinal");
 		if(this.edaddesde > this.edadhasta){
-			Messagebox.show("Debe seleccionar un rango de edades valido", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar un rango de edades valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 						
 			sql += "( "+ this.sqlparticular +" ) as particular, "
@@ -690,7 +690,7 @@ public class ReporteSociosEstViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

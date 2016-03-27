@@ -398,7 +398,7 @@ public void generarPDF() throws JRException, FileNotFoundException, SQLException
 		}
 		
 	} else {
-		Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 	}		
 	con.close();
 }

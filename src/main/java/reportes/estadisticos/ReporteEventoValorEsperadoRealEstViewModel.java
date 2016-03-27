@@ -114,7 +114,7 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		}
 		
 		if(this.eventoSelected == null){
-			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_evento.jrxml";
 			this.consulta = "Reporte del evento "+ this.eventoSelected.getNombre() +", referente a: "
@@ -143,7 +143,7 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		if(jasperPrint.getPages().size() > 0){
 		   Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	   
 	    
