@@ -117,8 +117,8 @@ public class RegistrarUsuarioViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-
-		if (user.getUsername() != null && !user.getUsername().equalsIgnoreCase("") )
+		boolean encontro = false;
+		if (user.getUsername() != null && !user.getUsername().equalsIgnoreCase("") && user.getContrasenna() != null && user.getContrasenna().length() > 7 && user.getPregunta() != null && user.getRespuesta() != null)
 		{
 			if (!editable){
 				user.setFecha(new Date());
@@ -128,9 +128,21 @@ public class RegistrarUsuarioViewModel {
 				if(getUploadedImage()!=null){
 					String foto = ManejadorArchivo.subirImagen(getUploadedImage());
 					user.getPersona().setFoto(foto);}
+				for(Usuario u : usuarioDao.obtenerTodos()){
+					if(user.getUsername().equalsIgnoreCase(u.getUsername())){
+						Messagebox.show("Usuario " + user.getUsername() + " ya existe, porfavor escoja otro usuario", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+						encontro = true;
+						break;
+					}else{
+						encontro=false;
+					}
+				}
+				if(encontro == false){
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
 				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				win.detach();
+				}
 			}
 			else {
 				user.setFecha(new Date());
@@ -141,11 +153,15 @@ public class RegistrarUsuarioViewModel {
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.actualizarUsuario(user);
 				Messagebox.show("Usuario " + user.getUsername() + " actualizado exitosamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				win.detach();
 			}
 
-			win.detach();
+			
 			BindUtils.postGlobalCommand(null,null,"refreshUsuarios",null);
+		}else{
+			Messagebox.show("Faltan campos obligatorios o la contraseña tiene menos de 8 caracteres", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
+		
 
 
 	}
@@ -191,11 +207,11 @@ public class RegistrarUsuarioViewModel {
 				}
 
 		}else{
-			Messagebox.show("Por favor ingrese datos en el campo");
+			Messagebox.show("Por favor ingrese datos en el campo", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 		if(encontro == false){
-			Messagebox.show("Persona no encontrada, proceda a ingresar los datos");
+			Messagebox.show("Persona no encontrada, proceda a ingresar los datos", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}
