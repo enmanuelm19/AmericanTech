@@ -25,38 +25,36 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-									 <div class="col-md-12" style="margin:1%">	
-											<image src="../assets/img/funnel.png" />
-				
-											<textbox instant="true"
-													width="40%" value="@bind(vm.nombreFiltro)"
-													onChange="@command('filtro')" placeholder="Buscar" />	   		
-								   	 </div>	
-									<space spacing="2%"></space>
-								   	 <groupbox  mold="3d" width="75%" height="auto" >
-								   	 	<caption label="Coincidencias"  ></caption>
-										<grid>
-											<rows>
-												  <row class="col-md-12" >			                  				                  
-													    <listbox model="@load(vm.allEventos)" hflex="2" height="200px" vflex="true" multiple="true" rows="5" selectedItem="@bind(vm.eventoSelected)">
-													        <listhead>
-													            <listheader label="Eventos" ></listheader>
-													        </listhead>
-													        <template name="model">
-													            <listitem >
-													             
-																	 <listcell label="${each.nombre }"/>
-									     						
-													            </listitem>
-													        </template>
-													    </listbox>   
-												 </row>
-											</rows>
-										</grid>
-								   	 </groupbox>
-								   	 <space spacing="1%"></space>							   	
-								</groupbox >
+								 <div class="col-md-12" style="margin:1%">	
+										<image src="../assets/img/funnel.png" />
+			
+										<textbox instant="true"
+												width="40%" value="@bind(vm.nombreFiltro)"
+												onChange="@command('filtro')" placeholder="Buscar" />	   		
+							   	 </div>	
+								 <space spacing="2%"></space>
+							   	 <groupbox  mold="3d" width="75%" height="auto" >
+							   	 	<caption label="Coincidencias"  ></caption>
+									<grid>
+										<rows>
+											  <row class="col-md-12" >			                  				                  
+												    <listbox model="@load(vm.allEventos)" hflex="2" height="150px" vflex="true" multiple="true" rows="5" selectedItem="@bind(vm.eventoSelected)">
+												        <listhead>
+												            <listheader label="Eventos" ></listheader>
+												        </listhead>
+												        <template name="model">
+												            <listitem >
+												             
+																 <listcell label="${each.nombre }"/>
+								     						
+												            </listitem>
+												        </template>
+												    </listbox>   
+											 </row>
+										</rows>
+									</grid>
+							   	 </groupbox>
+							   	 <space spacing="1%"></space>
 						        <div align="center" xmlns:w="client">
 								   <button id="btnText" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" />
 								   <space spacing="2%"></space>

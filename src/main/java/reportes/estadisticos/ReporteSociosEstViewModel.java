@@ -42,26 +42,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Dao.InstalacionDao;
 import Dao.PersonaDao;
 import Dao.PreferenciaDao;
@@ -94,7 +74,7 @@ public class ReporteSociosEstViewModel {
 	private int edadhasta;
 	private String sexo;
 	private String categoria;
-	private String preferencia;
+	private Preferencia preferencia;
 	private TipoPreferenciaDao tipopreferenciaDao;
 	private boolean checkedad;
 	private boolean checksexo;
@@ -105,12 +85,14 @@ public class ReporteSociosEstViewModel {
 	
 	private String consulta = "";
 	private String titulo = "";
-	private String reporte = System.getProperty("user.home") + "/reportes_america/reporte_socios.jrxml";
+	private String reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_socios.jrxml";
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
-	private String sql = "";
+	private String sqlparticular = "";
+	private String sqlGeneral = "";
+	private String sql = "SELECT DISTINCT ";
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
 	private boolean isPdf;
 	
@@ -232,13 +214,13 @@ public class ReporteSociosEstViewModel {
 	@NotifyChange({"carnet","socio"})
 	public void buscarCarnet() throws Exception{
 		if(carnet==""||carnet==null){
-			Messagebox.show("Campo Carnet Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Carnet Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.socioDao= new SocioDao();
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
 			if(this.socio==null){
-				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Carnet encontrado", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 
 		}
@@ -276,11 +258,11 @@ public class ReporteSociosEstViewModel {
 		this.categoria = categoria;
 	}
 
-	public String getPreferencia() {
+	public Preferencia getPreferencia() {
 		return preferencia;
 	}
 
-	public void setPreferencia(String preferencia) {
+	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 	}
 
@@ -388,14 +370,288 @@ public class ReporteSociosEstViewModel {
 	
 	@Command
 	public void btnPDF(Event e) throws SQLException, JRException, IOException {
-		
-	
 		this.isPdf = true;
-		System.out.println(this.fechadesde);
-		System.out.println(this.fechahasta);
 		cargarSql();
-		
+	}
 	
+
+	
+	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
+		try {
+			Class.forName ("org.postgresql.Driver");
+		
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
+			
+			
+		} catch (ClassNotFoundException el) {
+			el.printStackTrace();
+		}
+		
+		System.out.println("inicio");
+		System.out.println(" this.checkedad" + this.checkedad);
+		System.out.println(" this.checksexo" + this.checksexo);
+		System.out.println(" this.checkcategoria" + this.checkcategoria);
+		System.out.println(" this.checkpreferencia" + this.checkpreferencia);
+		System.out.println("fin");
+		
+		 sql = "SELECT DISTINCT ";
+		if ( this.checkedad == false && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false  ) //
+		{
+			Messagebox.show("Debe seleccionar almenos una opción de busqueda", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}
+		//1
+		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios entre las edades" + this.getEdaddesde() + " y "+ this.getEdadhasta()+" ";
+			
+			
+			this.sqlparticular = " SELECT Count(s.id_socio) FROM socio s, persona p "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			
+			this.sqlGeneral = this.sqlparticular;
+			sqlAge();
+			sqlFinal();
+
+		}
+		//1,2
+		else if (this.checkedad == true && this.checksexo == true && this.checkcategoria == false && this.checkpreferencia == false)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT Count(s.id_socio) FROM socio s, persona p "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlAge();
+			sqlSexo();
+			sqlFinal();
+
+		}
+		//1,2,3
+		else if (this.checkedad == true && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == false)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlAge();
+			sqlSexo();
+			sqlCategoria();
+			sqlFinal();
+
+		}	
+		//1,2,3,4
+		else if (this.checkedad == true && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == true)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlAge();
+			sqlSexo();
+			sqlPreferencia();
+			sqlFinal();
+
+		}
+		//1,3
+		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == false)
+		{
+
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			
+			this.sqlGeneral = this.sqlparticular;
+			sqlAge();
+			sqlCategoria();
+			sqlFinal();
+
+		}
+		//1,3,4
+		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == true)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlAge();
+			sqlPreferencia();
+			sqlFinal();
+
+		}
+		//2
+		else if (this.checkedad == false && this.checksexo == true && this.checkcategoria == false && this.checkpreferencia == false)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlSexo();
+			sqlFinal();
+
+		}	
+		//2,3
+		else if (this.checkedad == false && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == false)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlSexo();
+			sqlCategoria();
+			sqlFinal();
+
+		}			
+		//2,3,4
+		else if (this.checkedad == false && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == true)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlSexo();
+			sqlPreferencia();
+			sqlFinal();
+
+		}
+		//3
+		else if (this.checkedad == false && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == false)
+		{
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			this.sqlGeneral = this.sqlparticular;
+			
+			sqlCategoria();
+			sqlFinal();
+
+		}
+		//3,4
+		else if (this.checkedad == false && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == true)
+		{
+
+			this.titulo = "SOCIOS";
+			this.consulta= "Socios ";
+			
+			this.sqlparticular = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
+					+ " preferencia_persona prefp, preferencia pref "
+					+ " WHERE s.personaid_persona = p.id_persona ";
+			
+			this.sqlGeneral = this.sqlparticular;
+			sqlPreferencia();
+			sqlFinal();
+
+		}	
+		
+	}
+	public void sqlAge() throws FileNotFoundException, JRException, SQLException{
+		
+		if(this.edaddesde > this.edadhasta){
+			Messagebox.show("Debe seleccionar un rango de edades valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
+			sqlparticular += " AND substring(age(now(),p.fecha_nac)::text from 1 for 2)::int between "+ Integer.valueOf(this.edaddesde) +" and "+ Integer.valueOf(this.edadhasta) +" ";
+		}
+	}
+	public void sqlSexo() throws FileNotFoundException, JRException, SQLException{
+		
+		if(this.sexo.equalsIgnoreCase("Masculino")){
+			this.consulta += " del sexo Masculino."; 
+			sqlparticular += " and p.sexo = 'M' ";
+		} else if(this.sexo.equalsIgnoreCase("Femenino")) {
+			this.consulta += " del sexo Femenino."; 
+			sqlparticular += " and p.sexo = 'F'"; 
+		}  else {
+			this.consulta += " de ambos sexo."; 
+		}
+	}
+	public void sqlCategoria() throws FileNotFoundException, JRException, SQLException{
+		
+		if(this.tipoPreferenciaSelected == null){
+			Messagebox.show("Debe seleccionar una Categoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			this.consulta += " .";
+			sqlparticular += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
+				+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
+				+ " and prefp.preferenciaid_preferencia = pref.id_preferencia "
+				+ " and p.id_persona = prefp.personaid_persona ";
+			
+			this.sqlGeneral += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "	
+					+ " and prefp.preferenciaid_preferencia = pref.id_preferencia "
+					+ " and p.id_persona = prefp.personaid_persona ";
+		}
+	}	
+	
+	public void sqlPreferencia() throws FileNotFoundException, JRException, SQLException{
+		
+		if(this.preferencia == null){
+			Messagebox.show("Debe seleccionar una preferencia", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
+			sqlparticular += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
+					+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
+					+ " and prefp.preferenciaid_preferencia = "+this.preferencia.getIdPreferencia()
+					+ " and p.id_persona = prefp.personaid_persona ";
+			sqlGeneral += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
+					+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
+					+ " and p.id_persona = prefp.personaid_persona ";
+		}
+	}	
+
+	public void sqlFinal() throws FileNotFoundException, JRException, SQLException{
+		System.out.println("sqlfinal");
+		if(this.edaddesde > this.edadhasta){
+			Messagebox.show("Debe seleccionar un rango de edades valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else {
+						
+			sql += "( "+ this.sqlparticular +" ) as particular, "
+					+ "( "+ this.sqlGeneral +" ) as general, "
+					+ "CASE WHEN (" + this.sqlGeneral +" ) > 0 THEN "
+					+ "(("+ this.sqlparticular+" ) * 100) / ("+ this.sqlGeneral+") "
+					+ "ELSE 0 END as porcentajeParticular, "
+					+ "CASE WHEN ( "+this.sqlGeneral+" ) - ( "+ this.sqlparticular+ ") > 0 THEN "
+					+ "(( ( "+ this.sqlGeneral+" )  - ( "+ this.sqlparticular+" ) ) * 100) / ( " + this.sqlGeneral+" ) "
+					+ "ELSE 0 END as porcentajegeneral from socio";
+			
+			System.out.println(sql);
+			generarPDF();
+		}
 	}
 	
 	
@@ -405,6 +661,7 @@ public class ReporteSociosEstViewModel {
 	
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
 		String nombreArchivo = titulo;
+		System.out.println(sqlparticular);
 		JasperPrint jasperPrint = cargarJasper();
 			
 		
@@ -427,15 +684,13 @@ public class ReporteSociosEstViewModel {
 		    		File file = new File(("user.home") + "/reportes_america/estadisticos_evento.txt");
 		    		file.delete();
 		    	}catch(Exception e){
-		    		
 		    		e.printStackTrace();
-		    		
 		    	}
 			    
 			}
 			
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}
@@ -459,250 +714,5 @@ public class ReporteSociosEstViewModel {
 	
 	}
 	
-	
-	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
-		try {
-			Class.forName ("org.postgresql.Driver");
-		
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America14","postgres","622590");
-			
-			
-		} catch (ClassNotFoundException el) {
-			el.printStackTrace();
-		}
-		
-		if ( this.checkedad == false && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false  ) //
-		{
-			Messagebox.show("Debe seleccionar almenos una opcion de busqueda", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		}
-		//1
-		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios entre las edades" + this.getEdaddesde() + " y "+ this.getEdadhasta()+" ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT Count(s.id_socio) FROM socio s, persona p "
-					+ " WHERE s.personaid_persona = p.id_persona and";
-			sqlAge();
-
-		}
-		//1,2
-		else if (this.checkedad == true && this.checksexo == true && this.checkcategoria == false && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT Count(s.id_socio) FROM socio s, persona p "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlAge();
-			sqlSexo();
-			sqlFinal();
-
-		}
-		//1,2,3
-		else if (this.checkedad == true && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlAge();
-			sqlSexo();
-			sqlCategoria();
-			sqlFinal();
-
-		}	
-		//1,2,3,4
-		else if (this.checkedad == true && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == true)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlAge();
-			sqlSexo();
-			sqlPreferencia();
-			sqlFinal();
-
-		}
-		//1,3
-		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlAge();
-			sqlCategoria();
-			sqlFinal();
-
-		}
-		//1,3,4
-		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == true)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlAge();
-			sqlPreferencia();
-			sqlFinal();
-
-		}
-		//2
-		else if (this.checkedad == false && this.checksexo == true && this.checkcategoria == false && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlSexo();
-			sqlFinal();
-
-		}	
-		//2,3
-		else if (this.checkedad == false && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlSexo();
-			sqlCategoria();
-			sqlFinal();
-
-		}			
-		//2,3,4
-		else if (this.checkedad == false && this.checksexo == true && this.checkcategoria == true && this.checkpreferencia == true)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlSexo();
-			sqlPreferencia();
-			sqlFinal();
-
-		}
-		//3
-		else if (this.checkedad == false && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == false)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlCategoria();
-			sqlFinal();
-
-		}
-		//3,4
-		else if (this.checkedad == false && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == true)
-		{
-			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
-			this.titulo = "SOCIOS";
-			this.consulta= "Socios ";
-			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			
-			this.sql = " SELECT DISTINCT Count(s.id_socio) FROM socio s, persona p, tipo_preferencia tp, "
-					+ " preferencia_persona prefp, preferencia pref "
-					+ " WHERE s.personaid_persona = p.id_persona ";
-			sqlPreferencia();
-			sqlFinal();
-
-		}	
-		
-		System.out.println(sql);
-		//generarPDF();
-	}
-	public void sqlAge() throws FileNotFoundException, JRException, SQLException{
-		
-		if(this.edaddesde > this.edadhasta){
-			Messagebox.show("Debe seleccionar un rango de edades valido", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else {
-			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
-			sql += " AND substring(age(now(),p.fecha_nac)::text from 1 for 2)::int between "+ Integer.valueOf(this.edaddesde) +" and "+ Integer.valueOf(this.edadhasta) +" ";
-		}
-	}
-	public void sqlSexo() throws FileNotFoundException, JRException, SQLException{
-		
-		if(this.sexo == "Masculino"){
-			this.consulta += " del sexo Masculino."; 
-			sql += " p.sexo = "+ this.getSexo() +" ";
-		} else {
-			this.consulta += " del sexo Femenino."; 
-			sql += " p.sexo = "+ this.getSexo() +" "; 
-		}
-	}
-	public void sqlCategoria() throws FileNotFoundException, JRException, SQLException{
-		
-		if(this.tipoPreferenciaSelected == null){
-			Messagebox.show("Debe seleccionar una Categoria", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else {
-			this.consulta += " .";
-			sql += " and tp.tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
-				+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
-				+ " and prefp.preferenciaid_preferencia = pref.id_preferencia "
-				+ " and p.id_persona = prefp.personaid_persona ";
-		}
-	}	
-	
-	public void sqlPreferencia() throws FileNotFoundException, JRException, SQLException{
-		
-		if(this.preferencia == null){
-			Messagebox.show("Debe seleccionar una preferencia", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else {
-			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
-			sql += " and tp.tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
-					+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
-					+ " and prefp.preferenciaid_preferencia = "+this.preferencia+". "
-					+ " and p.id_persona = prefp.personaid_persona ";
-		}
-	}	
-
-	public void sqlFinal() throws FileNotFoundException, JRException, SQLException{
-		
-		if(this.edaddesde > this.edadhasta){
-			Messagebox.show("Debe seleccionar un rango de edades valido", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else {
-			sql += " ; ";
-			generarPDF();
-		}
-	}
 	
 }

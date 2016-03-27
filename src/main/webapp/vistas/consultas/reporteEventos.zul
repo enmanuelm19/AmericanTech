@@ -27,7 +27,6 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
 									<grid>
 										<rows>
 											  <row class="col-md-12 ">
@@ -45,14 +44,32 @@
 										</rows>
 									</grid>
 									<space spacing="2%"></space>
-								   	 <groupbox  mold="3d" width="75%" height="auto" >
-								   	 	<caption label="Preferencia"  ></caption>
 										<grid>
 											<rows>
+											      <row class="col-md-12">
+											      		<div class="col-md-8" >
+												      		<label class="col-md-4">
+												      			Seleccione uno:
+												      		</label>											      		
+											      		</div>
+											      </row>
 												  <row class="col-md-12">
-											   		   <div class="col-md-8" align="center">
-												   		   <label class="col-md-3">Categoria:</label>
-													       <combobox model="@load(vm.tipoPreferencia)" selectedItem="@bind(vm.tipoPreferenciaSelected)" >
+											   	 		<div class="col-md-12">
+											   	 			<label class="col-md-7">Buscar los eventos que tegan exactamente las preferencias seleccionadas</label>	
+											   	 			<checkbox class="col-md-1" checked="@bind(vm.checkestricto)" disabled="@load(vm.disableestricto)"></checkbox>
+											   	 		</div>									  
+												  </row>
+												  <row class="col-md-12">
+											   	 		<div class="col-md-12">
+											   	 			<label class="col-md-7">Buscar los eventos que tegan al menos 1 de las preferencias seleccionadas</label>
+											   	 			<checkbox class="col-md-1" checked="@bind(vm.checkestricto)" disabled="@load(vm.disableestricto)"></checkbox>	
+											   	 		</div>									  
+												  </row>	
+								  											  
+												  <row class="col-md-12">
+											   		   <div class="col-md-8" align="left">
+												   		   <label class="col-md-2">Categoria:</label>
+													       <combobox model="@load(vm.tipoPreferencia)" class="col-md-5" selectedItem="@bind(vm.tipoPreferenciaSelected)" disabled="@load(vm.disablecat)" >
 																<template name="model">
 																		<comboitem
 																			label="@load(each.descripcion)" value="@load(each)" />
@@ -61,13 +78,12 @@
 							   	 						</div>								   	 
 												  </row>
 												  <row class="col-md-12">
-											   		   <div class="col-md-12" align="center">
-												   		   <label class="col-md-3"></label>
-												   		   <chosenbox  model="@load(vm.preferenciasPorTipo)" hflex="1" width="80%"
+											   		   <div class="col-md-8" align="center">
+												   		   <label class="col-md-2"> Preferencias:</label>
+												   		   <chosenbox  model="@load(vm.preferenciasPorTipo)" hflex="1" class="col-md-6"
 																	emptyMessage="" creatable="true"
-																	selectedObjects="@bind(vm.temporalPreferencia)"/>
-														   <space spacing="1%"></space>
-														<button sclass="btn-link" onClick="@command('agregarSeleccionPreferencia')"
+																	selectedObjects="@bind(vm.temporalPreferencia)" disabled="@load(vm.disablecat)"/>
+														<button class="col-md-2" sclass="btn-link" onClick="@command('agregarSeleccionPreferencia')"
 															iconSclass="z-icon-plus blue" id=""
 															tooltiptext="Agregar preferencia" />  			   		
 							   	 						</div>							   	 
@@ -96,11 +112,8 @@
 											<rows>
 												<template name="model">
 													<row>
-													
 														<label value="@load(each.tipoPreferencia.descripcion)" />
-														
 														<label value="@load(each.descripcion)" />
-									
 														<button sclass="btn-link"
 																iconSclass="z-icon-trash-o red" 
 																tooltiptext="Eliminar" onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)"/>
@@ -112,9 +125,8 @@
 													class="footer_right" label="" />
 											</foot>
 										</grid>
-								   	 </groupbox>
-								   	 <space spacing="1%"></space>							   	
-								</groupbox >
+
+								   	 <space spacing="1%"></space>	
 							     <div align="center" xmlns:w="client">
 									<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
 									<space spacing="2%"></space>

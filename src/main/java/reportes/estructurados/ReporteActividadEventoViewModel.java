@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -30,39 +29,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Dao.ActividadDao;
 import modelos.Actividad;
 import Dao.EstadoEventoDao;
@@ -212,7 +178,7 @@ public class ReporteActividadEventoViewModel {
 				el.printStackTrace();
 			}
 			if (this.eventoSelected == null){
-				Messagebox.show("Seleccione el evento a consultar", "AMERICAN TECH", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Seleccione el evento a consultar", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			
 			else{
@@ -267,7 +233,7 @@ public class ReporteActividadEventoViewModel {
 				}
 				
 			} else {
-				Messagebox.show("No existe planificacion para este evento.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("No existe planificación para este evento.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}		
 			con.close();
 		}

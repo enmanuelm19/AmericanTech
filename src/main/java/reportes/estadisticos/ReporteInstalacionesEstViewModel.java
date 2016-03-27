@@ -96,11 +96,11 @@ public class ReporteInstalacionesEstViewModel {
 		}
 		
 		if(this.fechaDesde == null && this.fechaHasta == null){
-			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de fechas", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde == null || this.fechaHasta == null){
-			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de fechas", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde.compareTo(this.fechaHasta) == 1 ){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_instalacion.jrxml";
 			
@@ -127,7 +127,7 @@ public class ReporteInstalacionesEstViewModel {
 		if(jasperPrint.getPages().size() > 0){
 		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} 
 	    con.close();
 	}

@@ -5,13 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -196,7 +196,7 @@ public class ReporteSocioViewModel {
 	public void eliminarPreferenciaEvento(@BindingParam("preferenciaEvento") final Preferencia pref) {
 
 
-		Messagebox.show("Estas seguro de eliminar " + pref.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + pref.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 			public void onEvent(Event evt) throws InterruptedException {
 				if (evt.getName().equals("onOK")) {
@@ -252,7 +252,7 @@ public class ReporteSocioViewModel {
 				+ "WHERE p.activo = true ";
 
 		if(this.sexoSelected == null){
-			Messagebox.show("Seleccione un Sexo", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Seleccione un Sexo", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 
 		} else if (this.sexoSelected.equalsIgnoreCase("Femenino")){
 			consulta += "Los socios del sexo Femeninos ";
@@ -289,7 +289,7 @@ public class ReporteSocioViewModel {
 		if( (null == this.edadHastaSelected &&  this.edadDedeSelected == null) || (null == this.edadHastaSelected ||  this.edadDedeSelected == null) ){
 			generarPDF();//VALIDAR
 		} else if(Integer.valueOf(this.edadDedeSelected)  > Integer.valueOf(this.edadHastaSelected)) {
-			Messagebox.show("Edad desde no puede ser mayor que edad hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Edad desde no puede ser mayor que edad hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			consulta += "y edades entre "+ Integer.valueOf(this.edadDedeSelected) + " y " +  Integer.valueOf(this.edadHastaSelected)+ ".";
 			sql +=" AND substring(age(now(),p.fecha_nac)::text from 1 for 2)::int between "+ Integer.valueOf(this.edadDedeSelected) +" and "+ Integer.valueOf(this.edadHastaSelected) +" ";
@@ -327,7 +327,7 @@ public class ReporteSocioViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}
