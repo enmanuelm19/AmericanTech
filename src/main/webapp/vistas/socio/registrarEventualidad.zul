@@ -1,0 +1,217 @@
+<zk xmlns:n="native">
+	<div>
+		<hlayout spacing="0">
+
+			<vlayout spacing="0" hflex="1">
+				<div sclass="breadcrumbs">
+					<div sclass="breadcrumb">
+						<span sclass="home-icon z-icon-user" />
+						<a label="Socio" href="#" />
+						<label value="Eventualidad" />
+					</div>
+				</div>
+
+				<div class='contenedor'
+					apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('vm') @init('controllers.RegistrarEventualidadViewModel')">
+
+					<div sclass="page-header">
+						<label value="Registrar Eventualidad" />
+
+					</div>
+
+
+					<div class='contenido'>
+						<div class="col-md-10 col-centered ">
+							<div class='form-pricing' width="80%"
+								height="100%">
+
+								<div class='encabezado'>Datos</div>
+								<div class='linea-two'></div>
+
+								<space spacing="15%" />
+
+								<div class="row">
+									<div class="col-md-3"
+										style="border:1px">
+										<image sclass="myimg"
+											class="col-md-12" src="../assets/portal/img/img1.jpg" />
+									</div>
+									<div class="col-md-9">
+										<grid>
+											<rows>
+												<row>
+													<div>
+
+														Número Carnet
+														<n:br></n:br>
+														<textbox
+															type="text" constraint="no empty" class="col-md-5"
+															value="@bind(vm.carnet)" />
+														<button
+															sclass="btn-link" iconSclass="z-icon-search blue"
+															class="col-md-2" onClick="@command('buscarCarnet')" />
+													</div>
+												</row>
+												<row>
+													<div>
+
+														Cédula
+														<n:br></n:br>
+														<intbox
+															value="@bind(vm.eventualidad.persona.identificacion)"
+															constraint="no empty,no negative, no zero"
+															class="col-md-5" />
+														<button
+															sclass="btn-link" iconSclass="z-icon-search blue"
+															tooltiptext="Ver" onClick="@command('buscarCedula')"
+															class="col-md-2" />
+													</div>
+												</row>
+												<row>
+													<div>
+
+														Nombre
+														<n:br></n:br>
+														<textbox
+															value="@bind(vm.eventualidad.persona.nombre)" type="text"
+															constraint="no empty" class="col-md-7" disabled="true" />
+													</div>
+												</row>
+												<row>
+													<div>
+
+														Apellido
+														<n:br></n:br>
+														<textbox
+															value="@bind(vm.eventualidad.persona.apellido)"
+															type="text" constraint="no empty" class="col-md-7"
+															disabled="true" />
+													</div>
+												</row>
+
+
+											</rows>
+										</grid>
+									</div>
+								</div>
+
+								<space spacing="15%" />
+								<div class="row">
+									<div class='col-md-12'>
+										<div class='encabezado'>
+											Datos Eventualidad
+										</div>
+										<div class='linea-two'></div>
+										<separator spacing="30px" />
+									</div>
+									<div class="col-md-6">
+										<grid>
+											<rows>
+												<row>
+													<div>
+
+														Fecha
+														<n:br></n:br>
+														<datebox
+															value="@bind(vm.eventualidad.fecha)"
+															constraint="no empty" class="col-md-7" />
+													</div>
+
+												</row>
+
+												<row>
+													<div>
+														Tipo
+														Eventualidad
+														<n:br></n:br>
+														<combobox
+															model="@load(vm.listTipoEventualidads)"
+															selectedItem="@bind(vm.eventualidad.tipoEventualidad)"
+															class="col-md-8" width="auto">
+															<template
+																name="model">
+																<comboitem
+																	label="@load(each.descripcion)" value="@load(each)" />
+															</template>
+
+														</combobox>
+													</div>
+												</row>
+
+												<row>
+													<div>
+														Descripción
+														<n:br></n:br>
+														<textbox value="@bind(vm.eventualidad.descripcion)"
+															class="col-md-12" rows="4" cols="600" />
+													</div>
+												</row>
+
+											</rows>
+										</grid>
+
+									</div>
+									<div class="col-md-6">
+										<grid>
+											<rows>
+
+												<row>
+
+													<div>
+														Hora
+														<n:br></n:br>
+														<timebox
+															id="TimeHorInicio" cols="12" format="short"/>
+													</div>
+												</row>
+
+												<row>
+													<div>
+														Instalacion
+														<n:br></n:br>
+														<combobox
+															model="@load(vm.listInstalacions)"
+															selectedItem="@bind(vm.eventualidad.instalacion)"
+															class="col-md-8" width="auto">
+															<template
+																name="model">
+																<comboitem
+																	label="@load(each.nombre)" value="@load(each)" />
+															</template>
+														</combobox>
+													</div>
+												</row>
+
+
+
+
+											</rows>
+										</grid>
+
+
+									</div>
+
+
+								</div>
+								<space spacing="25%" />
+
+								<div class="row col-md-12">
+									<button
+										class="boton-guardar col-md-3 col-md-offset-2" label="Guardar" onClick="@command('guardar')"
+										type="button" iconSclass="z-icon-floppy-o">
+									</button>
+									<button
+										class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('cancelar')"
+										iconSclass="z-icon-times" type="button" label="Cancelar">
+									</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</vlayout>
+		</hlayout>
+	</div>
+</zk>
