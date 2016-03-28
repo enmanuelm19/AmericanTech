@@ -13,7 +13,7 @@
 				</div>
 				<div class="contenedor" align="center">
 					<div sclass="page-header" align="left">
-						<label value="Socios" />
+						<label value="Socio" />
 					</div>
 					<separator spacing="1%" />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">

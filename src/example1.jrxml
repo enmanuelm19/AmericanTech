@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="example1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee563b5d-742e-4b16-9a5c-567d06c9c201">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="exampletable" uuid="9c4c557c-82c6-4e08-89dd-a4f66060efa2">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     *,
+     tipo_instalacion."id_tipo_instalacion" AS tipo_instalacion_id_tipo_instalacion,
+     tipo_instalacion."descripcion" AS tipo_instalacion_descripcion,
+     tipo_instalacion."activo" AS tipo_instalacion_activo
+FROM
+     "tipo_instalacion" tipo_instalacion]]>
+		</queryString>
+	</subDataset>
+	<parameter name="REPORTE_TITULO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select *
+FROM instalacion i]]>
+	</queryString>
+	<field name="id_instalacion" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="capacidad" class="java.lang.Integer"/>
+	<field name="precio_alquiler" class="java.lang.Float"/>
+	<field name="alquilable" class="java.lang.Boolean"/>
+	<field name="tipo_instalacionid_tipo_instalacion" class="java.lang.Integer"/>
+	<field name="activo" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="332" y="10" width="188" height="20" forecolor="#0033FF" uuid="17364c13-dc16-4e9d-99be-8c88517bc514"/>
+				<textElement>
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORTE_TITULO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="77" y="2" width="100" height="20" uuid="0ae1863b-d9dc-41b4-84b2-665787060a07"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="2" width="100" height="20" uuid="513aa750-e7c2-4c7e-99d9-b17db9d43597"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Capacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="628" y="2" width="100" height="20" uuid="0401e1e8-9508-4a6b-b16b-d2bfce898a43"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[precio_alquiler]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="351" y="1" width="100" height="20" uuid="26445c5e-2de4-47b1-8750-2eed0820f060"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capacidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="628" y="1" width="100" height="20" uuid="b0644d66-b308-4274-93e3-c136414338bb"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio_alquiler}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="1" width="100" height="20" uuid="72f18934-e932-446c-b060-06a2268d5e22"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="290" y="7" width="210" height="20" uuid="9cddca99-ac30-4f0f-a631-69da4d2ef577"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Garantizando el bienestar del socio]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="10" y="7" width="154" height="20" uuid="c8d0e8f2-b2ee-42af-9f5e-e1d9b3a661e0"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="672" y="7" width="90" height="20" uuid="09f28bb7-cb8f-47d9-b97f-a9981b4b3f9a"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="7" width="40" height="20" uuid="8c21ab3b-93b5-4757-9de2-286a02d6084c"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

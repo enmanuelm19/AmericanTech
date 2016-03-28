@@ -8,7 +8,7 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
 						<a label="Estructurado" href="#" />
-						<label value="Actividadd" />
+						<label value="Actividad" />
 					</div>
 				</div>
 				<div class="contenedor" align="center">
@@ -20,7 +20,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Actividades
+									Actividad
 								</div>
 								<div class='linea-two'></div>
 							</div>

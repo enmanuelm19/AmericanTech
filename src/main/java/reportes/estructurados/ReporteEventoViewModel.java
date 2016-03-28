@@ -71,6 +71,7 @@ public class ReporteEventoViewModel {
 	private String consulta = "";
 	private String titulo = "";
 	private String reporte = System.getProperty("user.home") + "/reportes_america/reporte_socios.jrxml";
+	private String reporteTxt = System.getProperty("user.home") + "/reportes_america/reporte_socios_txt.jrxml";
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -280,6 +281,7 @@ public class ReporteEventoViewModel {
 			this.titulo = "EVENTOS";
 			this.consulta= "Eventos de la categoria  ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			System.out.println("aqui toy");
 			this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
 					+ " INNER JOIN preferencia_evento pe "
@@ -321,6 +323,7 @@ public class ReporteEventoViewModel {
 			this.titulo = "EVENTOS";
 			this.consulta= "Eventos de la categoria  ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			System.out.println("aqui toy");
 			this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
 					+ " INNER JOIN preferencia_evento pe "
@@ -341,6 +344,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/eventos_txt.jrxml";
 			
 			if(this.getCheckestricto())
 			{
@@ -386,7 +390,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			if(this.getCheckestricto())
 			{
 				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
@@ -431,6 +435,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			if(this.getCheckestricto())
 			{
 				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
@@ -479,6 +484,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 
 			if(this.getCheckestricto())
 			{
@@ -532,7 +538,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-	
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			if(this.getCheckestricto())
 			{
 				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
@@ -583,6 +589,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 
 			if(this.getCheckestricto())
 			{
@@ -707,7 +714,11 @@ public class ReporteEventoViewModel {
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 

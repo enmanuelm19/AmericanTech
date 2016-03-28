@@ -73,7 +73,7 @@ public class ReporteEventualidadesViewModel {
 	private String consulta = "";
 	private String titulo = "REPORTE DE EVENTUALIDADES";
 	private String sql = "";
-	private String reporte;
+	private String reporte, reporteTxt;
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -246,10 +246,12 @@ public class ReporteEventualidadesViewModel {
 			Messagebox.show("Debe elegir una selección", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if( this.tipo.equalsIgnoreCase("Instalaciones")){
 			this.reporte = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.jrxml";
+			this.reporteTxt = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.txt";
 			instalacion();
 		} else {
 			this.reporte = System.getProperty("user.home") + "/reportes_america/eventualidades_socios_afiliados.jrxml";
+			this.reporteTxt = System.getProperty("user.home") + "/reportes_america/eventualidades_socios_afiliados_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/eventualidades_socios_afiliados.txt";
 			sociosAfiliado();
 		} 
@@ -371,7 +373,11 @@ public class ReporteEventualidadesViewModel {
 
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 
