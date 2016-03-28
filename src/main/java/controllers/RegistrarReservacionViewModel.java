@@ -1,13 +1,8 @@
 package controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-
 import org.jboss.logging.Logger;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -17,25 +12,19 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
-import org.zkoss.zk.ui.select.annotation.Listen;
-import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.InstalacionDao;
 import Dao.InstalacionEventoDao;
-import Dao.PreferenciaDao;
 import Dao.ReservacionDao;
 import Dao.SocioDao;
 import enums.CondicionReservacion;
 import Dao.CalendarioFechaDao;
 import modelos.CalendarioFecha;
-import modelos.Evento;
 import modelos.Instalacion;
 import modelos.InstalacionEvento;
-import modelos.Persona;
 import modelos.Reservacion;
-import modelos.Socio;
 import modelos.Usuario;
 import util.Format;
 
@@ -62,7 +51,7 @@ public class RegistrarReservacionViewModel {
 		this.setDisabled(true);
 		reservacionDao = new ReservacionDao();
 		try {
-			getTemporalInstalaciones().addAll(new InstalacionDao().obtenerTodos());
+			getTemporalInstalaciones().addAll(new InstalacionDao().obtenerAlquilables());
 		} catch (Exception ex) {
 			Logger.getLogger(RegistrarReservacionViewModel.class.getName());
 		}
@@ -136,7 +125,12 @@ public class RegistrarReservacionViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (!isCamposVacio()) {
-			if (isDisponible(reservacion.getInstalacion())) {
+			if (getReservacion().getFechaInicio().after(getReservacion().getFechaFin())) {
+				setDisabled(true);
+				Messagebox.show("La fecha de final no puede ser menor a la fecha inicio", "Warning", Messagebox.OK,
+						Messagebox.EXCLAMATION);
+			}	
+			if (isDisponible(getInstalacionSeleccionada())) {
 				CalendarioFecha calendarioFecha = new CalendarioFecha();
 				reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
 				reservacion.setInstalacion(getInstalacionSeleccionada());
@@ -155,14 +149,15 @@ public class RegistrarReservacionViewModel {
 					reservacionDao.actualizarReservacion(reservacion);
 					new CalendarioFechaDao().actualizarCalendarioFecha(calendarioFecha);
 				}
-				Messagebox.show(
-						"Reservacion Agregada: " + getInstalacionSeleccionada().getNombre(),
-						"", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("Reservacion Agregada: " + getInstalacionSeleccionada().getNombre(), "", Messagebox.OK,
+						Messagebox.INFORMATION);
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
+			} else {
+				Messagebox.show("Debe seleccionar otra fecha la intalación se encuentra reservada");
 			}
 		} else {
-			Messagebox.show("Debe seleccionar otra fecha la intalación se encuentra reservada");
+			Messagebox.show("Llenar todos los campos");
 		}
 	}
 
@@ -208,13 +203,11 @@ public class RegistrarReservacionViewModel {
 	}
 
 	public boolean isDisponible(Instalacion instalacion) throws Exception {
-
 		// verificamos que no este reservada esa intalacion
 		for (Reservacion reservacion : reservacionDao.obtenerReservacionesInstalacion(instalacion)) {
-			if(getReservacion().getIdReservacion() == reservacion.getIdReservacion()){
+			if (getReservacion().getIdReservacion() == reservacion.getIdReservacion()) {
 				continue;
 			}
-
 			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaInicio()))
 				return false;
 			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaFin()))
@@ -247,9 +240,16 @@ public class RegistrarReservacionViewModel {
 	public void validarReservacion() {
 		if (getReservacion() != null && getInstalacionSeleccionada() != null) {
 			try {
+				if (getReservacion().getFechaInicio() != null && getReservacion().getFechaFin() != null
+						&& getReservacion().getFechaInicio().after(getReservacion().getFechaFin())) {
+					setDisabled(true);
+					Messagebox.show("La fecha de final no puede ser menor a la fecha inicio", "Warning", Messagebox.OK,
+							Messagebox.EXCLAMATION);
+				}
 				if (isDisponible(getInstalacionSeleccionada())) {
 					setDisabled(false);
 					BindUtils.postNotifyChange(null, null, RegistrarReservacionViewModel.this, "reservacion");
+					BindUtils.postNotifyChange(null, null, RegistrarReservacionViewModel.this, "precio");
 				} else {
 					setDisabled(true);
 					Messagebox.show(
@@ -266,14 +266,14 @@ public class RegistrarReservacionViewModel {
 					Messagebox.EXCLAMATION);
 	}
 
-	
-	public double precio(Date date1, Date date2,float precio){
-		if(date1 != null && date2 != null){
-			return precio * diasEntreFecha(date1, date2);
+	@NotifyChange({ "reservacion", "disabled" })
+	public double precio() {
+		if (getReservacion().getFechaInicio() != null && getReservacion().getFechaFin() != null) {
+			return getInstalacionSeleccionada().getPrecioAlquiler() * diasEntreFecha(getReservacion().getFechaInicio(), getReservacion().getFechaFin());
 		}
 		return 0;
 	}
-	
+
 	public int diasEntreFecha(Date date1, Date date2) {
 		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día
 		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);

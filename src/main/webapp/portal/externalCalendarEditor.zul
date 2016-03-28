@@ -1,0 +1,48 @@
+<window id="winEv" border="none" title="@load(vm.eventoSelected.nombre)"
+	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+	closable="true" width="50%" height="auto"
+	style="iconSclass= z-icon-calendar;"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('controllers.ExternalCalendarEditorViewModel')">
+	<caption iconSclass="z-icon-calendar" />
+	<div class="contenido">
+		<div align="center">
+			<grid>
+				<rows class="">
+					<row class="col-md-12 ">
+						<image id="image" width="100%"
+							src="@load(vm.imagenInstalacion)" />
+					</row>
+					<row class="col-md-12 ">
+						<div>
+							<label width="100%" style="font-size:20px"
+								value="@load(vm.eventoSelected.nombre)" />
+						</div>
+					</row>
+					<row class="col-md-12 ">
+						<div>
+							<label width="100%" style="font-size:18px"
+								value="Fecha:" />
+							<label width="100%" style="font-size:16px"
+								value="@load(vm.eventoSelected.fechaInicioString)" /> -
+							<label width="100%" style="font-size:16px"
+								value="@load(vm.eventoSelected.fechaFinString)" />
+
+						</div>
+					</row>
+					<row class="col-md-12 ">
+						<div>
+							<label width="100%" style="font-size:16px"
+								value="@load(vm.eventoSelected.descripcion)" />
+						</div>
+					</row>
+				</rows>
+			</grid>
+			<space spacing="15%" />
+			<div>
+				<button iconSclass="z-icon-times" class='boton-cancelar' style="background:#FF000F; color:#FFFFFF"
+					label="Cerrar" onClick="@command('cerrarModal',win = winEv)" />
+			</div>
+		</div>
+	</div>
+</window>
