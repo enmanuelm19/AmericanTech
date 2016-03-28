@@ -61,7 +61,7 @@ WHERE i.alquilable = true]]>
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="169" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
@@ -75,7 +75,7 @@ WHERE i.alquilable = true]]>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="169" y="31" width="619" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -96,7 +96,7 @@ WHERE i.alquilable = true]]>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="116" y="0" width="100" height="20" uuid="d5f8bde8-4d71-441b-9eb0-e1139deb4de6"/>
+				<reportElement x="96" y="0" width="122" height="20" uuid="d5f8bde8-4d71-441b-9eb0-e1139deb4de6"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -126,30 +126,23 @@ WHERE i.alquilable = true]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="15" y="3" width="100" height="20" uuid="cafbe2f5-bd35-4902-add9-70174708dca2"/>
+				<reportElement x="15" y="3" width="81" height="20" uuid="cafbe2f5-bd35-4902-add9-70174708dca2"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="116" y="2" width="222" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
+				<reportElement x="96" y="2" width="244" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="361" y="4" width="100" height="20" uuid="59bf128b-ac5a-4c46-8e88-7fc22d7ef6e8"/>
-				<textElement>
-					<font fontName="SansSerif" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="516" y="1" width="161" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
+				<reportElement x="492" y="1" width="185" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
@@ -161,6 +154,13 @@ WHERE i.alquilable = true]]>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="361" y="2" width="100" height="20" uuid="59bf128b-ac5a-4c46-8e88-7fc22d7ef6e8"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

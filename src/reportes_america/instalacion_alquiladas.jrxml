@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="instalacion_alquiladas" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -58,7 +58,7 @@ ON p.id_persona = s.personaid_persona]]>
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="179" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
@@ -72,7 +72,7 @@ ON p.id_persona = s.personaid_persona]]>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="179" y="31" width="609" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -100,14 +100,14 @@ ON p.id_persona = s.personaid_persona]]>
 				<text><![CDATA[Instalación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="438" y="0" width="100" height="20" uuid="f00db1db-8129-47f6-b696-825b123686cf"/>
+				<reportElement x="503" y="0" width="100" height="20" uuid="f00db1db-8129-47f6-b696-825b123686cf"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Número Carnet]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="586" y="0" width="100" height="20" uuid="306acbdb-3b73-4f43-9353-d882c706de91"/>
+				<reportElement x="622" y="0" width="100" height="20" uuid="306acbdb-3b73-4f43-9353-d882c706de91"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -125,21 +125,21 @@ ON p.id_persona = s.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="146" y="4" width="245" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
+				<reportElement x="146" y="4" width="344" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="438" y="4" width="100" height="20" uuid="59bf128b-ac5a-4c46-8e88-7fc22d7ef6e8"/>
+				<reportElement x="503" y="4" width="100" height="20" uuid="59bf128b-ac5a-4c46-8e88-7fc22d7ef6e8"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="586" y="4" width="175" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
+				<reportElement x="622" y="4" width="175" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
