@@ -3,7 +3,7 @@
 	closable="true" width="50%" height="auto"
 	style="iconSclass= z-icon-calendar;"
 	apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm') @init('controllers.CalendarEditorViewModel')">
+	viewModel="@id('vm') @init('controllers.ExternalCalendarEditorViewModel')">
 	<caption iconSclass="z-icon-calendar" />
 	<div class="contenido">
 		<div align="center">
