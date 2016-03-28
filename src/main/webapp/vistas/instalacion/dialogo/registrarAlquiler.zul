@@ -33,7 +33,7 @@
 								<label>Tipo de Pago</label>
 								<combobox model="@load(vm.tipoPagoAll)"
 									constraint="no empty" selectedItem="@bind(vm.tipoPagoSelected)"
-									width="100%">
+									width="100%" readonly="true">
 									<template name="model">
 										<comboitem
 											label="@load(each.descripcion)" value="@load(each)" />
