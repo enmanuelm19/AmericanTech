@@ -190,7 +190,7 @@ public class MisAlquileresViewModel {
 			int day = now.get(Calendar.DAY_OF_MONTH);
 			filePath = System.getProperty("user.home");
 			System.out.println(filePath);
-			String yearPath = "\\" + "PDFs" + "\\" + year + "\\" + month + "\\" + day + "\\";
+			String yearPath = "/" + "PDFs" + "/" + year + "/" + month + "/" + day + "/";
 			filePath = filePath + yearPath;
 			File baseDir = new File(filePath);
 			if (!baseDir.exists()) {

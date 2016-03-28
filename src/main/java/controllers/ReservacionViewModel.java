@@ -77,16 +77,16 @@ public class ReservacionViewModel {
 	@Command
 	@NotifyChange({ "allReservacion", "cantRegistros" })
 	public void eliminar(@BindingParam("reservacion") final Reservacion reservacion) {
-		Messagebox.show("Estas seguro de eliminar " + reservacion.getIdReservacion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + reservacion.getInstalacion().getNombre(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								reservacionDao.eliminarReservacion(reservacion);
 								reservacionAll = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue());
-								Messagebox.show(reservacion.getIdReservacion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(reservacion.getInstalacion().getNombre() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
+								BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
