@@ -259,7 +259,7 @@
 				<space spacing="35%" />
 				<div>
 
-					<button iconSclass="z-icon-floppy-o" style="background: #2B7DBC !important;" onClick="@command('guardar',win=winEv)"
+					<button iconSclass="z-icon-floppy-o" onClick="@command('guardar',win=winEv)"
 						class='boton-guardar' label="Registrar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times" onClick="@command('cerrarModal',win=winEv)"
