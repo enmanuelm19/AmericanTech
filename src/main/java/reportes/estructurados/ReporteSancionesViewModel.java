@@ -319,7 +319,7 @@ public void cargarSql1() throws FileNotFoundException, JRException, SQLException
 		el.printStackTrace();
 	}
 	if(this.socio == null){
-		Messagebox.show("Debe ingresar un numero de Carnet y que sea un codigo existente", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		Messagebox.show("Debe ingresar un nómero de Carnet y que sea un codigo existente", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 	} else {
 		
 	
@@ -399,7 +399,7 @@ public void generarPDF() throws JRException, FileNotFoundException, SQLException
 		}
 		
 	} else {
-		Messagebox.show("No existe informaci�n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 	}		
 	con.close();
 }

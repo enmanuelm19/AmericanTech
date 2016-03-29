@@ -150,8 +150,8 @@ from socio]]>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="326" y="209" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
-				<textElement>
+				<reportElement x="182" y="209" width="438" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
+				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>

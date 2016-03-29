@@ -326,7 +326,7 @@ public class ReporteEventualidadesEstViewModel {
 	private void salida3() throws FileNotFoundException, JRException, SQLException {
 		
 		if(this.instalacionSelected == null){
-			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalaciÃ³n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad3.jrxml";
 			this.consulta = "Reporte de eventualidaes entre la fecha "+sdf.format(this.fechaDesde)+" y "+sdf.format(this.fechaDesde)
@@ -362,11 +362,11 @@ public class ReporteEventualidadesEstViewModel {
 
 	private void salida4() throws FileNotFoundException, JRException, SQLException {
 		if(this.instalacionSelected == null){
-			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalaciÃ³n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (validateHora()){
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad4.jrxml";
 			this.consulta = "Reporte de eventualidaes entre la hora " + horaformat.format(this.horaDesdeSelect) + " y "+  horaformat.format(this.horaHastaSelect)+""
-					+ " y referente a la instalacion: " + this.instalacionSelected.getNombre() +".";		
+					+ " y referente a la instalacion: " + this.instalacionSelected.getNombre() +" del Centro AtlÃ©tico AmÃ©rica.";		
 			
 			String sqllocal = " ";
 			if(this.instalacionSelected.getIdInstalacion() == 0){
@@ -406,7 +406,7 @@ public class ReporteEventualidadesEstViewModel {
 			Messagebox.show("Debe Seleccionar un rango de hora", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else if (this.horaDesdeSelect.after(this.horaHastaSelect)  ){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Hora Desde no puede ser mayor a la Hora Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else {
 			return true;
@@ -424,7 +424,7 @@ public class ReporteEventualidadesEstViewModel {
 		if(jasperPrint.getPages().size() > 0){
 		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
 		} else {
-			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaciÃ³n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} 
 	    con.close();
 	}

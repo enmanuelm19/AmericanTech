@@ -127,7 +127,7 @@ public class ReporteInstalacionesEstViewModel {
 		if(jasperPrint.getPages().size() > 0){
 		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
 		} else {
-			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaciÃ³n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} 
 	    con.close();
 	}

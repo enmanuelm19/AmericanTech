@@ -335,7 +335,7 @@ public class ReporteSocioViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaciÃ³n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}
