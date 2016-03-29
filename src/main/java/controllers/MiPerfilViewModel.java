@@ -82,6 +82,7 @@ public class MiPerfilViewModel {
 			if(this.afiliado!=null){
 				verAfiliado=false;
 				this.afiliados= new HashSet<Afiliado>();
+				this.getAllAfiliados().setSelection(afiliados);
 			} else if(this.socio!=null){
 				verAfiliado=true;
 				this.afiliados= this.socio.getAfiliados();
@@ -93,12 +94,15 @@ public class MiPerfilViewModel {
 		PreferenciasPersona = usuario.getPersona().getPreferenciaPersonas();
 		preferenciaPDAO = new PreferenciaPersonaDao();
 		this.usuarioDao= new UsuarioDao();
+		
 		if (usuario.getPersona().getFoto() == null)
 			this.setFotoDefault(false);
 		else
 			this.setFotoDefault(true);
 		
 	}
+	
+
 	
 	
 	public boolean isVerAfiliado() {
@@ -329,13 +333,12 @@ public class MiPerfilViewModel {
 		if(imagenNueva){
 			this.usuario.getPersona().setFoto(ManejadorArchivo.subirImagen(uploadedImage));
 
-			
 		}
 		this.usuarioDao.actualizarUsuario(usuario);
 		Messagebox.show("Usuario " + usuario.getPersona().getNombre()
 				+ " ha sido actualizado", "American Tech", Messagebox.OK,
 				Messagebox.INFORMATION);
-		Executions.sendRedirect("/vistas/index.zul");
+		       Executions.sendRedirect("/vistas/index.zul");
 		
 	}
 	
@@ -432,6 +435,7 @@ public class MiPerfilViewModel {
 		}else{
 			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
+
 	}
 	
 }
