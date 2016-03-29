@@ -77,6 +77,7 @@ public class RegistrarSancionViewModel {
 			this.multabs=0;
 			this.sancionAfiliado=false;
 			this.sancionSocio=false;
+			this.sancion.setDescripcion("");
 		}
 		else{
 			this.editable=true;
@@ -342,7 +343,7 @@ public class RegistrarSancionViewModel {
 		if(editable==true){
 			this.sancion.setTipoSancion(this.tipoSancion);
 			if(this.tipoSancion.getIdTipoSancion()==1){
-				if(this.sancion.getDescripcion()==""||this.sancion.getDescripcion()==null){
+				if(this.sancion.getDescripcion().equalsIgnoreCase("")||this.sancion.getDescripcion()==null){
 					Messagebox.show("Debe ingresar la descripción de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
@@ -358,15 +359,29 @@ public class RegistrarSancionViewModel {
 					Messagebox.show("Debe seleccionar una Eventualidad", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
+					if(this.sancion.getDescripcion().equalsIgnoreCase("")){
+						Messagebox.show("Verifique que los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					}else{
 					this.sancion.setEventualidad(this.evetualidad);
 					boolean validar=validacionAgregar();
 					if(validar==true){
 						this.actualizar(win);
 					}
+					}
 				}
 
 			}
-			
+			else{
+				if(this.sancion.getDescripcion().equalsIgnoreCase("")){
+					Messagebox.show("Verifique que los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				}else{
+				
+				this.sancion.setEventualidad(null);
+				boolean validar=validacionAgregar();
+				if(validar==true){
+					this.actualizar(win);
+				}}
+			}
 			
 		}
 		else{
@@ -410,6 +425,16 @@ public class RegistrarSancionViewModel {
 							}
 						}
 
+					}
+					else{
+						if(sancion.getDescripcion().equalsIgnoreCase("")){
+						Messagebox.show("Verifique que los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);}
+						else{
+						this.sancion.setEventualidad(null);
+						boolean validar=validacionAgregar();
+						if(validar==true){
+							this.agregar(win);
+						}}
 					}
 					
 				}

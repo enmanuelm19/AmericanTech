@@ -113,11 +113,11 @@ public class PostulantesViewModel {
 	@Command
 	public void cancelarPostulacion(@BindingParam("Postulacion") final Postulacion postulacions) throws Exception{
 		
-		Messagebox.show("Estas seguro de eliminar la postulación", "Confirmar",
+		Messagebox.show("Estas seguro de eliminar la postulación", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
-							try {Messagebox.show("La postulación ha sido eliminada", "", Messagebox.OK,
+							try {Messagebox.show("La postulación ha sido eliminada", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 							pdao.eliminarPersona(postulacions.getPostulado().getPersona());
 							podao.eliminarPostulado(postulacions.getPostulado());

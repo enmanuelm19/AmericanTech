@@ -109,13 +109,13 @@ public class RegistrarMiembroViewModel {
 	@NotifyChange({"miembro","desactivar"})
 	public void buscarCedula() throws Exception{
 		if(miembro.getPersona().getIdentificacion()==null || miembro.getPersona().getIdentificacion().equalsIgnoreCase(""))
-			Messagebox.show("Debe llenar el campo Cédula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar el campo Cedula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		else{
 			String id=miembro.getPersona().getIdentificacion();
 			Persona per= new Persona();
 			per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
 			if(per==null){
-				Messagebox.show("Cédula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cedula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				miembro.setPersona(new Persona());
 				miembro.getPersona().setIdentificacion(id);
 				desactivar=false;
@@ -134,7 +134,6 @@ public class RegistrarMiembroViewModel {
 					miembro.setPersona(per);
 					desactivar=true;
 					imagenNueva=true;
-					System.out.println("correo del miembro: "+miembro.getPersona().getCorreo());
 				}
 			}
 		}
@@ -165,7 +164,7 @@ public class RegistrarMiembroViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception{
 		if(!editar){
 			if(desactivar){
-				if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
+				if(miembro.getCargo()==null || miembro.getPersona()==null||miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
 						||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
 						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")||
 						imagenNueva!=true){
@@ -184,7 +183,7 @@ public class RegistrarMiembroViewModel {
 						||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
 						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")||
 						imagenNueva!=true){
-					Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Verifique que todo los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					if(imagenNueva==true){

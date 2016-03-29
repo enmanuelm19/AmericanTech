@@ -84,14 +84,14 @@ public class AccionViewModel {
 	@Command
 	@NotifyChange({ "accionesAll", "cantidadRegistros" })
 	public void eliminar(@BindingParam("Accion") final Accion accion) {
-		Messagebox.show("Estas seguro de eliminar la acción " + accion.getNroAccion(), "American Tech",
+		Messagebox.show("Estas seguro de eliminar la accion " + accion.getNroAccion(), "American Tech",
 		Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 			public void onEvent(Event evt) throws InterruptedException {
 				if (evt.getName().equals("onOK")) {
 					try {
 						accionDAO.eliminarAccion(accion);
 						listaAcciones = accionDAO.obtenerTodos();
-						Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show("La Accion " +accion.getNroAccion()+ " ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 						BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
 					} catch (Exception e) {
 						Messagebox.show(e.getMessage(), "La Acción "+accion.getNroAccion() + " no se pudo eliminar", Messagebox.OK, Messagebox.ERROR);
