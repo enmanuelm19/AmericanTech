@@ -95,7 +95,7 @@ public class RegistrarSugerenciaIndexViewModel {
 		try { 
 			if (sugerencia.getDescripcion() == null || sugerencia.getDescripcion().equalsIgnoreCase("") ||
 					sugerencia.getTipoSugerencia() == null) {
-					Messagebox.show("Debe llenar todos los campos", "American Tech",
+					Messagebox.show("Verifique que todos los datos esten llenos", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				else{
