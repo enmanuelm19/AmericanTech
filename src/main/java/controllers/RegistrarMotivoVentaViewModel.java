@@ -77,10 +77,13 @@ public class RegistrarMotivoVentaViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshMotivoVenta",
 						null);
 			} else {
-				Messagebox.show("El motivo venta con la descripción "
+				Messagebox.show("El motivo venta con la descripciÃ³n "
 						+ motivoVenta.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos esten llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

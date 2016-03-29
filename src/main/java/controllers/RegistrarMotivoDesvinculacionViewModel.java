@@ -62,14 +62,14 @@ public class RegistrarMotivoDesvinculacionViewModel {
 					.getDescripcion()) == null) {
 				if (!editable) {
 					motivoDao.agregarMotivoDesvinculacion(motivoDesvinculacion);
-					Messagebox.show("El motivo de desvinculacion "
+					Messagebox.show("El motivo de desvinculación "
 							+ motivoDesvinculacion.getDescripcion()
 							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao
 							.actualizarMotivoDesvinculacion(motivoDesvinculacion);
-					Messagebox.show("El motivo de desvinculacion "
+					Messagebox.show("El motivo de desvinculación "
 							+ motivoDesvinculacion.getDescripcion()
 							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -78,10 +78,13 @@ public class RegistrarMotivoDesvinculacionViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoDesvinculacion", null);
 			} else {
-				Messagebox.show("motivo desvinculacion con la descripcion "
+				Messagebox.show("El motivo desvinculación con la descripción "
 						+ motivoDesvinculacion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}
