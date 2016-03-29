@@ -1,6 +1,6 @@
 <zk xmlns:n="native">
 <!--  -->
-
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estructurados.ReporteEventoViewModel')">
 		<hlayout spacing="0">
@@ -68,7 +68,7 @@
 								  											  
 												  <row class="col-md-12">
 											   		   <div class="col-md-8" align="left">
-												   		   <label class="col-md-2">Categoria:</label>
+												   		   <label class="col-md-2">Categoría:</label>
 													       <combobox model="@load(vm.tipoPreferencia)" class="col-md-5" selectedItem="@bind(vm.tipoPreferenciaSelected)" disabled="@load(vm.disablecat)" >
 																<template name="model">
 																		<comboitem
@@ -128,9 +128,11 @@
 
 								   	 <space spacing="1%"></space>	
 							     <div align="center" xmlns:w="client">
-									<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
+									<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" 
+									iconSclass="glyphicon glyphicon-file" tooltiptext="Descargar TXT"/>
 									<space spacing="2%"></space>
-									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+									iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 								 </div>	
 							</div>
 						</div>

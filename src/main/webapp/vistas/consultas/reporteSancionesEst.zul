@@ -1,4 +1,5 @@
 <zk xmlns:n="native">
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estadisticos.ReporteSancionesEstViewModel')">
 		<hlayout spacing="0">
@@ -6,7 +7,7 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
-						<a label="Estructurado" href="#" />
+						<a label="Estadistico" href="#" />
 						<label value="Sancion" />
 					</div>
 				</div>
@@ -44,7 +45,8 @@
 								   	 <space spacing="2%"></space>						   	 
 								</groupbox >
 							     <div align="center" xmlns:w="client">
-									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+									iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 								 </div>	
 							</div>
 						</div>
