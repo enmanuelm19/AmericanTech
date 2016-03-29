@@ -49,7 +49,7 @@
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="180" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
@@ -63,7 +63,7 @@
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="195" y="31" width="593" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>

@@ -54,7 +54,7 @@ FROM actividad a WHERE a.eventoid_evento = 2]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="76" splitType="Stretch">
+		<band height="51" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="31" width="56" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
@@ -77,28 +77,28 @@ FROM actividad a WHERE a.eventoid_evento = 2]]>
 				<textFieldExpression><![CDATA[$P{CONSULTA}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="416" y="31" width="51" height="20" uuid="ad89a476-0136-4b48-bad9-46e0f7e9a63b"/>
+				<reportElement x="385" y="31" width="86" height="20" uuid="ad89a476-0136-4b48-bad9-46e0f7e9a63b"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="467" y="31" width="100" height="20" uuid="04627eac-a92a-4d03-9814-8b63b3c3188d"/>
+				<reportElement x="436" y="31" width="135" height="20" uuid="04627eac-a92a-4d03-9814-8b63b3c3188d"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{FECHA_INICIAL}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="571" y="31" width="51" height="20" uuid="b7c0a160-53a9-466e-9bf9-6f8945061679"/>
+				<reportElement x="572" y="31" width="51" height="20" uuid="b7c0a160-53a9-466e-9bf9-6f8945061679"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Hasta:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="634" y="31" width="100" height="20" uuid="7cece39e-c3c1-4d5e-b53d-54b4d29c744f"/>
+				<reportElement x="634" y="31" width="140" height="20" uuid="7cece39e-c3c1-4d5e-b53d-54b4d29c744f"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
@@ -107,9 +107,9 @@ FROM actividad a WHERE a.eventoid_evento = 2]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="21" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="802" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
+				<reportElement x="0" y="0" width="802" height="31" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="20" y="0" width="100" height="20" uuid="f87c2c9a-7d45-4114-91fd-fa7178a66bc7"/>
@@ -119,35 +119,35 @@ FROM actividad a WHERE a.eventoid_evento = 2]]>
 				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="231" y="0" width="100" height="20" uuid="b0951852-6a3e-46b6-aaf9-6adf5efd0475"/>
+				<reportElement x="274" y="1" width="100" height="20" uuid="b0951852-6a3e-46b6-aaf9-6adf5efd0475"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Tope]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="367" y="1" width="100" height="20" uuid="67ec623b-65f3-4f46-8651-96109a14386c"/>
+				<reportElement x="385" y="0" width="104" height="30" uuid="67ec623b-65f3-4f46-8651-96109a14386c"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Realizacion]]></text>
+				<text><![CDATA[Fecha Realizacón]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="503" y="0" width="100" height="20" uuid="175e637e-61b5-432f-8a90-2e9cc88069d4"/>
+				<reportElement x="503" y="0" width="100" height="31" uuid="175e637e-61b5-432f-8a90-2e9cc88069d4"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor Real]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="617" y="0" width="100" height="20" uuid="4121416b-e515-421e-b5ef-3d4e48ae03fe"/>
+				<reportElement x="605" y="1" width="100" height="30" uuid="4121416b-e515-421e-b5ef-3d4e48ae03fe"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor Esperado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="718" y="1" width="100" height="20" uuid="87ab3c84-74ad-4ea3-9266-67849ea05321"/>
+				<reportElement x="718" y="1" width="100" height="30" uuid="87ab3c84-74ad-4ea3-9266-67849ea05321"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -156,23 +156,23 @@ FROM actividad a WHERE a.eventoid_evento = 2]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="2" width="216" height="20" uuid="5bc06669-6619-4a47-8578-b76c0bfff485"/>
+				<reportElement x="0" y="2" width="264" height="33" uuid="5bc06669-6619-4a47-8578-b76c0bfff485"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="231" y="2" width="100" height="20" uuid="b530ac20-12ab-418d-b426-d052b49d2585"/>
+				<reportElement x="274" y="3" width="100" height="20" uuid="b530ac20-12ab-418d-b426-d052b49d2585"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_tope}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="367" y="3" width="100" height="20" uuid="9f04064e-a80b-4254-b9ee-5dac5fe8b3ba"/>
+				<reportElement x="385" y="2" width="100" height="20" uuid="9f04064e-a80b-4254-b9ee-5dac5fe8b3ba"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
