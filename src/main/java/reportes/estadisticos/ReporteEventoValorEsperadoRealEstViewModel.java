@@ -118,7 +118,7 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_evento.jrxml";
 			this.consulta = "Reporte del evento "+ this.eventoSelected.getNombre() +", referente a: "
-					+ this.eventoSelected.getDescripcion() +".";
+					+ this.eventoSelected.getDescripcion() +" del Centro Atlético América.";
 		
 			sql = "Select DISTINCT e.nombre as evento, i.descripcion as indicador, ie.valor_esperado, ie.valor_real "
 					+ "from indicador i, evento e, indicador_evento ie, preferencia p, preferencia_evento pe, tipo_preferencia tp "

@@ -391,7 +391,7 @@ public class ReporteSociosEstViewModel {
 				
 		sql = "SELECT DISTINCT ";
 		this.titulo = "SOCIOS";
-		this.consulta= "Socios y afiliados ";
+		this.consulta= "Socios y afiliados";
 		if ( this.checkedad == false && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false  ) //
 		{
 			Messagebox.show("Debe seleccionar almenos una opción de busqueda", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
@@ -461,9 +461,9 @@ public class ReporteSociosEstViewModel {
 			this.sqlGeneral = this.sqlparticular;
 			this.sqlGeneralAfiliado = this.sqlParticularAfiliado;
 			
-			if(sqlPreferencia() && sqlAge() && sqlSexo())
+			if( sqlAge() && sqlSexo() && sqlPreferencia() )
 				sqlFinal();
-
+			
 		}
 		//1,3
 		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == true && this.checkpreferencia == false)
@@ -496,7 +496,7 @@ public class ReporteSociosEstViewModel {
 			this.sqlGeneral = this.sqlparticular;
 			this.sqlGeneralAfiliado = this.sqlParticularAfiliado;
 		
-			if(sqlAge() && sqlPreferencia() && sqlCategoria())
+			if(sqlAge() && sqlCategoria() && sqlPreferencia() )
 				sqlFinal();
 
 		}
@@ -548,7 +548,7 @@ public class ReporteSociosEstViewModel {
 			this.sqlGeneralAfiliado = this.sqlParticularAfiliado;
 			
 
-			if(sqlSexo() &&  sqlPreferencia() && sqlPreferencia() )
+			if(sqlSexo() && sqlCategoria() &&  sqlPreferencia()  )
 				sqlFinal();
 
 		}
@@ -582,7 +582,7 @@ public class ReporteSociosEstViewModel {
 					+ " WHERE a.personaid_persona = p.id_persona ";
 			this.sqlGeneral = this.sqlparticular;
 			this.sqlGeneralAfiliado = this.sqlParticularAfiliado;
-			if(sqlPreferencia() && sqlCategoria())
+			if( sqlCategoria() && sqlPreferencia() )
 			   sqlFinal();
 
 		}	
@@ -614,7 +614,7 @@ public class ReporteSociosEstViewModel {
 			sqlparticular += " and p.sexo = 'F'"; 
 			this.sqlParticularAfiliado = " and p.sexo = 'F'"; 
 		}  else {
-			this.consulta= ", de ambos sexos ";
+			this.consulta += ", de ambos sexos";
 		}
 		return true;
 	}
@@ -624,7 +624,7 @@ public class ReporteSociosEstViewModel {
 			Messagebox.show("Debe seleccionar una Catégoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else {
-			this.consulta += " .";
+			this.consulta += " con catégoria " + this.tipoPreferenciaSelected.getDescripcion() + " ";
 			sqlparticular += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
 				+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
 				+ " and prefp.preferenciaid_preferencia = pref.id_preferencia "
@@ -653,7 +653,6 @@ public class ReporteSociosEstViewModel {
 			Messagebox.show("Debe seleccionar una preferencia", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else {
-			this.consulta += "entre las edades "+ Integer.valueOf(this.edaddesde) +" y "+ Integer.valueOf(this.edadhasta) +".";
 			sqlparticular += " and tp.id_tipo_preferencia = pref.tipo_preferenciaid_tipo_preferencia "
 					+ " and tp.id_tipo_preferencia = "+this.tipoPreferenciaSelected.getIdTipoPreferencia()+" "	
 					+ " and prefp.preferenciaid_preferencia = "+this.preferencia.getIdPreferencia()
@@ -681,7 +680,7 @@ public class ReporteSociosEstViewModel {
 		if(this.edaddesde > this.edadhasta){
 			Messagebox.show("Debe seleccionar un rango de edades valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += " con respecto al universo de los socios del centro Atl�tico Am�rica.";						
+			this.consulta += " con respecto al universo de los socios del Centro Atlético América.";						
 			sql += "( ("+ this.sqlparticular +" )+( "+ this.sqlParticularAfiliado +" )) as particular, "
 					+ "( ("+ this.sqlGeneral +" ) + ("+this.sqlGeneralAfiliado+") ) as general, "
 					+ "CASE WHEN ( (" + this.sqlGeneral +")+("+ this.sqlGeneralAfiliado+") ) > 0 THEN "

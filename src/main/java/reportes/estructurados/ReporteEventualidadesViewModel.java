@@ -301,7 +301,6 @@ public class ReporteEventualidadesViewModel {
 	}
 	
 	public void sqlTime() throws FileNotFoundException, JRException, SQLException{
-		System.out.println("hora: "+ this.horaInicio);
 		if(this.horaInicio == null && this.horaFin == null){
 			sqlDate();
 		} else if (this.horaInicio == null || this.horaFin == null){
@@ -309,6 +308,7 @@ public class ReporteEventualidadesViewModel {
 		} else if (this.horaInicio.after(this.horaFin)){
 			Messagebox.show("Hora Desde no puede ser mayor a la Hora Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
+			this.consulta += ",entre las horas " + this.horaInicio + " y "+this.horaFin;
 			this.sql += " and date_part('hour', e.fecha) between "+ hora.format(this.horaInicio) +" and "+ hora.format(this.horaFin)+ " ";
 			sqlDate();
 		}	
@@ -322,13 +322,14 @@ public class ReporteEventualidadesViewModel {
 		} else if (this.fechaInicio.compareTo(this.fechaFin) == 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += "  entre las fechas " + sdf.format(this.fechaInicio) + " y "+ sdf.format(this.fechaFin)+".";
+			this.consulta += ", entre las fechas " + sdf.format(this.fechaInicio) + " y "+ sdf.format(this.fechaFin);
 			this.sql += " AND e.fecha  BETWEEN '" + sdf.format(this.fechaInicio) + "' AND '" + sdf.format(this.fechaFin) + "' ";	
 			generarPDF();
 		}
 	}
 
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		this.consulta += " del Centro Atlético América.";
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);

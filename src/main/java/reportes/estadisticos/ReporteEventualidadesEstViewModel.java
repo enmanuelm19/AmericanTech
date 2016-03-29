@@ -366,7 +366,7 @@ public class ReporteEventualidadesEstViewModel {
 		} else if (validateHora()){
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad4.jrxml";
 			this.consulta = "Reporte de eventualidaes entre la hora " + horaformat.format(this.horaDesdeSelect) + " y "+  horaformat.format(this.horaHastaSelect)+""
-					+ " y referente a la instalacion: " + this.instalacionSelected.getNombre() +".";		
+					+ " y referente a la instalacion: " + this.instalacionSelected.getNombre() +" del Centro Atlético América.";		
 			
 			String sqllocal = " ";
 			if(this.instalacionSelected.getIdInstalacion() == 0){

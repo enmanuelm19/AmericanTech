@@ -192,7 +192,7 @@ public class ReporteAlquilerViewModel {
 			sqlDate();
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Todas")){
 			this.titulo = "INSTALACIONES";
-			this.consulta= "Instalacion ";
+			this.consulta= "Instalación ";
 			this.reporte = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_todas.txt";
 			this.sql = "SELECT i.nombre as instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, "
@@ -272,7 +272,7 @@ public class ReporteAlquilerViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informaci�n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

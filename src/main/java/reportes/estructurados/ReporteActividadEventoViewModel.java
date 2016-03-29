@@ -184,7 +184,7 @@ public class ReporteActividadEventoViewModel {
 			else{
 				
 			this.titulo = "Actividades del evento";
-			this.consulta = this.eventoSelected.getNombre();
+			this.consulta = "Reporte del evento: " + this.eventoSelected.getNombre() + " del Centro Atlético América.";
 			this.fecha_inicial = this.eventoSelected.getFechaInicio().toString();
 			this.fecha_hasta = this.eventoSelected.getFechaFin().toString();
 			this.reporte = System.getProperty("user.home") + "/reportes_america/evento_actividad.jrxml";
