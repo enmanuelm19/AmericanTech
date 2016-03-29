@@ -376,10 +376,10 @@ public class MiPerfilViewModel {
 							Messagebox.INFORMATION);
 					win.detach();
 				}else{
-					Messagebox.show("Las contraseñas no coinciden!");
+					Messagebox.show("Las contraseñas no coinciden!", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 			}else{
-				Messagebox.show("Contraseña incorrecta");
+				Messagebox.show("Contraseña incorrecta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 	}
