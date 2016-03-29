@@ -309,7 +309,7 @@ public class RegistrarSancionViewModel {
 
 	public void setFechaInicio(Date fechaInicio) {
 		if(fechaInicio.after(fechaFin)){
-			Messagebox.show("Fecha de inicio de suspención debe ser antes a la de fin de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de inicio de suspension debe ser antes a la de fin de suspension", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaInicio = fechaInicio;
@@ -323,7 +323,7 @@ public class RegistrarSancionViewModel {
 
 	public void setFechaFin(Date fechaFin) {
 		if(fechaFin.before(fechaInicio)){
-			Messagebox.show("Fecha de fin de suspención debe ser despues a la de inicio de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de fin de suspension debe ser despues a la de inicio de suspesion", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaFin = fechaFin;

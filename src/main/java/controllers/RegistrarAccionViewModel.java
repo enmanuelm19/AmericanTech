@@ -132,7 +132,7 @@ public class RegistrarAccionViewModel {
 	public void publicarNoticia() throws Exception{
 		this.noticia=new Noticia();
 		this.noticia.setTitulo("Accion en Venta");
-		this.noticia.setDescripcion("Se a aperturado el proceso de postulacion para una acción en venta");
+		this.noticia.setDescripcion("Se a aperturado el proceso de postulacion para una accion en venta");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
 		this.noticia.setFechaCreacion(new Date());
 		this.noticia.setFoto("http://i.imgur.com/E9BHBju.png");
