@@ -35,7 +35,7 @@
 									<div class="col-md-3"
 										style="border:1px">
 										<image sclass="myimg"
-											class="col-md-12" src="../assets/portal/img/img1.jpg" />
+											class="col-md-12" src="@load(vm.eventualidad.persona.foto)" />
 									</div>
 									<div class="col-md-9">
 										<grid>
@@ -143,7 +143,8 @@
 													<div>
 														Descripción
 														<n:br></n:br>
-														<textbox value="@bind(vm.eventualidad.descripcion)"
+														<textbox
+															value="@bind(vm.eventualidad.descripcion)"
 															class="col-md-12" rows="4" cols="600" />
 													</div>
 												</row>
@@ -162,7 +163,8 @@
 														Hora
 														<n:br></n:br>
 														<timebox
-															id="TimeHorInicio" cols="12" format="short"/>
+															value="@bind(vm.eventualidad.fecha)" cols="12"
+															format="short" />
 													</div>
 												</row>
 
@@ -198,12 +200,14 @@
 
 								<div class="row col-md-12">
 									<button
-										class="boton-guardar col-md-3 col-md-offset-2" label="Guardar" onClick="@command('guardar')"
-										type="button" iconSclass="z-icon-floppy-o">
+										class="boton-guardar col-md-3 col-md-offset-2" label="Guardar"
+										onClick="@command('guardar')" type="button"
+										iconSclass="z-icon-floppy-o">
 									</button>
 									<button
-										class="boton-cancelar col-md-3 col-md-offset-2" onClick="@command('cancelar')"
-										iconSclass="z-icon-times" type="button" label="Cancelar">
+										class="boton-cancelar col-md-3 col-md-offset-2"
+										onClick="@command('cancelar')" iconSclass="z-icon-times"
+										type="button" label="Cancelar">
 									</button>
 								</div>
 
