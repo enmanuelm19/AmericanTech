@@ -5,7 +5,7 @@
 <zk>
 	<window border="none" title="@load(vm.editable?'Editar Usuario':'Registrar Usuario')"  id="winRegistrarUsuario"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		class="col-md-8" style="iconSclass=z-icon-puzzle-piece;" width="60%" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarUsuarioViewModel')">
+		class="col-md-8" style="iconSclass=z-icon-puzzle-piece;" width="60%" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarUsuarioViewModel')" closable="true">
 		<caption iconSclass="z-icon-puzzle-piece" />
 
 		<div class="contenido form-group">
