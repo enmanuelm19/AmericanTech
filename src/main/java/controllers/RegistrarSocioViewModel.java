@@ -55,7 +55,6 @@ public class RegistrarSocioViewModel {
 	
 	@Init
 	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacions) throws Exception{
-		System.out.println("Apellido "+postulacions.getPostulado().getPersona().getApellido());
 		this.postulacion=postulacions;
 		this.accionDao= new AccionDao();
 		this.acciones= new ArrayList<Accion>();
@@ -65,11 +64,9 @@ public class RegistrarSocioViewModel {
 		this.noticiaDao= new NoticiaDao();
 		List<Accion> acc=accionDao.obtenerTodos();
 		for (int i = 0; i < acc.size(); i++) {
-			System.out.println("nro: " +acc.get(i).getEstadoAccion().getIdEstadoAccion());
 			if(acc.get(i).getEstadoAccion().getIdEstadoAccion()==2)
 				this.acciones.add(acc.get(i));
 		}
-		System.out.println("Apellido "+this.postulacion.getPostulado().getPersona().getApellido());
 	}
 	
 	public ListModelList<Accion> getAccionesAll(){
@@ -112,7 +109,6 @@ public class RegistrarSocioViewModel {
 
 	public void setSeleccionada(Accion seleccionada) {
 		this.seleccionada = seleccionada;
-		System.out.println("dasdasdd: "+this.seleccionada.getIdAccion());
 	}
 	
 	
@@ -141,10 +137,8 @@ public class RegistrarSocioViewModel {
 				socio.setPersona(this.postulacion.getPostulado().getPersona());
 				socio.setPostulacion(this.postulacion);
 				socio.setNroCarnet(this.getNroCarnet());
-				System.out.println("socio es: "+socio.getPersona().getNombre());
 				this.accionDao= new AccionDao();
-				System.out.println("lllsla: "+socio);
-			
+				
 				this.socioDao.agregarSocio(this.socio);
 				postulacionDao= new PostulacionDao();
 				postulacionDao.eliminarPostulacion(this.postulacion);
@@ -173,7 +167,7 @@ public class RegistrarSocioViewModel {
 	public void publicarNoticia() throws Exception{
 		this.noticia=new Noticia();
 		this.noticia.setTitulo("Nuevo Socio");
-		this.noticia.setDescripcion("¡El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
+		this.noticia.setDescripcion("ï¿½El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(6));
 		this.noticia.setFechaCreacion(new Date());
 		this.noticia.setFoto(socio.getPersona().getFoto());

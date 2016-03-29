@@ -75,7 +75,6 @@ public class RegistrarAfiliadoViewModel {
 		preferencias= new ArrayList<Preferencia>();
 		preferenciasAll= new ArrayList<Preferencia>();
 		temporalPreferencia = new ArrayList<Preferencia>();
-		System.out.println("dasdadasdiijijjl: "+socioss.getIdSocio());
 		fotodefault=true;
 	}
 	public boolean isFotodefault() {
@@ -265,7 +264,6 @@ public class RegistrarAfiliadoViewModel {
 	
 	@Command
 	public void registrarAfiliado(@BindingParam("win") Window win) throws Exception{
-		System.out.println(persona.getIdentificacion());
 		try{
 			if(persona.getIdentificacion().equalsIgnoreCase("") || persona.getNombre().equalsIgnoreCase("")||
 					persona.getApellido().equalsIgnoreCase("")|| persona.getTelefono().equalsIgnoreCase("")||
