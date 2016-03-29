@@ -85,17 +85,17 @@ public class RegistrarAccionViewModel {
 			accion.setActivo(true);
 			if (!editable){
 				if(validarDesc())
-					Messagebox.show("Ya existe una acción con ese número","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Ya existe una accion con ese numero","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				else{
 					if(!val){
-						Messagebox.show("Debe seleccionar un estado acción","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Debe seleccionar un estado accion","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					}else{
 						if(accion.getValor()== 0.0){
-							Messagebox.show("Debe ingresar un valor de acción","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Debe ingresar un valor de accion","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 							
 						}else{
 					accionDAO.agregarAccion(accion);
-					Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("La Accion " +accion.getNroAccion()+ " ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 					if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
 						publicarNoticia();
 					}
@@ -108,7 +108,7 @@ public class RegistrarAccionViewModel {
 					accion.setSocio(null);
 				}
 				accionDAO.actualizarAccion(accion);
-				Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);		
+				Messagebox.show("La Accion " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);		
 				if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
 					publicarNoticia();
 				}
@@ -131,8 +131,8 @@ public class RegistrarAccionViewModel {
 	}
 	public void publicarNoticia() throws Exception{
 		this.noticia=new Noticia();
-		this.noticia.setTitulo("Acción en Venta");
-		this.noticia.setDescripcion("¡Se a aperturado el proceso de postulación para una acción en venta!");
+		this.noticia.setTitulo("Accion en Venta");
+		this.noticia.setDescripcion("Se a aperturado el proceso de postulacion para una accion en venta");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
 		this.noticia.setFechaCreacion(new Date());
 		this.noticia.setFoto("http://i.imgur.com/E9BHBju.png");

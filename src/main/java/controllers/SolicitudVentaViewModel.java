@@ -95,9 +95,9 @@ public class SolicitudVentaViewModel {
 	@Command
 	public void guardarSolicitud() throws Exception{
 		if(seleccionadas.size()==0 ||this.solicitud.getMotivoVenta()==null ||this.solicitud.getMotivo()==null ||this.solicitud.getMotivo().equalsIgnoreCase("")){
-			Messagebox.show("Debe llenar todos los campos","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Verifique que los datos esten llenos","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}else{
-			Messagebox.show("Está seguro de solicitar venta de acción ", "American Tech",
+			Messagebox.show("Esta seguro de solicitar venta de accion ", "American Tech",
 					Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 						public void onEvent(Event evt) throws InterruptedException {
 							if (evt.getName().equals("onOK")) {

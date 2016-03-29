@@ -65,7 +65,7 @@ public class RegistrarPoliticaViewModel {
 			System.out.println(politica.getValor());	
 			if (!editable) {
 					if(validarDescripcion()){
-						Messagebox.show("Ya existe una regla con esa descripción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Ya existe una regla con esa descripcion", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					}
 					else{
 						politica.setClub(ClubDao.obtenerClub(1));

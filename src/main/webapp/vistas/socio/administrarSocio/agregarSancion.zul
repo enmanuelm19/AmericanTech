@@ -96,8 +96,8 @@
 								        <listitem>
 								            <listcell label="@load(each.instalacion.descripcion)"/>
 								            <listcell label="@load(each.tipoEventualidad.descripcion)"/>
-								            <listcell label="@load(vm.evetualidad.descripcion)"/>
-								            <listcell label="@load(vm.evetualidad.fecha)"/>
+								            <listcell label="@load(each.descripcion)"/>
+								            <listcell label="@load(each.fecha)"/>
 								        </listitem>
 								    </template>
 								</listbox>
