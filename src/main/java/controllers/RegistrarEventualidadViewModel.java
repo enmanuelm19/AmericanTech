@@ -95,6 +95,11 @@ public class RegistrarEventualidadViewModel {
 					Afiliado afiliado = afiliadoDao.obtenerPorPersona(persona);
 					if(afiliado!=null)
 						this.carnet = afiliado.getNroCarnet();
+					else {
+						Messagebox.show(" Nro identificacion no encontrado", "American Tech", Messagebox.OK,
+							Messagebox.EXCLAMATION);
+						eventualidad = null;
+					}
 				}
 				
 				
