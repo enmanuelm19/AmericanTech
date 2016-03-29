@@ -81,7 +81,7 @@ FROM instalacion i]]>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
-				<text><![CDATA[capacidad]]></text>
+				<text><![CDATA[Capacidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="628" y="2" width="100" height="20" uuid="0401e1e8-9508-4a6b-b16b-d2bfce898a43"/>
@@ -95,13 +95,6 @@ FROM instalacion i]]>
 	<detail>
 		<band height="23" splitType="Stretch">
 			<textField>
-				<reportElement x="77" y="1" width="100" height="20" uuid="72f18934-e932-446c-b060-06a2268d5e22"/>
-				<textElement>
-					<font fontName="SansSerif"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="351" y="1" width="100" height="20" uuid="26445c5e-2de4-47b1-8750-2eed0820f060"/>
 				<textElement>
 					<font fontName="SansSerif"/>
@@ -114,6 +107,13 @@ FROM instalacion i]]>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{precio_alquiler}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="1" width="100" height="20" uuid="72f18934-e932-446c-b060-06a2268d5e22"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

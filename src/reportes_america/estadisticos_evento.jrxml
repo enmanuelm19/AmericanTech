@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_evento" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="0.5644739300537773"/>
+	<property name="ireport.zoom" value="0.9090909090909094"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -74,7 +74,7 @@
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="543" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
+				<reportElement x="0" y="0" width="802" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="4" y="1" width="100" height="20" uuid="3be62d2b-265f-4e90-9b45-31c143fed3ce"/>
@@ -84,21 +84,21 @@
 				<text><![CDATA[Evento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="162" y="1" width="100" height="20" uuid="84080da0-1b52-4b10-8972-de9c3f913897"/>
+				<reportElement x="240" y="0" width="100" height="20" uuid="84080da0-1b52-4b10-8972-de9c3f913897"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Indicador]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="311" y="1" width="100" height="20" uuid="0af57e02-b9b5-4543-91f3-e43714c06675"/>
+				<reportElement x="572" y="0" width="100" height="20" uuid="0af57e02-b9b5-4543-91f3-e43714c06675"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor Esperado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="443" y="1" width="100" height="20" uuid="605c74be-f9cf-48e4-871d-90720edf90af"/>
+				<reportElement x="698" y="0" width="100" height="20" uuid="605c74be-f9cf-48e4-871d-90720edf90af"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -109,28 +109,28 @@
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="4" y="4" width="100" height="20" uuid="aa73c306-9584-48a3-929b-bff9f72fa0fe"/>
+				<reportElement x="4" y="4" width="212" height="20" uuid="aa73c306-9584-48a3-929b-bff9f72fa0fe"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{evento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="162" y="4" width="100" height="20" uuid="a1d254e9-8168-441c-b5e9-d5facf7c7791"/>
+				<reportElement x="240" y="3" width="304" height="20" uuid="a1d254e9-8168-441c-b5e9-d5facf7c7791"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{indicador}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="311" y="4" width="100" height="20" uuid="09f87562-cd16-4d31-b8e3-d5441ac496d4"/>
+				<reportElement x="572" y="3" width="100" height="20" uuid="09f87562-cd16-4d31-b8e3-d5441ac496d4"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{valor_esperado}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="443" y="4" width="100" height="20" uuid="cde9bb62-b755-4b88-9c13-16b94e958d80"/>
+				<reportElement x="698" y="3" width="100" height="20" uuid="cde9bb62-b755-4b88-9c13-16b94e958d80"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

@@ -79,7 +79,7 @@ ON p.id_preferencia = pe.preferenciaid_preferencia]]>
 				<reportElement x="0" y="0" width="802" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="59" y="0" width="100" height="20" uuid="8bf33e1d-1ff3-4347-aedb-8dd3bd6a823c"/>
+				<reportElement x="59" y="0" width="110" height="20" uuid="8bf33e1d-1ff3-4347-aedb-8dd3bd6a823c"/>
 				<textElement textAlignment="Justified">
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -104,14 +104,14 @@ ON p.id_preferencia = pe.preferenciaid_preferencia]]>
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="59" y="4" width="100" height="20" uuid="c2058ff9-3da7-4104-bcc1-f0293cd9b747"/>
+				<reportElement x="30" y="0" width="271" height="20" uuid="c2058ff9-3da7-4104-bcc1-f0293cd9b747"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="351" y="4" width="100" height="20" uuid="300d3c9c-6e0b-42ca-909f-73114d7ff107"/>
+				<reportElement x="351" y="4" width="138" height="20" uuid="300d3c9c-6e0b-42ca-909f-73114d7ff107"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

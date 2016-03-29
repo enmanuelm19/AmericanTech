@@ -93,21 +93,21 @@ ON p.id_persona = s.personaid_persona]]>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="256" y="0" width="100" height="20" uuid="d5f8bde8-4d71-441b-9eb0-e1139deb4de6"/>
+				<reportElement x="146" y="0" width="100" height="20" uuid="d5f8bde8-4d71-441b-9eb0-e1139deb4de6"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Instalacion]]></text>
+				<text><![CDATA[Instalación]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="438" y="0" width="100" height="20" uuid="f00db1db-8129-47f6-b696-825b123686cf"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Numero Carnet]]></text>
+				<text><![CDATA[Número Carnet]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="657" y="0" width="100" height="20" uuid="306acbdb-3b73-4f43-9353-d882c706de91"/>
+				<reportElement x="586" y="0" width="100" height="20" uuid="306acbdb-3b73-4f43-9353-d882c706de91"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -125,7 +125,7 @@ ON p.id_persona = s.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="256" y="4" width="100" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
+				<reportElement x="146" y="4" width="245" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
@@ -139,7 +139,7 @@ ON p.id_persona = s.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="657" y="4" width="100" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
+				<reportElement x="586" y="4" width="175" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

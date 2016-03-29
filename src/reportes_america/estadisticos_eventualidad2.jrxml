@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_eventualidad2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="0.5131581182307067"/>
+	<property name="ireport.zoom" value="0.9090909090909095"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -82,21 +82,21 @@
 			<staticText>
 				<reportElement x="24" y="1" width="100" height="20" uuid="b05655d0-3e39-4840-810a-57b994cddb7b"/>
 				<textElement>
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Antes]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="208" y="1" width="100" height="20" uuid="53965943-b917-4753-b5bd-46146de6fe7d"/>
 				<textElement>
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Seleccion]]></text>
+				<text><![CDATA[Selección]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="417" y="1" width="100" height="20" uuid="0b91b986-bee2-4a5d-81f9-7f7d6508287c"/>
 				<textElement>
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Despues]]></text>
 			</staticText>

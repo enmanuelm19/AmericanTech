@@ -88,21 +88,21 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 				<reportElement x="0" y="0" width="802" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="15" y="0" width="100" height="20" uuid="e667b399-0e19-49cb-979a-0d26a4126fd1"/>
+				<reportElement x="4" y="1" width="100" height="20" uuid="e667b399-0e19-49cb-979a-0d26a4126fd1"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Descripcion]]></text>
+				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="213" y="0" width="100" height="20" uuid="66fb2edf-8c6a-45cd-a633-c8cf81508171"/>
+				<reportElement x="342" y="1" width="100" height="20" uuid="66fb2edf-8c6a-45cd-a633-c8cf81508171"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Inicial]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="387" y="0" width="100" height="20" uuid="d2ab3555-c4ca-4390-bb87-52edc1991b7e"/>
+				<reportElement x="475" y="1" width="100" height="20" uuid="d2ab3555-c4ca-4390-bb87-52edc1991b7e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -120,28 +120,28 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="15" y="2" width="100" height="20" uuid="ea0ef45a-14c0-4a32-b16f-a0c837dd9a31"/>
+				<reportElement x="4" y="3" width="283" height="20" uuid="ea0ef45a-14c0-4a32-b16f-a0c837dd9a31"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="213" y="2" width="100" height="20" uuid="b325bdaa-d84f-4406-91ed-e4f44fa488b1"/>
+				<reportElement x="342" y="3" width="100" height="20" uuid="b325bdaa-d84f-4406-91ed-e4f44fa488b1"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechai}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="387" y="2" width="100" height="20" uuid="eb501896-83bf-4cb5-8e30-b630e890ea4a"/>
+				<reportElement x="475" y="3" width="100" height="20" uuid="eb501896-83bf-4cb5-8e30-b630e890ea4a"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechaf}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="603" y="2" width="100" height="20" uuid="a88ba905-c738-477f-b3e4-c065aaea7eae"/>
+				<reportElement x="603" y="2" width="195" height="20" uuid="a88ba905-c738-477f-b3e4-c065aaea7eae"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

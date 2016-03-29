@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_socios" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="0.620921323059155"/>
+	<property name="ireport.zoom" value="1.0000000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="22"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -95,14 +95,14 @@ from socio]]>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
-				<text><![CDATA[Seleccion]]></text>
+				<text><![CDATA[Selección]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="0" width="100" height="20" uuid="234f2f71-5cb8-4d3d-b881-fadf3b117fdc"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
-				<text><![CDATA[General]]></text>
+				<text><![CDATA[Total]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -181,12 +181,12 @@ from socio]]>
 					<categorySeries>
 						<seriesExpression><![CDATA["Seleccion"]]></seriesExpression>
 						<categoryExpression><![CDATA["Seleccion, "  + $F{porcentajeparticular}  +"%"]]></categoryExpression>
-						<valueExpression><![CDATA[$F{particular}]]></valueExpression>
+						<valueExpression><![CDATA[$F{porcentajeparticular}]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
 						<seriesExpression><![CDATA["general"]]></seriesExpression>
 						<categoryExpression><![CDATA["General, "  + $F{porcentajegeneral} +"%"]]></categoryExpression>
-						<valueExpression><![CDATA[$F{general}]]></valueExpression>
+						<valueExpression><![CDATA[$F{porcentajegeneral}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>
