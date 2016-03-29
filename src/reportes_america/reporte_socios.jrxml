@@ -94,7 +94,7 @@ ON p.id_persona = s.personaid_persona]]>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Telefono]]></text>
+				<text><![CDATA[Teléfono]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="206" y="0" width="100" height="20" uuid="d623fb28-7852-47b2-9678-ac1e93af60a2"/>
@@ -185,7 +185,7 @@ ON p.id_persona = s.personaid_persona]]>
 				<textElement textAlignment="Right">
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="734" y="12" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
@@ -199,7 +199,7 @@ ON p.id_persona = s.personaid_persona]]>
 				<textElement textAlignment="Justified">
 					<font fontName="SansSerif"/>
 				</textElement>
-				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.]]></text>
+				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepción, Barquisimeto.]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

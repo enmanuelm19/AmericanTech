@@ -206,7 +206,7 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 				<textElement textAlignment="Right">
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="734" y="12" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
@@ -220,7 +220,7 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 				<textElement textAlignment="Justified">
 					<font fontName="SansSerif"/>
 				</textElement>
-				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.]]></text>
+				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepción, Barquisimeto.]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
