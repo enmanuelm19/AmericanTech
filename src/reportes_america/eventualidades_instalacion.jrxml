@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="eventualidades_instalacion" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="0.6209213230591552"/>
+	<property name="ireport.zoom" value="0.7513148009015779"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -164,8 +164,8 @@ ON p.id_persona = e.personaid_persona]]>
 	<pageFooter>
 		<band height="56" splitType="Stretch">
 			<staticText>
-				<reportElement x="287" y="12" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
-				<textElement>
+				<reportElement x="186" y="12" width="431" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
+				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>

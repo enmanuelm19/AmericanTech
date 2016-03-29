@@ -153,9 +153,9 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="328" y="174" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
-				<textElement>
-					<font fontName="SansSerif" size="12" isBold="true"/>
+				<reportElement x="189" y="174" width="424" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>
 			</staticText>

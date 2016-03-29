@@ -114,11 +114,11 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		}
 		
 		if(this.eventoSelected == null){
-			Messagebox.show("Debe Seleccionar una instalaci�n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_evento.jrxml";
 			this.consulta = "Reporte del evento "+ this.eventoSelected.getNombre() +", referente a: "
-					+ this.eventoSelected.getDescripcion() +".";
+					+ this.eventoSelected.getDescripcion() +" del Centro Atlético América.";
 		
 			sql = "Select DISTINCT e.nombre as evento, i.descripcion as indicador, ie.valor_esperado, ie.valor_real "
 					+ "from indicador i, evento e, indicador_evento ie, preferencia p, preferencia_evento pe, tipo_preferencia tp "
@@ -143,7 +143,7 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		if(jasperPrint.getPages().size() > 0){
 		   Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
 		} else {
-			Messagebox.show("No existe informaci�n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	   
 	    
