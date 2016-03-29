@@ -685,7 +685,7 @@ public class ReporteEventoViewModel {
 			} else {
 				JRExporter exporterTxt = new JRTextExporter();
 				exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
-				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
+				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/evento.txt");
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
 				exporterTxt.exportReport();

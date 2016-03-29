@@ -248,7 +248,6 @@ public class ReporteActividadEventoViewModel {
 		} else {
 			jd = JRXmlLoader.load(reporteTxt);
 		}
-		jd = JRXmlLoader.load(reporte); 
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 
