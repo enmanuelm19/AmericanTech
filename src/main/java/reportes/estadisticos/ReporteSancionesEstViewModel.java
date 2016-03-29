@@ -193,7 +193,7 @@ public class ReporteSancionesEstViewModel {
 					+ "FROM sancion s, tipo_sancion t "
 					+ "WHERE s.tipo_sancionid_tipo_sancion = t.id_tipo_sancion AND s.activo = t.activo = TRUE "
 					+ " GROUP BY t.id_tipo_sancion";
-			this.consulta = "Reporte general de las sanciones";
+			this.consulta = "Reporte general de las sanciones del Centro Atlético América.";
 			generarPDF();
 			
 		} else if (this.fechadesde == null || this.fechahasta == null){
@@ -201,7 +201,7 @@ public class ReporteSancionesEstViewModel {
 		} else if (this.fechadesde.compareTo(this.fechahasta) == 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += "Reporte general de las sanciones entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";
+			this.consulta += "Reporte general de las sanciones entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+" del Centro Atlético América.";
 			sql = "SELECT t.descripcion, COUNT(s.*) as count,"
 					+ "  (COUNT(s.*) * 100) / (SELECT COUNT(*) "
 					+ "FROM sancion WHERE fecha_inic BETWEEN '"+sdf.format(this.fechadesde)+"' AND '"+  sdf.format(this.fechahasta) +"') as porcentaje "
@@ -222,7 +222,7 @@ public class ReporteSancionesEstViewModel {
 		if(jasperPrint.getPages().size() > 0){
 		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
 		} else {
-			Messagebox.show("No existe informaci�n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} 
 	    con.close();
 	}

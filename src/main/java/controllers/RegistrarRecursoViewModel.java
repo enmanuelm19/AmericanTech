@@ -72,10 +72,13 @@ public class RegistrarRecursoViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshRecurso", null);
 			} else {
 				Messagebox.show(
-						"El recurso con la descripci�n "
+						"El recurso con la descripción "
 								+ recurso.getDescripcion() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

@@ -59,14 +59,14 @@ public class RegistrarTipoOpinionViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoOpnion(tipoOpnion);
 					Messagebox.show(
-							"El tipo de opini髇 "
+							"El tipo de opini贸n "
 									+ tipoOpnion.getDescripcion()
 									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoOpnion(tipoOpnion);
 					Messagebox.show(
-							"El tipo de opini髇 "
+							"El tipo de opini贸n "
 									+ tipoOpnion.getDescripcion()
 									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -75,10 +75,13 @@ public class RegistrarTipoOpinionViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshTipoOpnion",
 						null);
 			} else {
-				Messagebox.show("El tipo de opini髇 con la descripci髇 "
+				Messagebox.show("El tipo de opini贸n con la descripci贸n "
 						+ tipoOpnion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos est茅n llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

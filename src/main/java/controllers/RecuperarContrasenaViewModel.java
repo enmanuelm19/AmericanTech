@@ -50,7 +50,7 @@ public class RecuperarContrasenaViewModel implements Initiator {
 	public void enviarRespuesta() throws Exception{
 		final Session session = Sessions.getCurrent();
 		if(attemp > 3){
-			Messagebox.show("Ha superado el numero de intentos permitido por favor regrese mas tarde", "Confirmar", Messagebox.OK, Messagebox.INFORMATION, new org.zkoss.zk.ui.event.EventListener(){
+			Messagebox.show("Ha superado el numero de intentos permitido por favor regrese mas tarde", "American Tech", Messagebox.OK, Messagebox.INFORMATION, new org.zkoss.zk.ui.event.EventListener(){
 
 				public void onEvent(Event arg0) throws Exception {
 					if(arg0.getName().equals("onOK")){
@@ -65,11 +65,11 @@ public class RecuperarContrasenaViewModel implements Initiator {
 		if(respuesta.getValue().equalsIgnoreCase(getUser().getRespuesta())){
 			Usuario u = (Usuario)session.getAttribute("user");
 			ManejadorMail.enviarEmail("La contraseña para el usuario "+u.getUsername()+" es " + u.getContrasenna()+ "\n\n Ya puedes ingresar a nuestro sistema, recuerde cambiar su contraseña entrando a su perfil.", u.getPersona().getCorreo(), "Recuperacion de contraseña");
-			Messagebox.show("Su contraseña ha sido enviada a su correo!");
+			Messagebox.show("Su contraseña ha sido enviada a su correo!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			attemp = 0;
 			session.removeAttribute("user");
 		}else{
-			Messagebox.show("Respuesta incorrecta");
+			Messagebox.show("Respuesta incorrecta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			attemp++;
 		}
 	}
@@ -81,7 +81,7 @@ public class RecuperarContrasenaViewModel implements Initiator {
 		attemp = 0;
 	
 		if(usuarioSesion == null){
-			Messagebox.show("No esta autorizado para ingresar", null, 0, Messagebox.ERROR);
+			Messagebox.show("No esta autorizado para ingresar", "American Tech", 0, Messagebox.ERROR);
 			Executions.sendRedirect("/vistas/layouts/ingreso.zul");
 		}
 	}
@@ -106,7 +106,7 @@ public class RecuperarContrasenaViewModel implements Initiator {
 			}
 
 			if(encontrado == false){
-				Messagebox.show("Lo sentimos el usuario que ingreso no existe");
+				Messagebox.show("Lo sentimos el usuario que ingreso no existe", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}catch(WrongValueException ex){
 

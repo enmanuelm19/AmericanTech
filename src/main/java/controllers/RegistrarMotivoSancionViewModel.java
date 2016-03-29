@@ -58,17 +58,17 @@ public class RegistrarMotivoSancionViewModel {
 
 		if (motivoSancion.getDescripcion() != null
 				&& !motivoSancion.getDescripcion().equalsIgnoreCase("") ) {
-			if (motivoDao.obtenerMotivoSancion(motivoSancion.getDescripcion()) == null && !motivoSancion.isActivo()) {
+			if (motivoDao.obtenerMotivoSancion(motivoSancion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoSancion.setActivo(true);
 					motivoDao.agregarMotivoSancion(motivoSancion);
-					Messagebox.show("El motivo sanci髇 "
-							+ motivoSancion.getDescripcion()
+					
+					Messagebox.show("El motivo sanci贸n " + motivoSancion.getDescripcion()
 							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoSancion(motivoSancion);
-					Messagebox.show("El motivo sanci髇 "
+					Messagebox.show("El motivo sanci贸n "
 							+ motivoSancion.getDescripcion()
 							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -77,10 +77,13 @@ public class RegistrarMotivoSancionViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoSancion", null);
 			} else {
-				Messagebox.show("El motivo sanci髇 con la descripci髇 "
+				Messagebox.show("El motivo sanci贸n con la descripci贸n "
 						+ motivoSancion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos est茅n llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

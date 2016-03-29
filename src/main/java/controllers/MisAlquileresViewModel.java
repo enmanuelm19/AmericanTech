@@ -38,15 +38,17 @@ import org.zkoss.zul.Window;
 
 import Dao.AlquilerDao;
 import Dao.ArchivoAlquilerDao;
+import Dao.SocioDao;
 import enums.TipoListado;
 import modelos.Alquiler;
 import modelos.ArchivoAlquiler;
+import modelos.Socio;
 import modelos.Usuario;
 
 public class MisAlquileresViewModel {
 	private List<Alquiler> alquilerAll;
 	private Alquiler alquilerSelected;
-	private Usuario usuario;
+	private Socio socio;
 	private String filePath;
 	private boolean fileuploaded = false;
 	private String nombreFiltro;
@@ -66,8 +68,15 @@ public class MisAlquileresViewModel {
 				setAlquilerSelected(alquiler);
 			}
 			Session session = Sessions.getCurrent();
-			usuario = (Usuario) session.getAttribute("Usuario");
-			getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
+			Usuario usuario = (Usuario) session.getAttribute("Usuario");
+			if (usuario != null) {
+				socio = new SocioDao().obtenerSocioPersona(usuario.getPersona());
+			}
+			for (Alquiler alq : new AlquilerDao().obtenerTodos()) {
+				if (socio != null && alq.getReservacion().getSocio().getIdSocio() == socio.getIdSocio()) {
+					getAlquilerAll().add(alq);
+				}
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,12 +136,12 @@ public class MisAlquileresViewModel {
 		this.alquilerSelected = alquilerSelected;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Socio getSocio() {
+		return socio;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
 
 	@Command
@@ -178,7 +187,7 @@ public class MisAlquileresViewModel {
 		if (upEvent != null) {
 			for (ArchivoAlquiler archiAlq : getAlquilerSelected().getArchivoAlquilers()) {
 				if (archiAlq.getTipoListado().equals(getTipoListadoSelected())) {
-					Messagebox.show("El archivo de tipo " + getTipoListadoSelected() + " Se encuentra registrado");
+					Messagebox.show("El archivo de tipo " + getTipoListadoSelected() + " se encuentra registrado");
 					setTipoListadoSelected(null);
 					return;
 				}
@@ -230,7 +239,7 @@ public class MisAlquileresViewModel {
 
 		for (Iterator<Alquiler> i = new AlquilerDao().obtenerTodos().iterator(); i.hasNext();) {
 			Alquiler tmp = i.next();
-			if (tmp.getReservacion().getInstalacion().getNombre().toLowerCase().contains(nomb)) {
+			if (socio != null && tmp.getReservacion().getSocio().getIdSocio() == socio.getIdSocio()) {
 				alquiler.add(tmp);
 			}
 		}
@@ -238,7 +247,7 @@ public class MisAlquileresViewModel {
 	}
 
 	public String getCantRegistros() {
-		return alquilerAll.size() + " items en la lista";
+		return getAlquilerAll().size() + " items en la lista";
 	}
 
 	public double precio(Date date1, Date date2, float precio) {
@@ -249,7 +258,7 @@ public class MisAlquileresViewModel {
 	}
 
 	public int diasEntreFecha(Date date1, Date date2) {
-		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al dï¿½a
 		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
 		return (int) diferencia;
 	}
@@ -257,12 +266,23 @@ public class MisAlquileresViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		Set<ArchivoAlquiler> archivoAlquileres = new HashSet();
+		if(getTipoListadoSelected() == null || getTipoListadoSelected().equalsIgnoreCase("")){
+			Messagebox.show("Debe seleccionar tipo de listado" , "American Tech", Messagebox.OK,
+					Messagebox.EXCLAMATION);
+			return;
+		}
+		if(getArchivoAlquiler() == null){
+			Messagebox.show("Debe cargar un archivo tipo .pdf" , "American Tech", Messagebox.OK,
+					Messagebox.EXCLAMATION);
+			return;
+		}		
 		try {
 			new ArchivoAlquilerDao().agregarArchivoAlquiler(getArchivoAlquiler());
 			archivoAlquileres.addAll(new ArchivoAlquilerDao().obtenerPorAlquiler(getAlquilerSelected()));
 			getAlquilerSelected().setArchivoAlquilers(archivoAlquileres);
 			new AlquilerDao().actualizarAlquiler(getAlquilerSelected());
-			Messagebox.show("Ha agregado archivo:" + getArchivoAlquiler().getNombre());
+			Messagebox.show("Ha agregado archivo:" + getArchivoAlquiler().getNombre(), "American Tech", Messagebox.OK,
+					Messagebox.INFORMATION);
 			win.detach();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

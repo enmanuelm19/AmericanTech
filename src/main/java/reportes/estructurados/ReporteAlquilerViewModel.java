@@ -154,23 +154,25 @@ public class ReporteAlquilerViewModel {
 		
 		
 		if (this.estadoinstalacion == null){
-			Messagebox.show("Seleccione el estado de la instalaciÛn", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Seleccione el estado de la instalaci√≥n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Reservadas")) {
 			
 			this.titulo = "INSTALACIONES RESERVADAS";
 			this.consulta= "Instalacion reservadas ";
 			reporte = System.getProperty("user.home") + "/reportes_america/instalacion_reservada.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_reservada.txt";
-			
-			this.sql = "SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE "
+		
+			this.sql = " SELECT i.nombre as instalacion, tp.descripcion as tipo_instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet,  p.nombre || ' ' || p.apellido as NOMBRE "
 					+ "FROM instalacion i "
+					+ "INNER JOIN tipo_instalacion tp "
+					+ "ON i.tipo_instalacionid_tipo_instalacion = tp.id_tipo_instalacion "
 					+ "INNER JOIN reservacion r "
 					+ "ON r.instalacionid_instalacion = i.id_instalacion "
 					+ "INNER JOIN socio s "
 					+ "ON r.socioid_socio = s.id_socio "
 					+ "INNER JOIN persona p "
-					+ "ON p.id_persona = s.personaid_persona where i.alquilable = true and i.activo = true ";
-			
+					+ "ON p.id_persona = s.personaid_persona  "
+					+ "where i.alquilable = true and i.activo = true ";
 			sqlDate();
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Alquiladas")) {
 			this.titulo = "INSTALACIONES ALQUILADAS";
@@ -190,7 +192,7 @@ public class ReporteAlquilerViewModel {
 			sqlDate();
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Todas")){
 			this.titulo = "INSTALACIONES";
-			this.consulta= "Instalacion ";
+			this.consulta= "Instalaci√≥n ";
 			this.reporte = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_todas.txt";
 			this.sql = "SELECT i.nombre as instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, "
@@ -270,7 +272,7 @@ public class ReporteAlquilerViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informaciÛn para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaci√≥n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

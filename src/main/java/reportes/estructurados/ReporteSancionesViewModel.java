@@ -292,7 +292,7 @@ public class ReporteSancionesViewModel {
 			this.consulta= "Sanciones de Afiliados";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones.txt";
-			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
+			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, af.nro_carnet, sa.descripcion,  "
 				+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
 				+ "CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  "
 				+ "(select descripcion from eventualidad where id_eventualidad  = sa.eventualidadid_eventualidad) END  as Motivo  "
@@ -319,7 +319,7 @@ public void cargarSql1() throws FileNotFoundException, JRException, SQLException
 		el.printStackTrace();
 	}
 	if(this.socio == null){
-		Messagebox.show("Debe ingresar un numero de Carnet y que sea un codigo existente", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		Messagebox.show("Debe ingresar un nómero de Carnet y que sea un codigo existente", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 	} else {
 		
 	
@@ -365,6 +365,7 @@ public void sqlDate() throws FileNotFoundException, JRException, SQLException{
 	}
 
 public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+	
 	Date hoy = (Date) Calendar.getInstance().getTime();
 	String date = "-"+sdfGuio.format(hoy).toString();
 	String nombreArchivo = this.titulo.concat(date);
@@ -398,7 +399,7 @@ public void generarPDF() throws JRException, FileNotFoundException, SQLException
 		}
 		
 	} else {
-		Messagebox.show("No existe informaci�n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 	}		
 	con.close();
 }

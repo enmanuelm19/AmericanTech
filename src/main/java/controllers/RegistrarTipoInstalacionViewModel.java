@@ -61,14 +61,14 @@ public class RegistrarTipoInstalacionViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoInstalacion(tipoInstalacion);
 					Messagebox.show(
-							"El tipo de instalaci髇 "
+							"El tipo de instalaci贸n "
 									+ tipoInstalacion.getDescripcion()
 									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoInstalacion(tipoInstalacion);
 					Messagebox.show(
-							"El tipo de instalaci髇 "
+							"El tipo de instalaci贸n "
 									+ tipoInstalacion.getDescripcion()
 									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -77,10 +77,13 @@ public class RegistrarTipoInstalacionViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoInstalacion", null);
 			} else {
-				Messagebox.show("El tipo de instalaci髇 con la descripci髇 "
+				Messagebox.show("El tipo de instalaci贸n con la descripci贸n "
 						+ tipoInstalacion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos est茅n llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 }
