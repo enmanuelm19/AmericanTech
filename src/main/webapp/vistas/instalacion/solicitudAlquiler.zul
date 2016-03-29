@@ -29,7 +29,7 @@
 								<label>Instalaciones:</label>
 								<combobox id="instalaciones"
 									model="@load(vm.temporalInstalaciones)"
-									value="@bind(vm.instalacionSeleccionada.nombre)" selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
+									value="@bind(vm.instalacionSeleccionada.nombre)" readonly="true" selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
 									<template name="model">
 										<comboitem
 											label="@load(each.nombre)" value="@load(each)" />

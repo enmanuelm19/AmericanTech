@@ -129,12 +129,15 @@ public class RegistrarEventualidadViewModel {
 	}
 
 	@Command
+	@NotifyChange({"eventualidad","carnet"})
 	public void guardar() throws Exception {
 
 		if (eventualidad != null && eventualidad.getTipoEventualidad()!=null && eventualidad.getInstalacion()!=null) {
 			this.eventualidadDao.agregarEventualidad(eventualidad);
 			Messagebox.show("La eventualidad al sr(a) " + eventualidad.getPersona().getNombre()
 					+ " se ha registrado exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			eventualidad = null;
+			carnet = "";
 		} else
 			Messagebox.show(" indique todos los datos de la eventualidad", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);

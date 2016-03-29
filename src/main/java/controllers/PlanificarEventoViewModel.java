@@ -73,6 +73,10 @@ public class PlanificarEventoViewModel {
 	public String getCantRegistros() {
 		return eventosAll.size() + " items en la lista";
 	}
+	
+	public String getCantRegistrosEyF() {
+		return eventosEyF.size() + " items en la lista";
+	}
 
 	public String getNombreFiltro() {
 		if (nombreFiltro == null)
@@ -98,8 +102,13 @@ public class PlanificarEventoViewModel {
 	public void filtro() throws Exception {
 		List<Evento> evento = new ArrayList<Evento>();
 		String nomb = getNombreFiltro().toLowerCase();
+		
+		List<Evento> all = new ArrayList<Evento>();
+		all.addAll(eventosPorPlanificar);
+		all.addAll(eventosListoEjecutar);
+		all.addAll(eventosEjecucion);
 
-		for (Iterator<Evento> i = eventoDao.obtenerTodos().iterator(); i.hasNext();) {
+		for (Iterator<Evento> i = all.iterator(); i.hasNext();) {
 			Evento tmp = i.next();
 			if (tmp.getNombre().toLowerCase().contains(nomb)) {
 				evento.add(tmp);
@@ -107,15 +116,55 @@ public class PlanificarEventoViewModel {
 		}
 		eventosAll = evento;
 	}
+	
+	@Command
+	@NotifyChange({ "allEventosEyF", "cantRegistros" })
+	public void filtroEyF() throws Exception {
+		List<Evento> evento = new ArrayList<Evento>();
+		String nomb = getNombreFiltro().toLowerCase();
+		
+		List<Evento> all = new ArrayList<Evento>();
+		all.addAll(eventosListoEjecutar);
+		all.addAll(eventosEjecucion);
+
+		for (Iterator<Evento> i = all.iterator(); i.hasNext();) {
+			Evento tmp = i.next();
+			if (tmp.getNombre().toLowerCase().contains(nomb)) {
+				evento.add(tmp);
+			}
+		}
+		eventosEyF = evento;
+	}
+	
 
 	@GlobalCommand
 	@NotifyChange({ "allEventos", "cantRegistros" })
 	public void refreshEventos() throws Exception {
-		eventosAll = eventoDao.obtenerTodos();
+		
+		eventosAll.clear();
+		eventosPorPlanificar = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(1));
+		eventosListoEjecutar = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(2));
+		eventosEjecucion = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(3));
+
+		eventosAll.addAll(eventosPorPlanificar);
+		eventosAll.addAll(eventosListoEjecutar);
+		eventosAll.addAll(eventosEjecucion);			
 	}
+	
+	
+	@GlobalCommand
+	@NotifyChange({ "allEventosEyF", "cantRegistros" })
+	public void refreshEventosEyF() throws Exception {
+		eventosEyF.clear();
+		eventosListoEjecutar = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(2));
+		eventosEjecucion = eventoDao.obtenerPorEstado(estadoEventoDao.obtenerEstadoEvento(3));
+		eventosEyF.addAll(eventosListoEjecutar);
+		eventosEyF.addAll(eventosEjecucion);
+	}
+	
 
 	@Command
-	@NotifyChange({ "allEventosEyF", "cantRegistros" })
+	@NotifyChange({ "allEventosEyF", "cantRegistrosEyF" })
 	public void actualizarActividads(@BindingParam("evento") Evento evento) throws Exception {
 
 		boolean listo = true;
@@ -124,12 +173,12 @@ public class PlanificarEventoViewModel {
 		for(Actividad actividad: evento.getActividadsActive()){
 			if(actividad.getFechaRealizacion()!=null || actividad.getValorReal()!=null){
 				if(actividad.getFechaRealizacion()==null || actividad.getFechaRealizacion().after(actividad.getFechaTope())){
-					Messagebox.show("Fecha no valida de la actividad: "+actividad.getDescripcion(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Fecha no valida de la actividad: "+actividad.getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					listo = false;
 					break;
 				}
 				else if(actividad.getValorReal()==null){
-					Messagebox.show("valor real no valido de la actividad: "+actividad.getDescripcion(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("valor real no valido de la actividad: "+actividad.getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					listo = false;
 					break;
 					
@@ -145,7 +194,7 @@ public class PlanificarEventoViewModel {
 			evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(2));
 			eventoDao.actualizarEvento(evento);
 			Messagebox.show(
-					"actividades del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "",
+					"actividades del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "American Tech",
 					Messagebox.OK, Messagebox.INFORMATION);
 		}
 		
@@ -153,7 +202,7 @@ public class PlanificarEventoViewModel {
 			evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(3));
 			eventoDao.actualizarEvento(evento);
 			Messagebox.show(
-					"actividades del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "",
+					"actividades del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "American Tech",
 					Messagebox.OK, Messagebox.INFORMATION);
 		}
 		
@@ -163,7 +212,7 @@ public class PlanificarEventoViewModel {
 	
 
 	@Command
-	@NotifyChange({ "allEventosEyF", "cantRegistros" })
+	@NotifyChange({ "allEventosEyF", "cantRegistrosEyF" })
 	public void actualizarIndicadores(@BindingParam("evento") Evento evento) throws Exception {
 		
 		boolean todasFinalizada = true;
@@ -178,7 +227,7 @@ public class PlanificarEventoViewModel {
 		}
 		eventoDao.actualizarEvento(evento);
 		Messagebox.show(
-				"indicadores del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "",
+				"indicadores del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "American Tech",
 				Messagebox.OK, Messagebox.INFORMATION);
 		
 	}
