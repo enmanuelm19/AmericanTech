@@ -76,10 +76,13 @@ public class RegistrarTipoPagoViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshTipoPago",
 						null);
 			} else {
-				Messagebox.show("El tipo pago con la descripci�n "
+				Messagebox.show("El tipo pago con la descripción "
 						+ tipoPago.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

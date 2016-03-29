@@ -243,7 +243,7 @@ public class ReporteEventualidadesViewModel {
 		}
 		
 		if( this.tipo == null){
-			Messagebox.show("Debe elegir una seleccion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe elegir una selección", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if( this.tipo.equalsIgnoreCase("Instalaciones")){
 			this.reporte = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.txt";
@@ -257,7 +257,7 @@ public class ReporteEventualidadesViewModel {
 
 	public void instalacion() throws FileNotFoundException, JRException, SQLException {
 		if(instalacionSelected == null){
-			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			
 			this.consulta = "Reporte de eventualidades sobre instalacion: " + this.instalacionSelected.getNombre() + " ";
@@ -301,14 +301,14 @@ public class ReporteEventualidadesViewModel {
 	}
 	
 	public void sqlTime() throws FileNotFoundException, JRException, SQLException{
-		System.out.println("hora: "+ this.horaInicio);
 		if(this.horaInicio == null && this.horaFin == null){
 			sqlDate();
 		} else if (this.horaInicio == null || this.horaFin == null){
 			Messagebox.show("Debe Seleccionar el rango de hora", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.horaInicio.after(this.horaFin)){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Hora Desde no puede ser mayor a la Hora Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
+			this.consulta += ",entre las horas " + this.horaInicio + " y "+this.horaFin;
 			this.sql += " and date_part('hour', e.fecha) between "+ hora.format(this.horaInicio) +" and "+ hora.format(this.horaFin)+ " ";
 			sqlDate();
 		}	
@@ -322,13 +322,14 @@ public class ReporteEventualidadesViewModel {
 		} else if (this.fechaInicio.compareTo(this.fechaFin) == 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += "  entre las fechas " + sdf.format(this.fechaInicio) + " y "+ sdf.format(this.fechaFin)+".";
+			this.consulta += ", entre las fechas " + sdf.format(this.fechaInicio) + " y "+ sdf.format(this.fechaFin);
 			this.sql += " AND e.fecha  BETWEEN '" + sdf.format(this.fechaInicio) + "' AND '" + sdf.format(this.fechaFin) + "' ";	
 			generarPDF();
 		}
 	}
 
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		this.consulta += " del Centro Atlético América.";
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
@@ -363,7 +364,7 @@ public class ReporteEventualidadesViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe planificacion para este evento.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe planificación para este Eventualidad.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

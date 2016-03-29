@@ -73,14 +73,14 @@ public class PoliticaViewModel {
 	@NotifyChange({ "allPoliticas", "cantRegistros" })
 	public void eliminar(@BindingParam("Politica") final Politica politica) {
 
-		Messagebox.show("Estas seguro de eliminar " + politica.getDescripcion(), "American Tech",
+		Messagebox.show("¿Estas seguro de eliminar " + politica.getDescripcion()+"?", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								politicaDao.eliminarPolitica(politica);;
 								reglasAll = politicaDao.obtenerTodos();
-								Messagebox.show("La pol�tica ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+								Messagebox.show("La política ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshReglas", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), "American Tech", Messagebox.OK, Messagebox.ERROR);

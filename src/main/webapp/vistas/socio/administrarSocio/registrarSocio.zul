@@ -1,10 +1,11 @@
 <!-- Responsable Hector Gil - Copiado por Wilmer Aponte -->
 
 
-<window id="winRegistrarSocio" border="none" width="60%" title="Registrar Socio " closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
+<window id="winRegistrarSocio" border="none"  class="col-xs-10 col-md-8"
+	 title="Registrar Socio " closable="true" action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 	<div class="col-md-12 col-centered" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarSocioViewModel')">
 		<div align="left">
-			<div class="encabezado">Datos del Socio</div>
+			<div class="encabezado">Listado Socios</div>
 			<div align="left" class="linea-two"></div>
 		</div>
 

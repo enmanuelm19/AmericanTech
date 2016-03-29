@@ -27,26 +27,45 @@
 							<row>
 								<div>
 									<label class="col-md-3">Cédula</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.identificacion)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" xmlns:w="client" value="@bind(vm.miembro.persona.identificacion)" readonly="@load(vm.desactivar)" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+									</textbox>
 									<button	iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('buscarCedula')" disabled="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Nombre</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.nombre)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula." value="@bind(vm.miembro.persona.nombre)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Apellido</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.apellido)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula." value="@bind(vm.miembro.persona.apellido)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Fecha Nacimiento</label>
-									<datebox class="col-md-9" value="@bind(vm.miembro.persona.fechaNac)" readonly="@load(vm.desactivar)"/>
+									<datebox class="col-md-9" value="@bind(vm.miembro.persona.fechaNac)" readonly="@load(vm.desactivar)" constraint="no empty, no future"/>
 								</div>
 							</row>
 							<row>
@@ -61,19 +80,57 @@
 							<row>
 								<div>
 									<label class="col-md-3">Email</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.correo)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email" value="@bind(vm.miembro.persona.correo)" readonly="@load(vm.desactivar)"/>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Teléfono Domicilio</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.telefonoFijo)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" xmlns:w="client" value="@bind(vm.miembro.persona.telefonoFijo)" readonly="@load(vm.desactivar)" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+									</textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">Teléfono Celular</label>
-									<textbox class="col-md-6" constraint="no empty" value="@bind(vm.miembro.persona.telefono)" readonly="@load(vm.desactivar)"/>
+									<textbox class="col-md-6" xmlns:w="client" value="@bind(vm.miembro.persona.telefono)" readonly="@load(vm.desactivar)" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+									</textbox>
 								</div>
 							</row>
 							<row>

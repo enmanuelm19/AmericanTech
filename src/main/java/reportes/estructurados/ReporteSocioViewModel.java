@@ -67,7 +67,7 @@ public class ReporteSocioViewModel {
 	
 
 	private String sql = "SELECT DISTINCT p.nombre || ' ' || p.apellido as NOMBRE, "
-			+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO, p.telefono as TELEFONO, "
+			+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO, p.correo, p.telefono as TELEFONO, "
 			+ "s.nro_carnet as CARNET FROM socio s "
 			+ "INNER JOIN persona p ON s.personaid_persona = p.id_persona "
 			+ "INNER JOIN preferencia_persona pp ON pp.personaid_persona = p.id_persona "
@@ -243,7 +243,7 @@ public class ReporteSocioViewModel {
 
 		
 		sql = "SELECT DISTINCT p.nombre || ' ' || p.apellido as NOMBRE, "
-				+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO, p.telefono as TELEFONO, "
+				+ "CASE WHEN p.sexo = 'M' THEN 'Masculino' else 'Femenino' end as SEXO,p.correo, p.telefono as TELEFONO, "
 				+ "s.nro_carnet as CARNET FROM socio s "
 				+ "INNER JOIN persona p ON s.personaid_persona = p.id_persona "
 				+ "INNER JOIN preferencia_persona pp ON pp.personaid_persona = p.id_persona "
@@ -279,7 +279,7 @@ public class ReporteSocioViewModel {
 
 		}		
 
-		if(this.preferenciaEventos != null){
+		if(this.preferenciaEventos != null && preferenciaEventos.size() > 0){
 			sql += " and ( ";
 			int posicion = preferenciaEventos.size();
 			for (Preferencia pe : preferenciaEventos) {
@@ -304,6 +304,7 @@ public class ReporteSocioViewModel {
 		}	
 	}
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		System.out.println(sql);
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
@@ -334,7 +335,7 @@ public class ReporteSocioViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaciÃ³n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

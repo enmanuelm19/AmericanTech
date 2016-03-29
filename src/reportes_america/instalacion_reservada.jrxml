@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="instalacion_reservada" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="0.8264462809917354"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -8,8 +8,10 @@
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE
+		<![CDATA[SELECT i.nombre as instalacion, tp.descripcion as tipo_instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet,  p.nombre || ' ' || p.apellido as NOMBRE
 FROM instalacion i
+INNER JOIN tipo_instalacion tp
+ON i.tipo_instalacionid_tipo_instalacion = tp.id_tipo_instalacion
 INNER JOIN reservacion r
 ON r.instalacionid_instalacion = i.id_instalacion
 INNER JOIN socio s
@@ -17,6 +19,8 @@ ON r.socioid_socio = s.id_socio
 INNER JOIN persona p
 ON p.id_persona = s.personaid_persona]]>
 	</queryString>
+	<field name="instalacion" class="java.lang.String"/>
+	<field name="tipo_instalacion" class="java.lang.String"/>
 	<field name="fecha" class="java.lang.String"/>
 	<field name="nro_carnet" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
@@ -26,16 +30,16 @@ ON p.id_persona = s.personaid_persona]]>
 	<title>
 		<band height="134" splitType="Stretch">
 			<staticText>
-				<reportElement x="260" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="24" isBold="true"/>
+				<reportElement x="254" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="212" y="36" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="12" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.]]></text>
 			</staticText>
@@ -55,23 +59,23 @@ ON p.id_persona = s.personaid_persona]]>
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="185" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Referencia del Reporte:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="185" y="31" width="603" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
-					<font fontName="Comic Sans MS"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{CONSULTA}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="802" height="31" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
 				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="18" isBold="true"/>
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
@@ -83,50 +87,78 @@ ON p.id_persona = s.personaid_persona]]>
 				<reportElement x="0" y="0" width="802" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="58" y="0" width="100" height="20" uuid="2e3fcd69-dd0a-4402-8b91-204abd11f9a4"/>
+				<reportElement x="15" y="0" width="100" height="20" uuid="2e3fcd69-dd0a-4402-8b91-204abd11f9a4"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="351" y="0" width="100" height="20" uuid="3667085a-491c-42cc-a913-525f55c7afc1"/>
+				<reportElement x="503" y="0" width="100" height="20" uuid="3667085a-491c-42cc-a913-525f55c7afc1"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="644" y="0" width="100" height="20" uuid="244d2332-a122-4687-bc97-55581eadc58a"/>
+				<reportElement x="698" y="0" width="100" height="20" uuid="244d2332-a122-4687-bc97-55581eadc58a"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Numero Carnet]]></text>
+				<text><![CDATA[Nímero Carnet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="128" y="1" width="100" height="20" uuid="c63f7d21-bcd8-494c-bb2d-87fbf1df2d5b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[instalación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="0" width="100" height="20" uuid="d224a591-8973-4bc5-a06e-7e256ec1b51c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Instalación]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="58" y="4" width="100" height="20" uuid="89875e89-54d5-4895-a31b-6556e343344d"/>
+				<reportElement x="15" y="4" width="100" height="20" uuid="89875e89-54d5-4895-a31b-6556e343344d"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="351" y="4" width="100" height="20" uuid="3bc413e1-94c3-443a-a6e5-ccc4b1862f50"/>
+				<reportElement x="503" y="4" width="191" height="20" uuid="3bc413e1-94c3-443a-a6e5-ccc4b1862f50"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="644" y="4" width="100" height="20" uuid="526dac4c-c817-4d03-8050-c4e1aa5ac6b6"/>
+				<reportElement x="698" y="4" width="100" height="20" uuid="526dac4c-c817-4d03-8050-c4e1aa5ac6b6"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="4" width="183" height="20" uuid="65c86e78-ba2c-4a96-aa7c-9c0639ec9971"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="3" width="138" height="20" uuid="4d2ee583-f71c-46c2-9a21-0b3a97e09b77"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_instalacion}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -136,16 +168,16 @@ ON p.id_persona = s.personaid_persona]]>
 	<pageFooter>
 		<band height="56" splitType="Stretch">
 			<staticText>
-				<reportElement x="287" y="12" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+				<reportElement x="185" y="12" width="433" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="15" y="12" width="154" height="20" uuid="144152b9-fcd1-4dfe-a3e3-e59a80c430d5"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
@@ -155,23 +187,23 @@ ON p.id_persona = s.personaid_persona]]>
 			<textField>
 				<reportElement x="644" y="12" width="90" height="20" uuid="609653b6-b5ef-4cd8-b2a7-e4ed6a589d1f"/>
 				<textElement textAlignment="Right">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="734" y="12" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="246" y="32" width="340" height="20" uuid="b8089da3-ae14-47da-90dc-76ac0798ad03"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Comic Sans MS"/>
+					<font fontName="SansSerif"/>
 				</textElement>
-				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.]]></text>
+				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepción, Barquisimeto.]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

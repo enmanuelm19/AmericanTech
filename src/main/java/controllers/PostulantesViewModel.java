@@ -97,7 +97,6 @@ public class PostulantesViewModel {
 	
 	@Command
 	public void abrirRegistroSocio(@BindingParam("Postulacion") Postulacion postulacions){
-		System.out.println("sdadad"+postulacions.getPostulado().getPersona().getDireccion());
 		Map<String, Object> args = new HashMap<String, Object>();
     	args.put("Postulacion", postulacions);
 		Window window = (Window) Executions.createComponents("socio/administrarSocio/registrarSocio.zul", null, args);
@@ -113,11 +112,11 @@ public class PostulantesViewModel {
 	@Command
 	public void cancelarPostulacion(@BindingParam("Postulacion") final Postulacion postulacions) throws Exception{
 		
-		Messagebox.show("Estas seguro de eliminar la postulación", "Confirmar",
+		Messagebox.show("Â¿Estas seguro de eliminar la postulaciÃ³n?", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
-							try {Messagebox.show("La postulación ha sido eliminada", "", Messagebox.OK,
+							try {Messagebox.show("La postulaciÃ³n ha sido eliminada", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 							pdao.eliminarPersona(postulacions.getPostulado().getPersona());
 							podao.eliminarPostulado(postulacions.getPostulado());
@@ -125,7 +124,7 @@ public class PostulantesViewModel {
 							postDAO.eliminarPostulacion(postulacions);	
 							BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(),"No se pudo eliminar la postulación",
+								Messagebox.show(e.getMessage(),"No se pudo eliminar la postulaciÃ³n",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

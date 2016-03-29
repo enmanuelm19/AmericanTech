@@ -75,10 +75,13 @@ public class RegistrarIndicadorViewModel {
 						null);
 			} else {
 				Messagebox.show(
-						"Indicador con la descripcion "
+						"El indicador con la descripción "
 								+ indicador.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

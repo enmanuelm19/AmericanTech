@@ -58,12 +58,11 @@ public class RegistrarMotivoSancionViewModel {
 
 		if (motivoSancion.getDescripcion() != null
 				&& !motivoSancion.getDescripcion().equalsIgnoreCase("") ) {
-			if (motivoDao.obtenerMotivoSancion(motivoSancion.getDescripcion()) == null && !motivoSancion.isActivo()) {
+			if (motivoDao.obtenerMotivoSancion(motivoSancion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoSancion.setActivo(true);
-					motivoDao.agregarMotivoSancion(motivoSancion);
-					Messagebox.show("El motivo sanción "
-							+ motivoSancion.getDescripcion()
+					motivoDao.agregarMotivoSancion(motivoSancion);					
+					Messagebox.show("El motivo sanción " + motivoSancion.getDescripcion()
 							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
@@ -81,6 +80,9 @@ public class RegistrarMotivoSancionViewModel {
 						+ motivoSancion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

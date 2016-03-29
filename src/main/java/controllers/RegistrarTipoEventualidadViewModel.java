@@ -77,10 +77,13 @@ public class RegistrarTipoEventualidadViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshTipoEventualidad",
 						null);
 			} else {
-				Messagebox.show("El tipo de eventualidad con la descripci�n "
+				Messagebox.show("El tipo de eventualidad con la descripción "
 						+ tipoEventualidad.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

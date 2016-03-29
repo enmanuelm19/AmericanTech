@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -13,6 +14,8 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
+import util.ManejadorMail;
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
 import Dao.IndicadorDao;
@@ -23,6 +26,7 @@ import Dao.NoticiaDao;
 import Dao.PreferenciaDao;
 import Dao.PreferenciaEventoDao;
 import Dao.ReservacionDao;
+import Dao.SocioDao;
 import Dao.TipoNoticiaDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Evento;
@@ -34,7 +38,9 @@ import modelos.Noticia;
 import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
 import modelos.PreferenciaEvento;
+import modelos.PreferenciaPersona;
 import modelos.Reservacion;
+import modelos.Socio;
 import modelos.TipoPreferencia;
 
 public class RegistrarEventoViewModel {
@@ -348,7 +354,7 @@ public class RegistrarEventoViewModel {
 			if (!editable) {
 				eventoDao.agregarEvento(evento);
 				registrarNoticia();
-				//enviarEmail();
+				enviarEmail();
 				Messagebox.show("El evento " + evento.getNombre() + " ha sido registrado exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
@@ -356,7 +362,7 @@ public class RegistrarEventoViewModel {
 			else {
 				eventoDao.actualizarEvento(evento);
 				actualizarNoticia();
-				//enviarEmail();
+				enviarEmail();
 				Messagebox.show("El evento " + evento.getNombre() + " ha sido actualizado exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
@@ -365,6 +371,8 @@ public class RegistrarEventoViewModel {
 			BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
 
 		}
+		else Messagebox.show("Por favor ingrese todos los campos del evento", "American Tech", Messagebox.OK,
+				Messagebox.EXCLAMATION);
 	}
 
 	public boolean isCamposVacio() {
@@ -388,7 +396,7 @@ public class RegistrarEventoViewModel {
 
 		Noticia noticia = new Noticia();
 		NoticiaDao noticiaDao = new NoticiaDao();
-		noticia.setFoto("http://localhost:8080/america/assets/portal/img/noticiadefecto.png");
+		noticia.setFoto("http://i.imgur.com/wGVOjvQ.png");
 		noticia.setFechaCreacion(new Date());
 		noticia.setCaducidad(evento.getFechaFin());
 		noticia.setDescripcion("Nos complace informarle a nuestra familia americanista la realizacion de evento: "+evento.getNombre()+" Desde: "+evento.getFechaInicioString()+" Hasta: "+evento.getFechaFinString());
@@ -414,7 +422,7 @@ public class RegistrarEventoViewModel {
 		
 	}
 	
-	/*public void enviarEmail() throws Exception {
+	public void enviarEmail() throws Exception {
 		SocioDao socioDao = new SocioDao();
 
 		boolean bandera = false;
@@ -445,7 +453,7 @@ public class RegistrarEventoViewModel {
 			bandera = false;
 		}
 
-	}*/
+	}
 	
 	public void actualizarNoticia() throws Exception{
 		
@@ -461,6 +469,18 @@ public class RegistrarEventoViewModel {
 		noticia.setPublico(evento.isPublico());
 		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
 		noticia.setEvento(evento);
+		
+		Set<NoticiaPreferencia> noticiasPreferencias = new HashSet<NoticiaPreferencia>();
+		
+		for(PreferenciaEvento p: listPreferenciaEvento){
+			NoticiaPreferencia noticiaP = new NoticiaPreferencia();
+			noticiaP.setActivo(true);
+			noticiaP.setNoticia(noticia);
+			noticiaP.setPreferencia(p.getPreferencia());
+			noticiasPreferencias.add(noticiaP);
+		}
+		
+		
 		//noticia.setActivo(true);
 		noticiaDao.actualizarNoticia(noticia);
 		

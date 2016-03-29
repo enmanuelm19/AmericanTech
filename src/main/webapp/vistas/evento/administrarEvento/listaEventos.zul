@@ -19,7 +19,7 @@
 					<separator spacing="30px" />
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px">
 						<div xmlns:w='client' align="right">
 							<button 
@@ -31,7 +31,7 @@
 						
 						<div align="left" width="100%">
 							<div class="encabezado">
-								Lista de Eventos
+								Listado Eventos
 							</div>
 							<div class="linea-two">
 
@@ -59,7 +59,7 @@
 													placeholder="Buscar" />
 											</auxheader>
 								
-											<auxheader colspan="4" />
+											<auxheader colspan="7" />
 											
 										</auxhead>
 
@@ -78,7 +78,7 @@
 											<column width="15%">
 												Estado
 											</column>
-											<column width="15%">
+											<column width="25%">
 												Acciones
 											</column>
 										</columns>

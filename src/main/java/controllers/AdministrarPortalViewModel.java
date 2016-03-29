@@ -158,12 +158,11 @@ public class AdministrarPortalViewModel {
 			this.portal.setFotoInstalaciones(ManejadorArchivo.subirImagen(uploadedImageInstalacion));
 		}
 
-		if (portal.getEvento().equalsIgnoreCase("") || portal.getInstalacion().equalsIgnoreCase("")
-				|| portal.getSocio().equalsIgnoreCase("")) {
-			Messagebox.show("Debe llenar todos los campos y adjuntar las imagenes", "American Tech", Messagebox.OK,
+		if (portal.getEvento().equalsIgnoreCase("") || portal.getInstalacion().equalsIgnoreCase("") || portal.getSocio().equalsIgnoreCase("")) {
+			Messagebox.show("Verifique que todos los datos estén llenos", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
-
-		} else {
+			System.out.println("entro");
+		} else{
 			portalDao.actualizarPortal(portal);
 			Messagebox.show("El portal  ha sido actualizado exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 

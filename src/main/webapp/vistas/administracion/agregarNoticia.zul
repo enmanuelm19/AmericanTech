@@ -38,7 +38,7 @@
 								<button label="Examinar"
 									iconSclass="z-icon-folder-open"
 									class="boton-guardar col-md-offset-3 col-md-6"	upload="true"
-									onUpload="@command('upload', media=event.media)">
+									onUpload="@global-command('upload', media=event.media)">
 								</button>
 							</div>
 							<vlayout>
@@ -71,7 +71,7 @@
 							<div>
 								<label value="Público"
 									class="col-md-12" />
-								<combobox selectedItem="@bind(vm.publico)" 
+								<combobox selectedItem="@bind(vm.publico)" value="@bind(vm.publico)" 
 									width="100%">
 									<comboitem label="Si" value="true" />
 									<comboitem label="No" value="false" />

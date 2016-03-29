@@ -268,7 +268,7 @@ public class ReporteEventoViewModel {
 		try {
 			Class.forName ("org.postgresql.Driver");
 		
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America15","postgres","postgres");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
 			
 			
 		} catch (ClassNotFoundException el) {
@@ -307,7 +307,15 @@ public class ReporteEventoViewModel {
 		else if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == false && this.checkestricto == true && this.tipoPreferenciaSelected == null )
 		{
 			Messagebox.show("Debe seleccionar una Categoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}
+		else if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == true && this.checkestricto == false && this.tipoPreferenciaSelected != null && this.preferenciaEventos.size() == 0 )
+		{
+			Messagebox.show("Debe seleccionar una Preferencia", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
+		else if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == false && this.checkestricto == true && this.tipoPreferenciaSelected != null && this.preferenciaEventos.size() == 0)
+		{
+			Messagebox.show("Debe seleccionar una Preferencia", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}			
 		else if (this.fechadesde != null && this.fechahasta != null && this.checkcomun == false && this.checkestricto == false )
 		{
 			this.titulo = "EVENTOS";
@@ -325,8 +333,8 @@ public class ReporteEventoViewModel {
 
 			System.out.println(this.sql);
 			sqlDate();
-		}		
-		else if (this.tipoPreferenciaSelected != null && this.preferenciaEventos == null)
+		}	
+		else if (this.tipoPreferenciaSelected != null && this.preferenciaEventos.size() == 0 )
 		{
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			this.titulo = "EVENTOS";
@@ -344,7 +352,7 @@ public class ReporteEventoViewModel {
 						+ " INNER JOIN tipo_preferencia tp "
 						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
 						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+"  " ;
-				
+				System.out.println("llegue aqui ");
 				sqlDate();				
 			}
 			else
@@ -363,6 +371,7 @@ public class ReporteEventoViewModel {
 
 		
 		}
+		
 		else if(this.preferenciaEventos.size() == 1)
 		{
 			System.out.println(this.preferenciaEventos.size());
@@ -610,6 +619,8 @@ public class ReporteEventoViewModel {
 		
 		
 		System.out.println(sql);
+		System.out.println("me fui, no encontre validacion");
+		System.out.println(this.preferenciaEventos);
 	}
 	/*
 	public void sqlCargar() throws FileNotFoundException, JRException, SQLException{
@@ -642,7 +653,7 @@ public class ReporteEventoViewModel {
 			generarPDF();
 		}else if (this.fechadesde == null || this.fechahasta == null){
 			sql += " ; ";
-			System.out.println("Aqui toy2");
+			System.out.println("Aqui toy2 - nueva validacion funciona");
 			generarPDF();
 		}else if (this.fechadesde.compareTo(this.fechahasta) > 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);

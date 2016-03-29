@@ -1175,12 +1175,12 @@ padding: 1.2em 0em;
 	margin-top: 30px;
 }
 
-.boton-Formulario, .boton-Formulario:focus{
+.boton-Formulario, .boton-Formulario:focus, .z-messagebox-button{
   font-family: 'Lato', sans-serif;
-  color: #fff;
+  color: #fff !important;
   padding: 0.8em 1.5em;
-  background: #1BBC9B;
-  border: 1px solid #1BBC9B;
+  background: #1BBC9B !important;
+  border: 1px solid #1BBC9B !important;
   display: block;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -1193,7 +1193,11 @@ padding: 1.2em 0em;
   text-transform: uppercase;
   margin: 0 auto;
 }
-
+.z-messagebox-button{
+	padding: 0.3em 0.2em;
+	font-size: 0.8em;
+	text-transform: capitalize;
+}
 .boton-Formulario:hover{
   font-family: 'Lato', sans-serif;
   color: #FFFFFF;
@@ -1383,4 +1387,93 @@ border: 2px solid #1BBC9B !important;
     -o-transition: all 0.4s ease-in;
     -webkit-transition: all 0.4s ease-in;
     transition: all 0.4s ease-in; 
+}
+
+.z-window {
+  overflow: hidden !important;
+  zoom: 1;
+  border: none;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  padding: 4px;
+  background: #FFFFFF;
+}
+
+.z-window-noborder {
+  border: solid;
+  padding: 4px 4px 0;
+}
+
+.z-window-icon {
+  font-size: 16px;
+  color: #FAF6F6;
+  width: 28px;
+  height: 24px;
+  -webkit-border-radius: 4px;
+  margin: auto 1px;
+  line-height: 24px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  float: right;
+    background: rgb(43, 125, 188);
+  border: none;
+}
+
+.z-window-header{
+	background:  #2B7DBC;
+	border-radius: 5px 5px 0px 0px;
+	font-variant: small-caps;
+  	color: #FFFFFF;
+    font-size: 16px;
+  	font-weight: normal;
+  	font-style: normal;
+    padding: 3px 10px 5px 10px;
+	}
+	
+.z-window-close{
+	background:#1BBC9B;
+	border-radius:3px;
+	margin-top: 3px;
+}
+.z-window-close:hover{
+	border: 1px solid #1BBC9B;
+}
+.z-window-icon{
+	color:white;
+}
+.z-window-icon:hover{
+	color:#1BBC9B;
+	background: white none repeat scroll 0%;
+}
+.z-window-content{
+	border:none;
+	border-radius: 0px 0px 5px 5px;
+}
+.z-window {
+	border:2px solid #11BCB7;
+	border-radius: 10px;
+	background: white;
+}
+.z-messagebox-information{
+	background-image: url('../../img/check.png');
+	background-size: 100% 100%;
+}
+.z-messagebox.z-div{
+	margin-top: 5px;
+}
+.z-messagebox.z-div span.z-label{
+	font-family: 'Lato',Sans-serif;
+	font-size: 13px;
+}
+.z-messagebox-question{
+	margin-top:4px;
+	background-image: url('../../img/pregunta.png');
+	background-size: 100% 100%;
+	
+}
+.z-messagebox-exclamation{
+	margin-top:4px;
+	background-image: url('../../img/icon.png');
+	background-size: 100% 100%;	
 }

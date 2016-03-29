@@ -76,10 +76,13 @@ public class RegistrarTipoPreferenciaViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoPreferencia", null);
 			} else {
-				Messagebox.show("El tipo de preferencia con la descripci�n "
+				Messagebox.show("El tipo de preferencia con la descripción "
 						+ tipoPreferencia.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

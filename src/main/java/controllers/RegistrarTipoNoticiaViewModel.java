@@ -82,6 +82,9 @@ public class RegistrarTipoNoticiaViewModel {
 //						+ tipoNoticia.getDescripcion() + " ya existe",
 //						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 //			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

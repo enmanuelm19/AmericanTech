@@ -173,7 +173,7 @@ public class PlanificarEventoViewModel {
 		for(Actividad actividad: evento.getActividadsActive()){
 			if(actividad.getFechaRealizacion()!=null || actividad.getValorReal()!=null){
 				if(actividad.getFechaRealizacion()==null || actividad.getFechaRealizacion().after(actividad.getFechaTope())){
-					Messagebox.show("Fecha no valida de la actividad: "+actividad.getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Fecha de la actividad no valida: "+actividad.getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					listo = false;
 					break;
 				}
@@ -223,12 +223,20 @@ public class PlanificarEventoViewModel {
 		
 		if(todasFinalizada){
 			evento.setEstadoEvento(estadoEventoDao.obtenerEstadoEvento(4));
-			
+			eventoDao.actualizarEvento(evento);
+			Messagebox.show(
+					evento.getNombre()+" ha sido finalizado exitosamente", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
+			this.eventosEyF.remove(evento);
 		}
-		eventoDao.actualizarEvento(evento);
-		Messagebox.show(
-				"indicadores del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "American Tech",
-				Messagebox.OK, Messagebox.INFORMATION);
+		else {
+			eventoDao.actualizarEvento(evento);
+			Messagebox.show(
+					"indicadores del evento: "+evento.getNombre()+" ha sido actualizado exitosamente", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
+		
 		
 	}
 
