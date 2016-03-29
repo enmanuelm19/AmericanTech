@@ -119,11 +119,11 @@ public class RegistrarAlquilerViewModel {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						Messagebox.show("The order has been cancelled.");
+						Messagebox.show("Se ha cancelado la reservación:"+reservacion.getInstalacion().getNombre(), "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 					}
 				}
 			};
-			Messagebox.show("Are you sure you want to cancel?", "Cancel Order",
+			Messagebox.show("¿Desea cancelar la reservación?", "American Tech",
 					new Messagebox.Button[] { Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION,
 					clickListener);
 
@@ -166,7 +166,7 @@ public class RegistrarAlquilerViewModel {
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshAlquilerReservacion", null);
 		} else {
-			Messagebox.show("Por favor seleccione Tipo de Pago", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Por favor seleccione Tipo de Pago", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 
@@ -186,7 +186,7 @@ public class RegistrarAlquilerViewModel {
 	}
 
 	public int diasEntreFecha(Date date1, Date date2) {
-		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al d�a
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al d�a
 		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
 		return (int) diferencia;
 	}

@@ -60,8 +60,8 @@ public class RegistrarUsuarioViewModel {
 			this.user = new Usuario();
 			this.editable = false;
 			this.persona = new Persona();
-			persona.setNombre("Agregar dato aqui");
-			persona.setApellido("Agregar dato aqui");
+			persona.setNombre("Nombre");
+			persona.setApellido("Apellido");
 			persona.setSexo("M");
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);

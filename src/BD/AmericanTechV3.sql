@@ -2,9 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.6
--- Dumped by pg_dump version 9.4.6
--- Started on 2016-03-26 19:48:15 VET
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+-- Started on 2016-03-29 01:52:22
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,12 +13,13 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2890 (class 0 OID 87663)
--- Dependencies: 280
+-- TOC entry 2917 (class 0 OID 36516)
+-- Dependencies: 288
 -- Data for Name: estado_accion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -28,8 +30,8 @@ INSERT INTO estado_accion VALUES (4, 'Inactiva', true);
 
 
 --
--- TOC entry 2874 (class 0 OID 87588)
--- Dependencies: 264
+-- TOC entry 2901 (class 0 OID 36441)
+-- Dependencies: 272
 -- Data for Name: motivo_postulacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -43,8 +45,8 @@ INSERT INTO motivo_postulacion VALUES (4, 'Ocio', true);
 
 
 --
--- TOC entry 2792 (class 0 OID 87180)
--- Dependencies: 182
+-- TOC entry 2819 (class 0 OID 36033)
+-- Dependencies: 190
 -- Data for Name: persona; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -76,8 +78,8 @@ INSERT INTO persona VALUES (34, '20671198', 'Tony', 'Suarez', 'http://i.imgur.co
 
 
 --
--- TOC entry 2828 (class 0 OID 87369)
--- Dependencies: 218
+-- TOC entry 2855 (class 0 OID 36222)
+-- Dependencies: 226
 -- Data for Name: postulado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -92,8 +94,8 @@ INSERT INTO postulado VALUES (8, 14, true);
 
 
 --
--- TOC entry 2800 (class 0 OID 87220)
--- Dependencies: 190
+-- TOC entry 2827 (class 0 OID 36073)
+-- Dependencies: 198
 -- Data for Name: postulacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -108,8 +110,8 @@ INSERT INTO postulacion VALUES (8, 8, '2016-03-26', 'B-0340', 'B-0339', 3, false
 
 
 --
--- TOC entry 2796 (class 0 OID 87202)
--- Dependencies: 186
+-- TOC entry 2823 (class 0 OID 36055)
+-- Dependencies: 194
 -- Data for Name: socio; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -121,8 +123,8 @@ INSERT INTO socio VALUES (5, 3, 'B-0343', 6, true);
 
 
 --
--- TOC entry 2798 (class 0 OID 87211)
--- Dependencies: 188
+-- TOC entry 2825 (class 0 OID 36064)
+-- Dependencies: 196
 -- Data for Name: accion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -159,8 +161,8 @@ INSERT INTO accion VALUES (5, 'A00000005', 10000, 5, 1, true);
 
 
 --
--- TOC entry 2913 (class 0 OID 0)
--- Dependencies: 187
+-- TOC entry 2940 (class 0 OID 0)
+-- Dependencies: 195
 -- Name: accion_id_accion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -168,8 +170,8 @@ SELECT pg_catalog.setval('accion_id_accion_seq', 11, true);
 
 
 --
--- TOC entry 2904 (class 0 OID 87728)
--- Dependencies: 294
+-- TOC entry 2931 (class 0 OID 36581)
+-- Dependencies: 302
 -- Data for Name: motivo_cancelacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -180,16 +182,19 @@ INSERT INTO motivo_cancelacion VALUES (2, 'Falta Presupuesto', true);
 
 
 --
--- TOC entry 2880 (class 0 OID 87615)
--- Dependencies: 270
+-- TOC entry 2907 (class 0 OID 36468)
+-- Dependencies: 278
 -- Data for Name: cancelacion_evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO cancelacion_evento VALUES (1, 'El presupuesto aprobado no cumplia con las expectativas esperadas para la organizacion de este evento.', 2, true);
+INSERT INTO cancelacion_evento VALUES (2, 'La banda declino su participacion en el evento.', 4, true);
+INSERT INTO cancelacion_evento VALUES (3, 'La convocatoria no fue suficiente para llevar el torneo a cabo.', 4, true);
 
 
 --
--- TOC entry 2878 (class 0 OID 87606)
--- Dependencies: 268
+-- TOC entry 2905 (class 0 OID 36459)
+-- Dependencies: 276
 -- Data for Name: estado_evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -201,24 +206,62 @@ INSERT INTO estado_evento VALUES (5, 'Cancelado', true);
 
 
 --
--- TOC entry 2812 (class 0 OID 87290)
--- Dependencies: 202
+-- TOC entry 2839 (class 0 OID 36143)
+-- Dependencies: 210
 -- Data for Name: evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO evento VALUES (1, 'Semana Aniversario Centro Atlético América', 'Semana donde se conmemora un año más de la fundación del club, el 4 de Septiembre de 1927.', '2016-08-29 00:00:00', '2016-09-04 00:00:00', false, 1, NULL, true);
+INSERT INTO evento VALUES (3, 'Jornada de cedulación', 'Cedulación para toda la comunidad cercana al Centro Atlético América.', '2016-03-29 00:00:00', '2016-03-29 00:00:00', false, 4, NULL, true);
+INSERT INTO evento VALUES (4, 'Torneo Tradicional Fin de Año', 'Torneo tradicional de beisbol para los socios del club, el cual se lleva a cabo por motivo de fin de año.', '2016-12-30 00:00:00', '2016-12-31 00:00:00', false, 1, NULL, true);
+INSERT INTO evento VALUES (6, 'Liga Interclubes Fut-Sala Sub-20', 'Torneo dedicado a la competencia entre los distintos clubes del estado Lara. Categoría Sub-20.', '2016-04-04 00:00:00', '2016-04-24 00:00:00', true, 1, NULL, true);
+INSERT INTO evento VALUES (2, 'Torneo Relámpago Beisbol', 'Evento tradicional el cual se realiza luego de Semana Santa. Categoria, master.', '2016-04-02 00:00:00', '2016-04-03 00:00:00', false, 2, NULL, true);
+INSERT INTO evento VALUES (5, 'Abierto Regional de Tenis Sub-15', 'Torneo regional categoría Sub-15. Modalidad masculina y femenina.', '2016-04-02 00:00:00', '2016-04-03 00:00:00', false, 2, NULL, true);
+INSERT INTO evento VALUES (7, 'Campeonato Natacion 2016 Sub-12', 'Torneo para fomentar la compentencia en esta disciplina en los niños menores a 12 años.', '2016-04-09 00:00:00', '2016-04-10 00:00:00', false, 2, NULL, true);
+INSERT INTO evento VALUES (8, 'Torneo de Dominó', 'Torneo clasificatorio para la disciplina Domino libre.', '2016-04-02 00:00:00', '2016-04-03 00:00:00', false, 5, 1, true);
+INSERT INTO evento VALUES (9, 'Toque de la Banda Coctel', 'Evento destinado al disfrute de la familia americanista con la finalidad de atraer los amantes de la música de genero Salsa.', '2016-04-23 00:00:00', '2016-04-24 00:00:00', true, 5, 2, true);
+INSERT INTO evento VALUES (10, 'Torneo Master Baloncesto', 'Campeonato de baloncesto categoría master. todos los participantes deberan ser mayores a 45 años.', '2016-04-30 00:00:00', '2016-05-01 00:00:00', true, 5, 3, true);
+INSERT INTO evento VALUES (11, 'StandUp Comedy Moncho Martinez', 'Humorista venezolano el cual prestara sus servicios de comediante para el publico en general.', '2016-04-27 00:00:00', '2016-04-28 00:00:00', true, 4, NULL, true);
 
 
 --
--- TOC entry 2814 (class 0 OID 87302)
--- Dependencies: 204
+-- TOC entry 2841 (class 0 OID 36155)
+-- Dependencies: 212
 -- Data for Name: actividad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO actividad VALUES (1, 'Router TP LINK para las redes en equipos del SAIME', 3, '2016-03-28 00:00:00', '2016-03-28 00:00:00', 3, 3, true, true);
+INSERT INTO actividad VALUES (3, 'Comidas para los trabajadores del SAIME', 3, '2016-03-28 00:00:00', '2016-03-28 00:00:00', 50, 50, true, true);
+INSERT INTO actividad VALUES (2, 'Extensiones de alta calidad para el buen funcionamiento de los equipos del SAIME', 3, '2016-03-25 00:00:00', '2016-03-25 00:00:00', 20, 10, true, true);
+INSERT INTO actividad VALUES (4, 'Compra de kit de bases para la cancha de Softball', 2, '2016-03-31 00:00:00', NULL, 2, NULL, false, true);
+INSERT INTO actividad VALUES (5, 'Medallas para los jugadores finalistas del torneo', 2, '2016-04-02 00:00:00', NULL, 50, NULL, false, true);
+INSERT INTO actividad VALUES (6, 'Compra de cajas de pelotas', 2, '2016-04-01 00:00:00', NULL, 4, NULL, false, true);
+INSERT INTO actividad VALUES (7, 'Compra de saco de cal para marcar el terreno de juego', 2, '2016-04-01 00:00:00', NULL, 3, NULL, false, true);
+INSERT INTO actividad VALUES (8, 'Contratar anotadores para el torneo', 2, '2016-04-01 00:00:00', NULL, 6, NULL, false, true);
+INSERT INTO actividad VALUES (9, 'Trofeos para finalistas del torneo', 2, '2016-04-02 00:00:00', NULL, 2, NULL, false, true);
+INSERT INTO actividad VALUES (10, 'Buscar árbitros para los encuentros', 2, '2016-04-01 00:00:00', NULL, 6, NULL, false, true);
+INSERT INTO actividad VALUES (11, 'Buscar patrocinadores para la vallas.', 2, '2016-03-31 00:00:00', NULL, 20, NULL, false, true);
+INSERT INTO actividad VALUES (13, 'Cajas pelotas Wilson', 5, '2016-04-01 00:00:00', NULL, 200, NULL, false, true);
+INSERT INTO actividad VALUES (14, 'Mayas para la cancha', 5, '2016-03-01 00:00:00', NULL, 6, NULL, false, true);
+INSERT INTO actividad VALUES (15, 'Medallas para los primeros 3 lugares', 5, '2016-04-01 00:00:00', NULL, 3, NULL, false, true);
+INSERT INTO actividad VALUES (16, 'Jueces para los partidos', 5, '2016-04-01 00:00:00', NULL, 20, NULL, false, true);
+INSERT INTO actividad VALUES (12, 'Buscar cotizacion de hoteles para estados invitados', 5, '2016-04-01 00:00:00', NULL, 10, NULL, false, true);
+INSERT INTO actividad VALUES (18, 'Quimico para el mantenimiento de la piscina', 7, '2016-03-01 00:00:00', NULL, 6, NULL, false, true);
+INSERT INTO actividad VALUES (19, 'Trofeo al ganador de la competencia', 7, '2016-03-05 00:00:00', NULL, 1, NULL, false, true);
+INSERT INTO actividad VALUES (20, 'Diploma para los primeros 3 lugares', 7, '2016-03-05 00:00:00', NULL, 3, NULL, false, true);
+INSERT INTO actividad VALUES (17, 'Medallas para todos los participantes', 7, '2016-04-01 00:00:00', NULL, 200, NULL, false, true);
+INSERT INTO actividad VALUES (27, 'Presupuesto de hospedaje para el comediante', 11, '2016-02-29 00:00:00', '2016-02-29 00:00:00', 3, 3, true, true);
+INSERT INTO actividad VALUES (21, 'Microfonos Shure', 11, '2016-03-10 00:00:00', '2016-03-03 00:00:00', 5, 3, true, true);
+INSERT INTO actividad VALUES (22, 'Impresiones de pases especiales', 11, '2016-03-03 00:00:00', '2016-03-01 00:00:00', 70, 70, true, true);
+INSERT INTO actividad VALUES (26, 'Dj para el evento', 11, '2016-03-17 00:00:00', NULL, 1, NULL, false, true);
+INSERT INTO actividad VALUES (23, 'Impresion de las entradas', 11, '2016-03-03 00:00:00', '2016-03-02 00:00:00', 700, 700, true, true);
+INSERT INTO actividad VALUES (25, 'Equipo de sonido', 11, '2016-03-09 00:00:00', '2016-03-01 00:00:00', 1, 1, true, true);
+INSERT INTO actividad VALUES (24, 'Elaboracion de diseño para las entradas', 11, '2016-03-02 00:00:00', '2016-02-29 00:00:00', 3, 3, true, true);
 
 
 --
--- TOC entry 2914 (class 0 OID 0)
--- Dependencies: 203
+-- TOC entry 2941 (class 0 OID 0)
+-- Dependencies: 211
 -- Name: actividad_id_actividad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -226,8 +269,8 @@ SELECT pg_catalog.setval('actividad_id_actividad_seq', 1, false);
 
 
 --
--- TOC entry 2864 (class 0 OID 87537)
--- Dependencies: 254
+-- TOC entry 2891 (class 0 OID 36390)
+-- Dependencies: 262
 -- Data for Name: tipo_afiliado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -238,8 +281,8 @@ INSERT INTO tipo_afiliado VALUES (4, 'Hija', '2', true);
 
 
 --
--- TOC entry 2822 (class 0 OID 87342)
--- Dependencies: 212
+-- TOC entry 2849 (class 0 OID 36195)
+-- Dependencies: 220
 -- Data for Name: afiliado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -251,8 +294,8 @@ INSERT INTO afiliado VALUES (5, 2, 5, 'B-0343-1', 19, true);
 
 
 --
--- TOC entry 2915 (class 0 OID 0)
--- Dependencies: 211
+-- TOC entry 2942 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: afiliado_id_afilado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -260,8 +303,8 @@ SELECT pg_catalog.setval('afiliado_id_afilado_seq', 1, false);
 
 
 --
--- TOC entry 2908 (class 0 OID 87745)
--- Dependencies: 298
+-- TOC entry 2935 (class 0 OID 36598)
+-- Dependencies: 306
 -- Data for Name: tipo_instalacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -272,8 +315,8 @@ INSERT INTO tipo_instalacion VALUES (4, 'Caney', true);
 
 
 --
--- TOC entry 2806 (class 0 OID 87253)
--- Dependencies: 196
+-- TOC entry 2833 (class 0 OID 36106)
+-- Dependencies: 204
 -- Data for Name: instalacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -289,16 +332,20 @@ INSERT INTO instalacion VALUES (9, 'Piscina', 'Área amplia con Comodidades dign
 
 
 --
--- TOC entry 2820 (class 0 OID 87332)
--- Dependencies: 210
+-- TOC entry 2847 (class 0 OID 36185)
+-- Dependencies: 218
 -- Data for Name: reservacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO reservacion VALUES (1, 4, 5, '2016-03-30 00:00:00', '2016-04-01 00:00:00', 'P', true);
+INSERT INTO reservacion VALUES (3, 2, 3, '2016-04-02 00:00:00', '2016-04-02 00:00:00', 'P', true);
+INSERT INTO reservacion VALUES (4, 9, 4, '2016-04-02 00:00:00', '2016-04-03 00:00:00', 'A', true);
+INSERT INTO reservacion VALUES (2, 5, 5, '2016-04-02 00:00:00', '2016-04-02 00:00:00', 'A', true);
 
 
 --
--- TOC entry 2898 (class 0 OID 87702)
--- Dependencies: 288
+-- TOC entry 2925 (class 0 OID 36555)
+-- Dependencies: 296
 -- Data for Name: tipo_pago; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -308,16 +355,18 @@ INSERT INTO tipo_pago VALUES (3, 'Depósito', true);
 
 
 --
--- TOC entry 2844 (class 0 OID 87447)
--- Dependencies: 234
+-- TOC entry 2871 (class 0 OID 36300)
+-- Dependencies: 242
 -- Data for Name: alquiler; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO alquiler VALUES (1, 4, 3, '2016-03-28', 0, true);
+INSERT INTO alquiler VALUES (2, 2, 1, '2016-03-28', 0, true);
 
 
 --
--- TOC entry 2916 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 2943 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: alquiler_id_alquiler_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -325,16 +374,16 @@ SELECT pg_catalog.setval('alquiler_id_alquiler_seq', 1, false);
 
 
 --
--- TOC entry 2892 (class 0 OID 87672)
--- Dependencies: 282
+-- TOC entry 2919 (class 0 OID 36525)
+-- Dependencies: 290
 -- Data for Name: archivo_alquiler; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2917 (class 0 OID 0)
--- Dependencies: 281
+-- TOC entry 2944 (class 0 OID 0)
+-- Dependencies: 289
 -- Name: archivo_alquiler_id_archivo_alquiler_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -342,16 +391,20 @@ SELECT pg_catalog.setval('archivo_alquiler_id_archivo_alquiler_seq', 1, false);
 
 
 --
--- TOC entry 2810 (class 0 OID 87278)
--- Dependencies: 200
+-- TOC entry 2837 (class 0 OID 36131)
+-- Dependencies: 208
 -- Data for Name: calendario_fecha; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO calendario_fecha VALUES (1, 'Espacio para la Práctica de Tenis, para el disfrute de todos nuestros socios', '2016-03-28', NULL, 1, true);
+INSERT INTO calendario_fecha VALUES (2, 'Es un espacio deportivo ideal para quienes Práctican el Baloncesto ', '2016-03-28', NULL, 2, true);
+INSERT INTO calendario_fecha VALUES (3, 'Espacio de excelente prestancia para Fiestas y Celebraciones', '2016-03-28', NULL, 3, true);
+INSERT INTO calendario_fecha VALUES (4, 'Área amplia con Comodidades dignas de la Comunidad Americanista', '2016-03-28', NULL, 4, true);
 
 
 --
--- TOC entry 2918 (class 0 OID 0)
--- Dependencies: 199
+-- TOC entry 2945 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: calendario_fecha_id_calendario_fecha_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -359,8 +412,8 @@ SELECT pg_catalog.setval('calendario_fecha_id_calendario_fecha_seq', 1, false);
 
 
 --
--- TOC entry 2919 (class 0 OID 0)
--- Dependencies: 269
+-- TOC entry 2946 (class 0 OID 0)
+-- Dependencies: 277
 -- Name: cancelacion_evento_id_cancelacion_evento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -368,8 +421,8 @@ SELECT pg_catalog.setval('cancelacion_evento_id_cancelacion_evento_seq', 1, fals
 
 
 --
--- TOC entry 2852 (class 0 OID 87483)
--- Dependencies: 242
+-- TOC entry 2879 (class 0 OID 36336)
+-- Dependencies: 250
 -- Data for Name: cargo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -383,8 +436,8 @@ INSERT INTO cargo VALUES (7, 'Secretario(a) Disciplinario', true);
 
 
 --
--- TOC entry 2920 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 2947 (class 0 OID 0)
+-- Dependencies: 249
 -- Name: cargo_id_cargo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -392,16 +445,17 @@ SELECT pg_catalog.setval('cargo_id_cargo_seq', 4, true);
 
 
 --
--- TOC entry 2824 (class 0 OID 87351)
--- Dependencies: 214
+-- TOC entry 2851 (class 0 OID 36204)
+-- Dependencies: 222
 -- Data for Name: cliente_externo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO cliente_externo VALUES (1, 'Ivon', 'Miranda', 'ivonmiranda@gmail.com', true);
 
 
 --
--- TOC entry 2921 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 2948 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: cliente_externo_id_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -409,8 +463,8 @@ SELECT pg_catalog.setval('cliente_externo_id_cliente_seq', 1, false);
 
 
 --
--- TOC entry 2786 (class 0 OID 87150)
--- Dependencies: 176
+-- TOC entry 2813 (class 0 OID 36003)
+-- Dependencies: 184
 -- Data for Name: club; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -418,8 +472,8 @@ INSERT INTO club VALUES (1, 'J-08521135-7', 'Centro Atlético América', 'Av. Fu
 
 
 --
--- TOC entry 2922 (class 0 OID 0)
--- Dependencies: 175
+-- TOC entry 2949 (class 0 OID 0)
+-- Dependencies: 183
 -- Name: club_id_club_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -427,8 +481,8 @@ SELECT pg_catalog.setval('club_id_club_seq', 1, false);
 
 
 --
--- TOC entry 2860 (class 0 OID 87519)
--- Dependencies: 250
+-- TOC entry 2887 (class 0 OID 36372)
+-- Dependencies: 258
 -- Data for Name: motivo_desvinculacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -437,16 +491,16 @@ INSERT INTO motivo_desvinculacion VALUES (2, 'Socio Sancionado', true);
 
 
 --
--- TOC entry 2830 (class 0 OID 87378)
--- Dependencies: 220
+-- TOC entry 2857 (class 0 OID 36231)
+-- Dependencies: 228
 -- Data for Name: desvinculacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2923 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 2950 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: desvinculacion_id_desvinculacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -454,8 +508,8 @@ SELECT pg_catalog.setval('desvinculacion_id_desvinculacion_seq', 1, false);
 
 
 --
--- TOC entry 2924 (class 0 OID 0)
--- Dependencies: 279
+-- TOC entry 2951 (class 0 OID 0)
+-- Dependencies: 287
 -- Name: estado_accion_id_estado_accion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -463,8 +517,8 @@ SELECT pg_catalog.setval('estado_accion_id_estado_accion_seq', 4, true);
 
 
 --
--- TOC entry 2925 (class 0 OID 0)
--- Dependencies: 267
+-- TOC entry 2952 (class 0 OID 0)
+-- Dependencies: 275
 -- Name: estado_evento_id_estado_evento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -472,8 +526,8 @@ SELECT pg_catalog.setval('estado_evento_id_estado_evento_seq', 5, true);
 
 
 --
--- TOC entry 2926 (class 0 OID 0)
--- Dependencies: 201
+-- TOC entry 2953 (class 0 OID 0)
+-- Dependencies: 209
 -- Name: evento_id_evento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -481,8 +535,8 @@ SELECT pg_catalog.setval('evento_id_evento_seq', 1, false);
 
 
 --
--- TOC entry 2888 (class 0 OID 87654)
--- Dependencies: 278
+-- TOC entry 2915 (class 0 OID 36507)
+-- Dependencies: 286
 -- Data for Name: tipo_eventualidad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -495,16 +549,19 @@ INSERT INTO tipo_eventualidad VALUES (1, 'Extravío de Recursos', true);
 
 
 --
--- TOC entry 2804 (class 0 OID 87241)
--- Dependencies: 194
+-- TOC entry 2831 (class 0 OID 36094)
+-- Dependencies: 202
 -- Data for Name: eventualidad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO eventualidad VALUES (1, 9, 'Según lo dicho por distintas personas en el área, el ciudadano perturbo el bienestar de las personas con que compartía el área. ', '2016-03-27 16:00:00', 2, 2, false);
+INSERT INTO eventualidad VALUES (2, 1, 'Según los que estaban presente en la instalación, el ciudadano rompió un vidrio tras exaltarse al terminar un juego.', '2016-03-11 08:00:00', 4, 4, false);
+INSERT INTO eventualidad VALUES (3, 8, 'Después de ingerir alcohol, al parecer se fue a las manos con dos ciudadanos que estaban en condición de invitados.', '2016-03-19 23:00:00', 3, 5, true);
 
 
 --
--- TOC entry 2927 (class 0 OID 0)
--- Dependencies: 193
+-- TOC entry 2954 (class 0 OID 0)
+-- Dependencies: 201
 -- Name: eventualidad_id_eventualidad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -512,8 +569,8 @@ SELECT pg_catalog.setval('eventualidad_id_eventualidad_seq', 1, false);
 
 
 --
--- TOC entry 2862 (class 0 OID 87528)
--- Dependencies: 252
+-- TOC entry 2889 (class 0 OID 36381)
+-- Dependencies: 260
 -- Data for Name: foto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -523,8 +580,8 @@ INSERT INTO foto VALUES (3, 'http://i.imgur.com/2pTsUU6.jpg', 4, true, 1, true);
 
 
 --
--- TOC entry 2928 (class 0 OID 0)
--- Dependencies: 251
+-- TOC entry 2955 (class 0 OID 0)
+-- Dependencies: 259
 -- Name: foto_id_foto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -532,8 +589,8 @@ SELECT pg_catalog.setval('foto_id_foto_seq', 3, true);
 
 
 --
--- TOC entry 2816 (class 0 OID 87311)
--- Dependencies: 206
+-- TOC entry 2843 (class 0 OID 36164)
+-- Dependencies: 214
 -- Data for Name: funcion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -543,7 +600,6 @@ INSERT INTO funcion VALUES (3, 'Instalación', ' ', 'z-icon-home', ' ', 0, NULL,
 INSERT INTO funcion VALUES (4, 'Evento', ' ', 'z-icon-calendar', ' ', 0, NULL, true);
 INSERT INTO funcion VALUES (5, 'Consulta', ' ', 'z-icon-th-list', ' ', 0, NULL, true);
 INSERT INTO funcion VALUES (6, 'Adm. del Sistema', ' ', 'z-icon-puzzle-piece', ' ', 0, NULL, true);
-INSERT INTO funcion VALUES (7, 'Postulación', ' ', 'z-icon-puzzle-piece', ' ', 0, NULL, true);
 INSERT INTO funcion VALUES (8, 'Categorias', ' ', 'z-icon-angle-double-right', ' ', 1, NULL, true);
 INSERT INTO funcion VALUES (9, 'Administrar Socio', ' ', 'z-icon-angle-double-right', ' ', 2, NULL, true);
 INSERT INTO funcion VALUES (10, 'Danos tu Opinión', ' ', 'z-icon-angle-double-right', ' ', 2, NULL, true);
@@ -578,7 +634,6 @@ INSERT INTO funcion VALUES (40, 'Opinar Postulación', 'socio/buzon/opinionPostu
 INSERT INTO funcion VALUES (41, 'Reservaciones', 'instalacion/misReservaciones.zul', 'z-icon-angle-double-right', ' ', 3, NULL, true);
 INSERT INTO funcion VALUES (42, 'Alquileres', 'instalacion/administrarAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, NULL, true);
 INSERT INTO funcion VALUES (43, 'Mis Alquileres', 'instalacion/misAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, NULL, true);
-INSERT INTO funcion VALUES (44, 'Eventualidades', 'instalacion/registrarEventualidadInst.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
 INSERT INTO funcion VALUES (45, 'Registrar Eventos', 'evento/administrarEvento/listaEventos.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
 INSERT INTO funcion VALUES (46, 'Planificar Eventos', 'evento/administrarEvento/planificarEvento.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
 INSERT INTO funcion VALUES (47, 'Ejecutar Eventos', 'evento/administrarEvento/ejecutarEvento.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
@@ -608,11 +663,13 @@ INSERT INTO funcion VALUES (73, 'Tipos Pago', 'configuracion/categoria/tipoPago.
 INSERT INTO funcion VALUES (74, 'Tipos Noticia', 'configuracion/categoria/tipoNoticia.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
 INSERT INTO funcion VALUES (75, 'Motivos Cancelación', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
 INSERT INTO funcion VALUES (76, 'Sugerencias', 'socio/buzon/sugerenciaAdministrativo.zul', 'z-icon-angle-double-right', ' ', 10, NULL, true);
+INSERT INTO funcion VALUES (7, 'Postulación', ' ', 'z-icon-group', ' ', 0, NULL, true);
+INSERT INTO funcion VALUES (44, 'Eventualidades', 'socio/registrarEventualidad.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
 
 
 --
--- TOC entry 2790 (class 0 OID 87171)
--- Dependencies: 180
+-- TOC entry 2817 (class 0 OID 36024)
+-- Dependencies: 188
 -- Data for Name: grupo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -627,8 +684,8 @@ INSERT INTO grupo VALUES (8, 'Administrativo', true);
 
 
 --
--- TOC entry 2818 (class 0 OID 87323)
--- Dependencies: 208
+-- TOC entry 2845 (class 0 OID 36176)
+-- Dependencies: 216
 -- Data for Name: funcion_grupo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -745,8 +802,8 @@ INSERT INTO funcion_grupo VALUES (114, 26, 8, true);
 
 
 --
--- TOC entry 2929 (class 0 OID 0)
--- Dependencies: 207
+-- TOC entry 2956 (class 0 OID 0)
+-- Dependencies: 215
 -- Name: funcion_grupo_id_funcion_grupo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -754,8 +811,8 @@ SELECT pg_catalog.setval('funcion_grupo_id_funcion_grupo_seq', 1, false);
 
 
 --
--- TOC entry 2930 (class 0 OID 0)
--- Dependencies: 205
+-- TOC entry 2957 (class 0 OID 0)
+-- Dependencies: 213
 -- Name: funcion_id_funcion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -763,8 +820,8 @@ SELECT pg_catalog.setval('funcion_id_funcion_seq', 1, false);
 
 
 --
--- TOC entry 2931 (class 0 OID 0)
--- Dependencies: 179
+-- TOC entry 2958 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: grupo_id_grupo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -772,8 +829,8 @@ SELECT pg_catalog.setval('grupo_id_grupo_seq', 6, true);
 
 
 --
--- TOC entry 2882 (class 0 OID 87624)
--- Dependencies: 272
+-- TOC entry 2909 (class 0 OID 36477)
+-- Dependencies: 280
 -- Data for Name: indicador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -785,16 +842,46 @@ INSERT INTO indicador VALUES (5, 'Cantidad Ingresos por Bebidas alcohólicas', t
 
 
 --
--- TOC entry 2884 (class 0 OID 87633)
--- Dependencies: 274
+-- TOC entry 2911 (class 0 OID 36486)
+-- Dependencies: 282
 -- Data for Name: indicador_evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO indicador_evento VALUES (1, 1000000, NULL, 3, 1, true);
+INSERT INTO indicador_evento VALUES (2, 200000, NULL, 4, 1, true);
+INSERT INTO indicador_evento VALUES (3, 2000000, NULL, 5, 1, true);
+INSERT INTO indicador_evento VALUES (4, 1000, NULL, 1, 1, true);
+INSERT INTO indicador_evento VALUES (7, 2000, 1500, 1, 3, true);
+INSERT INTO indicador_evento VALUES (8, 500000, NULL, 4, 4, true);
+INSERT INTO indicador_evento VALUES (9, 10000000, NULL, 2, 4, true);
+INSERT INTO indicador_evento VALUES (10, 2000, NULL, 1, 4, true);
+INSERT INTO indicador_evento VALUES (11, 1500000, NULL, 5, 4, true);
+INSERT INTO indicador_evento VALUES (12, 200000, NULL, 3, 4, true);
+INSERT INTO indicador_evento VALUES (16, 500000, NULL, 4, 6, true);
+INSERT INTO indicador_evento VALUES (17, 500, NULL, 1, 6, true);
+INSERT INTO indicador_evento VALUES (18, 50000, NULL, 5, 6, true);
+INSERT INTO indicador_evento VALUES (19, 1500000, NULL, 2, 6, true);
+INSERT INTO indicador_evento VALUES (6, 400000, NULL, 4, 2, true);
+INSERT INTO indicador_evento VALUES (5, 500000, NULL, 5, 2, true);
+INSERT INTO indicador_evento VALUES (15, 500000, NULL, 5, 5, true);
+INSERT INTO indicador_evento VALUES (13, 100000, NULL, 2, 5, true);
+INSERT INTO indicador_evento VALUES (14, 1000000, NULL, 1, 5, true);
+INSERT INTO indicador_evento VALUES (21, 150000, NULL, 4, 7, true);
+INSERT INTO indicador_evento VALUES (22, 500, NULL, 1, 7, true);
+INSERT INTO indicador_evento VALUES (20, 500000, NULL, 3, 7, true);
+INSERT INTO indicador_evento VALUES (23, 200, NULL, 1, 8, true);
+INSERT INTO indicador_evento VALUES (24, 300000, NULL, 2, 8, true);
+INSERT INTO indicador_evento VALUES (25, 500000, NULL, 2, 9, true);
+INSERT INTO indicador_evento VALUES (26, 200000, NULL, 2, 10, true);
+INSERT INTO indicador_evento VALUES (28, 1000000, 1500000, 2, 11, true);
+INSERT INTO indicador_evento VALUES (30, 500000, 700000, 5, 11, true);
+INSERT INTO indicador_evento VALUES (29, 700000, 900000, 3, 11, true);
+INSERT INTO indicador_evento VALUES (27, 700, 890, 1, 11, true);
 
 
 --
--- TOC entry 2932 (class 0 OID 0)
--- Dependencies: 273
+-- TOC entry 2959 (class 0 OID 0)
+-- Dependencies: 281
 -- Name: indicador_evento_id_indicador_evento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -802,8 +889,8 @@ SELECT pg_catalog.setval('indicador_evento_id_indicador_evento_seq', 1, false);
 
 
 --
--- TOC entry 2933 (class 0 OID 0)
--- Dependencies: 271
+-- TOC entry 2960 (class 0 OID 0)
+-- Dependencies: 279
 -- Name: indicador_id_indicador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -811,16 +898,31 @@ SELECT pg_catalog.setval('indicador_id_indicador_seq', 5, true);
 
 
 --
--- TOC entry 2836 (class 0 OID 87408)
--- Dependencies: 226
+-- TOC entry 2863 (class 0 OID 36261)
+-- Dependencies: 234
 -- Data for Name: instalacion_evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO instalacion_evento VALUES (1, 6, 1, true);
+INSERT INTO instalacion_evento VALUES (2, 1, 1, true);
+INSERT INTO instalacion_evento VALUES (3, 9, 1, true);
+INSERT INTO instalacion_evento VALUES (4, 4, 1, true);
+INSERT INTO instalacion_evento VALUES (5, 2, 1, true);
+INSERT INTO instalacion_evento VALUES (7, 2, 3, true);
+INSERT INTO instalacion_evento VALUES (8, 1, 4, true);
+INSERT INTO instalacion_evento VALUES (10, 5, 6, true);
+INSERT INTO instalacion_evento VALUES (6, 1, 2, true);
+INSERT INTO instalacion_evento VALUES (9, 4, 5, true);
+INSERT INTO instalacion_evento VALUES (11, 9, 7, true);
+INSERT INTO instalacion_evento VALUES (12, 7, 8, true);
+INSERT INTO instalacion_evento VALUES (13, 2, 9, true);
+INSERT INTO instalacion_evento VALUES (14, 5, 10, true);
+INSERT INTO instalacion_evento VALUES (15, 2, 11, true);
 
 
 --
--- TOC entry 2934 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 2961 (class 0 OID 0)
+-- Dependencies: 233
 -- Name: instalacion_evento_id_actividad_instalacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -828,8 +930,8 @@ SELECT pg_catalog.setval('instalacion_evento_id_actividad_instalacion_seq', 1, f
 
 
 --
--- TOC entry 2935 (class 0 OID 0)
--- Dependencies: 195
+-- TOC entry 2962 (class 0 OID 0)
+-- Dependencies: 203
 -- Name: instalacion_id_instalacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -837,8 +939,8 @@ SELECT pg_catalog.setval('instalacion_id_instalacion_seq', 9, true);
 
 
 --
--- TOC entry 2848 (class 0 OID 87465)
--- Dependencies: 238
+-- TOC entry 2875 (class 0 OID 36318)
+-- Dependencies: 246
 -- Data for Name: junta_directiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -846,8 +948,8 @@ INSERT INTO junta_directiva VALUES (1, 1, '2016-03-26', '2017-03-26', true);
 
 
 --
--- TOC entry 2936 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 2963 (class 0 OID 0)
+-- Dependencies: 245
 -- Name: junta_directiva_id_junta_directiva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -855,8 +957,8 @@ SELECT pg_catalog.setval('junta_directiva_id_junta_directiva_seq', 1, false);
 
 
 --
--- TOC entry 2850 (class 0 OID 87474)
--- Dependencies: 240
+-- TOC entry 2877 (class 0 OID 36327)
+-- Dependencies: 248
 -- Data for Name: miembro_junta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -869,8 +971,8 @@ INSERT INTO miembro_junta VALUES (8, 1, 7, 30, true);
 
 
 --
--- TOC entry 2937 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 2964 (class 0 OID 0)
+-- Dependencies: 247
 -- Name: miembro_junta_id_junta_miembro_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -878,8 +980,8 @@ SELECT pg_catalog.setval('miembro_junta_id_junta_miembro_seq', 1, false);
 
 
 --
--- TOC entry 2938 (class 0 OID 0)
--- Dependencies: 293
+-- TOC entry 2965 (class 0 OID 0)
+-- Dependencies: 301
 -- Name: motivo_cancelacion_id_motivo_cancelacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -887,8 +989,8 @@ SELECT pg_catalog.setval('motivo_cancelacion_id_motivo_cancelacion_seq', 3, true
 
 
 --
--- TOC entry 2939 (class 0 OID 0)
--- Dependencies: 249
+-- TOC entry 2966 (class 0 OID 0)
+-- Dependencies: 257
 -- Name: motivo_desvinculacion_id_motivo_desvinculacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -896,8 +998,8 @@ SELECT pg_catalog.setval('motivo_desvinculacion_id_motivo_desvinculacion_seq', 2
 
 
 --
--- TOC entry 2940 (class 0 OID 0)
--- Dependencies: 263
+-- TOC entry 2967 (class 0 OID 0)
+-- Dependencies: 271
 -- Name: motivo_postulacion_id_motivo_postulacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -905,8 +1007,8 @@ SELECT pg_catalog.setval('motivo_postulacion_id_motivo_postulacion_seq', 6, true
 
 
 --
--- TOC entry 2906 (class 0 OID 87736)
--- Dependencies: 296
+-- TOC entry 2933 (class 0 OID 36589)
+-- Dependencies: 304
 -- Data for Name: motivo_sancion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -915,8 +1017,8 @@ INSERT INTO motivo_sancion VALUES (2, 'Morosidad', true);
 
 
 --
--- TOC entry 2941 (class 0 OID 0)
--- Dependencies: 295
+-- TOC entry 2968 (class 0 OID 0)
+-- Dependencies: 303
 -- Name: motivo_sancion_id_motivo_sancion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -924,8 +1026,8 @@ SELECT pg_catalog.setval('motivo_sancion_id_motivo_sancion_seq', 2, true);
 
 
 --
--- TOC entry 2876 (class 0 OID 87597)
--- Dependencies: 266
+-- TOC entry 2903 (class 0 OID 36450)
+-- Dependencies: 274
 -- Data for Name: motivo_venta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -936,8 +1038,8 @@ INSERT INTO motivo_venta VALUES (4, 'Otros', true);
 
 
 --
--- TOC entry 2942 (class 0 OID 0)
--- Dependencies: 265
+-- TOC entry 2969 (class 0 OID 0)
+-- Dependencies: 273
 -- Name: motivo_venta_id_motivo_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -945,8 +1047,8 @@ SELECT pg_catalog.setval('motivo_venta_id_motivo_venta_seq', 4, true);
 
 
 --
--- TOC entry 2894 (class 0 OID 87681)
--- Dependencies: 284
+-- TOC entry 2921 (class 0 OID 36534)
+-- Dependencies: 292
 -- Data for Name: tipo_noticia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -960,34 +1062,11 @@ INSERT INTO tipo_noticia VALUES (5, 'Acciones', '#cc3300', true);
 
 
 --
--- TOC entry 2808 (class 0 OID 87266)
--- Dependencies: 198
+-- TOC entry 2835 (class 0 OID 36119)
+-- Dependencies: 206
 -- Data for Name: noticia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO noticia VALUES (1, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:20:33.75', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (2, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:20:49.523', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (3, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:21:01.145', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (4, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:21:08.963', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (5, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:21:15.307', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (6, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:21:23.035', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (7, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:22:01.331', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (8, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:22:21.006', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (9, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:22:32.608', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (10, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:22:48.248', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (11, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:23:01.766', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (12, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:23:20.464', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (13, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:23:39.357', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (14, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:23:52.154', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (15, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:24:17.597', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (16, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:24:39.648', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (17, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:24:50.74', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (18, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:25:03.184', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (19, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:25:14.186', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (20, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:25:25.402', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (21, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:25:35.536', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (22, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:25:46.398', '2016-04-10', true, NULL, true);
-INSERT INTO noticia VALUES (23, 'Acción en Venta', '�Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, NULL, 2, '2016-03-26 11:25:56.887', '2016-04-10', true, NULL, true);
 INSERT INTO noticia VALUES (34, 'Nueva Postulación', 'El Sr(a). Hilder Hernandez, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 8, 'http://i.imgur.com/S0doLDj.jpg', 5, '2016-03-26 12:26:43.146', '2016-04-10', false, NULL, true);
 INSERT INTO noticia VALUES (27, 'Nuevo Socio', '¡El Sr(a). Jose Abreu es un nuevo intengrante de la familia americanista', NULL, NULL, 'http://i.imgur.com/Yv0dyo8.jpg', 6, '2016-03-26 12:09:32.541', '2016-03-31', true, NULL, true);
 INSERT INTO noticia VALUES (24, 'Nueva Postulación', 'El Sr(a). Jose Abreu, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 1, 'http://i.imgur.com/Yv0dyo8.jpg', 5, '2016-03-26 11:26:33.138', '2016-04-10', false, NULL, false);
@@ -999,11 +1078,45 @@ INSERT INTO noticia VALUES (30, 'Nueva Postulación', 'El Sr(a). Rosmary Fuentes
 INSERT INTO noticia VALUES (31, 'Nueva Postulación', 'El Sr(a). Dixon Garcia, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 5, 'http://i.imgur.com/DxGxqhY.jpg', 5, '2016-03-26 12:20:33.811', '2016-04-10', false, NULL, true);
 INSERT INTO noticia VALUES (32, 'Nueva Postulación', 'El Sr(a). Hector Gil, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 6, 'http://i.imgur.com/OPpIMSz.jpg', 5, '2016-03-26 12:22:17.703', '2016-04-10', false, NULL, true);
 INSERT INTO noticia VALUES (33, 'Nueva Postulación', 'El Sr(a). Xavier Gutierrez, se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!', NULL, 7, 'http://i.imgur.com/Nv1pWz8.jpg', 5, '2016-03-26 12:24:02.634', '2016-04-10', false, NULL, true);
+INSERT INTO noticia VALUES (35, 'Semana Aniversario Centro Atlético América', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Semana Aniversario Centro Atlético América Desde: 29/08/2016 Hasta: 04/09/2016', 1, NULL, 'http://localhost:8080/america/assets/portal/img/noticiadefecto.png', 1, '2016-03-28 23:22:30.572', '2016-09-04', false, NULL, true);
+INSERT INTO noticia VALUES (36, 'Torneo Relámpago Beisbol', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Torneo Relámpago Beisbol Desde: 02/04/2016 Hasta: 03/04/2016', 2, NULL, 'http://localhost:8080/america/assets/portal/img/noticiadefecto.png', 1, '2016-03-28 23:28:36.38', '2016-04-03', false, NULL, true);
+INSERT INTO noticia VALUES (1, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:20:33.75', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (2, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:20:49.523', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (3, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:21:01.145', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (4, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:21:08.963', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (5, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:21:15.307', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (6, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:21:23.035', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (7, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:22:01.331', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (8, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:22:21.006', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (9, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:22:32.608', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (10, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:22:48.248', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (11, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:23:01.766', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (12, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:23:20.464', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (13, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:23:39.357', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (14, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:23:52.154', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (15, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:24:17.597', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (16, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:24:39.648', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (17, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:24:50.74', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (18, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:25:03.184', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (19, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:25:14.186', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (20, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:25:25.402', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (21, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:25:35.536', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (22, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:25:46.398', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (23, 'Acción en Venta', '¡Se a aperturado el proceso de postulación para una acción en venta!', NULL, NULL, 'http://i.imgur.com/E9BHBju.png', 2, '2016-03-26 11:25:56.887', '2016-04-10', true, NULL, true);
+INSERT INTO noticia VALUES (37, 'Jornada de cedulación', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Jornada de cedulación Desde: 29/03/2016 Hasta: 29/03/2016', 3, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-28 23:50:01.903', '2016-03-29', false, NULL, true);
+INSERT INTO noticia VALUES (38, 'Torneo Tradicional Fin de Año', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Torneo Tradicional Fin de Año Desde: 30/12/2016 Hasta: 31/12/2016', 4, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 00:12:49.138', '2016-12-31', false, NULL, true);
+INSERT INTO noticia VALUES (39, 'Abierto Regional de Tenis Sub-15', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Abierto Regional de Tenis Sub-15 Desde: 02/04/2016 Hasta: 03/04/2016', 5, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 00:18:50.473', '2016-04-03', false, NULL, true);
+INSERT INTO noticia VALUES (40, 'Liga Interclubes Fut-Sala Sub-20', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Liga Interclubes Fut-Sala Sub-20 Desde: 04/04/2016 Hasta: 24/04/2016', 6, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 00:24:17.56', '2016-04-24', true, NULL, true);
+INSERT INTO noticia VALUES (41, 'Campeonato Natacion 2016 Sub-12', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: Campeonato Natacion 2016 Sub-12 Desde: 09/04/2016 Hasta: 10/04/2016', 7, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 00:55:58.372', '2016-04-10', false, NULL, true);
+INSERT INTO noticia VALUES (42, 'Cancelacion del evento Torneo de Dominó', 'Se le informa a nuestra familia americanista la cancelacion del evento: Torneo de Dominó por motivo: Falta Presupuesto; El presupuesto aprobado no cumplia con las expectativas esperadas para la organizacion de este evento.', 8, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 01:22:57.481', '2016-04-03', false, NULL, true);
+INSERT INTO noticia VALUES (43, 'Cancelacion del evento Toque de la Banda Coctel', 'Se le informa a nuestra familia americanista la cancelacion del evento: Toque de la Banda Coctel por motivo: Otros; La banda declino su participacion en el evento.', 9, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 01:26:53.901', '2016-04-24', true, NULL, true);
+INSERT INTO noticia VALUES (44, 'Cancelacion del evento Torneo Master Baloncesto', 'Se le informa a nuestra familia americanista la cancelacion del evento: Torneo Master Baloncesto por motivo: Otros; La convocatoria no fue suficiente para llevar el torneo a cabo.', 10, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 01:32:11.148', '2016-05-01', true, NULL, true);
+INSERT INTO noticia VALUES (45, 'StandUp Comedy Moncho Martinez', 'Nos complace informarle a nuestra familia americanista la realizacion de evento: StandUp Comedy Moncho Martinez Desde: 27/04/2016 Hasta: 28/04/2016', 11, NULL, 'http://i.imgur.com/wGVOjvQ.png', 1, '2016-03-29 01:40:51.382', '2016-04-28', true, NULL, true);
 
 
 --
--- TOC entry 2943 (class 0 OID 0)
--- Dependencies: 197
+-- TOC entry 2970 (class 0 OID 0)
+-- Dependencies: 205
 -- Name: noticia_id_noticia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1011,8 +1124,8 @@ SELECT pg_catalog.setval('noticia_id_noticia_seq', 1, false);
 
 
 --
--- TOC entry 2856 (class 0 OID 87501)
--- Dependencies: 246
+-- TOC entry 2883 (class 0 OID 36354)
+-- Dependencies: 254
 -- Data for Name: tipo_preferencia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1023,8 +1136,8 @@ INSERT INTO tipo_preferencia VALUES (1, 'Cultural', '#660000', true);
 
 
 --
--- TOC entry 2826 (class 0 OID 87360)
--- Dependencies: 216
+-- TOC entry 2853 (class 0 OID 36213)
+-- Dependencies: 224
 -- Data for Name: preferencia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1043,19 +1156,43 @@ INSERT INTO preferencia VALUES (13, 'Cantar', 4, true);
 INSERT INTO preferencia VALUES (14, 'Ciclismo', 2, true);
 INSERT INTO preferencia VALUES (15, 'Balie Tradicional', 1, true);
 INSERT INTO preferencia VALUES (10, 'Folklore', 3, true);
+INSERT INTO preferencia VALUES (16, 'Interés Público', 3, true);
+INSERT INTO preferencia VALUES (17, 'Dominó', 2, true);
+INSERT INTO preferencia VALUES (18, 'Baloncesto', 2, true);
+INSERT INTO preferencia VALUES (19, 'Comedia', 3, true);
 
 
 --
--- TOC entry 2858 (class 0 OID 87510)
--- Dependencies: 248
+-- TOC entry 2885 (class 0 OID 36363)
+-- Dependencies: 256
 -- Data for Name: noticia_preferencia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO noticia_preferencia VALUES (1, 1, 35, true);
+INSERT INTO noticia_preferencia VALUES (2, 9, 35, true);
+INSERT INTO noticia_preferencia VALUES (3, 5, 35, true);
+INSERT INTO noticia_preferencia VALUES (4, 2, 35, true);
+INSERT INTO noticia_preferencia VALUES (5, 4, 35, true);
+INSERT INTO noticia_preferencia VALUES (6, 8, 35, true);
+INSERT INTO noticia_preferencia VALUES (7, 3, 35, true);
+INSERT INTO noticia_preferencia VALUES (8, 6, 35, true);
+INSERT INTO noticia_preferencia VALUES (9, 1, 36, true);
+INSERT INTO noticia_preferencia VALUES (10, 16, 37, true);
+INSERT INTO noticia_preferencia VALUES (11, 1, 38, true);
+INSERT INTO noticia_preferencia VALUES (12, 3, 39, true);
+INSERT INTO noticia_preferencia VALUES (13, 2, 40, true);
+INSERT INTO noticia_preferencia VALUES (14, 5, 41, true);
+INSERT INTO noticia_preferencia VALUES (15, 17, 42, true);
+INSERT INTO noticia_preferencia VALUES (17, 8, 43, true);
+INSERT INTO noticia_preferencia VALUES (18, 16, 43, true);
+INSERT INTO noticia_preferencia VALUES (16, 9, 43, true);
+INSERT INTO noticia_preferencia VALUES (19, 18, 44, true);
+INSERT INTO noticia_preferencia VALUES (20, 16, 45, true);
 
 
 --
--- TOC entry 2944 (class 0 OID 0)
--- Dependencies: 247
+-- TOC entry 2971 (class 0 OID 0)
+-- Dependencies: 255
 -- Name: noticia_preferencia_id_noticia_preferencia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1063,8 +1200,8 @@ SELECT pg_catalog.setval('noticia_preferencia_id_noticia_preferencia_seq', 1, fa
 
 
 --
--- TOC entry 2900 (class 0 OID 87710)
--- Dependencies: 290
+-- TOC entry 2927 (class 0 OID 36563)
+-- Dependencies: 298
 -- Data for Name: tipo_opnion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1074,8 +1211,8 @@ INSERT INTO tipo_opnion VALUES (3, 'No lo Conozco', true);
 
 
 --
--- TOC entry 2784 (class 0 OID 87141)
--- Dependencies: 174
+-- TOC entry 2811 (class 0 OID 35994)
+-- Dependencies: 182
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1102,16 +1239,16 @@ INSERT INTO usuario VALUES (22, '12345678', 'tony', '¿Quien?', 'Capitan garfio 
 
 
 --
--- TOC entry 2802 (class 0 OID 87229)
--- Dependencies: 192
+-- TOC entry 2829 (class 0 OID 36082)
+-- Dependencies: 200
 -- Data for Name: opinion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2945 (class 0 OID 0)
--- Dependencies: 191
+-- TOC entry 2972 (class 0 OID 0)
+-- Dependencies: 199
 -- Name: opinion_id_opinion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1119,8 +1256,8 @@ SELECT pg_catalog.setval('opinion_id_opinion_seq', 1, false);
 
 
 --
--- TOC entry 2946 (class 0 OID 0)
--- Dependencies: 181
+-- TOC entry 2973 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: persona_id_persona_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1128,8 +1265,8 @@ SELECT pg_catalog.setval('persona_id_persona_seq', 3, true);
 
 
 --
--- TOC entry 2846 (class 0 OID 87456)
--- Dependencies: 236
+-- TOC entry 2873 (class 0 OID 36309)
+-- Dependencies: 244
 -- Data for Name: politica; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1138,8 +1275,8 @@ INSERT INTO politica VALUES (2, 'Veces que puede traer a un mismo invitado al me
 
 
 --
--- TOC entry 2947 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 2974 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: politica_id_politica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1147,8 +1284,8 @@ SELECT pg_catalog.setval('politica_id_politica_seq', 2, true);
 
 
 --
--- TOC entry 2896 (class 0 OID 87690)
--- Dependencies: 286
+-- TOC entry 2923 (class 0 OID 36543)
+-- Dependencies: 294
 -- Data for Name: portal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1156,8 +1293,8 @@ INSERT INTO portal VALUES (1, 'El Centro Atlético América cuenta con canchas d
 
 
 --
--- TOC entry 2948 (class 0 OID 0)
--- Dependencies: 285
+-- TOC entry 2975 (class 0 OID 0)
+-- Dependencies: 293
 -- Name: portal_id_portal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1165,8 +1302,8 @@ SELECT pg_catalog.setval('portal_id_portal_seq', 1, false);
 
 
 --
--- TOC entry 2949 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2976 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: postulacion_id_postulacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1174,8 +1311,8 @@ SELECT pg_catalog.setval('postulacion_id_postulacion_seq', 1, false);
 
 
 --
--- TOC entry 2950 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 2977 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: postulado_id_postulado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1183,16 +1320,36 @@ SELECT pg_catalog.setval('postulado_id_postulado_seq', 1, false);
 
 
 --
--- TOC entry 2866 (class 0 OID 87549)
--- Dependencies: 256
+-- TOC entry 2893 (class 0 OID 36402)
+-- Dependencies: 264
 -- Data for Name: preferencia_evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO preferencia_evento VALUES (1, 1, 8, true);
+INSERT INTO preferencia_evento VALUES (2, 1, 5, true);
+INSERT INTO preferencia_evento VALUES (3, 1, 3, true);
+INSERT INTO preferencia_evento VALUES (4, 1, 1, true);
+INSERT INTO preferencia_evento VALUES (5, 1, 4, true);
+INSERT INTO preferencia_evento VALUES (6, 1, 2, true);
+INSERT INTO preferencia_evento VALUES (7, 1, 9, true);
+INSERT INTO preferencia_evento VALUES (8, 1, 6, true);
+INSERT INTO preferencia_evento VALUES (10, 3, 16, true);
+INSERT INTO preferencia_evento VALUES (11, 4, 1, true);
+INSERT INTO preferencia_evento VALUES (13, 6, 2, true);
+INSERT INTO preferencia_evento VALUES (9, 2, 1, true);
+INSERT INTO preferencia_evento VALUES (12, 5, 3, true);
+INSERT INTO preferencia_evento VALUES (14, 7, 5, true);
+INSERT INTO preferencia_evento VALUES (15, 8, 17, true);
+INSERT INTO preferencia_evento VALUES (18, 9, 9, true);
+INSERT INTO preferencia_evento VALUES (16, 9, 8, true);
+INSERT INTO preferencia_evento VALUES (17, 9, 16, true);
+INSERT INTO preferencia_evento VALUES (19, 10, 18, true);
+INSERT INTO preferencia_evento VALUES (20, 11, 16, true);
 
 
 --
--- TOC entry 2951 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 2978 (class 0 OID 0)
+-- Dependencies: 263
 -- Name: preferencia_evento_id_preferencia_evento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1200,8 +1357,8 @@ SELECT pg_catalog.setval('preferencia_evento_id_preferencia_evento_seq', 1, fals
 
 
 --
--- TOC entry 2952 (class 0 OID 0)
--- Dependencies: 215
+-- TOC entry 2979 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: preferencia_id_preferencia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1209,8 +1366,8 @@ SELECT pg_catalog.setval('preferencia_id_preferencia_seq', 14, true);
 
 
 --
--- TOC entry 2834 (class 0 OID 87399)
--- Dependencies: 224
+-- TOC entry 2861 (class 0 OID 36252)
+-- Dependencies: 232
 -- Data for Name: preferencia_persona; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1283,8 +1440,8 @@ INSERT INTO preferencia_persona VALUES (64, 8, 19, true);
 
 
 --
--- TOC entry 2953 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 2980 (class 0 OID 0)
+-- Dependencies: 231
 -- Name: preferencia_persona_id_preferencia_persona_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1292,8 +1449,8 @@ SELECT pg_catalog.setval('preferencia_persona_id_preferencia_persona_seq', 1, fa
 
 
 --
--- TOC entry 2838 (class 0 OID 87417)
--- Dependencies: 228
+-- TOC entry 2865 (class 0 OID 36270)
+-- Dependencies: 236
 -- Data for Name: recurso; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1312,8 +1469,8 @@ INSERT INTO recurso VALUES (12, 'Neveras', true);
 
 
 --
--- TOC entry 2954 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 2981 (class 0 OID 0)
+-- Dependencies: 235
 -- Name: recurso_id_recurso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1321,8 +1478,8 @@ SELECT pg_catalog.setval('recurso_id_recurso_seq', 12, true);
 
 
 --
--- TOC entry 2842 (class 0 OID 87438)
--- Dependencies: 232
+-- TOC entry 2869 (class 0 OID 36291)
+-- Dependencies: 240
 -- Data for Name: recurso_instalacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1343,8 +1500,8 @@ INSERT INTO recurso_instalacion VALUES (14, 9, 1, 50, true);
 
 
 --
--- TOC entry 2955 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 2982 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: recurso_instalacion_id_recurso_instalacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1352,8 +1509,8 @@ SELECT pg_catalog.setval('recurso_instalacion_id_recurso_instalacion_seq', 2, tr
 
 
 --
--- TOC entry 2868 (class 0 OID 87558)
--- Dependencies: 258
+-- TOC entry 2895 (class 0 OID 36411)
+-- Dependencies: 266
 -- Data for Name: red_social; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1363,8 +1520,8 @@ INSERT INTO red_social VALUES (3, 'Twitter', 'http://i.imgur.com/rox1qxk.png', t
 
 
 --
--- TOC entry 2870 (class 0 OID 87570)
--- Dependencies: 260
+-- TOC entry 2897 (class 0 OID 36423)
+-- Dependencies: 268
 -- Data for Name: red_club; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1373,8 +1530,8 @@ INSERT INTO red_club VALUES (2, 1, 1, 'https://www.facebook.com/accaa', true);
 
 
 --
--- TOC entry 2956 (class 0 OID 0)
--- Dependencies: 259
+-- TOC entry 2983 (class 0 OID 0)
+-- Dependencies: 267
 -- Name: red_club_id_red_club_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1382,16 +1539,16 @@ SELECT pg_catalog.setval('red_club_id_red_club_seq', 2, true);
 
 
 --
--- TOC entry 2872 (class 0 OID 87579)
--- Dependencies: 262
+-- TOC entry 2899 (class 0 OID 36432)
+-- Dependencies: 270
 -- Data for Name: red_persona; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2957 (class 0 OID 0)
--- Dependencies: 261
+-- TOC entry 2984 (class 0 OID 0)
+-- Dependencies: 269
 -- Name: red_persona_id_red_persona_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1399,8 +1556,8 @@ SELECT pg_catalog.setval('red_persona_id_red_persona_seq', 1, false);
 
 
 --
--- TOC entry 2958 (class 0 OID 0)
--- Dependencies: 257
+-- TOC entry 2985 (class 0 OID 0)
+-- Dependencies: 265
 -- Name: red_social_id_red_social_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1408,8 +1565,8 @@ SELECT pg_catalog.setval('red_social_id_red_social_seq', 3, true);
 
 
 --
--- TOC entry 2959 (class 0 OID 0)
--- Dependencies: 209
+-- TOC entry 2986 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: reservacion_id_reservacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1417,26 +1574,28 @@ SELECT pg_catalog.setval('reservacion_id_reservacion_seq', 1, false);
 
 
 --
--- TOC entry 2902 (class 0 OID 87719)
--- Dependencies: 292
+-- TOC entry 2929 (class 0 OID 36572)
+-- Dependencies: 300
 -- Data for Name: tipo_sancion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tipo_sancion VALUES (1, 'Suspensión', true);
-INSERT INTO tipo_sancion VALUES (2, 'Multa', true);
+INSERT INTO tipo_sancion VALUES (1, 'Morosidad', true);
+INSERT INTO tipo_sancion VALUES (2, 'Eventualidad', true);
 
 
 --
--- TOC entry 2794 (class 0 OID 87192)
--- Dependencies: 184
+-- TOC entry 2821 (class 0 OID 36045)
+-- Dependencies: 192
 -- Data for Name: sancion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO sancion VALUES (1, 'Según lo dicho por distintas personas en el área, el ciudadano perturbo el bienestar de las personas con que compartía el área. ', 1, NULL, '2016-03-28', '2016-04-01', NULL, 1, NULL, 2, true);
+INSERT INTO sancion VALUES (2, 'Según los que estaban presente en la instalación, el ciudadano rompió un vidrio tras exaltarse al terminar un juego.', 3, NULL, NULL, NULL, 15000, 2, NULL, 2, true);
 
 
 --
--- TOC entry 2960 (class 0 OID 0)
--- Dependencies: 183
+-- TOC entry 2987 (class 0 OID 0)
+-- Dependencies: 191
 -- Name: sancion_id_sancion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1444,8 +1603,8 @@ SELECT pg_catalog.setval('sancion_id_sancion_seq', 1, false);
 
 
 --
--- TOC entry 2961 (class 0 OID 0)
--- Dependencies: 185
+-- TOC entry 2988 (class 0 OID 0)
+-- Dependencies: 193
 -- Name: socio_id_socio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1453,16 +1612,16 @@ SELECT pg_catalog.setval('socio_id_socio_seq', 2, true);
 
 
 --
--- TOC entry 2886 (class 0 OID 87642)
--- Dependencies: 276
+-- TOC entry 2913 (class 0 OID 36495)
+-- Dependencies: 284
 -- Data for Name: solicitud_venta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2962 (class 0 OID 0)
--- Dependencies: 275
+-- TOC entry 2989 (class 0 OID 0)
+-- Dependencies: 283
 -- Name: solicitud_venta_id_solicitud_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1470,8 +1629,8 @@ SELECT pg_catalog.setval('solicitud_venta_id_solicitud_venta_seq', 1, false);
 
 
 --
--- TOC entry 2854 (class 0 OID 87492)
--- Dependencies: 244
+-- TOC entry 2881 (class 0 OID 36345)
+-- Dependencies: 252
 -- Data for Name: tipo_sugerencia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1483,16 +1642,17 @@ INSERT INTO tipo_sugerencia VALUES (5, 'Reclamo', true);
 
 
 --
--- TOC entry 2840 (class 0 OID 87426)
--- Dependencies: 230
+-- TOC entry 2867 (class 0 OID 36279)
+-- Dependencies: 238
 -- Data for Name: sugerencia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO sugerencia VALUES (1, 'Quede encantada con las instalaciones del club. Me gustaría comprar una acción', '2016-03-28 23:00:09.198', NULL, 1, 3, true);
 
 
 --
--- TOC entry 2963 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 2990 (class 0 OID 0)
+-- Dependencies: 237
 -- Name: sugerencia_id_sugerencia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1500,8 +1660,8 @@ SELECT pg_catalog.setval('sugerencia_id_sugerencia_seq', 1, false);
 
 
 --
--- TOC entry 2964 (class 0 OID 0)
--- Dependencies: 253
+-- TOC entry 2991 (class 0 OID 0)
+-- Dependencies: 261
 -- Name: tipo_afiliado_id_tipo_afiliado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1509,8 +1669,8 @@ SELECT pg_catalog.setval('tipo_afiliado_id_tipo_afiliado_seq', 4, true);
 
 
 --
--- TOC entry 2965 (class 0 OID 0)
--- Dependencies: 277
+-- TOC entry 2992 (class 0 OID 0)
+-- Dependencies: 285
 -- Name: tipo_eventualidad_id_tipo_eventualidad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1518,8 +1678,8 @@ SELECT pg_catalog.setval('tipo_eventualidad_id_tipo_eventualidad_seq', 5, true);
 
 
 --
--- TOC entry 2966 (class 0 OID 0)
--- Dependencies: 297
+-- TOC entry 2993 (class 0 OID 0)
+-- Dependencies: 305
 -- Name: tipo_instalacion_id_tipo_instalacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1527,8 +1687,8 @@ SELECT pg_catalog.setval('tipo_instalacion_id_tipo_instalacion_seq', 4, true);
 
 
 --
--- TOC entry 2967 (class 0 OID 0)
--- Dependencies: 283
+-- TOC entry 2994 (class 0 OID 0)
+-- Dependencies: 291
 -- Name: tipo_noticia_id_tipo_noticia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1536,8 +1696,8 @@ SELECT pg_catalog.setval('tipo_noticia_id_tipo_noticia_seq', 7, true);
 
 
 --
--- TOC entry 2968 (class 0 OID 0)
--- Dependencies: 289
+-- TOC entry 2995 (class 0 OID 0)
+-- Dependencies: 297
 -- Name: tipo_opnion_id_tipo_opninion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1545,8 +1705,8 @@ SELECT pg_catalog.setval('tipo_opnion_id_tipo_opninion_seq', 3, true);
 
 
 --
--- TOC entry 2969 (class 0 OID 0)
--- Dependencies: 287
+-- TOC entry 2996 (class 0 OID 0)
+-- Dependencies: 295
 -- Name: tipo_pago_id_tipo_pago_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1554,8 +1714,8 @@ SELECT pg_catalog.setval('tipo_pago_id_tipo_pago_seq', 3, true);
 
 
 --
--- TOC entry 2970 (class 0 OID 0)
--- Dependencies: 245
+-- TOC entry 2997 (class 0 OID 0)
+-- Dependencies: 253
 -- Name: tipo_preferencia_id_tipo_preferencia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1563,8 +1723,8 @@ SELECT pg_catalog.setval('tipo_preferencia_id_tipo_preferencia_seq', 4, true);
 
 
 --
--- TOC entry 2971 (class 0 OID 0)
--- Dependencies: 291
+-- TOC entry 2998 (class 0 OID 0)
+-- Dependencies: 299
 -- Name: tipo_sancion_id_tipo_sancion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1572,8 +1732,8 @@ SELECT pg_catalog.setval('tipo_sancion_id_tipo_sancion_seq', 2, true);
 
 
 --
--- TOC entry 2972 (class 0 OID 0)
--- Dependencies: 243
+-- TOC entry 2999 (class 0 OID 0)
+-- Dependencies: 251
 -- Name: tipo_sugerencia_id_tipo_sugerencia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1581,8 +1741,8 @@ SELECT pg_catalog.setval('tipo_sugerencia_id_tipo_sugerencia_seq', 5, true);
 
 
 --
--- TOC entry 2788 (class 0 OID 87162)
--- Dependencies: 178
+-- TOC entry 2815 (class 0 OID 36015)
+-- Dependencies: 186
 -- Data for Name: usuario_grupo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1615,8 +1775,8 @@ INSERT INTO usuario_grupo VALUES (27, 22, 8, true);
 
 
 --
--- TOC entry 2973 (class 0 OID 0)
--- Dependencies: 177
+-- TOC entry 3000 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: usuario_grupo_id_usuario_grupo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1624,8 +1784,8 @@ SELECT pg_catalog.setval('usuario_grupo_id_usuario_grupo_seq', 1, false);
 
 
 --
--- TOC entry 2974 (class 0 OID 0)
--- Dependencies: 173
+-- TOC entry 3001 (class 0 OID 0)
+-- Dependencies: 181
 -- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1633,23 +1793,23 @@ SELECT pg_catalog.setval('usuario_id_usuario_seq', 3, true);
 
 
 --
--- TOC entry 2832 (class 0 OID 87390)
--- Dependencies: 222
+-- TOC entry 2859 (class 0 OID 36243)
+-- Dependencies: 230
 -- Data for Name: venta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2975 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 3002 (class 0 OID 0)
+-- Dependencies: 229
 -- Name: venta_id_venta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('venta_id_venta_seq', 1, false);
 
 
--- Completed on 2016-03-26 19:48:16 VET
+-- Completed on 2016-03-29 01:52:25
 
 --
 -- PostgreSQL database dump complete

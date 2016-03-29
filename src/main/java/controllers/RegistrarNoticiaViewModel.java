@@ -69,6 +69,7 @@ public class RegistrarNoticiaViewModel {
 			this.noticia = noticia;
 			this.editable = true;
 			this.fotodefault = false;
+			System.out.println("entro por el sino");
 		}
 	}
 	
@@ -132,16 +133,14 @@ public class RegistrarNoticiaViewModel {
 	@NotifyChange({"uploadedImage", "fotodefault"})
 	public void upload(@BindingParam("media") final Media myMedia){
 		if(!editable){
-			System.out.println("uploadedImage "+ uploadedImage);
 			fotodefault= false;
 			if(myMedia instanceof org.zkoss.image.Image){
 				if(myMedia.getByteData().length > 2000*1024){
-					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("Escoja una imagen de menor tamaÃ±o", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}else{
 					
 					uploadedImage = myMedia;
 					setUploadedImage(myMedia);
-					System.out.println(" myMedia " + myMedia);
 				}
 			}else{
 				Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
@@ -170,14 +169,17 @@ public class RegistrarNoticiaViewModel {
 		
 		if(noticia.getCaducidad()!=null && 
 		   !noticia.getDescripcion().equalsIgnoreCase("") && noticia.getDescripcion()!=null &&
-		   noticia.getTipoNoticia()!=null && this.getUploadedImage()!=null)
+		   noticia.getTipoNoticia()!=null)
 		{
 			if (noticia.getTitulo()!=null && !noticia.getTitulo().equalsIgnoreCase(""))
 			{
 				if(!editable){
-					fotodefault = false;
+					//fotodefault = false;
 					noticia.setFechaCreacion(new Date());
-					noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
+					if(!fotodefault)
+						noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
+					else
+						noticia.setFoto("http://i.imgur.com/wGVOjvQ.png");
 					noticia.setPublico(this.publico);
 					noticia.setActivo(true);
 				
@@ -195,7 +197,7 @@ public class RegistrarNoticiaViewModel {
 		}else
 		{
 			
-			Messagebox.show("Verifique que todos los campos estén llenos" , "American Tech",	Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Verifique que todos los campos estÃ©n llenos" , "American Tech",	Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 

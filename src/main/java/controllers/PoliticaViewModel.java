@@ -80,7 +80,7 @@ public class PoliticaViewModel {
 							try {
 								politicaDao.eliminarPolitica(politica);;
 								reglasAll = politicaDao.obtenerTodos();
-								Messagebox.show("La política ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+								Messagebox.show("La politica ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshReglas", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), "American Tech", Messagebox.OK, Messagebox.ERROR);

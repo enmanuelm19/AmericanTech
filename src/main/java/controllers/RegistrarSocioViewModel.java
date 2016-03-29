@@ -55,7 +55,6 @@ public class RegistrarSocioViewModel {
 	
 	@Init
 	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacions) throws Exception{
-		System.out.println("Apellido "+postulacions.getPostulado().getPersona().getApellido());
 		this.postulacion=postulacions;
 		this.accionDao= new AccionDao();
 		this.acciones= new ArrayList<Accion>();
@@ -65,11 +64,9 @@ public class RegistrarSocioViewModel {
 		this.noticiaDao= new NoticiaDao();
 		List<Accion> acc=accionDao.obtenerTodos();
 		for (int i = 0; i < acc.size(); i++) {
-			System.out.println("nro: " +acc.get(i).getEstadoAccion().getIdEstadoAccion());
 			if(acc.get(i).getEstadoAccion().getIdEstadoAccion()==2)
 				this.acciones.add(acc.get(i));
 		}
-		System.out.println("Apellido "+this.postulacion.getPostulado().getPersona().getApellido());
 	}
 	
 	public ListModelList<Accion> getAccionesAll(){
@@ -112,7 +109,6 @@ public class RegistrarSocioViewModel {
 
 	public void setSeleccionada(Accion seleccionada) {
 		this.seleccionada = seleccionada;
-		System.out.println("dasdasdd: "+this.seleccionada.getIdAccion());
 	}
 	
 	
@@ -133,7 +129,7 @@ public class RegistrarSocioViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (getNroCarnet() != null && !getNroCarnet().equalsIgnoreCase("")) {
 			if(validarCarnet()==true)
-				Messagebox.show("El número de carnet ya existe", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("El numero de carnet ya existe", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			else{
 			if(this.seleccionada!=null){
 				this.postulacion.setAprobado(true);
@@ -141,10 +137,8 @@ public class RegistrarSocioViewModel {
 				socio.setPersona(this.postulacion.getPostulado().getPersona());
 				socio.setPostulacion(this.postulacion);
 				socio.setNroCarnet(this.getNroCarnet());
-				System.out.println("socio es: "+socio.getPersona().getNombre());
 				this.accionDao= new AccionDao();
-				System.out.println("lllsla: "+socio);
-			
+				
 				this.socioDao.agregarSocio(this.socio);
 				postulacionDao= new PostulacionDao();
 				postulacionDao.eliminarPostulacion(this.postulacion);
@@ -156,7 +150,7 @@ public class RegistrarSocioViewModel {
 				accionDao.actualizarAccion(seleccionada);
 				
 				//AQUI CAMBIO EL ESTADO DE LA ACCION
-				Messagebox.show("El Sr(a) "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es ahora un socio del Centro Atlético América", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("El Sr(a) "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es ahora un socio del Centro Atletico America", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				publicarNoticia();
 				Noticia n= noticiaDao.obtenerNoticiaPostulacion(postulacion);
 				noticiaDao.eliminarNoticia(n);
@@ -167,13 +161,13 @@ public class RegistrarSocioViewModel {
 			}
 			}
 		} else {
-			Messagebox.show("El campo Nro Carnet no puede estar vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("El campo Numero Carnet no puede estar vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 	public void publicarNoticia() throws Exception{
 		this.noticia=new Noticia();
 		this.noticia.setTitulo("Nuevo Socio");
-		this.noticia.setDescripcion("¡El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
+		this.noticia.setDescripcion("ï¿½El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(6));
 		this.noticia.setFechaCreacion(new Date());
 		this.noticia.setFoto(socio.getPersona().getFoto());
