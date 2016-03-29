@@ -36,11 +36,14 @@
 										<separator spacing="30px"></separator>
 										<div class="col-md-4">
 											<div class="input-group">
-											<image src="../assets/portal/img/img2.jpg" class='col-md-12'  visible="@load(!vm.fotoDefault)"/>
+												<image
+													src="../assets/portal/img/img2.jpg" class='col-md-12'
+													visible="@load(!vm.fotoDefault)" />
 												<image
 													class="img-responsive col-md-offset-0"
 													content="@bind(vm.uploadedImage)"
-													src="@bind(vm.usuario.persona.foto)" width="100%" visible="@load(vm.fotoDefault)" />
+													src="@bind(vm.usuario.persona.foto)" width="100%"
+													visible="@load(vm.fotoDefault)" />
 												<separator
 													spacing="30px">
 												</separator>
