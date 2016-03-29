@@ -79,7 +79,6 @@ public class PostulacionPortalViewModel {
 		this.noticiaDao= new NoticiaDao();
 		this.tipoNoticiaDao= new TipoNoticiaDao();
 		this.persona.setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
-		System.out.println("kdkladk");
 	}
 	public ListModelList<Preferencia> getPreferencias() {
 		return new ListModelList<Preferencia>(this.preferencias);
@@ -139,7 +138,7 @@ public class PostulacionPortalViewModel {
 	public void uploadImage(@BindingParam("media") Media myMedia) {
 		if(myMedia instanceof org.zkoss.image.Image){
 			if(myMedia.getByteData().length > 2000*1024){
-				Messagebox.show("Escoja una imagen de menor tamaño", "Centro Altetico America", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("Escoja una imagen de menor tamaÃ±o", "Centro Altetico America", Messagebox.OK, Messagebox.INFORMATION);
 			}else{
 				imagenPostulado = true;
 				uploadedImage = myMedia;
@@ -176,7 +175,7 @@ public class PostulacionPortalViewModel {
 			||this.persona.getFechaNac().equals(now)||this.persona.getSexo().equalsIgnoreCase("")
 			||this.postulacion.getCarnetPadrino1().equalsIgnoreCase("")||this.postulacion.getCarnetPadrino2().equalsIgnoreCase("")
 			||this.imagenPostulado==false){
-			Messagebox.show("Verifique que todo los datos estén llenos", "Centro Altetico America", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Verifique que todo los datos estï¿½n llenos", "Centro Altetico America", Messagebox.OK, Messagebox.EXCLAMATION);
 		}else{
 			if(validarCedula()==true){
 				if(this.validarEdad()==false){
@@ -185,7 +184,7 @@ public class PostulacionPortalViewModel {
 				else{
 					try{
 						if(this.postulacion.getCarnetPadrino1().equalsIgnoreCase(this.postulacion.getCarnetPadrino2())){
-							Messagebox.show("Referencias de padrinos no pueden ser idénticas. Verifique sus credenciales", "Centro Altetico America", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Referencias de padrinos no pueden ser idï¿½nticas. Verifique sus credenciales", "Centro Altetico America", Messagebox.OK, Messagebox.EXCLAMATION);
 						}
 						else{
 							this.padrino1=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino1());
@@ -210,7 +209,7 @@ public class PostulacionPortalViewModel {
 								/*********************NOTICIA*******************/
 								this.noticia=new Noticia();
 								this.noticia.setTitulo("Nueva Postulacion");
-								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!");
+								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secciï¿½n de opiniones postulantes!");
 								this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(5));
 								this.noticia.setFechaCreacion(now);
 								Date dia= new Date();
@@ -238,7 +237,7 @@ public class PostulacionPortalViewModel {
 				}
 			}
 			else{
-				Messagebox.show("Cédula encontrada en nuestros registros", "Centro Altetico America", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cï¿½dula encontrada en nuestros registros", "Centro Altetico America", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 		

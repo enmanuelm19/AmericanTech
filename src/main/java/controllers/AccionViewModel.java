@@ -94,7 +94,7 @@ public class AccionViewModel {
 						Messagebox.show("La Accion " +accion.getNroAccion()+ " ha sido eliminada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 						BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
 					} catch (Exception e) {
-						Messagebox.show(e.getMessage(), "La Acción "+accion.getNroAccion() + " no se pudo eliminar", Messagebox.OK, Messagebox.ERROR);
+						Messagebox.show(e.getMessage(), "La Acciï¿½n "+accion.getNroAccion() + " no se pudo eliminar", Messagebox.OK, Messagebox.ERROR);
 					}
 				}
 			}
@@ -151,11 +151,9 @@ public class AccionViewModel {
 		String apell = getApellidoFiltro().toLowerCase();
 		String condicion = getCondicionFiltro().toLowerCase();
 		String nro= getNroAccionFiltro().toLowerCase();
-		System.out.println("condicion "+condicion);
 		for (Iterator<Accion> i = accionDAO.obtenerTodos().iterator(); i.hasNext();) {
 			Accion tmp = i.next();
 			try{
-				System.out.println("socio "+tmp.getSocio().getIdSocio());
 				
 				if (tmp.getSocio().getPersona().getNombre().toLowerCase().contains(prop) &&
 					tmp.getSocio().getPersona().getApellido().toLowerCase().contains(apell)

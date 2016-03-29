@@ -102,7 +102,6 @@ public class RegistrarSancionViewModel {
 				this.evetualidades.add(sancion.getEventualidad());
 				this.evetualidad=sancion.getEventualidad();
 				this.temporalEventualidad=sancion.getEventualidad();
-				System.out.println("event: "+sancion.getEventualidad().getDescripcion());
 				this.verEventualidad=true;
 				this.eventualidadTemporal=true;
 			} catch (NullPointerException e) {
@@ -233,7 +232,7 @@ public class RegistrarSancionViewModel {
 	@NotifyChange({"cedula","persona","eventualidades","carnet"})
 	public void buscarCedula() throws Exception{
 		if(cedula==""||cedula==null){
-			Messagebox.show("Campo Cédula Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Cï¿½dula Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.personaDao= new PersonaDao();
@@ -242,7 +241,7 @@ public class RegistrarSancionViewModel {
 			this.socio=this.socioDao.obtenerSocioPersona(persona);
 			this.afiliado=this.afiliadoDao.obtenerPorPersona(persona);
 			if(this.socio==null && this.afiliado==null){
-				Messagebox.show("Cédula no encontrada", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cï¿½dula no encontrada", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.cedula="";
 				this.persona=new Persona();
 			}
@@ -344,12 +343,11 @@ public class RegistrarSancionViewModel {
 			this.sancion.setTipoSancion(this.tipoSancion);
 			if(this.tipoSancion.getIdTipoSancion()==1){
 				if(this.sancion.getDescripcion().equalsIgnoreCase("")||this.sancion.getDescripcion()==null){
-					Messagebox.show("Debe ingresar la descripción de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe ingresar la descripciï¿½n de la sanciï¿½n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					boolean validar=validacionAgregar();
 					if(validar==true){
-						System.out.println("validar: "+validar);
 						this.actualizar(win);
 					}
 				}
@@ -397,18 +395,17 @@ public class RegistrarSancionViewModel {
 				}
 				
 				if(this.tipoSancion==null){
-					Messagebox.show("Debe seleccionar un motivo de sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe seleccionar un motivo de sanciï¿½n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					this.sancion.setTipoSancion(this.tipoSancion);
 					if(this.tipoSancion.getIdTipoSancion()==1){
 						if(this.sancion.getDescripcion()==""||this.sancion.getDescripcion()==null){
-							Messagebox.show("Debe ingresar la descripción de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Debe ingresar la descripciï¿½n de la sanciï¿½n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 						}
 						else{
 							boolean validar=validacionAgregar();
 							if(validar==true){
-								System.out.println("validar: "+validar);
 								this.agregar(win);
 							}
 						}
@@ -449,12 +446,10 @@ public class RegistrarSancionViewModel {
 			if(this.multabs<=0){
 				validar1=false;
 				Messagebox.show("Debe ingresar el valor de la multa", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
-				System.out.println("multa no valida");
 			}
 			else if(this.multabs>=1){
 				this.sancion.setMonto(this.multabs);
 				validar1=true;
-				System.out.println("multa valida");
 			}
 		}
 		else{
@@ -464,7 +459,7 @@ public class RegistrarSancionViewModel {
 		
 		if(this.suspencion==true){
 			if(this.fechaFin.compareTo(this.fechaInicio)==0){
-				Messagebox.show("Debe Ingresar un rango de fechas de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe Ingresar un rango de fechas de suspenciï¿½n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				validar2=false;
 			}
 			else{

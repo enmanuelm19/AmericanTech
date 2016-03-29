@@ -69,7 +69,6 @@ public class RegistrarMiembroViewModel {
 			this.cargo= new Cargo();
 			miembro.setCargo(cargo);
 			miembro.setJuntaDirectiva(junta);
-			System.out.println("jldjajdjdksjde");
 		}
 		else{
 			editar=true;
@@ -124,7 +123,6 @@ public class RegistrarMiembroViewModel {
 				boolean v=false;
 				for(Iterator<MiembroJunta> i=junta.getMiembroJuntas().iterator(); i.hasNext();){
 					MiembroJunta t=i.next();
-					System.out.println(t.getPersona().getIdentificacion());
 					if(t.getPersona().getIdentificacion().equalsIgnoreCase(per.getIdentificacion()))
 						v=true;
 				}
