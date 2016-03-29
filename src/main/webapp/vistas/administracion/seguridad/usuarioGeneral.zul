@@ -18,7 +18,7 @@
 						<label value="Usuarios" />
 					</div>
 					<space></space>
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px">
 
 						<div align="right" xmlns:w="client">
@@ -30,7 +30,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class="encabezado">
-									Datos de Usuarios
+									Listado Usuarios
 								</div>
 								<div class='linea-two' />
 							</div>
