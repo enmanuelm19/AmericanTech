@@ -1,9 +1,11 @@
 package reportes.estadisticos;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,7 +18,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
+import javax.servlet.ServletOutputStream;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -30,6 +32,8 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import com.lowagie.text.pdf.codec.Base64.InputStream;
+
 import Dao.EventoDao;
 import Dao.InstalacionDao;
 import Dao.SocioDao;
@@ -40,6 +44,7 @@ import modelos.TipoInstalacion;
 import modelos.TipoPreferencia;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -47,8 +52,15 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.export.JExcelApiExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRTextExporter;
+import net.sf.jasperreports.engine.export.JRTextExporterParameter;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 
 
@@ -102,12 +114,12 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 		}
 		
 		if(this.eventoSelected == null){
-			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_evento.jrxml";
-			this.consulta += "Reporte del evento "+ this.eventoSelected.getNombre() +", referente a: "
+			this.consulta = "Reporte del evento "+ this.eventoSelected.getNombre() +", referente a: "
 					+ this.eventoSelected.getDescripcion() +".";
-	
+		
 			sql = "Select DISTINCT e.nombre as evento, i.descripcion as indicador, ie.valor_esperado, ie.valor_real "
 					+ "from indicador i, evento e, indicador_evento ie, preferencia p, preferencia_evento pe, tipo_preferencia tp "
 					+ "where i.id_indicador = ie.indicadorid_indicador and e.id_evento = ie.eventoid_evento and e.id_evento = pe.eventoid_evento "
@@ -115,23 +127,26 @@ public class ReporteEventoValorEsperadoRealEstViewModel {
 					+ "and e.id_evento = "+ this.eventoSelected.getIdEvento()
 					+ " and i.activo=e.activo=ie.activo=p.activo=pe.activo=tp.activo=TRUE "
 					+ " order by e.nombre";
-		
-			System.out.println(sql);
 			generarPDF();
 		}		
 	}
 
 	
 	
-	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+	public void generarPDF() throws JRException, SQLException, IOException {
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
 		JasperPrint jasperPrint = cargarJasper();
 		
-		JRExporter exporter = new JRPdfExporter();
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
-	    con.close();
+		
+		if(jasperPrint.getPages().size() > 0){
+		   Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		} else {
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}
+	   
+	    
 	}
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{

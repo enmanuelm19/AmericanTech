@@ -98,6 +98,4 @@ public class JuntaDirectiva implements java.io.Serializable {
 		return sdf.format(this.fechaFin);
 	}
 	
-	
-
 }

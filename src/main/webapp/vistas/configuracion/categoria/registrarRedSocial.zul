@@ -9,7 +9,8 @@
 		title="@load(vm.editable?'Editar  red social':'Registrar  red social')"
 		closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%" apply="org.zkoss.bind.BindComposer"
+		height="65%"  class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"
+		 apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarRedSocialViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
@@ -25,26 +26,22 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-3">Nombre</div>
-								<div class="col-md-6">
-									<textbox type="text" rows="2"
-										value="@bind(vm.redSocial.descripcion)" width="100%"
-										constraint="no empty" />
-								</div>
+								<label class="col-md-10">Nombre</label>
+								<textbox type="text" rows="1"  class="col-xs-12 col-sm-12 col-md-11"
+									value="@bind(vm.redSocial.descripcion)" 
+									constraint="no empty" />
 							</div>
 						</row>
 
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-3">Icono</div>
-								<div class="col-md-4">
+								<label class="col-md-10">Icono</label>
 									<fileupload label="Examinar"  upload="true,maxsize=2000" onUpload="@command('upload',media=event.media)"
-										iconSclass="z-icon-folder-open" class='boton-guardar' />
-								</div>
+										iconSclass="z-icon-folder-open" class='boton-guardar col-md-4' />
 								<div class="col-md-5">
 									<image
 										content="@bind(vm.uploadedImage)"
-										class='img-responsive' width="20%" />
+										class='img-responsive' width="40%" />
 							</div>
 
 							</div>

@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -28,14 +27,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
 import Dao.InstalacionDao;
 import modelos.Instalacion;
 import modelos.Preferencia;
@@ -43,6 +34,7 @@ import modelos.TipoInstalacion;
 import modelos.TipoPreferencia;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -51,6 +43,8 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRTextExporter;
+import net.sf.jasperreports.engine.export.JRTextExporterParameter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 
@@ -75,8 +69,9 @@ public class ReporteAlquilerViewModel {
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 	private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
-
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+	private boolean isPdf;
+	private String rutaNoEstructurado;
 	
 	@Init
 	public void init() {
@@ -84,8 +79,12 @@ public class ReporteAlquilerViewModel {
 	}
 	
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
-
-		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
+		ArrayList<Instalacion> instalaciones = (ArrayList<Instalacion>) instalacionDao.obtenerTodos();
+		Instalacion todas = new Instalacion();
+		todas.setIdInstalacion(0);
+		todas.setNombre("Todas");
+		instalaciones.add(todas);
+		return new ListModelList<Instalacion>(instalaciones);
 
 	}	
 	
@@ -131,16 +130,15 @@ public class ReporteAlquilerViewModel {
 	
 	@Command
 	public void btnPDF(Event e) throws SQLException, JRException, IOException {
+		isPdf = true;
 		cargarSql();
 	}
 	
 	
 	@Command
-	public void btnEXCEL(Event e) throws SQLException, JRException, IOException {
-		
-		
-		//cargarSql();
-
+	public void btnTXT(Event e) throws SQLException, JRException, IOException {
+		isPdf = false;
+		cargarSql();
 	}
 	
 	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
@@ -156,13 +154,13 @@ public class ReporteAlquilerViewModel {
 		
 		
 		if (this.estadoinstalacion == null){
-			Messagebox.show("Seleccione el estado de la instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-			
+			Messagebox.show("Seleccione el estado de la instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Reservadas")) {
 			
 			this.titulo = "INSTALACIONES RESERVADAS";
 			this.consulta= "Instalacion reservadas ";
 			reporte = System.getProperty("user.home") + "/reportes_america/instalacion_reservada.jrxml";
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_reservada.txt";
 			
 			this.sql = "SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE "
 					+ "FROM instalacion i "
@@ -171,13 +169,14 @@ public class ReporteAlquilerViewModel {
 					+ "INNER JOIN socio s "
 					+ "ON r.socioid_socio = s.id_socio "
 					+ "INNER JOIN persona p "
-					+ "ON p.id_persona = s.personaid_persona ";
+					+ "ON p.id_persona = s.personaid_persona where i.alquilable = true and i.activo = true ";
 			
 			sqlDate();
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Alquiladas")) {
 			this.titulo = "INSTALACIONES ALQUILADAS";
 			this.consulta= "Instalacion alquiladas ";
 			this.reporte = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.jrxml";
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.txt";
 			this.sql = "SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, i.nombre as Instalacion, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE "
 					+ "FROM instalacion i "
 					+ "INNER JOIN reservacion r "
@@ -187,22 +186,27 @@ public class ReporteAlquilerViewModel {
 					+ "INNER JOIN socio s "
 					+ "ON r.socioid_socio = s.id_socio "
 					+ "INNER JOIN persona p "
-					+ "ON p.id_persona = s.personaid_persona ";
+					+ "ON p.id_persona = s.personaid_persona where i.alquilable = true and i.activo = true ";
 			sqlDate();
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Todas")){
 			this.titulo = "INSTALACIONES";
 			this.consulta= "Instalacion ";
 			this.reporte = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.jrxml";
-			this.sql = "SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, i.nombre as Instalacion, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE "
-					+ "FROM instalacion i "
-					+ "INNER JOIN reservacion r "
-					+ "ON r.instalacionid_instalacion = i.id_instalacion "
-					+ "INNER JOIN alquiler a "
-					+ "ON a.reservacionid_reservacion = r.id_reservacion "
+			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_todas.txt";
+			this.sql = "SELECT i.nombre as instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, "
+					+ "s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE, "
+					+ "CASE WHEN (SELECT al.reservacionid_reservacion from alquiler al "
+					+ "where al.reservacionid_reservacion = r.id_reservacion) is NULL then 'Reservacion' ELSE 'Alquiler' END as Estado "
+					+ "from instalacion i "
+					+ "FULL OUTER  join reservacion r "
+					+ "on i.id_instalacion = r.instalacionid_instalacion "
+					+ "FULL OUTER  join alquiler a "
+					+ "on r.id_reservacion = a.reservacionid_reservacion "
 					+ "INNER JOIN socio s "
 					+ "ON r.socioid_socio = s.id_socio "
 					+ "INNER JOIN persona p "
-					+ "ON p.id_persona = s.personaid_persona ";
+					+ "ON p.id_persona = s.personaid_persona "
+					+ "WHERE i.alquilable = true and i.activo = true";
 			sqlDate();
 		}
 		
@@ -213,43 +217,62 @@ public class ReporteAlquilerViewModel {
 	public void sqlDate() throws FileNotFoundException, JRException, SQLException{
 		
 		if(this.instalacionSelected != null){
-			this.sql += " where i.id_instalacion = " + this.instalacionSelected.getIdInstalacion();
-		} else {
-			this.sql += " where  i.activo = true ";
+			if(this.instalacionSelected.getIdInstalacion() != 0 )
+				this.sql += " and  i.id_instalacion = " + this.instalacionSelected.getIdInstalacion();
 		}
 	
 		if(this.fechadesde == null && this.fechahasta == null){
 			generarPDF();
 		} else if (this.fechadesde == null || this.fechahasta == null){
 			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		} else if (this.fechadesde.compareTo(this.fechahasta) > 1 ){
+		} else if (this.fechadesde.compareTo(this.fechahasta) == 1 ){
 			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += "entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";
-			
-			if(this.estadoinstalacion.equalsIgnoreCase("Alquiladas")){
-				
-				sql += " and r.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"'" ;
-			} else {
-				sql += " and r.fecha_inicio NOT BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+sdf.format(this.fechahasta)+"'" ;
-			}
-			
-			
+			sql += " and r.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"'" ;
+
 			generarPDF();
 		}
 	}
 	
 	
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-		System.out.println(sql);
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
-		JasperPrint jasperPrint = cargarJasper();
+		JasperPrint jasperPrint = cargarJasper();	
+			
 		
-		JRExporter exporter = new JRPdfExporter();
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
-	    con.close();
+		if(jasperPrint.getPages().size() > 0){
+			if(this.isPdf) {
+				JRExporter exporter = new JRPdfExporter();
+				Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf");
+			} else {
+				JRExporter exporterTxt = new JRTextExporter();
+				exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
+				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, this.rutaNoEstructurado);
+				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
+				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
+				exporterTxt.exportReport();
+				FileInputStream input = new FileInputStream(this.rutaNoEstructurado);
+				Filedownload.save(input, "txt", nombreArchivo+".txt");
+			    con.close();
+			    
+			    try{
+			    	File file = new File(this.rutaNoEstructurado);
+		    		file.delete();	
+		    	}catch(Exception e){
+		    		
+		    		e.printStackTrace();
+		    		
+		    	}
+			    
+			}
+			
+		} else {
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}		
+		con.close();
 	}
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{

@@ -62,7 +62,7 @@
 								<template name="model">
 									<row>
 										<label value="@load(each.tipoSugerencia.descripcion)" />
-										<label value="@load(each.fecha)" />
+										<label value="@load(each.fechaString)" />
 										<label value="@load(each.usuario.persona.nombre)" />
 										<label value="@load(each.usuario.persona.apellido)" />
 										<image  class="img-responsive col-md-offset-0"

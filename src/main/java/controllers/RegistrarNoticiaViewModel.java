@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import modelos.Foto;
 import modelos.Noticia;
 import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
@@ -25,6 +26,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.image.AImage;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.WebApps;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
@@ -42,24 +44,41 @@ public class RegistrarNoticiaViewModel {
 	private NoticiaDao noticiaDao;
 	private boolean editable;
 	private boolean publico;
+	private String foto;
+	private boolean fotodefault;
+	
 	
 	@Init
 	public void init(@ExecutionArgParam("noticia") Noticia noticia) throws Exception {
 	
-		if (noticia == null) {
-			this.noticia = new Noticia();
-			this.editable = false;
-		} else {
-			this.noticia = noticia;
-			this.editable = true;
-		}
 		//publico = false;
 		noticiaDao= new NoticiaDao();
 		tipoNoticiaAll = new ArrayList<TipoNoticia>();
 		tipoNoticiaDao = new TipoNoticiaDao();
 		tipoNoticiaAll = tipoNoticiaDao.obtenerTodos();
+		
+		if (noticia == null) {
+			this.noticia = new Noticia();
+			this.editable = false;
+			this.fotodefault = true;
+		} else {
+			this.noticia = noticia;
+			this.editable = true;
+			this.fotodefault = false;
+		}
 	}
 	
+	
+	public boolean isFotodefault() {
+		return fotodefault;
+	}
+
+	public void setFotodefault(boolean fotodefault) {
+		this.fotodefault = fotodefault;
+	}
+
+
+
 	public boolean isEditable() {
 		return editable;
 	}
@@ -106,11 +125,25 @@ public class RegistrarNoticiaViewModel {
 
 
 	@Command
-	@NotifyChange("uploadedImage")
+	@NotifyChange({"uploadedImage", "fotodefault"})
 	public void upload(@BindingParam("media") Media myMedia){
-		setUploadedImage(myMedia);
+		if(!editable){
+			fotodefault= false;
+			if(myMedia instanceof org.zkoss.image.Image){
+				if(myMedia.getByteData().length > 2000*1024){
+					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				}else{
+					uploadedImage = myMedia;
+					setUploadedImage(myMedia);
+				}
+			}else{
+				Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}
+			
+		}
 	}
 	
+
 	
 	public Media getUploadedImage() {
 		return uploadedImage;
@@ -120,82 +153,40 @@ public class RegistrarNoticiaViewModel {
 		this.uploadedImage = uploadedImage;
 	}
 
-	
-	public void asignarFoto() throws IOException{
-		String tmp;
-		if(noticia.getFoto() == null){
-			tmp = " ";
-		}else{
-			tmp = noticia.getFoto();
-			}
-		String nombre = "";
-		String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
-		int index;
-		for(int i=tmp.length()-1;i>0;i--){
-			if(tmp.charAt(i) == '/'){
-				index = i;
-				nombre = tmp.substring(index);
-				break;
-			}
-		}
-		File f = new File(ruta, nombre); 
-		if(f.exists() && noticia.getFoto()!= null){
-			URL url = new URL(noticia.getFoto());
-			this.uploadedImage = new AImage(url);
-		}else{
-			URL url = new URL("http://localhost:8081/america/assets/portal/img/img1.jpg");
-			this.uploadedImage = new AImage(url);}
-	}
-	
-	
+
 	@Command
-	public void guardar(@BindingParam("win") Window win) throws Exception {
-		if (noticia.getTitulo()!=null && !noticia.getTitulo().equalsIgnoreCase("")){
-			if(!editable){
-				noticia.setCaducidad(new Date());
-				noticia.setFechaCreacion(new Date());
-				noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
-				noticia.setPublico(this.publico);
-				noticia.setActivo(true);
-			
-				noticiaDao.agregarNoticia(noticia);
-				Messagebox.show(
-						"La noticia " + noticia.getTitulo()
-								+ " ha sido registrada exitosamente", "",
-						Messagebox.OK, Messagebox.INFORMATION);
-			}else
+	public void guardar(@BindingParam("win") Window win) throws Exception 
+	{
+		if(noticia.getCaducidad() != null &&
+		   noticia.getDescripcion().equalsIgnoreCase("") &&
+		   noticia.getTipoNoticia()!=null )
+		{
+			if (noticia.getTitulo()!=null && !noticia.getTitulo().equalsIgnoreCase(""))
 			{
-				noticiaDao.actualizarNoticia(noticia);
-					Messagebox.show("La noticia " + noticia.getTitulo() + " ha sido actualizada exitosamente", "",
-										Messagebox.OK, Messagebox.INFORMATION);
+				if(!editable){
+					fotodefault = false;
+					noticia.setCaducidad(new Date());
+					noticia.setFechaCreacion(new Date());
+					noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
+					noticia.setPublico(this.publico);
+					noticia.setActivo(true);
 				
+					noticiaDao.agregarNoticia(noticia);
+					Messagebox.show("La noticia " + noticia.getTitulo() + " ha sido registrada exitosamente", "American Tech",
+							Messagebox.OK, Messagebox.INFORMATION);
+				}else
+				{
+					noticiaDao.actualizarNoticia(noticia);
+						Messagebox.show("La noticia " + noticia.getTitulo() + " ha sido actualizada exitosamente", "American Tech",
+											Messagebox.OK, Messagebox.INFORMATION);
+				}
+				win.detach();
 			}
-			win.detach();
+		}else
+		{
+			
+			Messagebox.show("Verifique que todos los campos estén llenos" , "American Tech",	Messagebox.OK, Messagebox.INFORMATION);
 		}
-//		if (preferencia.getDescripcion() != null && !preferencia.getDescripcion().equalsIgnoreCase("")) {
-//			if (preferenciaDao.obtenerDescripcion(preferencia.getDescripcion()) == null) {
-//			if (!editable) {
-//				preferenciaDao.agregarPreferencia(preferencia);
-//				Messagebox.show(
-//						"La preferencia " + preferencia.getDescripcion()
-//								+ " ha sido registrada exitosamente", "",
-//						Messagebox.OK, Messagebox.INFORMATION);
-//			} else {
-//				preferenciaDao.actualizarPreferencia(preferencia);
-//				Messagebox.show(
-//						"La preferencia " + preferencia.getDescripcion()
-//								+ " ha sido actualizada exitosamente", "",
-//						Messagebox.OK, Messagebox.INFORMATION);
-//			}
-//			win.detach();
-//			BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
-//			}else {
-//				Messagebox.show("Preferencia con la descripcion "
-//						+ preferencia.getDescripcion() + " ya existe",
-//						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-//			}
-//			}
-//
-		}
+	}
 
 }

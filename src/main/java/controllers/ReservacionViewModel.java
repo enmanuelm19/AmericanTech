@@ -14,6 +14,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -76,16 +77,16 @@ public class ReservacionViewModel {
 	@Command
 	@NotifyChange({ "allReservacion", "cantRegistros" })
 	public void eliminar(@BindingParam("reservacion") final Reservacion reservacion) {
-		Messagebox.show("Estas seguro de eliminar " + reservacion.getIdReservacion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + reservacion.getInstalacion().getNombre(), "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								reservacionDao.eliminarReservacion(reservacion);
 								reservacionAll = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue());
-								Messagebox.show(reservacion.getIdReservacion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(reservacion.getInstalacion().getNombre() + " ha sido eliminado", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
+								BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No se pudo eliminar",
 										Messagebox.OK, Messagebox.ERROR);
@@ -117,6 +118,18 @@ public class ReservacionViewModel {
 		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
 	}
 	
+	public double precio(Date date1, Date date2,float precio){
+		if(date1 != null && date2 != null){
+			return precio * diasEntreFecha(date1, date2);
+		}
+		return 0;
+	}
+	
+	public int diasEntreFecha(Date date1, Date date2) {
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día
+		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
+		return (int) diferencia;
+	}
 	
 
 }

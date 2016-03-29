@@ -19,9 +19,10 @@
 								<div class="encabezado">Datos del Afiliado</div>
 								<div align="left" class="linea-two"></div>
 							</div>
-							<div class="col-md-4" style="margin-top: 10px">
+							<div class="col-md-4" style="margin-top: 10px">						
+								<image src="http://localhost:8080/america/assets/portal/img/img1.jpg" class='col-md-12'  visible="@load(vm.fotodefault)"/>
 								<image content="@bind(vm.uploadedImageAfiliado)" src="/assets/portal/img/img1.jpg"
-									class='img-responsive' width="200px" height="200px" />
+									class='img-responsive' width="200px" height="200px" visible="@load(!vm.fotodefault)"/>
 								<separator spacing="10px" />
 								<fileupload label="Examinar" upload="true,maxsize=2000" onUpload="@command('uploadImage',media=event.media)"
 									iconSclass="z-icon-folder-open" class='boton-guardar' />

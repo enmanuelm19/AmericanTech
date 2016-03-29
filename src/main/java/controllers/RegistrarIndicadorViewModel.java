@@ -61,13 +61,13 @@ public class RegistrarIndicadorViewModel {
 					indicadorDao.agregarIndicador(indicador);
 					Messagebox.show(
 							"El indicador " + indicador.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					indicadorDao.actualizarIndicador(indicador);
 					Messagebox.show(
 							"El indicador " + indicador.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
@@ -77,7 +77,7 @@ public class RegistrarIndicadorViewModel {
 				Messagebox.show(
 						"Indicador con la descripcion "
 								+ indicador.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 

@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -28,7 +27,6 @@ import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
-
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -65,7 +63,7 @@ public class ReporteEventualidadesEstViewModel {
 	private boolean horaHasta;
 	private boolean instalacioncheck;
 	private boolean instalacion;
-	private String horaDesdeSelect, horaHastaSelect;
+	private Time horaDesdeSelect, horaHastaSelect;
 	private Instalacion instalacionSelected;
 	
 	//reporte
@@ -79,7 +77,7 @@ public class ReporteEventualidadesEstViewModel {
 		private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 		private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
-
+		SimpleDateFormat horaformat = new SimpleDateFormat("HH");
 
 	@Init
 	public void init() {
@@ -90,8 +88,12 @@ public class ReporteEventualidadesEstViewModel {
 	}
 
 	public ListModelList<Instalacion> getInstalaciones() throws Exception {
-
-		return new ListModelList<Instalacion>(instalacionDao.obtenerTodos());
+		ArrayList<Instalacion> instalaciones = (ArrayList<Instalacion>) instalacionDao.obtenerTodos();
+		Instalacion todas = new Instalacion();
+		todas.setIdInstalacion(0);
+		todas.setNombre("Todas");
+		instalaciones.add(todas);
+		return new ListModelList<Instalacion>(instalaciones);
 
 	}	
 	
@@ -220,24 +222,24 @@ public class ReporteEventualidadesEstViewModel {
 	
 
 	@NotifyChange("horaDesdeSelect")
-	public String getHoraDesdeSelect() {
+	public Time getHoraDesdeSelect() {
 		return this.horaDesdeSelect;
 	}
 	
 	@NotifyChange("horaDesdeSelect")
-	public void setHoraDesdeSelect(String horaDesdeSelect) {
+	public void setHoraDesdeSelect(Time horaDesdeSelect) {
 		this.horaDesdeSelect = horaDesdeSelect;
 	}
 
 
 	
 	@NotifyChange("horaHastaSelect")
-	public String getHoraHastaSelect() {
+	public Time getHoraHastaSelect() {
 		return this.horaHastaSelect;
 	}
 	
 	@NotifyChange("horaHastaSelect")
-	public void setHoraHastaSelect(String horaHastaSelect) {
+	public void setHoraHastaSelect(Time horaHastaSelect) {
 		this.horaHastaSelect = horaHastaSelect;
 	}
 
@@ -256,11 +258,11 @@ public class ReporteEventualidadesEstViewModel {
 		}
 		
 		if(this.fechaDesde == null && this.fechaHasta == null){
-			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de fechas", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde == null || this.fechaHasta == null){
-			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de fechas", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechaDesde.compareTo(this.fechaHasta) == 1 ){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			if(!this.hora && this.instalacion){
 				System.out.println("1");
@@ -288,7 +290,7 @@ public class ReporteEventualidadesEstViewModel {
 
 	public void salida1() throws FileNotFoundException, JRException, SQLException{
 		reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad1.jrxml";
-		this.consulta += "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
+		this.consulta = "Reporte de eventualidaes entre las fechas " + sdf.format(this.fechaDesde) + " y "+ sdf.format(this.fechaHasta)+".";
 			
 			sql = "select i.nombre as Instalacion, COUNT(e.*), "
 					+ "(COUNT(e.*) *100) /(select COUNT(*) from eventualidad "
@@ -305,13 +307,13 @@ public class ReporteEventualidadesEstViewModel {
 		
 		if (validateHora()){
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad2.jrxml";
-			this.consulta += "Reporte de eventualidaes entre la hora " + Integer.valueOf(this.horaDesdeSelect) + " y "+  Integer.valueOf(this.horaHastaSelect)+".";
+			this.consulta = "Reporte de eventualidaes entre la hora " + horaformat.format(this.horaDesdeSelect) + " y "+  horaformat.format(this.horaHastaSelect)+".";
 			
 			sql = "select DISTINCT ((select COUNT(*) from eventualidad e "
-					+ "where date_part('hour', e.fecha)< "+ Integer.valueOf(this.horaDesdeSelect) +") * 100) / (select COUNT(*) from eventualidad e)  as Antes, "
+					+ "where date_part('hour', e.fecha)< "+ horaformat.format(this.horaDesdeSelect) +") * 100) / (select COUNT(*) from eventualidad e)  as Antes, "
 					+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha) "
-					+ "between "+ Integer.valueOf(this.horaDesdeSelect) +" and "+ Integer.valueOf(this.horaHastaSelect) +" )* 100) / (select COUNT(*) from eventualidad e)  as Seleccion, "
-					+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha)> "+ Integer.valueOf(this.horaHastaSelect) +")  * 100) / (select COUNT(*) from eventualidad e)  as Despues "
+					+ "between "+ horaformat.format(this.horaDesdeSelect) +" and "+ horaformat.format(this.horaHastaSelect) +" )* 100) / (select COUNT(*) from eventualidad e)  as Seleccion, "
+					+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha)> "+ horaformat.format(this.horaHastaSelect) +")  * 100) / (select COUNT(*) from eventualidad e)  as Despues "
 					+ "from eventualidad e "
 					+ "where e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+  sdf.format(this.fechaHasta) +"' and e.activo = true;";
 			generarPDF();
@@ -324,19 +326,34 @@ public class ReporteEventualidadesEstViewModel {
 	private void salida3() throws FileNotFoundException, JRException, SQLException {
 		
 		if(this.instalacionSelected == null){
-			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad3.jrxml";
-			this.consulta += "Reporte de eventualidaes entre la fecha "+sdf.format(this.fechaDesde)+" y "+sdf.format(this.fechaDesde)
-					+ " y referente a la instalacion: " + this.instalacionSelected.getIdInstalacion() +".";		
+			this.consulta = "Reporte de eventualidaes entre la fecha "+sdf.format(this.fechaDesde)+" y "+sdf.format(this.fechaDesde)
+					+ " y referente a la instalacion: " + this.instalacionSelected.getNombre() +".";		
+	
+			
 			
 			sql = "Select te.descripcion, COUNT(e.*) as Cantidad, ( COUNT(e.*) * 100)/(SELECT COUNT(e.*) from eventualidad e "
-					+ "WHERE e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+sdf.format(this.fechaHasta)+"' and e.instalacionid_instalacion =  "+this.instalacionSelected.getIdInstalacion()+") as Porcentaje "
-					+ "from eventualidad e, tipo_eventualidad te "
-					+ "where e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+ sdf.format(this.fechaHasta)+"' "
-					+ "and e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad "
-					+ "and e.instalacionid_instalacion = "+this.instalacionSelected.getIdInstalacion()+" group by te.id_tipo_eventualidad";
+					+ "WHERE e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+sdf.format(this.fechaHasta)+"' ";
+			
+			if(this.instalacionSelected.getIdInstalacion() == 0){
+				sql += ") as Porcentaje";
+			} else {
+				sql += " and e.instalacionid_instalacion =  " +this.instalacionSelected.getIdInstalacion()+") as Porcentaje ";
+			}
 		
+			sql += "from eventualidad e, tipo_eventualidad te "
+			+ "where e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+ sdf.format(this.fechaHasta)+"' "
+			+ "and e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad ";
+		
+			if(this.instalacionSelected.getIdInstalacion() == 0){
+				sql += " group by te.id_tipo_eventualidad";
+			} else {
+				sql += "and e.instalacionid_instalacion = "+this.instalacionSelected.getIdInstalacion()+" group by te.id_tipo_eventualidad";
+			}
+			
+			
 			generarPDF();
 		}
 				
@@ -345,22 +362,37 @@ public class ReporteEventualidadesEstViewModel {
 
 	private void salida4() throws FileNotFoundException, JRException, SQLException {
 		if(this.instalacionSelected == null){
-			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (validateHora()){
-			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad3.jrxml";
-			this.consulta += "Reporte de eventualidaes entre la hora " + Integer.valueOf(this.horaDesdeSelect) + " y "+  Integer.valueOf(this.horaHastaSelect)+""
-					+ " y referente a la instalacion: " + this.instalacionSelected.getIdInstalacion() +".";		
+			reporte = System.getProperty("user.home") + "/reportes_america/estadisticos_eventualidad4.jrxml";
+			this.consulta = "Reporte de eventualidaes entre la hora " + horaformat.format(this.horaDesdeSelect) + " y "+  horaformat.format(this.horaHastaSelect)+""
+					+ " y referente a la instalacion: " + this.instalacionSelected.getNombre() +".";		
 			
-			sql = "SELECT DISTINCT ((select COUNT(*) from eventualidad e "
-					+ "where date_part('hour', e.fecha)< "+ Integer.valueOf(this.horaDesdeSelect) +" ) * 100) / (select COUNT(*) from eventualidad e)  as Antes, "
-					+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha) "
-					+ "between "+ Integer.valueOf(this.horaDesdeSelect) +"  and "+ Integer.valueOf(this.horaHastaSelect) +" )  * 100) / (select COUNT(*) from eventualidad e)  as Seleccion, "
+			String sqllocal = " ";
+			if(this.instalacionSelected.getIdInstalacion() == 0){
+				 sqllocal = "";
+			} else {
+				sqllocal = " where e.instalacionid_instalacion = " + this.instalacionSelected.getIdInstalacion();
+			}
+			
+			String sqlinstalacion = " ";
+			if(this.instalacionSelected.getIdInstalacion() == 0){
+				sqlinstalacion = "";
+			} else {
+				sqlinstalacion = " e.instalacionid_instalacion = " + this.instalacionSelected.getIdInstalacion() + " and ";
+			}
+
+			sql = "SELECT DISTINCT "
 					+ "((select COUNT(*) from eventualidad e "
-					+ "where date_part('hour', e.fecha)> "+ Integer.valueOf(this.horaHastaSelect) +" )  * 100) / (select COUNT(*) from eventualidad e)  as Despues "
+					+ "where "+ sqlinstalacion +" date_part('hour', e.fecha)< "+ horaformat.format(this.horaDesdeSelect) +" ) * 100) / (select COUNT(*) from eventualidad e" + sqllocal + ")  as Antes, "
+					+ "((select COUNT(*) from eventualidad e where date_part('hour', e.fecha) "
+					+ "between "+ horaformat.format(this.horaDesdeSelect) +"  and "+ horaformat.format(this.horaHastaSelect) +" )  * 100) / (select COUNT(*) from eventualidad e " + sqllocal + ")  as Seleccion, "
+					+ "((select COUNT(*) from eventualidad e "
+					+ "where "+ sqlinstalacion +" date_part('hour', e.fecha)> "+ horaformat.format(this.horaHastaSelect) +")  * 100)  / (select COUNT(*) from eventualidad e " + sqllocal + ")  as Despues "
 					+ "from eventualidad e "
-					+ "where e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+sdf.format(this.fechaHasta)+"' and e.activo = true";
+					+ "where "+ sqlinstalacion +" e.fecha between '"+sdf.format(this.fechaDesde)+"' and '"+sdf.format(this.fechaHasta)+"' and e.activo = true";
 			
-			System.out.println(sql);
+			
 			generarPDF();
 		}
 		
@@ -368,13 +400,13 @@ public class ReporteEventualidadesEstViewModel {
 	
 	public boolean validateHora(){
 		if(this.horaDesdeSelect == null && this.horaHastaSelect == null){
-			Messagebox.show("Debe Seleccionar el rango de hora", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de hora", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else if (this.horaDesdeSelect == null || this.horaHastaSelect == null){
-			Messagebox.show("Debe Seleccionar el rango de hora", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de hora", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
-		} else if (Integer.valueOf(this.horaDesdeSelect)  >=  Integer.valueOf(this.horaHastaSelect)  ){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		} else if (this.horaDesdeSelect.after(this.horaHastaSelect)  ){
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else {
 			return true;
@@ -383,15 +415,17 @@ public class ReporteEventualidadesEstViewModel {
 		
 	}
 	
-	
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		System.out.println(sql);
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
 		JasperPrint jasperPrint = cargarJasper();
-		
-		JRExporter exporter = new JRPdfExporter();
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		if(jasperPrint.getPages().size() > 0){
+		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		} else {
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		} 
 	    con.close();
 	}
 	

@@ -25,53 +25,50 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-									<grid>
-										<rows>
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">	
-													   <label class="col-md-4">Seleccione :</label>
-												       <combobox selectedItem="@bind(vm.tipo)" disabled="@load(vm.sancionados)">
-															<comboitem label="Todos" value="1"> </comboitem>
-															<comboitem label="Socios" value="2"></comboitem>
-															<comboitem label="Afiliados" value="3"></comboitem>
-													   </combobox>			   		
-											   	 </div>								   	 
-											  </row>   
-											  <row class="col-md-12 ">
-												 <div class="col-md-8">
-											   		   <div >
-											   		   		<checkbox label="Nro de Carnet" checked="@bind(vm.check)" class="col-md-4" />
-											   		   </div>   
-												       <textbox value="@bind(vm.carnet)" disabled="@load(vm.nrocarnet)"></textbox>
-												       <button iconSclass="z-icon-search blue" disabled="@load(vm.nrocarnet)" class='btn-link' onClick="@command('buscarCarnet')" />
-														   		
-											   	 </div>								   	 
-											  </row>	
-										</rows>
-									</grid>
-									<space spacing="2%"></space>
-								   	 <groupbox  mold="3d" width="75%" height="auto" >
-								   	 	<caption label="Fecha"  ></caption>
-								   	 	<hlayout width="100%" style="padding:2%">
-							                  	<div>
-													Desde: 
-													<datebox  value="@bind(vm.fechadesde)" width="70%" tabindex="7" />
-												</div>
-												<space spacing="5%"></space>
-												<div>
-													Hasta: 
-													<datebox value="@bind(vm.fechahasta)"  width="70%" tabindex="7" />
-												</div>																		   	 							   	 	
-								   	 	</hlayout>
-								   	 </groupbox>
-								   	 <space spacing="2%"></space>						   	 
-								</groupbox >
-							     <div align="center" xmlns:w="client">
-									<button id="btnImprimir" class='boton-guardar' label="Generar txt" />
-									<space spacing="2%"></space>
-									<button id="btnImprimir1" class='boton-guardar' label="Generar PDF" />
-								 </div>	
+								<grid>
+									<rows>
+										  <row class="col-md-12 ">
+											 <div class="col-md-8">	
+												   <label class="col-md-3">Seleccione :</label>
+											       <combobox class="col-md-5" selectedItem="@bind(vm.tipo)" disabled="@load(vm.sancionados)">
+														<comboitem label="Todos" value="Todos"> </comboitem>
+														<comboitem label="Socios" value="Socios"></comboitem>
+														<comboitem label="Afiliados" value="Afiliados"></comboitem>
+												   </combobox>			   		
+										   	 </div>								   	 
+										  </row>   
+										  <row class="col-md-12 ">
+											 <div class="col-md-8">
+										   		   <checkbox class="col-md-3" label="Número de Carnet :"  checked="@bind(vm.check)" />  
+											       <textbox class="col-md-3" value="@bind(vm.carnet)" disabled="@load(vm.nrocarnet)"></textbox>
+											       <button class="col-md-1" sclass="btn-link" onClick="@command('buscarCarnet')" iconSclass="z-icon-search blue"
+											        disabled="@load(vm.nrocarnet)"/>   		
+										   	 </div>								   	 
+										  </row>	
+									</rows>
+								</grid>
+								<space spacing="2%"></space>
+							   	 <groupbox  mold="3d" width="75%" height="auto" >
+							   	 	<caption label="Fecha"  ></caption>
+							   	 	<hlayout width="100%" style="padding:2%">
+						                  	<div>
+												Desde: 
+												<datebox  value="@bind(vm.fechadesde)" width="70%" tabindex="7" />
+											</div>
+											<space spacing="5%"></space>
+											<div>
+												Hasta: 
+												<datebox value="@bind(vm.fechahasta)"  width="70%" tabindex="7" />
+											</div>																		   	 							   	 	
+							   	 	</hlayout>
+							   	 <space spacing="2%"></space>						   	 
+							 </groupbox >
+							 <space spacing="1%"></space>
+						     <div align="center" xmlns:w="client">
+								<button id="btnImprimir" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" />
+								<space spacing="2%"></space>
+								<button id="btnImprimir1" class='boton-guardar' onClick="@command('btnImprimir1')" label="Generar PDF" />
+							 </div>	
 							</div>
 						</div>
 					</div>

@@ -61,25 +61,25 @@ public class RegistrarTipoInstalacionViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoInstalacion(tipoInstalacion);
 					Messagebox.show(
-							"El tipo de instalacion "
+							"El tipo de instalación "
 									+ tipoInstalacion.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoInstalacion(tipoInstalacion);
 					Messagebox.show(
-							"El tipo de instalacion "
+							"El tipo de instalación "
 									+ tipoInstalacion.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoInstalacion", null);
 			} else {
-				Messagebox.show("tipo de instalacion con la descripcion "
+				Messagebox.show("El tipo de instalación con la descripción "
 						+ tipoInstalacion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 	}

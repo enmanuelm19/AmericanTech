@@ -1,119 +1,70 @@
 <zk xmlns:n="native">
 	<?link rel="stylesheet" href="../../assets/intranet/owlCarrusel/assets/owl.carousel.css"?>
+	<?link rel="stylesheet" href="../../assets/intranet/owlCarrusel/assets//owl.theme.default.min.css"?>
 	<?link href="/assets/intranet/less/cartelera.css" rel="stylesheet" type="text/css"?>
-	<script src="../assets/intranet/js/jquery-2.2.1.min.js"/>
-
-<script src="../assets/intranet/owlCarrusel/owl.carousel.min.js"></script>
-
-	<!-- 	<script type="tex/javascript" defer="true"> -->
-	<!-- 		$(document).ready(function() { var owl = $('.owl-carousel'); -->
-	<!-- 		owl.owlCarousel({ items:3, loop:true, margin:10, autoplay:true, -->
-	<!-- 		autoplayTimeout:3000, autoplayHoverPause:true }); -->
-	<!-- 		$('.play').on('click',function(){ -->
-	<!-- 		owl.trigger('autoplay.play.owl',[1000]) }) -->
-	<!-- 		$('.stop').on('click',function(){ -->
-	<!-- 		owl.trigger('autoplay.stop.owl') }) -->
-	<!-- 		}); -->
-	<!-- 	</script> -->
-
-<!-- 	<script type="tex/javascript" defer="true"> -->
-<!-- 		$(document).ready(function() { var owl = $('.owl-carousel'); -->
-<!-- 		owl.owlCarousel({  -->
-<!-- 		items:1, -->
-<!-- 		loop:true,  -->
-<!-- 		margin:10,  -->
-<!-- 		autoplay:true, -->
-<!-- 		autoplayTimeout:10000,  -->
-<!-- 		nav: true,  -->
-<!-- 		autoplayHoverPause:true  -->
-<!-- 		}); -->
-<!-- 		$('.play').on('click',function(){ -->
-<!-- 		owl.trigger('autoplay.play.owl',[1000]) }) -->
-<!-- 		$('.stop').on('click',function(){ -->
-<!-- 		owl.trigger('autoplay.stop.owl') }) -->
-<!-- 		}); -->
-<!-- 	</script> -->
-
-
-<!-- 	<div class="row" align="center" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')"> -->
-<!-- 		<div class="col-xs-10 col-md-offset-1"> -->
-<!-- 			<label style="font-family: 'Lato', sans-serif; font-size:2em;">Noticias </label> -->
-<!-- 				<n:div  class="owl-demo" zclass="none"> -->
-<!-- 				<div zclass="none" class="owl-carousel owl-theme" children="@load(vm.noticiaAll)"> -->
-<!-- 					<template name="children" var="noticias"> -->
-<!-- 						<div  style="display: inline-block !important;" class="owl-item" zclass="none"> -->
-<!-- 							<div style="box-shadow: 0 2px 5px 0 ${noticias.tipoNoticia.color}, 0 2px 10px 0 ${noticias.tipoNoticia.color}; margin-left: 2px; margin-right: 2px; margin-bottom:5px;" class="box" zclass="none"> -->
-<!-- 								<div style="border-radius: 50px;box-shadow: 0px 0px 10px #000000;background-color:${noticias.tipoNoticia.color};color:#FFFFFF; -->
-<!-- 									font-size: 14px; font-weight: bold;padding:12px 20px 12px 65px;text-align: right; border-radius:5px;"> -->
+	
+	<script src="../assets/intranet/js/jquery-2.2.1.min.js" type="text/javascript"/>
+	<script src="../assets/intranet/owlCarrusel/owl.carousel.min.js" type="text/javascript"></script>
+	<script src="../assets/intranet/owlCarrusel/owl.carousel.js" type="text/javascript"></script>
+	
+	<script type="tex/javascript" defer="true">
+		$(document).ready(function() { var owl = $('.owl-carousel');
+		owl.owlCarousel({
+		items:2,
+		loop:true,
+		margin:10, 
+		autoplay:true,
+		autoplayTimeout:10000,
+		nav: true,
 		
-<!-- 									<label zclass="none" value="@load(noticias.fechaCreacion) @converter('formatedDate',format='dd/MM/yyyy')"></label> -->
-<!-- 								</div> -->
-								
-<!-- 								<div class="box-icon" style="background-color:${noticias.tipoNoticia.color};" zclass="none"> -->
-<!-- 									<span class="fa fa-4x"> -->
-<!-- 										<image width="100px" height="100px" src="@load(noticias.foto)" -->
-<!-- 										style="border-radius:50%; box-shadow: 0 2px 10px 0 ${noticias.tipoNoticia.color}, 0 -2px 10px 0 ${noticias.tipoNoticia.color};"> -->
-<!-- 										</image> -->
-<!-- 									</span> -->
-<!-- 								</div> -->
-<!-- 								<n:div class="info" >						 -->
-<!-- 									<div> -->
-<!-- 										<n:h4 class="info text-center" -->
-<!-- 											style="padding:15px; min-width:300px; max-width:600px; min-height:50px; max-height:50px;"> -->
-<!-- 											<label zclass="none" value="@load(noticias.titulo)" /> -->
-<!-- 										</n:h4> -->
-<!-- 										<n:p style="padding:15px; min-width:300px; man-width:500px; min-height:300px; max-height:300px; overflow-x: hidden; overflow-y: auto;"> -->
-<!-- 											<label zclass="none" value="@load(noticias.descripcion)" /> -->
-<!-- 										</n:p>		 -->
-<!-- 									</div> -->
-<!-- 									<n:br></n:br> -->
-<!-- 								</n:div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</template> -->
-<!-- 				</div> -->
-<!-- 			</n:div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
-	<div zclass="none" class="row" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')">
-		<div class="owl-carousel owl-theme " children="@load(vm.noticiaAll)">
-			<template name="children" var="noticias">
-				<n:div style="display: inline-block !important;" class="owl-item col-md-6" zclass="none">
-					<separator spacing="10px"></separator>
-					<n:div align="right" class="box" style="box-shadow: 0 2px 5px 0 ${noticias.tipoNoticia.color}, 0 2px 10px 0 ${noticias.tipoNoticia.color};">
-						<div style="border-radius: 50px;box-shadow: 0px 0px 10px #000000;background-color:${noticias.tipoNoticia.color};color:#FFFFFF;
-							font-size: 14px; font-weight: bold;padding:12px 20px 12px 65px;text-align: right; border-radius:5px;">
-
-							<label zclass="none" value="@load(noticias.fechaCreacion) @converter('formatedDate',format='dd/MM/yyyy')"></label>
-						</div>
-
-						<div class="box-icon" style="background-color:${noticias.tipoNoticia.color};">
-							<span class="fa fa-4x">
-								<image width="100px" height="100px"
-									style="border-radius:50%; box-shadow: 0 2px 10px 0 ${noticias.tipoNoticia.color}, 0 -2px 10px 0 ${noticias.tipoNoticia.color};"
-									src="@load(noticias.foto)">
-								</image>
-							</span>
-						</div>
-						<div>
-							<div>
-								<n:div class="info">
-									<div style="background-color:transparent;  color:#717171;">
-										<n:h4 class="info text-center"
-											style="padding:15px; min-width:300px; max-width:600px; min-height:50px; max-height:50px;">
-											<label zclass="none" value="@load(noticias.titulo)" />
-										</n:h4>
-										<n:p style="padding:15px; min-width:300px; max-width:600px; min-height:120px; max-height:120px; overflow-x: hidden; overflow-y: auto;">
-											<label zclass="none" value="@load(noticias.descripcion)" />
-										</n:p>
-									</div>
-								</n:div>
+		autoplayHoverPause:true });
+		$('.play').on('click',function(){
+		owl.trigger('autoplay.play.owl',[1000]) })
+		$('.stop').on('click',function(){
+		owl.trigger('autoplay.stop.owl') })
+		});
+	</script>
+	
+	<div class="row"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')">
+		<n:div  id="owl-carousel" class="owl-demo col-xs-10 col-md-offset-1" zclass="none">
+			<div zclass="none" class="owl-carousel owl-theme " children="@load(vm.noticiaAll)">
+				<template name="children" var="noticias">
+					<n:div style="display: inline-block !important;"  class="owl-item col-xs-12" zclass="none">
+						<separator spacing="10px"></separator>
+						<n:div align="right" height="700px" class="box" style="box-shadow: 0 2px 5px 0 ${noticias.tipoNoticia.color}, 0 2px 10px 0 ${noticias.tipoNoticia.color};">
+							<div style="border-radius: 50px;box-shadow: 0px 0px 10px #000000;background-color:${noticias.tipoNoticia.color};color:#FFFFFF;
+	   							font-size: 14px; font-weight: bold;padding:12px 20px 12px 65px;text-align: right; border-radius:5px;"> 
+	
+								<label zclass="none" value="@load(noticias.fechaCreacion) @converter('formatedDate',format='dd/MM/yyyy')"></label>
 							</div>
-						</div>
+							<div class="box-icon" style="background-color:${noticias.tipoNoticia.color};">
+								<span class="fa fa-4x">
+									<image width="100px" height="100px"
+										style="border-radius:50%; box-shadow: 0 2px 10px 0 ${noticias.tipoNoticia.color}, 0 -2px 10px 0 ${noticias.tipoNoticia.color};"
+										src="@load(noticias.foto)">
+									</image>
+								</span>
+							</div>
+							<div>
+								<div>
+									<n:div class="info">
+										<div style="background-color:transparent;  color:#717171;">
+											<n:h4 class="info text-center"
+												style="padding:15px; min-width:300px; max-width:600px; min-height:50px; max-height:50px;">
+												<label zclass="none" value="@load(noticias.titulo)" />
+											</n:h4>
+											<n:p style="padding:15px; min-width:300px; max-width:600px; min-height:120px; max-height:120px; overflow-x: hidden; overflow-y: auto;">
+												<label zclass="none" value="@load(noticias.descripcion)" />
+											</n:p>
+										</div>
+									</n:div>
+								</div>
+							</div>
+						</n:div>
 					</n:div>
-				</n:div>
-			</template>
-		</div>
+				</template>
+			</div>
+			</n:div>
 	</div>
+
 </zk>

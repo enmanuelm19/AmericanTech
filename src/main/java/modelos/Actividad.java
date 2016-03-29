@@ -19,7 +19,7 @@ public class Actividad implements java.io.Serializable {
 	private Integer valorEsperado;
 	private Integer valorReal;
 	private boolean finalizada;
-	private boolean activo;
+	private boolean activo = true;
 
 	public Actividad() {
 	}

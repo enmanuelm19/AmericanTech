@@ -57,23 +57,24 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 		List<CalendarEvent> calendarEvents = new LinkedList<CalendarEvent>();
 		super.doAfterCompose(comp);
 		for (Evento evento : eventoDao.obtenerTodos()) {
-			if (evento.getPreferenciaEventos() != null && evento.getEstadoEvento() != null
-					&& (evento.getEstadoEvento().getIdEstadoEvento() == 2
-							|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
-				if (evento.getPreferenciaEventos().size() == 1) {
-					for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {
-						calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
-								preferencia.getPreferencia().getTipoPreferencia().getColor(),
-								preferencia.getPreferencia().getTipoPreferencia().getColor(), evento.getNombre(),
-								Integer.toString(evento.getIdEvento())));
+			if (evento.getEstadoEvento() != null && (evento.getEstadoEvento().getIdEstadoEvento() == 2
+					|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
+				if (evento.getPreferenciaEventos() != null) {
+					if (evento.getPreferenciaEventos().size() == 1) {
+						for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {
+							calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
+									preferencia.getPreferencia().getTipoPreferencia().getColor(),
+									preferencia.getPreferencia().getTipoPreferencia().getColor(), evento.getNombre(),
+									Integer.toString(evento.getIdEvento())));
+						}
+					} else {
+						calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
+								"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 					}
 				} else {
 					calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
 							"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 				}
-			} else {
-				calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
-						"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 			}
 		}
 		calendarModel = new CalendarioModel(calendarEvents);
@@ -141,20 +142,23 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 
 		if (data != null) {
 			data = (CalendarioEvent) event.getCalendarEvent();
-		}
-		Map<String, Object> args = new HashMap<String, Object>();
 
-		try {
-			Evento evento1 = eventoDao.obtenerEvento(Integer.parseInt(data.getTitle()));
-			if (evento1 != null) {
-				args.put("evento", evento1);
-				Window window = (Window) Executions.createComponents("content/calendarEditor.zul", null, args);
-				window.doModal();
+			Map<String, Object> args = new HashMap<String, Object>();
+
+			try {
+				if (data.getTitle() != null) {
+					Evento evento1 = eventoDao.obtenerEvento(Integer.parseInt(data.getTitle()));
+					if (evento1 != null) {
+						args.put("evento", evento1);
+						Window window = (Window) Executions.createComponents("content/calendarEditor.zul", null, args);
+						window.doModal();
+					}
+				}
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 

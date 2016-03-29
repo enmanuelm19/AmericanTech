@@ -7,13 +7,13 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-puzzle-piece" />
 						<a label="Admin. del Sistema" href="#" />
-						<label value="Grupo" />
+						<label value="Grupos" />
 					</div>
 
 				</div>
 				<div class='contenedor' align="center">
 					<div sclass="page-header" align="left">
-						<label value="Grupo" />
+						<label value="Grupos" />
 					</div>
 					<space></space>
 					<div class='form-pricing' width="90%"

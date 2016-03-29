@@ -22,7 +22,7 @@ public class Noticia implements java.io.Serializable {
 	private Date caducidad;
 	private boolean publico;
 	private String enlace;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<NoticiaPreferencia> noticiaPreferencias = new HashSet<NoticiaPreferencia>(
 			0);
 

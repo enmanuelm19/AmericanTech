@@ -61,9 +61,10 @@ public class RegistrarMiembroViewModel {
 			this.carnet="";
 			this.cedula="";
 			//this.cargos=cargoDao.obtenerTodos();
-			desactivar=true;
+			desactivar=false;
 			this.junta=junta;
-			this.persona= new Persona();
+			this.persona= new Persona(0,"","","",false);
+			this.persona.setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			miembro.setPersona(persona);
 			this.cargo= new Cargo();
 			miembro.setCargo(cargo);
@@ -110,17 +111,31 @@ public class RegistrarMiembroViewModel {
 		if(miembro.getPersona().getIdentificacion()==null || miembro.getPersona().getIdentificacion().equalsIgnoreCase(""))
 			Messagebox.show("Debe llenar el campo Cédula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		else{
+			String id=miembro.getPersona().getIdentificacion();
 			Persona per= new Persona();
 			per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
 			if(per==null){
 				Messagebox.show("Cédula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				miembro.setPersona(new Persona());
+				miembro.getPersona().setIdentificacion(id);
 				desactivar=false;
 			}
 			else{
-				miembro.setPersona(per);
-				desactivar=true;
-				System.out.println("correo del miembro: "+miembro.getPersona().getCorreo());
+				boolean v=false;
+				for(Iterator<MiembroJunta> i=junta.getMiembroJuntas().iterator(); i.hasNext();){
+					MiembroJunta t=i.next();
+					System.out.println(t.getPersona().getIdentificacion());
+					if(t.getPersona().getIdentificacion().equalsIgnoreCase(per.getIdentificacion()))
+						v=true;
+				}
+				if(v==true)
+					Messagebox.show("Esta persona ya esta registrada en esta junta directiva", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				else{
+					miembro.setPersona(per);
+					desactivar=true;
+					imagenNueva=true;
+					System.out.println("correo del miembro: "+miembro.getPersona().getCorreo());
+				}
 			}
 		}
 	}
@@ -131,10 +146,14 @@ public class RegistrarMiembroViewModel {
 	
 	@Command
 	public void verificar(){
-		if(miembro.getCargo().getIdCargo()==1 || miembro.getCargo().getIdCargo()==5){
+		if(miembro.getCargo().getIdCargo()==1 || miembro.getCargo().getIdCargo()==2){
 			for(Iterator<MiembroJunta> i=junta.getMiembroJuntas().iterator(); i.hasNext();){
 				MiembroJunta m=i.next();
-				if(m.getCargo().getIdCargo()==1||m.getCargo().getIdCargo()==5){
+				if(m.getCargo().getIdCargo()==1 && miembro.getCargo().getIdCargo()==1){
+					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);		
+					break;
+	
+				}else if(m.getCargo().getIdCargo()==2 && miembro.getCargo().getIdCargo()==2){
 					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);		
 					break;
 				}
@@ -148,10 +167,30 @@ public class RegistrarMiembroViewModel {
 			if(desactivar){
 				if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
 						||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
-						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")){
+						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")||
+						imagenNueva!=true){
 					Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
+					miembroDao.agregarMiembroJunta(miembro);
+					Messagebox.show("El Sr(a) "+miembro.getPersona().getNombre()+" "+miembro.getPersona().getApellido()+" ahora es "+
+					miembro.getCargo().getDescripcion()+" de la junta directiva", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					win.detach();
+					BindUtils.postGlobalCommand(null, null, "refreshJuntas",null);
+				}
+			}
+			else{
+				if(miembro.getPersona().getIdentificacion().equalsIgnoreCase("")||miembro.getPersona().getNombre().equalsIgnoreCase("")
+						||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
+						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")||
+						imagenNueva!=true){
+					Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				}
+				else{
+					if(imagenNueva==true){
+						miembro.getPersona().setFoto(ManejadorArchivo.subirImagen(uploadedImage));
+					}
+					personaDao.agregarPersona(miembro.getPersona());
 					miembroDao.agregarMiembroJunta(miembro);
 					Messagebox.show("El Sr(a) "+miembro.getPersona().getNombre()+" "+miembro.getPersona().getApellido()+" ahora es "+
 					miembro.getCargo().getDescripcion()+" de la junta directiva", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);

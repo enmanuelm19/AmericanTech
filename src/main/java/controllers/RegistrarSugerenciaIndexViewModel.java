@@ -95,7 +95,7 @@ public class RegistrarSugerenciaIndexViewModel {
 		try { 
 			if (sugerencia.getDescripcion() == null || sugerencia.getDescripcion().equalsIgnoreCase("") ||
 					sugerencia.getTipoSugerencia() == null) {
-					Messagebox.show("Debe llenar todos los campos", "",
+					Messagebox.show("Debe llenar todos los campos", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				else{
@@ -105,13 +105,13 @@ public class RegistrarSugerenciaIndexViewModel {
 						sugerenciaDao.agregarSugerencia(sugerencia);
 						sugerencia= new Sugerencia();
 						clienteExterno= new ClienteExterno();
-						Messagebox.show("La sugerencia ha sido registrada exitosamente", "",
+						Messagebox.show("La sugerencia ha sido registrada exitosamente", "American Tech",
 								Messagebox.OK, Messagebox.INFORMATION);
 					}
 
 				}
 			} catch(Exception e) { 
-				Messagebox.show("Verifique los campos e intente de nuevo", "",
+				Messagebox.show("Verifique los campos e intente de nuevo", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 		

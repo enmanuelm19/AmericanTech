@@ -1,21 +1,22 @@
-<vlayout sclass="page-content" xmlns:n="native" spacing="0"
-	class="contenedor" hflex="1" vflex="1">
+<vlayout sclass="page-content" xmlns:n="native" 
+	class="contenedor" hflex="12" vflex="1" zclass="none">
 	<div sclass="page-header">
 		<label value="Inicio" />
 		<a label="Bienvenido" iconSclass="z-icon-angle-double-right"
 			sclass="subtitle" />
 	</div>
-	<div align="center" class="col-lg-12">
 
+	<div align="center" zclass="none">
 		<include src="/vistas/content/carteleraNoticias.zul" />
+		<n:div class="col-xs-4">
+			 <n:a class="twitter-timeline" href="https://twitter.com/CAAAMERICA" data-widget-id="704846698791768065">Tweets por el @CAAAMERICA.</n:a>
+  
+			</n:div>
+			
 		<n:br></n:br>
 		<n:br></n:br>
-			<separator spacing="10px"></separator>
-		<n:div class="info">
-			<a class="btn">Todaaaas </a>
-		</n:div>
-		<separator spacing="10px"></separator>
 		<n:br></n:br>
 		<include src="/vistas/content/calendario.zul" />
 	</div>
 </vlayout>
+

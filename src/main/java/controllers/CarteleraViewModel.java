@@ -4,9 +4,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import modelos.Accion;
 import modelos.Afiliado;
 import modelos.Noticia;
 import modelos.Preferencia;
@@ -41,11 +43,16 @@ public class CarteleraViewModel {
 
 	private List<Noticia> noticiaAll;
 	private List<PreferenciaPersona> ListPrefPersona;
+	private List<Noticia> noticiasPublicasAll;
+	
 	private PreferenciaPersonaDao preferenciaPersDao;
 	private NoticiaPreferenciaDao noticiaPreferenciaDao;
 	private NoticiaDao noticiaDao;
-	private List<Noticia> noticiasPublicasAll;
+
 	private Usuario usuario;
+	private String tituloFilter;
+	private String tipoNoticiaFilter;
+	
 	
 	@Init
 	public void init() throws Exception {
@@ -82,12 +89,32 @@ public class CarteleraViewModel {
 		this.noticiasPublicasAll = noticiasPublicasAll;
 	}
 
-	@GlobalCommand
-	@NotifyChange({ "allNoticia", "cantRegistros" })
-	public void refreshNoticia() throws Exception {
-		noticiaAll = noticiaDao.obtenerTodos();
+	public String getTituloFilter() {
+		if(tituloFilter==null)
+			return "";
+		return tituloFilter;
 	}
 
+	public void setTituloFilter(String tituloFilter) {
+		this.tituloFilter = tituloFilter==null?"":tituloFilter.trim();
+	}
+	
+	public String getTipoNoticiaFilter() {
+		if(tipoNoticiaFilter==null)
+			return "";
+		return tipoNoticiaFilter;
+	}
+
+	public void setTipoNoticiaFilter(String tipoNoticiaFilter) {
+		this.tipoNoticiaFilter = tipoNoticiaFilter==null?"":tipoNoticiaFilter.trim();
+	}
+
+	@GlobalCommand
+	@NotifyChange({ "noticiaAll", "cantRegistros" })
+	public void refreshNoticia() throws Exception {
+		noticiaAll=noticiaDao.obtenerNoticiasVigentes(new Date());
+	}
+	
 	@Command
 	public void showModal(@BindingParam("noticia") Noticia noticia) {
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -96,6 +123,30 @@ public class CarteleraViewModel {
 				null, args);
 		window.doModal();
 	}
+	
+	
+	@GlobalCommand
+	@NotifyChange({ "noticiaAll", "cantidadRegistros" })
+	public void filtro() throws Exception {
+		List<Noticia> tip = new ArrayList<Noticia>();
+		String titulo = getTituloFilter().toLowerCase();
+		String tipo   = getTipoNoticiaFilter().toLowerCase();
+		
+		for (Iterator<Noticia> i = noticiaDao.obtenerNoticiasVigentes(new Date()).iterator(); i.hasNext();) {
+			Noticia tmp = i.next();
+			
+			try{
+				if (tmp.getTitulo().toLowerCase().contains(titulo) &&
+						tmp.getTipoNoticia().getDescripcion().toLowerCase().contains(tipo)){
+						tip.add(tmp);
+			}
+			} catch (NullPointerException e) {
+				
+			}
+		}
+		this.setNoticiaAll(tip);
+	}
+	
 	
 	@GlobalCommand
 	@NotifyChange("noticiaAll")
@@ -134,21 +185,21 @@ public class CarteleraViewModel {
 	}
 	
 	@Command
-	@NotifyChange({ "allNoticia", "cantRegistros" })
+	@NotifyChange({ "noticiaAll", "cantRegistros" })
 	public void eliminar(@BindingParam("noticia") final Noticia noticia) {
 
-		Messagebox.show("Estas seguro de eliminar " + noticia.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + noticia.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								noticiaDao.eliminarNoticia(noticia);
 								noticiaAll = noticiaDao.obtenerTodos();
-								Messagebox.show(noticia.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
-										Messagebox.INFORMATION);
+								Messagebox.show(noticia.getDescripcion() + " ha sido eliminado", "American Tech", 
+										Messagebox.OK,Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), noticia.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), noticia.getDescripcion() + " American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

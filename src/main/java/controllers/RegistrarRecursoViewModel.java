@@ -60,19 +60,19 @@ public class RegistrarRecursoViewModel {
 				if (!editable) {
 					recursoDao.agregarRecurso(recurso);
 					Messagebox.show("El recurso " + recurso.getDescripcion()
-							+ " ha sido registrado exitosamente", "",
+							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					recursoDao.actualizarRecurso(recurso);
 					Messagebox.show("El recurso " + recurso.getDescripcion()
-							+ " ha sido actualizado exitosamente", "",
+							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshRecurso", null);
 			} else {
 				Messagebox.show(
-						"recurso con la descripcion "
+						"El recurso con la descripción "
 								+ recurso.getDescripcion() + " ya existe",
 						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 			}

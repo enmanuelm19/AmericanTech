@@ -88,6 +88,7 @@ public class JuntaDirectivaViewModel {
 							try {
 								j.getMiembroJuntas().remove(m);
 								m.setActivo(false);
+								m.setJuntaDirectiva(null);
 								miembroDao.actualizarMiembroJunta(m);
 								juntaDao.actualizarJuntaDirectiva(j);
 								Messagebox.show("El miembro " + m.getPersona().getNombre()+" "+m.getPersona().getApellido()+" ha sido eliminado", "American Tech", Messagebox.OK, Messagebox.INFORMATION);

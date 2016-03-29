@@ -54,6 +54,7 @@ public class OpinionesDePostulanteViewModel {
 	private List<TipoOpnion> tiposOpinions;
 	private OpinionDao opinionDao;
 	private List<ContadorOpinion> contadores;
+	private boolean fotodefault;
 	
 	@Init
 	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacion, @ExecutionArgParam("verDatos") boolean ver) throws Exception {
@@ -73,9 +74,15 @@ public class OpinionesDePostulanteViewModel {
 			PreferenciaPersona tmp = i.next();
 			this.preferencias.add(tmp.getPreferencia());
 		}
-		
+		if(postulacion.getPostulado().getPersona().getFoto()==null)
+			fotodefault=true;
+		else
+			fotodefault=false;
 		this.padrino1= socioDao.obtenerSocioCarnet(postulacion.getCarnetPadrino1());
 		this.padrino2= socioDao.obtenerSocioCarnet(postulacion.getCarnetPadrino2());
+	}
+	public boolean isFotodefault() {
+		return fotodefault;
 	}
 	
 	public ListModelList<Opinion> getOpinionesAll(){

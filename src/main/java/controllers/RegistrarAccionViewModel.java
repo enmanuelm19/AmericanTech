@@ -31,14 +31,21 @@ public class RegistrarAccionViewModel {
 	private Noticia noticia;
 	private TipoNoticiaDao tipoNoticiaDao;
 	private NoticiaDao noticiaDao;
+	private boolean val;
 	@Init
 	public void init(@ExecutionArgParam("accion") Accion accion) throws Exception {
 		if(accion==null){
 			this.accion=new Accion();
+			EstadoAccion e=new EstadoAccion();
+			e.setNombre("");
+			this.accion.setEstadoAccion(e);
+			this.accion.setValor(0);
 			this.editable = false;
+			val=false;
 		} else {
 			this.accion=accion;
 			this.editable=true;
+			val=true;
 		}
 		this.estdao= new EstadoAccionDao();
 		this.estados= estdao.obtenerTodos();
@@ -67,16 +74,26 @@ public class RegistrarAccionViewModel {
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
 	}
-
+	
+	@Command
+	public void val(){
+		val=true;
+	}
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		System.out.println("valor "+accion.getValor());
 		if ((accion.getNroAccion() != null && !accion.getNroAccion().equalsIgnoreCase("")) || (accion.getValor() > 0.0 && !String.valueOf(accion.getValor()).equalsIgnoreCase(""))) {
 			accion.setActivo(true);
 			if (!editable){
 				if(validarDesc())
 					Messagebox.show("Ya existe una acción con ese número","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				else{
+					if(!val){
+						Messagebox.show("Debe seleccionar un estado acción","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					}else{
+						if(accion.getValor()== 0.0){
+							Messagebox.show("Debe ingresar un valor de acción","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+							
+						}else{
 					accionDAO.agregarAccion(accion);
 					Messagebox.show("La Acción " +accion.getNroAccion()+ " ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 					if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
@@ -84,7 +101,7 @@ public class RegistrarAccionViewModel {
 					}
 					win.detach();
 					BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
-				}
+				}}}
 			}
 			else{
 				if(accion.getEstadoAccion().getIdEstadoAccion()==2){
@@ -118,6 +135,7 @@ public class RegistrarAccionViewModel {
 		this.noticia.setDescripcion("¡Se a aperturado el proceso de postulación para una acción en venta!");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
 		this.noticia.setFechaCreacion(new Date());
+		this.noticia.setFoto("http://i.imgur.com/E9BHBju.png");
 		Date dia= new Date();
 		dia.setDate(new Date().getDate()+15);
 		this.noticia.setCaducidad(dia);

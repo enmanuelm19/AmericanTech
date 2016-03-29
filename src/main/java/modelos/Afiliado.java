@@ -1,8 +1,5 @@
 package modelos;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +15,7 @@ public class Afiliado implements java.io.Serializable {
 	private Socio socio;
 	private TipoAfiliado tipoAfiliado;
 	private String nroCarnet;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Sancion> sancions = new HashSet<Sancion>(0);
 
 	public Afiliado() {
@@ -100,31 +97,6 @@ public class Afiliado implements java.io.Serializable {
 
 	public void setSancions(Set<Sancion> sancions) {
 		this.sancions = sancions;
-	}
-	
-	public int getCalcularEdadAfiliado() {
-		Calendar birth = new GregorianCalendar();
-		Calendar today = new GregorianCalendar();
-		int age=0;
-		int factor=0;
-		Date birthDate= this.persona.getFechaNac();
-		Date currentDate= new Date(); //current date
-		birth.setTime(birthDate);
-		today.setTime(currentDate);
-		if (today.get(Calendar.MONTH) <= birth.get(Calendar.MONTH)) {
-			if (today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)) {
-				if (today.get(Calendar.DATE) > birth.get(Calendar.DATE)) {
-					factor = -1; 
-				}
-			} else {
-		factor = -1;
-		}
-		
-		} 
-		age=(today.get(Calendar.YEAR)-birth.get(Calendar.YEAR))+factor;
-		return age;
-	
-	
 	}
 
 }

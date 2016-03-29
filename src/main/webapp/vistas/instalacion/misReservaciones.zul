@@ -46,22 +46,18 @@
 											width="120px" value="@bind(vm.nombreFiltro)"
 											onChange="@command('filtro')" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="6" />
+									<auxheader colspan="4" />
 								</auxhead>
 								<columns>
-									<column hflex="4">
+									<column hflex="8">
 										Instalacion
 									</column>
-									<column hflex="3">
+									<column hflex="4">
 										Fecha Inicio
 									</column>
-									<column hflex="3">
-										Hora Inicio
-									</column>
-									<column hflex="3">Fecha Fin</column>
-									<column hflex="3">Hora Fin</column>
-									<column hflex="3">Precio</column>
-									<column hflex="3">Acciones</column>
+									<column hflex="4">Fecha Fin</column>
+									<column hflex="4">Precio</column>
+									<column hflex="4">Acciones</column>
 
 								</columns>
 								<rows>
@@ -73,19 +69,15 @@
 											<label
 												value="@load(reservacion.fechaInicioString)" />
 											<label
-												value="@load(reservacion.horaInicioString)" />
-											<label
 												value="@load(reservacion.fechaFinString)" />
-											<label
-												value="@load(reservacion.horaFinString)" />
-											<label value="@load(reservacion.instalacion.precioAlquiler)" />
+											<label value="@load(vm.precio(reservacion.fechaInicio,reservacion.fechaFin,reservacion.instalacion.precioAlquiler))" />
 											<div>
 												<button
 													sclass="btn-link" iconSclass="z-icon-pencil blue"
 													tooltiptext="Editar"
 													onClick="@command('showModal', reservacion=reservacion)" />
 												<button
-													sclass="btn-link" iconSclass="z-icon-times red"
+													sclass="btn-link" iconSclass="z-icon-trash-o red"
 													tooltiptext="Eliminar"
 													onClick="@command('eliminar', reservacion=reservacion)" />
 											</div>

@@ -29,9 +29,12 @@ import org.zkoss.zul.Window;
 
 import Dao.AccionDao;
 import Dao.EstadoAccionDao;
+import Dao.NoticiaDao;
 import Dao.PostulacionDao;
 import Dao.SocioDao;
+import Dao.TipoNoticiaDao;
 import modelos.Accion;
+import modelos.Noticia;
 import modelos.Postulacion;
 import modelos.Socio;
 import modelos.EstadoAccion;
@@ -46,6 +49,9 @@ public class RegistrarSocioViewModel {
 	private PostulacionDao postulacionDao;
 	private EstadoAccionDao estadoAccionDao;
 	private Socio socio;
+	private Noticia noticia;
+	private TipoNoticiaDao tipoNoticiaDao;
+	private NoticiaDao noticiaDao;
 	
 	@Init
 	public void init(@ExecutionArgParam("Postulacion") Postulacion postulacions) throws Exception{
@@ -55,7 +61,8 @@ public class RegistrarSocioViewModel {
 		this.acciones= new ArrayList<Accion>();
 		this.socio= new Socio();
 		this.socioDao= new SocioDao();
-
+		this.tipoNoticiaDao = new TipoNoticiaDao();
+		this.noticiaDao= new NoticiaDao();
 		List<Accion> acc=accionDao.obtenerTodos();
 		for (int i = 0; i < acc.size(); i++) {
 			System.out.println("nro: " +acc.get(i).getEstadoAccion().getIdEstadoAccion());
@@ -125,6 +132,9 @@ public class RegistrarSocioViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (getNroCarnet() != null && !getNroCarnet().equalsIgnoreCase("")) {
+			if(validarCarnet()==true)
+				Messagebox.show("El número de carnet ya existe", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			else{
 			if(this.seleccionada!=null){
 				this.postulacion.setAprobado(true);
 				this.socio= new Socio();
@@ -146,16 +156,44 @@ public class RegistrarSocioViewModel {
 				accionDao.actualizarAccion(seleccionada);
 				
 				//AQUI CAMBIO EL ESTADO DE LA ACCION
+				Messagebox.show("El Sr(a) "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es ahora un socio del Centro Atlético América", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				publicarNoticia();
+				Noticia n= noticiaDao.obtenerNoticiaPostulacion(postulacion);
+				noticiaDao.eliminarNoticia(n);
 				BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 				win.detach();
 			} else {
-				Messagebox.show("Debe seleccionar un accion a vincular", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe seleccionar un accion a vincular", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
-		
+			}
 		} else {
-			Messagebox.show("El campo Nro Carnet no puede estar vacio", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("El campo Nro Carnet no puede estar vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
+	public void publicarNoticia() throws Exception{
+		this.noticia=new Noticia();
+		this.noticia.setTitulo("Nuevo Socio");
+		this.noticia.setDescripcion("¡El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
+		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(6));
+		this.noticia.setFechaCreacion(new Date());
+		this.noticia.setFoto(socio.getPersona().getFoto());
+		this.noticia.setPublico(false);
+		Date dia= new Date();
+		dia.setDate(new Date().getDate()+5);
+		this.noticia.setCaducidad(dia);
+		this.noticia.setPublico(true);
+		this.noticia.setActivo(true);
+		this.noticiaDao.agregarNoticia(noticia);
+	}
 	
+	public boolean validarCarnet() throws Exception{
+		List<Socio> so= socioDao.obtenerTodos();
+		boolean val=false;
+		for(int i=0; i<so.size(); i++){
+			if(so.get(i).getNroCarnet().equalsIgnoreCase(nroCarnet))
+				val=true;
+		}
+		return val;
+	}
 }
 	

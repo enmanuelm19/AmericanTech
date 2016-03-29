@@ -114,7 +114,7 @@
 						<hbox style="margin-top:10px; margin-left:30%;">
 							<div>Multa Bs</div>
 							<div style="margin-left:10px;">
-								<doublebox format="###.##" width="100%" value="@bind(vm.multabs)" constraint="no negative, no zero"/>
+								<doublebox format="#,##0.##" width="100%" value="@bind(vm.multabs)" constraint="no negative, no zero"/>
 							</div>					
 						</hbox>
 					</div>
