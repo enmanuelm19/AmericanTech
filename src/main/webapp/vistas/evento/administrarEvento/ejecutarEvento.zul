@@ -45,9 +45,9 @@
 								<auxheader colspan="1">
 									<image
 										src="../assets/img/funnel.png" />
-									<textbox instant="true" width="40%"
-										value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"
-										placeholder="Buscar" />
+									<textbox instant="true"
+										width="40%" value="@bind(vm.nombreFiltro)"
+										onChange="@command('filtroEyF')" placeholder="Buscar" />
 								</auxheader>
 								
 								<auxheader colspan="1" />
