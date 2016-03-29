@@ -170,8 +170,8 @@ WHERE i.alquilable = true]]>
 	<pageFooter>
 		<band height="56" splitType="Stretch">
 			<staticText>
-				<reportElement x="287" y="12" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
-				<textElement>
+				<reportElement x="191" y="12" width="421" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
+				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>
