@@ -269,7 +269,7 @@ public class RegistrarAfiliadoViewModel {
 					persona.getApellido().equalsIgnoreCase("")|| persona.getTelefono().equalsIgnoreCase("")||
 					persona.getCorreo().equalsIgnoreCase("")|| persona.getSexo().equalsIgnoreCase("")||
 					persona.getDireccion().equalsIgnoreCase("")|| afiliado.getTipoAfiliado().equals(null)){
-						Messagebox.show("Verifique que todo los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Verifique que todo los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			else{
 				personaDao= new PersonaDao();
@@ -306,7 +306,7 @@ public class RegistrarAfiliadoViewModel {
 			}
 		}
 		catch(NullPointerException e){
-			Messagebox.show("Verifique que todo los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Verifique que todo los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			
 		}
 	}

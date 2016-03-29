@@ -129,7 +129,7 @@ public class RegistrarSocioViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (getNroCarnet() != null && !getNroCarnet().equalsIgnoreCase("")) {
 			if(validarCarnet()==true)
-				Messagebox.show("El numero de carnet ya existe", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("El número de carnet ya existe", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			else{
 			if(this.seleccionada!=null){
 				this.postulacion.setAprobado(true);
@@ -150,18 +150,18 @@ public class RegistrarSocioViewModel {
 				accionDao.actualizarAccion(seleccionada);
 				
 				//AQUI CAMBIO EL ESTADO DE LA ACCION
-				Messagebox.show("El Sr(a) "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es ahora un socio del Centro Atletico America", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("El Sr(a) "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es ahora un socio del Centro Atlético América", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				publicarNoticia();
 				Noticia n= noticiaDao.obtenerNoticiaPostulacion(postulacion);
 				noticiaDao.eliminarNoticia(n);
 				BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 				win.detach();
 			} else {
-				Messagebox.show("Debe seleccionar un accion a vincular", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe seleccionar un acción a vincular", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			}
 		} else {
-			Messagebox.show("El campo Numero Carnet no puede estar vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("El campo Número Carnet no puede estar vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 	public void publicarNoticia() throws Exception{

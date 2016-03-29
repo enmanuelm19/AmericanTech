@@ -159,7 +159,7 @@ public class AdministrarPortalViewModel {
 		}
 
 		if (portal.getEvento().equalsIgnoreCase("") || portal.getInstalacion().equalsIgnoreCase("") || portal.getSocio().equalsIgnoreCase("")) {
-			Messagebox.show("Verifique que todos los datos esten llenos", "American Tech", Messagebox.OK,
+			Messagebox.show("Verifique que todos los datos estén llenos", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 			System.out.println("entro");
 		} else{

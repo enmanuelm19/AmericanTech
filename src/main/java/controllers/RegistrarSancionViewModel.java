@@ -343,7 +343,7 @@ public class RegistrarSancionViewModel {
 			this.sancion.setTipoSancion(this.tipoSancion);
 			if(this.tipoSancion.getIdTipoSancion()==1){
 				if(this.sancion.getDescripcion().equalsIgnoreCase("")||this.sancion.getDescripcion()==null){
-					Messagebox.show("Debe ingresar la descripci�n de la sanci�n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe ingresar la descripción de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					boolean validar=validacionAgregar();
@@ -358,7 +358,7 @@ public class RegistrarSancionViewModel {
 				}
 				else{
 					if(this.sancion.getDescripcion().equalsIgnoreCase("")){
-						Messagebox.show("Verifique que los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Verifique que los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					}else{
 					this.sancion.setEventualidad(this.evetualidad);
 					boolean validar=validacionAgregar();
@@ -459,7 +459,7 @@ public class RegistrarSancionViewModel {
 		
 		if(this.suspencion==true){
 			if(this.fechaFin.compareTo(this.fechaInicio)==0){
-				Messagebox.show("Debe Ingresar un rango de fechas de suspenci�n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe Ingresar un rango de fechas de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				validar2=false;
 			}
 			else{
@@ -501,7 +501,7 @@ public class RegistrarSancionViewModel {
 			}
 		}
 		sancionDao.actualizarSancion(sancion);
-		Messagebox.show("La Sancion del Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido actualizada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show("La Sanción del Sr(a) " + persona.getNombre()+ " "+persona.getApellido()+ " a sido actualizada", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		BindUtils.postGlobalCommand(null, null, "refreshSancionados",null);
 		win.detach();
 
