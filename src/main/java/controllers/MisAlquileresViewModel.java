@@ -266,12 +266,23 @@ public class MisAlquileresViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		Set<ArchivoAlquiler> archivoAlquileres = new HashSet();
+		if(getTipoListadoSelected() == null || getTipoListadoSelected().equalsIgnoreCase("")){
+			Messagebox.show("Debe seleccionar tipo de Listado" , "American Tech", Messagebox.OK,
+					Messagebox.EXCLAMATION);
+			return;
+		}
+		if(getArchivoAlquiler() == null){
+			Messagebox.show("Debe cargar un archivo tipo .pdf" , "American Tech", Messagebox.OK,
+					Messagebox.EXCLAMATION);
+			return;
+		}		
 		try {
 			new ArchivoAlquilerDao().agregarArchivoAlquiler(getArchivoAlquiler());
 			archivoAlquileres.addAll(new ArchivoAlquilerDao().obtenerPorAlquiler(getAlquilerSelected()));
 			getAlquilerSelected().setArchivoAlquilers(archivoAlquileres);
 			new AlquilerDao().actualizarAlquiler(getAlquilerSelected());
-			Messagebox.show("Ha agregado archivo:" + getArchivoAlquiler().getNombre());
+			Messagebox.show("Ha agregado archivo:" + getArchivoAlquiler().getNombre(), "American Tech", Messagebox.OK,
+					Messagebox.INFORMATION);
 			win.detach();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
