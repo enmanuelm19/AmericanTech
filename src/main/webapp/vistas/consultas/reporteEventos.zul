@@ -62,7 +62,7 @@
 												  <row class="col-md-12">
 											   	 		<div class="col-md-12">
 											   	 			<label class="col-md-7">Buscar los eventos que tegan al menos 1 de las preferencias seleccionadas</label>
-											   	 			<checkbox class="col-md-1" checked="@bind(vm.checkestricto)" disabled="@load(vm.disableestricto)"></checkbox>	
+											   	 			<checkbox class="col-md-1" checked="@bind(vm.checkcomun)" disabled="@load(vm.disablecomun)"></checkbox>	
 											   	 		</div>									  
 												  </row>	
 								  											  

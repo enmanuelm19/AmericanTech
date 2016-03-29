@@ -15,7 +15,7 @@
 			</div>
 			<separator spacing="1%" />
 			<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
-				align="left">
+				align="left" width="78%">
 				<div class="contenido">
 					<div align="left">
 						<div class='encabezado'>Consulta Socio</div>
@@ -60,8 +60,6 @@
 											
 										</combobox>
 									</div>
-								
-								
 								</row>
 								<row class="col-md-12 ">
 									<div class="col-md-8">
@@ -91,9 +89,7 @@
 													label="@load(each.descripcion)" value="@load(each)" />
 											</template>
 										</combobox>
-
 									</div>
-
 								</row>
 								<row class="col-md-12 ">
 									<div class="col-md-8">
@@ -111,62 +107,54 @@
 											iconSclass="z-icon-plus blue" id=""
 											tooltiptext="Agregar preferencia" />
 									</div>
-
 								</row>
-
-								<row>
-									<div class="col-md-8">
-
-										<grid
-											emptyMessage="No se encuentran sub-categorias registradas"
-											mold="paging" pageSize="5"
-											model="@load(vm.preferenciaEventos)">
-
-											<columns>
-												<column width="40%"
-													hflex="">
-													Categoría
-												</column>
-
-												<column width="40%"
-													hflex="">
-													Sub-categoría
-												</column>
-
-												<column width="20%"
-													hflex="">
-													Acciones
-												</column>
-											</columns>
-
-											<rows>
-												<template
-													name="model">
-													<row>
-
-														<label
-															value="@load(each.tipoPreferencia.descripcion)" />
-
-														<label
-															value="@load(each.descripcion)" />
-
-														<button
-															sclass="btn-link" iconSclass="z-icon-trash-o red"
-															tooltiptext="Eliminar"
-															onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)" />
-													</row>
-												</template>
-											</rows>
-
-											<foot>
-												<footer span="5"
-													class="footer_right" />
-											</foot>
-										</grid>
-									</div>
-								</row>
-
 							</rows>
+						</grid>
+						<grid
+							emptyMessage="No se encuentran sub-categorias registradas"
+							mold="paging" pageSize="5"
+							model="@load(vm.preferenciaEventos)">
+
+							<columns>
+								<column width="40%"
+									hflex="">
+									Categoría
+								</column>
+
+								<column width="40%"
+									hflex="">
+									Sub-categoría
+								</column>
+
+								<column width="20%"
+									hflex="">
+									Acciones
+								</column>
+							</columns>
+
+							<rows>
+								<template
+									name="model">
+									<row>
+
+										<label
+											value="@load(each.tipoPreferencia.descripcion)" />
+
+										<label
+											value="@load(each.descripcion)" />
+
+										<button
+											sclass="btn-link" iconSclass="z-icon-trash-o red"
+											tooltiptext="Eliminar"
+											onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)" />
+									</row>
+								</template>
+							</rows>
+
+							<foot>
+								<footer span="5"
+									class="footer_right" />
+							</foot>
 						</grid>
 					</div>
 

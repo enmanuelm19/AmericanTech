@@ -26,8 +26,6 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-									<space spacing="2%"></space>
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
 								   	 	<caption label="Evento"  ></caption>
 								   	 	<grid>
@@ -48,9 +46,9 @@
 											
 								   	 		</rows>
 								   	 	</grid>
+								   	 	<space spacing="1%"></space>
 								   	 </groupbox>
-									 <space spacing="1%"></space>									   	 
-								</groupbox >
+									 <space spacing="1%"></space>
 							    <div align="center" xmlns:w="client">
 									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
 									iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
