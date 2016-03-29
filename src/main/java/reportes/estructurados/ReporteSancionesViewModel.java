@@ -365,6 +365,7 @@ public void sqlDate() throws FileNotFoundException, JRException, SQLException{
 	}
 
 public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+	
 	Date hoy = (Date) Calendar.getInstance().getTime();
 	String date = "-"+sdfGuio.format(hoy).toString();
 	String nombreArchivo = this.titulo.concat(date);

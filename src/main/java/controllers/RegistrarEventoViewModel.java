@@ -365,6 +365,8 @@ public class RegistrarEventoViewModel {
 			BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
 
 		}
+		else Messagebox.show("Por favor ingrese todos los campos del evento", "American Tech", Messagebox.OK,
+				Messagebox.EXCLAMATION);
 	}
 
 	public boolean isCamposVacio() {
@@ -388,7 +390,7 @@ public class RegistrarEventoViewModel {
 
 		Noticia noticia = new Noticia();
 		NoticiaDao noticiaDao = new NoticiaDao();
-		noticia.setFoto("http://localhost:8080/america/assets/portal/img/noticiadefecto.png");
+		noticia.setFoto("http://i.imgur.com/wGVOjvQ.png");
 		noticia.setFechaCreacion(new Date());
 		noticia.setCaducidad(evento.getFechaFin());
 		noticia.setDescripcion("Nos complace informarle a nuestra familia americanista la realizacion de evento: "+evento.getNombre()+" Desde: "+evento.getFechaInicioString()+" Hasta: "+evento.getFechaFinString());
@@ -461,6 +463,18 @@ public class RegistrarEventoViewModel {
 		noticia.setPublico(evento.isPublico());
 		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
 		noticia.setEvento(evento);
+		
+		Set<NoticiaPreferencia> noticiasPreferencias = new HashSet<NoticiaPreferencia>();
+		
+		for(PreferenciaEvento p: listPreferenciaEvento){
+			NoticiaPreferencia noticiaP = new NoticiaPreferencia();
+			noticiaP.setActivo(true);
+			noticiaP.setNoticia(noticia);
+			noticiaP.setPreferencia(p.getPreferencia());
+			noticiasPreferencias.add(noticiaP);
+		}
+		
+		
 		//noticia.setActivo(true);
 		noticiaDao.actualizarNoticia(noticia);
 		
