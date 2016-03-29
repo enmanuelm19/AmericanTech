@@ -29,7 +29,7 @@ import modelos.Reservacion;
 import modelos.TipoPago;
 import enums.CondicionReservacion;
 
-public class RegistrarAlquilerViewBean {
+public class RegistrarAlquilerViewModel {
 	private List<Reservacion> reservacionAll;
 	private List<Alquiler> alquilerAll;
 	private List<TipoPago> tipoPagoAll;

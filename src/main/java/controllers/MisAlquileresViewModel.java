@@ -38,15 +38,17 @@ import org.zkoss.zul.Window;
 
 import Dao.AlquilerDao;
 import Dao.ArchivoAlquilerDao;
+import Dao.SocioDao;
 import enums.TipoListado;
 import modelos.Alquiler;
 import modelos.ArchivoAlquiler;
+import modelos.Socio;
 import modelos.Usuario;
 
 public class MisAlquileresViewModel {
 	private List<Alquiler> alquilerAll;
 	private Alquiler alquilerSelected;
-	private Usuario usuario;
+	private Socio socio;
 	private String filePath;
 	private boolean fileuploaded = false;
 	private String nombreFiltro;
@@ -66,8 +68,15 @@ public class MisAlquileresViewModel {
 				setAlquilerSelected(alquiler);
 			}
 			Session session = Sessions.getCurrent();
-			usuario = (Usuario) session.getAttribute("Usuario");
-			getAlquilerAll().addAll(new AlquilerDao().obtenerTodos());
+			Usuario usuario = (Usuario) session.getAttribute("Usuario");
+			if (usuario != null) {
+				socio = new SocioDao().obtenerSocioPersona(usuario.getPersona());
+			}
+			for (Alquiler alq : new AlquilerDao().obtenerTodos()) {
+				if (socio != null && alq.getReservacion().getSocio().getIdSocio() == socio.getIdSocio()) {
+					getAlquilerAll().add(alq);
+				}
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,12 +136,12 @@ public class MisAlquileresViewModel {
 		this.alquilerSelected = alquilerSelected;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Socio getSocio() {
+		return socio;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
 
 	@Command
@@ -230,7 +239,7 @@ public class MisAlquileresViewModel {
 
 		for (Iterator<Alquiler> i = new AlquilerDao().obtenerTodos().iterator(); i.hasNext();) {
 			Alquiler tmp = i.next();
-			if (tmp.getReservacion().getInstalacion().getNombre().toLowerCase().contains(nomb)) {
+			if (socio != null && tmp.getReservacion().getSocio().getIdSocio() == socio.getIdSocio()) {
 				alquiler.add(tmp);
 			}
 		}
@@ -238,7 +247,7 @@ public class MisAlquileresViewModel {
 	}
 
 	public String getCantRegistros() {
-		return alquilerAll.size() + " items en la lista";
+		return getAlquilerAll().size() + " items en la lista";
 	}
 
 	public double precio(Date date1, Date date2, float precio) {
