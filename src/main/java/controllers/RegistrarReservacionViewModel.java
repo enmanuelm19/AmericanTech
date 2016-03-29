@@ -257,7 +257,7 @@ public class RegistrarReservacionViewModel {
 					setDisabled(true);
 					Messagebox.show(
 							getInstalacionSeleccionada().getNombre()
-									+ " no se encuentra disponible en el rango de fecha selecionado",
+									+ " no se encuentra disponible en el rango de fecha seleccionado",
 							"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 			} catch (Exception e) {

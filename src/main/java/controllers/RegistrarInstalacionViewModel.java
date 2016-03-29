@@ -229,7 +229,7 @@ public class RegistrarInstalacionViewModel {
 	@NotifyChange({"recursosinstalacion","recursoInstalacion"})
 	public void eliminarRecursoInstalacion(@BindingParam("recursoInstalacion") RecursoInstalacion ri){
 			recursosinstalacion.remove(ri);
-			Messagebox.show("El recurso " + ri.getRecurso().getDescripcion() +" se ha eliminado para esta instalacion", "American Tech",
+			Messagebox.show("El recurso " + ri.getRecurso().getDescripcion() +" se ha eliminado para esta instalación", "American Tech",
 					Messagebox.OK, null );
 	}
 
@@ -240,7 +240,7 @@ public class RegistrarInstalacionViewModel {
 		if(!editable){
 			if(myMedia instanceof org.zkoss.image.Image){
 				if(myMedia.getByteData().length > 2000*1024){
-					Messagebox.show("Escoja una imagen de menor tama�o", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}else{
 					imagenNueva=true;
 					uploadedImage = myMedia;
@@ -253,7 +253,7 @@ public class RegistrarInstalacionViewModel {
 			}
 
 		}else{
-			Messagebox.show("Imagen subida con exito para la instalaci�n " + instalacion.getNombre(), "American Tech",
+			Messagebox.show("Imagen subida con exito para la instalación " + instalacion.getNombre(), "American Tech",
 					Messagebox.OK , Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 						public void onEvent(Event evt) throws InterruptedException {
 							if (evt.getName().equals("onOK")) {
@@ -318,7 +318,7 @@ public class RegistrarInstalacionViewModel {
 
 	}else{
 		Messagebox.show(
-				"Seleccione al menos un recurso", "",
+				"Seleccione al menos un recurso", "American Tech",
 				Messagebox.OK, Messagebox.INFORMATION);
 	}
 	}
@@ -354,7 +354,7 @@ public class RegistrarInstalacionViewModel {
 			
 				}else {
 				
-				Messagebox.show("Instalacion con el Nombre "
+				Messagebox.show("Instalación con el Nombre "
 						+ instalacion.getNombre() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
@@ -362,7 +362,7 @@ public class RegistrarInstalacionViewModel {
 			} else {
 				instalacionDao.actualizarInstalacion(instalacion);
 				Messagebox.show(
-						"La instalacion " + instalacion.getNombre()
+						"La instalación " + instalacion.getNombre()
 								+ " ha sido actualizada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
