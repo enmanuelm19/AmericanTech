@@ -15,9 +15,9 @@
 					<div class='page-header' align="left">
 						<label value="Administrar Alquileres" />
 					</div>
-
+					<space></space>
 					<div
-						class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
+						class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered'
 						width="95%">
 						<div align="left">
 							<div class='encabezado'>

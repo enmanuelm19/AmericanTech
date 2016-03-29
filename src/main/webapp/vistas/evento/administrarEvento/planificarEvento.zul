@@ -24,12 +24,12 @@
 					<separator spacing="30px" />
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px">
 
 						<div align="left" width="100%">
 							<div class="encabezado">
-								Lista de Eventos
+								Listado Eventos
 							</div>
 							<div class="linea-two">
 
@@ -47,8 +47,7 @@
 
 										<auxhead
 											sclass="category-center">
-											<auxheader colspan="1" />
-
+											
 											<auxheader colspan="1">
 												<image
 													src="../assets/img/funnel.png" />
@@ -62,9 +61,9 @@
 										</auxhead>
 
 										<columns>
-											<column width="4%"></column>
+											
 
-											<column width="35%">
+											<column hflex="2">
 												Nombre
 											</column>
 											<column width="15%">
