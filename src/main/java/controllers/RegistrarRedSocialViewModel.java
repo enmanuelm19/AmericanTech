@@ -60,8 +60,16 @@ public class RegistrarRedSocialViewModel {
 	@Command
 	@NotifyChange("uploadedImage")
 	public void upload(@BindingParam("media") Media myMedia){
-		imagenNueva=true;
-		uploadedImage = myMedia;		
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				uploadedImage = myMedia;
+				setUploadedImage(myMedia);
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		}
 	}
 	
 	public Media getUploadedImage() {
@@ -87,14 +95,14 @@ public class RegistrarRedSocialViewModel {
 					Messagebox.show(
 							"La red social "
 									+ RedSocial.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					redDao.actualizarRedSocial(RedSocial);
 					Messagebox.show(
 							"La red social "
 									+ RedSocial.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
@@ -105,6 +113,9 @@ public class RegistrarRedSocialViewModel {
 //						+ RedSocial.getDescripcion() + " ya existe",
 //						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
 //			}
+		}else{
+			Messagebox.show("Verifique que los campos esten llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

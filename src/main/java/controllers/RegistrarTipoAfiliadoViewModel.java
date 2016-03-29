@@ -52,13 +52,14 @@ public class RegistrarTipoAfiliadoViewModel {
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshTipoAfiliado",null);
 			} else {
-				Messagebox.show("El tipo de afiliado con la descripción"
+				Messagebox.show("El tipo de afiliado con la descripcion"
 						+ tipoAfiliado.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 		else{
-			Messagebox.show("Debe llenar los campos","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Verifique que los campos estÃ©n llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 

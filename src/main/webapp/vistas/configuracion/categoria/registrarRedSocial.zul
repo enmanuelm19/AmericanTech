@@ -36,7 +36,7 @@
 						<row>
 							<div class="row col-md-12">
 								<label class="col-md-10">Icono</label>
-									<fileupload label="Examinar"  upload="true,maxsize=2000" onUpload="@command('upload',media=event.media)"
+									<fileupload label="Examinar"  upload="true" onUpload="@command('upload',media=event.media)"
 										iconSclass="z-icon-folder-open" class='boton-guardar col-md-4' />
 								<div class="col-md-5">
 									<image

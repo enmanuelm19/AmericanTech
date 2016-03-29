@@ -72,7 +72,7 @@ public class RegistrarPreferenciaViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 
 		if (preferencia.getDescripcion() != null
-				&& !preferencia.getDescripcion().equalsIgnoreCase("")) {
+				&& !preferencia.getDescripcion().equalsIgnoreCase("") && preferencia.getTipoPreferencia()!=null) {
 			if (preferenciaDao.obtenerDescripcion(preferencia.getDescripcion()) == null) {
 			if (!editable) {
 				preferenciaDao.agregarPreferencia(preferencia);
@@ -90,11 +90,14 @@ public class RegistrarPreferenciaViewModel {
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
 			}else {
-				Messagebox.show("La preferencia con la descripci�n "
+				Messagebox.show("La preferencia con la descripción "
 						+ preferencia.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
-			}
-
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
+
+	}
 }

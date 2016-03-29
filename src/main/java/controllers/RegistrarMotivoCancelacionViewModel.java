@@ -61,13 +61,13 @@ public class RegistrarMotivoCancelacionViewModel {
 			if (motivoDao.obtenerMotivoCancelacion(motivoCancelacion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoDao.agregarMotivoCancelacion(motivoCancelacion);
-					Messagebox.show("El motivo de cancelaci髇 "
+					Messagebox.show("El motivo de cancelaci贸n "
 							+ motivoCancelacion.getDescripcion()
 							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoCancelacion(motivoCancelacion);
-					Messagebox.show("El motivo de cancelaci髇 "
+					Messagebox.show("El motivo de cancelaci贸n "
 							+ motivoCancelacion.getDescripcion()
 							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -76,10 +76,13 @@ public class RegistrarMotivoCancelacionViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoCancelacion", null);
 			} else {
-				Messagebox.show("motivo cancelacion con la descripci髇 "
+				Messagebox.show("El motivo cancelaci贸n con la descripci贸n "
 						+ motivoCancelacion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos est茅n llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

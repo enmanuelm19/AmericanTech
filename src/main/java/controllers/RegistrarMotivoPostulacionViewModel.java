@@ -60,13 +60,13 @@ public class RegistrarMotivoPostulacionViewModel {
 			if (motivoDao.obtenerMotivoPostulacion(motivoPostulacion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoDao.agregarMotivoPostulacion(motivoPostulacion);
-					Messagebox.show("El motivo postulaci髇 "
+					Messagebox.show("El motivo postulaci贸n "
 							+ motivoPostulacion.getDescripcion()
 							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoPostulacion(motivoPostulacion);
-					Messagebox.show("El motivo postulaci髇 "
+					Messagebox.show("El motivo postulaci贸n "
 							+ motivoPostulacion.getDescripcion()
 							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -76,10 +76,13 @@ public class RegistrarMotivoPostulacionViewModel {
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoPostulacion", null);
 			} else {
-				Messagebox.show("El motivo postulaci髇 con la descripci髇 "
+				Messagebox.show("El motivo postulaci贸n con la descripci贸n "
 						+ motivoPostulacion.getDescripcion() + " ya existe",
 						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos est茅n llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}
