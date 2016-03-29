@@ -696,6 +696,7 @@ public class ReporteSociosEstViewModel {
 	
 
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+		System.out.println(sql);
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);

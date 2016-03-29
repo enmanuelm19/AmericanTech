@@ -11,7 +11,7 @@
 		title="Registrar Alquiler"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewBean')">
+		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewModel')">
 		<caption iconSclass="home-icon z-icon-home" />
 
 		<div class="contenido">

@@ -29,7 +29,7 @@ import modelos.Reservacion;
 import modelos.TipoPago;
 import enums.CondicionReservacion;
 
-public class RegistrarAlquilerViewBean {
+public class RegistrarAlquilerViewModel {
 	private List<Reservacion> reservacionAll;
 	private List<Alquiler> alquilerAll;
 	private List<TipoPago> tipoPagoAll;
@@ -119,11 +119,11 @@ public class RegistrarAlquilerViewBean {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						Messagebox.show("The order has been cancelled.");
+						Messagebox.show("Se ha cancelado la reservacion:"+reservacion.getInstalacion().getNombre(), "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 					}
 				}
 			};
-			Messagebox.show("Are you sure you want to cancel?", "Cancel Order",
+			Messagebox.show("Desea cancelar la reservacion?", "American Tech",
 					new Messagebox.Button[] { Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION,
 					clickListener);
 
@@ -166,7 +166,7 @@ public class RegistrarAlquilerViewBean {
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshAlquilerReservacion", null);
 		} else {
-			Messagebox.show("Por favor seleccione Tipo de Pago", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Por favor seleccione Tipo de Pago", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 

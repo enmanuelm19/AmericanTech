@@ -10,6 +10,7 @@ import java.util.Map;
 
 import modelos.Accion;
 import modelos.Afiliado;
+import modelos.Funcion;
 import modelos.Noticia;
 import modelos.Preferencia;
 import modelos.PreferenciaPersona;
@@ -33,6 +34,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.AfiliadoDao;
+import Dao.FuncionDao;
 import Dao.NoticiaDao;
 import Dao.NoticiaPreferenciaDao;
 import Dao.PreferenciaPersonaDao;
@@ -52,6 +54,7 @@ public class CarteleraViewModel {
 	private Usuario usuario;
 	private String tituloFilter;
 	private String tipoNoticiaFilter;
+	NavegacionViewModel navegacion = new NavegacionViewModel();
 	
 	
 	@Init
@@ -152,11 +155,14 @@ public class CarteleraViewModel {
 	@NotifyChange("noticiaAll")
 	public void refreshPostulaciones() throws Exception {
 		 noticiaAll.clear();
-		 
 		 for(int i=0;i< noticiaDao.obtenerNoticiasVigentes(new Date()).size();i++)
 		 {
+			 System.out.println("postulacion " + noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion());
+			 System.out.println((noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion() != null));
 			 if (noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion() != null)
+			 {
 				 noticiaAll.add(noticiaDao.obtenerNoticiasVigentes(new Date()).get(i));
+			 }
 		 }
 		 this.setNoticiaAll(noticiaAll);
 	}
@@ -164,6 +170,7 @@ public class CarteleraViewModel {
 	@GlobalCommand
 	@NotifyChange("noticiaAll")
 	public void refreshCarteleraGeneral() throws Exception {
+		 System.out.println("boton general cartelera");
 	 noticiaAll.clear();
 	 noticiaAll = noticiaDao.obtenerNoticiasVigentes(new Date());
 	}
@@ -172,10 +179,14 @@ public class CarteleraViewModel {
 	@NotifyChange("noticiaAll")
 	public void refreshEventos() throws Exception {
 		noticiaAll.clear();
-		ListPrefPersona = preferenciaPersDao.obtenerPreferenciasPersona(this.usuario.getPersona());
 		
+		 System.out.println("boton eventos "+ this.usuario.getPersona().getIdPersona());
+		ListPrefPersona = preferenciaPersDao.obtenerPreferenciasPersona(this.usuario.getPersona());
+		System.out.println(ListPrefPersona.size() + " pref person");
 		 for(int j=0;j< noticiaPreferenciaDao.obtenerTodos().size();j++){
+			 System.out.println("entro al ciclo " + noticiaPreferenciaDao.obtenerTodos().get(j).getNoticia().getTitulo());
 			 for(int i=0; i< ListPrefPersona.size(); i++){
+				 System.out.println((noticiaPreferenciaDao.obtenerTodos().get(j).getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia()));
 				 if(noticiaPreferenciaDao.obtenerTodos().get(j).getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia())
 				 {
 					 noticiaAll.add(noticiaPreferenciaDao.obtenerTodos().get(j).getNoticia());
@@ -205,5 +216,13 @@ public class CarteleraViewModel {
 						}
 					}
 				});
+	}
+	
+	@GlobalCommand
+	public void verNoticias() throws Exception{
+		Funcion f = new Funcion();
+		FuncionDao fdao = new FuncionDao();
+		f = fdao.obtenerFuncion(77);
+		navegacion.cambiarPantalla(f);
 	}
 }

@@ -159,7 +159,7 @@ public class RegistrarUsuarioViewModel {
 			
 			BindUtils.postGlobalCommand(null,null,"refreshUsuarios",null);
 		}else{
-			Messagebox.show("Faltan campos obligatorios o la contraseÃ±a tiene menos de 8 caracteres", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Faltan campos obligatorios o la contraseña tiene menos de 8 caracteres", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
 		
 
@@ -310,7 +310,7 @@ public class RegistrarUsuarioViewModel {
 	public void upload(@BindingParam("media") Media myMedia){
 		if(myMedia instanceof org.zkoss.image.Image){
 			if(myMedia.getByteData().length > 2000*1024){
-				Messagebox.show("Escoja una imagen de menor tamaÃ±o", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}else{
 				setUploadedImage(myMedia);
 			}

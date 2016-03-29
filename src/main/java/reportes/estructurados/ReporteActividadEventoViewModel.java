@@ -189,7 +189,8 @@ public class ReporteActividadEventoViewModel {
 			this.fecha_hasta = this.eventoSelected.getFechaFin().toString();
 			this.reporte = System.getProperty("user.home") + "/reportes_america/evento_actividad.jrxml";
 			
-			this.sql = " SELECT a.descripcion, to_char(a.fecha_tope, 'YYYY-MM-DD') as fecha_tope, to_char(a.fecha_realizacion, 'YYYY-MM-DD') as fecha_realizacion, a.valor_real, a.valor_esperado, a.finalizada"
+			this.sql = " SELECT a.descripcion, to_char(a.fecha_tope, 'YYYY-MM-DD') as fecha_tope, to_char(a.fecha_realizacion, 'YYYY-MM-DD') as fecha_realizacion, "
+					+ "a.valor_real, a.valor_esperado, CASE WHEN a.finalizada = true THEN 'SI' ELSE 'NO' END "
 						+ " FROM actividad a"
 						+ " WHERE a.eventoid_evento = " + getEventoSelected().getIdEvento() +";";
 			
