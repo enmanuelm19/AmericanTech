@@ -122,7 +122,7 @@ public class RegistrarActividadViewModel {
 			BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
 			Messagebox.show(
 					"El evento " + evento.getNombre()
-					+ " ha actualizado las actividades exitosamente", "",
+					+ " ha actualizado las actividades exitosamente", "American Tech",
 					Messagebox.OK, Messagebox.INFORMATION);
 			win.detach();
 		}
