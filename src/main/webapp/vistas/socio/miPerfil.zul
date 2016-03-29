@@ -70,10 +70,10 @@
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Número Carnet" />
+																class="col-md-4" value="Número Carnet" visible="@load(vm.verAfiliado)" />
 															<textbox
 																constraint="no empty" class="col-md-6" readonly="true"
-																value="@bind(vm.socio.nroCarnet)" />
+																value="@bind(vm.socio.nroCarnet)" visible="@load(vm.verAfiliado)"/>
 														</div>
 													</row>
 													<row>
