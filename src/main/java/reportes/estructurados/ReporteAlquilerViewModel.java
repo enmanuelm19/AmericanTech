@@ -154,7 +154,7 @@ public class ReporteAlquilerViewModel {
 		
 		
 		if (this.estadoinstalacion == null){
-			Messagebox.show("Seleccione el estado de la instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Seleccione el estado de la instalaciÃ³n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if(this.estadoinstalacion.equalsIgnoreCase("Reservadas")) {
 			
 			this.titulo = "INSTALACIONES RESERVADAS";
@@ -272,7 +272,7 @@ public class ReporteAlquilerViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaciï¿½n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

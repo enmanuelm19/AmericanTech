@@ -234,7 +234,7 @@ public class ReporteActividadEventoViewModel {
 				}
 				
 			} else {
-				Messagebox.show("No existe planificación para este evento.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("No existe planificaciÃ³n para este evento.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}		
 			con.close();
 		}

@@ -243,7 +243,7 @@ public class ReporteEventualidadesViewModel {
 		}
 		
 		if( this.tipo == null){
-			Messagebox.show("Debe elegir una seleccion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe elegir una selección", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if( this.tipo.equalsIgnoreCase("Instalaciones")){
 			this.reporte = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/eventualidades_instalacion.txt";
@@ -257,7 +257,7 @@ public class ReporteEventualidadesViewModel {
 
 	public void instalacion() throws FileNotFoundException, JRException, SQLException {
 		if(instalacionSelected == null){
-			Messagebox.show("Debe Seleccionar una instalacion", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar una instalación", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			
 			this.consulta = "Reporte de eventualidades sobre instalacion: " + this.instalacionSelected.getNombre() + " ";
@@ -307,7 +307,7 @@ public class ReporteEventualidadesViewModel {
 		} else if (this.horaInicio == null || this.horaFin == null){
 			Messagebox.show("Debe Seleccionar el rango de hora", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.horaInicio.after(this.horaFin)){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Hora Desde no puede ser mayor a la Hora Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.sql += " and date_part('hour', e.fecha) between "+ hora.format(this.horaInicio) +" and "+ hora.format(this.horaFin)+ " ";
 			sqlDate();
@@ -363,7 +363,7 @@ public class ReporteEventualidadesViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe planificacion para este evento.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe planificación para este Eventualidad.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}

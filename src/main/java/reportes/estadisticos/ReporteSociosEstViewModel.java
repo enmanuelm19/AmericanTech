@@ -394,7 +394,7 @@ public class ReporteSociosEstViewModel {
 		this.consulta= "Socios y afiliados ";
 		if ( this.checkedad == false && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false  ) //
 		{
-			Messagebox.show("Debe seleccionar almenos una opciÛn de busqueda", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar almenos una opci√≥n de busqueda", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		//1
 		else if (this.checkedad == true && this.checksexo == false && this.checkcategoria == false && this.checkpreferencia == false)
@@ -621,7 +621,7 @@ public class ReporteSociosEstViewModel {
 	public boolean sqlCategoria() throws FileNotFoundException, JRException, SQLException{
 		
 		if(this.tipoPreferenciaSelected == null){
-			Messagebox.show("Debe seleccionar una Categoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar una Cat√©goria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			return false;
 		} else {
 			this.consulta += " .";
@@ -681,7 +681,7 @@ public class ReporteSociosEstViewModel {
 		if(this.edaddesde > this.edadhasta){
 			Messagebox.show("Debe seleccionar un rango de edades valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += " con respecto al universo de los socios del centro AtlÈtico AmÈrica.";						
+			this.consulta += " con respecto al universo de los socios del centro AtlÔøΩtico AmÔøΩrica.";						
 			sql += "( ("+ this.sqlparticular +" )+( "+ this.sqlParticularAfiliado +" )) as particular, "
 					+ "( ("+ this.sqlGeneral +" ) + ("+this.sqlGeneralAfiliado+") ) as general, "
 					+ "CASE WHEN ( (" + this.sqlGeneral +")+("+ this.sqlGeneralAfiliado+") ) > 0 THEN "
@@ -726,7 +726,7 @@ public class ReporteSociosEstViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informaci√≥n para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}
