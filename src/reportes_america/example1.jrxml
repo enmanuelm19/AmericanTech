@@ -37,9 +37,9 @@ FROM instalacion i]]>
 				<imageExpression><![CDATA["C:\\america\\america.bmp"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="246" y="0" width="254" height="30" forecolor="#0033FF" uuid="30dca783-b43c-432a-abdc-71dc89c4e067"/>
-				<textElement>
-					<font fontName="SansSerif" size="20" isBold="true"/>
+				<reportElement x="274" y="0" width="254" height="30" forecolor="#0033FF" uuid="30dca783-b43c-432a-abdc-71dc89c4e067"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>

@@ -33,9 +33,9 @@ ON ev.id_eventualidad = sa.eventualidadid_eventualidad]]>
 	<title>
 		<band height="108" splitType="Stretch">
 			<staticText>
-				<reportElement x="262" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
-				<textElement>
-					<font fontName="SansSerif" size="24" isBold="true"/>
+				<reportElement x="254" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
