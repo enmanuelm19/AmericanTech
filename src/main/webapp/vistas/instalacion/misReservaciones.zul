@@ -22,8 +22,8 @@
 						viewModel="@id('vm') @init('controllers.ReservacionViewModel')"
 						xmlns:w="client">
 						<div align="right">
-							<button id="btnMisReservacionesReg"
-								iconSclass="z-icon-plus" class='boton-guardar'
+							<button id="btnMisReservacionesReg" disabled="@bind(vm.disable)"
+								iconSclass="z-icon-plus" class='boton-guardar' style="background: #2B7DBC !important;"
 								label="Agregar Nuevo" onClick="@command('showModal')" />
 						</div>
 						<separator spacing="0.5%px" />

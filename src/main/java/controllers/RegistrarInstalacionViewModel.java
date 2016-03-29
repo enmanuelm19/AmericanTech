@@ -240,7 +240,7 @@ public class RegistrarInstalacionViewModel {
 		if(!editable){
 			if(myMedia instanceof org.zkoss.image.Image){
 				if(myMedia.getByteData().length > 2000*1024){
-					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("Escoja una imagen de menor tamaï¿½o", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}else{
 					imagenNueva=true;
 					uploadedImage = myMedia;
@@ -253,7 +253,7 @@ public class RegistrarInstalacionViewModel {
 			}
 
 		}else{
-			Messagebox.show("Imagen subida con exito para la instalación " + instalacion.getNombre(), "American Tech",
+			Messagebox.show("Imagen subida con exito para la instalaciï¿½n " + instalacion.getNombre(), "American Tech",
 					Messagebox.OK , Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 						public void onEvent(Event evt) throws InterruptedException {
 							if (evt.getName().equals("onOK")) {
@@ -303,7 +303,7 @@ public class RegistrarInstalacionViewModel {
 			for (RecursoInstalacion recursoInstalacion : recursosinstalacion) {
 			if (recursoInstalacion.getRecurso().getIdRecurso() == this.recursoInstalacion.getRecurso().getIdRecurso()){
 				Messagebox.show(
-						"Recurso seleccionado previamente", "",
+						"Recurso seleccionado previamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
@@ -349,21 +349,21 @@ public class RegistrarInstalacionViewModel {
 
 				Messagebox.show(
 						"La instalacion " + instalacion.getNombre()
-								+ " ha sido registrada exitosamente", "",
+								+ " ha sido registrada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			
 				}else {
 				
 				Messagebox.show("Instalacion con el Nombre "
 						+ instalacion.getNombre() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 				
 			} else {
 				instalacionDao.actualizarInstalacion(instalacion);
 				Messagebox.show(
 						"La instalacion " + instalacion.getNombre()
-								+ " ha sido actualizada exitosamente", "",
+								+ " ha sido actualizada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 			win.detach();

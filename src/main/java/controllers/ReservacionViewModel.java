@@ -36,6 +36,7 @@ public class ReservacionViewModel {
 	private ReservacionDao reservacionDao;
 	private String nombreFiltro;
 	private Socio socio;
+	private boolean disable = false;
 	
 	@Init
 	public void init() throws Exception {
@@ -49,20 +50,27 @@ public class ReservacionViewModel {
 			if(socio != null && reser.getSocio().getIdSocio() == socio.getIdSocio()){
 				getReservacionAll().add(reser);
 			}
-		}				
+		}
+		if(socio == null){
+			disable = true;
+		}
 	}
 
+	public boolean isDisable() {
+		return disable;
+	}
 
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
 
 	public Socio getSocio() {
 		return socio;
 	}
 
-
 	public void setSocio(Socio socio) {
 		this.socio = socio;
 	}
-
 
 	public ListModelList<Reservacion> getAllReservacion() {
 		return new ListModelList<Reservacion>(getReservacionAll());
