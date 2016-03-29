@@ -124,7 +124,7 @@ public class ReservacionViewModel {
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No se pudo ser eliminada",
+								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No pudo ser eliminada",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}
