@@ -187,7 +187,7 @@ public class MisAlquileresViewModel {
 		if (upEvent != null) {
 			for (ArchivoAlquiler archiAlq : getAlquilerSelected().getArchivoAlquilers()) {
 				if (archiAlq.getTipoListado().equals(getTipoListadoSelected())) {
-					Messagebox.show("El archivo de tipo " + getTipoListadoSelected() + " Se encuentra registrado");
+					Messagebox.show("El archivo de tipo " + getTipoListadoSelected() + " se encuentra registrado");
 					setTipoListadoSelected(null);
 					return;
 				}
@@ -258,7 +258,7 @@ public class MisAlquileresViewModel {
 	}
 
 	public int diasEntreFecha(Date date1, Date date2) {
-		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al día
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al dï¿½a
 		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
 		return (int) diferencia;
 	}
@@ -267,7 +267,7 @@ public class MisAlquileresViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		Set<ArchivoAlquiler> archivoAlquileres = new HashSet();
 		if(getTipoListadoSelected() == null || getTipoListadoSelected().equalsIgnoreCase("")){
-			Messagebox.show("Debe seleccionar tipo de Listado" , "American Tech", Messagebox.OK,
+			Messagebox.show("Debe seleccionar tipo de listado" , "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 			return;
 		}
