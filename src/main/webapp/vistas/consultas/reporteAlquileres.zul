@@ -31,7 +31,7 @@
 									<row class="col-md-12">
 										<div class="col-md-8">
 								   		    	<label class="col-md-2">
-								   		    		Seleccióne:
+								   		    		Seleccione:
 								   		    	</label>
 								   		   		<combobox class="col-md-6" selectedItem="@bind(vm.estadoinstalacion)">
 														<comboitem label="Alquiladas" value="Alquiladas" />

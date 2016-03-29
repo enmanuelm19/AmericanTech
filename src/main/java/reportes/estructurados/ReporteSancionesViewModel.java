@@ -292,7 +292,7 @@ public class ReporteSancionesViewModel {
 			this.consulta= "Sanciones de Afiliados";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones.txt";
-			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
+			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, af.nro_carnet, sa.descripcion,  "
 				+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
 				+ "CASE WHEN sa.eventualidadid_eventualidad IS NULL THEN 'MONETARIA' ELSE  "
 				+ "(select descripcion from eventualidad where id_eventualidad  = sa.eventualidadid_eventualidad) END  as Motivo  "

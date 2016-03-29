@@ -7,7 +7,7 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
-						<a label="Estructurado" href="#" />
+						<a label="Estadistico" href="#" />
 						<label value="Socio" />
 					</div>
 				</div>
@@ -37,26 +37,27 @@
 													</div>
 							   	 				</div>
 							   	 			</row>
-							   	 			<row class="col-md-12 ">
+							   	 			<row class="col-md-12 col-lg-12 col-sm-12">
 							   	 				<div align="center">
-											   	 	<hlayout width="100%" >
+											   	 
 										                  	<div>
 																<label class="col-md-2">Desde:</label> 
-																<combobox width="" model="@load(vm.listaedades)" class="col-md-4" selectedItem="@bind(vm.edaddesde)" disabled="@load(vm.disableedad)">
+																<combobox width="" model="@load(vm.listaedades)" class="col-sm-3" selectedItem="@bind(vm.edaddesde)" disabled="@load(vm.disableedad)">
 																	<template name="model">
 																		<comboitem
 																			label="@load(each)" value="@load(each)" />
 																	</template>
 																</combobox>
-																<label class="col-md-2">Hasta:</label> 
-																<combobox width="" model="@load(vm.listaedades)" class="col-md-4" selectedItem="@bind(vm.edadhasta)" disabled="@load(vm.disableedad)">																																	
+											
+																<label class="col-md-3">Hasta:</label> 
+																<combobox width="" model="@load(vm.listaedades)" class="col-sm-3" selectedItem="@bind(vm.edadhasta)" disabled="@load(vm.disableedad)">																																	
 																	<template name="model">
 																		<comboitem
 																			label="@load(each)" value="@load(each)" />
 																	</template>
 																</combobox>																
 															</div>																		   	 							   	 	
-											   	 	</hlayout>
+											
 							   	 				</div>
 							   	 			</row>
 							   	 			<row class="col-md-12">

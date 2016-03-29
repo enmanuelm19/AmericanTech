@@ -50,7 +50,7 @@
 											  </row>
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
-													   <label class="col-md-4">Instalacion :</label>
+													   <label class="col-md-4">Instalación :</label>
 												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" disabled="@load(vm.disableinstalaciones)">
 															<template name="model">
 																	<comboitem
