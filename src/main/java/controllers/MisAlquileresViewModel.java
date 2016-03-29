@@ -267,7 +267,7 @@ public class MisAlquileresViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		Set<ArchivoAlquiler> archivoAlquileres = new HashSet();
 		if(getTipoListadoSelected() == null || getTipoListadoSelected().equalsIgnoreCase("")){
-			Messagebox.show("Debe seleccionar tipo de Listado" , "American Tech", Messagebox.OK,
+			Messagebox.show("Debe seleccionar tipo de listado" , "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 			return;
 		}
