@@ -63,7 +63,8 @@ public class RegistrarMiembroViewModel {
 			//this.cargos=cargoDao.obtenerTodos();
 			desactivar=false;
 			this.junta=junta;
-			this.persona= new Persona();
+			this.persona= new Persona(0,"","","",false);
+			this.persona.setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
 			miembro.setPersona(persona);
 			this.cargo= new Cargo();
 			miembro.setCargo(cargo);
@@ -132,6 +133,7 @@ public class RegistrarMiembroViewModel {
 				else{
 					miembro.setPersona(per);
 					desactivar=true;
+					imagenNueva=true;
 					System.out.println("correo del miembro: "+miembro.getPersona().getCorreo());
 				}
 			}
@@ -144,10 +146,14 @@ public class RegistrarMiembroViewModel {
 	
 	@Command
 	public void verificar(){
-		if(miembro.getCargo().getIdCargo()==1 || miembro.getCargo().getIdCargo()==5){
+		if(miembro.getCargo().getIdCargo()==1 || miembro.getCargo().getIdCargo()==2){
 			for(Iterator<MiembroJunta> i=junta.getMiembroJuntas().iterator(); i.hasNext();){
 				MiembroJunta m=i.next();
-				if(m.getCargo().getIdCargo()==1||m.getCargo().getIdCargo()==5){
+				if(m.getCargo().getIdCargo()==1 && miembro.getCargo().getIdCargo()==1){
+					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);		
+					break;
+	
+				}else if(m.getCargo().getIdCargo()==2 && miembro.getCargo().getIdCargo()==2){
 					Messagebox.show("Ya existe un miembro en la junta con el cargo "+miembro.getCargo().getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);		
 					break;
 				}

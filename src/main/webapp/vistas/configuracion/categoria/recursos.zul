@@ -48,7 +48,7 @@
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox
-											value="@bind(vm.idFiltro)" onChange="@command('filtro')"
+											value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											instant="true" width="25%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1" />

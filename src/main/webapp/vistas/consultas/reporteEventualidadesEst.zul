@@ -1,4 +1,6 @@
 <zk xmlns:n="native">
+
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estadisticos.ReporteEventualidadesEstViewModel')">
 		<hlayout spacing="0">
@@ -6,7 +8,7 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
-						<a label="Estructurado" href="#" />
+						<a label="Estadistico" href="#" />
 						<label value="Evetualidad" />
 					</div>
 				</div>
@@ -54,60 +56,12 @@
 											  <row class="col-md-12 ">
 												 <div class="col-md-12" align="center">
 														Desde: 
-														<combobox width="30%" selectedItem="@bind(vm.horaDesdeSelect)" disabled="@load(vm.horaDesde)">
-															<comboitem label="12 AM" value="0"></comboitem>
-															<comboitem label="1 AM" value="1"></comboitem>
-															<comboitem label="2 AM" value="2"></comboitem>
-															<comboitem label="3 AM" value="3"></comboitem>
-															<comboitem label="4 AM" value="4"></comboitem>
-															<comboitem label="5 AM" value="5"></comboitem>
-															<comboitem label="6 AM" value="6"></comboitem>
-															<comboitem label="7 AM" value="7"></comboitem>
-															<comboitem label="8 AM" value="8"></comboitem>
-															<comboitem label="9 AM" value="9"></comboitem>
-															<comboitem label="10 AM" value="10"></comboitem>
-															<comboitem label="11 AM" value="11"></comboitem>
-															<comboitem label="12 PM" value="12"></comboitem>
-															<comboitem label="1 PM" value="13"></comboitem>
-															<comboitem label="2 PM" value="14"></comboitem>
-															<comboitem label="3 PM" value="15"></comboitem>
-															<comboitem label="4 PM" value="16"></comboitem>
-															<comboitem label="5 PM" value="17"></comboitem>
-															<comboitem label="6 PM" value="18"></comboitem>
-															<comboitem label="7 PM" value="19"></comboitem>
-															<comboitem label="8 PM" value="20"></comboitem>
-															<comboitem label="9 PM" value="21"></comboitem>
-															<comboitem label="10 PM" value="22"></comboitem>
-															<comboitem label="11 PM" value="23"></comboitem>																																							
-													   </combobox>
+													   <timebox  value="@bind(vm.horaDesdeSelect)" disabled="@load(vm.horaDesde)"
+														format="HH"  width="30%" />
 													   <space spacing="2%"></space>
 														Hasta: 
-														<combobox width="30%" selectedItem="@bind(vm.horaHastaSelect)" disabled="@load(vm.horaHasta)">
-															<comboitem label="12 AM" value="0"></comboitem>
-															<comboitem label="1 AM" value="1"></comboitem>
-															<comboitem label="2 AM" value="2"></comboitem>
-															<comboitem label="3 AM" value="3"></comboitem>
-															<comboitem label="4 AM" value="4"></comboitem>
-															<comboitem label="5 AM" value="5"></comboitem>
-															<comboitem label="6 AM" value="6"></comboitem>
-															<comboitem label="7 AM" value="7"></comboitem>
-															<comboitem label="8 AM" value="8"></comboitem>
-															<comboitem label="9 AM" value="9"></comboitem>
-															<comboitem label="10 AM" value="10"></comboitem>
-															<comboitem label="11 AM" value="11"></comboitem>
-															<comboitem label="12 PM" value="12"></comboitem>
-															<comboitem label="1 PM" value="13"></comboitem>
-															<comboitem label="2 PM" value="14"></comboitem>
-															<comboitem label="3 PM" value="15"></comboitem>
-															<comboitem label="4 PM" value="16"></comboitem>
-															<comboitem label="5 PM" value="17"></comboitem>
-															<comboitem label="6 PM" value="18"></comboitem>
-															<comboitem label="7 PM" value="19"></comboitem>
-															<comboitem label="8 PM" value="20"></comboitem>
-															<comboitem label="9 PM" value="21"></comboitem>
-															<comboitem label="10 PM" value="22"></comboitem>
-															<comboitem label="11 PM" value="23"></comboitem>																																					
-													   </combobox>		  			   		
+														<timebox  value="@bind(vm.horaHastaSelect)" disabled="@load(vm.horaHasta)"
+														format="HH"  width="30%" />  			   		
 											   	 </div>								   	 
 											  </row>
 											  <row class="col-md-12">
@@ -118,7 +72,7 @@
 											  <row class="col-md-12">
 								                  	<div class="col-md-12">
 								                  		<space spacing="1%"></space>
-														<label> Instalacion:</label>
+														<label> Instalación:</label>
 													   <combobox width="30%" model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" disabled="@load(vm.instalacion)">
 														<template name="model">
 																<comboitem
@@ -132,7 +86,8 @@
 									<space spacing="1%"></space>								 							   	
 								</groupbox >
 							    <div align="center" xmlns:w="client" style="margin:1%">
-								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+								   iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 							    </div>									
 							</div>
 						</div>

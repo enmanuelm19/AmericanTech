@@ -132,6 +132,9 @@ public class RegistrarSocioViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (getNroCarnet() != null && !getNroCarnet().equalsIgnoreCase("")) {
+			if(validarCarnet()==true)
+				Messagebox.show("El número de carnet ya existe", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			else{
 			if(this.seleccionada!=null){
 				this.postulacion.setAprobado(true);
 				this.socio= new Socio();
@@ -162,7 +165,7 @@ public class RegistrarSocioViewModel {
 			} else {
 				Messagebox.show("Debe seleccionar un accion a vincular", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
-		
+			}
 		} else {
 			Messagebox.show("El campo Nro Carnet no puede estar vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
@@ -174,12 +177,23 @@ public class RegistrarSocioViewModel {
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(6));
 		this.noticia.setFechaCreacion(new Date());
 		this.noticia.setFoto(socio.getPersona().getFoto());
+		this.noticia.setPublico(false);
 		Date dia= new Date();
 		dia.setDate(new Date().getDate()+5);
 		this.noticia.setCaducidad(dia);
 		this.noticia.setPublico(true);
 		this.noticia.setActivo(true);
 		this.noticiaDao.agregarNoticia(noticia);
+	}
+	
+	public boolean validarCarnet() throws Exception{
+		List<Socio> so= socioDao.obtenerTodos();
+		boolean val=false;
+		for(int i=0; i<so.size(); i++){
+			if(so.get(i).getNroCarnet().equalsIgnoreCase(nroCarnet))
+				val=true;
+		}
+		return val;
 	}
 }
 	

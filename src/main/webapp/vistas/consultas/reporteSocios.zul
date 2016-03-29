@@ -1,4 +1,5 @@
 <zk xmlns:n="native">
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estructurados.ReporteSocioViewModel')">
 		<div sclass="breadcrumbs">
@@ -12,9 +13,8 @@
 			<div sclass="page-header" align="left">
 				<label value="Socio" />
 			</div>
-
-			<div
-				class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
+			<separator spacing="1%" />
+			<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered'
 				align="left">
 				<div class="contenido">
 					<div align="left">
@@ -45,8 +45,6 @@
 									</div>
 								</row>
 								<row class="col-md-12 ">
-									
-									
 									<div class="col-md-8">
 										<label class="col-md-2">
 											Edad Desde:
@@ -107,12 +105,11 @@
 											creatable="true"
 											selectedObjects="@bind(vm.temporalPreferencia)" />
 
-										<button sclass="btn-link"
-											class="col-md-2"
+										<button class="col-md-2"
+										 sclass="btn-link"
 											onClick="@command('agregarSeleccionPreferencia')"
 											iconSclass="z-icon-plus blue" id=""
 											tooltiptext="Agregar preferencia" />
-
 									</div>
 
 								</row>
@@ -128,12 +125,12 @@
 											<columns>
 												<column width="40%"
 													hflex="">
-													Categoria
+													Categoría
 												</column>
 
 												<column width="40%"
 													hflex="">
-													Sub-categoria
+													Sub-categoría
 												</column>
 
 												<column width="20%"
@@ -176,10 +173,12 @@
 
 					<div align="center" xmlns:w="client">
 						<button id="btnEXCEL" class='boton-guardar'
-							onClick="@command('btnTXT')" label="Generar txt" />
+							onClick="@command('btnTXT')" label="Generar txt" 
+							iconSclass="glyphicon glyphicon-file" tooltiptext="Descargar TXT"/>
 						<space spacing="2%"></space>
 						<button id="btnPDF" class='boton-guardar'
-							onClick="@command('btnPDF')" label="Generar PDF" />
+							onClick="@command('btnPDF')" label="Generar PDF" 
+							iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 					</div>
 				</div>
 			</div>

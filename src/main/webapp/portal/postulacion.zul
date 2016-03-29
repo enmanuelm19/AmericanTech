@@ -1,3 +1,4 @@
+<?page title="Centro Atletico America" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native">
 	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
 	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
@@ -12,7 +13,9 @@
 	<?script type="text/javascript" src="../../assets/portal/js/jquery.scrollTo.js"?>
 	<?script type="text/javascript" src="../../assets/portal/js/move-top.js"?>
 	<?script type="text/javascript" src="../../assets/portal/js/efecto.js"?>
-	<include src="header.zul" />
+	
+
+<include src="header.zul" />
 
 
 	<image id="image" src="../assets/portal/img/bannerPostulacion.png"
@@ -188,16 +191,16 @@
 										style="width:78%; height: 47px !important;  margin-top: -8px;"
 										constraint="no empty, no future: Especifica un valor válido"
 										class="textbox" placeholder="Tu fecha de nacimiento dd-mm-yyy"
-										compact="false" buttonVisible="false"
+										compact="false" buttonVisible="false" format="dd-MM-yyyy"
 										value="@bind(vm.persona.fechaNac)" />
 								</div>
 							</div>
 
 							<div class="imagen_postulante">
 								<image content="@bind(vm.uploadedImage)"
-									src="/assets/portal/img/img1.jpg" width="30%" />
+									src="@load(vm.persona.foto)" width="30%" />
 								<fileupload
-									label="Adjunta tu fotografia" upload="true,maxsize=2000"
+									label="Adjunta tu fotografia" upload="true"
 									onUpload="@command('uploadImage',media=event.media)"
 									iconSclass="z-icon-folder-open" class='boton-Formulario' />
 							</div>

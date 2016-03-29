@@ -78,6 +78,7 @@ public class PostulacionPortalViewModel {
 		this.temporalPreferencia= new ArrayList<Preferencia>();
 		this.noticiaDao= new NoticiaDao();
 		this.tipoNoticiaDao= new TipoNoticiaDao();
+		this.persona.setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
 		System.out.println("kdkladk");
 	}
 	public ListModelList<Preferencia> getPreferencias() {
@@ -136,8 +137,17 @@ public class PostulacionPortalViewModel {
 	@Command
 	@NotifyChange("uploadedImage")
 	public void uploadImage(@BindingParam("media") Media myMedia) {
-		imagenPostulado = true;
-		uploadedImage = myMedia;
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				imagenPostulado = true;
+				uploadedImage = myMedia;
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
 	}
 	
 

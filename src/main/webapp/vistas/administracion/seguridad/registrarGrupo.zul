@@ -57,7 +57,7 @@
 				<separator spacing="30px" />
 				<div class="row">
 					<grid model="@load(vm.funciones)"
-						emptyMessage="No se encuentran reglas registradas" mold="paging"
+						emptyMessage="No se encuentran funciones registradas" mold="paging"
 						pageSize="10">
 						<auxhead sclass="category-center">
 							<auxheader colspan="1">
@@ -81,13 +81,6 @@
 						</columns>
 						<rows>
 							<template name="model">
-								<!-- <row>
-									<label value="Perfil del club" />
-									<div>
-									<button sclass="btn-link"
-									iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-									</div>
-									</row> -->
 								<row>
 									<label
 										value="@load(each.funcion.nombre)">

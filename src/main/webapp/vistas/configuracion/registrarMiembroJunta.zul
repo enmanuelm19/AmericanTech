@@ -15,7 +15,7 @@
 			<space spacing="12%" />
 			<div class="row"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.RegistrarMiembroViewModel')">
 				<div align="right" class='col-md-3'>
-					<image content="@bind(vm.uploadedImage)" src="/assets/portal/img/img2.jpg" width="100%" />
+					<image content="@bind(vm.uploadedImage)" src="@bind(vm.miembro.persona.foto)" width="100%" />
 					<separator />
 					<div>
 						<fileupload iconSclass="z-icon-folder-open" class='boton-guardar col-md-offset-1' label="Examinar"  onUpload="@command('uploadImage',media=event.media)"/>
@@ -85,7 +85,7 @@
 							<row>
 								<div>
 									<label class="col-md-3">Cargo</label>
-									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6" onChange="@command('verificar')">
+									<combobox model="@load(vm.cargosAll)" selectedItem="@bind(vm.miembro.cargo)" value="@bind(vm.miembro.cargo.descripcion)" class="col-md-6" onChange="@command('verificar')" placeholder="Seleccione un cargo">
 										<template name="model">
 											<comboitem label="@load(each.descripcion)" value="@load(each)"/>
 										</template>

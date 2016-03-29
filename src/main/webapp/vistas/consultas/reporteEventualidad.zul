@@ -1,4 +1,6 @@
 <zk xmlns:n="native">
+
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estructurados.ReporteEventualidadesViewModel')">
 		<hlayout spacing="0">
@@ -25,7 +27,6 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
 									<grid>
 										<rows>
 											  <row class="col-md-12 ">
@@ -49,9 +50,8 @@
 											  </row>
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
-													   <label class="col-md-4">Instalacion :</label>
-												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" 
-												       	disabled="@load(vm.disableinstalaciones)">
+													   <label class="col-md-4">Instalación :</label>
+												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" disabled="@load(vm.disableinstalaciones)">
 															<template name="model">
 																	<comboitem
 																		label="@load(each.nombre)" value="@load(each)" />
@@ -80,72 +80,27 @@
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
 								   	 	<caption label="Hora"  ></caption>
 								   	 	<hlayout width="100%" style="padding:2%">
-												 <div class="col-md-12" align="center">
-														Desde: 
-														<combobox width="30%" selectedItem="@bind(vm.horaInicio)">
-															<comboitem label="12 AM" value="0"></comboitem>
-															<comboitem label="1 AM" value="1"></comboitem>
-															<comboitem label="2 AM" value="2"></comboitem>
-															<comboitem label="3 AM" value="3"></comboitem>
-															<comboitem label="4 AM" value="4"></comboitem>
-															<comboitem label="5 AM" value="5"></comboitem>
-															<comboitem label="6 AM" value="6"></comboitem>
-															<comboitem label="7 AM" value="7"></comboitem>
-															<comboitem label="8 AM" value="8"></comboitem>
-															<comboitem label="9 AM" value="9"></comboitem>
-															<comboitem label="10 AM" value="10"></comboitem>
-															<comboitem label="11 AM" value="11"></comboitem>
-															<comboitem label="12 PM" value="12"></comboitem>
-															<comboitem label="1 PM" value="13"></comboitem>
-															<comboitem label="2 PM" value="14"></comboitem>
-															<comboitem label="3 PM" value="15"></comboitem>
-															<comboitem label="4 PM" value="16"></comboitem>
-															<comboitem label="5 PM" value="17"></comboitem>
-															<comboitem label="6 PM" value="18"></comboitem>
-															<comboitem label="7 PM" value="19"></comboitem>
-															<comboitem label="8 PM" value="20"></comboitem>
-															<comboitem label="9 PM" value="21"></comboitem>
-															<comboitem label="10 PM" value="22"></comboitem>
-															<comboitem label="11 PM" value="23"></comboitem>																																							
-													   </combobox>
-													   <space spacing="11%"></space>
-														Hasta: 
-														<combobox width="30%" selectedItem="@bind(vm.horaFin)">
-															<comboitem label="12 AM" value="0"></comboitem>
-															<comboitem label="1 AM" value="1"></comboitem>
-															<comboitem label="2 AM" value="2"></comboitem>
-															<comboitem label="3 AM" value="3"></comboitem>
-															<comboitem label="4 AM" value="4"></comboitem>
-															<comboitem label="5 AM" value="5"></comboitem>
-															<comboitem label="6 AM" value="6"></comboitem>
-															<comboitem label="7 AM" value="7"></comboitem>
-															<comboitem label="8 AM" value="8"></comboitem>
-															<comboitem label="9 AM" value="9"></comboitem>
-															<comboitem label="10 AM" value="10"></comboitem>
-															<comboitem label="11 AM" value="11"></comboitem>
-															<comboitem label="12 PM" value="12"></comboitem>
-															<comboitem label="1 PM" value="13"></comboitem>
-															<comboitem label="2 PM" value="14"></comboitem>
-															<comboitem label="3 PM" value="15"></comboitem>
-															<comboitem label="4 PM" value="16"></comboitem>
-															<comboitem label="5 PM" value="17"></comboitem>
-															<comboitem label="6 PM" value="18"></comboitem>
-															<comboitem label="7 PM" value="19"></comboitem>
-															<comboitem label="8 PM" value="20"></comboitem>
-															<comboitem label="9 PM" value="21"></comboitem>
-															<comboitem label="10 PM" value="22"></comboitem>
-															<comboitem label="11 PM" value="23"></comboitem>																																					
-													   </combobox>		  			   		
-											   	 </div>								   	 																	   	 							   	 	
+							                  	<div>
+													Desde: 
+													<timebox cols="12" value="@bind(vm.horaInicio)" 
+														format="HH"  width="60%" />
+												</div>
+												<space spacing="5%"></space>
+												<div>
+													Hasta: 
+													<timebox cols="12" value="@bind(vm.horaFin)" 
+														format="HH"  width="60%" />
+												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>								   	 
-								   	 <space spacing="2%"></space>						   	 
-								</groupbox >
+								   	 <space spacing="2%"></space>		
 							     <div align="center" xmlns:w="client">
-								   <button id="btnText" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" />
+									<button id="btnText" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" 
+									iconSclass="glyphicon glyphicon-file" tooltiptext="Descargar TXT"/>
 								   <space spacing="2%"></space>
-								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
-							    </div>	
+								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+								   iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
+								 </div>	
 							</div>
 						</div>
 					</div>

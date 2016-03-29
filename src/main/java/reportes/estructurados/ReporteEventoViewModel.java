@@ -12,12 +12,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
+import org.apache.commons.collections.iterators.CollatingIterator;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -29,7 +31,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
 import Dao.PreferenciaDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Preferencia;
@@ -63,9 +64,10 @@ public class ReporteEventoViewModel {
 	private TipoPreferencia tipoPreferenciaSelected;
 	private Set<Preferencia> preferenciaEventos;
 	private ArrayList<Preferencia> seleccionPreferencia;
+	private boolean checkestricto, checkcomun, disableestricto, disablecomun, disablecat;
 	
 	//Reporte
-	private Preferencia preferencia1,preferencia2, preferencia3, preferencia4, preferencia5;
+	private int preferencia1,preferencia2, preferencia3, preferencia4, preferencia5;
 	private String consulta = "";
 	private String titulo = "";
 	private String reporte = System.getProperty("user.home") + "/reportes_america/reporte_socios.jrxml";
@@ -84,9 +86,63 @@ public class ReporteEventoViewModel {
 		preferenciaDao = new PreferenciaDao();
 		temporalPreferencia = new ArrayList<Preferencia>();
 		preferenciaEventos = new HashSet<Preferencia>();
+		this.setDisablecat(true);
+		this.setCheckcomun(false);
+		this.setCheckestricto(false);
 
 	}
 
+	public boolean getDisablecomun() {
+		return disablecomun;
+	}
+
+	public void setDisablecomun(boolean disablecomun) {
+		this.disablecomun = disablecomun;
+	}
+
+	public boolean getCheckestricto() {
+		return checkestricto;
+	}
+	@NotifyChange({"disablecomun", "disablecat"})
+	public void setCheckestricto(boolean checkestricto) {
+		this.checkestricto = checkestricto;
+		if(this.checkestricto == true)
+		{
+			this.setDisablecomun(true);
+			this.setDisablecat(false);
+		}else
+		{
+			this.setDisablecomun(false);
+			this.setDisablecat(true);
+		}
+			
+	}
+
+	public boolean getDisableestricto() {
+		return disableestricto;
+	}
+
+	public void setDisableestricto(boolean disableestricto) {
+		this.disableestricto = disableestricto;
+	}
+
+	public boolean getCheckcomun() {
+		return checkcomun;
+	}
+	@NotifyChange({"disableestricto","disablecat"})
+	public void setCheckcomun(boolean checkcomun) {
+		this.checkcomun = checkcomun;
+		if(this.checkcomun == true)
+		{
+			this.setDisableestricto(true);
+			this.setDisablecat(false);
+		}else 
+			{
+				this.setDisablecat(true);
+				this.setDisableestricto(false);
+			}
+	}	
+	
 	public ListModelList<TipoPreferencia> getTipoPreferencia() throws Exception {
 
 		return new ListModelList<TipoPreferencia>(tipopreferenciaDao.obtenerTodos());
@@ -158,7 +214,7 @@ public class ReporteEventoViewModel {
 			setPreferenciaEventos(tmp);		
 		}
 		else{
-			Messagebox.show("Solo puede Seleccionar 5 preferencias", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Solo se pueden Seleccionar 5 preferencias", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 
 	}
@@ -186,6 +242,8 @@ public class ReporteEventoViewModel {
 		this.isPdf = true;
 		System.out.println(this.fechadesde);
 		System.out.println(this.fechahasta);
+		System.out.println(this.checkcomun);
+		System.out.println(this.checkestricto);
 		cargarSql();
 		
 	
@@ -206,20 +264,68 @@ public class ReporteEventoViewModel {
 	
 
 	public void cargarSql() throws FileNotFoundException, JRException, SQLException{
+		System.out.println("entre");
 		try {
 			Class.forName ("org.postgresql.Driver");
 		
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America15","postgres","postgres");
 			
 			
 		} catch (ClassNotFoundException el) {
 			el.printStackTrace();
 		}
 		
-		if (this.tipoPreferenciaSelected == null ) //
+		if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == false && this.checkestricto == false)
 		{
-			Messagebox.show("Seleccione la categoria", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
-		}	
+			this.titulo = "EVENTOS";
+			this.consulta= "Eventos de la categoria  ";
+			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			System.out.println("aqui toy");
+			this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+					+ " INNER JOIN preferencia_evento pe "
+					+ " ON e.id_evento = pe.eventoid_evento "
+					+ " INNER JOIN preferencia p "
+					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+					+ " INNER JOIN tipo_preferencia tp "
+					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia ; " ;
+
+			System.out.println(this.sql);
+			generarPDF();
+		}
+		else if (this.fechadesde != null && this.fechahasta == null )
+		{
+			Messagebox.show("Debe seleccionar la fecha fin con la que va a comparar", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}
+		else if (this.fechadesde == null && this.fechahasta != null )
+		{
+			Messagebox.show("Debe seleccionar la fecha inicio con la que va a comparar", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}
+		else if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == true && this.checkestricto == false && this.tipoPreferenciaSelected == null )
+		{
+			Messagebox.show("Debe seleccionar una Categoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}		
+		else if (this.fechadesde == null && this.fechahasta == null && this.checkcomun == false && this.checkestricto == true && this.tipoPreferenciaSelected == null )
+		{
+			Messagebox.show("Debe seleccionar una Categoria", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		}		
+		else if (this.fechadesde != null && this.fechahasta != null && this.checkcomun == false && this.checkestricto == false )
+		{
+			this.titulo = "EVENTOS";
+			this.consulta= "Eventos de la categoria  ";
+			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
+			System.out.println("aqui toy");
+			this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+					+ " INNER JOIN preferencia_evento pe "
+					+ " ON e.id_evento = pe.eventoid_evento "
+					+ " INNER JOIN preferencia p "
+					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+					+ " INNER JOIN tipo_preferencia tp "
+					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+					+ " WHERE e.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"';" ;
+
+			System.out.println(this.sql);
+			sqlDate();
+		}		
 		else if (this.tipoPreferenciaSelected != null && this.preferenciaEventos == null)
 		{
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
@@ -228,27 +334,34 @@ public class ReporteEventoViewModel {
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
 			
-			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
-					+ " INNER JOIN preferencia_evento pe "
-					+ " ON e.id_evento = pe.eventoid_evento "
-					+ " INNER JOIN preferencia p "
-					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
-					+ " INNER JOIN tipo_preferencia tp "
-					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
-					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+"  " ;
-			
-			sqlDate();
-			
-			/*this.sql = "SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE "
-					+ "FROM instalacion i "
-					+ "INNER JOIN reservacion r "
-					+ "ON r.instalacionid_instalacion = i.id_instalacion "
-					+ "INNER JOIN socio s "
-					+ "ON r.socioid_socio = s.id_socio "
-					+ "INNER JOIN persona p "
-					+ "ON p.id_persona = s.personaid_persona ";
-			
-			sqlDate();*/
+			if(this.getCheckestricto())
+			{
+				this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+"  " ;
+				
+				sqlDate();				
+			}
+			else
+			{
+				this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+"  " ;
+				
+				sqlDate();			
+			}
+
+		
 		}
 		else if(this.preferenciaEventos.size() == 1)
 		{
@@ -257,7 +370,7 @@ public class ReporteEventoViewModel {
 			cargarVariables();
 			String variable = this.tipoPreferenciaSelected.getDescripcion();
 			//Preferencia preferencia1 = this.getPreferenciaEventos().iterator().next();
-			int idprefe = getPreferencia1().getIdPreferencia();
+			int idprefe = getPreferencia1();
 			System.out.println(idprefe);
 
 			this.titulo = "EVENTOS";
@@ -265,25 +378,43 @@ public class ReporteEventoViewModel {
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
 			
-			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
-					+ " INNER JOIN preferencia_evento pe "
-					+ " ON e.id_evento = pe.eventoid_evento "
-					+ " INNER JOIN preferencia p "
-					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
-					+ " INNER JOIN tipo_preferencia tp "
-					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
-					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia = "+ idprefe+"";
-			//";
-			
-			sqlDate();
+			if(this.getCheckestricto())
+			{
+				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
+						+ " e2.fecha_fin, "
+						+ "	(select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento "
+						+ " and e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),',')) as arreglomatch "
+						+ "	from evento e2, preferencia_evento pe2, preferencia p2 "
+						+ "	where pe2.eventoid_evento=e2.id_evento and "
+						+ " pe2.preferenciaid_preferencia=p2.id_preferencia and "
+						+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento and "
+						+ " e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),','))='"+idprefe+"' ";
+				System.out.println("pase por aqui :P");
+				sqlDate();				
+			}
+			else 
+			{
+				this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
+						+ " p.id_preferencia = "+ idprefe+"";	
+				sqlDate();			
+			}			
+		
 		}else if(this.preferenciaEventos.size() == 2)
 		{
 			System.out.println(this.preferenciaEventos.size());
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			cargarVariables();
-			int idprefe = getPreferencia1().getIdPreferencia();
-			int idprefe2 = getPreferencia2().getIdPreferencia();
+			int idprefe = getPreferencia1();
+			int idprefe2 = getPreferencia2();
 			System.out.println(idprefe);
 			System.out.println(idprefe2);
 
@@ -291,18 +422,38 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			
-			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
-					+ " INNER JOIN preferencia_evento pe "
-					+ " ON e.id_evento = pe.eventoid_evento "
-					+ " INNER JOIN preferencia p "
-					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
-					+ " INNER JOIN tipo_preferencia tp "
-					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
-					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+") ";
-			
-			sqlDate();			
+			if(this.getCheckestricto())
+			{
+				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
+						+ " e2.fecha_fin, "
+						+ "	(select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento "
+						+ " and e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),',')) as arreglomatch "
+						+ "	from evento e2, preferencia_evento pe2, preferencia p2 "
+						+ "	where pe2.eventoid_evento=e2.id_evento and "
+						+ " pe2.preferenciaid_preferencia=p2.id_preferencia and "
+						+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento and "
+						+ " e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),','))='"+idprefe+","+idprefe2+"' ";
+				System.out.println("------");
+				System.out.println(idprefe);
+				System.out.println(idprefe2);
+				sqlDate();				
+			}
+			else
+			{
+				this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
+						+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+") ";
+				sqlDate();			
+
+			}						
 			
 		}else if(this.preferenciaEventos.size() == 3)
 		{
@@ -310,38 +461,50 @@ public class ReporteEventoViewModel {
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			cargarVariables();
 			//Preferencia preferencia1 = this.getPreferenciaEventos().iterator().next();
-			int idprefe = getPreferencia1().getIdPreferencia();
-			int idprefe2 = getPreferencia3().getIdPreferencia();
-			int idprefe3 = getPreferencia2().getIdPreferencia();
+			int idprefe = getPreferencia1();
+			int idprefe2 = getPreferencia2();
+			int idprefe3 = getPreferencia3();
 			System.out.println(idprefe);
 			String variable = this.tipoPreferenciaSelected.getDescripcion();	
 			this.titulo = "EVENTOS";
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			
-			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
-					+ " INNER JOIN preferencia_evento pe "
-					+ " ON e.id_evento = pe.eventoid_evento "
-					+ " INNER JOIN preferencia p "
-					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
-					+ " INNER JOIN tipo_preferencia tp "
-					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
-					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+") "; 
-			
-		/*this.sql= " select  distinct on (t1.id_evento) t2.*, t3.id_preferencia ,t1.fecha_inicio, t1.fecha_fin, t1.nombre, "
-			+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento z,evento y where z.eventoid_evento=y.id_evento " 
-			+ " and y.id_evento=t1.id_evento "
-			+ " ),',')) as qlala "
-			+ " from evento t1, preferencia_evento t2, preferencia t3 "
-			+ " where t2.eventoid_evento=t1.id_evento "
-			+ "	and t2.id_preferencia_evento=t3.id_preferencia "
-			+ " and (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento z,evento y where z.eventoid_evento=y.id_evento " 
-			+ " and y.id_evento=t1.id_evento "
-			+ " ),','))='2,3,4' ;";		*/	
-			
-			sqlDate();			
+
+			if(this.getCheckestricto())
+			{
+				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
+						+ " e2.fecha_fin, "
+						+ "	(select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento "
+						+ " and e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),',')) as arreglomatch "
+						+ "	from evento e2, preferencia_evento pe2, preferencia p2 "
+						+ "	where pe2.eventoid_evento=e2.id_evento and "
+						+ " pe2.preferenciaid_preferencia=p2.id_preferencia and "
+						+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento and "
+						+ " e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),','))='"+idprefe+","+idprefe2+","+idprefe3+"' ";
+				System.out.println("------");
+				System.out.println(idprefe);
+				System.out.println(idprefe2);
+				System.out.println(idprefe3);
+				sqlDate();				
+			}
+			else
+			{
+				this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
+						+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+") ";			
+				sqlDate();			
+			}			
+ 
+					
 						
 		}else if(this.preferenciaEventos.size() == 4)
 		{
@@ -349,10 +512,10 @@ public class ReporteEventoViewModel {
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			cargarVariables();
 			//Preferencia preferencia1 = this.getPreferenciaEventos().iterator().next();
-			int idprefe = getPreferencia1().getIdPreferencia();
-			int idprefe2 = getPreferencia2().getIdPreferencia();
-			int idprefe3 = getPreferencia3().getIdPreferencia();
-			int idprefe4 = getPreferencia4().getIdPreferencia();
+			int idprefe = getPreferencia1();
+			int idprefe2 = getPreferencia2();
+			int idprefe3 = getPreferencia3();
+			int idprefe4 = getPreferencia4();
 			
 			System.out.println(idprefe);
 
@@ -360,18 +523,38 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			
-			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
-					+ " INNER JOIN preferencia_evento pe "
-					+ " ON e.id_evento = pe.eventoid_evento "
-					+ " INNER JOIN preferencia p "
-					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
-					+ " INNER JOIN tipo_preferencia tp "
-					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
-					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+") ";
-			
-			sqlDate();			
+	
+			if(this.getCheckestricto())
+			{
+				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
+						+ " e2.fecha_fin, "
+						+ "	(select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento "
+						+ " and e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),',')) as arreglomatch "
+						+ "	from evento e2, preferencia_evento pe2, preferencia p2 "
+						+ "	where pe2.eventoid_evento=e2.id_evento and "
+						+ " pe2.preferenciaid_preferencia=p2.id_preferencia and "
+						+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento and "
+						+ " e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),','))='"+idprefe+","+idprefe2+","+idprefe3+", "+ idprefe4+"' ";
+				
+				sqlDate();				
+			}
+			else
+			{
+				this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
+						+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+") ";
+				
+					sqlDate();	
+				}			
+		
 									
 		}else if(this.preferenciaEventos.size() == 5)
 		{
@@ -379,11 +562,11 @@ public class ReporteEventoViewModel {
 			int tipopreferencia = this.tipoPreferenciaSelected.getIdTipoPreferencia();
 			cargarVariables();
 			//Preferencia preferencia1 = this.getPreferenciaEventos().iterator().next();
-			int idprefe = getPreferencia1().getIdPreferencia();
-			int idprefe2 = getPreferencia2().getIdPreferencia();
-			int idprefe3 = getPreferencia3().getIdPreferencia();
-			int idprefe4 = getPreferencia4().getIdPreferencia();
-			int idprefe5 = getPreferencia5().getIdPreferencia();			
+			int idprefe = getPreferencia1();
+			int idprefe2 = getPreferencia2();
+			int idprefe3 = getPreferencia3();
+			int idprefe4 = getPreferencia4();
+			int idprefe5 = getPreferencia5();			
 			
 			System.out.println(idprefe);
 
@@ -391,75 +574,87 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			
+
+			if(this.getCheckestricto())
+			{
+				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
+						+ " e2.fecha_fin, "
+						+ "	(select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento "
+						+ " and e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),',')) as arreglomatch "
+						+ "	from evento e2, preferencia_evento pe2, preferencia p2 "
+						+ "	where pe2.eventoid_evento=e2.id_evento and "
+						+ " pe2.preferenciaid_preferencia=p2.id_preferencia and "
+						+ " (select ARRAY_TO_STRING(ARRAY(select preferenciaid_preferencia from preferencia_evento pe, "
+						+ " evento e where pe.eventoid_evento=e.id_evento and "
+						+ " e.id_evento=e2.id_evento order by pe.preferenciaid_preferencia),','))='"+idprefe+","+idprefe2+","+idprefe3+", "+ idprefe4+", "+ idprefe5+"' ";
+				
+				sqlDate();				
+			}
+			else
+			{
+				this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
+						+ " INNER JOIN preferencia_evento pe "
+						+ " ON e.id_evento = pe.eventoid_evento "
+						+ " INNER JOIN preferencia p "
+						+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
+						+ " INNER JOIN tipo_preferencia tp "
+						+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
+						+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
+						+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+", "+ idprefe5+") ";
+				
+					sqlDate();
+			}	
+		
+		}
+		
+		
+		System.out.println(sql);
+	}
+	/*
+	public void sqlCargar() throws FileNotFoundException, JRException, SQLException{
+		
+		if(this.getCheckestricto() == true){
 			this.sql = " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
 					+ " INNER JOIN preferencia_evento pe "
 					+ " ON e.id_evento = pe.eventoid_evento "
 					+ " INNER JOIN preferencia p "
 					+ " ON pe.preferenciaid_preferencia = p.id_preferencia "
 					+ " INNER JOIN tipo_preferencia tp "
-					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia "
-					+ " WHERE tp.id_tipo_preferencia = "+ tipopreferencia+" and " 
-					+ " p.id_preferencia in ("+ idprefe2+","+ idprefe+", "+ idprefe3+", "+ idprefe4+", "+ idprefe5+") ";
-			
-			sqlDate();			
-		}
-		
-		
-		System.out.println(sql);
-		//generarPDF();
-	}
-	
-	
-	
-	public void sqlDate() throws FileNotFoundException, JRException, SQLException{
-		
-	/*	if(this.instalacionSelected != null){
-			this.sql += " where i.id_instalacion = " + this.instalacionSelected.getIdInstalacion();
-		} else {
-			this.sql += " where  i.activo = true ";
-		}*/
-	
-		if(this.fechadesde == null && this.fechahasta == null){
+					+ " ON p.tipo_preferenciaid_tipo_preferencia = tp.id_tipo_preferencia ";
 			generarPDF();
 		} else if (this.fechadesde == null || this.fechahasta == null){
-			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar el rango de fechas", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechadesde.compareTo(this.fechahasta) > 1 ){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			this.consulta += "entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";
 			sql += " and e.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"';" ;
-			
-			/*if(this.estadoinstalacion.equalsIgnoreCase("Alquiladas")){
-				
-				
-			} else {
-				sql += " and r.fecha_inicio NOT BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+sdf.format(this.fechahasta)+"'" ;
-			}*/
-			
-			
+						
 			generarPDF();
 		}
-	}
+	}*/	
 	
-
-	
-	/*public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-		Date hoy = (Date) Calendar.getInstance().getTime();
-		String date = "-"+sdfGuio.format(hoy).toString();
-		String nombreArchivo = this.titulo.concat(date);
-		JasperPrint jasperPrint = cargarJasper();
-		
-		System.out.println(jasperPrint.getPages().size()); 
-		if(jasperPrint.getPages().size() > 0){
-		 Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+	public void sqlDate() throws FileNotFoundException, JRException, SQLException{
+			
+		if(this.fechadesde != null && this.fechahasta != null && this.checkcomun == false && this.checkcomun == false){
+			System.out.println("Aqui toy1");
+			generarPDF();
+		}else if (this.fechadesde == null || this.fechahasta == null){
+			sql += " ; ";
+			System.out.println("Aqui toy2");
+			generarPDF();
+		}else if (this.fechadesde.compareTo(this.fechahasta) > 1 ){
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			this.consulta += "entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";
+			sql += " and e.fecha_inicio BETWEEN '"+ sdf.format(this.fechadesde) +"' and '"+ sdf.format(this.fechahasta)+"';" ;
+						
+			generarPDF();
+			System.out.println("Aqui toy3");
 		}
-	  
-	   con.close();
-	}*/
-	
+
+	}		
 	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
 		String nombreArchivo = titulo;
 		JasperPrint jasperPrint = cargarJasper();
@@ -492,7 +687,7 @@ public class ReporteEventoViewModel {
 			}
 			
 		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}		
 		con.close();
 	}
@@ -518,24 +713,57 @@ public class ReporteEventoViewModel {
 		
 	}
 
-	public void cargarVariables(){
-		ArrayList<Preferencia> tmp = new ArrayList<Preferencia>(getPreferenciaEventos());
-		
-		
+	public void cargarVariables(){		
+		ArrayList<Preferencia> tmp = new ArrayList<Preferencia>(getPreferenciaEventos());		
+		ArrayList id = new ArrayList();
+		int arr[] = new int[tmp.size()];
 		for(int i = 0; i<tmp.size(); i++){
 			if(i==0){
-				this.setPreferencia1(tmp.get(i));
+				arr[i] = tmp.get(i).getIdPreferencia();
 			}else if(i==1){
-				this.setPreferencia2(tmp.get(i));
+				arr[i] = tmp.get(i).getIdPreferencia();
 			}else if(i == 2){
-				this.setPreferencia3(tmp.get(i));
+				arr[i] = tmp.get(i).getIdPreferencia();
 			}else if(i == 3){
-				this.setPreferencia4(tmp.get(i));
+				arr[i] = tmp.get(i).getIdPreferencia();
 			}else{
-				this.setPreferencia5(tmp.get(i));
+				arr[i] = tmp.get(i).getIdPreferencia();
 			}
 		}
-	
+
+        for(int i = 0; i < arr.length - 1; i++)
+        {
+            for(int j = 0; j < arr.length - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    int tmpo = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = tmpo;
+                }
+            }
+        }
+        
+		for(int i = 0; i<tmp.size(); i++){
+			if(i==0){
+				this.setPreferencia1(arr[i]);
+			}else if(i==1){
+				this.setPreferencia2(arr[i]);
+			}else if(i == 2){
+				this.setPreferencia3(arr[i]);
+			}else if(i == 3){
+				this.setPreferencia4(arr[i]);
+			}else{
+				this.setPreferencia5(arr[i]);
+			}
+		}
+        for(int i = 0;i < arr.length; i++)
+
+        {
+
+            System.out.println(arr[i] + "asdad");
+
+        }
 	}
 	public void dataSql() throws FileNotFoundException, JRException, SQLException{
 
@@ -554,7 +782,7 @@ public class ReporteEventoViewModel {
 		if( (null == this.edadHastaSelected &&  this.edadDedeSelected == null) || (null == this.edadHastaSelected ||  this.edadDedeSelected == null) ){
 			generarPDF();//VALIDAR
 		} else if(Integer.valueOf(this.edadDedeSelected)  > Integer.valueOf(this.edadHastaSelected)) {
-			Messagebox.show("Edad desde no puede ser mayor que edad hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Edad desde no puede ser mayor que edad hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
 			consulta += "y edades entre "+ Integer.valueOf(this.edadDedeSelected) + " y " +  Integer.valueOf(this.edadHastaSelected)+ ".";
 			sql +=" AND substring(age(now(),p.fecha_nac)::text from 1 for 2)::int between "+ Integer.valueOf(this.edadDedeSelected) +" and "+ Integer.valueOf(this.edadHastaSelected) +" ";
@@ -562,43 +790,43 @@ public class ReporteEventoViewModel {
 		}*/
 	}
 	
-	public Preferencia getPreferencia2() {
+	public int getPreferencia2() {
 		return preferencia2;
 	}
 
-	public void setPreferencia2(Preferencia preferencia2) {
+	public void setPreferencia2(int preferencia2) {
 		this.preferencia2 = preferencia2;
 	}
 
-	public Preferencia getPreferencia4() {
+	public int getPreferencia4() {
 		return preferencia4;
 	}
 
-	public void setPreferencia4(Preferencia preferencia4) {
+	public void setPreferencia4(int preferencia4) {
 		this.preferencia4 = preferencia4;
 	}
 
-	public Preferencia getPreferencia5() {
+	public int getPreferencia5() {
 		return preferencia5;
 	}
 
-	public void setPreferencia5(Preferencia preferencia5) {
+	public void setPreferencia5(int preferencia5) {
 		this.preferencia5 = preferencia5;
 	}
 
-	public Preferencia getPreferencia3() {
+	public int getPreferencia3() {
 		return preferencia3;
 	}
 
-	public void setPreferencia3(Preferencia preferencia3) {
+	public void setPreferencia3(int preferencia3) {
 		this.preferencia3 = preferencia3;
 	}
 
-	public Preferencia getPreferencia1() {
+	public int getPreferencia1() {
 		return preferencia1;
 	}
 
-	public void setPreferencia1(Preferencia preferencia1) {
+	public void setPreferencia1(int preferencia1) {
 		this.preferencia1 = preferencia1;
 	}
 
@@ -609,5 +837,15 @@ public class ReporteEventoViewModel {
 	public void setTituloCategoria(String tituloCategoria) {
 		this.tituloCategoria = tituloCategoria;
 	}
+
+	public boolean getDisablecat() {
+		return disablecat;
+	}
+
+	public void setDisablecat(boolean disablecat) {
+		this.disablecat = disablecat;
+	}
+
+
 
 }

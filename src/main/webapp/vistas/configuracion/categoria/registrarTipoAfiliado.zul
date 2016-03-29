@@ -31,6 +31,15 @@
 										value="@bind(vm.tipoAfiliado.descripcion)" constraint="no empty" />
 							</div>
 						</row>
+						<row>
+							<div class="col-md-12">
+								<label class="col-md-12">Sufijo Carnet</label>
+								<hbox>
+								<label>-</label>
+								<textbox type="text" class="col-xs-11 col-md-11" value="@bind(vm.tipoAfiliado.subfijo)" constraint="no empty" />
+								</hbox>
+							</div>
+						</row>
 					</rows>
 				</grid>
 				<div align="center" style="margin-top: 7%;">

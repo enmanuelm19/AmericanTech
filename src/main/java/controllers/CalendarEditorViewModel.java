@@ -7,9 +7,11 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Window;
 
 import Dao.InstalacionEventoDao;
+import Dao.NoticiaDao;
 import modelos.Evento;
 import modelos.Foto;
 import modelos.InstalacionEvento;
+import modelos.Noticia;
 import viewModel.CalendarioEvent;
 
 public class CalendarEditorViewModel {
@@ -38,10 +40,13 @@ public class CalendarEditorViewModel {
 	public void init(@ExecutionArgParam("evento") Evento evento) {
 		if (evento != null) {
 			setEventoSelected(evento);
-			for (InstalacionEvento instalacionE : getEventoSelected().getInstalacionEventos()) {
-				for (Foto foto : instalacionE.getInstalacion().getFotos()) {
-					setImagenInstalacion(foto.getUrl());
+			try {
+				for (Noticia noticia : new NoticiaDao().obtenerNoticiasevento(getEventoSelected())) {				
+						setImagenInstalacion(noticia.getFoto());
 				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

@@ -12,7 +12,7 @@
 					<label value="Tipo Listado:" />
 					<combobox model="@load(vm.tipoListados)"
 						constraint="no empty" selectedItem="@bind(vm.tipoListadoSelected)"
-						width="80%">
+						width="80%" readonly="true">
 						<template name="model">
 							<comboitem label="@load(each)"
 								value="@load(each)" disabled="@load(vm.validarTipo(each))" />

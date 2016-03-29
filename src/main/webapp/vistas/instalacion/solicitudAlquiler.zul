@@ -29,7 +29,7 @@
 								<label>Instalaciones:</label>
 								<combobox id="instalaciones"
 									model="@load(vm.temporalInstalaciones)"
-									value="@bind(vm.instalacionSeleccionada.nombre)" selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
+									value="@bind(vm.instalacionSeleccionada.nombre)" readonly="true" selectedItem="@bind(vm.instalacionSeleccionada)" width="99%">
 									<template name="model">
 										<comboitem
 											label="@load(each.nombre)" value="@load(each)" />
@@ -38,8 +38,8 @@
 							</div>
 							<div>
 								<label>Precio</label>
-								<decimalbox disabled="true"
-									width="100%" value="@load(vm.precio(vm.reservacion.fechaInicio,vm.reservacion.fechaFin, vm.reservacion.instalacion.precioAlquiler))">
+								<decimalbox id="precio" disabled="true"
+									width="100%" value="@bind(vm.precio())">
 								</decimalbox>
 							</div>
 						</row>
@@ -65,7 +65,7 @@
 				<div>
 					<button iconSclass="z-icon-floppy-o"
 						onClick="@command('guardar',win=winEv)" disabled="@load(vm.disabled)" class='boton-guardar'
-						label="Registrar" />
+						label="Guardar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
 						onClick="@command('cerrarModal',win=winEv)" class='boton-cancelar'
