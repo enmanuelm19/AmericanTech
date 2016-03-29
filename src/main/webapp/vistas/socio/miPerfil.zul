@@ -148,9 +148,9 @@
 																id="sexo"
 																selectedItem="@load(vm.usuario.persona.sexo)">
 																<radio
-																	id="a1" label="Masculino" value="M" radiogroup="sexo" />
+																	id="a1" label="Masculino" value="M" radiogroup="sexo" disabled="true"/>
 																<radio
-																	id="a2" label="Femenino" value="F" radiogroup="sexo" />
+																	id="a2" label="Femenino" value="F" radiogroup="sexo" disabled="true"/>
 															</radiogroup>
 														</div>
 													</row>
@@ -262,7 +262,7 @@
 									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
 									<n:br></n:br>
 									<n:br></n:br>
-									<div align="left">
+									<div align="left" visible="@load(vm.verAfiliado)">
 										<div class="encabezado">
 											Datos Acción
 										</div>
@@ -270,9 +270,9 @@
 											class="linea-two">
 										</div>
 									</div>
-									<hbox align="center" pack="center"
+									<hbox visible="@load(vm.verAfiliado)" align="center" pack="center"
 										width="100%"><!-- GRUPO ACCIONES -->
-										<grid
+										<grid 
 											emptyMessage="No se encuentran acciones vinculadas"
 											mold="paging" pageSize="5" model="@load(vm.allAcciones)">
 											<columns>
