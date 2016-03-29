@@ -74,6 +74,7 @@ public class RegistrarActividadViewModel {
 	@Command
 	@NotifyChange({ "actividadsEvento", "cantidadActividads", "actividad" })
 	public void agregar() {
+		if(actividad.getFechaTope()!=null && actividad.getDescripcion()!=null && !actividad.getDescripcion().equals("") && actividad.getValorEsperado()!=null)
 		if (actividad.getFechaTope().before(evento.getFechaFin())) {
 			if (actividad.getDescripcion() != null && !actividad.getDescripcion().equals("")
 				 && actividad.getValorEsperado() != null) {
@@ -83,7 +84,9 @@ public class RegistrarActividadViewModel {
 				actividad = new Actividad();
 			}
 		} else
-			Messagebox.show("la fecha tope debe estar antes de la fecha "+ evento.getFechaFinString(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("la fecha tope debe estar antes de la fecha "+ evento.getFechaFinString(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		else Messagebox.show("ingrese todos los datos de la actividad ", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+
 	}
 	
 	public boolean isRango(Date a, Date b, Date d) {
