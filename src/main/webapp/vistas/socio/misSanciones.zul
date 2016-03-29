@@ -13,7 +13,8 @@
 				<div sclass="page-header" align="left" >
 					<label value="Mis Sanciones"/>
 				</div>
-			   <div  align="center" class='form-pricing'   width="90%" style="margin-bottom: 20px" >
+				<space></space>
+			   <div  align="center" class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered'   width="90%" style="margin-bottom: 20px" >
 			   	<div align="left">
 					<div align="left">
 						<div sclass="encabezado">
