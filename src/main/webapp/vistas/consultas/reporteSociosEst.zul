@@ -1,4 +1,5 @@
 <zk xmlns:n="native">
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estadisticos.ReporteSociosEstViewModel')">
 		<hlayout spacing="0">
@@ -6,7 +7,7 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
-						<a label="Estructurado" href="#" />
+						<a label="Estadistico" href="#" />
 						<label value="Socio" />
 					</div>
 				</div>
@@ -36,26 +37,27 @@
 													</div>
 							   	 				</div>
 							   	 			</row>
-							   	 			<row class="col-md-12 ">
+							   	 			<row class="col-md-12 col-lg-12 col-sm-12">
 							   	 				<div align="center">
-											   	 	<hlayout width="100%" >
+											   	 
 										                  	<div>
 																<label class="col-md-2">Desde:</label> 
-																<combobox width="" model="@load(vm.listaedades)" class="col-md-4" selectedItem="@bind(vm.edaddesde)" disabled="@load(vm.disableedad)">
+																<combobox width="" model="@load(vm.listaedades)" class="col-sm-3" selectedItem="@bind(vm.edaddesde)" disabled="@load(vm.disableedad)">
 																	<template name="model">
 																		<comboitem
 																			label="@load(each)" value="@load(each)" />
 																	</template>
 																</combobox>
-																<label class="col-md-2">Hasta:</label> 
-																<combobox width="" model="@load(vm.listaedades)" class="col-md-4" selectedItem="@bind(vm.edadhasta)" disabled="@load(vm.disableedad)">																																	
+											
+																<label class="col-md-3">Hasta:</label> 
+																<combobox width="" model="@load(vm.listaedades)" class="col-sm-3" selectedItem="@bind(vm.edadhasta)" disabled="@load(vm.disableedad)">																																	
 																	<template name="model">
 																		<comboitem
 																			label="@load(each)" value="@load(each)" />
 																	</template>
 																</combobox>																
 															</div>																		   	 							   	 	
-											   	 	</hlayout>
+											
 							   	 				</div>
 							   	 			</row>
 							   	 			<row class="col-md-12">
@@ -100,7 +102,8 @@
 									 <space spacing="1%"></space>									   	 
 								</groupbox >
 							    <div align="center" xmlns:w="client">
-									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+									iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 							    </div>									
 							</div>
 						</div>

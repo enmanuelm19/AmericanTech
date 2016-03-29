@@ -1,4 +1,5 @@
 <zk xmlns:n="native">
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estructurados.ReporteSancionesViewModel')">
 		<hlayout spacing="0">
@@ -65,9 +66,11 @@
 							 </groupbox >
 							 <space spacing="1%"></space>
 						     <div align="center" xmlns:w="client">
-								<button id="btnImprimir" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" />
+								<button id="btnImprimir" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" 
+								iconSclass="glyphicon glyphicon-file" tooltiptext="Descargar TXT"/>
 								<space spacing="2%"></space>
-								<button id="btnImprimir1" class='boton-guardar' onClick="@command('btnImprimir1')" label="Generar PDF" />
+								<button id="btnImprimir1" class='boton-guardar' onClick="@command('btnImprimir1')" label="Generar PDF" 
+								iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 							 </div>	
 							</div>
 						</div>

@@ -1,6 +1,6 @@
 <zk>
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewBean')"
+		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewModel')"
 		xmlns:w="client">
 		<hlayout spacing="0">
 			<vlayout spacing="0" hflex="1">

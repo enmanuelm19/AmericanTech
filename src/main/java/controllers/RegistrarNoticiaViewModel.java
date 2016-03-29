@@ -17,10 +17,12 @@ import modelos.PreferenciaEvento;
 import modelos.TipoNoticia;
 import modelos.UsuarioGrupo;
 
+import org.json.simple.parser.ParseException;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.image.AImage;
@@ -61,6 +63,8 @@ public class RegistrarNoticiaViewModel {
 			this.noticia = new Noticia();
 			this.editable = false;
 			this.fotodefault = true;
+		
+			
 		} else {
 			this.noticia = noticia;
 			this.editable = true;
@@ -124,23 +128,29 @@ public class RegistrarNoticiaViewModel {
 	}
 
 
-	@Command
+	@GlobalCommand
 	@NotifyChange({"uploadedImage", "fotodefault"})
-	public void upload(@BindingParam("media") Media myMedia){
+	public void upload(@BindingParam("media") final Media myMedia){
 		if(!editable){
+			System.out.println("uploadedImage "+ uploadedImage);
 			fotodefault= false;
 			if(myMedia instanceof org.zkoss.image.Image){
 				if(myMedia.getByteData().length > 2000*1024){
 					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}else{
+					
 					uploadedImage = myMedia;
 					setUploadedImage(myMedia);
+					System.out.println(" myMedia " + myMedia);
 				}
 			}else{
 				Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}
 			
-		}
+		}else{
+			
+			
+		};
 	}
 	
 
@@ -157,15 +167,15 @@ public class RegistrarNoticiaViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception 
 	{
-		if(noticia.getCaducidad() != null &&
-		   noticia.getDescripcion().equalsIgnoreCase("") &&
-		   noticia.getTipoNoticia()!=null )
+		
+		if(noticia.getCaducidad()!=null && 
+		   !noticia.getDescripcion().equalsIgnoreCase("") && noticia.getDescripcion()!=null &&
+		   noticia.getTipoNoticia()!=null && this.getUploadedImage()!=null)
 		{
 			if (noticia.getTitulo()!=null && !noticia.getTitulo().equalsIgnoreCase(""))
 			{
 				if(!editable){
 					fotodefault = false;
-					noticia.setCaducidad(new Date());
 					noticia.setFechaCreacion(new Date());
 					noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
 					noticia.setPublico(this.publico);

@@ -280,14 +280,21 @@ public class ReporteSocioViewModel {
 		}		
 
 		if(this.preferenciaEventos != null){
+			sql += " and ( ";
+			int posicion = preferenciaEventos.size();
 			for (Preferencia pe : preferenciaEventos) {
-				//sql += " and pre.id_preferencia = "+ pe.getIdPreferencia();
-				sql += " or pp.preferenciaid_preferencia = "+ pe.getIdPreferencia();
+				posicion--;
+				sql += "  pp.preferenciaid_preferencia = "+ pe.getIdPreferencia();
+				
+				 if(posicion > 0)
+					 sql += " or ";
 			}
-			
+			sql += " ) ";
 		}
-		if( (null == this.edadHastaSelected &&  this.edadDedeSelected == null) || (null == this.edadHastaSelected ||  this.edadDedeSelected == null) ){
-			generarPDF();//VALIDAR
+		if(null == this.edadHastaSelected &&  this.edadDedeSelected == null) {
+			generarPDF();
+		} else if (null == this.edadHastaSelected ||  this.edadDedeSelected == null) {
+			Messagebox.show("Debe Elegir un rango de edad", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if(Integer.valueOf(this.edadDedeSelected)  > Integer.valueOf(this.edadHastaSelected)) {
 			Messagebox.show("Edad desde no puede ser mayor que edad hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
