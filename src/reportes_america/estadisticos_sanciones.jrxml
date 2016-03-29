@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_sanciones" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.9090909090909092"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="149"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -21,14 +21,14 @@ WHERE s.tipo_sancionid_tipo_sancion = t.id_tipo_sancion AND s.activo = t.activo 
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement x="262" y="19" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<reportElement x="246" y="1" width="310" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
 				<textElement>
-					<font fontName="SansSerif" size="24" isBold="true"/>
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="216" y="54" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
+				<reportElement x="229" y="36" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
@@ -75,17 +75,17 @@ WHERE s.tipo_sancionid_tipo_sancion = t.id_tipo_sancion AND s.activo = t.activo 
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="633" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
+				<reportElement x="0" y="0" width="721" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="270" y="1" width="100" height="20" uuid="f89447f3-87cb-4019-92f5-a38d4119bd1a"/>
+				<reportElement x="456" y="0" width="100" height="20" uuid="f89447f3-87cb-4019-92f5-a38d4119bd1a"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="456" y="0" width="100" height="20" uuid="65372061-eeb7-4486-ab99-0d4b626c110a"/>
+				<reportElement x="598" y="1" width="100" height="20" uuid="65372061-eeb7-4486-ab99-0d4b626c110a"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -103,21 +103,21 @@ WHERE s.tipo_sancionid_tipo_sancion = t.id_tipo_sancion AND s.activo = t.activo 
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="270" y="4" width="100" height="20" uuid="ad13e281-90dc-4601-8d18-1af126d39199"/>
+				<reportElement x="456" y="3" width="100" height="20" uuid="ad13e281-90dc-4601-8d18-1af126d39199"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="456" y="0" width="100" height="20" uuid="2dbece12-eea2-41f4-93de-3c3fa4dc7065"/>
+				<reportElement x="598" y="1" width="100" height="20" uuid="2dbece12-eea2-41f4-93de-3c3fa4dc7065"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{porcentaje}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="5" y="4" width="257" height="20" uuid="b9fd28d9-ffdb-4840-9bca-88e8de0a60be"/>
+				<reportElement x="5" y="4" width="381" height="20" uuid="b9fd28d9-ffdb-4840-9bca-88e8de0a60be"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
