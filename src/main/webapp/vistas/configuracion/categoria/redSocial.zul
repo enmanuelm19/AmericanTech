@@ -43,7 +43,7 @@
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image
-											src="../assets/img/funnel.png" />
+											src="../assets/img/funnel.png"/>
 										<textbox instant="true" value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											width="25%" placeholder="Buscar" />
 									</auxheader>
@@ -62,7 +62,7 @@
 									<row>
 										<label value="@load(each.descripcion)" />
 										
-										<image src="@load(each.imagen)" width="15%" align="center" />
+										<image src="@load(each.imagen)" width="8%" height="8%" align="center" />
 										<div>
 											<button sclass="btn-link" iconSclass="z-icon-pencil blue" tooltiptext="Editar" onClick="@command('showModal', Red=each)"/>
 											<button sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminar', Red=each)"/>

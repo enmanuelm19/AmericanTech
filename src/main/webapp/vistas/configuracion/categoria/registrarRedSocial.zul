@@ -36,13 +36,16 @@
 						<row>
 							<div class="row col-md-12">
 								<label class="col-md-10">Icono</label>
+								<div class="col-md-5">
+									<image src="../assets/portal/img/redes.png" 
+											class='img-responsive col-md-offset-3 col-md-6' 
+											visible="@load(vm.fotodefault)"></image>
+									<image content="@bind(vm.uploadedImage)"
+									class='img-responsive' visible="@load(!vm.fotodefault)"/>
+							</div>
+							
 									<fileupload label="Examinar"  upload="true" onUpload="@command('upload',media=event.media)"
 										iconSclass="z-icon-folder-open" class='boton-guardar col-md-4' />
-								<div class="col-md-5">
-									<image
-										content="@bind(vm.uploadedImage)"
-										class='img-responsive' width="40%" />
-							</div>
 
 							</div>
 						</row>
