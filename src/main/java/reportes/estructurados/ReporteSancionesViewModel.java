@@ -76,7 +76,7 @@ public class ReporteSancionesViewModel {
 	private String sql = "";
 	private String consulta = "";
 	private String titulo = "Sanciones";
-	private String reporte;
+	private String reporte, reporteTxt;
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -249,6 +249,7 @@ public class ReporteSancionesViewModel {
 			this.titulo = "LISTADO SANCIONES";
 			this.consulta= "Sanciones de Socios y Afiliados";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones_3.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/sanciones_3_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones_3.txt";
 			
 			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
@@ -273,6 +274,7 @@ public class ReporteSancionesViewModel {
 			this.titulo = "LISTADO SANCIONES";
 			this.consulta= "Sanciones de Socios";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones.jrxml";
+			reporte = System.getProperty("user.home") + "/reportes_america/sanciones_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones.txt";
 			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
 					+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
@@ -291,6 +293,7 @@ public class ReporteSancionesViewModel {
 			this.titulo = "LISTADO SANCIONES";
 			this.consulta= "Sanciones de Afiliados";
 			reporte = System.getProperty("user.home") + "/reportes_america/sanciones.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/sanciones_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones.txt";
 			this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, af.nro_carnet, sa.descripcion,  "
 				+ "to_char(sa.fecha_inic, 'YYYY-MM-DD') as FechaI, to_char(sa.fecha_fin, 'YYYY-MM-DD') as FechaF,  "
@@ -326,6 +329,7 @@ public void cargarSql1() throws FileNotFoundException, JRException, SQLException
 		this.titulo = "LISTADO SANCIONES";
 		this.consulta= "Sanciones del Carnet Nro: " + this.getCarnet() + " del socio " + this.getSocio().getPersona().getNombre() + " "+ this.getSocio().getPersona().getApellido();
 		reporte = System.getProperty("user.home") + "/reportes_america/sanciones_socios_afiliados.jrxml";
+		reporteTxt = System.getProperty("user.home") + "/reportes_america/sanciones_socios_afiliados_txt.jrxml";
 		this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/sanciones_socios_afiliados.txt";
 		
 		this.sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, s.nro_carnet, sa.descripcion,  "
@@ -406,7 +410,11 @@ public void generarPDF() throws JRException, FileNotFoundException, SQLException
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 

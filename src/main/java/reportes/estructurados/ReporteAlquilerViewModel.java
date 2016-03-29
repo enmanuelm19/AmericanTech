@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -27,6 +28,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
 import Dao.InstalacionDao;
 import modelos.Instalacion;
 import modelos.Preferencia;
@@ -65,6 +67,7 @@ public class ReporteAlquilerViewModel {
 	private String consulta = "";
 	private String titulo = "Instalacion";
 	private String reporte;
+	private String reporteTxt;
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -160,6 +163,7 @@ public class ReporteAlquilerViewModel {
 			this.titulo = "INSTALACIONES RESERVADAS";
 			this.consulta= "Instalacion reservadas ";
 			reporte = System.getProperty("user.home") + "/reportes_america/instalacion_reservada.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/instalacion_reservada_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_reservada.txt";
 		
 			this.sql = " SELECT i.nombre as instalacion, tp.descripcion as tipo_instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet,  p.nombre || ' ' || p.apellido as NOMBRE "
@@ -178,6 +182,7 @@ public class ReporteAlquilerViewModel {
 			this.titulo = "INSTALACIONES ALQUILADAS";
 			this.consulta= "Instalacion alquiladas ";
 			this.reporte = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.jrxml";
+			this.reporteTxt = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.txt";
 			this.sql = "SELECT to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, i.nombre as Instalacion, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE "
 					+ "FROM instalacion i "
@@ -194,6 +199,7 @@ public class ReporteAlquilerViewModel {
 			this.titulo = "INSTALACIONES";
 			this.consulta= "Instalación ";
 			this.reporte = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas.jrxml";
+			this.reporteTxt = System.getProperty("user.home") + "/reportes_america/instalacion_alquiladas_txt.jrxml";
 			this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/instalacion_todas.txt";
 			this.sql = "SELECT i.nombre as instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, "
 					+ "s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE, "
@@ -279,7 +285,11 @@ public class ReporteAlquilerViewModel {
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 

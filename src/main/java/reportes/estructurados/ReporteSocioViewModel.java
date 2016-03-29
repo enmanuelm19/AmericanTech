@@ -89,6 +89,7 @@ public class ReporteSocioViewModel {
 	private String consulta = "";
 	private String titulo = "SOCIOS";
 	private String reporte = System.getProperty("user.home") + "/reportes_america/reporte_socios.jrxml";
+	private String reporteTxt = System.getProperty("user.home") + "/reportes_america/reporte_socios_txt.jrxml";
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -341,7 +342,11 @@ public class ReporteSocioViewModel {
 	}
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 

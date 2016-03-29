@@ -8,12 +8,12 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
 						<a label="Estadistico" href="#" />
-						<label value="Sancion" />
+						<label value="Sanción" />
 					</div>
 				</div>
 				<div class="contenedor" align="center">
 					<div sclass="page-header" align="left">
-						<label value="Sanciones" />
+						<label value="Sanción" />
 					</div>
 					<separator spacing="1%" />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
