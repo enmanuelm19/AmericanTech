@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_instalacion" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="0.8264462809917354"/>
+	<property name="ireport.zoom" value="0.38554328942953164"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -23,14 +23,14 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 			<staticText>
 				<reportElement x="258" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="24" isBold="true"/>
+					<font fontName="SansSerif" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="212" y="36" width="356" height="72" uuid="48b7cfea-bf7d-449b-9d79-73b09390983e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="12" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Brindar y promover el disfrute de sus socios y familiares, en espacios aptos para actividades deportivas, culturales y sociales, fomentando la unión familiar y consolidando el legado de sus fundadores.]]></text>
 			</staticText>
@@ -52,21 +52,21 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 			<staticText>
 				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Referencia del Reporte:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="0" width="802" height="31" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
 				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="18" isBold="true"/>
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
-					<font fontName="Comic Sans MS"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{CONSULTA}]]></textFieldExpression>
 			</textField>
@@ -80,21 +80,21 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 			<staticText>
 				<reportElement x="19" y="1" width="100" height="20" uuid="bbc307b7-5ceb-49d6-96db-ead5d50437b0"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Instalacion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="228" y="1" width="100" height="20" uuid="5aac9226-6361-4f82-b08b-d7b2be1f4091"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Frecuencia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="418" y="1" width="100" height="20" uuid="9a595887-a9fa-4ec3-920f-7de5d7ac1c38"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ingreso Total]]></text>
 			</staticText>
@@ -105,21 +105,21 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 			<textField isBlankWhenNull="true">
 				<reportElement x="19" y="4" width="100" height="20" uuid="448e1da6-4d16-4622-bcf2-f8b6cae88a35"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="228" y="4" width="100" height="20" uuid="d4ab4d69-b4b3-4ae2-af52-24b073653702"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{frecuencia}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="418" y="4" width="100" height="20" uuid="f8f8614c-23f8-4764-894a-f9dae4ed75c0"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ingreso_total}]]></textFieldExpression>
 			</textField>
@@ -139,35 +139,35 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 			<textField>
 				<reportElement x="660" y="509" width="90" height="20" uuid="609653b6-b5ef-4cd8-b2a7-e4ed6a589d1f"/>
 				<textElement textAlignment="Right">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="750" y="509" width="40" height="20" uuid="ebf86686-2635-42d8-970a-3f7d56d2af30"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="335" y="489" width="229" height="20" uuid="1d240140-bc91-4579-80a1-9c42ae0dc2a1"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Garantizando el bienestar del socio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="284" y="509" width="340" height="20" uuid="b8089da3-ae14-47da-90dc-76ac0798ad03"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Comic Sans MS"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Av. Fuerzas Armadas con Calle 57, Concepcion, Barquisimeto.]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="14" y="509" width="154" height="20" uuid="144152b9-fcd1-4dfe-a3e3-e59a80c430d5"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
