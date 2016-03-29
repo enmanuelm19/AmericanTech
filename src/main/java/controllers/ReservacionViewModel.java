@@ -105,18 +105,18 @@ public class ReservacionViewModel {
 	@Command
 	@NotifyChange({ "allReservacion", "cantRegistros" })
 	public void eliminar(@BindingParam("reservacion") final Reservacion reservacion) {
-		Messagebox.show("Estas seguro de eliminar " + reservacion.getInstalacion().getNombre(), "Confirmar",
+		Messagebox.show("¿Está seguro de eliminar " + reservacion.getInstalacion().getNombre()+"?", "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								reservacionDao.eliminarReservacion(reservacion);
 								reservacionAll = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue());
-								Messagebox.show(reservacion.getInstalacion().getNombre() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(reservacion.getInstalacion().getNombre() + " ha sido eliminada", "", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No se pudo ser eliminada",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}
@@ -158,7 +158,7 @@ public class ReservacionViewModel {
 	}
 	
 	public int diasEntreFecha(Date date1, Date date2) {
-		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al d�a
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al d�a
 		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
 		return (int) diferencia;
 	}
