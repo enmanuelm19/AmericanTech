@@ -68,7 +68,7 @@
 								  											  
 												  <row class="col-md-12">
 											   		   <div class="col-md-8" align="left">
-												   		   <label class="col-md-2">Categoria:</label>
+												   		   <label class="col-md-2">Categoría:</label>
 													       <combobox model="@load(vm.tipoPreferencia)" class="col-md-5" selectedItem="@bind(vm.tipoPreferenciaSelected)" disabled="@load(vm.disablecat)" >
 																<template name="model">
 																		<comboitem

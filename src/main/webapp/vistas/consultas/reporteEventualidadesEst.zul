@@ -72,7 +72,7 @@
 											  <row class="col-md-12">
 								                  	<div class="col-md-12">
 								                  		<space spacing="1%"></space>
-														<label> Instalacion:</label>
+														<label> Instalación:</label>
 													   <combobox width="30%" model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" disabled="@load(vm.instalacion)">
 														<template name="model">
 																<comboitem

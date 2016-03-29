@@ -125,12 +125,12 @@
 											<columns>
 												<column width="40%"
 													hflex="">
-													Categoria
+													Categoría
 												</column>
 
 												<column width="40%"
 													hflex="">
-													Sub-categoria
+													Sub-categoría
 												</column>
 
 												<column width="20%"
