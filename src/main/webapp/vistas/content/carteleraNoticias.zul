@@ -1,3 +1,4 @@
+<?page title="American Tech" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native">
 	<?link rel="stylesheet" href="../../assets/intranet/owlCarrusel/assets/owl.carousel.css"?>
 	<?link rel="stylesheet" href="../../assets/intranet/owlCarrusel/assets//owl.theme.default.min.css"?>
@@ -14,7 +15,7 @@
 		loop:true,
 		margin:10, 
 		autoplay:true,
-		autoplayTimeout:10000,
+		autoplayTimeout:5000,
 		nav: true,
 		
 		autoplayHoverPause:true });
@@ -25,7 +26,8 @@
 		});
 	</script>
 	
-	<div class="row"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')">
+	<div class="row"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')" 
+	style="margin-bottom:100px">
 		<n:div  id="owl-carousel" class="owl-demo col-xs-10 col-md-offset-1" zclass="none">
 			<div zclass="none" class="owl-carousel owl-theme " children="@load(vm.noticiaAll)">
 				<template name="children" var="noticias">
