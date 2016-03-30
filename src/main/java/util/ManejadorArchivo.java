@@ -53,10 +53,10 @@ public class ManejadorArchivo {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		//String imagenLocal = ruta +"/" + imagen.getName();
+		String imagenImgur = ruta +"/" + imagen.getName();
 		String imagenLocal = "/uploadedImages/"+imagen.getName();
 		if(internet == true){
-			return subirImagenImgur(imagenLocal);
+			return subirImagenImgur(imagenImgur);
 		}else{
 			return imagenLocal;
 		}

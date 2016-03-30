@@ -30,6 +30,7 @@ import modelos.Persona;
 import modelos.Usuario;
 import modelos.UsuarioGrupo;
 import util.ManejadorArchivo;
+import util.ManejadorMail;
 
 public class RegistrarUsuarioViewModel {
 
@@ -141,6 +142,7 @@ public class RegistrarUsuarioViewModel {
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
 				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				ManejadorMail.enviarEmail("Sus credenciales para ingresar a nuestro sistema son \n\n Usuario: " + user.getUsername() + " \n\n Contraseña: " + user.getContrasenna() + " \n\n Recuerde que puede cambiar su contraseña dirigiendose a su perfil."  , user.getPersona().getCorreo(), "Creación de credenciales | American Tech");
 				win.detach();
 				}
 			}

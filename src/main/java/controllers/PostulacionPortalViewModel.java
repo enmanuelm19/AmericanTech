@@ -209,7 +209,7 @@ public class PostulacionPortalViewModel {
 								/*********************NOTICIA*******************/
 								this.noticia=new Noticia();
 								this.noticia.setTitulo("Nueva Postulación");
-								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secci�n de opiniones postulantes!");
+								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!");
 								this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(5));
 								this.noticia.setFechaCreacion(now);
 								Date dia= new Date();

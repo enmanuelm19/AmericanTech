@@ -37,6 +37,7 @@ import modelos.Accion;
 import modelos.Noticia;
 import modelos.Postulacion;
 import modelos.Socio;
+import util.ManejadorMail;
 import modelos.EstadoAccion;
 
 public class RegistrarSocioViewModel {
@@ -154,6 +155,13 @@ public class RegistrarSocioViewModel {
 				publicarNoticia();
 				Noticia n= noticiaDao.obtenerNoticiaPostulacion(postulacion);
 				noticiaDao.eliminarNoticia(n);
+				String mensaje, destinatario, asunto;
+				mensaje = "Sr(a) " + socio.getPersona().getNombre() + " " + socio.getPersona().getApellido()
+						+ " nos complace informarle que ha sido aceptado como mienbro en la familia americanista, pronto sera contactado por nuestro personal "
+						+ "para asignarle sus credenciales de acceso a la plataforma American Tech";
+				destinatario = socio.getPersona().getCorreo();
+				asunto = "Centro Atlético América | Aprobación de Postulación";
+				ManejadorMail.enviarEmail(mensaje, destinatario, asunto);
 				BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 				win.detach();
 			} else {
@@ -167,7 +175,7 @@ public class RegistrarSocioViewModel {
 	public void publicarNoticia() throws Exception{
 		this.noticia=new Noticia();
 		this.noticia.setTitulo("Nuevo Socio");
-		this.noticia.setDescripcion("�El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
+		this.noticia.setDescripcion("El Sr(a). "+socio.getPersona().getNombre()+" "+socio.getPersona().getApellido()+" es un nuevo intengrante de la familia americanista");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(6));
 		this.noticia.setFechaCreacion(new Date());
 		this.noticia.setFoto(socio.getPersona().getFoto());
