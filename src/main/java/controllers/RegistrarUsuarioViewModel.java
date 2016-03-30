@@ -74,7 +74,7 @@ public class RegistrarUsuarioViewModel {
 			this.editable = true;
 			String tmp;
 			if(user.getPersona().getFoto() == null){
-				tmp = "http://localhost:8080/america/assets/portal/img/img1.jpg";
+				tmp = "/assets/portal/img/img1.jpg";
 				user.getPersona().setFoto(tmp);
 			}else{
 				tmp = user.getPersona().getFoto();}
@@ -259,7 +259,7 @@ public class RegistrarUsuarioViewModel {
 				if (evt.getName().equals("onOK")) {
 					try {
 						usuarioGrupoDao.eliminarUsuarioGrupo(grupo);
-						usuarioGrupos = new HashSet<UsuarioGrupo>(usuarioGrupoDao.obtenerTodos());
+						usuarioGrupos = getUsuarioGrupo();
 						Messagebox.show(grupo.getGrupo().getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 								Messagebox.INFORMATION);
 						BindUtils.postGlobalCommand(null, null, "refreshUsuarioGrupo", null);
