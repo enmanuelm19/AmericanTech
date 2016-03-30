@@ -62,7 +62,6 @@
 									class="col-md-12" />
 								<datebox id="DateFechaCaducidad"
 									width="100%" cols="12" format="dd/MM/yyyy"
-									onCreate="self.value = new Date()"
 									value="@bind(vm.noticia.caducidad)" />
 							</div>
 							</vlayout>
@@ -71,10 +70,12 @@
 							<div>
 								<label value="Público"
 									class="col-md-12" />
-								<combobox selectedItem="@bind(vm.publico)" value="@bind(vm.publico)" 
+								<combobox selectedItem="@bind(vm.publico)" model="@load(vm.arrayPublic)" value="@load(vm.publico)" 
 									width="100%">
-									<comboitem label="Si" value="true" />
-									<comboitem label="No" value="false" />
+									<template name="model">
+										<comboitem
+											label="@load(each)" value="@load(each)" />
+									</template>
 								</combobox>
 							</div>
 							<div>

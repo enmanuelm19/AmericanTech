@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="eventualidades_socios_afiliados" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="27"/>
-	<property name="ireport.y" value="92"/>
+	<property name="ireport.zoom" value="0.8264462809917354"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT e.descripcion, i.nombre, te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora
+		<![CDATA[SELECT e.descripcion, i.nombre, te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE,i.nombre as instalacion, to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora
 FROM eventualidad e
 INNER JOIN instalacion i
 ON i.id_instalacion = e.instalacionid_instalacion
@@ -20,6 +20,7 @@ ON p.id_persona = e.personaid_persona]]>
 	<field name="descripcion" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="tipo" class="java.lang.String"/>
+	<field name="instalacion" class="java.lang.String"/>
 	<field name="fecha" class="java.lang.String"/>
 	<field name="hora" class="java.lang.String"/>
 	<background>
@@ -28,9 +29,9 @@ ON p.id_persona = e.personaid_persona]]>
 	<title>
 		<band height="115" splitType="Stretch">
 			<staticText>
-				<reportElement x="264" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
-				<textElement>
-					<font fontName="SansSerif" size="24" isBold="true"/>
+				<reportElement x="254" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
@@ -57,14 +58,14 @@ ON p.id_persona = e.personaid_persona]]>
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="169" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Referencia del Reporte:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="169" y="31" width="619" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -145,7 +146,7 @@ ON p.id_persona = e.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="363" y="2" width="140" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
+				<reportElement x="351" y="2" width="140" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
@@ -165,12 +166,12 @@ ON p.id_persona = e.personaid_persona]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="516" y="2" width="128" height="20" uuid="1572ed99-3313-4671-96c4-a5eb95078434"/>
+			<textField>
+				<reportElement x="503" y="4" width="158" height="20" uuid="d139819c-5d57-4637-aba8-5d08eeee9013"/>
 				<textElement>
-					<font fontName="SansSerif" size="12"/>
+					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

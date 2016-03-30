@@ -605,66 +605,66 @@ INSERT INTO funcion VALUES (9, 'Administrar Socio', ' ', 'z-icon-angle-double-ri
 INSERT INTO funcion VALUES (10, 'Danos tu Opinión', ' ', 'z-icon-angle-double-right', ' ', 2, NULL, true);
 INSERT INTO funcion VALUES (11, 'Administrar Evento', ' ', 'z-icon-angle-double-right', ' ', 4, NULL, true);
 INSERT INTO funcion VALUES (12, 'Estructurados', ' ', 'z-icon-angle-double-right', ' ', 5, NULL, true);
-INSERT INTO funcion VALUES (13, 'Motivos Sanción', 'configuracion/categoria/motivoSancion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
 INSERT INTO funcion VALUES (14, 'Estadísticos', ' ', 'z-icon-angle-double-right', ' ', 5, NULL, true);
 INSERT INTO funcion VALUES (15, 'Seguridad', ' ', 'z-icon-angle-double-right', ' ', 6, NULL, true);
-INSERT INTO funcion VALUES (16, 'Perfil del Club', 'configuracion/perfilClub.zul', 'z-icon-angle-double-right', ' ', 1, NULL, true);
-INSERT INTO funcion VALUES (17, 'Junta Directiva', 'configuracion/juntaDirectiva.zul', 'z-icon-angle-double-right', ' ', 1, NULL, true);
-INSERT INTO funcion VALUES (18, 'Instalaciones', 'configuracion/gestionarInstalaciones.zul', 'z-icon-angle-double-right', ' ', 1, NULL, true);
-INSERT INTO funcion VALUES (19, 'Reglas del Club', 'configuracion/reglasClub.zul', 'z-icon-angle-double-right', ' ', 1, NULL, true);
-INSERT INTO funcion VALUES (20, 'Preferencias', 'configuracion/categoria/preferencia.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (21, 'Recursos', 'configuracion/categoria/recursos.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (22, 'Cargos Junta Directiva', 'configuracion/categoria/cargoJunta.zul', 'z-icon-angle-double-right', ' ', 1, NULL, true);
-INSERT INTO funcion VALUES (23, 'Motivos Postulación', 'configuracion/categoria/motivoPostulacion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (24, 'Motivos Venta', 'configuracion/categoria/motivoVenta.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (25, 'Tipos Sugerencia', 'configuracion/categoria/tipoSugerencia.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (26, 'Tipos Preferencia', 'configuracion/categoria/tipoPreferencia.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (27, 'Tipos Instalación', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (28, 'Tipos Sanción', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (29, 'Tipos Afiliado', 'configuracion/categoria/tipoAfiliado.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (32, 'Acciones', 'socio/acciones.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
-INSERT INTO funcion VALUES (33, 'Mi Perfil', 'socio/miPerfil.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
-INSERT INTO funcion VALUES (34, 'Mis Sanciones', 'socio/misSanciones.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
-INSERT INTO funcion VALUES (35, 'Solicitar Venta', 'socio/solicitarVenta.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
-INSERT INTO funcion VALUES (36, 'Registrar Socio', 'socio/administrarSocio/postulantes.zul', 'z-icon-angle-double-right', ' ', 9, NULL, true);
-INSERT INTO funcion VALUES (37, 'Registrar Afiliado', 'socio/administrarSocio/socios.zul', 'z-icon-angle-double-right', ' ', 9, NULL, true);
-INSERT INTO funcion VALUES (38, 'Sanciones', 'socio/administrarSocio/sanciones.zul', 'z-icon-angle-double-right', ' ', 9, NULL, true);
-INSERT INTO funcion VALUES (39, 'Sugerencias', 'socio/buzon/vistaGeneralSugerencias.zul', 'z-icon-angle-double-right', ' ', 10, NULL, true);
-INSERT INTO funcion VALUES (40, 'Opinar Postulación', 'socio/buzon/opinionPostulacion.zul', 'z-icon-angle-double-right', ' ', 10, NULL, true);
-INSERT INTO funcion VALUES (41, 'Reservaciones', 'instalacion/misReservaciones.zul', 'z-icon-angle-double-right', ' ', 3, NULL, true);
-INSERT INTO funcion VALUES (42, 'Alquileres', 'instalacion/administrarAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, NULL, true);
-INSERT INTO funcion VALUES (43, 'Mis Alquileres', 'instalacion/misAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, NULL, true);
-INSERT INTO funcion VALUES (45, 'Registrar Eventos', 'evento/administrarEvento/listaEventos.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
-INSERT INTO funcion VALUES (46, 'Planificar Eventos', 'evento/administrarEvento/planificarEvento.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
-INSERT INTO funcion VALUES (47, 'Ejecutar Eventos', 'evento/administrarEvento/ejecutarEvento.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
-INSERT INTO funcion VALUES (49, 'Cartelera', 'administracion/cartelera.zul', 'z-icon-angle-double-right', ' ', 6, NULL, true);
-INSERT INTO funcion VALUES (51, 'Usuarios', 'administracion/seguridad/usuarioGeneral.zul', 'z-icon-angle-double-right', ' ', 15, NULL, true);
-INSERT INTO funcion VALUES (52, 'Grupos', 'administracion/seguridad/mostrarGrupos.zul', 'z-icon-angle-double-right', ' ', 15, NULL, true);
-INSERT INTO funcion VALUES (53, 'Funciones', 'administracion/seguridad/administrarFunciones.zul', 'z-icon-angle-double-right', ' ', 15, NULL, true);
-INSERT INTO funcion VALUES (54, 'Postulados', 'postulado/postulado.zul', 'z-icon-angle-double-right', ' ', 7, NULL, true);
-INSERT INTO funcion VALUES (55, 'Administrar portal', 'configuracion/administracionPortal.zul', 'z-icon-angle-double-right', ' ', 1, NULL, true);
-INSERT INTO funcion VALUES (56, 'Finalizar eventos', 'evento/administrarEvento/finalizarEvento.zul', 'z-icon-angle-double-right', ' ', 11, NULL, true);
-INSERT INTO funcion VALUES (57, 'Alquileres', 'consultas/reporteAlquileres.zul', 'z-icon-angle-double-right', ' ', 12, NULL, true);
-INSERT INTO funcion VALUES (58, 'Eventos', 'consultas/reporteEventos.zul', 'z-icon-angle-double-right', ' ', 12, NULL, true);
-INSERT INTO funcion VALUES (59, 'Actividades de Evento', 'consultas/reporteActividadEventos.zul', 'z-icon-angle-double-right', ' ', 12, NULL, true);
-INSERT INTO funcion VALUES (60, 'Socios', 'consultas/reporteSocios.zul', 'z-icon-angle-double-right', ' ', 12, NULL, true);
-INSERT INTO funcion VALUES (61, 'Sanciones', 'consultas/reporteSanciones.zul', 'z-icon-angle-double-right', ' ', 12, NULL, true);
-INSERT INTO funcion VALUES (62, 'Eventualidades', 'consultas/reporteEventualidad.zul', 'z-icon-angle-double-right', ' ', 12, NULL, true);
-INSERT INTO funcion VALUES (63, 'Sanciones', 'consultas/reporteSancionesEst.zul', 'z-icon-angle-double-right', ' ', 14, NULL, true);
-INSERT INTO funcion VALUES (64, 'Eventualidades', 'consultas/reporteEventualidadesEst.zul', 'z-icon-angle-double-right', ' ', 14, NULL, true);
-INSERT INTO funcion VALUES (65, 'Eventos', 'consultas/reporteEventoValorEsperadoRealEst.zul', 'z-icon-angle-double-right', ' ', 14, NULL, true);
-INSERT INTO funcion VALUES (66, 'Socios', 'consultas/reporteSociosEst.zul', 'z-icon-angle-double-right', ' ', 14, NULL, true);
-INSERT INTO funcion VALUES (68, 'Instalaciones', 'consultas/reporteInstalacionesEst.zul', 'z-icon-angle-double-right', ' ', 14, NULL, true);
-INSERT INTO funcion VALUES (69, 'Redes Sociales', 'configuracion/categoria/redSocial.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (70, 'Tipos Eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (71, 'Indicadores', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (72, 'Tipos Opinión', 'configuracion/categoria/tipoOpinion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (73, 'Tipos Pago', 'configuracion/categoria/tipoPago.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (74, 'Tipos Noticia', 'configuracion/categoria/tipoNoticia.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (75, 'Motivos Cancelación', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, NULL, true);
-INSERT INTO funcion VALUES (76, 'Sugerencias', 'socio/buzon/sugerenciaAdministrativo.zul', 'z-icon-angle-double-right', ' ', 10, NULL, true);
 INSERT INTO funcion VALUES (7, 'Postulación', ' ', 'z-icon-group', ' ', 0, NULL, true);
-INSERT INTO funcion VALUES (44, 'Eventualidades', 'socio/registrarEventualidad.zul', 'z-icon-angle-double-right', ' ', 2, NULL, true);
+INSERT INTO funcion VALUES (16, 'Perfil del Club', 'configuracion/perfilClub.zul', 'z-icon-angle-double-right', ' ', 1, 'Registra y modifica el perfil del club', true);
+INSERT INTO funcion VALUES (18, 'Instalaciones', 'configuracion/gestionarInstalaciones.zul', 'z-icon-angle-double-right', ' ', 1, 'Registra y odifica las instalaciones del club', true);
+INSERT INTO funcion VALUES (17, 'Junta Directiva', 'configuracion/juntaDirectiva.zul', 'z-icon-angle-double-right', ' ', 1, 'Registra y modifica la junta directiva', true);
+INSERT INTO funcion VALUES (19, 'Reglas del Club', 'configuracion/reglasClub.zul', 'z-icon-angle-double-right', ' ', 1, 'Registra y modifica las reglas del club', true);
+INSERT INTO funcion VALUES (20, 'Preferencias', 'configuracion/categoria/preferencia.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica las preferencias', true);
+INSERT INTO funcion VALUES (21, 'Recursos', 'configuracion/categoria/recursos.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y recursos que pueden estar en las instalaciones', true);
+INSERT INTO funcion VALUES (22, 'Cargos Junta Directiva', 'configuracion/categoria/cargoJunta.zul', 'z-icon-angle-double-right', ' ', 1, 'Registra y modifica los cargos que pueden estar en la junta directiva', true);
+INSERT INTO funcion VALUES (23, 'Motivos Postulación', 'configuracion/categoria/motivoPostulacion.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra ly modifica los posibles motivos de postulacion', true);
+INSERT INTO funcion VALUES (24, 'Motivos Venta', 'configuracion/categoria/motivoVenta.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los motivos de una venta', true);
+INSERT INTO funcion VALUES (25, 'Tipos Sugerencia', 'configuracion/categoria/tipoSugerencia.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los tipos de sugerencia', true);
+INSERT INTO funcion VALUES (26, 'Tipos Preferencia', 'configuracion/categoria/tipoPreferencia.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los tipo de preferencia', true);
+INSERT INTO funcion VALUES (27, 'Tipos Instalación', 'configuracion/categoria/tipoInstalacion.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los tipos de instalacion', true);
+INSERT INTO funcion VALUES (29, 'Tipos Afiliado', 'configuracion/categoria/tipoAfiliado.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica el parentesco', true);
+INSERT INTO funcion VALUES (32, 'Acciones', 'socio/acciones.zul', 'z-icon-angle-double-right', ' ', 2, 'Registra y modifica las acciones', true);
+INSERT INTO funcion VALUES (33, 'Mi Perfil', 'socio/miPerfil.zul', 'z-icon-angle-double-right', ' ', 2, 'Modifica el perfil de los usuarios', true);
+INSERT INTO funcion VALUES (34, 'Mis Sanciones', 'socio/misSanciones.zul', 'z-icon-angle-double-right', ' ', 2, 'Consulta de las sanciones de un usuario ', true);
+INSERT INTO funcion VALUES (35, 'Solicitar Venta', 'socio/solicitarVenta.zul', 'z-icon-angle-double-right', ' ', 2, 'Realiza la solicitud de venta de una accion', true);
+INSERT INTO funcion VALUES (36, 'Registrar Socio', 'socio/administrarSocio/postulantes.zul', 'z-icon-angle-double-right', ' ', 9, 'Registra el socio aprobando la postulacion', true);
+INSERT INTO funcion VALUES (37, 'Registrar Afiliado', 'socio/administrarSocio/socios.zul', 'z-icon-angle-double-right', ' ', 9, 'Registra afiliados de los distintos socios', true);
+INSERT INTO funcion VALUES (38, 'Sanciones', 'socio/administrarSocio/sanciones.zul', 'z-icon-angle-double-right', ' ', 9, 'Registra y modifica sanciones', true);
+INSERT INTO funcion VALUES (39, 'Sugerencias', 'socio/buzon/vistaGeneralSugerencias.zul', 'z-icon-angle-double-right', ' ', 10, 'Registra y modifica las sugerencias por parte de los socios y/o afiliados', true);
+INSERT INTO funcion VALUES (40, 'Opinar Postulación', 'socio/buzon/opinionPostulacion.zul', 'z-icon-angle-double-right', ' ', 10, 'Registra opiniones sobre postulaciones por parte de socios y/o afiliados', true);
+INSERT INTO funcion VALUES (41, 'Reservaciones', 'instalacion/misReservaciones.zul', 'z-icon-angle-double-right', ' ', 3, 'Consulta de las reservaciones de usuario', true);
+INSERT INTO funcion VALUES (42, 'Alquileres', 'instalacion/administrarAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, 'Registra y modifica alquileres', true);
+INSERT INTO funcion VALUES (43, 'Mis Alquileres', 'instalacion/misAlquileres.zul', 'z-icon-angle-double-right', ' ', 3, 'Consulta de los alquileres del usuario', true);
+INSERT INTO funcion VALUES (44, 'Eventualidades', 'socio/registrarEventualidad.zul', 'z-icon-angle-double-right', ' ', 2, 'Registra y modifica eventualidades', true);
+INSERT INTO funcion VALUES (45, 'Registrar Eventos', 'evento/administrarEvento/listaEventos.zul', 'z-icon-angle-double-right', ' ', 11, 'Registra y modifica eventos', true);
+INSERT INTO funcion VALUES (46, 'Planificar Eventos', 'evento/administrarEvento/planificarEvento.zul', 'z-icon-angle-double-right', ' ', 11, 'Planifica los eventos registrados', true);
+INSERT INTO funcion VALUES (47, 'Ejecutar Eventos', 'evento/administrarEvento/ejecutarEvento.zul', 'z-icon-angle-double-right', ' ', 11, 'Ejecuta los eventos planificados', true);
+INSERT INTO funcion VALUES (49, 'Cartelera', 'administracion/cartelera.zul', 'z-icon-angle-double-right', ' ', 6, 'Registra y modifica noticias de la cartelera', true);
+INSERT INTO funcion VALUES (51, 'Usuarios', 'administracion/seguridad/usuarioGeneral.zul', 'z-icon-angle-double-right', ' ', 15, 'Registra y modifica los usuarios del sistema', true);
+INSERT INTO funcion VALUES (52, 'Grupos', 'administracion/seguridad/mostrarGrupos.zul', 'z-icon-angle-double-right', ' ', 15, 'Registra y modifica los grupos funcionales', true);
+INSERT INTO funcion VALUES (53, 'Funciones', 'administracion/seguridad/administrarFunciones.zul', 'z-icon-angle-double-right', ' ', 15, 'Consulta de las funciones existentes en el sistema', true);
+INSERT INTO funcion VALUES (54, 'Postulados', 'postulado/postulado.zul', 'z-icon-angle-double-right', ' ', 7, 'Consulta de informacion acerca de los postulados', true);
+INSERT INTO funcion VALUES (55, 'Administrar portal', 'configuracion/administracionPortal.zul', 'z-icon-angle-double-right', ' ', 1, 'Registra y modifica la informacion del portal', true);
+INSERT INTO funcion VALUES (56, 'Finalizar eventos', 'evento/administrarEvento/finalizarEvento.zul', 'z-icon-angle-double-right', ' ', 11, 'Finalizacion de los eventos', true);
+INSERT INTO funcion VALUES (57, 'Alquileres', 'consultas/reporteAlquileres.zul', 'z-icon-angle-double-right', ' ', 12, 'Reporte de los alquileres', true);
+INSERT INTO funcion VALUES (58, 'Eventos', 'consultas/reporteEventos.zul', 'z-icon-angle-double-right', ' ', 12, 'Reporte de los eventos', true);
+INSERT INTO funcion VALUES (59, 'Actividades de Evento', 'consultas/reporteActividadEventos.zul', 'z-icon-angle-double-right', ' ', 12, 'Reporte de actividades de los eventos', true);
+INSERT INTO funcion VALUES (60, 'Socios', 'consultas/reporteSocios.zul', 'z-icon-angle-double-right', ' ', 12, 'Reporte de socios', true);
+INSERT INTO funcion VALUES (61, 'Sanciones', 'consultas/reporteSanciones.zul', 'z-icon-angle-double-right', ' ', 12, 'Reporte de sanciones', true);
+INSERT INTO funcion VALUES (62, 'Eventualidades', 'consultas/reporteEventualidad.zul', 'z-icon-angle-double-right', ' ', 12, 'Reporte de eventualidad', true);
+INSERT INTO funcion VALUES (63, 'Sanciones', 'consultas/reporteSancionesEst.zul', 'z-icon-angle-double-right', ' ', 14, 'Reporte estadistico de sanciones', true);
+INSERT INTO funcion VALUES (64, 'Eventualidades', 'consultas/reporteEventualidadesEst.zul', 'z-icon-angle-double-right', ' ', 14, 'Reporte estadistico de eventualidades', true);
+INSERT INTO funcion VALUES (65, 'Eventos', 'consultas/reporteEventoValorEsperadoRealEst.zul', 'z-icon-angle-double-right', ' ', 14, 'Reporte estadistico de eventos', true);
+INSERT INTO funcion VALUES (66, 'Socios', 'consultas/reporteSociosEst.zul', 'z-icon-angle-double-right', ' ', 14, 'Reporte estadistico de socio', true);
+INSERT INTO funcion VALUES (68, 'Instalaciones', 'consultas/reporteInstalacionesEst.zul', 'z-icon-angle-double-right', ' ', 14, 'Reporte estadistico de la instalacion', true);
+INSERT INTO funcion VALUES (69, 'Redes Sociales', 'configuracion/categoria/redSocial.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica las redes sociales del club', true);
+INSERT INTO funcion VALUES (70, 'Tipos Eventualidad', 'configuracion/categoria/tipoEventualidad.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los tipo de eventualidad', true);
+INSERT INTO funcion VALUES (71, 'Indicadores', 'configuracion/categoria/indicador.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los indicadores', true);
+INSERT INTO funcion VALUES (72, 'Tipos Opinión', 'configuracion/categoria/tipoOpinion.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los tipo de opinion', true);
+INSERT INTO funcion VALUES (73, 'Tipos Pago', 'configuracion/categoria/tipoPago.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica el tipo de pago', true);
+INSERT INTO funcion VALUES (74, 'Tipos Noticia', 'configuracion/categoria/tipoNoticia.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modfica los tipo de noticia', true);
+INSERT INTO funcion VALUES (76, 'Sugerencias', 'socio/buzon/sugerenciaAdministrativo.zul', 'z-icon-angle-double-right', ' ', 10, 'Consulta de las sugerencias de todos los usuarios', true);
+INSERT INTO funcion VALUES (75, 'Motivos Cancelación', 'configuracion/categoria/motivoCancelacion.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los motivo de cancelacion', true);
+INSERT INTO funcion VALUES (13, 'Motivos Sanción', 'configuracion/categoria/motivoSancion.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra los mtivos de sancion', false);
+INSERT INTO funcion VALUES (28, 'Motivo Sanción', 'configuracion/categoria/tipoSancion.zul', 'z-icon-angle-double-right', ' ', 8, 'Registra y modifica los tipos de sancion', true);
 
 
 --
@@ -1052,7 +1052,7 @@ SELECT pg_catalog.setval('motivo_venta_id_motivo_venta_seq', 4, true);
 -- Data for Name: tipo_noticia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tipo_noticia VALUES (1, 'Evento Auto', '#3300cc', false);
+INSERT INTO tipo_noticia VALUES (1, 'Evento Auto', '#009427', false);
 INSERT INTO tipo_noticia VALUES (2, 'Postulación Auto', '#f88514', false);
 INSERT INTO tipo_noticia VALUES (7, 'Otros', '#0a5f35', true);
 INSERT INTO tipo_noticia VALUES (4, 'Postulación', '#b2661a', true);
@@ -1131,7 +1131,7 @@ SELECT pg_catalog.setval('noticia_id_noticia_seq', 1, false);
 
 INSERT INTO tipo_preferencia VALUES (3, 'Social', '#20B2AA', true);
 INSERT INTO tipo_preferencia VALUES (4, 'Hobbie', '#0099cc', true);
-INSERT INTO tipo_preferencia VALUES (2, 'Deportiva', '#003399', true);
+INSERT INTO tipo_preferencia VALUES (2, 'Deportiva', '#009427', true);
 INSERT INTO tipo_preferencia VALUES (1, 'Cultural', '#660000', true);
 
 
@@ -1814,4 +1814,3 @@ SELECT pg_catalog.setval('venta_id_venta_seq', 1, false);
 --
 -- PostgreSQL database dump complete
 --
-

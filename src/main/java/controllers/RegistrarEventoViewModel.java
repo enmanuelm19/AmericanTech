@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -13,6 +14,8 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
+import util.ManejadorMail;
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
 import Dao.IndicadorDao;
@@ -23,6 +26,7 @@ import Dao.NoticiaDao;
 import Dao.PreferenciaDao;
 import Dao.PreferenciaEventoDao;
 import Dao.ReservacionDao;
+import Dao.SocioDao;
 import Dao.TipoNoticiaDao;
 import Dao.TipoPreferenciaDao;
 import modelos.Evento;
@@ -34,7 +38,9 @@ import modelos.Noticia;
 import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
 import modelos.PreferenciaEvento;
+import modelos.PreferenciaPersona;
 import modelos.Reservacion;
+import modelos.Socio;
 import modelos.TipoPreferencia;
 
 public class RegistrarEventoViewModel {
@@ -237,7 +243,7 @@ public class RegistrarEventoViewModel {
 							"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		else
-			Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "American Tech", Messagebox.OK,
+			Messagebox.show("Por favor indique rango de fechas de forma correcta, tome en cuenta que la fecha de inicio debe ser despues de la fecha actual ", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 	}
 
@@ -348,7 +354,7 @@ public class RegistrarEventoViewModel {
 			if (!editable) {
 				eventoDao.agregarEvento(evento);
 				registrarNoticia();
-				//enviarEmail();
+				enviarEmail();
 				Messagebox.show("El evento " + evento.getNombre() + " ha sido registrado exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
@@ -356,7 +362,7 @@ public class RegistrarEventoViewModel {
 			else {
 				eventoDao.actualizarEvento(evento);
 				actualizarNoticia();
-				//enviarEmail();
+				enviarEmail();
 				Messagebox.show("El evento " + evento.getNombre() + " ha sido actualizado exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
@@ -416,7 +422,7 @@ public class RegistrarEventoViewModel {
 		
 	}
 	
-	/*public void enviarEmail() throws Exception {
+	public void enviarEmail() throws Exception {
 		SocioDao socioDao = new SocioDao();
 
 		boolean bandera = false;
@@ -447,7 +453,7 @@ public class RegistrarEventoViewModel {
 			bandera = false;
 		}
 
-	}*/
+	}
 	
 	public void actualizarNoticia() throws Exception{
 		

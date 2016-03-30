@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_eventualidad1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.8264462809917359"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="103"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -21,9 +21,9 @@
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement x="262" y="19" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
-				<textElement>
-					<font fontName="SansSerif" size="24" isBold="true"/>
+				<reportElement x="254" y="19" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
@@ -50,14 +50,14 @@
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="178" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Referencia del Reporte:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="178" y="31" width="610" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -75,7 +75,7 @@
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="518" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
+				<reportElement x="0" y="0" width="684" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="36" y="1" width="100" height="20" uuid="4fa94580-009a-448c-a451-b93bc7937e25"/>
@@ -85,14 +85,14 @@
 				<text><![CDATA[Instalación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="229" y="1" width="100" height="20" uuid="f89447f3-87cb-4019-92f5-a38d4119bd1a"/>
+				<reportElement x="407" y="0" width="100" height="20" uuid="f89447f3-87cb-4019-92f5-a38d4119bd1a"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="405" y="0" width="100" height="20" uuid="65372061-eeb7-4486-ab99-0d4b626c110a"/>
+				<reportElement x="572" y="1" width="100" height="20" uuid="65372061-eeb7-4486-ab99-0d4b626c110a"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -103,21 +103,21 @@
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="15" y="4" width="201" height="20" uuid="57811500-0e0d-44c3-b13e-929ab192e8b2"/>
+				<reportElement x="15" y="4" width="339" height="20" uuid="57811500-0e0d-44c3-b13e-929ab192e8b2"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="229" y="4" width="100" height="20" uuid="ad13e281-90dc-4601-8d18-1af126d39199"/>
+				<reportElement x="407" y="3" width="100" height="20" uuid="ad13e281-90dc-4601-8d18-1af126d39199"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="405" y="0" width="100" height="20" uuid="2dbece12-eea2-41f4-93de-3c3fa4dc7065"/>
+				<reportElement x="572" y="1" width="100" height="20" uuid="2dbece12-eea2-41f4-93de-3c3fa4dc7065"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

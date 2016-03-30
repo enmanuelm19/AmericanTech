@@ -65,7 +65,7 @@
 				<div>
 					<button iconSclass="z-icon-floppy-o"
 						onClick="@command('guardar',win=winEv)" disabled="@load(vm.disabled)" class='boton-guardar'
-						label="Guardar" />
+						label="Guardar" style="background: #2B7DBC !important;" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
 						onClick="@command('cerrarModal',win=winEv)" class='boton-cancelar'

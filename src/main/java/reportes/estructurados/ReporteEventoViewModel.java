@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
 import org.apache.commons.collections.iterators.CollatingIterator;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -31,9 +32,13 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
 import Dao.PreferenciaDao;
+import Dao.PreferenciaEventoDao;
 import Dao.TipoPreferenciaDao;
+import modelos.InstalacionEvento;
 import modelos.Preferencia;
+import modelos.PreferenciaEvento;
 import modelos.TipoPreferencia;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
@@ -63,8 +68,11 @@ public class ReporteEventoViewModel {
 	private PreferenciaDao preferenciaDao;
 	private TipoPreferencia tipoPreferenciaSelected;
 	private Set<Preferencia> preferenciaEventos;
-	private ArrayList<Preferencia> seleccionPreferencia;
 	private boolean checkestricto, checkcomun, disableestricto, disablecomun, disablecat;
+	
+	private PreferenciaEventoDao preferenciaEventoDao;
+	private ArrayList<Preferencia> seleccionPreferencia;
+	private Set<PreferenciaEvento> listPreferenciaEvento;
 	
 	//Reporte
 	private int preferencia1,preferencia2, preferencia3, preferencia4, preferencia5;
@@ -216,6 +224,14 @@ public class ReporteEventoViewModel {
 		else{
 			Messagebox.show("Solo se pueden Seleccionar 5 preferencias", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
+
+	}
+
+	@Command
+	@NotifyChange({"preferenciaEventos"})
+	public void eliminarPreferenciaEvento(@BindingParam("preferencia") Preferencia p) throws Exception {
+		
+		preferenciaEventos.remove(p);
 
 	}
 
@@ -858,5 +874,5 @@ public class ReporteEventoViewModel {
 	}
 
 
-
+	
 }

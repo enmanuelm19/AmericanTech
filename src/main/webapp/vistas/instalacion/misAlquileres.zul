@@ -73,7 +73,7 @@
 											<div>
 												<button
 													sclass="btn-link"
-													onClick="@command('showModal',alquiler = alquiler)" disabled="@load(alquiler.archivoAlquilers.size() > 1)"
+													onClick="@command('showModal',alquiler = alquiler)" disabled="@load(vm.isAvaiable(alquiler))"
 													iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />												
 											</div>
 										</row>

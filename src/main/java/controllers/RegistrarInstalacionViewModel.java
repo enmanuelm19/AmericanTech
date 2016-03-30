@@ -229,7 +229,7 @@ public class RegistrarInstalacionViewModel {
 	@NotifyChange({"recursosinstalacion","recursoInstalacion"})
 	public void eliminarRecursoInstalacion(@BindingParam("recursoInstalacion") RecursoInstalacion ri){
 			recursosinstalacion.remove(ri);
-			Messagebox.show("El recurso " + ri.getRecurso().getDescripcion() +" se ha eliminado para esta instalacion", "American Tech",
+			Messagebox.show("El recurso " + ri.getRecurso().getDescripcion() +" se ha eliminado para esta instalaci贸n", "American Tech",
 					Messagebox.OK, null );
 	}
 
@@ -240,7 +240,7 @@ public class RegistrarInstalacionViewModel {
 		if(!editable){
 			if(myMedia instanceof org.zkoss.image.Image){
 				if(myMedia.getByteData().length > 2000*1024){
-					Messagebox.show("Escoja una imagen de menor tama駉", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("Escoja una imagen de menor tama帽o", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				}else{
 					imagenNueva=true;
 					uploadedImage = myMedia;
@@ -253,7 +253,7 @@ public class RegistrarInstalacionViewModel {
 			}
 
 		}else{
-			Messagebox.show("Imagen subida con exito para la instalaci髇 " + instalacion.getNombre(), "American Tech",
+			Messagebox.show("Imagen subida con exito para la instalaci贸n " + instalacion.getNombre(), "American Tech",
 					Messagebox.OK , Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 						public void onEvent(Event evt) throws InterruptedException {
 							if (evt.getName().equals("onOK")) {
@@ -303,7 +303,7 @@ public class RegistrarInstalacionViewModel {
 			for (RecursoInstalacion recursoInstalacion : recursosinstalacion) {
 			if (recursoInstalacion.getRecurso().getIdRecurso() == this.recursoInstalacion.getRecurso().getIdRecurso()){
 				Messagebox.show(
-						"Recurso seleccionado previamente", "",
+						"Recurso seleccionado previamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
@@ -318,7 +318,7 @@ public class RegistrarInstalacionViewModel {
 
 	}else{
 		Messagebox.show(
-				"Seleccione al menos un recurso", "",
+				"Seleccione al menos un recurso", "American Tech",
 				Messagebox.OK, Messagebox.INFORMATION);
 	}
 	}
@@ -349,21 +349,21 @@ public class RegistrarInstalacionViewModel {
 
 				Messagebox.show(
 						"La instalacion " + instalacion.getNombre()
-								+ " ha sido registrada exitosamente", "",
+								+ " ha sido registrada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			
 				}else {
 				
-				Messagebox.show("Instalacion con el Nombre "
+				Messagebox.show("Instalaci贸n con el Nombre "
 						+ instalacion.getNombre() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 				
 			} else {
 				instalacionDao.actualizarInstalacion(instalacion);
 				Messagebox.show(
-						"La instalacion " + instalacion.getNombre()
-								+ " ha sido actualizada exitosamente", "",
+						"La instalaci贸n " + instalacion.getNombre()
+								+ " ha sido actualizada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 			win.detach();

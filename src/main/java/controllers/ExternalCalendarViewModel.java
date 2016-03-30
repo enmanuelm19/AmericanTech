@@ -56,7 +56,7 @@ public class ExternalCalendarViewModel extends SelectorComposer<Component> {
 		super.doAfterCompose(comp);
 		for (Evento evento : eventoDao.obtenerTodos()) {
 			if (evento.getEstadoEvento() != null && (evento.getEstadoEvento().getIdEstadoEvento() == 2
-					|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
+					|| evento.getEstadoEvento().getIdEstadoEvento() == 3 || evento.getEstadoEvento().getIdEstadoEvento() == 1)) {
 				if (evento.isPublico()) {
 					if (evento.getPreferenciaEventos() != null) {
 						if (evento.getPreferenciaEventos().size() == 1) {

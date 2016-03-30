@@ -79,6 +79,7 @@ public class ReporteActividadEventoViewModel {
 		private String titulo = "";
 		private String sql = "";
 		private String reporte;
+		private String reporteTxt;
 		private Connection con;
 		private Map<String, Object> parameters = new HashMap<String, Object>();
 		private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -188,6 +189,7 @@ public class ReporteActividadEventoViewModel {
 			this.fecha_inicial = this.eventoSelected.getFechaInicio().toString();
 			this.fecha_hasta = this.eventoSelected.getFechaFin().toString();
 			this.reporte = System.getProperty("user.home") + "/reportes_america/evento_actividad.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_actividad_txt.jrxml";
 			
 			this.sql = " SELECT a.descripcion, to_char(a.fecha_tope, 'YYYY-MM-DD') as fecha_tope, to_char(a.fecha_realizacion, 'YYYY-MM-DD') as fecha_realizacion, "
 					+ "a.valor_real, a.valor_esperado, CASE WHEN a.finalizada = true THEN 'SI' ELSE 'NO' END "
@@ -240,8 +242,12 @@ public class ReporteActividadEventoViewModel {
 		}
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
-		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		JasperDesign jd = null;
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 

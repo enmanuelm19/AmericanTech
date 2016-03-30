@@ -116,7 +116,7 @@
 														<label value="@load(each.descripcion)" />
 														<button sclass="btn-link"
 																iconSclass="z-icon-trash-o red" 
-																tooltiptext="Eliminar" onClick="@command('eliminarPreferenciaEvento', preferenciaEvento=each)"/>
+																tooltiptext="Eliminar" onClick="@command('eliminarPreferenciaEvento', preferencia=each)"/>
 													</row>
 												</template>
 											</rows>

@@ -7,13 +7,13 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-cogs" />
 						<a label="Categorias" href="#" />
-						<label value="Tipo sanción" />
+						<label value="Motivo sanción" />
 					</div>
 				</div>
 				<div align="center">
 
 					<div sclass="page-header" align="left">
-						<label value="Tipos Sanciones" />
+						<label value="Motivos Sanción" />
 					</div>
 
 					<space />
@@ -34,14 +34,14 @@
 							<div align="left">
 								<div sclass="encabezado">
 									<label
-										value="Listado Tipo Sanción" />
+										value="Listado Motivos Sanción" />
 								</div>
 								<div class='linea-two'></div>
 
 							</div>
 							<separator spacing="20px" />
 							<grid
-								emptyMessage="No se encuentran tipos de sanciones registradas"
+								emptyMessage="No se encuentran motivos de sanción registradas"
 								mold="paging" pageSize="10" id="gridTipoSancion"
 								model="@load(vm.allTipoSancion)">
 								<auxhead sclass="category-center">
@@ -56,7 +56,7 @@
 								</auxhead>
 								<columns>
 									<column hflex="2">
-										Tipo Sanción
+										Motivo Sanción
 									</column>
 									<column width="20%"
 										align="center">

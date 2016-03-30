@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_eventualidad3" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
-	<property name="ireport.zoom" value="1.0000000000000004"/>
-	<property name="ireport.x" value="27"/>
-	<property name="ireport.y" value="197"/>
+	<property name="ireport.zoom" value="0.7513148009015781"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -23,9 +23,9 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement x="263" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
-				<textElement>
-					<font fontName="SansSerif" size="24" isBold="true"/>
+				<reportElement x="254" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
@@ -52,7 +52,7 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="161" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
@@ -66,7 +66,7 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="161" y="31" width="627" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -77,7 +77,7 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="409" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
+				<reportElement x="0" y="0" width="628" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="5" y="1" width="100" height="20" uuid="038487d5-b841-41c9-8b17-d4af8a78752f"/>
@@ -87,14 +87,14 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="129" y="1" width="100" height="20" uuid="71d23b64-f951-414c-a77a-ecafde47d172"/>
+				<reportElement x="361" y="1" width="100" height="20" uuid="71d23b64-f951-414c-a77a-ecafde47d172"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="285" y="1" width="100" height="20" uuid="9d274de2-d117-4bdc-981b-6789d9e99530"/>
+				<reportElement x="517" y="1" width="100" height="20" uuid="9d274de2-d117-4bdc-981b-6789d9e99530"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -105,21 +105,21 @@ and e.instalacionid_instalacion = 1 group by te.id_tipo_eventualidad]]>
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="5" y="4" width="100" height="20" uuid="f902c500-0b85-4517-a347-47945b4cea19"/>
+				<reportElement x="5" y="4" width="333" height="20" uuid="f902c500-0b85-4517-a347-47945b4cea19"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="129" y="4" width="100" height="20" uuid="d89ff0b8-d832-4403-9ebe-671d4c6082a4"/>
+				<reportElement x="361" y="4" width="100" height="20" uuid="d89ff0b8-d832-4403-9ebe-671d4c6082a4"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="275" y="4" width="100" height="20" uuid="0c7bb316-acdd-4340-bd6f-b6acb45b4957"/>
+				<reportElement x="513" y="0" width="100" height="20" uuid="0c7bb316-acdd-4340-bd6f-b6acb45b4957"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

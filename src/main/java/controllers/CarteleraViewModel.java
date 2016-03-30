@@ -12,6 +12,7 @@ import modelos.Accion;
 import modelos.Afiliado;
 import modelos.Funcion;
 import modelos.Noticia;
+import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
 import modelos.PreferenciaPersona;
 import modelos.Socio;
@@ -155,13 +156,13 @@ public class CarteleraViewModel {
 	@NotifyChange("noticiaAll")
 	public void refreshPostulaciones() throws Exception {
 		 noticiaAll.clear();
-		 for(int i=0;i< noticiaDao.obtenerNoticiasVigentes(new Date()).size();i++)
+		 List<Noticia> noticias = new ArrayList<Noticia>();
+		 noticias = noticiaDao.obtenerNoticiasVigentes(new Date());
+		 for(int i=0;i< noticias.size();i++)
 		 {
-			 System.out.println("postulacion " + noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion());
-			 System.out.println((noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion() != null));
-			 if (noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion() != null)
+			 if (noticias.get(i).getPostulacion() != null)
 			 {
-				 noticiaAll.add(noticiaDao.obtenerNoticiasVigentes(new Date()).get(i));
+				 noticiaAll.add(noticias.get(i));
 			 }
 		 }
 		 this.setNoticiaAll(noticiaAll);
@@ -170,7 +171,7 @@ public class CarteleraViewModel {
 	@GlobalCommand
 	@NotifyChange("noticiaAll")
 	public void refreshCarteleraGeneral() throws Exception {
-		 System.out.println("boton general cartelera");
+		 
 	 noticiaAll.clear();
 	 noticiaAll = noticiaDao.obtenerNoticiasVigentes(new Date());
 	}
@@ -180,16 +181,15 @@ public class CarteleraViewModel {
 	public void refreshEventos() throws Exception {
 		noticiaAll.clear();
 		
-		 System.out.println("boton eventos "+ this.usuario.getPersona().getIdPersona());
+		
 		ListPrefPersona = preferenciaPersDao.obtenerPreferenciasPersona(this.usuario.getPersona());
-		System.out.println(ListPrefPersona.size() + " pref person");
-		 for(int j=0;j< noticiaPreferenciaDao.obtenerTodos().size();j++){
-			 System.out.println("entro al ciclo " + noticiaPreferenciaDao.obtenerTodos().get(j).getNoticia().getTitulo());
+		List<NoticiaPreferencia> noticiasPreferencias = noticiaPreferenciaDao.obtenerTodos();
+		 for(NoticiaPreferencia noticia:noticiaPreferenciaDao.obtenerTodos()){
 			 for(int i=0; i< ListPrefPersona.size(); i++){
-				 System.out.println((noticiaPreferenciaDao.obtenerTodos().get(j).getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia()));
-				 if(noticiaPreferenciaDao.obtenerTodos().get(j).getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia())
+				 if(noticia.getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia())
 				 {
-					 noticiaAll.add(noticiaPreferenciaDao.obtenerTodos().get(j).getNoticia());
+					 noticiaAll.add(noticia.getNoticia());
+					 break;
 				 }
 			 }
 		 }

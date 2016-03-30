@@ -129,7 +129,7 @@ public class RegistrarReservacionViewModel {
 				setDisabled(true);
 				Messagebox.show("La fecha final no puede ser menor a la fecha inicio", "American Tech", Messagebox.OK,
 						Messagebox.EXCLAMATION);
-			}	
+			}
 			if (isDisponible(getInstalacionSeleccionada())) {
 				CalendarioFecha calendarioFecha = new CalendarioFecha();
 				reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
@@ -149,8 +149,8 @@ public class RegistrarReservacionViewModel {
 					reservacionDao.actualizarReservacion(reservacion);
 					new CalendarioFechaDao().actualizarCalendarioFecha(calendarioFecha);
 				}
-				Messagebox.show("Reservación Agregada: " + getInstalacionSeleccionada().getNombre(), "American Tech", Messagebox.OK,
-						Messagebox.INFORMATION);
+				Messagebox.show("Reservación Agregada: " + getInstalacionSeleccionada().getNombre(), "American Tech",
+						Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 			} else {
@@ -246,8 +246,8 @@ public class RegistrarReservacionViewModel {
 				if (getReservacion().getFechaInicio() != null && getReservacion().getFechaFin() != null
 						&& getReservacion().getFechaInicio().after(getReservacion().getFechaFin())) {
 					setDisabled(true);
-					Messagebox.show("La fecha final no puede ser menor a la fecha inicio", "American Tech", Messagebox.OK,
-							Messagebox.EXCLAMATION);
+					Messagebox.show("La fecha final no puede ser menor a la fecha inicio", "American Tech",
+							Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				if (isDisponible(getInstalacionSeleccionada())) {
 					setDisabled(false);
@@ -257,7 +257,7 @@ public class RegistrarReservacionViewModel {
 					setDisabled(true);
 					Messagebox.show(
 							getInstalacionSeleccionada().getNombre()
-									+ " no se encuentra disponible en el rango de fecha selecionado",
+									+ " no se encuentra disponible en el rango de fecha seleccionado",
 							"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 			} catch (Exception e) {
@@ -265,14 +265,14 @@ public class RegistrarReservacionViewModel {
 				e.printStackTrace();
 			}
 		} else
-			Messagebox.show("Debe seleccionar una instalación", "American Tech", Messagebox.OK,
-					Messagebox.EXCLAMATION);
+			Messagebox.show("Debe seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 	}
 
 	@NotifyChange({ "reservacion", "disabled" })
 	public double precio() {
 		if (getReservacion().getFechaInicio() != null && getReservacion().getFechaFin() != null) {
-			return getInstalacionSeleccionada().getPrecioAlquiler() * diasEntreFecha(getReservacion().getFechaInicio(), getReservacion().getFechaFin());
+			return getInstalacionSeleccionada().getPrecioAlquiler()
+					* diasEntreFecha(getReservacion().getFechaInicio(), getReservacion().getFechaFin());
 		}
 		return 0;
 	}

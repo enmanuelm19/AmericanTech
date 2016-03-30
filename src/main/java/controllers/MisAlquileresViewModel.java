@@ -83,6 +83,7 @@ public class MisAlquileresViewModel {
 		}
 	}
 
+
 	public ArchivoAlquiler getArchivoAlquiler() {
 		return archivoAlquiler;
 	}
@@ -300,6 +301,13 @@ public class MisAlquileresViewModel {
 			if (archiAlq.getTipoListado().equals(tipoListado)) {
 				return true;
 			}
+		}
+		return false;
+	}
+	
+	public boolean isAvaiable(Alquiler alquiler){
+		if(alquiler.getArchivoAlquilers().size() > 1 || socio == null){
+			return true;
 		}
 		return false;
 	}

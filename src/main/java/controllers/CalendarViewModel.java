@@ -58,7 +58,7 @@ public class CalendarViewModel extends SelectorComposer<Component> {
 		super.doAfterCompose(comp);
 		for (Evento evento : eventoDao.obtenerTodos()) {
 			if (evento.getEstadoEvento() != null && (evento.getEstadoEvento().getIdEstadoEvento() == 2
-					|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
+					|| evento.getEstadoEvento().getIdEstadoEvento() == 3 || evento.getEstadoEvento().getIdEstadoEvento() == 1)) {
 				if (evento.getPreferenciaEventos() != null) {
 					if (evento.getPreferenciaEventos().size() == 1) {
 						for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {

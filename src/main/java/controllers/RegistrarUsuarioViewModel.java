@@ -30,6 +30,7 @@ import modelos.Persona;
 import modelos.Usuario;
 import modelos.UsuarioGrupo;
 import util.ManejadorArchivo;
+import util.ManejadorMail;
 
 public class RegistrarUsuarioViewModel {
 
@@ -66,7 +67,7 @@ public class RegistrarUsuarioViewModel {
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);
 			user.setPersona(persona);
-			user.getPersona().setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
+			user.getPersona().setFoto("/assets/portal/img/img1.jpg");
 			usuarioGrupos = new HashSet<UsuarioGrupo>(user.getUsuarioGrupos());
 		} else {
 			this.user = usuario;
@@ -141,6 +142,7 @@ public class RegistrarUsuarioViewModel {
 				personaDao.actualizarPersona(user.getPersona());
 				usuarioDao.agregarUsuario(user);
 				Messagebox.show("Usuario " + user.getUsername() + " registrado exitosamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+				ManejadorMail.enviarEmail("Sus credenciales para ingresar a nuestro sistema son \n\n Usuario: " + user.getUsername() + " \n\n Contraseña: " + user.getContrasenna() + " \n\n Recuerde que puede cambiar su contraseña dirigiendose a su perfil."  , user.getPersona().getCorreo(), "Creación de credenciales | American Tech");
 				win.detach();
 				}
 			}

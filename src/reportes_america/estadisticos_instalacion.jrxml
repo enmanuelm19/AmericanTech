@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadisticos_instalacion" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
 	<property name="ireport.zoom" value="0.9090909090909097"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="426"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="CONSULTA" class="java.lang.String"/>
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
@@ -21,9 +21,9 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement x="258" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
-				<textElement>
-					<font fontName="SansSerif" size="24" isBold="true"/>
+				<reportElement x="254" y="1" width="294" height="35" forecolor="#0033FF" uuid="84a78d87-4f1a-4f39-bd61-dde5c0155ebb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro Atlético América]]></text>
 			</staticText>
@@ -50,7 +50,7 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 	<pageHeader>
 		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="31" width="142" height="20" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
+				<reportElement x="0" y="31" width="168" height="35" uuid="be05bd0e-a549-4dfc-bfe5-1f5de73d4a9e"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
@@ -64,7 +64,7 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="31" width="646" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
+				<reportElement x="195" y="31" width="593" height="35" uuid="73cb7663-5ff2-4d9d-b2a7-112d3d1ad3df"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -75,7 +75,7 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="518" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
+				<reportElement x="0" y="0" width="703" height="21" backcolor="#99FFFF" uuid="0db24ab1-1f88-409b-ac39-9d5f67abaaf1"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="19" y="1" width="100" height="20" uuid="bbc307b7-5ceb-49d6-96db-ead5d50437b0"/>
@@ -85,14 +85,14 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 				<text><![CDATA[Instalación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="228" y="1" width="100" height="20" uuid="5aac9226-6361-4f82-b08b-d7b2be1f4091"/>
+				<reportElement x="468" y="0" width="100" height="20" uuid="5aac9226-6361-4f82-b08b-d7b2be1f4091"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Frecuencia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="418" y="1" width="100" height="20" uuid="9a595887-a9fa-4ec3-920f-7de5d7ac1c38"/>
+				<reportElement x="592" y="1" width="100" height="20" uuid="9a595887-a9fa-4ec3-920f-7de5d7ac1c38"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
@@ -103,21 +103,21 @@ WHERE i.id_instalacion  = r.instalacionid_instalacion AND r.id_reservacion = a.r
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="19" y="4" width="100" height="20" uuid="448e1da6-4d16-4622-bcf2-f8b6cae88a35"/>
+				<reportElement x="3" y="0" width="397" height="20" uuid="448e1da6-4d16-4622-bcf2-f8b6cae88a35"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="228" y="4" width="100" height="20" uuid="d4ab4d69-b4b3-4ae2-af52-24b073653702"/>
+				<reportElement x="468" y="3" width="100" height="20" uuid="d4ab4d69-b4b3-4ae2-af52-24b073653702"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{frecuencia}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="418" y="4" width="100" height="20" uuid="f8f8614c-23f8-4764-894a-f9dae4ed75c0"/>
+				<reportElement x="592" y="4" width="100" height="20" uuid="f8f8614c-23f8-4764-894a-f9dae4ed75c0"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>

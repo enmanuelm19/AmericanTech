@@ -61,8 +61,7 @@ public class RegistrarMotivoSancionViewModel {
 			if (motivoDao.obtenerMotivoSancion(motivoSancion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoSancion.setActivo(true);
-					motivoDao.agregarMotivoSancion(motivoSancion);
-					
+					motivoDao.agregarMotivoSancion(motivoSancion);					
 					Messagebox.show("El motivo sanción " + motivoSancion.getDescripcion()
 							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -75,7 +74,7 @@ public class RegistrarMotivoSancionViewModel {
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
-						"refreshMotivoSancion", null);
+						"refreshMotivoSanción", null);
 			} else {
 				Messagebox.show("El motivo sanción con la descripción "
 						+ motivoSancion.getDescripcion() + " ya existe",

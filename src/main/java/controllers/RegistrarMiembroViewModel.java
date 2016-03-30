@@ -108,13 +108,13 @@ public class RegistrarMiembroViewModel {
 	@NotifyChange({"miembro","desactivar"})
 	public void buscarCedula() throws Exception{
 		if(miembro.getPersona().getIdentificacion()==null || miembro.getPersona().getIdentificacion().equalsIgnoreCase(""))
-			Messagebox.show("Debe llenar el campo Cedula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe llenar el campo Cédula", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		else{
 			String id=miembro.getPersona().getIdentificacion();
 			Persona per= new Persona();
 			per=personaDao.obtenerPersonaCedula(miembro.getPersona().getIdentificacion());
 			if(per==null){
-				Messagebox.show("Cedula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cédula no encontrada. Proceda a su registro", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				miembro.setPersona(new Persona());
 				miembro.getPersona().setIdentificacion(id);
 				desactivar=false;
@@ -166,7 +166,7 @@ public class RegistrarMiembroViewModel {
 						||miembro.getPersona().getApellido().equalsIgnoreCase("")||miembro.getPersona().getCorreo().equalsIgnoreCase("")
 						||miembro.getPersona().getDireccion().equalsIgnoreCase("")||miembro.getPersona().getSexo().equalsIgnoreCase("")||
 						imagenNueva!=true){
-					Messagebox.show("Verifique que los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Verifique que los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					miembroDao.agregarMiembroJunta(miembro);
