@@ -8,7 +8,7 @@
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT e.descripcion, i.nombre, te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora
+		<![CDATA[SELECT e.descripcion, i.nombre, te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE,i.nombre as instalacion, to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora
 FROM eventualidad e
 INNER JOIN instalacion i
 ON i.id_instalacion = e.instalacionid_instalacion
@@ -20,6 +20,7 @@ ON p.id_persona = e.personaid_persona]]>
 	<field name="descripcion" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="tipo" class="java.lang.String"/>
+	<field name="instalacion" class="java.lang.String"/>
 	<field name="fecha" class="java.lang.String"/>
 	<field name="hora" class="java.lang.String"/>
 	<background>
@@ -145,7 +146,7 @@ ON p.id_persona = e.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="363" y="2" width="140" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
+				<reportElement x="351" y="2" width="140" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
 				</textElement>
@@ -165,12 +166,12 @@ ON p.id_persona = e.personaid_persona]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="516" y="2" width="128" height="20" uuid="1572ed99-3313-4671-96c4-a5eb95078434"/>
+			<textField>
+				<reportElement x="503" y="4" width="158" height="20" uuid="d139819c-5d57-4637-aba8-5d08eeee9013"/>
 				<textElement>
-					<font fontName="SansSerif" size="12"/>
+					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

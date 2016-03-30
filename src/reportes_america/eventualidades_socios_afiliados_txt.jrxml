@@ -8,7 +8,7 @@
 	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
 	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT e.descripcion, i.nombre, te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora
+		<![CDATA[SELECT e.descripcion, i.nombre, te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, i.nombre as Instalacion, to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora
 FROM eventualidad e
 INNER JOIN instalacion i
 ON i.id_instalacion = e.instalacionid_instalacion
@@ -20,6 +20,7 @@ ON p.id_persona = e.personaid_persona]]>
 	<field name="descripcion" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="tipo" class="java.lang.String"/>
+	<field name="instalacion" class="java.lang.String"/>
 	<field name="fecha" class="java.lang.String"/>
 	<field name="hora" class="java.lang.String"/>
 	<background>
@@ -86,7 +87,7 @@ ON p.id_persona = e.personaid_persona]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="2" width="195" height="20" uuid="935108dc-e452-48da-9cef-4fe1af7da4be"/>
 				<textElement>
@@ -102,13 +103,6 @@ ON p.id_persona = e.personaid_persona]]>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="363" y="2" width="140" height="20" uuid="2315e44e-a0a3-4ff7-a97b-d3a04ec002dc"/>
-				<textElement>
-					<font fontName="SansSerif" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
 				<reportElement x="748" y="1" width="54" height="20" uuid="78ab625f-3f5c-4c25-9301-18433557f9c5"/>
 				<textElement>
 					<font fontName="SansSerif" size="12"/>
@@ -122,12 +116,19 @@ ON p.id_persona = e.personaid_persona]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="516" y="2" width="128" height="20" uuid="1572ed99-3313-4671-96c4-a5eb95078434"/>
+			<textField>
+				<reportElement x="353" y="4" width="137" height="26" uuid="547338ef-01b3-4e95-b60d-94d0fc9d74f3"/>
 				<textElement>
-					<font fontName="SansSerif" size="12"/>
+					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="4" width="145" height="26" uuid="97128c81-3ec0-4544-b9e0-dd57d64160c4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
