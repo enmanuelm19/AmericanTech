@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
 import org.apache.commons.collections.iterators.CollatingIterator;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -31,9 +32,13 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
+
 import Dao.PreferenciaDao;
+import Dao.PreferenciaEventoDao;
 import Dao.TipoPreferenciaDao;
+import modelos.InstalacionEvento;
 import modelos.Preferencia;
+import modelos.PreferenciaEvento;
 import modelos.TipoPreferencia;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
@@ -63,15 +68,17 @@ public class ReporteEventoViewModel {
 	private PreferenciaDao preferenciaDao;
 	private TipoPreferencia tipoPreferenciaSelected;
 	private Set<Preferencia> preferenciaEventos;
-	private ArrayList<Preferencia> seleccionPreferencia;
 	private boolean checkestricto, checkcomun, disableestricto, disablecomun, disablecat;
+	
+	private PreferenciaEventoDao preferenciaEventoDao;
+	private ArrayList<Preferencia> seleccionPreferencia;
+	private Set<PreferenciaEvento> listPreferenciaEvento;
 	
 	//Reporte
 	private int preferencia1,preferencia2, preferencia3, preferencia4, preferencia5;
 	private String consulta = "";
 	private String titulo = "";
 	private String reporte = System.getProperty("user.home") + "/reportes_america/reporte_socios.jrxml";
-	private String reporteTxt = System.getProperty("user.home") + "/reportes_america/reporte_socios_txt.jrxml";
 	private Connection con;
 	private Map<String, Object> parameters = new HashMap<String, Object>();
 	private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
@@ -220,6 +227,14 @@ public class ReporteEventoViewModel {
 
 	}
 
+	@Command
+	@NotifyChange({"preferenciaEventos"})
+	public void eliminarPreferenciaEvento(@BindingParam("preferencia") Preferencia p) throws Exception {
+		
+		preferenciaEventos.remove(p);
+
+	}
+
 	/*reporte
 	private String sql = "SELECT p.nombre || ' ' || p.apellido as NOMBRE, "
 			+ "p.sexo as SEXO, p.telefono as TELEFONO, s.nro_carnet as CARNET "
@@ -281,7 +296,6 @@ public class ReporteEventoViewModel {
 			this.titulo = "EVENTOS";
 			this.consulta= "Eventos de la categoria  ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			System.out.println("aqui toy");
 			this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
 					+ " INNER JOIN preferencia_evento pe "
@@ -323,7 +337,6 @@ public class ReporteEventoViewModel {
 			this.titulo = "EVENTOS";
 			this.consulta= "Eventos de la categoria  ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			System.out.println("aqui toy");
 			this.sql= " SELECT distinct e.nombre, e.fecha_inicio, e.fecha_fin FROM evento e "
 					+ " INNER JOIN preferencia_evento pe "
@@ -344,7 +357,6 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/eventos.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/eventos_txt.jrxml";
 			
 			if(this.getCheckestricto())
 			{
@@ -390,7 +402,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
+			
 			if(this.getCheckestricto())
 			{
 				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
@@ -435,7 +447,6 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 			if(this.getCheckestricto())
 			{
 				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
@@ -484,7 +495,6 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 
 			if(this.getCheckestricto())
 			{
@@ -538,7 +548,7 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
+	
 			if(this.getCheckestricto())
 			{
 				this.sql = "select  distinct on (e2.nombre) pe2.*, p2.id_preferencia , e2.nombre, e2.fecha_inicio, "
@@ -589,7 +599,6 @@ public class ReporteEventoViewModel {
 			titulo();
 			this.consulta= "Eventos de la categoria "+ this.getTituloCategoria() +" ";
 			reporte = System.getProperty("user.home") + "/reportes_america/evento.jrxml";
-			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_txt.jrxml";
 
 			if(this.getCheckestricto())
 			{
@@ -685,7 +694,7 @@ public class ReporteEventoViewModel {
 			} else {
 				JRExporter exporterTxt = new JRTextExporter();
 				exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
-				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/evento.txt");
+				exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, System.getProperty("user.home") + "/reportes_america/estadisticos_evento.txt");
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
 				exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
 				exporterTxt.exportReport();
@@ -714,11 +723,7 @@ public class ReporteEventoViewModel {
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
 		JasperDesign jd = null;  
-		if(this.isPdf) {
-			jd = JRXmlLoader.load(reporte);
-		} else {
-			jd = JRXmlLoader.load(reporteTxt);
-		}
+		jd = JRXmlLoader.load(reporte); 
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 
@@ -869,5 +874,5 @@ public class ReporteEventoViewModel {
 	}
 
 
-
+	
 }
