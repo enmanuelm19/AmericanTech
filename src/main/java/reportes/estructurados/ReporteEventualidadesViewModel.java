@@ -264,7 +264,7 @@ public class ReporteEventualidadesViewModel {
 			
 			this.consulta = "Reporte de eventualidades sobre instalacion: " + this.instalacionSelected.getNombre() + " ";
 			this.sql = "SELECT e.descripcion, te.descripcion as Tipo, "
-					+ "p.nombre || ' ' || p.apellido as NOMBRE, to_char(e.fecha, 'YYYY-MM-DD') as Fecha,"
+					+ "p.nombre || ' ' || p.apellido as NOMBRE,  to_char(e.fecha, 'YYYY-MM-DD') as Fecha,"
 					+ " to_char(e.fecha, 'HH:MM') as Hora FROM eventualidad e "
 					+ "INNER JOIN tipo_eventualidad te "
 					+ "ON e.tipo_eventualidadid_tipo_eventualidad = te.id_tipo_eventualidad "
@@ -282,7 +282,7 @@ public class ReporteEventualidadesViewModel {
 
 	public void sociosAfiliado() throws FileNotFoundException, JRException, SQLException {		
 		this.sql = "SELECT e.descripcion, i.nombre, "
-				+ "te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, "
+				+ "te.descripcion as Tipo, p.nombre || ' ' || p.apellido as NOMBRE, i.nombre as instalacion,"
 				+ "to_char(e.fecha, 'YYYY-MM-DD') as Fecha, to_char(e.fecha, 'HH:MM') as Hora "
 				+ "FROM eventualidad e "
 				+ "INNER JOIN instalacion i "
