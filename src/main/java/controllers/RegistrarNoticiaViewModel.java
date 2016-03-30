@@ -45,35 +45,48 @@ public class RegistrarNoticiaViewModel {
 	private Noticia noticia;
 	private NoticiaDao noticiaDao;
 	private boolean editable;
-	private boolean publico;
+	private String publico;
 	private String foto;
 	private boolean fotodefault;
-	
-	
+	private String[] arrayPublic = new String[2];
+
 	@Init
-	public void init(@ExecutionArgParam("noticia") Noticia noticia) throws Exception {
-	
-		//publico = false;
-		noticiaDao= new NoticiaDao();
+	public void init(@ExecutionArgParam("noticia") Noticia noticia)
+			throws Exception {
+
+		// publico = false;
+		noticiaDao = new NoticiaDao();
 		tipoNoticiaAll = new ArrayList<TipoNoticia>();
 		tipoNoticiaDao = new TipoNoticiaDao();
 		tipoNoticiaAll = tipoNoticiaDao.obtenerTodos();
-		
+		getArrayPublic()[0] = "Si";
+		getArrayPublic()[1] = "No";
+
 		if (noticia == null) {
 			this.noticia = new Noticia();
 			this.editable = false;
 			this.fotodefault = true;
-		
-			
+
 		} else {
+			this.publico = noticia.isPublico()? "Si":"No";
 			this.noticia = noticia;
 			this.editable = true;
 			this.fotodefault = false;
 			System.out.println("entro por el sino");
 		}
 	}
-	
-	
+
+	public String[] getArrayPublic() {
+		if (arrayPublic == null) {
+			arrayPublic = new String[2];
+		}
+		return arrayPublic;
+	}
+
+	public void setArrayPublic(String[] arrayPublic) {
+		this.arrayPublic = arrayPublic;
+	}
+
 	public boolean isFotodefault() {
 		return fotodefault;
 	}
@@ -82,8 +95,6 @@ public class RegistrarNoticiaViewModel {
 		this.fotodefault = fotodefault;
 	}
 
-
-
 	public boolean isEditable() {
 		return editable;
 	}
@@ -91,13 +102,12 @@ public class RegistrarNoticiaViewModel {
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}
-	
 
-	public boolean isPublico() {
+	public String getPublico() {
 		return publico;
 	}
 
-	public void setPublico(boolean publico) {
+	public void setPublico(String publico) {
 		this.publico = publico;
 	}
 
@@ -105,55 +115,52 @@ public class RegistrarNoticiaViewModel {
 		return tipoNoticiaAll;
 	}
 
-
 	public void setTipoNoticiaAll(List<TipoNoticia> tipoNoticiaAll) {
 		this.tipoNoticiaAll = tipoNoticiaAll;
 	}
-
-	
 
 	@NotifyChange("noticia")
 	public Noticia getNoticia() {
 		return noticia;
 	}
-	
+
 	@NotifyChange("noticia")
 	public void setNoticia(Noticia noticia) {
 		this.noticia = noticia;
 	}
-	
-	
+
 	@Command
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
 	}
 
-
 	@GlobalCommand
-	@NotifyChange({"uploadedImage", "fotodefault"})
-	public void upload(@BindingParam("media") final Media myMedia){
-		if(!editable){
-			fotodefault= false;
-			if(myMedia instanceof org.zkoss.image.Image){
-				if(myMedia.getByteData().length > 2000*1024){
-					Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
-				}else{
-					
+	@NotifyChange({ "uploadedImage", "fotodefault" })
+	public void upload(@BindingParam("media") final Media myMedia) {
+		if (!editable) {
+			fotodefault = false;
+			if (myMedia instanceof org.zkoss.image.Image) {
+				if (myMedia.getByteData().length > 2000 * 1024) {
+					Messagebox.show("Escoja una imagen de menor tamaño",
+							"American Tech", Messagebox.OK,
+							Messagebox.INFORMATION);
+				} else {
+
 					uploadedImage = myMedia;
 					setUploadedImage(myMedia);
 				}
-			}else{
-				Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			} else {
+				Messagebox.show(
+						"El archivo que intenta subir no es una imagen",
+						"American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}
-			
-		}else{
-			
-			
-		};
-	}
-	
 
-	
+		} else {
+
+		}
+		;
+	}
+
 	public Media getUploadedImage() {
 		return uploadedImage;
 	}
@@ -162,42 +169,56 @@ public class RegistrarNoticiaViewModel {
 		this.uploadedImage = uploadedImage;
 	}
 
-
 	@Command
-	public void guardar(@BindingParam("win") Window win) throws Exception 
-	{
-		
-		if(noticia.getCaducidad()!=null && 
-		   !noticia.getDescripcion().equalsIgnoreCase("") && noticia.getDescripcion()!=null &&
-		   noticia.getTipoNoticia()!=null)
-		{
-			if (noticia.getTitulo()!=null && !noticia.getTitulo().equalsIgnoreCase(""))
-			{
-				if(!editable){
-					//fotodefault = false;
+	public void guardar(@BindingParam("win") Window win) throws Exception {
+
+		if (noticia.getCaducidad() != null
+				&& !noticia.getDescripcion().equalsIgnoreCase("")
+				&& noticia.getDescripcion() != null
+				&& noticia.getTipoNoticia() != null) {
+			if (noticia.getTitulo() != null
+					&& !noticia.getTitulo().equalsIgnoreCase("")) {
+				if (!editable) {
+					// fotodefault = false;
 					noticia.setFechaCreacion(new Date());
-					if(!fotodefault)
-						noticia.setFoto(ManejadorArchivo.subirImagen(getUploadedImage()));
+
+
+					if (!fotodefault)
+						noticia.setFoto(ManejadorArchivo
+								.subirImagen(getUploadedImage()));
 					else
 						noticia.setFoto("http://i.imgur.com/wGVOjvQ.png");
-					noticia.setPublico(this.publico);
+					
+					
+					if (this.publico.equalsIgnoreCase("Si"))
+						noticia.setPublico(true);
+					else
+						noticia.setPublico(false);
+					
 					noticia.setActivo(true);
-				
+
 					noticiaDao.agregarNoticia(noticia);
-					Messagebox.show("La noticia " + noticia.getTitulo() + " ha sido registrada exitosamente", "American Tech",
-							Messagebox.OK, Messagebox.INFORMATION);
-				}else
-				{
+					Messagebox.show("La noticia " + noticia.getTitulo()
+							+ " ha sido registrada exitosamente",
+							"American Tech", Messagebox.OK,
+							Messagebox.INFORMATION);
+				} else {
+					if (this.publico.equalsIgnoreCase("Si"))
+						noticia.setPublico(true);
+					else
+						noticia.setPublico(false);
 					noticiaDao.actualizarNoticia(noticia);
-						Messagebox.show("La noticia " + noticia.getTitulo() + " ha sido actualizada exitosamente", "American Tech",
-											Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("La noticia " + noticia.getTitulo()
+							+ " ha sido actualizada exitosamente",
+							"American Tech", Messagebox.OK,
+							Messagebox.INFORMATION);
 				}
 				win.detach();
 			}
-		}else
-		{
-			
-			Messagebox.show("Verifique que todos los campos estén llenos" , "American Tech",	Messagebox.OK, Messagebox.INFORMATION);
+		} else {
+
+			Messagebox.show("Verifique que todos los campos estén llenos",
+					"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
 
