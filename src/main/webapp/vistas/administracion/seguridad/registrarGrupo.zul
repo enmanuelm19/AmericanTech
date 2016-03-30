@@ -83,7 +83,7 @@
 							<template name="model">
 								<row>
 									<label
-										value="@load(each.funcion.nombre)" tooltip="@load(each.funcion.descripcion)">
+										value="@load(each.funcion.nombre)" tooltiptext="@load(each.funcion.descripcion)">
 									</label>
 									<div>
 										<button sclass="btn-link"
