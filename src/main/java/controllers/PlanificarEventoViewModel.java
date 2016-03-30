@@ -173,12 +173,12 @@ public class PlanificarEventoViewModel {
 		for(Actividad actividad: evento.getActividadsActive()){
 			if(actividad.getFechaRealizacion()!=null || actividad.getValorReal()!=null){
 				if(actividad.getFechaRealizacion()==null || actividad.getFechaRealizacion().after(actividad.getFechaTope())){
-					Messagebox.show("Fecha de la actividad no valida: "+actividad.getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Fecha de la actividad: "+actividad.getDescripcion()+" no valida:", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					listo = false;
 					break;
 				}
 				else if(actividad.getValorReal()==null){
-					Messagebox.show("valor real no valido de la actividad: "+actividad.getDescripcion(), "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("valor real  de la actividad: "+actividad.getDescripcion()+" no valido", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					listo = false;
 					break;
 					
