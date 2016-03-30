@@ -23,7 +23,7 @@
 
 					<space />
 					<space />
-					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+					<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' align="left"
 						apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.PreferenciaViewModel')">
 						<div
 							xmlns:w='client' align="right">
@@ -37,7 +37,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Lista Preferencias
+									Listado Preferencia
 								</div>
 								<div class='linea-two'></div>
 							</div>
@@ -50,14 +50,14 @@
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true" value="@bind(vm.idFiltro)"
+										<textbox instant="true" value="@bind(vm.tipoPrefrenciaFiltro)"
 											onChange="@command('filtro')"
 											width="65%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1">
 										<image
 											src="../assets/img/funnel.png" />
-										<textbox instant="true" value="@bind(vm.tipoPrefrenciaFiltro)"
+										<textbox instant="true" value="@bind(vm.descFiltro)"
 											onChange="@command('filtro')"
 											width="65%" placeholder="Buscar" />
 									</auxheader>
@@ -68,7 +68,7 @@
 										Tipo Preferencia
 									</column>
 									<column hflex="2">
-										Descripcion
+										Descripción
 									</column>
 									<column>Acciones</column>
 								</columns>

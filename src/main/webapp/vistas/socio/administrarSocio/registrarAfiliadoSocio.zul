@@ -19,9 +19,10 @@
 								<div class="encabezado">Datos del Afiliado</div>
 								<div align="left" class="linea-two"></div>
 							</div>
-							<div class="col-md-4" style="margin-top: 10px">
+							<div class="col-md-4" style="margin-top: 10px">						
+								<image src="http://localhost:8080/america/assets/portal/img/img1.jpg" class='col-md-12'  visible="@load(vm.fotodefault)"/>
 								<image content="@bind(vm.uploadedImageAfiliado)" src="/assets/portal/img/img1.jpg"
-									class='img-responsive' width="200px" height="200px" />
+									class='img-responsive' width="200px" height="200px" visible="@load(!vm.fotodefault)"/>
 								<separator spacing="10px" />
 								<fileupload label="Examinar" upload="true,maxsize=2000" onUpload="@command('uploadImage',media=event.media)"
 									iconSclass="z-icon-folder-open" class='boton-guardar' />
@@ -33,7 +34,26 @@
 									</div>
 									<div class="col-md-7" style="padding:0px">
 										<div class="col-md-10">
-											<textbox value="@bind(vm.persona.identificacion)" width="100%"/>
+											<textbox xmlns:w="client" value="@bind(vm.persona.identificacion)" width="100%" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+										</textbox>
 										</div>
 									</div>
 								</div>
@@ -57,34 +77,80 @@
 								<div class="col-md-12" style="margin-top: 31px">
 									<div class="col-md-5">Nombre</div>
 									<div class="col-md-7">
-										<textbox value="@bind(vm.persona.nombre)" width="82%"/>
+										<textbox value="@bind(vm.persona.nombre)" width="82%" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula."/>
 									</div>
 								</div>
 								<div class="col-md-12"
 									style="margin-top: 31px">
 									<div class="col-md-5">Apellido</div>
 									<div class="col-md-7">
-										<textbox value="@bind(vm.persona.apellido)" width="82%"/>
+										<textbox value="@bind(vm.persona.apellido)" width="82%" constraint="no empty, /^[A-Z]+\s?[a-zA-Z]+$/: Este campo no puede ser vacio. La primera letra debe ser mayúscula."/>
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
 									<div class="col-md-5">Correo Eléctronico</div>
 									<div class="col-md-7">
-										<textbox value="@bind(vm.persona.correo)" width="82%"/>
+										<textbox value="@bind(vm.persona.correo)" width="82%" constraint="/.+@.+\.[a-z]+/: Por favor ingrese una dirección de email"/>
 									</div>
 								</div>
 								<div class="col-md-12"
 									style="margin-top: 31px">
-									<div class="col-md-5">Teléfono</div>
+									<div class="col-md-5">Teléfono Domicilio</div>
 									<div class="col-md-7">
-										<textbox value="@bind(vm.persona.telefono)" width="82%" constraint="/^[0-9]+$/: Please enter a number" />
+										<textbox xmlns:w="client" value="@bind(vm.persona.telefonoFijo)" width="82%" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+										</textbox>
+									</div>
+								</div>
+								
+								<div class="col-md-12"
+									style="margin-top: 31px">
+									<div class="col-md-5">Teléfono Celular</div>
+									<div class="col-md-7">
+										<textbox xmlns:w="client" value="@bind(vm.persona.telefono)" width="82%" constraint="no empty: Este campo no puede ser vacio. Debe ingresar solo números."><attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+										</textbox>
 									</div>
 								</div>
 								<div class="col-md-12"
 									style="margin-top: 31px">
 									<div class="col-md-5">Nacimiento</div>
 									<div class="col-md-7">
-										<datebox width="82%" value="@bind(vm.fechaNac)"/>
+										<datebox width="82%" value="@bind(vm.fechaNac)" constraint="no empty, no future: Ingrese una fecha de nacimiento" format="dd-MM-yyyy"/>
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-top: 31px">
@@ -116,50 +182,7 @@
 									</div>
 								</div>
 							</div>
-							<div align="left">
-								<div class="encabezado">Intereses</div>
-								<div align="left" class="linea-two"></div>
-							</div>
-							<hbox align="center" pack="center" width="100%" ><!-- GRUPO INTERESES -->
-								<grid emptyMessage="No se encuentran reglas registradas" mold="paging" pageSize="10" model="@load(vm.preferenciasAll)">
-									<auxhead sclass="category-center">
-									
-												<auxheader colspan="2">
-													<label>Puede seleccionar varias preferencias</label><separator></separator>
-													<chosenbox model="@load(vm.preferencias)" hflex="1" width="100%" emptyMessage="" creatable="true"
-														selectedObjects="@bind(vm.temporalPreferencia)"/>
-												</auxheader>
-												<auxheader colspan="1" align="left">
-													<button sclass="btn-link" onClick="@command('agregarPreferenciasPersona')"
-														iconSclass="z-icon-plus blue" tooltiptext="Agregar preferencia" style="margin-top:30px;"/>
-												</auxheader>
-										
-									</auxhead>
-									<columns>
-										<column hflex="3">Categoria</column>
-										<column hflex="3">Preferencia</column>
-										<column>Acciones</column>
-									</columns>
-									<rows>
-									<template name="model">
-										<row>
-											<label value="@load(each.tipoPreferencia.descripcion)" />
-											<label value="@load(each.descripcion)" />
-											<div>
-												<button	sclass="btn-link" iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" onClick="@command('eliminarInteres', Interes=each)"/>
-											</div>
-										</row>
-									</template>
-									</rows>
-									<foot>
-										<footer span="3" class="footer_right" label="@load(vm.cantidadInteres)" />
-									</foot>
-								</grid>
-							</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
-							<separator></separator>
-							<separator></separator>
-							<separator></separator>
-							<div class="col-md-12">
+							<div>
 										<div align="left">
 											<div class="encabezado">Datos Afiliados</div>
 											<div align="left" class="linea-two"></div>

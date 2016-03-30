@@ -1,7 +1,7 @@
 <zk xmlns:n="native">
-	<window border="none" title="Afiliados " closable="true"
-		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		width="65%">
+	<window border="none" title="Afiliados " closable="true" sclass="home-icon z-icon-user"
+		class="col-xs-10 col-md-8"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})">
 		<caption iconSclass="z-icon-user" />
 
 		<div class="col-md-10 col-centered "

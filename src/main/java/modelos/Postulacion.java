@@ -22,7 +22,7 @@ public class Postulacion implements java.io.Serializable {
 	private String carnetPadrino1;
 	private String carnetPadrino2;
 	private boolean aprobado;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Socio> socios = new HashSet<Socio>(0);
 	private Set<Opinion> opinions = new HashSet<Opinion>(0);
 	private Set<Venta> ventas = new HashSet<Venta>(0);
@@ -189,6 +189,7 @@ public class Postulacion implements java.io.Serializable {
 		}
 		return star;
 	}
+
 	public String getFechaParse(){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
 		  

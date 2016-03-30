@@ -58,29 +58,31 @@ public class RegistrarMotivoCancelacionViewModel {
 
 		if (motivoCancelacion.getDescripcion() != null
 				&& !motivoCancelacion.getDescripcion().equalsIgnoreCase("")) {
-			if (motivoDao.obtenerMotivoCancelacion(motivoCancelacion
-					.getDescripcion()) == null) {
+			if (motivoDao.obtenerMotivoCancelacion(motivoCancelacion.getDescripcion()) == null) {
 				if (!editable) {
 					motivoDao.agregarMotivoCancelacion(motivoCancelacion);
-					Messagebox.show("El motivo de cancelacion "
+					Messagebox.show("El motivo de cancelación "
 							+ motivoCancelacion.getDescripcion()
-							+ " ha sido registrado exitosamente", "",
+							+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoCancelacion(motivoCancelacion);
-					Messagebox.show("El motivo de cancelacion "
+					Messagebox.show("El motivo de cancelación "
 							+ motivoCancelacion.getDescripcion()
-							+ " ha sido actualizado exitosamente", "",
+							+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshMotivoCancelacion", null);
 			} else {
-				Messagebox.show("motivo cancelacion con la descripcion "
+				Messagebox.show("El motivo cancelación con la descripción "
 						+ motivoCancelacion.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

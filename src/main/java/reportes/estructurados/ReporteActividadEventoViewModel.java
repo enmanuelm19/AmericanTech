@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -30,39 +29,6 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Dao.ActividadDao;
 import modelos.Actividad;
 import Dao.EstadoEventoDao;
@@ -113,11 +79,14 @@ public class ReporteActividadEventoViewModel {
 		private String titulo = "";
 		private String sql = "";
 		private String reporte;
+		private String reporteTxt;
 		private Connection con;
 		private Map<String, Object> parameters = new HashMap<String, Object>();
 		private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 		private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+		private boolean isPdf;
+		private String rutaNoEstructurado;
 		
 		@Init
 		public void init() throws Exception {
@@ -191,35 +160,39 @@ public class ReporteActividadEventoViewModel {
 		
 		@Command
 		public void btnPDF(Event e) throws SQLException, JRException, IOException {
+			this.isPdf = true;
 			cargarSql();
+		}
+		@Command
+		public void btnTxt(Event e) throws SQLException, JRException, IOException {
+			this.isPdf = false;
+			cargarSql();	 
 		}
 		
 		
 		public void cargarSql() throws FileNotFoundException, JRException, SQLException{
 			try {
-				
-				System.out.println(sql);
 				Class.forName ("org.postgresql.Driver");
-			
 				con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/America","postgres","postgres");
-				
-				
+
 			} catch (ClassNotFoundException el) {
 				el.printStackTrace();
 			}
 			if (this.eventoSelected == null){
-				Messagebox.show("Seleccione el evento a consultar", "AMERICAN TECH", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Seleccione el evento a consultar", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			
 			else{
 				
 			this.titulo = "Actividades del evento";
-			this.consulta = this.eventoSelected.getNombre();
+			this.consulta = "Reporte del evento: " + this.eventoSelected.getNombre() + " del Centro Atlético América.";
 			this.fecha_inicial = this.eventoSelected.getFechaInicio().toString();
 			this.fecha_hasta = this.eventoSelected.getFechaFin().toString();
 			this.reporte = System.getProperty("user.home") + "/reportes_america/evento_actividad.jrxml";
+			reporteTxt = System.getProperty("user.home") + "/reportes_america/evento_actividad_txt.jrxml";
 			
-			this.sql = " SELECT a.descripcion, to_char(a.fecha_tope, 'YYYY-MM-DD') as fecha_tope, to_char(a.fecha_realizacion, 'YYYY-MM-DD') as fecha_realizacion, a.valor_real, a.valor_esperado, a.finalizada"
+			this.sql = " SELECT a.descripcion, to_char(a.fecha_tope, 'YYYY-MM-DD') as fecha_tope, to_char(a.fecha_realizacion, 'YYYY-MM-DD') as fecha_realizacion, "
+					+ "a.valor_real, a.valor_esperado, CASE WHEN a.finalizada = true THEN 'SI' ELSE 'NO' END "
 						+ " FROM actividad a"
 						+ " WHERE a.eventoid_evento = " + getEventoSelected().getIdEvento() +";";
 			
@@ -229,28 +202,52 @@ public class ReporteActividadEventoViewModel {
 		}
 		
 	
-	public void generarPDF() throws JRException, FileNotFoundException, SQLException {
-		System.out.println(sql);
-		Date hoy = (Date) Calendar.getInstance().getTime();
-		String date = "-"+sdfGuio.format(hoy).toString();
-		String nombreArchivo = this.titulo.concat(date);
-		JasperPrint jasperPrint = cargarJasper();
-		
-		@SuppressWarnings("unused")
-		JRExporter exporter = new JRPdfExporter();
-		if(jasperPrint.getPages().size() > 0){
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
-		} else {
-			Messagebox.show("No existe informacion para generar un reportes con los datos seleccionados.", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+		public void generarPDF() throws JRException, FileNotFoundException, SQLException {
+			Date hoy = (Date) Calendar.getInstance().getTime();
+			String date = "-"+sdfGuio.format(hoy).toString();
+			String nombreArchivo = this.titulo.concat(date);
+			JasperPrint jasperPrint = cargarJasper();			
+
+			if(jasperPrint.getPages().size() > 0){
+				if(this.isPdf) {
+					JRExporter exporter = new JRPdfExporter();
+					Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf");
+				} else {
+					this.rutaNoEstructurado = System.getProperty("user.home") + "/reportes_america/evento_actividad.txt";
+					JRExporter exporterTxt = new JRTextExporter();
+					exporterTxt.setParameter(JRTextExporterParameter.JASPER_PRINT, jasperPrint);
+					exporterTxt.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, this.rutaNoEstructurado);
+					exporterTxt.setParameter(JRTextExporterParameter.PAGE_WIDTH,130);
+					exporterTxt.setParameter(JRTextExporterParameter.PAGE_HEIGHT,130);
+					exporterTxt.exportReport();
+					FileInputStream input = new FileInputStream(this.rutaNoEstructurado);
+					Filedownload.save(input, "txt", nombreArchivo+".txt");    
+				    con.close();
+				    
+				    try{
+			    		File file = new File(this.rutaNoEstructurado);
+			    		file.delete();	
+			    	}catch(Exception e){
+			    		
+			    		e.printStackTrace();
+			    		
+			    	}
+				    
+				}
+				
+			} else {
+				Messagebox.show("No existe planificación para este evento.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			}		
+			con.close();
 		}
-	    
-	    con.close();
-	}
-	
 	
 	public JasperPrint cargarJasper() throws JRException, FileNotFoundException{
-		JasperDesign jd = null;  
-		jd = JRXmlLoader.load(reporte); 
+		JasperDesign jd = null;
+		if(this.isPdf) {
+			jd = JRXmlLoader.load(reporte);
+		} else {
+			jd = JRXmlLoader.load(reporteTxt);
+		}
 		JRDesignQuery newQuery = new JRDesignQuery();  
 		newQuery.setText(sql);  
 		jd.setQuery(newQuery); 

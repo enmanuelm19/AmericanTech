@@ -11,7 +11,7 @@
 <zk xmlns:n="native">
 	<window closable="true" border="none" id="winRegistrarGrupo"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		class="col-md-6" style="iconSclass=z-icon-puzzle-piece;"
+		class="col-xs-8 col-xs-offset-1 col-md-6" style="iconSclass=z-icon-puzzle-piece;"
 		title="@load(vm.editable?'Editar grupo':'Registrar grupo')"
 		apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarGrupoViewModel')">
@@ -57,14 +57,14 @@
 				<separator spacing="30px" />
 				<div class="row">
 					<grid model="@load(vm.funciones)"
-						emptyMessage="No se encuentran reglas registradas" mold="paging"
+						emptyMessage="No se encuentran funciones registradas" mold="paging"
 						pageSize="10">
 						<auxhead sclass="category-center">
 							<auxheader colspan="1">
 								<combobox width="100%" class="col-md-12" model="@load(vm.funcionesAll)" selectedItem="@bind(vm.funcionSeleccionada)"
 									value="Funciones">
 									<template name="model">
-									<comboitem label="@load(each.nombre)" value="@load(each)"/>
+									<comboitem label="${each.idFuncion} ${each.nombre}" value="@load(each)" tooltiptext="@load(each.descripcion)"/>
 									</template>
 								</combobox>
 							</auxheader>
@@ -76,21 +76,14 @@
 						</auxhead>
 
 						<columns>
-							<column hflex="3">Funcion</column>
+							<column hflex="3">Función</column>
 							<column>Acciones</column>
 						</columns>
 						<rows>
 							<template name="model">
-								<!-- <row>
-									<label value="Perfil del club" />
-									<div>
-									<button sclass="btn-link"
-									iconSclass="z-icon-trash-o red" tooltiptext="Eliminar" />
-									</div>
-									</row> -->
 								<row>
 									<label
-										value="@load(each.funcion.nombre)">
+										value="@load(each.funcion.nombre)" tooltiptext="@load(each.funcion.descripcion)">
 									</label>
 									<div>
 										<button sclass="btn-link"

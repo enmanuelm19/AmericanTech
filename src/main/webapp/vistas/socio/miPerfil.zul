@@ -37,9 +37,13 @@
 										<div class="col-md-4">
 											<div class="input-group">
 												<image
+													src="../assets/portal/img/img2.jpg" class='col-md-12'
+													visible="@load(!vm.fotoDefault)" />
+												<image
 													class="img-responsive col-md-offset-0"
 													content="@bind(vm.uploadedImage)"
-													src="@bind(vm.usuario.persona.foto)" width="100%" />
+													src="@bind(vm.usuario.persona.foto)" width="100%"
+													visible="@load(vm.fotoDefault)" />
 												<separator
 													spacing="30px">
 												</separator>
@@ -66,10 +70,10 @@
 													<row>
 														<div>
 															<label
-																class="col-md-4" value="Número Carnet" />
+																class="col-md-4" value="Número Carnet" visible="@load(vm.verAfiliado)" />
 															<textbox
 																constraint="no empty" class="col-md-6" readonly="true"
-																value="@bind(vm.socio.nroCarnet)" />
+																value="@bind(vm.socio.nroCarnet)" visible="@load(vm.verAfiliado)"/>
 														</div>
 													</row>
 													<row>
@@ -144,9 +148,9 @@
 																id="sexo"
 																selectedItem="@load(vm.usuario.persona.sexo)">
 																<radio
-																	id="a1" label="Masculino" value="M" radiogroup="sexo" />
+																	id="a1" label="Masculino" value="M" radiogroup="sexo" disabled="true"/>
 																<radio
-																	id="a2" label="Femenino" value="F" radiogroup="sexo" />
+																	id="a2" label="Femenino" value="F" radiogroup="sexo" disabled="true"/>
 															</radiogroup>
 														</div>
 													</row>
@@ -258,7 +262,7 @@
 									</hbox><!-- AQUI TERMINA GRUPO INTERESES -->
 									<n:br></n:br>
 									<n:br></n:br>
-									<div align="left">
+									<div align="left" visible="@load(vm.verAfiliado)">
 										<div class="encabezado">
 											Datos Acción
 										</div>
@@ -266,9 +270,9 @@
 											class="linea-two">
 										</div>
 									</div>
-									<hbox align="center" pack="center"
+									<hbox visible="@load(vm.verAfiliado)" align="center" pack="center"
 										width="100%"><!-- GRUPO ACCIONES -->
-										<grid
+										<grid 
 											emptyMessage="No se encuentran acciones vinculadas"
 											mold="paging" pageSize="5" model="@load(vm.allAcciones)">
 											<columns>

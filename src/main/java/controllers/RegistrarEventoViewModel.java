@@ -15,6 +15,7 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import util.ManejadorMail;
 import Dao.EstadoEventoDao;
 import Dao.EventoDao;
 import Dao.IndicadorDao;
@@ -34,13 +35,13 @@ import modelos.IndicadorEvento;
 import modelos.Instalacion;
 import modelos.InstalacionEvento;
 import modelos.Noticia;
+import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
 import modelos.PreferenciaEvento;
 import modelos.PreferenciaPersona;
 import modelos.Reservacion;
 import modelos.Socio;
 import modelos.TipoPreferencia;
-import util.ManejadorMail;
 
 public class RegistrarEventoViewModel {
 
@@ -226,7 +227,7 @@ public class RegistrarEventoViewModel {
 
 		InstalacionEvento instalacionEvento;
 		if (evento.getFechaInicio() != null && evento.getFechaFin() != null
-				&& evento.getFechaInicio().before(evento.getFechaFin()))
+				&& (evento.getFechaInicio().before(evento.getFechaFin()) || evento.getFechaInicio().getTime()-evento.getFechaFin().getTime()==0) && evento.getFechaInicio().getTime( )>= new Date().getTime())
 			for (Instalacion instalacion : temporalInstalaciones) {
 				if (isDisponible(instalacion)) {
 					if (buscarInstalacion(instalacion) == null) {
@@ -239,10 +240,10 @@ public class RegistrarEventoViewModel {
 				} else
 					Messagebox.show(
 							instalacion.getNombre() + " no se encuentra disponible en el rango de fecha selecionado",
-							"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+							"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		else
-			Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "Warning", Messagebox.OK,
+			Messagebox.show("Por favor indique rango de fechas de forma correcta, tome en cuenta que la fecha de inicio debe ser despues de la fecha actual ", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 	}
 
@@ -354,14 +355,15 @@ public class RegistrarEventoViewModel {
 				eventoDao.agregarEvento(evento);
 				registrarNoticia();
 				enviarEmail();
-				Messagebox.show("El evento " + evento.getNombre() + " ha sido registrado exitosamente", "",
+				Messagebox.show("El evento " + evento.getNombre() + " ha sido registrado exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 
 			else {
 				eventoDao.actualizarEvento(evento);
+				actualizarNoticia();
 				enviarEmail();
-				Messagebox.show("El evento " + evento.getNombre() + " ha sido actualizado exitosamente", "",
+				Messagebox.show("El evento " + evento.getNombre() + " ha sido actualizado exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 
@@ -369,6 +371,8 @@ public class RegistrarEventoViewModel {
 			BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
 
 		}
+		else Messagebox.show("Por favor ingrese todos los campos del evento", "American Tech", Messagebox.OK,
+				Messagebox.EXCLAMATION);
 	}
 
 	public boolean isCamposVacio() {
@@ -392,15 +396,27 @@ public class RegistrarEventoViewModel {
 
 		Noticia noticia = new Noticia();
 		NoticiaDao noticiaDao = new NoticiaDao();
-		noticia.setFoto("localhost:8080/america/assets/img/default-placeholder.png");
-		noticia.setFechaCreacion(evento.getFechaInicio());
+		noticia.setFoto("http://i.imgur.com/wGVOjvQ.png");
+		noticia.setFechaCreacion(new Date());
 		noticia.setCaducidad(evento.getFechaFin());
-		noticia.setDescripcion(evento.getDescripcion());
+		noticia.setDescripcion("Nos complace informarle a nuestra familia americanista la realizacion de evento: "+evento.getNombre()+" Desde: "+evento.getFechaInicioString()+" Hasta: "+evento.getFechaFinString());
 		noticia.setTitulo(evento.getNombre());
 		noticia.setPublico(evento.isPublico());
 		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
 		noticia.setEvento(evento);
 		noticia.setActivo(true);
+		
+		Set<NoticiaPreferencia> noticiasPreferencias = new HashSet<NoticiaPreferencia>();
+		
+		for(PreferenciaEvento p: listPreferenciaEvento){
+			NoticiaPreferencia noticiaP = new NoticiaPreferencia();
+			noticiaP.setActivo(true);
+			noticiaP.setNoticia(noticia);
+			noticiaP.setPreferencia(p.getPreferencia());
+			noticiasPreferencias.add(noticiaP);
+		}
+		
+		noticia.setNoticiaPreferencias(noticiasPreferencias);
 		noticiaDao.agregarNoticia(noticia);
 		
 		
@@ -437,5 +453,36 @@ public class RegistrarEventoViewModel {
 			bandera = false;
 		}
 
+	}
+	
+	public void actualizarNoticia() throws Exception{
+		
+		
+		System.out.println("noticias sise: "+evento.getNoticias().size());
+		
+		
+		NoticiaDao noticiaDao = new NoticiaDao();
+		Noticia noticia = noticiaDao.obtenerNoticia(evento.getNoticias().iterator().next().getIdNoticia());
+		noticia.setCaducidad(evento.getFechaFin());
+		noticia.setDescripcion("Nos complace informarle a nuestra familia americanista la realizacion de evento: "+evento.getNombre()+" Desde: "+evento.getFechaInicioString()+" Hasta: "+evento.getFechaFinString());
+		noticia.setTitulo(evento.getNombre());
+		noticia.setPublico(evento.isPublico());
+		noticia.setTipoNoticia(tipoNoticiaDao.obtenerTipoNoticia(1));
+		noticia.setEvento(evento);
+		
+		Set<NoticiaPreferencia> noticiasPreferencias = new HashSet<NoticiaPreferencia>();
+		
+		for(PreferenciaEvento p: listPreferenciaEvento){
+			NoticiaPreferencia noticiaP = new NoticiaPreferencia();
+			noticiaP.setActivo(true);
+			noticiaP.setNoticia(noticia);
+			noticiaP.setPreferencia(p.getPreferencia());
+			noticiasPreferencias.add(noticiaP);
+		}
+		
+		
+		//noticia.setActivo(true);
+		noticiaDao.actualizarNoticia(noticia);
+		
 	}
 }

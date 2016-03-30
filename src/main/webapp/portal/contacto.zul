@@ -26,21 +26,20 @@
 							<n:form>
 
 								<div class="row">
-
+<label style="color:red;">*</label>
 									<label>
 										Tu opinión esta relacionada con:
 									</label>
 									<n:br></n:br>
-									<div
-										style="width:550px; background-color: #FFFFFF ">
-										<combobox zclass="none"
-											id="combo"
-											style="margin-left: -14px; background-color: #FFFFFF"
+									<div style="width:580px; background-color: #FFFFFF ">
+										<combobox 
+											id="combo" zclass="none" style="margin-left: -14px; background-color: #FFFFFF"
+											
 											model="@load(vm.allTipoSugerencia)"
 											selectedItem="@bind(vm.sugerencia.tipoSugerencia)"
 											value="@bind(vm.sugerencia.tipoSugerencia.descripcion)">
 											<template name="model">
-												<comboitem zclass="none"
+												<comboitem  zclass="none"
 													style="height: 25px; width:100px; background-color: #FFFFFF; padding: 7px;"
 													label="@load(each.descripcion)" value="@load(each)" />
 											</template>
@@ -58,7 +57,7 @@
 								<div class="row">
 									<div zclass="none"
 										class="col-md-6">
-										<label>Nombre</label>
+										<label style="color:red;">*</label><label>Nombre</label>
 										<n:br></n:br>
 										<textbox zclass="none"
 											class="textbox" placeholder="Tu nombre"
@@ -67,7 +66,7 @@
 										</textbox>
 									</div>
 									<div class="col-md-6">
-										<label>Apellido</label>
+										<label style="color:red;">*</label><label>Apellido</label>
 										<n:br></n:br>
 										<textbox class="textbox"
 											placeholder="Tu apellido"
@@ -79,7 +78,7 @@
 
 
 								<div class="row">
-									<label>Mensaje</label>
+									<label style="color:red;">*</label><label>Mensaje</label>
 									<n:br></n:br>
 									<textbox placeholder="Tu mensaje"
 										rows="7" width="90%" value="@bind(vm.sugerencia.descripcion)"
@@ -89,7 +88,7 @@
 								</div>
 
 								<div class="row">
-									<label>Correo</label>
+									<label style="color:red;">*</label><label>Correo</label>
 									<n:br></n:br>
 									<textbox class="textbox" width="40%"
 										placeholder="Tu Correo"
@@ -98,6 +97,7 @@
 									</textbox>
 
 									<div class="clear"></div>
+									<label style="color:red;">*</label><label style="color:red;">Campos obligatorios</label>
 								</div>
 								<div class="col-md-offset-9">
 									<span>
@@ -168,6 +168,7 @@
 												</label>
 											</n:p>
 										</n:p>
+										
 									</div>
 
 								</n:li>

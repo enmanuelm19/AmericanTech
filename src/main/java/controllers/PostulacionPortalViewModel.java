@@ -78,7 +78,7 @@ public class PostulacionPortalViewModel {
 		this.temporalPreferencia= new ArrayList<Preferencia>();
 		this.noticiaDao= new NoticiaDao();
 		this.tipoNoticiaDao= new TipoNoticiaDao();
-		System.out.println("kdkladk");
+		this.persona.setFoto("/assets/portal/img/img1.jpg");
 	}
 	public ListModelList<Preferencia> getPreferencias() {
 		return new ListModelList<Preferencia>(this.preferencias);
@@ -136,8 +136,17 @@ public class PostulacionPortalViewModel {
 	@Command
 	@NotifyChange("uploadedImage")
 	public void uploadImage(@BindingParam("media") Media myMedia) {
-		imagenPostulado = true;
-		uploadedImage = myMedia;
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "Centro Atlético América", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				imagenPostulado = true;
+				uploadedImage = myMedia;
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "Centro Atlético América", Messagebox.OK, Messagebox.INFORMATION);
+		}
+		
 	}
 	
 
@@ -166,16 +175,16 @@ public class PostulacionPortalViewModel {
 			||this.persona.getFechaNac().equals(now)||this.persona.getSexo().equalsIgnoreCase("")
 			||this.postulacion.getCarnetPadrino1().equalsIgnoreCase("")||this.postulacion.getCarnetPadrino2().equalsIgnoreCase("")
 			||this.imagenPostulado==false){
-			Messagebox.show("Debe llenar todos los campos", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Verifique que todo los datos estén llenos", "Centro Atlético América", Messagebox.OK, Messagebox.EXCLAMATION);
 		}else{
 			if(validarCedula()==true){
 				if(this.validarEdad()==false){
-					Messagebox.show("Debe ser mayor de edad para postularse", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe ser mayor de edad para postularse", "Centro Atlético América", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					try{
 						if(this.postulacion.getCarnetPadrino1().equalsIgnoreCase(this.postulacion.getCarnetPadrino2())){
-							Messagebox.show("Referencias de padrinos no pueden ser id�nticas. Verifique sus credenciales", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Referencias de padrinos no pueden ser idénticas. Verifique sus credenciales", "Centro Atlético América", Messagebox.OK, Messagebox.EXCLAMATION);
 						}
 						else{
 							this.padrino1=this.socioDao.obtenerSocioCarnet(this.postulacion.getCarnetPadrino1());
@@ -199,8 +208,8 @@ public class PostulacionPortalViewModel {
 								
 								/*********************NOTICIA*******************/
 								this.noticia=new Noticia();
-								this.noticia.setTitulo("Nueva Postulaci�n");
-								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra secci�n de opiniones postulantes!");
+								this.noticia.setTitulo("Nueva Postulación");
+								this.noticia.setDescripcion("El Sr(a). "+this.persona.getNombre()+" "+this.persona.getApellido()+", se ha postulado para pertenecer a la familia americanista. Opina sobre el en nuestra sección de opiniones postulantes!");
 								this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(5));
 								this.noticia.setFechaCreacion(now);
 								Date dia= new Date();
@@ -218,17 +227,17 @@ public class PostulacionPortalViewModel {
 								this.preferencias= preferenciaDao.obtenerTodos();
 								this.uploadedImage=null;
 								this.inicializar();
-								Messagebox.show("Pronto sera contactado por nuestro personal", "�Solicitud Enviada!", Messagebox.OK, Messagebox.INFORMATION);
+								Messagebox.show("Solicitud Enviada. Pronto sera contactado por nuestro personal", "Centro Atlético América", Messagebox.OK, Messagebox.INFORMATION);
 							}
 						}
 					}
 					catch(NullPointerException e){
-						Messagebox.show("Referencias de padrinos no existentes como socios activos. Verifique sus credenciales", "Error", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Referencias de padrinos no existentes como socios activos. Verifique sus credenciales", "Centro Atlético América", Messagebox.OK, Messagebox.EXCLAMATION);
 					}
 				}
 			}
 			else{
-				Messagebox.show("C�dula encontrada en nuestros registros", "Aviso", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cédula encontrada en nuestros registros", "Centro Atlético América", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 		

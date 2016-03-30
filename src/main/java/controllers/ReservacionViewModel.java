@@ -7,6 +7,8 @@ import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Session;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.ListModelList;
@@ -14,31 +16,66 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import Dao.ReservacionDao;
+import Dao.SocioDao;
 import enums.CondicionReservacion;
 import modelos.Evento;
 import modelos.Reservacion;
+import modelos.Socio;
+import modelos.Usuario;
 
 public class ReservacionViewModel {
 	
 	private List<Reservacion> reservacionAll;
 	private ReservacionDao reservacionDao;
 	private String nombreFiltro;
+	private Socio socio;
+	private boolean disable = false;
 	
 	@Init
 	public void init() throws Exception {
 		reservacionDao = new ReservacionDao();
-		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));				
+		Session session = Sessions.getCurrent();
+		Usuario usuario = (Usuario) session.getAttribute("Usuario");
+		if (usuario != null) {
+			socio = new SocioDao().obtenerSocioPersona(usuario.getPersona());
+		}
+		for(Reservacion reser: reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue())){
+			if(socio != null && reser.getSocio().getIdSocio() == socio.getIdSocio()){
+				getReservacionAll().add(reser);
+			}
+		}
+		if(socio == null){
+			disable = true;
+		}
+	}
+
+	public boolean isDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
 
 	public ListModelList<Reservacion> getAllReservacion() {
-		return new ListModelList<Reservacion>(reservacionAll);
+		return new ListModelList<Reservacion>(getReservacionAll());
 	} 
+	
 	public List<Reservacion> getReservacionAll() {
 		if(reservacionAll == null){
 			reservacionAll = new ArrayList<Reservacion>();
@@ -76,18 +113,18 @@ public class ReservacionViewModel {
 	@Command
 	@NotifyChange({ "allReservacion", "cantRegistros" })
 	public void eliminar(@BindingParam("reservacion") final Reservacion reservacion) {
-		Messagebox.show("Estas seguro de eliminar " + reservacion.getIdReservacion(), "Confirmar",
+		Messagebox.show("¿Está seguro de eliminar " + reservacion.getInstalacion().getNombre()+"?", "Confirmar",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								reservacionDao.eliminarReservacion(reservacion);
 								reservacionAll = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue());
-								Messagebox.show(reservacion.getIdReservacion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(reservacion.getInstalacion().getNombre() + " ha sido eliminada", "", Messagebox.OK,
 										Messagebox.INFORMATION);
-								BindUtils.postGlobalCommand(null, null, "refreshEventos", null);
+								BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), reservacion.getIdReservacion() + " No pudo ser eliminada",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}
@@ -102,7 +139,7 @@ public class ReservacionViewModel {
 		String nomb = getNombreFiltro().toLowerCase();		
 		for (Iterator<Reservacion> i = reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()).iterator(); i.hasNext();) {
 			Reservacion tmp = i.next();
-			if (tmp.getInstalacion().getNombre().toLowerCase().contains(nomb)) {
+			if (tmp.getInstalacion().getNombre().toLowerCase().contains(nomb) && getSocio() != null && getSocio().getIdSocio()== tmp.getSocio().getIdSocio()) {
 				reserva.add(tmp);
 			}
 		}
@@ -114,9 +151,25 @@ public class ReservacionViewModel {
 	@NotifyChange({"allReservacion", "cantRegistros" })
 	public void refreshReservacion() throws Exception {
 		getReservacionAll().clear();
-		getReservacionAll().addAll(reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue()));
+		for(Reservacion reser: reservacionDao.obtenerTodosPorCondicion(CondicionReservacion.PENDIENTE.getValue())){
+			if(socio != null && reser.getSocio().getIdSocio() == socio.getIdSocio()){
+				getReservacionAll().add(reser);
+			}
+		}			
 	}
 	
+	public double precio(Date date1, Date date2,float precio){
+		if(date1 != null && date2 != null){
+			return precio * diasEntreFecha(date1, date2);
+		}
+		return 0;
+	}
+	
+	public int diasEntreFecha(Date date1, Date date2) {
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al d�a
+		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
+		return (int) diferencia;
+	}
 	
 
 }

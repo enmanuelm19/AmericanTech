@@ -1,21 +1,33 @@
-<vlayout sclass="page-content" xmlns:n="native" spacing="0"
-	class="contenedor" hflex="1" vflex="1">
+<vlayout sclass="page-content" xmlns:n="native" class="contenedor"
+	hflex="12" vflex="1" zclass="none">
 	<div sclass="page-header">
 		<label value="Inicio" />
 		<a label="Bienvenido" iconSclass="z-icon-angle-double-right"
 			sclass="subtitle" />
 	</div>
-	<div align="center" class="col-lg-12">
 
-		<include src="/vistas/content/carteleraNoticias.zul" />
-		<n:br></n:br>
-		<n:br></n:br>
-			<separator spacing="10px"></separator>
+	<div align="center" zclass="none">
 		<n:div class="info">
-			<a class="btn">Todaaaas </a>
+			<div style="background-color:transparent;  color:#717171;" class="col-md-8" align="left">
+				<n:h4 class="info text-center"
+					style="padding:15px; min-width:300px; max-width:600px; min-height:50px; max-height:50px;">
+					<label zclass="none" value="Noticias" />
+				</n:h4>
+			</div>
+			<div zclass="none" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.CarteleraViewModel')">
+				<n:div class="info col-md-4" style="margin-top:20px;" align="rigth">
+					<a href="/vistas/carteleraFiltros.zul" class="btn">Ver Todas</a>
+				</n:div>
+			</div>
 		</n:div>
-		<separator spacing="10px"></separator>
+		<include src="/vistas/content/carteleraNoticias.zul" />
+		
+		
+
+		<n:br></n:br>
+		<n:br></n:br>
 		<n:br></n:br>
 		<include src="/vistas/content/calendario.zul" />
 	</div>
 </vlayout>
+

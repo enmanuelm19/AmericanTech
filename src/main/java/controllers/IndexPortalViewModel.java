@@ -54,6 +54,7 @@ public class IndexPortalViewModel {
 	private AccionDao accionDao;
 	private EstadoAccionDao estadoAccionDao;
 	private boolean verPostulacion;
+	private boolean cancelarPostulacion;
 	@Init
 	public void init() throws Exception {
 		
@@ -73,10 +74,14 @@ public class IndexPortalViewModel {
 		accionDao= new AccionDao();
 		estadoAccionDao= new EstadoAccionDao();
 		this.acciones=accionDao.obtenerPorEstado(estadoAccionDao.obtenerEstadoAccion(2));
-		if(this.acciones.size()>0)
+		if(this.acciones.size()>0){
+			
 			verPostulacion=true;
-		else
+			cancelarPostulacion=false;
+		}else{
 			verPostulacion=false;
+		cancelarPostulacion=true;
+		}
 	}
 
 	public ListModelList<Club> getAllClub() {
@@ -98,5 +103,11 @@ public class IndexPortalViewModel {
 	public boolean getVerPostulacion(){
 		return verPostulacion;
 	}
+	
+	public boolean getCancelarPostulacion(){
+		return cancelarPostulacion;
+	}
+	
+
 	
 }	

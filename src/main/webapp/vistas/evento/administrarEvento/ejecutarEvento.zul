@@ -24,11 +24,11 @@
 					<space />
 					<space />
 
-					<div class='form-pricing' width="90%"
+					<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' 
 						style="margin-bottom: 20px">
 						<div align="left">
 							<div class="encabezado">
-								Lista de Eventos
+								Listado Eventos
 							</div>
 							<div align="left" class="linea-two" />
 						</div>
@@ -40,23 +40,25 @@
 
 
 							<auxhead sclass="category-center">
-								<auxheader colspan="1" />
-
-								<auxheader colspan="1">
+								<auxheader colspan="1" />	
+							
+									<auxheader colspan="1">
 									<image
 										src="../assets/img/funnel.png" />
-									<textbox instant="true" width="40%"
-										value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"
-										placeholder="Buscar" />
+									<textbox instant="true"
+										width="40%" value="@bind(vm.nombreFiltro)"
+										onChange="@command('filtroEyF')" placeholder="Buscar" />
 								</auxheader>
+								
+								<auxheader colspan="1" />
 
 							</auxhead>
 
 							<columns>
-								<column width="3%"></column>
-
-								<column width="35%">Nombre</column>
-
+								
+								<column width="4%"></column>
+								<column hflex="2">Nombre</column>
+								<column width="15%">Acciones</column>
 							</columns>
 
 							<rows>
@@ -86,25 +88,20 @@
 														Fecha tope
 													</column>
 													<column
-														align="center" width="18%">
+														align="center" width="20%">
 														Fecha realizada
 													</column>
 													<column
-														align="center" width="12%">
+														align="center" width="15%">
 														Valor esperado
 													</column>
 													<column
-														align="center" width="12%">
+														align="center" width="15%">
 														Valor Real
 													</column>
 													<column
-														align="center" width="12%">
+														align="center" width="15%">
 														Variación
-													</column>
-													
-													<column
-														align="center" width="10%">
-														Acciones
 													</column>
 
 												</columns>
@@ -119,7 +116,7 @@
 															<datebox
 																value="@bind(actividad.fechaRealizacion)" format="short"
 																width="80%" tabindex="10" />
-															
+
 															<label
 																value="@load(actividad.valorEsperado)" />
 
@@ -130,12 +127,9 @@
 															<label
 																value="@load(actividad.variacion)" />
 
-															
 
-															<button
-																sclass="btn-link" iconSclass="z-icon-check blue"
-																tooltiptext="Guardar"
-																onClick="@command('actualizarActividad',actividad=actividad)" />
+
+
 
 														</row>
 													</template>
@@ -144,6 +138,9 @@
 										</detail>
 										<label
 											value="@load(evento.nombre)" />
+										<button sclass="btn-link"
+											iconSclass="z-icon-check blue" tooltiptext="Guardar"
+											onClick="@command('actualizarActividads',evento=evento)" />
 									</row>
 								</template>
 

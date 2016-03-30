@@ -42,7 +42,7 @@
 									<auxheader colspan="1"></auxheader>
 									<auxheader colspan="1" /></auxhead>
 								<columns>
-									<column hflex="2">Descripción</column>
+									<column hflex="4">Descripción</column>
 									<column hflex="2">Valor </column>
 									<column width="40%" align="center"> Acciones </column>
 								</columns>

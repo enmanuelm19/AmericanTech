@@ -64,7 +64,7 @@ public class SesionViewModel implements Initiator {
 	@Command
 	public void ingresar() throws Exception {
 		if(usuario.getValue().equalsIgnoreCase("") || pass.getValue().equalsIgnoreCase("")){
-			Messagebox.show("Ingrese sus datos", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Ingrese sus datos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}else{
 			Usuario user = chequearCredenciales();
 			Session session = Sessions.getCurrent();
@@ -74,7 +74,7 @@ public class SesionViewModel implements Initiator {
 				Clients.showBusy("");
 				Executions.sendRedirect("/vistas/index.zul");
 			}else{
-				Messagebox.show("Usuario o contraseña invalidos", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Usuario o contraseña inválidos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class SesionViewModel implements Initiator {
 		usuarioSesion = (Usuario) session.getAttribute("Usuario");
 	
 		if(usuarioSesion == null){
-			Messagebox.show("No esta autorizado para ingresar", null, 0, Messagebox.ERROR);
+			Messagebox.show("No esta autorizado para ingresar", "American Tech", 0, Messagebox.ERROR);
 			Executions.sendRedirect("/vistas/layouts/ingreso.zul");
 		}
 	}

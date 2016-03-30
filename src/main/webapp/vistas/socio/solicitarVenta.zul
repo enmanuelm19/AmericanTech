@@ -25,7 +25,7 @@
 									<listbox multiple="true" checkmark="true" model="@load(vm.accionesSocio)" selectedItems="@bind(vm.seleccionadas)">
 										<listhead>
 											<listheader	label="Solicitar Venta" />
-											<listheader label="Nro Acción" />
+											<listheader label="Número Acción" />
 										</listhead>
 										<template name="model">
 											<listitem>

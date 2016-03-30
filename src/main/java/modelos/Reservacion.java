@@ -21,7 +21,7 @@ public class Reservacion implements java.io.Serializable {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private char condicion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<Alquiler> alquilers = new HashSet<Alquiler>(0);
 	private Set<CalendarioFecha> calendarioFechas = new HashSet<CalendarioFecha>(
 			0);

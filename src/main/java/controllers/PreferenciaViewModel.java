@@ -88,18 +88,18 @@ public class PreferenciaViewModel {
 	@NotifyChange({ "allPreferencia", "cantRegistros" })
 	public void eliminar(@BindingParam("preferencia") final Preferencia preferencia) {
 
-		Messagebox.show("Estas seguro de eliminar " + preferencia.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + preferencia.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								preferenciaDao.eliminarPreferencia(preferencia);
 								preferenciaAll = preferenciaDao.obtenerTodos();
-								Messagebox.show(preferencia.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(preferencia.getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), preferencia.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), preferencia.getDescripcion() + " American Tech", 
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

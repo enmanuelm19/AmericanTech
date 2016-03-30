@@ -97,12 +97,10 @@ public class GrupoViewModel {
 								try {
 									grupoDao.eliminarGrupo(grupo);
 									grupos = grupoDao.obtenerTodos();
-									Messagebox.show(grupo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
-											Messagebox.INFORMATION);
+									Messagebox.show(grupo.getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 									BindUtils.postGlobalCommand(null, null, "refreshGrupos", null);
 								} catch (Exception e) {
-									Messagebox.show(e.getMessage(), grupo.getDescripcion() + " No se pudo eliminar",
-											Messagebox.OK, Messagebox.ERROR);
+									Messagebox.show(e.getMessage()+ " " + grupo.getDescripcion() +" no se pudo eliminar", "American Tech", Messagebox.OK, Messagebox.ERROR);
 								}
 							}
 						}

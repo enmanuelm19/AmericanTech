@@ -9,9 +9,9 @@
 		<div align="center">
 			<grid>
 				<rows class="">
-					<row class="col-md-12 ">
-						<image id="image" width="100%"
-							src="/assets/img/caney1.jpg" />
+					<row class="col-md-12 " style="text-align:center">
+						<image id="image" width="100%" style="max-width: 230px"
+							src="@load(vm.imagenInstalacion)" />
 					</row>
 					<row class="col-md-12 ">
 						<div>

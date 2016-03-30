@@ -79,18 +79,18 @@ public class IndicadorViewModel {
 	@NotifyChange({ "allIndicador", "cantRegistros" })
 	public void eliminar(@BindingParam("indicador") final Indicador indicador) {
 
-		Messagebox.show("Estas seguro de eliminar " + indicador.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + indicador.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								indicadorDao.eliminarIndicador(indicador);
 								indicadorAll = indicadorDao.obtenerTodos();
-								Messagebox.show(indicador.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(indicador.getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshIndicador", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), indicador.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), indicador.getDescripcion() + " American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

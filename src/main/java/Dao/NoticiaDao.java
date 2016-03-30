@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import modelos.Evento;
 import modelos.Eventualidad;
 import modelos.Noticia;
+import modelos.Postulacion;
 import confi.Sesion;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
@@ -166,4 +168,42 @@ private Sesion sesionPostgres;
   				       
   		   return datos; 
   		}
+	
+	public Noticia obtenerNoticiaPostulacion(Postulacion dato) throws Exception {            
+	       
+	    Noticia datos;  
+	    Session em = sesionPostgres.getSessionFactory().openSession();    
+	     try {   
+	       datos =  (Noticia) em.createCriteria(Noticia.class).add(Restrictions.eq("postulacion", dato)).add(Restrictions.eq("activo", true)).uniqueResult();             
+	       } catch (Exception e) {             
+	     
+	    throw new Exception(e.getMessage(),e.getCause());
+	         } finally {  
+	          em.close();  
+	      } 
+	             
+	       return datos; 
+	    }
+
+	
+//	public Noticia obtenerNoticiaPostulacion(Date fecha) throws Exception {            
+//	      
+//  		List<Noticia> datos = new ArrayList<Noticia>();  
+//  		Session em = sesionPostgres.getSessionFactory().openSession();   	
+//  		 try {  	
+//  		   SQLQuery query =	 em.createSQLQuery("Select n.* from noticia n join postulacion p on n.postulacionid_postulacion = p.id_postulacion where n.activo=p.activo=true and n.caducidad > :fecha");
+//  		   query.addEntity(Noticia.class);
+//  		   query.setDate("fecha", fecha);
+//		   datos =  (List<Noticia>) query.list();
+//  			  } catch (Exception e) {             
+//  		 
+//  		throw new Exception(e.getMessage(),e.getCause());
+//  		     } finally {  
+//  		      em.close();  
+//  			 } 
+//  				       
+//  		   return datos; 
+//  	}
+  	
+
 }

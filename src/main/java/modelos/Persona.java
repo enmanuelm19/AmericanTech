@@ -23,7 +23,7 @@ public class Persona implements java.io.Serializable {
 	private String telefono;
 	private String telefonoFijo;
 	private String direccion;
-	private boolean activo;
+	private boolean activo = true;
 	private Set<MiembroJunta> miembroJuntas = new HashSet<MiembroJunta>(0);
 	private Set<Afiliado> afiliados = new HashSet<Afiliado>(0);
 	private Set<RedPersona> redPersonas = new HashSet<RedPersona>(0);
@@ -241,4 +241,5 @@ public class Persona implements java.io.Serializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
 		return sdf.format(this.fechaNac);
 	}
+
 }

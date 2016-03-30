@@ -11,13 +11,14 @@
 						<label value="Sugerencias" />
 					</div>
 				</div>
+				
 				<div align="center" class="contenedor">
 
 					<div sclass="page-header" align="left">
 						<label value="Vista General Sugerencias" />
 					</div>
-
-					<div class='form-pricing' width="85%" apply="org.zkoss.bind.BindComposer" 
+					<space></space>
+					<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' apply="org.zkoss.bind.BindComposer" 
 						viewModel="@id('vm') @init('controllers.SugerenciaViewModel')"
 						 style="margin-bottom: 20px;">
 						<div align="right" >
@@ -28,7 +29,7 @@
 
 
 						<div align="left">
-							<div class="encabezado">Sugerencias</div>
+							<div class="encabezado">Listado Sugerencias</div>
 							<div align="left" class="linea-two" />
 						</div>
 
@@ -62,7 +63,7 @@
 								<template name="model">
 									<row>
 										<label value="@load(each.tipoSugerencia.descripcion)" />
-										<label value="@load(each.fecha)" />
+										<label value="@load(each.fechaString)" />
 										<label value="@load(each.usuario.persona.nombre)" />
 										<label value="@load(each.usuario.persona.apellido)" />
 										<image  class="img-responsive col-md-offset-0"

@@ -302,5 +302,13 @@
 	  text-align: center;
 	}
 	
-	
+	#slider{
+	height: 800px;
+}
+#slider img{
+	display: none;
+}
+#slider img:nth-child(1){
+	display: block;
+}
 }

@@ -31,14 +31,21 @@ public class RegistrarAccionViewModel {
 	private Noticia noticia;
 	private TipoNoticiaDao tipoNoticiaDao;
 	private NoticiaDao noticiaDao;
+	private boolean val;
 	@Init
 	public void init(@ExecutionArgParam("accion") Accion accion) throws Exception {
 		if(accion==null){
 			this.accion=new Accion();
+			EstadoAccion e=new EstadoAccion();
+			e.setNombre("");
+			this.accion.setEstadoAccion(e);
+			this.accion.setValor(0);
 			this.editable = false;
+			val=false;
 		} else {
 			this.accion=accion;
 			this.editable=true;
+			val=true;
 		}
 		this.estdao= new EstadoAccionDao();
 		this.estados= estdao.obtenerTodos();
@@ -67,31 +74,41 @@ public class RegistrarAccionViewModel {
 	public void cerrarModal(@BindingParam("win") Window win) {
 		win.detach();
 	}
-
+	
+	@Command
+	public void val(){
+		val=true;
+	}
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		System.out.println("valor "+accion.getValor());
 		if ((accion.getNroAccion() != null && !accion.getNroAccion().equalsIgnoreCase("")) || (accion.getValor() > 0.0 && !String.valueOf(accion.getValor()).equalsIgnoreCase(""))) {
 			accion.setActivo(true);
 			if (!editable){
 				if(validarDesc())
-					Messagebox.show("Ya existe una acci髇 con ese n鷐ero","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Ya existe una acci贸n con ese numero","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				else{
+					if(!val){
+						Messagebox.show("Debe seleccionar un estado acci贸n","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					}else{
+						if(accion.getValor()== 0.0){
+							Messagebox.show("Debe ingresar un valor de acci贸n","American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+							
+						}else{
 					accionDAO.agregarAccion(accion);
-					Messagebox.show("La Acci髇 " +accion.getNroAccion()+ " ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show("La Acci贸n " +accion.getNroAccion()+ " ha sido registrada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 					if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
 						publicarNoticia();
 					}
 					win.detach();
 					BindUtils.postGlobalCommand(null, null, "refreshAcciones", null);
-				}
+				}}}
 			}
 			else{
 				if(accion.getEstadoAccion().getIdEstadoAccion()==2){
 					accion.setSocio(null);
 				}
 				accionDAO.actualizarAccion(accion);
-				Messagebox.show("La Acci髇 " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);		
+				Messagebox.show("La acci贸n " +accion.getNroAccion()+ " ha sido actualizada exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);		
 				if(this.accion.getEstadoAccion().getIdEstadoAccion()==2){
 					publicarNoticia();
 				}
@@ -114,10 +131,11 @@ public class RegistrarAccionViewModel {
 	}
 	public void publicarNoticia() throws Exception{
 		this.noticia=new Noticia();
-		this.noticia.setTitulo("Acci髇 en Venta");
-		this.noticia.setDescripcion("e a aperturado el proceso de postulaci髇 para una acci髇 en venta!");
+		this.noticia.setTitulo("Acci贸n en Venta");
+		this.noticia.setDescripcion("Se a aperturado el proceso de postulaci贸n para una acci贸n en venta");
 		this.noticia.setTipoNoticia(this.tipoNoticiaDao.obtenerTipoNoticia(2));
 		this.noticia.setFechaCreacion(new Date());
+		this.noticia.setFoto("http://i.imgur.com/E9BHBju.png");
 		Date dia= new Date();
 		dia.setDate(new Date().getDate()+15);
 		this.noticia.setCaducidad(dia);

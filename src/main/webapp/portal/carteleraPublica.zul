@@ -1,3 +1,4 @@
+<?page title="Centro Atletico America" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native">
 	<?link rel="shortcut icon" type="image/x-icon" href="../assets/portal/img/favicon.ico"  ?>
 	<?link href="../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>

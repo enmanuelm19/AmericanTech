@@ -6,7 +6,7 @@
     <class name="modelos.MotivoSancion" table="motivo_sancion" schema="public" optimistic-lock="version">
         <id name="idMotivoSancion" type="int">
             <column name="id_motivo_sancion" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="descripcion" type="string">
             <column name="descripcion" length="120" not-null="true" />
@@ -14,7 +14,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="sancions" table="sancion" inverse="true" lazy="true" fetch="select">
+        <set name="sancions" table="sancion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="motivo_sancionid_motivo_sancion" not-null="true" />
             </key>

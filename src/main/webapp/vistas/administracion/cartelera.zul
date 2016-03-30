@@ -29,12 +29,16 @@
 							</div>
 							<separator spacing="20px" />
 
-							<grid model="@load(vm.allNoticia)"
+							<grid model="@load(vm.noticiaAll)"
 								emptyMessage="No se encuentran Noticias registradas" mold="paging" pageSize="10">
 								<auxhead sclass="category-center">
 									<auxheader colspan="1">
 										<image src="../assets/img/funnel.png" />
-										<textbox instant="true" width="85%" placeholder="Buscar" />
+										<textbox instant="true" width="85%" placeholder="Buscar" value="@bind(vm.tituloFilter)" onChange="@global-command('filtro')"/>
+									</auxheader>
+									<auxheader colspan="1">
+										<image src="../assets/img/funnel.png" />
+										<textbox instant="true" width="80%" placeholder="Buscar" value="@bind(vm.tipoNoticiaFilter)" onChange="@global-command('filtro')"/>
 									</auxheader>
 									<auxheader colspan="4" />
 								</auxhead>
@@ -43,6 +47,7 @@
 <!-- 									<column hflex="4">Descripción </column> -->
 									<column hflex="3">Tipo</column>
 									<column hflex="2">Foto</column>
+									<column hflex="2">Caducidad</column>
 									<column hflex="2">Público</column>
 									<column hflex="3">Acciones</column>
 								</columns>
@@ -54,6 +59,7 @@
 <!-- 											<label value="@load(each.descripcion)" /> -->
 											<label value="${each.tipoNoticia.descripcion} " />
 											<image src="@load(each.foto)" width="40%" align="center" />
+											<label value="@load(each.caducidad) @converter('formatedDate',format='dd/MM/yyyy') "/>
 											<label value="@load(each.publico)" />
 											<div>
 												<button sclass="btn-link"

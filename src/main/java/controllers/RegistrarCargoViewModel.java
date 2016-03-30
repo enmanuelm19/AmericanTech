@@ -78,6 +78,9 @@ public class RegistrarCargoViewModel {
 				
 			win.detach();
 			BindUtils.postGlobalCommand(null,null,"refreshCargo",null);
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 		
 		

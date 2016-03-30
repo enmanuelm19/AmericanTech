@@ -81,18 +81,18 @@ public class RedSocialViewModel {
 	@NotifyChange({ "allRedSocial", "cantRegistros" })
 	public void eliminar(@BindingParam("Red") final RedSocial red) {
 
-		Messagebox.show("Estas seguro de eliminar " + red.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + red.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								redDao.eliminarRedSocial(red);
 								redesAll = redDao.obtenerTodos();
-								Messagebox.show(red.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(red.getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshRedSocial", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), red.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), red.getDescripcion() + " American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

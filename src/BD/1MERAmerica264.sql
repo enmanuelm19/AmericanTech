@@ -167,6 +167,7 @@ CREATE TABLE funcion (
   icon_uri        varchar(255) NOT NULL, 
   clase           varchar(120) NOT NULL, 
   padreid_funcion int4, 
+  descripcion     text, 
   activo          bool DEFAULT 'true' NOT NULL, 
   PRIMARY KEY (id_funcion));
 CREATE TABLE funcion_grupo (
@@ -284,7 +285,7 @@ CREATE TABLE junta_directiva (
   PRIMARY KEY (id_junta_directiva));
 CREATE TABLE miembro_junta (
   id_junta_miembro                   SERIAL NOT NULL, 
-  junta_directivaid_junta_directiva int2 NOT NULL, 
+  junta_directivaid_junta_directiva int2, 
   cargoid_cargo                     int2 NOT NULL, 
   personaid_persona                 int2 NOT NULL, 
   activo                            bool DEFAULT 'true' NOT NULL, 
@@ -467,7 +468,6 @@ ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr55454 FOREIGN KEY (usuarioi
 ALTER TABLE usuario_grupo ADD CONSTRAINT FKusuario_gr690051 FOREIGN KEY (grupoid_grupo) REFERENCES grupo (id_grupo);
 ALTER TABLE opinion ADD CONSTRAINT FKopinion612647 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
 ALTER TABLE eventualidad ADD CONSTRAINT FKeventualid168495 FOREIGN KEY (instalacionid_instalacion) REFERENCES instalacion (id_instalacion);
-ALTER TABLE noticia ADD CONSTRAINT FKnoticia587974 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);
 ALTER TABLE funcion_grupo ADD CONSTRAINT FKfuncion_gr570137 FOREIGN KEY (funcionid_funcion) REFERENCES funcion (id_funcion);
 ALTER TABLE funcion_grupo ADD CONSTRAINT FKfuncion_gr71738 FOREIGN KEY (grupoid_grupo) REFERENCES grupo (id_grupo);
 ALTER TABLE opinion ADD CONSTRAINT FKopinion960425 FOREIGN KEY (usuarioid_usuario) REFERENCES usuario (id_usuario);
@@ -538,3 +538,4 @@ ALTER TABLE sancion ADD CONSTRAINT FKsancion174634 FOREIGN KEY (afiliadoid_afila
 ALTER TABLE sancion ADD CONSTRAINT FKsancion24094 FOREIGN KEY (motivo_sancionid_motivo_sancion) REFERENCES motivo_sancion (id_motivo_sancion);
 ALTER TABLE instalacion ADD CONSTRAINT FKinstalacio183404 FOREIGN KEY (tipo_instalacionid_tipo_instalacion) REFERENCES tipo_instalacion (id_tipo_instalacion);
 ALTER TABLE noticia ADD CONSTRAINT FKnoticia482720 FOREIGN KEY (postulacionid_postulacion) REFERENCES postulacion (id_postulacion);
+ALTER TABLE noticia ADD CONSTRAINT FKnoticia587974 FOREIGN KEY (eventoid_evento) REFERENCES evento (id_evento);

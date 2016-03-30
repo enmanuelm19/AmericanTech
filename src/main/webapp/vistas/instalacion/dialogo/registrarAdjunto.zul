@@ -4,31 +4,56 @@
 	action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 	apply="org.zkoss.bind.BindComposer"
 	viewModel="@id('vm') @init('controllers.MisAlquileresViewModel')">
-	<div align="left">
-		<div class="encabezado">Invitados</div>
-		<div class="linea-two"></div>
-	</div>
 	<space spacing="15%" />
 	<div align="center">
 		<grid>
 			<rows class="">
-				<row class="col-md-12 ">
-					<hbox>
-						<label value=" Upload any PDF File " />
-						<button label=" Upload " upload="true"
+				<row class="col-md-12">
+					<label value="Tipo Listado:" />
+					<combobox model="@load(vm.tipoListados)"
+						constraint="no empty" selectedItem="@bind(vm.tipoListadoSelected)"
+						width="80%" readonly="true">
+						<template name="model">
+							<comboitem label="@load(each)"
+								value="@load(each)" disabled="@load(vm.validarTipo(each))" />
+						</template>
+					</combobox>
+				</row>
+				<row class="col-md-12">
+					<label value=" Cargar Achivo PDF " />
+					<div class="col-md-12" style="padding:0px">
+						<button label=" Examinar " upload="true"
+							class="col-md-6" style="background:#03A9F4;width: 90px;"
 							onUpload="@command('onUploadPDF',upEvent=event)">
 						</button>
-						<button label=" Show PDF "
-							visible="@load(vm.fileuploaded)" style="background:#11bcb7" onClick="@command('showPDF')">
+						<button label="Mostrar PDF" class="col-md-6"
+							visible="@load(vm.fileuploaded)"
+							style="background:#03A9F4;width: 100px; margin-left:10px"
+							onClick="@command('showPDF')">
 						</button>
-					</hbox>
-
-					<iframe height="100%" width="100%" id="reportframe"
-						content="@bind(vm.fileContent)">
-					</iframe>
+					</div>
+				</row>
+				<row zclass="none">
+					<div class="col-md-12">
+						<iframe height="100%" width="100%"
+							id="reportframe" class="col-md-8 col-md-offset-6"
+							content="@bind(vm.fileContent)">
+						</iframe>
+					</div>
 				</row>
 			</rows>
 		</grid>
+		<div style="margin-top:15px">
+			<button iconSclass="z-icon-floppy-o"
+				onClick="@command('guardar',win=test)" class='boton-guardar'
+				label="Registrar" />
+			<space spacing="10%" />
+			<button iconSclass="z-icon-times"
+				onClick="@command('cerrarModal',win=test)" class='boton-cancelar'
+				label="Cancelar" />
+		</div>
+
 		<space spacing="15%" />
+
 	</div>
 </window>

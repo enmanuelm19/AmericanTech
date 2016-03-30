@@ -14,14 +14,14 @@
 				</div>
 
 				<space /><space />
-				<div class='form-pricing col-md-9 col-md-offset-1' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.JuntaDirectivaViewModel')">
+				<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('controllers.JuntaDirectivaViewModel')">
 					<div align="right">
 						<button id="btnRegMiembroJunta" label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar' onClick="@command('showModalRegistrarMienbroJunta')"/>
 					</div>
 
 					<div class="contenido">
 						<div align="left">
-							<div class='encabezado'>Juntas Directivas Centro Atlético América</div>
+							<div class='encabezado'>Listado Juntas Directivas</div>
 							<div class='linea-two'></div>
 						</div>
 						<separator spacing="30px" />

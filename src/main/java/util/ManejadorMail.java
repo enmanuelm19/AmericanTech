@@ -72,7 +72,7 @@ public class ManejadorMail {
 			}
 		}).start();
 		}else{
-			Messagebox.show("En estos momentos tenemos problemas de conexion y no podemos enviar el correo, disculpe las molestias!");
+			Messagebox.show("En estos momentos tenemos problemas de conexion y no podemos enviar el correo, disculpe las molestias!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	

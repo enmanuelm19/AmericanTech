@@ -72,29 +72,32 @@ public class RegistrarPreferenciaViewModel {
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 
 		if (preferencia.getDescripcion() != null
-				&& !preferencia.getDescripcion().equalsIgnoreCase("")) {
+				&& !preferencia.getDescripcion().equalsIgnoreCase("") && preferencia.getTipoPreferencia()!=null) {
 			if (preferenciaDao.obtenerDescripcion(preferencia.getDescripcion()) == null) {
 			if (!editable) {
 				preferenciaDao.agregarPreferencia(preferencia);
 				Messagebox.show(
 						"La preferencia " + preferencia.getDescripcion()
-								+ " ha sido registrada exitosamente", "",
+								+ " ha sido registrada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			} else {
 				preferenciaDao.actualizarPreferencia(preferencia);
 				Messagebox.show(
 						"La preferencia " + preferencia.getDescripcion()
-								+ " ha sido actualizada exitosamente", "",
+								+ " ha sido actualizada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 			}
 			win.detach();
 			BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
 			}else {
-				Messagebox.show("Preferencia con la descripcion "
+				Messagebox.show("La preferencia con la descripción "
 						+ preferencia.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
-			}
-
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
+
+	}
 }

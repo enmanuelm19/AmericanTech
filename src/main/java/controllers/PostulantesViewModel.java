@@ -18,17 +18,27 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import modelos.Noticia;
 import modelos.Postulacion;
+import Dao.NoticiaDao;
+import Dao.PersonaDao;
 import Dao.PostulacionDao;
+import Dao.PostuladoDao;
 
 public class PostulantesViewModel {
 	private PostulacionDao postDAO= new PostulacionDao();
 	private String nombreFiltro;
 	private String apellidoFiltro;
 	private List<Postulacion> postulaciones;
+	private PersonaDao pdao;
+	private PostuladoDao podao;
+	private NoticiaDao noticiaDao;
 	@Init
 	public void init() throws Exception {
 		postulaciones = postDAO.obtenerTodos();
+		pdao= new PersonaDao();
+		podao= new PostuladoDao();
+		noticiaDao= new NoticiaDao();
 	}
 	
 	public ListModelList<Postulacion> getPostulacionesAll() {
@@ -91,7 +101,6 @@ public class PostulantesViewModel {
 	
 	@Command
 	public void abrirRegistroSocio(@BindingParam("Postulacion") Postulacion postulacions){
-		System.out.println("sdadad"+postulacions.getPostulado().getPersona().getDireccion());
 		Map<String, Object> args = new HashMap<String, Object>();
     	args.put("Postulacion", postulacions);
 		Window window = (Window) Executions.createComponents("socio/administrarSocio/registrarSocio.zul", null, args);
@@ -107,17 +116,21 @@ public class PostulantesViewModel {
 	@Command
 	public void cancelarPostulacion(@BindingParam("Postulacion") final Postulacion postulacions) throws Exception{
 		
-		Messagebox.show("Estas seguro de eliminar la postulación", "Confirmar",
+		Messagebox.show("Â¿Estas seguro de eliminar la postulaciÃ³n?", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
-							try {Messagebox.show("La postulación ha sido eliminada", "", Messagebox.OK,
+							try {Messagebox.show("La postulaciÃ³n ha sido eliminada", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
+							pdao.eliminarPersona(postulacions.getPostulado().getPersona());
+							podao.eliminarPostulado(postulacions.getPostulado());
 							postulacions.setAprobado(false);
-							postDAO.eliminarPostulacion(postulacions);	
+							postDAO.eliminarPostulacion(postulacions);
+							Noticia n= noticiaDao.obtenerNoticiaPostulacion(postulacions);
+							noticiaDao.eliminarNoticia(n);
 							BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(),"No se pudo eliminar la postulación",
+								Messagebox.show(e.getMessage(),"No se pudo eliminar la postulaciÃ³n",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

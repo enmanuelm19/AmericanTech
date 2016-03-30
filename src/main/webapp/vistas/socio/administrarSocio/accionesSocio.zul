@@ -17,7 +17,7 @@
 								<div class="encabezado">Acciones</div>
 								<div align="left" class="linea-two"></div>
 							</div>
-							<grid emptyMessage="No se encuentran Acciones registradas" mold="paging"
+							<grid emptyMessage="No se encuentran acciones registradas" mold="paging"
 							pageSize="10" model="@load(vm.accionSocio)" >
 							
 							<auxhead sclass="category-center">
@@ -28,7 +28,7 @@
             					<auxheader colspan="1" />
 							</auxhead>
 							<columns>
-								<column hflex="2">Nro Acción</column>	
+								<column hflex="2">Número Acción</column>	
 								<column hflex="2">Valor</column>
 							</columns>
 				         	<rows>

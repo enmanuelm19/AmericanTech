@@ -4,7 +4,7 @@
 		style="iconSclass=z-icon-cogs; height:auto;"
 		title="@load(vm.editable?'Editar indicador':'Registrar indicador')" closable="true" border="none"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		height="50%" width="40%">
+		height="50%"  class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 		<caption iconSclass="z-icon-cogs" />
 		<div class="contenedor" align="center">
 			<div align="left" width="90%">
@@ -19,12 +19,9 @@
 					<rows>
 						<row>
 							<div class="row col-md-12">
-								<div class="col-md-2">Descripcion</div>
-								<div class="col-md-10">
-									<textbox type="text" rows="4"
-										width="100%" value="@bind(vm.indicador.descripcion)"
-										constraint="no empty" />
-								</div>
+								<label class="col-xs-12 col-sm-12 col-md-12">Descripción</label>
+								<textbox type="text" rows="4"  class="col-md-12 col-xs-12 col-sm-12"
+										value="@bind(vm.indicador.descripcion)"	constraint="no empty" />
 							</div>
 						</row>
 					</rows>

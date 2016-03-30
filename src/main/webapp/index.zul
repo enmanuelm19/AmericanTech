@@ -115,7 +115,7 @@
 								<n:li><n:a href="#about" class="scroll">¿Quiénes somos?</n:a></n:li>
 								   <n:li><n:a  href="#contact"  class="scroll">Contacto</n:a></n:li>
 								     <n:li><n:a  href="/america/portal/instalaciones.zul" >Instalaciones</n:a></n:li>
-								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Informate</n:a></n:li>
+								     <n:li><n:a  href="/america/portal/carteleraPublica.zul" >Infórmate</n:a></n:li>
 								   <n:li><a href="/portal/postulacion.zul" visible="@load(vm.verPostulacion)">Postulación</a></n:li>
 								   <n:li><n:a  href="/america/vistas/layouts/ingreso.zul" >Ingreso</n:a></n:li>
 								 <n:div class="clear"> </n:div>
@@ -131,7 +131,7 @@
 
 						<n:div class="da-slide">
 								<n:h2> <label style ="color: #FFFFFF;  font-weight: 700; z-index: 10; text-align: center;" value="@load(vm.club.eslogan)"> </label></n:h2><n:br></n:br><n:br></n:br>
-									<n:a href="#cartelera" class="scroll da-link">Ver mas</n:a>
+									<n:a href="#cartelera" class="scroll da-link">Ver más</n:a>
 									<n:a href="#about" class="scroll"><n:span class="da-img"> </n:span> </n:a>
 								</n:div>
 	
@@ -175,7 +175,7 @@
 					<n:div class="desc"
 						style="max-height: 288px;overflow-y: hidden ;min-height: 288px;">
 
-						<n:h3>Nuestros socios</n:h3>
+						<n:h3>Nuestros Socios</n:h3>
 						<n:br></n:br>
 						<label
 							style="color: #444444; font-size: 1.02em; text-align: left; padding: 1em 1em 2em 1em; line-height: 1.9em;"
@@ -183,11 +183,9 @@
 						</label>
 						<n:br></n:br>
 					</n:div>
-					<n:a style=" z-index: 1;"
-						href="portal/postulacion.zul" class="boton-Formulario"
-						type="button">
-						Postulate
-					</n:a>
+					<a href="/portal/error.zul" visible="@load(vm.cancelarPostulacion)" class="boton-Formulario">Postulación</a>
+					<a href="/portal/postulacion.zul" visible="@load(vm.verPostulacion)" class="boton-Formulario">Postulación</a>
+					
 
 
 

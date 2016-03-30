@@ -27,6 +27,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.WrongValueException;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -59,6 +60,10 @@ public class MiPerfilViewModel {
 	private Afiliado afiliado;
 	private boolean verAfiliado;
 	private Set<Afiliado> afiliados;
+	private String password;
+	private String newPassword;
+	private String confirmPassword;
+	private boolean fotoDefault = true;
 
 
 	@Init
@@ -77,6 +82,7 @@ public class MiPerfilViewModel {
 			if(this.afiliado!=null){
 				verAfiliado=false;
 				this.afiliados= new HashSet<Afiliado>();
+				this.getAllAfiliados().setSelection(afiliados);
 			} else if(this.socio!=null){
 				verAfiliado=true;
 				this.afiliados= this.socio.getAfiliados();
@@ -89,7 +95,14 @@ public class MiPerfilViewModel {
 		preferenciaPDAO = new PreferenciaPersonaDao();
 		this.usuarioDao= new UsuarioDao();
 		
+		if (usuario.getPersona().getFoto() == null)
+			this.setFotoDefault(false);
+		else
+			this.setFotoDefault(true);
+		
 	}
+	
+
 	
 	
 	public boolean isVerAfiliado() {
@@ -142,7 +155,7 @@ public class MiPerfilViewModel {
 	}
 
 	public ListModelList<Afiliado> getAllAfiliados() throws Exception {
-		return new ListModelList<Afiliado>(usuario.getPersona().getSocios().iterator().next().getAfiliados());
+		return new ListModelList<Afiliado>(afiliados);
 	}
 
 	public ListModelList<Accion> getAllAcciones() throws Exception {
@@ -293,12 +306,18 @@ public class MiPerfilViewModel {
 	}
 	
 
-	@Command
+	/*@Command
 	@NotifyChange("uploadedImage")
 	public void upload(@BindingParam("media") Media myMedia){
-		imagenNueva=true;
+		if(imagenNueva=true);
+		Messagebox.show("Usuario " + usuario.getPersona().getNombre()
+				+ " La imagen será actualizada al guardar", "American Tech", Messagebox.OK,
+				Messagebox.INFORMATION);
+		
+
+		
 		uploadedImage = myMedia;
-	}
+	}*/
 
 	public Media getUploadedImage() {
 		return uploadedImage;
@@ -313,12 +332,13 @@ public class MiPerfilViewModel {
 	public void guardar() throws Exception{
 		if(imagenNueva){
 			this.usuario.getPersona().setFoto(ManejadorArchivo.subirImagen(uploadedImage));
+
 		}
-		
 		this.usuarioDao.actualizarUsuario(usuario);
 		Messagebox.show("Usuario " + usuario.getPersona().getNombre()
 				+ " ha sido actualizado", "American Tech", Messagebox.OK,
 				Messagebox.INFORMATION);
+		       Executions.sendRedirect("/vistas/index.zul");
 		
 	}
 	
@@ -343,6 +363,79 @@ public class MiPerfilViewModel {
 		win.detach();
 	}
 	
+	@Command
+	public void cambioContrasena(@BindingParam("win") Window win) throws Exception{
+		if(getPassword() == null || getNewPassword() == null || getConfirmPassword() == null){
+			Messagebox.show("No se permiten campos vacios!");
+		}else{
+			if(getPassword().equals(usuario.getContrasenna())){
+				if(getNewPassword().equals(getConfirmPassword())){
+					usuario.setContrasenna(getNewPassword());
+					usuarioDao.actualizarUsuario(usuario);
+					Messagebox.show("Contraseña actualizada satisfactoriamente!","American Tech", Messagebox.OK,
+							Messagebox.INFORMATION);
+					win.detach();
+				}else{
+					Messagebox.show("Las contraseñas no coinciden!", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				}
+			}else{
+				Messagebox.show("Contraseña incorrecta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			}
+		}
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	
+	public boolean isFotoDefault() {
+		return fotoDefault;
+	}
+
+	public void setFotoDefault(boolean fotoDefault) {
+		this.fotoDefault = fotoDefault;
+	}
+	
+	@Command
+	@NotifyChange("uploadedImage")
+	public void upload(@BindingParam("media") Media myMedia){
+		if(myMedia instanceof org.zkoss.image.Image){
+			if(myMedia.getByteData().length > 2000*1024){
+				Messagebox.show("Escoja una imagen de menor tamaño", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+			}else{
+				imagenNueva = true;
+				uploadedImage = myMedia;
+			}
+		}else{
+			Messagebox.show("El archivo que intenta subir no es una imagen", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+		}
+
+	}
 	
 }

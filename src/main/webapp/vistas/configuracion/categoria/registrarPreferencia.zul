@@ -9,7 +9,7 @@
 		title="@load(vm.editable?'Editar preferencia':'Registrar preferencia')"
 		style="iconSclass=z-icon-cogs; "
 		action="show:slideDown({duration: 300}); hide:slideUp({duration: 300})"
-		closable="true" height="55%" width="40%"
+		closable="true" height="55%" class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"
 		apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('controllers.RegistrarPreferenciaViewModel')">
 		<caption iconSclass="z-icon-cogs" />
@@ -27,9 +27,9 @@
 					<rows>
 						<row>
 							<div>
-								<label class="col-md-10">Tipo</label>
+								<label class="col-xs-12 col-sm-12 col-md-10">Tipo</label>
 								<combobox
-									model="@load(vm.allTipoPreferencia)" class="col-md-5"
+									model="@load(vm.allTipoPreferencia)" class="col-sm-7 col-md-7" 
 									selectedItem="@bind(vm.preferencia.tipoPreferencia)"
 									value="@bind(vm.preferencia.tipoPreferencia.descripcion)">
 									<template name="model">
@@ -37,7 +37,8 @@
 											label="@load(each.descripcion)" value="@load(each)" />
 									</template>
 								</combobox>
-								<colorbox class="col-md-3" value="@load(vm.preferencia.tipoPreferencia.color)" ></colorbox>
+								<colorbox  disabled="true" style="opacity:1;" class="col-xs-4 col-sm-3 col-md-3" 
+								value="@load(vm.preferencia.tipoPreferencia.color)" ></colorbox>
 							</div>
 						</row>
 						<row>

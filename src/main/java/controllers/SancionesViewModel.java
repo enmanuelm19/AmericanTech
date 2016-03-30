@@ -60,7 +60,7 @@ public class SancionesViewModel {
 	@Command
 	@NotifyChange({"cantidadSanciones"})
 	public void eliminar(@BindingParam("Sancion") final Sancion sancion) throws Exception{
-		Messagebox.show("Esta seguro de eliminar la sanción al Sr(a) " + sancion.getSocio().getPersona().getNombre()+ " "+sancion.getSocio().getPersona().getApellido(), "American Tech",
+		Messagebox.show("Esta seguro de eliminar la sancion al Sr(a) " + sancion.getSocio().getPersona().getNombre()+ " "+sancion.getSocio().getPersona().getApellido(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {

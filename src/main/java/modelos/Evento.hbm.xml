@@ -32,7 +32,7 @@
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
         </property>
-        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select" cascade="save-update">
+        <set name="noticias" table="noticia" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="eventoid_evento" />
             </key>

@@ -18,7 +18,7 @@
 
 					<space />
 					<space />
-					<div class='form-pricing  col-xs-12 col-sm-12 col-md-11 col-centered' align="left"
+					<div class='form-pricing col-xs-10 col-sm-10 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px" apply="org.zkoss.bind.BindComposer"
 						viewModel="@id('vm') @init('controllers.RecursoViewModel')">
 						<div xmlns:w='client' align="right">
@@ -33,7 +33,7 @@
 						<div class="contenido">
 							<div align="left">
 								<div sclass="encabezado">
-									<label value="Lista Recursos" />
+									<label value="Listado Recursos" />
 								</div>
 								<div class='linea-two'></div>
 
@@ -48,7 +48,7 @@
 										<image
 											src="../assets/img/funnel.png" />
 										<textbox
-											value="@bind(vm.idFiltro)" onChange="@command('filtro')"
+											value="@bind(vm.descFiltro)" onChange="@command('filtro')"
 											instant="true" width="25%" placeholder="Buscar" />
 									</auxheader>
 									<auxheader colspan="1" />

@@ -42,8 +42,6 @@ public class RegistrarSugerenciaViewModel {
 		this.sugerenciaDao = new SugerenciaDao();
 		this.tipoSugerenciaDao = new TipoSugerenciaDao();
 		this.allTipoSugerencia = tipoSugerenciaDao.obtenerTodos();
-		
-		
 	}
 	
 
@@ -57,10 +55,7 @@ public class RegistrarSugerenciaViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception{
 			this.sugerencia.setActivo(true);
-			@SuppressWarnings("deprecation")
-			Date fecha = new Date("dd/MM/yyyy");
-			System.out.print(fecha);
-			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+			Date fecha = new Date();
 			org.zkoss.zk.ui.Session session = Sessions.getCurrent();
 			Usuario user  = (Usuario)session.getAttribute("Usuario");
 			if(sugerencia.getDescripcion() != null && !sugerencia.getDescripcion().equalsIgnoreCase("")) {
@@ -71,7 +66,7 @@ public class RegistrarSugerenciaViewModel {
 				this.sugerencia = new Sugerencia();
 				this.sugerenciaDao = new SugerenciaDao();
 				this.tipoSugerenciaDao = new TipoSugerenciaDao();
-				Messagebox.show( "La Sugerencia ha sido registrado exitosamente", "",
+				Messagebox.show( "La Sugerencia ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
 				
@@ -79,7 +74,7 @@ public class RegistrarSugerenciaViewModel {
 			}
 			else {
 				Messagebox.show("No debe dejar campos vacios",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 	}
 	

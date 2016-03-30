@@ -9,25 +9,22 @@ public class ArchivoAlquiler implements java.io.Serializable {
 
 	private int idArchivoAlquiler;
 	private Alquiler alquiler;
+	private boolean activo = true;
 	private String url;
 	private String nombre;
+	private String tipoListado;
 	private String extension;
-	private String tipo;
-	private boolean activo;
 
 	public ArchivoAlquiler() {
 	}
 
 	public ArchivoAlquiler(int idArchivoAlquiler, Alquiler alquiler,
-			String url, String nombre, String extension, String tipo,
-			boolean activo) {
+			String tipoListado, String url, boolean activo) {
 		this.idArchivoAlquiler = idArchivoAlquiler;
 		this.alquiler = alquiler;
-		this.url = url;
-		this.nombre = nombre;
-		this.extension = extension;
-		this.tipo = tipo;
+		this.tipoListado = tipoListado;
 		this.activo = activo;
+		this.url = url;
 	}
 
 	public int getIdArchivoAlquiler() {
@@ -46,36 +43,12 @@ public class ArchivoAlquiler implements java.io.Serializable {
 		this.alquiler = alquiler;
 	}
 
-	public String getUrl() {
-		return this.url;
+	public String getTipoListado() {
+		return this.tipoListado;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getNombre() {
-		return this.nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getExtension() {
-		return this.extension;
-	}
-
-	public void setExtension(String extension) {
-		this.extension = extension;
-	}
-
-	public String getTipo() {
-		return this.tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipoListado(String tipoListado) {
+		this.tipoListado = tipoListado;
 	}
 
 	public boolean isActivo() {
@@ -85,5 +58,30 @@ public class ArchivoAlquiler implements java.io.Serializable {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}	
+	
 
 }
