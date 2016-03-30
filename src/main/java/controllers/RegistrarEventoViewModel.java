@@ -243,7 +243,7 @@ public class RegistrarEventoViewModel {
 							"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		else
-			Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "American Tech", Messagebox.OK,
+			Messagebox.show("Por favor indique rango de fechas de forma correcta, tome en cuenta que la fecha de inicio debe ser despues de la fecha actual ", "American Tech", Messagebox.OK,
 					Messagebox.EXCLAMATION);
 	}
 
