@@ -66,7 +66,7 @@ public class RegistrarUsuarioViewModel {
 			persona.setActivo(true);
 			personaDao.agregarPersona(persona);
 			user.setPersona(persona);
-			user.getPersona().setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
+			user.getPersona().setFoto("/assets/portal/img/img1.jpg");
 			usuarioGrupos = new HashSet<UsuarioGrupo>(user.getUsuarioGrupos());
 		} else {
 			this.user = usuario;

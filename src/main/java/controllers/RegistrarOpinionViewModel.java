@@ -78,7 +78,7 @@ public class RegistrarOpinionViewModel {
 				this.opinion.setUsuario(usuario);
 				this.opinion.setFecha(new Date());
 				this.opinionDao.agregarOpinion(opinion);
-				Messagebox.show("Su opinión sobre el postulado "+this.opinion.getPostulacion().getPostulado().getPersona().getNombre()+" "
+				Messagebox.show("Su opiniÃ³n sobre el postulado "+this.opinion.getPostulacion().getPostulado().getPersona().getNombre()+" "
 						+this.opinion.getPostulacion().getPostulado().getPersona().getApellido()+ " ha sido registrada exitosamente", "American Tech",
 						Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
