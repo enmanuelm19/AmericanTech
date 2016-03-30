@@ -94,7 +94,7 @@
 								    </listhead>
 								    <template name="model">
 								        <listitem>
-								            <listcell label="@load(each.instalacion.descripcion)"/>
+								            <listcell label="@load(each.instalacion.nombre)"/>
 								            <listcell label="@load(each.tipoEventualidad.descripcion)"/>
 								            <listcell label="@load(each.descripcion)"/>
 								            <listcell label="@load(each.fecha)"/>

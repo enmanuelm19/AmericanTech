@@ -232,7 +232,7 @@ public class RegistrarSancionViewModel {
 	@NotifyChange({"cedula","persona","eventualidades","carnet"})
 	public void buscarCedula() throws Exception{
 		if(cedula==""||cedula==null){
-			Messagebox.show("Campo C�dula Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Cédula Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.personaDao= new PersonaDao();
@@ -241,7 +241,7 @@ public class RegistrarSancionViewModel {
 			this.socio=this.socioDao.obtenerSocioPersona(persona);
 			this.afiliado=this.afiliadoDao.obtenerPorPersona(persona);
 			if(this.socio==null && this.afiliado==null){
-				Messagebox.show("C�dula no encontrada", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Cédula no encontrada", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				this.cedula="";
 				this.persona=new Persona();
 			}
@@ -308,7 +308,7 @@ public class RegistrarSancionViewModel {
 
 	public void setFechaInicio(Date fechaInicio) {
 		if(fechaInicio.after(fechaFin)){
-			Messagebox.show("Fecha de inicio de suspension debe ser antes a la de fin de suspension", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de inicio de suspensión debe ser antes a la de fin de suspensión", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaInicio = fechaInicio;
@@ -322,7 +322,7 @@ public class RegistrarSancionViewModel {
 
 	public void setFechaFin(Date fechaFin) {
 		if(fechaFin.before(fechaInicio)){
-			Messagebox.show("Fecha de fin de suspension debe ser despues a la de inicio de suspesion", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha de fin de suspensión debe ser despues a la de inicio de suspesión", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.fechaFin = fechaFin;
@@ -371,7 +371,7 @@ public class RegistrarSancionViewModel {
 			}
 			else{
 				if(this.sancion.getDescripcion().equalsIgnoreCase("")){
-					Messagebox.show("Verifique que los datos esten llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Verifique que los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}else{
 				
 				this.sancion.setEventualidad(null);
@@ -395,13 +395,13 @@ public class RegistrarSancionViewModel {
 				}
 				
 				if(this.tipoSancion==null){
-					Messagebox.show("Debe seleccionar un motivo de sanci�n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show("Debe seleccionar un motivo de sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 				else{
 					this.sancion.setTipoSancion(this.tipoSancion);
 					if(this.tipoSancion.getIdTipoSancion()==1){
 						if(this.sancion.getDescripcion()==""||this.sancion.getDescripcion()==null){
-							Messagebox.show("Debe ingresar la descripci�n de la sanci�n", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+							Messagebox.show("Debe ingresar la descripcion de la sanción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 						}
 						else{
 							boolean validar=validacionAgregar();
@@ -459,7 +459,7 @@ public class RegistrarSancionViewModel {
 		
 		if(this.suspencion==true){
 			if(this.fechaFin.compareTo(this.fechaInicio)==0){
-				Messagebox.show("Debe Ingresar un rango de fechas de suspención", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Debe Ingresar un rango de fechas de suspensión", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				validar2=false;
 			}
 			else{
