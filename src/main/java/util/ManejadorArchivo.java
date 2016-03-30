@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,6 +39,7 @@ import waffle.util.Base64;
 public class ManejadorArchivo {
 	
 	public static String subirImagen(Media imagen) throws IOException, ParseException{
+		boolean internet = isInternetReachable();
 		String rutaFinal = null;
 		String ruta = WebApps.getCurrent().getServletContext().getInitParameter("upload.location");
 		File imageFile = new File(ruta, imagen.getName());
@@ -51,9 +53,15 @@ public class ManejadorArchivo {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		String imagenLocal = ruta +"/" + imagen.getName();
+		//String imagenLocal = ruta +"/" + imagen.getName();
+		String imagenLocal = "/uploadedImages/"+imagen.getName();
+		if(internet == true){
+			return subirImagenImgur(imagenLocal);
+		}else{
+			return imagenLocal;
+		}
 		
-		return subirImagenImgur(imagenLocal);
+		
 	}
 
 	private static String getServerName() {
@@ -108,4 +116,25 @@ public class ManejadorArchivo {
 		return dataObject.get("link").toString();
 	
 	}
+	
+    public static boolean isInternetReachable()
+    {
+        try {
+            URL url = new URL("https://www.google.com");
+
+            HttpURLConnection urlConnect = (HttpURLConnection)url.openConnection();
+
+            Object objData = urlConnect.getContent();
+
+        } catch (UnknownHostException e) {
+
+            e.printStackTrace();
+            return false;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

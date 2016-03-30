@@ -78,7 +78,7 @@ public class PostulacionPortalViewModel {
 		this.temporalPreferencia= new ArrayList<Preferencia>();
 		this.noticiaDao= new NoticiaDao();
 		this.tipoNoticiaDao= new TipoNoticiaDao();
-		this.persona.setFoto("http://localhost:8080/america/assets/portal/img/img1.jpg");
+		this.persona.setFoto("/assets/portal/img/img1.jpg");
 	}
 	public ListModelList<Preferencia> getPreferencias() {
 		return new ListModelList<Preferencia>(this.preferencias);

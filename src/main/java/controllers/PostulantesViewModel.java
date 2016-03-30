@@ -18,7 +18,9 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
+import modelos.Noticia;
 import modelos.Postulacion;
+import Dao.NoticiaDao;
 import Dao.PersonaDao;
 import Dao.PostulacionDao;
 import Dao.PostuladoDao;
@@ -30,11 +32,13 @@ public class PostulantesViewModel {
 	private List<Postulacion> postulaciones;
 	private PersonaDao pdao;
 	private PostuladoDao podao;
+	private NoticiaDao noticiaDao;
 	@Init
 	public void init() throws Exception {
 		postulaciones = postDAO.obtenerTodos();
 		pdao= new PersonaDao();
 		podao= new PostuladoDao();
+		noticiaDao= new NoticiaDao();
 	}
 	
 	public ListModelList<Postulacion> getPostulacionesAll() {
@@ -121,7 +125,9 @@ public class PostulantesViewModel {
 							pdao.eliminarPersona(postulacions.getPostulado().getPersona());
 							podao.eliminarPostulado(postulacions.getPostulado());
 							postulacions.setAprobado(false);
-							postDAO.eliminarPostulacion(postulacions);	
+							postDAO.eliminarPostulacion(postulacions);
+							Noticia n= noticiaDao.obtenerNoticiaPostulacion(postulacions);
+							noticiaDao.eliminarNoticia(n);
 							BindUtils.postGlobalCommand(null, null, "refreshPostulantes", null);
 							} catch (Exception e) {
 								Messagebox.show(e.getMessage(),"No se pudo eliminar la postulación",
