@@ -46,7 +46,9 @@ public class RegistrarGrupoViewModel {
 			this.editable = true;
 			setFunciones(grupo.getFuncionGrupos());
 			funciones = getFunciones();
-					
+			for(FuncionGrupo f : funciones){
+				System.out.println(f.getFuncion().getIdFuncion());
+			}
 		}
 		grupoDao = new GrupoDao();
 		funcionGrupoDao = new FuncionGrupoDao();
@@ -173,6 +175,8 @@ public class RegistrarGrupoViewModel {
 	public void setFuncionSeleccionada(Funcion funcionSeleccionada) {
 		this.funcionSeleccionada = funcionSeleccionada;
 	}
+	
+
 	
 	@Command
 	public void agregarFuncion() throws Exception{
