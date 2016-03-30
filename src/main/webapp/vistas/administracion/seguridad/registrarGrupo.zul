@@ -64,7 +64,7 @@
 								<combobox width="100%" class="col-md-12" model="@load(vm.funcionesAll)" selectedItem="@bind(vm.funcionSeleccionada)"
 									value="Funciones">
 									<template name="model">
-									<comboitem label="@load(each.nombre)" value="@load(each)"/>
+									<comboitem label="@load(each.nombre)" value="@load(each)" tooltiptext="@load(each.descripcion)"/>
 									</template>
 								</combobox>
 							</auxheader>
