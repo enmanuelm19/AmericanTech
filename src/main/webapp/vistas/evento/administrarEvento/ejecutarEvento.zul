@@ -40,7 +40,9 @@
 
 
 							<auxhead sclass="category-center">
-																<auxheader colspan="1">
+								<auxheader colspan="1" />	
+							
+									<auxheader colspan="1">
 									<image
 										src="../assets/img/funnel.png" />
 									<textbox instant="true"
@@ -54,7 +56,7 @@
 
 							<columns>
 								
-
+								<column width="4%"></column>
 								<column hflex="2">Nombre</column>
 								<column width="15%">Acciones</column>
 							</columns>

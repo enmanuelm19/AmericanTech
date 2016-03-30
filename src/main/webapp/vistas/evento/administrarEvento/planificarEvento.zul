@@ -44,10 +44,10 @@
 										emptyMessage="No se encuentran tipos de sugerencias registrados"
 										mold="paging" pageSize="10">
 
-
+										
 										<auxhead
 											sclass="category-center">
-											
+											<auxheader colspan="1" />
 											<auxheader colspan="1">
 												<image
 													src="../assets/img/funnel.png" />
@@ -62,7 +62,8 @@
 
 										<columns>
 											
-
+											<column width="4%"></column>
+											
 											<column hflex="2">
 												Nombre
 											</column>
