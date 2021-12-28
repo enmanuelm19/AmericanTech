@@ -1,4 +1,5 @@
 <zk xmlns:n="native">
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estadisticos.ReporteInstalacionesEstViewModel')">
 		<hlayout spacing="0">
@@ -19,13 +20,12 @@
 						<div class="contenido">
 							<div align="left">
 								<div class='encabezado'>
-									Instalaciones
+									Instalación
 								</div>
 								<div class='linea-two'></div>
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
 									<space spacing="2%"></space>
 									<groupbox  mold="3d" width="75%" height="auto" >
 								   	 	<caption label="Fecha"  ></caption>
@@ -41,10 +41,10 @@
 												</div>						   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
-									<space spacing="1%"></space>								 							   	
-								</groupbox >
+									<space spacing="1%"></space>
 							    <div align="center" xmlns:w="client" style="margin:1%">
-								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+								   iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 							    </div>									
 							</div>
 						</div>

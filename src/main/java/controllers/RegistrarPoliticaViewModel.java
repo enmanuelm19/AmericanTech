@@ -29,6 +29,7 @@ public class RegistrarPoliticaViewModel {
 		if (politica == null) {
 			this.politica = new Politica();
 			this.editable = false;
+			this.politica.setValor(new Long(0));
 		} else {
 			this.politica = politica;
 			this.editable = true;
@@ -60,23 +61,27 @@ public class RegistrarPoliticaViewModel {
 
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
-		if (politica.getDescripcion() != null && !politica.getDescripcion().equalsIgnoreCase("")) {
-				if (!editable) {
+		if (politica.getDescripcion() != null && !politica.getDescripcion().equalsIgnoreCase("") ||politica.getValor().equals(new Long(0))) {
+			System.out.println(politica.getValor());	
+			if (!editable) {
 					if(validarDescripcion()){
-						Messagebox.show("Ya existe una regla con esa descripción", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Ya existe una regla con esa descripcion", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 					}
 					else{
 						politica.setClub(ClubDao.obtenerClub(1));
 						politica.setActivo(true);
 						tipoDao.agregarPolitica(politica);
 						Messagebox.show("Se ha registrado la regla exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+						win.detach();
+						BindUtils.postGlobalCommand(null, null,"refreshReglas", null);
 					}
 				} else {
 					tipoDao.actualizarPolitica(politica);
 					Messagebox.show("La regla ha sido actualizado exitosamente", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
+					win.detach();
+					BindUtils.postGlobalCommand(null, null,"refreshReglas", null);
 				}
-				win.detach();
-				BindUtils.postGlobalCommand(null, null,"refreshReglas", null);
+				
 			}
 		else{
 

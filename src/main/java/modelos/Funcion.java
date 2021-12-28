@@ -16,6 +16,7 @@ public class Funcion implements java.io.Serializable {
 	private String iconUri;
 	private String clase;
 	private Integer padreidFuncion;
+	private String descripcion;
 	private boolean activo = true;
 	private Set<FuncionGrupo> funcionGrupos = new HashSet<FuncionGrupo>(0);
 
@@ -33,14 +34,15 @@ public class Funcion implements java.io.Serializable {
 	}
 
 	public Funcion(int idFuncion, String nombre, String pagina, String iconUri,
-			String clase, Integer padreidFuncion, boolean activo,
-			Set<FuncionGrupo> funcionGrupos) {
+			String clase, Integer padreidFuncion, String descripcion,
+			boolean activo, Set<FuncionGrupo> funcionGrupos) {
 		this.idFuncion = idFuncion;
 		this.nombre = nombre;
 		this.pagina = pagina;
 		this.iconUri = iconUri;
 		this.clase = clase;
 		this.padreidFuncion = padreidFuncion;
+		this.descripcion = descripcion;
 		this.activo = activo;
 		this.funcionGrupos = funcionGrupos;
 	}
@@ -91,6 +93,14 @@ public class Funcion implements java.io.Serializable {
 
 	public void setPadreidFuncion(Integer padreidFuncion) {
 		this.padreidFuncion = padreidFuncion;
+	}
+
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public boolean isActivo() {

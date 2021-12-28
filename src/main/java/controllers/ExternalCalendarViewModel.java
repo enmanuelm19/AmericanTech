@@ -2,8 +2,10 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import org.zkoss.bind.annotation.Init;
@@ -11,12 +13,14 @@ import org.zkoss.calendar.Calendars;
 import org.zkoss.calendar.api.CalendarEvent;
 import org.zkoss.calendar.event.CalendarsEvent;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkmax.ui.select.annotation.Subscribe;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Window;
 
 import Dao.EventoDao;
 import Dao.TipoPreferenciaDao;
@@ -52,23 +56,23 @@ public class ExternalCalendarViewModel extends SelectorComposer<Component> {
 		super.doAfterCompose(comp);
 		for (Evento evento : eventoDao.obtenerTodos()) {
 			if (evento.getEstadoEvento() != null && (evento.getEstadoEvento().getIdEstadoEvento() == 2
-					|| evento.getEstadoEvento().getIdEstadoEvento() == 3)) {
+					|| evento.getEstadoEvento().getIdEstadoEvento() == 3 || evento.getEstadoEvento().getIdEstadoEvento() == 1)) {
 				if (evento.isPublico()) {
 					if (evento.getPreferenciaEventos() != null) {
 						if (evento.getPreferenciaEventos().size() == 1) {
 							for (PreferenciaEvento preferencia : evento.getPreferenciaEventos()) {
 								calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
 										preferencia.getPreferencia().getTipoPreferencia().getColor(),
-										preferencia.getPreferencia().getTipoPreferencia().getColor(),
-										evento.getDescripcion(), evento.getNombre()));
+										preferencia.getPreferencia().getTipoPreferencia().getColor(), evento.getNombre(),
+										Integer.toString(evento.getIdEvento())));
 							}
 						} else {
-							calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(),
-									"#11bcb7", "#11bcb7", evento.getDescripcion()));
+							calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
+									"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 						}
 					} else {
 						calendarEvents.add(new CalendarioEvent(evento.getFechaInicio(), evento.getFechaFin(), "#11bcb7",
-								"#11bcb7", evento.getDescripcion()));
+								"#11bcb7", evento.getNombre(), Integer.toString(evento.getIdEvento())));
 					}
 				}
 			}
@@ -127,7 +131,7 @@ public class ExternalCalendarViewModel extends SelectorComposer<Component> {
 	}
 
 	// listen to the calendar-create and edit of a event data
-	@Listen("onEventCreate = #calendars; onEventEdit = #calendars")
+	@Listen("onEventCreate = #calendars; onEventEdit = #externalCalendars")
 	public void createEvent(CalendarsEvent event) {
 		calendarsEvent = event;
 
@@ -138,9 +142,24 @@ public class ExternalCalendarViewModel extends SelectorComposer<Component> {
 
 		if (data != null) {
 			data = (CalendarioEvent) event.getCalendarEvent();
+
+			Map<String, Object> args = new HashMap<String, Object>();
+
+			try {
+				if (data.getTitle() != null) {
+					Evento evento1 = eventoDao.obtenerEvento(Integer.parseInt(data.getTitle()));
+					if (evento1 != null) {
+						args.put("evento", evento1);
+						Window window = (Window) Executions.createComponents("./externalCalendarEditor.zul", null, args);
+						window.doModal();
+					}
+				}
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		// notify the editor
-		QueueUtil.lookupQueue().publish(new QueueMessage(QueueMessage.Type.EDIT, data));
 	}
 
 	// // listen to the calendar-update of event data, usually send when user

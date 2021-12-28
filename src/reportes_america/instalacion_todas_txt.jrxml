@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="instalacion_todas_txt" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+	<property name="ireport.zoom" value="0.8264462809917356"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TITULO" class="java.lang.String"/>
+	<parameter name="CONSULTA" class="java.lang.String"/>
+	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
+	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT i.nombre as instalacion, to_char(r.fecha_inicio, 'YYYY-MM-DD') as Fecha, s.nro_carnet, p.nombre || ' ' || p.apellido as NOMBRE,
+CASE WHEN (SELECT al.reservacionid_reservacion from alquiler al where al.reservacionid_reservacion = r.id_reservacion) is NULL then 'Reservacion' ELSE 'Alquiler' END as Estado
+FROM instalacion i
+INNER JOIN reservacion r
+ON r.instalacionid_instalacion = i.id_instalacion
+LEFT JOIN alquiler a
+ON a.reservacionid_reservacion = r.id_reservacion
+INNER JOIN socio s
+ON r.socioid_socio = s.id_socio
+INNER JOIN persona p
+ON p.id_persona = s.personaid_persona
+WHERE i.alquilable = true]]>
+	</queryString>
+	<field name="instalacion" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="nro_carnet" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="6" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="31" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="1" width="100" height="20" uuid="40911e2c-e86d-40d0-9d29-288366f07604"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="0" width="122" height="20" uuid="d5f8bde8-4d71-441b-9eb0-e1139deb4de6"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instalación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="0" width="100" height="20" uuid="f00db1db-8129-47f6-b696-825b123686cf"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Carnet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="0" width="100" height="20" uuid="306acbdb-3b73-4f43-9353-d882c706de91"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="688" y="0" width="100" height="20" uuid="58c39410-2dd3-4789-a3bd-7f34863b2397"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="15" y="3" width="81" height="20" uuid="cafbe2f5-bd35-4902-add9-70174708dca2"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="96" y="2" width="244" height="20" uuid="248abc5d-0d46-4833-9784-9a22884fecf5"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{instalacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="492" y="1" width="185" height="20" uuid="5e6cad5d-38eb-4d94-9fab-319f54fcd252"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="688" y="2" width="100" height="20" uuid="c33c2808-3202-4a85-bb67-3858c6e7b82b"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="361" y="2" width="100" height="20" uuid="59bf128b-ac5a-4c46-8e88-7fc22d7ef6e8"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_carnet}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="122" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="56" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

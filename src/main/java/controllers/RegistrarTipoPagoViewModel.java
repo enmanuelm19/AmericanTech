@@ -60,14 +60,14 @@ public class RegistrarTipoPagoViewModel {
 				if (!editable) {
 					tipoDao.agregarTipoPago(tipoPago);
 					Messagebox.show(
-							"El tipo de pago "
+							"El tipo pago "
 									+ tipoPago.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoPago(tipoPago);
 					Messagebox.show(
-							"El tipo de pago "
+							"El tipo pago "
 									+ tipoPago.getDescripcion()
 									+ " ha sido actualizado exitosamente", "",
 							Messagebox.OK, Messagebox.INFORMATION);
@@ -76,10 +76,13 @@ public class RegistrarTipoPagoViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshTipoPago",
 						null);
 			} else {
-				Messagebox.show("tipo de pago con la descripcion "
+				Messagebox.show("El tipo pago con la descripción "
 						+ tipoPago.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

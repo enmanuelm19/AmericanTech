@@ -80,7 +80,7 @@ public class ReporteSancionesEstViewModel {
 		private Map<String, Object> parameters = new HashMap<String, Object>();
 		private File img = new File(System.getProperty("user.home") + "/reportes_america/imagen_club.png");
 		private File img2 = new File(System.getProperty("user.home") + "/reportes_america/imagen_equipo.png");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"), sdfGuio = new SimpleDateFormat("dd-MM-yyyy");
 
 
 	@Init
@@ -158,13 +158,13 @@ public class ReporteSancionesEstViewModel {
 	@NotifyChange({"carnet","socio"})
 	public void buscarCarnet() throws Exception{
 		if(carnet==""||carnet==null){
-			Messagebox.show("Campo Carnet Vacio", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Campo Carnet Vacio", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 		else{
 			this.socioDao= new SocioDao();
 			this.socio=socioDao.obtenerSocioCarnet(carnet);
 			if(this.socio==null){
-				Messagebox.show("Carnet encontrado", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show("Carnet encontrado", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 		}
 	}
@@ -193,15 +193,15 @@ public class ReporteSancionesEstViewModel {
 					+ "FROM sancion s, tipo_sancion t "
 					+ "WHERE s.tipo_sancionid_tipo_sancion = t.id_tipo_sancion AND s.activo = t.activo = TRUE "
 					+ " GROUP BY t.id_tipo_sancion";
-			this.consulta = "Reporte general de las sanciones";
+			this.consulta = "Reporte general de las sanciones del Centro Atlético América.";
 			generarPDF();
 			
 		} else if (this.fechadesde == null || this.fechahasta == null){
-			Messagebox.show("Debe Seleccionar el rango de fechas", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Debe Seleccionar un rango de fechas", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else if (this.fechadesde.compareTo(this.fechahasta) == 1 ){
-			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "warning", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Fecha Desde no puede ser mayor a la Fecha Hasta", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 		} else {
-			this.consulta += "Reporte general de las sanciones entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+".";
+			this.consulta += "Reporte general de las sanciones entre las fechas " + sdf.format(this.fechadesde) + " y "+ sdf.format(this.fechahasta)+" del Centro Atlético América.";
 			sql = "SELECT t.descripcion, COUNT(s.*) as count,"
 					+ "  (COUNT(s.*) * 100) / (SELECT COUNT(*) "
 					+ "FROM sancion WHERE fecha_inic BETWEEN '"+sdf.format(this.fechadesde)+"' AND '"+  sdf.format(this.fechahasta) +"') as porcentaje "
@@ -218,10 +218,12 @@ public class ReporteSancionesEstViewModel {
 		Date hoy = (Date) Calendar.getInstance().getTime();
 		String date = "-"+sdfGuio.format(hoy).toString();
 		String nombreArchivo = this.titulo.concat(date);
-		JasperPrint jasperPrint = cargarJasper();
-		
-		JRExporter exporter = new JRPdfExporter();
-	    Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		JasperPrint jasperPrint = cargarJasper(); 
+		if(jasperPrint.getPages().size() > 0){
+		  Filedownload.save(JasperExportManager.exportReportToPdf(jasperPrint), "application/pdf", nombreArchivo+".pdf"); 
+		} else {
+			Messagebox.show("No existe información para generar un reportes con los datos seleccionados.", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+		} 
 	    con.close();
 	}
 	

@@ -60,16 +60,16 @@ public class RegistrarMotivoVentaViewModel {
 				if (!editable) {
 					motivoDao.agregarMotivoVenta(motivoVenta);
 					Messagebox.show(
-							"El motivo de venta "
+							"El motivo venta "
 									+ motivoVenta.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					motivoDao.actualizarMotivoVenta(motivoVenta);
 					Messagebox.show(
-							"El motivo de venta "
+							"El motivo venta "
 									+ motivoVenta.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 
@@ -77,10 +77,13 @@ public class RegistrarMotivoVentaViewModel {
 				BindUtils.postGlobalCommand(null, null, "refreshMotivoVenta",
 						null);
 			} else {
-				Messagebox.show("motivo venta con la descripcion "
+				Messagebox.show("El motivo venta con la descripción "
 						+ motivoVenta.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}else{
+			Messagebox.show("Verifique que los campos esten llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

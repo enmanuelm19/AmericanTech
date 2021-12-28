@@ -1,4 +1,5 @@
 <zk xmlns:n="native">
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estadisticos.ReporteEventoValorEsperadoRealEstViewModel')" >
 		<hlayout spacing="0">
@@ -6,13 +7,13 @@
 				<div sclass="breadcrumbs">
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
-						<a label="Estructurado" href="#" />
-						<label value="Eventos" />
+						<a label="Estadistico" href="#" />
+						<label value="Evento" />
 					</div>
 				</div>
 				<div class="contenedor" align="center">
 					<div sclass="page-header" align="left">
-						<label value="Eventos" />
+						<label value="Evento" />
 					</div>
 					<separator spacing="1%" />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
@@ -25,8 +26,6 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-									<space spacing="2%"></space>
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
 								   	 	<caption label="Evento"  ></caption>
 								   	 	<grid>
@@ -47,11 +46,12 @@
 											
 								   	 		</rows>
 								   	 	</grid>
+								   	 	<space spacing="1%"></space>
 								   	 </groupbox>
-									 <space spacing="1%"></space>									   	 
-								</groupbox >
+									 <space spacing="1%"></space>
 							    <div align="center" xmlns:w="client">
-									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+									<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+									iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 							    </div>									
 							</div>
 						</div>

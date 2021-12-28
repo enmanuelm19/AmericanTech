@@ -1,4 +1,6 @@
 <zk xmlns:n="native" >
+
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estructurados.ReporteAlquilerViewModel')">
 		<hlayout spacing="0">
@@ -7,12 +9,12 @@
 					<div sclass="breadcrumb">
 						<span sclass="home-icon z-icon-th-list" />
 						<a label="Estructurado" href="#" />
-						<label value="Alquileres" />
+						<label value="Alquiler" />
 					</div>
 				</div>
 				<div class="contenedor" align="center">
 					<div sclass="page-header" align="left">
-						<label value="Alquileres" />
+						<label value="Alquiler" />
 					</div>
 					<separator spacing="1%" />
 					<div class='form-pricing col-xs-12 col-sm-12 col-md-11 col-centered' align="left" width="78%">
@@ -24,33 +26,38 @@
 								<div class='linea-two'></div>
 							</div>
 							<space spacing="2%"></space>
-							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
-								<space spacing="2%"></space>
-									<hlayout width="100%" >
-							   		   <div >
-							   		   		<radio label="Estado de la Instalacion:" value="0" selected="true" />			   		   		
-							   		   </div>
-							   		   <div>
-							   		   		<combobox  selectedItem="@bind(vm.estadoinstalacion)">
-													<comboitem label="Alquiladas" value="Alquiladas" />
-													<comboitem label="Reservadas" value="Reservadas" />
-													<comboitem label="Todas" value="Todas" />
-										   </combobox>
-							   		   </div>
-									   <space spacing ="2%"></space>   
-							   		   <div >
-							   		   		<radio label="Seleccione la Instalacion:" value="0"  />			   		   		
-							   		   </div>									    			   		
-							   		   	<div>
-							   		   		<combobox model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" >
+							<grid>
+								<rows>
+									<row class="col-md-12">
+										<div class="col-md-8">
+								   		    	<label class="col-md-2">
+								   		    		Seleccione:
+								   		    	</label>
+								   		   		<combobox class="col-md-6" selectedItem="@bind(vm.estadoinstalacion)">
+														<comboitem label="Alquiladas" value="Alquiladas" />
+														<comboitem label="Reservadas" value="Reservadas" />
+														<comboitem label="Todas" value="Todas" />
+											   </combobox>
+								   		</div> 
+									</row>	 
+									<row class="col-md-12">     								    			   		
+							   		    <div class="col-md-8">
+							   		    	<label class="col-md-2">
+							   		    		Instalación:
+							   		    	</label>								   		    	
+							   		   		<combobox class="col-md-6" model="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" >
 												<template name="model">
 														<comboitem
 															label="@load(each.nombre)" value="@load(each)" />
 												</template>
 										   </combobox>							   		   	
-							   		   	</div>	
-									</hlayout>
+							   		   	</div>
+									</row>
+								</rows>
+							</grid>
+							<div align="center">
+								<space spacing="2%"></space>
+
 									<space spacing="2%"></space>
 										
 								   	 <groupbox  mold="3d" width="75%" height="auto" >
@@ -67,12 +74,13 @@
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>
-								   	 <space spacing="1%"></space>						   	 
-								</groupbox >
+								   	 <space spacing="1%"></space>
 							     <div align="center" xmlns:w="client">
-						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnEXCEL')" label="Generar txt" />
+						<button id="btnEXCEL" class='boton-guardar' onClick="@command('btnTXT')" label="Generar txt" 
+							iconSclass="glyphicon glyphicon-file" tooltiptext="Descargar TXT"/>
 						<space spacing="2%"></space>
-						<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" />
+						<button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+						iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 					</div>								
 							</div>							
 							

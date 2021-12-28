@@ -24,12 +24,12 @@
 					<separator spacing="30px" />
 					<space />
 					<space />
-					<div class='form-pricing' align="left" width="90%"
+					<div class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered' align="left"
 						style="margin-bottom: 20px">
 
 						<div align="left" width="100%">
 							<div class="encabezado">
-								Lista de Eventos
+								Listado Eventos
 							</div>
 							<div class="linea-two">
 
@@ -44,11 +44,10 @@
 										emptyMessage="No se encuentran tipos de sugerencias registrados"
 										mold="paging" pageSize="10">
 
-
+										
 										<auxhead
 											sclass="category-center">
 											<auxheader colspan="1" />
-
 											<auxheader colspan="1">
 												<image
 													src="../assets/img/funnel.png" />
@@ -62,9 +61,10 @@
 										</auxhead>
 
 										<columns>
+											
 											<column width="4%"></column>
-
-											<column width="35%">
+											
+											<column hflex="2">
 												Nombre
 											</column>
 											<column width="15%">
@@ -93,25 +93,22 @@
 															</auxhead>
 
 															<columns>
-																<column
+																<column align="center"
 																	width="40%">
 																	Actividad
 																</column>
 
-																<column
+																<column align="center"
 																	width="20%">
 																	Fecha
 																	tope
 																</column>
-																<column
+																<column align="center"
 																	width="20%">
 																	Valor
 																	esperado
 																</column>
-																<column
-																	width="20%">
-																	Estado
-																</column>
+						
 															</columns>
 															<rows>
 																<template
@@ -123,13 +120,6 @@
 																			value="@load(actividad.fechaTopeString)" />
 																		<label
 																			value="@load(actividad.valorEsperado)" />
-																		<label
-																			value="@load(actividad.estado)" />
-																		<button
-																			visible="@load(evento.visible)" sclass="btn-link"
-																			iconSclass="z-icon-plus blue"
-																			tooltiptext="Agregar actividad"
-																			onClick="@command('showModal',evento=evento)" />
 																	</row>
 																</template>
 															</rows>

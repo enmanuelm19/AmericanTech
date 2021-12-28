@@ -25,13 +25,15 @@
 						<grid mold="paging" pageSize="10" model="@load(vm.funciones)"
 							emptyMessage="Ningun Registro Encontrado">
 							<columns class="z-grid z-column-content ">
-								<column label="Descripción"
+								<column label="Nombre"
 									align="center" />
+									<column label="Descripción" align="center"></column>
 							</columns>
 							<rows>
 							<template name="model">
 								<row>
 									<label value="@load(each.nombre)"></label>
+									<label value="@load(each.descripcion)"></label>
 								</row>
 							</template>
 							</rows>

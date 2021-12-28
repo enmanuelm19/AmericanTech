@@ -4,11 +4,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import modelos.Accion;
 import modelos.Afiliado;
+import modelos.Funcion;
 import modelos.Noticia;
+import modelos.NoticiaPreferencia;
 import modelos.Preferencia;
 import modelos.PreferenciaPersona;
 import modelos.Socio;
@@ -31,6 +35,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.AfiliadoDao;
+import Dao.FuncionDao;
 import Dao.NoticiaDao;
 import Dao.NoticiaPreferenciaDao;
 import Dao.PreferenciaPersonaDao;
@@ -41,11 +46,17 @@ public class CarteleraViewModel {
 
 	private List<Noticia> noticiaAll;
 	private List<PreferenciaPersona> ListPrefPersona;
+	private List<Noticia> noticiasPublicasAll;
+	
 	private PreferenciaPersonaDao preferenciaPersDao;
 	private NoticiaPreferenciaDao noticiaPreferenciaDao;
 	private NoticiaDao noticiaDao;
-	private List<Noticia> noticiasPublicasAll;
+
 	private Usuario usuario;
+	private String tituloFilter;
+	private String tipoNoticiaFilter;
+	NavegacionViewModel navegacion = new NavegacionViewModel();
+	
 	
 	@Init
 	public void init() throws Exception {
@@ -82,12 +93,32 @@ public class CarteleraViewModel {
 		this.noticiasPublicasAll = noticiasPublicasAll;
 	}
 
-	@GlobalCommand
-	@NotifyChange({ "allNoticia", "cantRegistros" })
-	public void refreshNoticia() throws Exception {
-		noticiaAll = noticiaDao.obtenerTodos();
+	public String getTituloFilter() {
+		if(tituloFilter==null)
+			return "";
+		return tituloFilter;
 	}
 
+	public void setTituloFilter(String tituloFilter) {
+		this.tituloFilter = tituloFilter==null?"":tituloFilter.trim();
+	}
+	
+	public String getTipoNoticiaFilter() {
+		if(tipoNoticiaFilter==null)
+			return "";
+		return tipoNoticiaFilter;
+	}
+
+	public void setTipoNoticiaFilter(String tipoNoticiaFilter) {
+		this.tipoNoticiaFilter = tipoNoticiaFilter==null?"":tipoNoticiaFilter.trim();
+	}
+
+	@GlobalCommand
+	@NotifyChange({ "noticiaAll", "cantRegistros" })
+	public void refreshNoticia() throws Exception {
+		noticiaAll=noticiaDao.obtenerNoticiasVigentes(new Date());
+	}
+	
 	@Command
 	public void showModal(@BindingParam("noticia") Noticia noticia) {
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -97,15 +128,42 @@ public class CarteleraViewModel {
 		window.doModal();
 	}
 	
+	
+	@GlobalCommand
+	@NotifyChange({ "noticiaAll", "cantidadRegistros" })
+	public void filtro() throws Exception {
+		List<Noticia> tip = new ArrayList<Noticia>();
+		String titulo = getTituloFilter().toLowerCase();
+		String tipo   = getTipoNoticiaFilter().toLowerCase();
+		
+		for (Iterator<Noticia> i = noticiaDao.obtenerNoticiasVigentes(new Date()).iterator(); i.hasNext();) {
+			Noticia tmp = i.next();
+			
+			try{
+				if (tmp.getTitulo().toLowerCase().contains(titulo) &&
+						tmp.getTipoNoticia().getDescripcion().toLowerCase().contains(tipo)){
+						tip.add(tmp);
+			}
+			} catch (NullPointerException e) {
+				
+			}
+		}
+		this.setNoticiaAll(tip);
+	}
+	
+	
 	@GlobalCommand
 	@NotifyChange("noticiaAll")
 	public void refreshPostulaciones() throws Exception {
 		 noticiaAll.clear();
-		 
-		 for(int i=0;i< noticiaDao.obtenerNoticiasVigentes(new Date()).size();i++)
+		 List<Noticia> noticias = new ArrayList<Noticia>();
+		 noticias = noticiaDao.obtenerNoticiasVigentes(new Date());
+		 for(int i=0;i< noticias.size();i++)
 		 {
-			 if (noticiaDao.obtenerNoticiasVigentes(new Date()).get(i).getPostulacion() != null)
-				 noticiaAll.add(noticiaDao.obtenerNoticiasVigentes(new Date()).get(i));
+			 if (noticias.get(i).getPostulacion() != null)
+			 {
+				 noticiaAll.add(noticias.get(i));
+			 }
 		 }
 		 this.setNoticiaAll(noticiaAll);
 	}
@@ -113,6 +171,7 @@ public class CarteleraViewModel {
 	@GlobalCommand
 	@NotifyChange("noticiaAll")
 	public void refreshCarteleraGeneral() throws Exception {
+		 
 	 noticiaAll.clear();
 	 noticiaAll = noticiaDao.obtenerNoticiasVigentes(new Date());
 	}
@@ -121,38 +180,49 @@ public class CarteleraViewModel {
 	@NotifyChange("noticiaAll")
 	public void refreshEventos() throws Exception {
 		noticiaAll.clear();
-		ListPrefPersona = preferenciaPersDao.obtenerPreferenciasPersona(this.usuario.getPersona());
 		
-		 for(int j=0;j< noticiaPreferenciaDao.obtenerTodos().size();j++){
+		
+		ListPrefPersona = preferenciaPersDao.obtenerPreferenciasPersona(this.usuario.getPersona());
+		List<NoticiaPreferencia> noticiasPreferencias = noticiaPreferenciaDao.obtenerTodos();
+		 for(NoticiaPreferencia noticia:noticiaPreferenciaDao.obtenerTodos()){
 			 for(int i=0; i< ListPrefPersona.size(); i++){
-				 if(noticiaPreferenciaDao.obtenerTodos().get(j).getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia())
+				 if(noticia.getPreferencia().getIdPreferencia()==ListPrefPersona.get(i).getPreferencia().getIdPreferencia())
 				 {
-					 noticiaAll.add(noticiaPreferenciaDao.obtenerTodos().get(j).getNoticia());
+					 noticiaAll.add(noticia.getNoticia());
+					 break;
 				 }
 			 }
 		 }
 	}
 	
 	@Command
-	@NotifyChange({ "allNoticia", "cantRegistros" })
+	@NotifyChange({ "noticiaAll", "cantRegistros" })
 	public void eliminar(@BindingParam("noticia") final Noticia noticia) {
 
-		Messagebox.show("Estas seguro de eliminar " + noticia.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + noticia.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								noticiaDao.eliminarNoticia(noticia);
 								noticiaAll = noticiaDao.obtenerTodos();
-								Messagebox.show(noticia.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
-										Messagebox.INFORMATION);
+								Messagebox.show(noticia.getDescripcion() + " ha sido eliminado", "American Tech", 
+										Messagebox.OK,Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshPreferencia", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), noticia.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), noticia.getDescripcion() + " American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}
 					}
 				});
+	}
+	
+	@GlobalCommand
+	public void verNoticias() throws Exception{
+		Funcion f = new Funcion();
+		FuncionDao fdao = new FuncionDao();
+		f = fdao.obtenerFuncion(77);
+		navegacion.cambiarPantalla(f);
 	}
 }

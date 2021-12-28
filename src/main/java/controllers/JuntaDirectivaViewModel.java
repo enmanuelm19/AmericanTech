@@ -81,13 +81,14 @@ public class JuntaDirectivaViewModel {
 	
 	@Command
 	public void eliminarMiembro(@BindingParam("m") final MiembroJunta m, @BindingParam("j") final JuntaDirectiva j){
-		Messagebox.show("Estas seguro de eliminar el Miembro " + m.getPersona().getNombre()+" "+m.getPersona().getApellido(), "American Tech",
+		Messagebox.show("¿Estas seguro de eliminar el Miembro " + m.getPersona().getNombre()+" "+m.getPersona().getApellido()+"?", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								j.getMiembroJuntas().remove(m);
 								m.setActivo(false);
+								m.setJuntaDirectiva(null);
 								miembroDao.actualizarMiembroJunta(m);
 								juntaDao.actualizarJuntaDirectiva(j);
 								Messagebox.show("El miembro " + m.getPersona().getNombre()+" "+m.getPersona().getApellido()+" ha sido eliminado", "American Tech", Messagebox.OK, Messagebox.INFORMATION);

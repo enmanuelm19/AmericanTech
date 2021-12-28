@@ -17,15 +17,15 @@
 					<div sclass="page-header" align="left">
 						<label value="Postulaciones" />
 					</div>
-
-					<div class='form-pricing' align="left" width="90%"
+					<space></space>
+					<div class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered' align="left" width="90%"
 						style="margin-bottom: 20%">
 
 											<div class="contenido" apply="org.zkoss.bind.BindComposer"
 								viewModel="@id('vm') @init('controllers.PostulantesViewModel')" >
 							<div align="left">
 								<div class='encabezado'>
-									Postulados Ya!
+									Listado Postulaciones
 								</div>
 								<div class='linea-two'></div>
 							</div>
@@ -53,9 +53,8 @@
 									<column hflex="2" align="center">Nombre</column>
 									<column hflex="2" align="center">Apellido</column>
 									<column hflex="2" align="center">Fecha</column>
-									<!-- Fecha Postulación -->
 									<column hflex="1" align="center">Opiniones</column>
-									<column hflex="2" align="center">Calificaciónes</column>
+									<column hflex="2" align="center">Calificaciones</column>
 								</columns>
 
 								<rows>

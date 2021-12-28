@@ -46,7 +46,9 @@ public class RegistrarGrupoViewModel {
 			this.editable = true;
 			setFunciones(grupo.getFuncionGrupos());
 			funciones = getFunciones();
-					
+			for(FuncionGrupo f : funciones){
+				System.out.println(f.getFuncion().getIdFuncion());
+			}
 		}
 		grupoDao = new GrupoDao();
 		funcionGrupoDao = new FuncionGrupoDao();
@@ -74,6 +76,7 @@ public class RegistrarGrupoViewModel {
 			}
 				
 			win.detach();
+			Messagebox.show("Usuario " + grupo.getDescripcion() + " agregado satisfactoriamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			BindUtils.postGlobalCommand(null,null,"refreshGrupos",null);
 		}
 		
@@ -83,19 +86,23 @@ public class RegistrarGrupoViewModel {
 	@Command
 	@NotifyChange({"funciones", "cantRegistros"})
 	public void eliminarFuncion(@BindingParam("Funcion") final FuncionGrupo funcion){
-		Messagebox.show("Estas seguro de eliminar " + funcion.getFuncion().getNombre() + " del grupo", "Confirmar",
+		System.out.println(funcion.getIdFuncionGrupo());
+		Messagebox.show("Estas seguro de eliminar " + funcion.getFuncion().getNombre() + " del grupo", "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
+								if(funcion.getIdFuncionGrupo() == 0){
+									funciones.remove(funcion);
+									BindUtils.postGlobalCommand(null, null, "refreshFuncionesGrupo", null);
+								}else{
 								funcion.setActivo(false);
 								funcionGrupoDao.eliminarFuncionGrupo(funcion);
-								Messagebox.show(funcion.getFuncion().getNombre() + " ha sido eliminado", "", Messagebox.OK,
-										Messagebox.INFORMATION);
+								}
+								Messagebox.show(funcion.getFuncion().getNombre() + " ha sido eliminado", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshFuncionesGrupo", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), funcion.getFuncion().getNombre() + " No se pudo eliminar",
-										Messagebox.OK, Messagebox.ERROR);
+								Messagebox.show(e.getMessage()+ " " + funcion.getFuncion().getNombre() + " no se pudo eliminar", "American Tech", Messagebox.OK, Messagebox.ERROR);
 							}
 						}
 					}
@@ -169,6 +176,8 @@ public class RegistrarGrupoViewModel {
 		this.funcionSeleccionada = funcionSeleccionada;
 	}
 	
+
+	
 	@Command
 	public void agregarFuncion() throws Exception{
 		FuncionGrupo funcGrupo = new FuncionGrupo();
@@ -176,20 +185,19 @@ public class RegistrarGrupoViewModel {
 		funcGrupo.setGrupo(grupo);
 		for(FuncionGrupo f : funciones){
 			if(funcionSeleccionada.getIdFuncion() == f.getFuncion().getIdFuncion()){
-				Messagebox.show("Esta funcion ya pertenece al grupo seleccionado");
+				Messagebox.show("Esta funcion ya pertenece al grupo seleccionado", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 				existe = true;
 				break;
 			}
 		}
 		if(existe == false){
 			if (funcionSeleccionada == null) {
-				Messagebox.show("Por favor selecciones una funcion");
+				Messagebox.show("Por favor seleccione una funcion", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}else{
 				funcGrupo.setFuncion(funcionSeleccionada);
 				funcGrupo.setActivo(true);
 				funciones.add(funcGrupo);
-				//funcionGrupoDao.agregarFuncionGrupo(funcGrupo);
-				Messagebox.show("Funcion " + funcionSeleccionada.getNombre() + " agregada exitosamente!");
+				Messagebox.show("Funcion " + funcionSeleccionada.getNombre() + " agregada satisfactoriamente!", "American Tech", Messagebox.OK, Messagebox.INFORMATION);
 			}
 		}
 		

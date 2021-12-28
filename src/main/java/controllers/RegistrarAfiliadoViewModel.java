@@ -58,6 +58,7 @@ public class RegistrarAfiliadoViewModel {
 	private TipoAfiliado tipoAfiliado;
 	private String nroCarnet="";
 	private ArrayList<Preferencia> temporalPreferencia;
+	private boolean fotodefault;
 	
 	@Init
 	public void init(@ExecutionArgParam("socioss") Socio socioss) throws Exception{
@@ -74,10 +75,11 @@ public class RegistrarAfiliadoViewModel {
 		preferencias= new ArrayList<Preferencia>();
 		preferenciasAll= new ArrayList<Preferencia>();
 		temporalPreferencia = new ArrayList<Preferencia>();
-		System.out.println("dasdadasdiijijjl: "+socioss.getIdSocio());
-		
+		fotodefault=true;
 	}
-	
+	public boolean isFotodefault() {
+		return fotodefault;
+	}
 	public Persona getPersona() {
 		return persona;
 	}
@@ -135,14 +137,24 @@ public class RegistrarAfiliadoViewModel {
 				this.afiliado.setTipoAfiliado(null);
 			}
 			else{
-				this.nroCarnet=socio.getNroCarnet()+tipoAfiliado.getSubfijo();
+				this.nroCarnet=socio.getNroCarnet()+"-"+tipoAfiliado.getSubfijo();
+				this.tipoAfiliado = tipoAfiliado;
+				this.afiliado.setTipoAfiliado(tipoAfiliado);
+			}
+		}else if(tipoAfiliado.getIdTipoAfiliado()==2){
+			if(cantidadTipoAfiliado(2)==1){
+				Messagebox.show("El socio ya tiene asocioado un afiliado de parentesco "+tipoAfiliado.getDescripcion() , "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+				this.tipoAfiliado=new TipoAfiliado(0,"",false);
+				this.afiliado.setTipoAfiliado(null);
+			}
+			else{
+				this.nroCarnet=socio.getNroCarnet()+"-"+tipoAfiliado.getSubfijo();
 				this.tipoAfiliado = tipoAfiliado;
 				this.afiliado.setTipoAfiliado(tipoAfiliado);
 			}
 		}
 		else{
 			this.nroCarnet=socio.getNroCarnet()+"-"+(Integer.parseInt(tipoAfiliado.getSubfijo())+cantidadTipoAfiliado(tipoAfiliado.getIdTipoAfiliado()));	
-			System.out.println("Sufijo"+Integer.parseInt(tipoAfiliado.getSubfijo()));
 			this.tipoAfiliado = tipoAfiliado;
 			this.afiliado.setTipoAfiliado(tipoAfiliado);
 		}	
@@ -150,10 +162,11 @@ public class RegistrarAfiliadoViewModel {
 	}
 
 	@Command
-	@NotifyChange("uploadedImageAfiliado")
+	@NotifyChange({"uploadedImageAfiliado","fotodefault"})
 	public void uploadImage(@BindingParam("media") Media myMedia) {
 		imagenNuevaAfiliado = true;
 		uploadedImage = myMedia;
+		fotodefault=false;
 	}
 	
 	public Media getUploadedImageAfiliado() {
@@ -251,13 +264,12 @@ public class RegistrarAfiliadoViewModel {
 	
 	@Command
 	public void registrarAfiliado(@BindingParam("win") Window win) throws Exception{
-		System.out.println(persona.getIdentificacion());
 		try{
 			if(persona.getIdentificacion().equalsIgnoreCase("") || persona.getNombre().equalsIgnoreCase("")||
 					persona.getApellido().equalsIgnoreCase("")|| persona.getTelefono().equalsIgnoreCase("")||
 					persona.getCorreo().equalsIgnoreCase("")|| persona.getSexo().equalsIgnoreCase("")||
 					persona.getDireccion().equalsIgnoreCase("")|| afiliado.getTipoAfiliado().equals(null)){
-						Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show("Verifique que todo los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
 			else{
 				personaDao= new PersonaDao();
@@ -265,6 +277,7 @@ public class RegistrarAfiliadoViewModel {
 				if(this.imagenNuevaAfiliado==true){
 					this.persona.setFoto(ManejadorArchivo.subirImagen(uploadedImage));
 				}
+				persona.setActivo(true);
 				personaDao.agregarPersona(persona);
 				afiliado.setNroCarnet(getNroCarnet());
 				afiliado.setPersona(persona);
@@ -293,7 +306,7 @@ public class RegistrarAfiliadoViewModel {
 			}
 		}
 		catch(NullPointerException e){
-			Messagebox.show("Debe llenar todos los campos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show("Verifique que todo los datos estén llenos", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			
 		}
 	}

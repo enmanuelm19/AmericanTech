@@ -1,0 +1,55 @@
+<?page title="AmericaTech" contentType="text/html" charset="UTF-8"?>
+<?link href="../../../assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
+<?link href="../../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
+<?link href="../../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zk xmlns:n="native">
+	<window id="winRegistrarMSancion"
+		style="iconSclass=z-icon-cogs; height:auto;"
+		title="@load(vm.editable?'Editar motivo sanción':'Registrar motivo sanción')"
+		closable="true" border="none"
+		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
+		height="50%"  class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('controllers.RegistrarMotivoSancionViewModel')">
+		<caption iconSclass="z-icon-cogs" />
+		<div class="contenedor" align="center">
+			<div align="left" width="90%">
+				<div align="left">
+					<div class="encabezado" style="margin-top: 4%">
+						Datos Básicos
+					</div>
+					<div align="left" class="linea-two"
+						style="margin-bottom: 6%" />
+				</div>
+				<grid>
+					<rows>
+						<row>
+							<div class="col-md-12">
+							<label class="col-md-10">Descripción</label>
+							<textbox type="text" rows="4" class="col-xs-12 col-sm-12 col-md-12"
+								value="@bind(vm.motivoSancion.descripcion)" constraint="no empty" />
+							</div>
+						</row>
+					</rows>
+				</grid>
+				<div align="center" style="margin-top: 7%;">
+					<hbox>
+						<div>
+							<button iconSclass="z-icon-floppy-o"
+								class='boton-guardar'
+								style="margin-bottom: 400px; margin-right:5px" label="Guardar"
+								onClick="@command('guardar', win=winRegistrarMSancion)" />
+						</div>
+						<div>
+							<button id="cancelarBtn"
+								iconSclass="z-icon-times-circle" class='boton-cancelar'
+								style="margin-bottom: 6%" label="Cancelar"
+								onClick="@command('cerrarModal', win=winRegistrarMSancion)" />
+						</div>
+					</hbox>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

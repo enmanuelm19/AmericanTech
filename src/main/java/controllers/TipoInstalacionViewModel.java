@@ -76,18 +76,18 @@ public class TipoInstalacionViewModel {
 	@NotifyChange({ "allTipoInstalacion", "cantRegistros" })
 	public void eliminar(@BindingParam("Tipo") final TipoInstalacion tipo) {
 
-		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "Confirmar",
+		Messagebox.show("Estas seguro de eliminar " + tipo.getDescripcion(), "American Tech",
 				Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 					public void onEvent(Event evt) throws InterruptedException {
 						if (evt.getName().equals("onOK")) {
 							try {
 								tipoDao.eliminarTipoInstalacion(tipo);
 								tiposAll = tipoDao.obtenerTodos();
-								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "", Messagebox.OK,
+								Messagebox.show(tipo.getDescripcion() + " ha sido eliminado", "American Tech", Messagebox.OK,
 										Messagebox.INFORMATION);
 								BindUtils.postGlobalCommand(null, null, "refreshTipoInstalacion", null);
 							} catch (Exception e) {
-								Messagebox.show(e.getMessage(), tipo.getDescripcion() + " No se pudo eliminar",
+								Messagebox.show(e.getMessage(), tipo.getDescripcion() + "American Tech",
 										Messagebox.OK, Messagebox.ERROR);
 							}
 						}

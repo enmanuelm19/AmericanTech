@@ -15,14 +15,14 @@
 						<label value="Administrar Sanciones" />
 					</div>
 					<separator spacing="30px" /><space /><space />
-					<div class='form-pricing' align="left" width="95%" style="margin-bottom: 20px">
+					<div class='form-pricing  col-xs-10 col-sm-10 col-md-11 col-centered' align="left" style="margin-bottom: 20px">
 						<div xmlns:w='client' align="right">
 							<button label="Agregar Nuevo" iconSclass="z-icon-plus" class='boton-guardar' onClick="@command('showModalRegistroSancion')"/>
 						</div>
 						<separator spacing="10px" />
 						<div class="contenido">
 							<div align="left">
-								<div class='encabezado'>Sancionados</div>
+								<div class='encabezado'>Listado Sancionados</div>
 								<div class='linea-two'></div>
 							</div>
 							<separator spacing="30px" />
@@ -34,7 +34,7 @@
 									</auxheader>
 									<auxheader colspan="1">
 										<image src="../assets/img/funnel.png" />
-										<textbox instant="true"	width="120px" placeholder="Buscar" value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"/>
+										<textbox instant="true"	width="80%" placeholder="Buscar" value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"/>
 									</auxheader>
 									<auxheader colspan="1">
 										<image src="../assets/img/funnel.png" />

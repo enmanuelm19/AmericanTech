@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_socios_txt" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b97978a-849b-40dc-8721-a73dc7402c5c">
+	<property name="ireport.zoom" value="0.8264462809917354"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TITULO" class="java.lang.String"/>
+	<parameter name="CONSULTA" class="java.lang.String"/>
+	<parameter name="IMAGEN_CLUB" class="java.io.InputStream"/>
+	<parameter name="IMAGEN_EQUIPO" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT p.nombre || ' ' || p.apellido as NOMBRE, p.sexo as SEXO, p.correo, p.telefono as TELEFONO, s.nro_carnet as CARNET
+FROM usuario u
+INNER JOIN persona p
+ON u.personaid_persona = p.id_persona
+INNER JOIN socio s
+ON p.id_persona = s.personaid_persona]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="carnet" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="8" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="31" forecolor="#0033FF" backcolor="#0033FF" uuid="23083467-a1e3-4f02-80db-6165682a2d64"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="0" width="100" height="20" uuid="6d37edbe-d4c5-4824-91ac-c819916e2364"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="544" y="0" width="100" height="20" uuid="c50ce146-603b-4461-9d14-ab14e0f4c77e"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="0" width="100" height="20" uuid="d623fb28-7852-47b2-9678-ac1e93af60a2"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="698" y="0" width="100" height="20" uuid="62816ee0-1fe5-476c-bb06-bb14c7aed6e2"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Carnet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="1" width="100" height="20" uuid="e560331b-588f-46c2-b7ef-36fe960005a0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="4" y="2" width="191" height="20" uuid="b499c686-a515-4129-b9c2-8966fd638a32"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="544" y="2" width="100" height="20" uuid="012b41e3-932d-488b-a47c-1e40b1560a0e"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="698" y="2" width="100" height="20" uuid="6c8f27be-4c02-4404-8230-ad1f94605a3f"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{carnet}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="206" y="2" width="100" height="20" uuid="30c23ae9-2adb-4f6b-9943-c1bf8d96ebca"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="366" y="4" width="150" height="20" uuid="3d6d9437-fe52-44a1-a911-6cc0c65af295"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="54" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="56" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

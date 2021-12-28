@@ -10,7 +10,8 @@
 -->
 
 <zk xmlns:n="native">
-	<window border="none" title="Registrar Noticia" id="winNoticias"
+	<window border="none" 
+	title="@load(vm.editable?'Editar Noticia ':'Registrar Noticia')" id="winNoticias"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		closable="true" width="48%" height="auto"
 		style="iconSclass=z-icon-puzzle-piece;"
@@ -30,16 +31,14 @@
 					<rows>
 						<row class="col-md-12">
 							<div>
-								<image
-									class="img-responsive col-md-offset-3 col-md-6"
-									content="@bind(vm.uploadedImage)">
-								</image>
+								<image class="img-responsive col-md-offset-3 col-md-6" content="@bind(vm.uploadedImage)"  visible="@load(!vm.fotodefault)"></image>
+								<image src="../assets/portal/img/noticiadefecto.png" class='img-responsive col-md-offset-3 col-md-6' visible="@load(vm.fotodefault)"></image>
+								
 								<separator spacing="12px"></separator>
 								<button label="Examinar"
 									iconSclass="z-icon-folder-open"
-									class="boton-guardar col-md-offset-3 col-md-6"
-									upload="true,maxsize=2000"
-									onUpload="@command('upload', media=event.media)">
+									class="boton-guardar col-md-offset-3 col-md-6"	upload="true"
+									onUpload="@global-command('upload', media=event.media)">
 								</button>
 							</div>
 							<vlayout>
@@ -63,7 +62,6 @@
 									class="col-md-12" />
 								<datebox id="DateFechaCaducidad"
 									width="100%" cols="12" format="dd/MM/yyyy"
-									onCreate="self.value = new Date()"
 									value="@bind(vm.noticia.caducidad)" />
 							</div>
 							</vlayout>
@@ -72,10 +70,12 @@
 							<div>
 								<label value="Público"
 									class="col-md-12" />
-								<combobox selectedItem="@bind(vm.publico)" value="@bind(vm.noticia.publico)"
+								<combobox selectedItem="@bind(vm.publico)" model="@load(vm.arrayPublic)" value="@load(vm.publico)" 
 									width="100%">
-									<comboitem label="Si" value="true" />
-									<comboitem label="No" value="false" />
+									<template name="model">
+										<comboitem
+											label="@load(each)" value="@load(each)" />
+									</template>
 								</combobox>
 							</div>
 							<div>

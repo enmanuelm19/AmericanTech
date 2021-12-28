@@ -3,10 +3,10 @@
 <?link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'?>
 <?link href="../../assets/intranet/less/style.css" rel="stylesheet" type="text/css"?>
 <?link href="../../assets/intranet/less/index.css.dsp" rel="stylesheet" type="text/css"?>
-<zk>
+<zk xmlns:n="native">
 	<window id="winIn"
-		title="Registrar Instalacion" 
-		width="60%" 
+		title="Registrar Instalación" 
+		class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"
 		height="auto"
 		style="iconSclass=z-icon-cogs;" closable="true"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
@@ -14,65 +14,67 @@
 		viewModel="@id('vminst') @init('controllers.RegistrarInstalacionViewModel')">
 		<caption iconSclass="z-icon-cogs" />
 			<separator spacing="30px" />
-		<div class='contenedor' align="center">
-			<div width="850px">
-				<div width="100%">
+		<div align="center" style="margin:10px 10px 10px 10px;">
+				<div class="col-md-12">
 					<div align="left">
 						<div class='encabezado'>Datos Básicos</div>
 						<div class='linea-two'></div>
 					</div>
 					<separator spacing="30px" />
-					<div class='row'>
-
-						<div class='col-md-2'>
-							<grid visible="@load(vminst.editable)" id="galeryFotos" class='col-md-12'
-								sclass="galeria" mold="paging" pageSize="3" model="@load(vminst.fotoEditable)">
-								<columns>
-									<column class='col-md-12' align="center" />
-								</columns>
-								<rows>
-									<template name="model" >
-									<row>
-										<image
-											src="@load(each.url)" class='im col-md-12' />
-									</row>
-									</template>
-									
-								</rows>
-							</grid>
-							<grid visible="@load(!vminst.editable)" id="galery" class='col-md-12'
-								sclass="galeria" mold="paging" pageSize="3" model="@load(vminst.allfotoinstalacion)">
-								<columns>
-									<column class='col-md-12' align="center" />
-								</columns>
-								<rows>
-									<template name="model" >
-									<row>
-										<image
-											content="@load(each)" class='im col-md-12' />
-									</row>
-									</template>
-									
-								</rows>
-							</grid>
-						</div>
-
-						<div align="right" class='col-md-4'>
-							<image src="../assets/portal/img/img2.jpg" class='col-md-12'  visible="@load(vminst.fotodefault)"/>
-							<image content="@bind(vminst.uploadedImage)" class='col-md-12' visible="@load(!vminst.fotodefault)"/>
-							
-							<separator />
-							<div>
-								<fileupload
-									onUpload="@command('upload',media=event.media)"
-									upload="true,maxsize=2000" 
-									iconSclass="z-icon-folder-open"
-									class='boton-guardar col-md-6 col-md-offset-3' label="Examinar"  />
+					<div class='row' >
+						<div class='col-md-12'>
+							<div class='col-md-6'>
+								<grid visible="@load(vminst.editable)" id="galeryFotos" class='col-md-6'
+									sclass="galeria" mold="paging" pageSize="3" model="@load(vminst.fotoEditable)">
+									<columns>
+										<column class='col-md-6' align="center" />
+									</columns>
+									<rows>
+										<template name="model" >
+										<row>
+											<image src="@load(each.url)" class='im col-md-6' />
+										</row>
+										</template>
+										
+									</rows>
+								</grid>
+								<grid visible="@load(!vminst.editable)" id="galery" class='col-md-4'
+									sclass="" mold="paging" pageSize="2" model="@load(vminst.allfotoinstalacion)">
+									<columns>
+										<column class='col-md-12' align="center" />
+									</columns>
+									<rows>
+										<template name="model" >
+										<row>
+											<image
+												content="@load(each)" class='im col-md-6' />
+										</row>
+										</template>
+										
+									</rows>
+								</grid>
 							</div>
+							
+							<div align="right" class='col-md-4' style="margin-top:15px">
+								<image src="../assets/portal/img/img2.jpg" class='col-md-12'  visible="@load(vminst.fotodefault)"/>
+								<image content="@bind(vminst.uploadedImage)" class='col-md-12' visible="@load(!vminst.fotodefault)"/>
+								
+								<separator />
+								<div>
+									<fileupload
+										onUpload="@command('upload',media=event.media)"
+										iconSclass="z-icon-folder-open"
+										class='boton-guardar col-md-6 col-md-offset-3' label="Examinar"  />
+								</div>
+							</div>
+	
 						</div>
-
-						<div class='col-md-6' align="left">
-							<grid>
+						<n:br></n:br>
+						<div class='col-md-10'   align="left">
+						<n:br></n:br>
+						<n:br></n:br>
+						<div class='linea-two' />
+							<grid style="margin-top:15px">
 								<rows>
 									<row class="col-md-12">
 										<div>
@@ -97,7 +99,6 @@
 										</div>
 									</row>
 									<row>
-
 										<div>
 											<label class="col-md-4" id="lblTipoInstalacion">
 												Tipo Instalación
@@ -111,7 +112,6 @@
 														label="@load(each.descripcion)" value="@load(each)" />
 												</template>
 											</combobox>
-											
 										</div>
 									</row>
 									<row>
@@ -150,18 +150,18 @@
 
 						</div>
 					</div>
+							
 				</div>
 				<separator spacing="30px" />
-					<div width="100%">
+					<div class="col-md-12">
 					<div align="left">
 						<div class='encabezado'>Recursos</div>
 					</div>
 					<div class='linea-two' />
-				
+			
 					<div class='row' align="center">
+							<div class='col-md-6' align="center">
 
-						<div class='col-md-6' align="center">
-							<separator spacing="30px"></separator>
 							<grid emptyMessage="No se existen recursos" mold="paging" pageSize="4">
 								<rows>
 									<row>
@@ -200,7 +200,7 @@
 							</grid>
 								
 						</div>
-						<separator spacing="30px" />
+					
 
 						<div class='col-md-6'>
 							<grid  model="@load(vminst.recursosinstalacion)"
@@ -210,7 +210,7 @@
 							<columns>
 								<column hflex="">Recurso</column>
 								<column hflex="">Cantidad</column>
-<!-- 								<column hflex="">Accion</column> -->
+								<column hflex="">Accion</column>
 							</columns>
 
 							<rows>
@@ -218,11 +218,11 @@
 									<row>
 										<label value="@load(each.recurso.descripcion)" />
 										<label value="@load(each.cantidad)" />
-<!-- 										<div> -->
+										<div>
 	
-<!-- 											<button sclass="btn-link" onClick="@command('eliminarIndicadorEvento',indicadorEvento=each)" -->
-<!-- 												iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" /> -->
-<!-- 										</div> -->
+											<button sclass="btn-link" onClick="@command('eliminarRecursoInstalacion', recursoInstalacion=each)"
+												iconSclass="z-icon-trash-o red" id="" tooltiptext="Eliminar" />
+										</div>
 									</row>
 								</template>
 							</rows>
@@ -247,9 +247,10 @@
 
 <!-- 							</listbox> -->
 						</div>
+
 					</div>
 				</div>
-				<separator spacing="30px" />
+							<space spacing="10%"></space>
 				<div>
 					<button class='boton-guardar'
 						iconSclass="z-icon-floppy-o" label="Registrar" 
@@ -259,8 +260,10 @@
 						iconSclass="z-icon-times-circle" label="Cancelar"
 						onClick="@command('cerrarModal', win=winIn)" />
 				</div>
+				<space spacing="10%"></space>
+					<n:br></n:br>
+						<n:br></n:br>
 			</div>
-		</div>
 	</window>
 	<style>
 		.galeria .z-paging { border:none; background: none; margin:0 4%;

@@ -56,31 +56,35 @@ public class RegistrarTipoNoticiaViewModel {
 
 		if (tipoNoticia.getDescripcion() != null
 				&& !tipoNoticia.getDescripcion().equalsIgnoreCase("")) {
-			if (tipoDao
-					.obtenerTipoDescripcion(tipoNoticia.getDescripcion()) == null) {
+//			if (tipoDao
+//					.obtenerTipoDescripcion(tipoNoticia.getDescripcion()) == null) {
 				if (!editable) {
 					tipoDao.agregarTipoNoticia(tipoNoticia);
 					Messagebox.show(
 							"El tipo de noticia "
 									+ tipoNoticia.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+									+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoNoticia(tipoNoticia);
 					Messagebox.show(
 							"El tipo de noticia "
 									+ tipoNoticia.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+									+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null,
 						"refreshTipoNoticia", null);
-			} else {
-				Messagebox.show("tipo de noticia con la descripcion "
-						+ tipoNoticia.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
-			}
+		
+//			} else {
+//				Messagebox.show("tipo de noticia con la descripcion "
+//						+ tipoNoticia.getDescripcion() + " ya existe",
+//						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+//			}
+		}else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 
 	}

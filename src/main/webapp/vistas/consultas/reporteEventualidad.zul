@@ -1,4 +1,6 @@
 <zk xmlns:n="native">
+
+<?link href="assets/intranet/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /?>
 	<div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('reportes.estructurados.ReporteEventualidadesViewModel')">
 		<hlayout spacing="0">
@@ -25,7 +27,6 @@
 							</div>
 							<space spacing="15%"></space>
 							<div align="center">
-								<groupbox style="margin: 1%;" width="85%" height="auto">
 									<grid>
 										<rows>
 											  <row class="col-md-12 ">
@@ -49,8 +50,8 @@
 											  </row>
 											  <row class="col-md-12 ">
 												 <div class="col-md-8">	
-													   <label class="col-md-4">Instalacion :</label>
-												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.tipotipoInstalacionSelected)" disabled="@load(vm.disableinstalaciones)">
+													   <label class="col-md-4">Instalación :</label>
+												       <combobox model ="@load(vm.instalaciones)" selectedItem="@bind(vm.instalacionSelected)" disabled="@load(vm.disableinstalaciones)">
 															<template name="model">
 																	<comboitem
 																		label="@load(each.nombre)" value="@load(each)" />
@@ -82,22 +83,23 @@
 							                  	<div>
 													Desde: 
 													<timebox cols="12" value="@bind(vm.horaInicio)" 
-														format="short"  width="60%" />
+														format="HH"  width="60%" />
 												</div>
 												<space spacing="5%"></space>
 												<div>
 													Hasta: 
 													<timebox cols="12" value="@bind(vm.horaFin)" 
-													format="short" width="60%" />
+														format="HH"  width="60%" />
 												</div>																		   	 							   	 	
 								   	 	</hlayout>
 								   	 </groupbox>								   	 
-								   	 <space spacing="2%"></space>						   	 
-								</groupbox >
+								   	 <space spacing="2%"></space>		
 							     <div align="center" xmlns:w="client">
-									<button id="btnImprimirtxt" class='boton-guardar' label="Generar txt" />
-									<space spacing="2%"></space>
-									<button id="btnImprimirpdf" class='boton-guardar' label="Generar PDF" />
+									<button id="btnText" class='boton-guardar' onClick="@command('btnTxt')" label="Generar txt" 
+									iconSclass="glyphicon glyphicon-file" tooltiptext="Descargar TXT"/>
+								   <space spacing="2%"></space>
+								   <button id="btnPDF" class='boton-guardar' onClick="@command('btnPDF')" label="Generar PDF" 
+								   iconSclass="glyphicon glyphicon-book" tooltiptext="Descargar PDF"/>
 								 </div>	
 							</div>
 						</div>

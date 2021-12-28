@@ -37,32 +37,29 @@ public class RegistrarTipoAfiliadoViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		this.tipoAfiliado.setActivo(true);
-		if (tipoAfiliado.getDescripcion() != null
-				&& !tipoAfiliado.getDescripcion().equalsIgnoreCase("")) {
-			if (this.tipoDao.obtenerTipoDescripcion(tipoAfiliado
-					.getDescripcion()) == null) {
+		if (tipoAfiliado.getDescripcion() != null && !tipoAfiliado.getDescripcion().equalsIgnoreCase("") && tipoAfiliado.getSubfijo()!=null &&
+				!tipoAfiliado.getSubfijo().equalsIgnoreCase("")) {
+			if (this.tipoDao.obtenerTipoDescripcion(tipoAfiliado.getDescripcion()) == null) {
 				if (!editable) {
 					tipoDao.agregarTipoAfiliado(tipoAfiliado);
-					Messagebox.show(
-							"El tipo de afiliado "
-									+ tipoAfiliado.getDescripcion()
-									+ " ha sido registrado exitosamente", "",
+					Messagebox.show("El tipo de afiliado "+ tipoAfiliado.getDescripcion()+ " ha sido registrado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				} else {
 					tipoDao.actualizarTipoAfiliado(tipoAfiliado);
-					Messagebox.show(
-							"El tipo de afiliado "
-									+ tipoAfiliado.getDescripcion()
-									+ " ha sido actualizado exitosamente", "",
+					Messagebox.show("El tipo de afiliado "+ tipoAfiliado.getDescripcion()+ " ha sido actualizado exitosamente", "American Tech",
 							Messagebox.OK, Messagebox.INFORMATION);
 				}
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshTipoAfiliado",null);
 			} else {
-				Messagebox.show("tipo de afiliado con la descripción"
+				Messagebox.show("El tipo de afiliado con la descripcion"
 						+ tipoAfiliado.getDescripcion() + " ya existe",
-						"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+						"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 			}
+		}
+		else{
+			Messagebox.show("Verifique que los campos estén llenos ", "American Tech",
+					Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 

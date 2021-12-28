@@ -80,7 +80,9 @@ public class SugerenciaViewModel {
 	public void filtro() throws Exception {
 		List<Sugerencia> tip = new ArrayList<Sugerencia>();
 		String desc = getDescFiltro().toLowerCase();
-		for (Iterator<Sugerencia> i = sugerenciaDao.obtenerTodos().iterator(); i.hasNext();) {
+		Session session = Sessions.getCurrent();
+		Usuario user = (Usuario) session.getAttribute("Usuario");
+		for (Iterator<Sugerencia> i = sugerenciaDao.obtenerSugerenciasUsuario(user).iterator(); i.hasNext();) {
 			Sugerencia tmp = i.next();
 			if (tmp.getTipoSugerencia().getDescripcion().toLowerCase().contains(desc)) {
 				tip.add(tmp);

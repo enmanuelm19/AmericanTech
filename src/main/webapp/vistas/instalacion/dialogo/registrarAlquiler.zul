@@ -11,7 +11,7 @@
 		title="Registrar Alquiler"
 		action="show: slideDown({duration: 300}); hide:slideUp({duration: 300})"
 		apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewBean')">
+		viewModel="@id('vm') @init('controllers.RegistrarAlquilerViewModel')">
 		<caption iconSclass="home-icon z-icon-home" />
 
 		<div class="contenido">
@@ -33,7 +33,7 @@
 								<label>Tipo de Pago</label>
 								<combobox model="@load(vm.tipoPagoAll)"
 									constraint="no empty" selectedItem="@bind(vm.tipoPagoSelected)"
-									width="100%">
+									width="100%" readonly="true">
 									<template name="model">
 										<comboitem
 											label="@load(each.descripcion)" value="@load(each)" />
@@ -47,7 +47,7 @@
 				<div>
 					<button iconSclass="z-icon-floppy-o"
 						onClick="@command('guardar',win=winEv)" class='boton-guardar'
-						label="Registrar" />
+						label="Guardar" />
 					<space spacing="10%" />
 					<button iconSclass="z-icon-times"
 						onClick="@command('cerrarModal',win=winEv)" class='boton-cancelar'

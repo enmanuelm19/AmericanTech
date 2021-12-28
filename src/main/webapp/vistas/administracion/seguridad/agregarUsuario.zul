@@ -18,10 +18,9 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="input-group">
-						<image class="img-responsive col-md-offset-0" content="@bind(vm.uploadedImage)"></image>
-						<!-- <image src="/assets/portal/img/img1.jpg" class='img-responsive col-md-offset-0' /> -->
+						<image class="img-responsive col-md-offset-0" content="@bind(vm.uploadedImage)" src="@bind(vm.user.persona.foto)"></image>
 						<separator spacing="5px"></separator>
-						<button label="Examinar" iconSclass="z-icon-folder-open" class="boton-guardar col-md-offset-0" upload="true,maxsize=2000" onUpload="@command('upload', media=event.media)"></button>
+						<button label="Examinar" iconSclass="z-icon-folder-open" class="boton-guardar col-md-offset-0" upload="true" onUpload="@command('upload', media=event.media)"></button>
 					</div>
 				</div>
 				<div class="col-md-8">
@@ -29,7 +28,7 @@
 						<rows>
 							<row class="col-md-12">
 								<div>
-									<label class="col-md-3"> Cedula </label>
+									<label class="col-md-3"> Cédula </label>
 									<textbox  class="col-md-5" value="@bind(vm.keyword)">
 									</textbox>
 									<button iconSclass="z-icon-search blue" class="col-md-2 btn-link" onClick="@command('busqueda', win=winRegistrarUsuario)">
@@ -57,35 +56,35 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Sexo </label>
-									<radiogroup>
-										<radio label="M" class="col-md-2"></radio>
-										<radio label="F" class="col-md-offset-1 col-md-2"></radio>
+									<radiogroup id="sexo" selectedItem="@bind(vm.user.persona.sexo)">
+										<radio label="Masculino" value='M' class="col-md-2" radiogroup="sexo"></radio>
+										<radio label="Femenino" value='F' class="col-md-offset-1 col-md-2" radiogroup="sexo"></radio>
 									</radiogroup>
 								</div>
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3"> Correo electronico </label>
-									<textbox type="email" class="col-md-9"  value="@bind(vm.user.persona.correo)"> </textbox>
+									<label class="col-md-3"> Correo electrónico </label>
+									<textbox type="email" class="col-md-9" disabled="@load(vm.editable)" value="@bind(vm.user.persona.correo)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3"> Telefono </label>
+									<label class="col-md-3"> Teléfono </label>
 									<textbox class="col-md-4" 	 value="@bind(vm.user.persona.telefono)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
 									<label class="col-md-3">
-										Telefono Fijo
+										Teléfono Fijo
 									</label>
 									<textbox class="col-md-4"  value="@bind(vm.user.persona.telefonoFijo)"> </textbox>
 								</div>
 							</row>
 							<row>
 								<div>
-									<label class="col-md-3"> Direccion </label>
+									<label class="col-md-3"> Dirección </label>
 									<textbox class="col-md-9"  value="@bind(vm.user.persona.direccion)">
 									</textbox>
 								</div>
@@ -93,7 +92,7 @@
 							<row>
 								<div>
 									<label class="col-md-3"> Usuario </label>
-									<textbox  class="col-md-9" value="@bind(vm.user.username)">
+									<textbox  class="col-md-9" disabled="@load(vm.editable)" value="@bind(vm.user.username)">
 									</textbox>
 								</div>
 							</row>

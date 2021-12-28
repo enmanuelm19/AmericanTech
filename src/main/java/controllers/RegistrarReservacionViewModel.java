@@ -2,11 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-
 import org.jboss.logging.Logger;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
@@ -16,25 +12,19 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
-import org.zkoss.zk.ui.select.annotation.Listen;
-import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import Dao.InstalacionDao;
 import Dao.InstalacionEventoDao;
-import Dao.PreferenciaDao;
 import Dao.ReservacionDao;
 import Dao.SocioDao;
 import enums.CondicionReservacion;
 import Dao.CalendarioFechaDao;
 import modelos.CalendarioFecha;
-import modelos.Evento;
 import modelos.Instalacion;
 import modelos.InstalacionEvento;
-import modelos.Persona;
 import modelos.Reservacion;
-import modelos.Socio;
 import modelos.Usuario;
 import util.Format;
 
@@ -61,7 +51,7 @@ public class RegistrarReservacionViewModel {
 		this.setDisabled(true);
 		reservacionDao = new ReservacionDao();
 		try {
-			getTemporalInstalaciones().addAll(new InstalacionDao().obtenerTodos());
+			getTemporalInstalaciones().addAll(new InstalacionDao().obtenerAlquilables());
 		} catch (Exception ex) {
 			Logger.getLogger(RegistrarReservacionViewModel.class.getName());
 		}
@@ -135,7 +125,12 @@ public class RegistrarReservacionViewModel {
 	@Command
 	public void guardar(@BindingParam("win") Window win) throws Exception {
 		if (!isCamposVacio()) {
-			if (isDisponible(reservacion.getInstalacion())) {
+			if (getReservacion().getFechaInicio().after(getReservacion().getFechaFin())) {
+				setDisabled(true);
+				Messagebox.show("La fecha final no puede ser menor a la fecha inicio", "American Tech", Messagebox.OK,
+						Messagebox.EXCLAMATION);
+			}
+			if (isDisponible(getInstalacionSeleccionada())) {
 				CalendarioFecha calendarioFecha = new CalendarioFecha();
 				reservacion.setSocio(new SocioDao().obtenerSocioPersona(usuario.getPersona()));
 				reservacion.setInstalacion(getInstalacionSeleccionada());
@@ -154,11 +149,17 @@ public class RegistrarReservacionViewModel {
 					reservacionDao.actualizarReservacion(reservacion);
 					new CalendarioFechaDao().actualizarCalendarioFecha(calendarioFecha);
 				}
+				Messagebox.show("Reservación Agregada: " + getInstalacionSeleccionada().getNombre(), "American Tech",
+						Messagebox.OK, Messagebox.INFORMATION);
 				win.detach();
 				BindUtils.postGlobalCommand(null, null, "refreshReservacion", null);
+			} else {
+				Messagebox.show("La intalación seleccionada se encuentra reservada", "American Tech", Messagebox.OK,
+						Messagebox.INFORMATION);
 			}
 		} else {
-			Messagebox.show("Debe seleccionar otra fecha la intalaci�n se encuentra reservada");
+			Messagebox.show("Verifique que todos los datos esten llenos", "American Tech", Messagebox.OK,
+					Messagebox.INFORMATION);
 		}
 	}
 
@@ -190,7 +191,8 @@ public class RegistrarReservacionViewModel {
 						.equals(Format.getDateString(reservacion.getFechaInicio()))
 						&& Format.getDateString(calendarioFecha.getReservacion().getFechaFin())
 								.equals(Format.getDateString(reservacion.getFechaFin()))) {
-					Messagebox.show("Debe seleccionar otra fecha");
+					Messagebox.show("Debe seleccionar otra fecha", "American Tech", Messagebox.OK,
+							Messagebox.INFORMATION);
 				}
 			}
 		}
@@ -204,10 +206,11 @@ public class RegistrarReservacionViewModel {
 	}
 
 	public boolean isDisponible(Instalacion instalacion) throws Exception {
-
 		// verificamos que no este reservada esa intalacion
 		for (Reservacion reservacion : reservacionDao.obtenerReservacionesInstalacion(instalacion)) {
-
+			if (getReservacion().getIdReservacion() == reservacion.getIdReservacion()) {
+				continue;
+			}
 			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaInicio()))
 				return false;
 			if (isRango(reservacion.getFechaInicio(), reservacion.getFechaFin(), getReservacion().getFechaFin()))
@@ -240,23 +243,44 @@ public class RegistrarReservacionViewModel {
 	public void validarReservacion() {
 		if (getReservacion() != null && getInstalacionSeleccionada() != null) {
 			try {
+				if (getReservacion().getFechaInicio() != null && getReservacion().getFechaFin() != null
+						&& getReservacion().getFechaInicio().after(getReservacion().getFechaFin())) {
+					setDisabled(true);
+					Messagebox.show("La fecha final no puede ser menor a la fecha inicio", "American Tech",
+							Messagebox.OK, Messagebox.EXCLAMATION);
+				}
 				if (isDisponible(getInstalacionSeleccionada())) {
 					setDisabled(false);
 					BindUtils.postNotifyChange(null, null, RegistrarReservacionViewModel.this, "reservacion");
+					BindUtils.postNotifyChange(null, null, RegistrarReservacionViewModel.this, "precio");
 				} else {
 					setDisabled(true);
 					Messagebox.show(
 							getInstalacionSeleccionada().getNombre()
-									+ " no se encuentra disponible en el rango de fecha selecionado",
-							"Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+									+ " no se encuentra disponible en el rango de fecha seleccionado",
+							"American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else
-				Messagebox.show("Por favor indique rango de fechas del evento de forma correcta", "Warning", Messagebox.OK,
-						Messagebox.EXCLAMATION);
+		} else
+			Messagebox.show("Debe seleccionar una instalación", "American Tech", Messagebox.OK, Messagebox.EXCLAMATION);
+	}
+
+	@NotifyChange({ "reservacion", "disabled" })
+	public double precio() {
+		if (getReservacion().getFechaInicio() != null && getReservacion().getFechaFin() != null) {
+			return getInstalacionSeleccionada().getPrecioAlquiler()
+					* diasEntreFecha(getReservacion().getFechaInicio(), getReservacion().getFechaFin());
+		}
+		return 0;
+	}
+
+	public int diasEntreFecha(Date date1, Date date2) {
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; // Milisegundos al d�a
+		long diferencia = 1 + ((date2.getTime() - date1.getTime()) / MILLSECS_PER_DAY);
+		return (int) diferencia;
 	}
 
 }

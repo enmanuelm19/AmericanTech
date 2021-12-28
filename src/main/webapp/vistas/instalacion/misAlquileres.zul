@@ -39,25 +39,22 @@
 										<textbox instant="true" value="@bind(vm.nombreFiltro)" onChange="@command('filtro')"
 											width="140px" placeholder="Buscar" />
 									</auxheader>
-									<auxheader colspan="5" />
+									<auxheader colspan="4" />
 								</auxhead>
 								<columns>
-									<column hflex="7" align="center">
+									<column hflex="8" align="center">
 										Descripción
 									</column>
-									<column hflex="5" align="center">
+									<column hflex="6" align="center">
 										Fecha Inicio
-									</column>
-									<column hflex="5" align="center">
-										Hora Inicio
-									</column>
-									<column hflex="4" align="center">
+									</column>									
+									<column hflex="6" align="center">
 										Monto
 									</column>
-									<column hflex="4" align="center">
+									<column hflex="6" align="center">
 										Capacidad
 									</column>
-									<column hflex="4" align="center">
+									<column hflex="6" align="center">
 										Acciones
 									</column>
 								</columns>
@@ -70,15 +67,13 @@
 											<label
 												value="@load(alquiler.reservacion.fechaInicioString)" />
 											<label
-												value="@load(alquiler.reservacion.horaInicioString)" />
-											<label
-												value="@load(alquiler.reservacion.instalacion.precioAlquiler)" />
+												value="@load(vm.precio(alquiler.reservacion.fechaInicio,alquiler.reservacion.fechaFin, alquiler.reservacion.instalacion.precioAlquiler))" />
 											<label
 												value="@load(alquiler.reservacion.instalacion.capacidad)" />
 											<div>
 												<button
 													sclass="btn-link"
-													onClick="@command('showModal',alquiler = alquiler)"
+													onClick="@command('showModal',alquiler = alquiler)" disabled="@load(vm.isAvaiable(alquiler))"
 													iconSclass="z-icon-paperclip green" tooltiptext="Adjuntar" />												
 											</div>
 										</row>
